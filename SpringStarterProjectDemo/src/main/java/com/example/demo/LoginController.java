@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,9 +24,16 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("name",name);
 		mv.addObject("password",password);
+		mv.addObject("email");
 		mv.setViewName("welcome");
+		
+		UserProfile userProfile = new UserProfile(name, password, "email");
+		ArrayList userProfileList = null;
+		userProfileList.add(name);
+		userProfileList.add(password);
+		UserProfile userProfileListObject = new UserProfile(userProfileList);
+		
 		return mv;
 	}
-
 	
 }
