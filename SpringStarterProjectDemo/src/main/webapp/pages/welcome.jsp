@@ -11,7 +11,7 @@
 	${password}
 	
 	
-	<jsp:useBean id="userProfile" class="com.example.demo.UserProfile" scope="session"></jsp:useBean>  
+	<jsp:useBean id="userProfile" class="com.demo.model.UserProfile" scope="session"></jsp:useBean>  
 	<jsp:setProperty property="*" name="userProfile"/>  
 	  
 	<p> Accessed Data :  </p>

@@ -1,6 +1,4 @@
-package com.example.demo;
-
-import java.util.ArrayList;
+package com.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,26 +12,20 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLoginPage() {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("message", "It works!");
+		mv.addObject("Message", "It works!");
 		mv.setViewName("login");
 		return mv;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView showWelcomePage(@RequestParam String name, @RequestParam String password) {
+	public ModelAndView showWelcomePage(@RequestParam("name") String na, @RequestParam String password) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("name",name);
+		
+		mv.addObject("name",na);
 		mv.addObject("password",password);
-		mv.addObject("email");
 		mv.setViewName("welcome");
-		
-		UserProfile userProfile = new UserProfile(name, password, "email");
-		ArrayList userProfileList = null;
-		userProfileList.add(name);
-		userProfileList.add(password);
-		UserProfile userProfileListObject = new UserProfile(userProfileList);
-		
 		return mv;
 	}
+
 	
 }
