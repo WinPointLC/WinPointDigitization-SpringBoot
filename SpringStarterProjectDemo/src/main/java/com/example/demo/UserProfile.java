@@ -25,9 +25,12 @@ public class UserProfile {
 
 
 
-	public UserProfile(ArrayList userProfileList) {
+	public UserProfile(ArrayList<UserProfile> userProfileList) {
 		super();
 		this.userProfileList = userProfileList;
+		for(UserProfile userProfile : userProfileList) {
+			System.out.println("DATA : "+userProfile);
+		}
 	}
 
 

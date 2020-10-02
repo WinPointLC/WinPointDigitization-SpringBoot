@@ -20,7 +20,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView showWelcomePage(@RequestParam String name, @RequestParam String password) {
+	public ModelAndView showWelcomePage(@RequestParam String name, @RequestParam String password, @RequestParam String name1, @RequestParam String password1) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("name",name);
 		mv.addObject("password",password);
@@ -28,11 +28,15 @@ public class LoginController {
 		mv.setViewName("welcome");
 		
 		UserProfile userProfile = new UserProfile(name, password, "email");
-		ArrayList userProfileList = null;
-		userProfileList.add(name);
-		userProfileList.add(password);
-		UserProfile userProfileListObject = new UserProfile(userProfileList);
+		UserProfile userProfile1 = new UserProfile(name1, password1, "email");
 		
+
+		ArrayList<UserProfile> userProfileList = new ArrayList<>();
+		
+		userProfileList.add(userProfile);
+		userProfileList.add(userProfile1);
+		
+		mv.addObject("userProfileList",userProfileList);
 		return mv;
 	}
 	

@@ -11,6 +11,9 @@
 	<form method="post">
 		Name: <input type="text" name="name">
 		Password: <input type="password" name="password">
+		Name1: <input type="text" name="name1">
+		Password1: <input type="password" name="password1">
+		
 		<input type="submit">
 	</form>
 </body>
