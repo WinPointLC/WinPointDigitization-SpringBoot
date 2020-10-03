@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<jsp:useBean id="userProfileId" class="com.example.model.UserProfile" scope="session"></jsp:useBean>  
+	<jsp:useBean id="userProfileId" class="com.example.demo.UserProfile" scope="session"></jsp:useBean>  
 	<jsp:setProperty property="*" name="u"/>  
 	  
 	<jsp:getProperty property="name" name="name"/><br>  

@@ -1,0 +1,31 @@
+package com.winpoint.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.winpoint.model.Student;
+import com.winpoint.service.StudentService;
+
+@Controller
+public class StudentController {
+
+	@Autowired
+	private StudentService studentService;
+	@RequestMapping("/")    
+	public List<Student> getAllStudents()  
+	{    
+		System.out.println("From getAllStudents");
+		return studentService.getAllStudents();    
+	}       
+	@RequestMapping(value="/add-student", method=RequestMethod.POST)    
+	public void addStudent(@RequestBody Student student)  
+	{    
+		System.out.println("From addStudent");
+		studentService.addStudent(student);    
+	}     
+}
