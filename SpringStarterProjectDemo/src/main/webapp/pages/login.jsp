@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 </head>
 <body>
 	<font color="red">${errorMessage}</font>
@@ -31,11 +32,13 @@
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
-				url : "add-userProfile",
+				url : "/add-userProfile",
 				data : JSON.stringify(userData),
 				//dataType : 'json',				
 				success : function() {
-					alert("Object sent successfully");
+ 					alert("Object sent successfully");
+ 					window.location.href = "welcome"+'?'+JSON.stringify(${userProfileList});s
+ 					
 				}
 			});
 	

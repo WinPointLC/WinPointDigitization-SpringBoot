@@ -23,6 +23,7 @@ public class UserProfileService {
 	}
 
 	public void addUserProfile(UserProfile userProfile) {
+		System.out.println("reached here \n"+userProfile.getEmail()+" "+userProfile.getPassword());
 		userProfileRepository.save(userProfile);
 	}
 	
