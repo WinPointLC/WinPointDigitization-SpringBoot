@@ -34,10 +34,11 @@
 				contentType : "application/json",
 				url : "/add-userProfile",
 				data : JSON.stringify(userData),
-				//dataType : 'json',				
-				success : function() {
+				dataType : 'json',				
+				success : function(data) {
  					alert("Object sent successfully");
- 					window.location.href = "welcome"+'?'+JSON.stringify(${userProfileList});s
+ 					alert(data);
+ 					window.location.href = "welcome_user" + "?varid="+encodeURIComponent(JSON.stringify(data));
  					
 				}
 			});

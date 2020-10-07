@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- 	Welcome ${name} have a great day
+ 	Welcome ${name} have a great day
 	${password}
 	
 	
@@ -21,7 +21,7 @@
  	<jsp:getProperty property="email" name="userProfile" /><br>  
 	<jsp:getProperty property="userProfileList" name="userProfile" /><br>  
 		
-		 --%>
+		 
 		 
 		<ol dir="1.">
 			
@@ -35,9 +35,7 @@
 			</c:forEach>        
 		</ol>
 		
-			<script>
-				alert("in welcome");
-			</script>
+			
 	
 </body>
 </html>
