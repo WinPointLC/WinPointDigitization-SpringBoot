@@ -27,9 +27,16 @@ public class LoginController {
 		mv.addObject("name",name);
 		mv.addObject("password",password);
 		mv.addObject("email");
-		mv.setViewName("welcome");
+		mv.setViewName("welcome_user");
 		mv.addObject("userProfileList",userProfileService.getAllUserProfile());
 		return mv;
+	}
+	
+	
+	@RequestMapping(value = "welcome_user")
+	public String showWelcomeUserPage() {
+		return "welcome_user";
+		
 	}
 	
 }

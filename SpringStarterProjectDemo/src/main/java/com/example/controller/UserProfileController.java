@@ -33,14 +33,16 @@ public class UserProfileController {
 	{   
 //		@RequestBody UserProfile userProfile
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("welcome");
+		mv.setViewName("welcome_user");
 		userProfileService.addUserProfile(userProfile);
-		mv.addObject("userProfileList",userProfileService.getAllUserProfile());
-		System.out.println("this worled");
-		mv.addObject("name","aa");
-		mv.addObject("password","sd");
-		mv.addObject("email");
+		UserProfile userObj = new UserProfile();
+		userObj.setEmail("aay@gmail.com");
+		userObj.setId(2);
+		userObj.setName("pragya");
+		userObj.setPassword("wbidb3idwi");
+		mv.addObject("",);
 		return mv;
 	}     
 }
+
 

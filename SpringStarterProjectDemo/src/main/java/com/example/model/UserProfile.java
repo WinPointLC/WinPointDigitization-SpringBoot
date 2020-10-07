@@ -18,23 +18,15 @@ public class UserProfile {
 	String password;
 	String email = "email";
 	
-	
-	
 //	ArrayList <?> userProfileList;
 	
 //	public ArrayList<?> getUserProfileList() {
 //		return userProfileList;
 //	}
 
-
-
-
 //	public void setUserProfileList(ArrayList <?>userProfileList) {
 //		this.userProfileList = userProfileList;
 //	}
-
-
-
 
 //	public UserProfile(ArrayList<UserProfile> userProfileList) {
 //		super();
@@ -53,13 +45,9 @@ public class UserProfile {
 		this.id = id;
 	}
 
-
 	public UserProfile() {
 
 	}
-	
-	
-	
 	
 	public UserProfile(String name, String password, String email) {
 		super();
@@ -68,9 +56,6 @@ public class UserProfile {
 		this.email = email;
 		System.out.println("Email :"+email);
 	}
-
-
-
 
 	public String getName() {
 		return name;
@@ -90,9 +75,6 @@ public class UserProfile {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-
 
 	@Override
 	public String toString() {
