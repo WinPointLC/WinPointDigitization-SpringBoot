@@ -19,8 +19,8 @@
 	<jsp:getProperty property="name" name="userProfile"/><br>  
 	<jsp:getProperty property="password" name="userProfile"/><br>  
  	<jsp:getProperty property="email" name="userProfile" /><br>  
-	<jsp:getProperty property="userProfileList" name="userProfile" /><br>  
-		
+<%-- 	<jsp:getProperty property="userProfileList" name="userProfile" /><br>  
+ --%>		
 		 
 		 
 		<ol dir="1.">

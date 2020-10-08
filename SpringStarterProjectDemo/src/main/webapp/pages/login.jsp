@@ -23,12 +23,14 @@
 	
 	<script>
 		function sendData(){
-	
+			alert("1");
 			var userData = {
 			"name":document.getElementById('name').value,
 			"password":document.getElementById('password').value,
 			"email":document.getElementById('email').value,
+			alert("2");
 			};
+			alert("3");
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",

@@ -40,7 +40,7 @@ public class UserProfileController {
 		userObj.setId(2);
 		userObj.setName("pragya");
 		userObj.setPassword("wbidb3idwi");
-		mv.addObject("",);
+//		mv.addObject("");
 		return mv;
 	}     
 }

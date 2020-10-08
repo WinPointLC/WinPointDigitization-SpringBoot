@@ -1,5 +1,15 @@
 package com.example.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.model.UserProfile;
 import com.example.service.UserProfileService;
+import com.google.gson.Gson;
 
 @Controller
 public class LoginController {
@@ -27,8 +39,10 @@ public class LoginController {
 		mv.addObject("name",name);
 		mv.addObject("password",password);
 		mv.addObject("email");
-		mv.setViewName("welcome_user");
+		mv.setViewName("welcome");
 		mv.addObject("userProfileList",userProfileService.getAllUserProfile());
+			
+		
 		return mv;
 	}
 	
@@ -37,6 +51,36 @@ public class LoginController {
 	public String showWelcomeUserPage() {
 		return "welcome_user";
 		
+	}
+	
+	void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("From PaperAnalysis Servlet");
+		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+	    String json = "";
+	    if(br != null){
+	    	json = br.readLine();
+	    }    	    
+	    Gson gson = new Gson();
+	    String jsonString = null;
+		
+//		User course = gson.fromJson(json, Course.class);
+		UserProfileService userProfileService,userProfileService1;
+		userProfileService = gson.fromJson(json,UserProfileService.class);
+		
+        HttpSession session = request.getSession(false);
+		
+		String userProfile = new UserProfile().getName();// = new ResultHelper().getResultSet(userId, courseId);
+		if (userProfile != null) {
+	       	jsonString = gson.toJson(userProfile);
+	    }
+		
+//		System.out.println(paperAnalysisWrapper.get);
+//	    jsonString = "[" + json1  + "," + json2 + "]";
+		
+        System.out.println("UserProfileNameString: " + jsonString);
+	    PrintWriter writer = response.getWriter();
+		writer.println(jsonString);
+		writer.flush();
 	}
 	
 }
