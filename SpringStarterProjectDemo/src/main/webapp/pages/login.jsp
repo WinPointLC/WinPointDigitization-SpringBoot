@@ -13,12 +13,12 @@
 		Name: <input type="text" name="name" id="name">
 		Password: <input type="password" name="password" id="password">
 		Email: <input type="text" name="email" id="email">
-		Name1: <input type="text" name="name1">
-		Password1: <input type="password" name="password1">
+		<!-- Name1: <input type="text" name="name1">
+		Password1: <input type="password" name="password1"> -->
 		
 		<input type="button" id="submit" value="Send Obj" onclick="sendData()"/>
-		<input type="submit">
-		
+<!-- 		<input type="submit">
+ -->		
 	</form>
 	
 	<script>
@@ -28,24 +28,24 @@
 			"name":document.getElementById('name').value,
 			"password":document.getElementById('password').value,
 			"email":document.getElementById('email').value,
-			alert("2");
 			};
-			alert("3");
+			alert("UserData = "+userData);
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
-				url : "/add-userProfile",
+				url : "/add-userProfile1",
 				data : JSON.stringify(userData),
 				dataType : 'json',				
 				success : function(data) {
  					alert("Object sent successfully");
  					alert(data);
- 					window.location.href = "welcome_user" + "?varid="+encodeURIComponent(JSON.stringify(data));
- 					
+/*  					window.location.href = "welcome_user" + "?varid="+encodeURIComponent(JSON.stringify(data));
+ */ 					
 				}
 			});
 	
 		}
+		
 	</script>
 </body>
 </html>

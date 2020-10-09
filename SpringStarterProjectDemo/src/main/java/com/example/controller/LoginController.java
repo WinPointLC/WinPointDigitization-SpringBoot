@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,56 +32,65 @@ public class LoginController {
 		mv.setViewName("login");
 		return mv;
 	}
+//	@Autowired
+//	UserProfileService userProfileService;
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public ModelAndView showWelcomePage(@RequestParam String name, @RequestParam String password, @RequestParam String name1, @RequestParam String password1) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("name",name);
+//		mv.addObject("password",password);
+//		mv.addObject("email");
+//		mv.setViewName("welcome");
+////		mv.addObject("userProfileList",userProfileService.getAllUserProfile());
+//			
+//		Gson gson = new Gson();
+//		System.out.println("Gson Object Created");
+//	    String jsonString = "";
+//	    System.out.println("jstring Object Created");
+//	    
+//	    UserProfile userProfile = new UserProfile();// = new ResultHelper().getResultSet(userId, courseId);
+//		
+//	    if (userProfile != null) {
+//	       	jsonString = gson.toJson(userProfile);
+//	    }
+//	 
+//        System.out.println("UserProfileNameString: " + jsonString);
+//	   
+//	    mv.addObject("userProfile",userProfile);
+//		return mv;
+//	}
 	@Autowired
 	UserProfileService userProfileService;
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView showWelcomePage(@RequestParam String name, @RequestParam String password, @RequestParam String name1, @RequestParam String password1) {
+	@RequestMapping(value = "/add-userProfile", method = RequestMethod.POST)
+	public ModelAndView showWelcomePage(@RequestBody UserProfile userProfile) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("name",name);
-		mv.addObject("password",password);
-		mv.addObject("email");
-		mv.setViewName("welcome");
-		mv.addObject("userProfileList",userProfileService.getAllUserProfile());
+//		mv.addObject("name",name);
+//		mv.addObject("password",password);
+//		mv.addObject("email");
+//		mv.setViewName("welcome_user");
+//		mv.addObject("userProfileList",userProfileService.getAllUserProfile());
 			
+		Gson gson = new Gson();
+		System.out.println("Gson Object Created");
+	    String jsonString = "";
+	    System.out.println("jstring Object Created");
+	    
+//	    UserProfile userProfile = new UserProfile();// = new ResultHelper().getResultSet(userId, courseId);
 		
+	    if (userProfile != null) {
+	       	jsonString = gson.toJson(userProfile);
+	    }
+	    
+	    
+        System.out.println("UserProfileNameString: " + jsonString);
+	   
+//	    mv.addObject("userProfile",jsonString);
 		return mv;
 	}
-	
 	
 	@RequestMapping(value = "welcome_user")
 	public String showWelcomeUserPage() {
 		return "welcome_user";
 		
 	}
-	
-	void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("From PaperAnalysis Servlet");
-		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-	    String json = "";
-	    if(br != null){
-	    	json = br.readLine();
-	    }    	    
-	    Gson gson = new Gson();
-	    String jsonString = null;
-		
-//		User course = gson.fromJson(json, Course.class);
-		UserProfileService userProfileService,userProfileService1;
-		userProfileService = gson.fromJson(json,UserProfileService.class);
-		
-        HttpSession session = request.getSession(false);
-		
-		String userProfile = new UserProfile().getName();// = new ResultHelper().getResultSet(userId, courseId);
-		if (userProfile != null) {
-	       	jsonString = gson.toJson(userProfile);
-	    }
-		
-//		System.out.println(paperAnalysisWrapper.get);
-//	    jsonString = "[" + json1  + "," + json2 + "]";
-		
-        System.out.println("UserProfileNameString: " + jsonString);
-	    PrintWriter writer = response.getWriter();
-		writer.println(jsonString);
-		writer.flush();
-	}
-	
 }

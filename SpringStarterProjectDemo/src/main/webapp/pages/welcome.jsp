@@ -23,7 +23,7 @@
  --%>		
 		 
 		 
-		<ol dir="1.">
+		<%-- <ol dir="1.">
 			
 			<c:forEach items="${userProfileList}" var="em">
 				<li>OBJECT -
@@ -33,7 +33,7 @@
 					</ul>
 				</li>	
 			</c:forEach>        
-		</ol>
+		</ol> --%>
 		
 			
 	

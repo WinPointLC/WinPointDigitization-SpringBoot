@@ -28,19 +28,36 @@ public class UserProfileController {
 	}       
 	
 	
-	@RequestMapping(value="/add-userProfile", method=RequestMethod.POST)    
+	@RequestMapping(value="/add-userProfile1", method=RequestMethod.POST)    
 	public ModelAndView addStudent(@RequestBody UserProfile userProfile)  
 	{   
+////		@RequestBody UserProfile userProfile
+//		System.out.println("addStudent1");
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("addStudent2");
+//		mv.setViewName("login");
+//		System.out.println("addStudent3");
+//		userProfileService.addUserProfile(userProfile);
+//		System.out.println("addStudent4");
+//		UserProfile userObj = new UserProfile();
+//		System.out.println("addStudent5");
+//		userObj.setEmail("aay@gmail.com");
+//		userObj.setId(2);
+//		userObj.setName("pragya");
+//		userObj.setPassword("wbidb3idwi");
+////		mv.addObject("");
+//		return mv;
+		
+		
 //		@RequestBody UserProfile userProfile
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("welcome_user");
+		mv.setViewName("login");
 		userProfileService.addUserProfile(userProfile);
-		UserProfile userObj = new UserProfile();
-		userObj.setEmail("aay@gmail.com");
-		userObj.setId(2);
-		userObj.setName("pragya");
-		userObj.setPassword("wbidb3idwi");
-//		mv.addObject("");
+		mv.addObject("userProfileList",userProfileService.getAllUserProfile());
+		System.out.println("this worled");
+		mv.addObject("name","aa");
+		mv.addObject("password","sd");
+		mv.addObject("email");
 		return mv;
 	}     
 }

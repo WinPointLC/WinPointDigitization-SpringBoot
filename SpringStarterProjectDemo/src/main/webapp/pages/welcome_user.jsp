@@ -9,15 +9,15 @@
 <h2>welcome</h2>
 
 <script>
-var SearchString = window.location.search.substring(1);
-
-var arr = SearchString.split('&');
-var data= arr[0].split('=')[1];
-var decodedData = decodeURIComponent(data);
-userData=JSON.parse(decodedData);
-//alert(JSON.parse(decodedData));
-for(var i=0;i<userData.length;i++){
-	alert(userData[i].name);
+	var SearchString = window.location.search.substring(1);
 	
-}
+	var arr = SearchString.split('&');
+	var data= arr[0].split('=')[1];
+	var decodedData = decodeURIComponent(data);
+	userData=JSON.parse(decodedData);
+	//alert(JSON.parse(decodedData));
+	for(var i=0;i<userData.length;i++){
+		alert(userData[i].name);
+		
+	}
 </script>
