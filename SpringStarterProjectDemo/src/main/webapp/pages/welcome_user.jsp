@@ -6,7 +6,9 @@
 
 
 
-<h2>welcome</h2>
+<h2>Users are:</h2>
+
+<div id="users"></div>
 
 <script>
 	var SearchString = window.location.search.substring(1);
@@ -17,7 +19,31 @@
 	userData=JSON.parse(decodedData);
 	//alert(JSON.parse(decodedData));
 	for(var i=0;i<userData.length;i++){
-		alert(userData[i].name);
+		//alert(userData[i].name);
+		var user = document.createElement('p');
+		user.textContent = userData[i].name;
+		document.getElementById('users').appendChild(user);
+		
 		
 	}
+
+	sendDataList();
+	function sendDataList(){
+
+		$.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url : "users",
+			data : JSON.stringify(userData),
+			//dataType : 'json',				
+			success : function() {
+				alert("JSON OBJ LIST SENT");
+				
+				
+				
+			}
+		});
+
+	}
+	
 </script>
