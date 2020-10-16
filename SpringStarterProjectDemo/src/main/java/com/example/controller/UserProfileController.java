@@ -11,8 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< Updated upstream
 import com.example.demo.Employee;
+=======
+import com.example.dto.OrderResponse;
+import com.example.model.Customer;
+import com.example.model.Product;
+>>>>>>> Stashed changes
 import com.example.model.UserProfile;
+import com.example.repository.CustomerRepository;
 import com.example.service.UserProfileService;
 
 
@@ -20,6 +27,8 @@ import com.example.service.UserProfileService;
 @Component
 public class UserProfileController {
 
+
+	
 	@Autowired
 	private UserProfileService userProfileService;
 	@RequestMapping("/")    
@@ -30,6 +39,7 @@ public class UserProfileController {
 	}       
 	
 	
+<<<<<<< Updated upstream
 	/*
 	 * @RequestMapping(value="/add-userProfile", method=RequestMethod.POST) public
 	 * ModelAndView addStudent(@RequestBody UserProfile userProfile) {
@@ -71,6 +81,49 @@ public class UserProfileController {
 	        
 	    }   
     }
+=======
+	@RequestMapping(value="/add-userProfile", method=RequestMethod.POST)    
+	public ModelAndView addStudent(@RequestBody UserProfile userProfile)  
+	{   
+//		@RequestBody UserProfile userProfile
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("welcome_user");
+		userProfileService.addUserProfile(userProfile);
+		UserProfile userObj = new UserProfile();
+		userObj.setEmail("aay@gmail.com");
+		userObj.setId(2);
+		userObj.setName("pragya");
+		userObj.setPassword("wbidb3idwi");
+		return mv;
+	}
+	@Autowired
+	private CustomerRepository customerReposiroty;
+	
+	@RequestMapping(value = "/getJoin", method = RequestMethod.POST)
+	public List<OrderResponse> getJoinQuery(){
+		System.out.println("reached here");
+		for(Customer x: customerReposiroty.findAll()) {
+			System.out.println(x.getName() + " "+ x.getId()+"\n\n\n");
+			for(Product y : x.getProducts()) {
+				System.out.println(y.getProductName()+" "+ y.getQty());
+			}
+		}
+		
+		System.out.println("\n\n\n\n\n\n\n");
+		for(Customer z: customerReposiroty.findByFirstName("Aayush")) {
+			System.out.println("fivbrnwojcwdcno\n\n\n");
+			System.out.println(z.getName());
+		}
+		return null;
+	}
+	
+	@RequestMapping(value ="/multiJoin",method = RequestMethod.POST)
+	void checkJoin() {
+		for(Object o : customerReposiroty.findByJoin()) {
+			System.out.println(o);
+		}
+	}
+>>>>>>> Stashed changes
 }
 
 
