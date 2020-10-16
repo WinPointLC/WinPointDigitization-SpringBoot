@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< Updated upstream
 import com.example.demo.Employee;
-=======
 import com.example.dto.OrderResponse;
 import com.example.model.Customer;
 import com.example.model.Product;
->>>>>>> Stashed changes
 import com.example.model.UserProfile;
 import com.example.repository.CustomerRepository;
 import com.example.service.UserProfileService;
@@ -39,7 +36,6 @@ public class UserProfileController {
 	}       
 	
 	
-<<<<<<< Updated upstream
 	/*
 	 * @RequestMapping(value="/add-userProfile", method=RequestMethod.POST) public
 	 * ModelAndView addStudent(@RequestBody UserProfile userProfile) {
@@ -81,7 +77,6 @@ public class UserProfileController {
 	        
 	    }   
     }
-=======
 	@RequestMapping(value="/add-userProfile", method=RequestMethod.POST)    
 	public ModelAndView addStudent(@RequestBody UserProfile userProfile)  
 	{   
@@ -123,7 +118,6 @@ public class UserProfileController {
 			System.out.println(o);
 		}
 	}
->>>>>>> Stashed changes
 }
 
 
