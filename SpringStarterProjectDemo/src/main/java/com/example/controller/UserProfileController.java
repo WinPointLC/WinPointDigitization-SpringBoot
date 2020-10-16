@@ -114,8 +114,8 @@ public class UserProfileController {
 	
 	@RequestMapping(value ="/multiJoin",method = RequestMethod.POST)
 	void checkJoin() {
-		for(Object o : customerReposiroty.findByJoin()) {
-			System.out.println(o);
+		for(OrderResponse o : customerReposiroty.findByJoin()) {
+			System.out.println(o.getname()+" "+o.getid() +" "+ o.getproduct_name() + " "+ o.getquantity());
 		}
 	}
 }
