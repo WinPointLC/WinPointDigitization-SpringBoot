@@ -116,7 +116,18 @@ public class UserProfileController {
 	void checkJoin() {
 		for(OrderResponse o : customerReposiroty.findByJoin()) {
 			System.out.println(o.getname()+" "+o.getid() +" "+ o.getproduct_name() + " "+ o.getquantity());
+			System.out.println("1");
 		}
+		System.out.println("reached end");
+	
+	}
+	@RequestMapping(value ="/multiJoinName",method = RequestMethod.POST)
+	void checkJoinName() {
+		for(Customer o : customerReposiroty.findByFirstName("Abhishek")) {
+			System.out.println(o.getName()+"  "+o.getId());
+			System.out.println("1");
+		}
+		System.out.println("reached end");
 	}
 }
 

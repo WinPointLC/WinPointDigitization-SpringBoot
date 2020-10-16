@@ -9,11 +9,4 @@ public interface OrderResponse {
 	int getquantity();
 	
 }
-/* 
- * 
- * 
- * "SELECT C.id as id, C.name as name, P.product_name as product_name, P.price as price,
- *  P.qty as quantity FROM Customer C INNER JOIN Products P on c.id = p.id 
- *  
- *  
- *  */
+
