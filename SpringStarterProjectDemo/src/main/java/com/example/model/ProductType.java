@@ -3,57 +3,62 @@ package com.example.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ProdType")
+@Table(name = "product_type")
 public class ProductType {
 	@Id
-	@GeneratedValue
-	private int Id;
-	private int typeName;
-	private int desc;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="pt_id")
+	private int pt_id;
+	@Column(name="type_name")
+	private String type_name;
+	@Column(name="description")
+	private String description;
 
-	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "prodId", referencedColumnName = "Id")
-	private List<Product> products;
+//	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "ProdId", referencedColumnName = "id")
+//	private List<Product> products;
 
-	public int getId() {
-		return Id;
+	public int getpt_id() {
+		return pt_id;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setId(int pt_id) {
+		this.pt_id = pt_id;
 	}
 
-	public int getTypeName() {
-		return typeName;
+	public String getTypeName() {
+		return type_name;
 	}
 
-	public void setTypeName(int typeName) {
-		this.typeName = typeName;
+	public void setTypeName(String  type_name) {
+		this.type_name = type_name;
 	}
 
-	public int getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(int desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
+//	public List<Product> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(List<Product> products) {
+//		this.products = products;
+//	}
 
 }

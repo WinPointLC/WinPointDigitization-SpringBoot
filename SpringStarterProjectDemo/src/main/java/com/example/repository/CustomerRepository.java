@@ -19,4 +19,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
     @Query("SELECT C.id as id, C.name as name, P.ProductName as product_name, "
     		+ "P.price as price, P.qty as quantity FROM Product P  JOIN Customer C on C.id = P.id ")
     List<OrderResponse> findByJoin ();
+    
+    
+    
 }
