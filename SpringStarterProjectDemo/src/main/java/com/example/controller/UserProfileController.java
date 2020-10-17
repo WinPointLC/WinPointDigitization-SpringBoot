@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.Employee;
 import com.example.dto.OrderResponse;
 import com.example.model.Customer;
 import com.example.model.Product;

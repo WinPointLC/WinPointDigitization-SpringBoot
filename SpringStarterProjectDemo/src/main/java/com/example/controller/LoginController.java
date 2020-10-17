@@ -1,32 +1,12 @@
 package com.example.controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.model.UserProfile;
-import com.example.service.UserProfileService;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.example.repository.ProductRepository;
 
 @Controller
 public class LoginController {
@@ -95,7 +75,7 @@ public class LoginController {
 	 * // mv.setViewName("login"); return mv; }
 	 */
 	
-	
+	@Autowired ProductRepository ProductRepository;
 	@RequestMapping(value = "welcome_user")
 	public String showWelcomeUserPage() {
 		return "welcome_user";

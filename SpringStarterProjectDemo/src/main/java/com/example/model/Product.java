@@ -14,9 +14,18 @@ public class Product {
 	private int qty;
 	private int price;
 	private int id;
+	private int prodId;
 
 	public int getId() {
 		return id;
+	}
+
+	public int getProdId() {
+		return prodId;
+	}
+
+	public void setProdId(int prodId) {
+		this.prodId = prodId;
 	}
 
 	public void setId(int id) {
