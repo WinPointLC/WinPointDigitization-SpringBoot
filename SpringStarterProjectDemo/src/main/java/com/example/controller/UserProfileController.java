@@ -16,6 +16,7 @@ import com.example.model.Customer;
 import com.example.model.Product;
 import com.example.model.UserProfile;
 import com.example.repository.CustomerRepository;
+import com.example.repository.ProductTypeRepository;
 import com.example.service.UserProfileService;
 
 
@@ -120,6 +121,7 @@ public class UserProfileController {
 		System.out.println("reached end");
 	
 	}
+	
 	@RequestMapping(value ="/multiJoinName",method = RequestMethod.POST)
 	void checkJoinName() {
 		for(Customer o : customerReposiroty.findByFirstName("Abhishek")) {
@@ -128,6 +130,30 @@ public class UserProfileController {
 		}
 		System.out.println("reached end");
 	}
+	
+	@Autowired ProductTypeRepository productTypeRepository;
+	@RequestMapping(value ="/TripleJoin",method = RequestMethod.POST)
+	void tripleJoin() {
+		for(OrderResponse o : productTypeRepository.findByJoinOn()) {
+			System.out.println(o.getname()+"  "+o.getproduct_name());
+			System.out.println("1");
+		}
+		System.out.println("reached end");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 

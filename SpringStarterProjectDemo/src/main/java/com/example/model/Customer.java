@@ -2,8 +2,10 @@ package com.example.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -12,8 +14,10 @@ import javax.persistence.OneToMany;
 @Entity
 public  class Customer {
 
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Id")
 	private int Id;
 	private String name;
 	private String email;

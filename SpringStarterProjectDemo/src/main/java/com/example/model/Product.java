@@ -1,35 +1,38 @@
 package com.example.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Product {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "p_id")
 	private int pid;
 	private String ProductName;
 	private int qty;
 	private int price;
-	private int id;
-	private int prodId;
+	private int idLet;
+	private int ProdTypeId;
 
-	public int getId() {
-		return id;
+	public int getProdTypeId() {
+		return ProdTypeId;
 	}
 
-	public int getProdId() {
-		return prodId;
+	public void setProdTypeId(int prodTypeId) {
+		ProdTypeId = prodTypeId;
 	}
 
-	public void setProdId(int prodId) {
-		this.prodId = prodId;
+	public int getIdLet() {
+		return idLet;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdLet(int idLet) {
+		this.idLet = idLet;
 	}
 
 	public int getPid() {

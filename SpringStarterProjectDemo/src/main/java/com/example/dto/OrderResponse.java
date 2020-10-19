@@ -7,6 +7,7 @@ public interface OrderResponse {
 	String getproduct_name();
 	int getprice();
 	int getquantity();
+	String getdescrip();
 	
 }
 

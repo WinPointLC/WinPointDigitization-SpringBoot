@@ -18,23 +18,22 @@ import javax.persistence.Table;
 public class ProductType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="pt_id")
-	private int pt_id;
+	private int ProdTypId;
 	@Column(name="type_name")
 	private String type_name;
 	@Column(name="description")
 	private String description;
 
-//	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "ProdId", referencedColumnName = "id")
-//	private List<Product> products;
+	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "ProdTypeId", referencedColumnName = "ProdTypId")
+	private List<Product> products;
 
 	public int getpt_id() {
-		return pt_id;
+		return ProdTypId;
 	}
 
 	public void setId(int pt_id) {
-		this.pt_id = pt_id;
+		this.ProdTypId = pt_id;
 	}
 
 	public String getTypeName() {
@@ -53,12 +52,12 @@ public class ProductType {
 		this.description = description;
 	}
 
-//	public List<Product> getProducts() {
-//		return products;
-//	}
-//
-//	public void setProducts(List<Product> products) {
-//		this.products = products;
-//	}
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 
 }
