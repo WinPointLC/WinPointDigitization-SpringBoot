@@ -14,34 +14,35 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product_type")
+//@Table(name = "product_type")
 public class ProductType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ProdTypId;
-	@Column(name="type_name")
-	private String type_name;
+	@Column(name="productTypeId")
+	private int productTypeId;
+	@Column(name="productTypeName")
+	private String productTypeName;
 	@Column(name="description")
 	private String description;
 
 	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "ProdTypeId", referencedColumnName = "ProdTypId")
+	@JoinColumn(name = "productTypeId", referencedColumnName = "productTypeId")
 	private List<Product> products;
 
 	public int getpt_id() {
-		return ProdTypId;
+		return productTypeId;
 	}
 
-	public void setId(int pt_id) {
-		this.ProdTypId = pt_id;
+	public void setId(int productTypeId) {
+		this.productTypeId = productTypeId;
 	}
 
 	public String getTypeName() {
-		return type_name;
+		return productTypeName;
 	}
 
-	public void setTypeName(String  type_name) {
-		this.type_name = type_name;
+	public void setTypeName(String  productTypeName) {
+		this.productTypeName = productTypeName;
 	}
 
 	public String getDescription() {

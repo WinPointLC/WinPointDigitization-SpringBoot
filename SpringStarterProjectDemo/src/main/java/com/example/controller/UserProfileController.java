@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.dto.OrderResponeMod;
 import com.example.dto.OrderResponse;
 import com.example.model.Customer;
 import com.example.model.Product;
@@ -134,7 +135,7 @@ public class UserProfileController {
 	@Autowired ProductTypeRepository productTypeRepository;
 	@RequestMapping(value ="/TripleJoin",method = RequestMethod.POST)
 	void tripleJoin() {
-		for(OrderResponse o : productTypeRepository.findByJoinOn()) {
+		for(OrderResponeMod o : productTypeRepository.findByJoinOn()) {
 			System.out.println(o.getname()+"  "+o.getproduct_name());
 			System.out.println("1");
 		}

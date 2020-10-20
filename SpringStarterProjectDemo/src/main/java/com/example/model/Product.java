@@ -17,14 +17,16 @@ public class Product {
 	private int qty;
 	private int price;
 	private int idLet;
-	private int ProdTypeId;
+	private int productTypeId;
 
-	public int getProdTypeId() {
-		return ProdTypeId;
+
+
+	public int getProductTypeId() {
+		return productTypeId;
 	}
 
-	public void setProdTypeId(int prodTypeId) {
-		ProdTypeId = prodTypeId;
+	public void setProductTypeId(int productTypeId) {
+		this.productTypeId = productTypeId;
 	}
 
 	public int getIdLet() {

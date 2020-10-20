@@ -1,13 +1,10 @@
 package com.example.dto;
 
-public interface OrderResponse {
-
+public interface OrderResponeMod {
 	int getid();
 	String getname();
-	String getproduct_name();
+	String getproductname();
 	int getprice();
 	int getquantity();
-//	String getdescrip();
-	
+	String getdescrip();
 }
-
