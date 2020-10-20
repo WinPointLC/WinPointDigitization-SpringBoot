@@ -136,7 +136,7 @@ public class UserProfileController {
 	@RequestMapping(value ="/TripleJoin",method = RequestMethod.POST)
 	void tripleJoin() {
 		for(OrderResponeMod o : productTypeRepository.findByJoinOn()) {
-			System.out.println(o.getname()+"  "+o.getproduct_name());
+			System.out.println(o.getname()+"  "+o.getproductname());
 			System.out.println("1");
 		}
 		System.out.println("reached end");
