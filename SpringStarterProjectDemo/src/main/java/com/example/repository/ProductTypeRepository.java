@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.dto.OrderResponeMod;
-import com.example.dto.OrderResponse;
 import com.example.model.ProductType;
 
 @Repository
