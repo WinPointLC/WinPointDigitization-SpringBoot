@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.model.UserProfile;
 import com.example.repository.UserProfileRepository;
@@ -16,7 +17,7 @@ public class UserProfileService {
 	@Autowired
 	private UserProfileRepository userProfileRepository;
 	
-	public List<UserProfile> getAllUserProfile() {
+	public @ResponseBody List<UserProfile> getAllUserProfile() {
 		ArrayList<UserProfile> userProfileList = new ArrayList<>();
 		userProfileRepository.findAll().forEach(userProfileList::add);		//stream API  (lamba exp , stream api)
 		return userProfileList;
