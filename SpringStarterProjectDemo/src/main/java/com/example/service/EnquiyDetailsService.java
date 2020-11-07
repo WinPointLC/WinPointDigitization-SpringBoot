@@ -20,7 +20,7 @@ public class EnquiyDetailsService {
 	}
 
 	public @ResponseBody List<EnquiryDetails> displayEnquiryDetails() {
-		return enquiryDetailsRepository.findAll();
+		return (List<EnquiryDetails>) enquiryDetailsRepository.findAll();
 	}
 
 }
