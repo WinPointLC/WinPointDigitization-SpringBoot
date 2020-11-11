@@ -15,25 +15,32 @@ public class CustomerController {
 	
 	
 	
+	
 	  @GetMapping("/") public String showForm(@ModelAttribute Customer customer){
 	  return "add_customer"; }
+	 
+	
+	
 	  
 	  
 	  
-	  @PostMapping("/saveCustomer") public String saveCustomer(Customer customer,
-	  RedirectAttributes redirectAttributes){ //save to DB
-	  System.out.println("Save to DB....");
+	  @PostMapping("/saveCustomer") public String saveCustomer(Customer customer,RedirectAttributes redirectAttributes)
+	  {
+		  redirectAttributes.addFlashAttribute("addedCustomer",customer); 
+		  return "redirect:/success";
+		  
+	  }
 	  
-	  redirectAttributes.addFlashAttribute("addedCustomer",customer); // //
-	//  redirectAttributes.addFlashAttribute(customer);
-	  return "redirect:/success"; }
-	  
-	  @GetMapping("/success") public String success(){ return "show_customer"; }
+	  @GetMapping("/success")
+	  public String success(){
+		  return "show_customer"; 
+	  }
 	  
 	  @RequestMapping(value = "/add-user", method = RequestMethod.POST)
 		public @ResponseBody Customer postEmployeeData(@RequestBody Customer customer) {
 	 
 			System.out.println("customer name  "+customer.getFirstName());
+			System.out.println("customer country  "+customer.getAddress().getCountry());
 			return customer;
 		}
 	 

@@ -10,14 +10,29 @@
 <p>Customer First Name: ${addedCustomer.firstName}</p>
 <p>Customer Last Name: ${addedCustomer.lastName}</p>
 
+<p>Country: ${addedCustomer.address.country}</p>
+<p>City: ${addedCustomer.address.city}</p>
+<p>Pin Code: ${addedCustomer.address.pinCode}</p>
+
 <script>
+	
 	var fname = '${addedCustomer.firstName}';
 	//alert(fname);
 	var lname = '${addedCustomer.lastName}';
+	var country = '${addedCustomer.address.country}';
+	var city = '${addedCustomer.address.city}';
+	var pinc = '${addedCustomer.address.pinCode}';
+	var address = {
+			country: country,
+			city: city,
+			pinc: pinc
+	}
+	
 
 	var userData = {
 		firstName: fname,
-		lastName: lname
+		lastName: lname,
+		address: address
 	};
 
 	if (performance.navigation.type != performance.navigation.TYPE_RELOAD) {
