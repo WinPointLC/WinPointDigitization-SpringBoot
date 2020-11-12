@@ -14,45 +14,77 @@
 <p>City: ${addedCustomer.address.city}</p>
 <p>Pin Code: ${addedCustomer.address.pinCode}</p>
 
+<p>Product Name: ${addedOrder.productName}</p>
+<p>Quantity: ${addedOrder.quantity}</p>
+
 <script>
-	
-	var fname = '${addedCustomer.firstName}';
-	//alert(fname);
-	var lname = '${addedCustomer.lastName}';
-	var country = '${addedCustomer.address.country}';
-	var city = '${addedCustomer.address.city}';
-	var pinc = '${addedCustomer.address.pinCode}';
-	var address = {
-			country: country,
-			city: city,
-			pinc: pinc
-	}
-	
 
-	var userData = {
-		firstName: fname,
-		lastName: lname,
-		address: address
-	};
+	function sendCustomer(){
+		//alert("customer");
+		var fname = '${addedCustomer.firstName}';
+		//alert(fname);
+		var lname = '${addedCustomer.lastName}';
+		var country = '${addedCustomer.address.country}';
+		var city = '${addedCustomer.address.city}';
+		var pinc = '${addedCustomer.address.pinCode}';
+		var address = {
+				country: country,
+				city: city,
+				pinc: pinc
+		}
+		
 
-	if (performance.navigation.type != performance.navigation.TYPE_RELOAD) {
-		$.ajax({
-			type : "POST",
-			contentType : "application/json",
-			url : "/add-user",
-			data : JSON.stringify(userData),
-			dataType : 'json',				
-			success : function(data)   {
-					alert("Customer data sent");
+		var customerData = {
+			firstName: fname,
+			lastName: lname,
+			address: address
+		};
+
+		if (performance.navigation.type != performance.navigation.TYPE_RELOAD) {
+			$.ajax({
+				type : "POST",
+				contentType : "application/json",
+				url : "/add-customer",
+				data : JSON.stringify(customerData),
+				dataType : 'json',				
+				success : function(data)   {
+						alert("Customer data sent");
+						
 					
-				
-				}
-		});
+					}
+			});
+		}
+	}
+
+	function sendOrder(){
+		//alert("order");
+		var prodName = '${addedOrder.productName}';
+		var quant = '${addedOrder.quantity}';
+
+		var orderData = {
+			productName: prodName,
+			quantity: quant
+		}
+
+		if (performance.navigation.type != performance.navigation.TYPE_RELOAD) {
+
+			$.ajax({
+				type : "POST",
+				contentType : "application/json",
+				url : "/add-order",
+				data : JSON.stringify(orderData),
+				dataType : 'json',				
+				success : function(data)   {
+						alert("Order data sent");
+						
+					
+					}
+			});
+		}
 	} 
 
-	
-	
-
+	sendCustomer();
+	sendOrder();
 </script>
 
 </body>

@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<form:form action="saveOrder" method="post" modelAttribute="order">
+<%-- <form:form action="saveOrder" method="post" modelAttribute="order">
     <p>Name: <form:input path="productName" /></p>
     <p>Quantity: <form:input path="quantity" /></p>
     <input type="submit" value="Place Order">
-</form:form>
+</form:form> --%>
 
 </body>
 </html>
