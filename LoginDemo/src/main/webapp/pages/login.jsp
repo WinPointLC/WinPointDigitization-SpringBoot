@@ -35,7 +35,7 @@
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
-				url : "/-user",
+				url : "/loginUser",
 				data : JSON.stringify(userData),
 				//dataType : 'json',				
 				success : function()   {
