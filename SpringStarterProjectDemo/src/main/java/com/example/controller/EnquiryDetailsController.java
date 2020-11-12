@@ -16,10 +16,11 @@ public class EnquiryDetailsController {
 	EnquiryDetailsRepository enquiryDetailsRepository;
 //	EnquiyDetailsService enquiryDetailsService;
 
-	@RequestMapping(name = "/detJo")
-	public void addEnquiDetails(@RequestBody EnquiryDetails enquiryDetails) {
-		enquiryDetailsRepository.addEnquiryDetails(enquiryDetails);
-	}
+	/*
+	 * @RequestMapping(name = "/detJo") public void addEnquiDetails(@RequestBody
+	 * EnquiryDetails enquiryDetails) {
+	 * enquiryDetailsRepository.addEnquiryDetails(enquiryDetails); }
+	 */
 
 	@RequestMapping(name = "/namJo")
 	public List<EnquiryDetails> displayEnquirie() {
