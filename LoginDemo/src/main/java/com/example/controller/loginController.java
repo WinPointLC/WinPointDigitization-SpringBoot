@@ -5,10 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.model.User;
+import com.example.model.UserTab;
 import com.example.repository.UserRepositroy;
 
 @Controller
@@ -17,12 +16,12 @@ public class loginController {
 	UserRepositroy userRepositroy;
 
 	@RequestMapping("/login")
-	public String getPage(@ModelAttribute User user) {
+	public String getPage(@ModelAttribute UserTab user) {
 		return "login";
 	}
 
 	@RequestMapping("/loginUser")
-	ModelAndView check(@RequestBody User user) {
+	ModelAndView check(@RequestBody UserTab user) {
 		ModelAndView mv = new ModelAndView();
 		if (user == userRepositroy.findByUsername(userRepositroy.findByUsername(user.getUsername()).getPassword())) {
 
