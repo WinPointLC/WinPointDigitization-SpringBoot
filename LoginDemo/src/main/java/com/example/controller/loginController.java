@@ -16,12 +16,13 @@ public class loginController {
 	UserRepositroy userRepositroy;
 
 	@RequestMapping("/login")
-	public String getPage(@ModelAttribute UserTab user) {
-		return "login";
+	public String getPage() {
+		return "LoginForm";
 	}
 
 	@RequestMapping("/loginUser")
 	ModelAndView check(@RequestBody UserTab user) {
+		System.out.println("Username  " + user.getUsername());
 		ModelAndView mv = new ModelAndView();
 		if (user == userRepositroy.findByUsername(userRepositroy.findByUsername(user.getUsername()).getPassword())) {
 
@@ -32,4 +33,5 @@ public class loginController {
 			return mv;
 		}
 	}
+
 }
