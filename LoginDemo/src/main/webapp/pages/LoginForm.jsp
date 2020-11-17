@@ -21,17 +21,23 @@
 				username: emailVal,
 				password: passwordVal
 			};
-			//alert(myData);
+		//	alert(myData.username);
 			$.ajax({
 				type: 'POST',
 				url : "/loginUser",
 				//url: servletURL + 'LoginServlet',
 				data: JSON.stringify(myData),
-				//dataType: 'json',
+				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				traditional: true,
-				success: function () {
+				success: function (data) {
 					alert("User sent successfully");
+					//alert(data.message);
+					//alert('${message}');
+					if(data.message=='success')
+						window.location.href="success";
+					else if(data.message=='fail')
+						window.location.href="fail";
 			    }, 
 				/* success: function (jsonObj) {
 					var responseJson1=jsonObj[0], responseJson2=jsonObj[1], responseJson3=jsonObj[2];
@@ -49,7 +55,10 @@
 					document.getElementById("error").innerHTML = "Invalid email or password";
 				}
 			});
+			
 		});
+		
+		
 	});
 	</script>
 </head>
@@ -60,7 +69,7 @@
 			<form class="form-outer" >
 				<h3 class="form-login-heading text-center">Login Form</h3>
 				<div>
-					<p id="error">  </p>
+					<p id="error"></p>
 				</div>
 				<div class="form-group">
 					<label for="email">Email Id</label>
