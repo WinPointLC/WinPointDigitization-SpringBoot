@@ -1,11 +1,12 @@
-package com.example.flash;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class LoginDemoApplication {
 
+@SpringBootApplication
+//@ComponentScan(basePackages = { "com.example.model","com.example.controller", "com.example.repository"} )
+public class LoginDemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LoginDemoApplication.class, args);
 	}
