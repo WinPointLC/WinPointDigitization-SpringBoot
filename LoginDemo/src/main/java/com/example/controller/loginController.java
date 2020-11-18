@@ -32,8 +32,12 @@ public class loginController {
 		if (enteredPassword.equals(sysUser.getPassword())) {
 			if (sysUser.getUserType() == 1) {
 				data.put("message", "success");
+				data.put("location","clientDash");
+				data.put("user", enteredUsername);
 			} else {
 				data.put("message", "success");
+				data.put("location","employeeDash");
+				data.put("user", enteredUsername);
 			}
 
 		} else {
@@ -74,6 +78,18 @@ public class loginController {
 	@RequestMapping(value = "fail")
 	public String showFailPage() {
 		return "fail";
+
+	}
+	
+	@RequestMapping(value = "clientPage")
+	public String showClientPage() {
+		return "ClientDashboard-New";
+
+	}
+
+	@RequestMapping(value = "employeePage")
+	public String showEmployeePage() {
+		return "EmployeeDashboard-New";
 
 	}
 

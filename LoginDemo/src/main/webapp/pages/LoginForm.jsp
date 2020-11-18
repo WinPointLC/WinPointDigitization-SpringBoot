@@ -31,13 +31,21 @@
 				contentType: 'application/json; charset=utf-8',
 				traditional: true,
 				success: function (data) {
-					alert("User sent successfully");
-					//alert(data.message);
+					//alert("User sent successfully");
+					//alert(data.location);
 					//alert('${message}');
-					if(data.message=='success')
-						window.location.href="success";
+					if(data.message=='success'){
+						if(data.location=='clientDash')
+							window.location.href="clientPage"+ "?varid="+encodeURIComponent(JSON.stringify(data));
+						else if(data.location=='employeeDash')
+							window.location.href="employeePage";
+					}
+					else{
+						document.getElementById("error").innerHTML = "Invalid email or password";
+					}
+						/* window.location.href="success";
 					else if(data.message=='fail')
-						window.location.href="fail";
+						window.location.href="fail"; */
 			    }, 
 				/* success: function (jsonObj) {
 					var responseJson1=jsonObj[0], responseJson2=jsonObj[1], responseJson3=jsonObj[2];
