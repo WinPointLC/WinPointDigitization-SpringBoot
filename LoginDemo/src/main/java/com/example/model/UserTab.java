@@ -13,14 +13,6 @@ public class UserTab {
 	@Id
 	@GeneratedValue
 	private Integer userID;
-	public Integer getUserType() {
-		return userType;
-	}
-
-	public void setUserType(Integer userType) {
-		this.userType = userType;
-	}
-
 	private String username;
 	private String password;
 	private Integer userType;
@@ -37,6 +29,9 @@ public class UserTab {
 	  
 	  public void setPassword(String password) { this.password = password; }
 	  
+	  public Integer getUserType() {	return userType;	}
+
+	  public void setUserType(Integer userType) {		this.userType = userType;	}
 	  
 	 
 }
