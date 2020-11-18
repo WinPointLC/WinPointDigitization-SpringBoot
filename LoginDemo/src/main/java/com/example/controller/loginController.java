@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import org.json.JSONObject;
 
-
 import com.example.model.UserTab;
 import com.example.repository.UserRepositroy;
 
@@ -19,31 +18,31 @@ public class loginController {
 	@Autowired
 	UserRepositroy userRepositroy;
 
-	
-	@RequestMapping("/login") 
-	public String getPage() 
-	{ 
-		return "LoginForm"; 
+	@RequestMapping("/login")
+	public String getPage() {
+		return "LoginForm";
 	}
-	
+
 	@RequestMapping(value = "loginUser", method = RequestMethod.POST)
 	public @ResponseBody String check(@RequestBody UserTab user) {
 		String enteredPassword = user.getPassword();
 		String enteredUsername = user.getUsername();
 		JSONObject data = new JSONObject();
 		UserTab sysUser = userRepositroy.findByUsername(enteredUsername);
-		if (enteredPassword.equals( sysUser.getPassword())) {
-			
-			data.put("message", "success");
-			
+		if (enteredPassword.equals(sysUser.getPassword())) {
+			if (sysUser.getUserType() == 1) {
+				data.put("message", "success");
+			} else {
+				data.put("message", "success");
+			}
+
 		} else {
 			data.put("message", "fail");
 		}
 		String dataString = data.toString();
 		return dataString;
 	}
-	 
-	
+
 	@RequestMapping("/loginUser1")
 	ModelAndView check1(@RequestBody UserTab user) {
 		System.out.println("Username  " + user.getUsername());
@@ -52,9 +51,9 @@ public class loginController {
 		String enteredPassword = user.getPassword();
 		String enteredUsername = user.getUsername();
 		UserTab sysUser = userRepositroy.findByUsername(enteredUsername);
-		System.out.println(sysUser.getUsername()+"  "+ sysUser.getPassword());
-		if (enteredPassword.equals( sysUser.getPassword())) {
-			
+		System.out.println(sysUser.getUsername() + "  " + sysUser.getPassword());
+		if (enteredPassword.equals(sysUser.getPassword())) {
+
 			mv.setViewName("success");
 			mv.addObject("message", "It works!");
 			System.out.println("success");
@@ -65,17 +64,17 @@ public class loginController {
 			return mv;
 		}
 	}
-	
+
 	@RequestMapping(value = "success")
 	public String showSuccessPage() {
 		return "success";
-		
+
 	}
-	
+
 	@RequestMapping(value = "fail")
 	public String showFailPage() {
 		return "fail";
-		
+
 	}
 
 }
