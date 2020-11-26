@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,9 +25,10 @@ public class loginController {
 	}
 
 	@RequestMapping(value = "loginUser", method = RequestMethod.POST)
-	public @ResponseBody String check(@RequestBody UserTab user) {
+	public @ResponseBody String check(@RequestBody UserTab user,@RequestParam("datatry") String datatry) {
 		String enteredPassword = user.getPassword();
 		String enteredUsername = user.getUsername();
+		System.out.println("data param  " + datatry);
 		JSONObject data = new JSONObject();
 		UserTab sysUser = userRepositroy.findByUsername(enteredUsername);
 		if (enteredPassword.equals(sysUser.getPassword())) {

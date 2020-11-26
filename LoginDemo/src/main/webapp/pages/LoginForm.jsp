@@ -24,7 +24,7 @@
 		//	alert(myData.username);
 			$.ajax({
 				type: 'POST',
-				url : "/loginUser",
+				url : "/loginUser?datatry=myData",
 				//url: servletURL + 'LoginServlet',
 				data: JSON.stringify(myData),
 				dataType: 'json',
