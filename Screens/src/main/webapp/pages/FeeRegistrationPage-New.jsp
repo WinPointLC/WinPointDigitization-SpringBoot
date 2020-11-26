@@ -157,29 +157,21 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
                   <script>
-                   /*   <c:import url="/StreamListServlet" />
-	<c:set var="streamlist" value="${requestScope.streamList}" />*/
+                   
 		var streamList;
 		var streamId;
 		var courseTypeId;	
 		
 		
-		//streamList = eval('(' + '${streamlist}' + ')');
-		streamList = '${streamList}';
-		//var streamList = ['Technical','SoftSkills','General Aptitude'];
-		//alert("From AddNewQuestion streamList.length = "+streamList.length);
-		for (var i = 0; i < streamList.length; i++) {
+		<c:forEach items="${streamList}" var="stream">
 			var anchor = document.createElement('a');
 			anchor.className="dropdown-item";
 			anchor.setAttribute('href', "#");
-			anchor.id = streamList[i].streamId;
-			//alert(streamList[i]);
-			anchor.textContent = streamList[i].streamName.toUpperCase().replace("_"," ");
-			//anchor.textContent = streamList[i];
-			//alert("From AddNewQuestion Stream Name  " + streamList[i].streamName);
+			anchor.id = '${stream.streamId}';
+			anchor.textContent='${stream.streamName}'.toUpperCase().replace("_"," ");
 			anchor.setAttribute('onclick', "getStreamId(this.id)");
-			document.getElementById('stream-dropdown').appendChild(anchor);
-		}
+			document.getElementById('select-stream-dropdown').appendChild(anchor);
+	    </c:forEach>     
 		
 		var streamElem;
 		function getStreamId(stream_id){

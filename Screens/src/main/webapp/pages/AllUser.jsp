@@ -212,9 +212,11 @@
 				type: 'POST',
 				//url: servletURL + 'StreamCourseTypeServlet',
 				url: "/StreamCourseType",
-				data: JSON.stringify(myData),
+				//data: JSON.stringify(myData),\
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				//contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					courseTypeList=jsonObj;
