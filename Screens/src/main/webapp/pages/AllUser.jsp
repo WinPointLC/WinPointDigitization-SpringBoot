@@ -185,7 +185,8 @@
 		
 		//streamList = eval('(' + '${streamlist}' + ')');
 		streamList = '${streamList}';
-				
+		streamList=JSON.parse(streamList);
+			alert(streamList);	
 		//alert("From AllUser streamList.length = "+streamList.length);
 		for (var i = 0; i < streamList.length; i++) {
 			var anchor = document.createElement('a');
