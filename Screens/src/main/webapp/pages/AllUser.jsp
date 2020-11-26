@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -101,6 +102,7 @@
 			
 			
 			
+			
             <div class="card-body">
               <div class="table-responsive" id="table-users">
                 
@@ -173,36 +175,25 @@
 	<script type="text/javascript">
    <!-- Js for All user  -->
 			
-		/* <c:import url="/StreamListServlet" />
-		<c:set var="streamlist" value="${requestScope.streamList}" /> */
-		
-		
 		var streamList;
 		var streamId;
 		var courseTypeId;
 		var courseId;
 		var batchId;
-		
-		//streamList = eval('(' + '${streamlist}' + ')');
-		streamList = '${streamList}';
-		streamList=JSON.parse(streamList);
-			alert(streamList);	
-		//alert("From AllUser streamList.length = "+streamList.length);
-		for (var i = 0; i < streamList.length; i++) {
+
+		<c:forEach items="${streamList}" var="stream">
 			var anchor = document.createElement('a');
 			anchor.className="dropdown-item";
 			anchor.setAttribute('href', "#");
-			anchor.id = streamList[i].streamId;
-			//alert(streamList[i]);
-			anchor.textContent = streamList[i].streamName.toUpperCase().replace("_"," ");
-			//anchor.textContent = streamList[i];
-			//alert("From AllUser Stream Name  " + streamList[i].streamName);
+			anchor.id = '${stream.streamId}';
+			anchor.textContent='${stream.streamName}'.toUpperCase().replace("_"," ");
 			anchor.setAttribute('onclick', "getStreamId(this.id)");
 			document.getElementById('select-stream-dropdown').appendChild(anchor);
-		}
-		
+		</c:forEach>     
+			
 		var streamElem;
 		function getStreamId(stream_id){
+			alert("in get stream");
 			streamId = stream_id;
 			
 			streamElem = document.getElementById(streamId);
