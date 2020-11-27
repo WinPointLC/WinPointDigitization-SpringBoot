@@ -11,5 +11,6 @@ public class CourseType {
 	@Id
 	private Integer courseTypeId;
 	private String courseTypeName;
+	private Integer streamId;
 
 }
