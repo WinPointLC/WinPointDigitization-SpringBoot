@@ -189,9 +189,9 @@
 				type: 'POST',
 				//url: servletURL + 'StreamCourseTypeServlet',
 				url: "/StreamCourseType",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					courseTypeList=jsonObj;
@@ -241,9 +241,9 @@
 				type: 'POST',
 				//url: servletURL + 'StreamCourseTypeCoursesServlet',
 				url: "/StreamCourseTypeCourses",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					coursesList=jsonObj;
@@ -308,9 +308,9 @@
 		}
 
 function getFeesInfo(batch_id){
-		batchId = batch_id.substring(0, batch_id.length - 1); 
-          alert("This is getFeesInfo Function");
-          	batchElem = document.getElementById(batch_id);
+		 batchId = batch_id.substring(0, batch_id.length - 1); 
+         alert("This is getFeesInfo Function");
+         batchElem = document.getElementById(batch_id);
          alert("streamid"+streamId);
          alert("courseTypeId"+courseTypeId);
          var userIndex=0;
@@ -327,9 +327,9 @@ function getFeesInfo(batch_id){
           type: 'POST',
           //url: servletURL + 'BatchDetailsServlet?batchInfoParam=feeRecords',
           url: "/BatchDetails?batchInfoParam=feeRecords",
-          data: JSON.stringify(myData),
+          data: jQuery.param(myData),
           dataType: 'json',
-          contentType: 'application/json; charset=utf-8',
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           traditional: true,
           success: function (jsonObj) {
             var feesDetails=jsonObj;
@@ -364,9 +364,9 @@ function getFeesInfo(batch_id){
 					          type: 'POST',
 					        //  url: servletURL + 'StreamCourseTypeUserCoursesServlet',
 					          url:"/StreamCourseTypeUserCourses",
-					          data: JSON.stringify(myData2),
+					          data: jQuery.param(myData),
 					          dataType: 'json',
-					          contentType: 'application/json; charset=utf-8',
+					          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					          traditional: true,
 					          success: function (jsonObj) {
 						var responseJson=jsonObj;
@@ -431,9 +431,9 @@ function getFeesInfo(batch_id){
                       type: 'POST',
                       //url: servletURL + 'FeeDetailsServlet',
   	                  url: "/FeeDetails",
-                      data: JSON.stringify(myData),
+  	                  data: jQuery.param(myData),
                       dataType: 'json',
-                      contentType: 'application/json; charset=utf-8',
+                      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                       traditional: true,
                       success: function (jsonObj) {
                         alert("success in updating the values");

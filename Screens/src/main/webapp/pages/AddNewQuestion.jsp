@@ -225,9 +225,9 @@
 				type: 'POST',
 				//url: servletURL + 'StreamCourseTypeServlet',
 				url: "/StreamCourseType",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					courseTypeList=jsonObj;
@@ -277,12 +277,12 @@
 				type: 'POST',
 				//url: servletURL + 'StreamCourseTypeCoursesServlet',
 				url: "/StreamCourseTypeCourses",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
-					coursesList=jsonObj[0];
+					coursesList=jsonObj;
 					
 					var courseDropDown=document.getElementById('course-dropdown');
 					while (courseDropDown.hasChildNodes()) {  
@@ -341,9 +341,9 @@
 				type: 'POST',
 				//url: servletURL + 'CourseTopicsSelectServlet',
 				url: "/CourseTopicsSelect",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					topicsList=jsonObj;
@@ -393,9 +393,9 @@
 				type: 'POST',
 				//url: servletURL + 'DifficultyLevelServlet',
 				url: "/DifficultyLevel",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					diffLevelsList=jsonObj;

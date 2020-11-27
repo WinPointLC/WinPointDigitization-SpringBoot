@@ -212,7 +212,7 @@
 				type: 'POST',
 				//url: servletURL + 'StreamCourseTypeServlet',
 				url: "/StreamCourseType",
-				//data: JSON.stringify(myData),\
+				//data: JSON.stringify(myData),
 				data: jQuery.param(myData),
 				dataType: 'json',
 				//contentType: 'application/json; charset=utf-8',
@@ -267,9 +267,9 @@
 				type: 'POST',
 				//url: servletURL + 'StreamCourseTypeCoursesServlet',
 				url: "/StreamCourseTypeCourses",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					coursesList=jsonObj;
@@ -350,9 +350,9 @@
 				type: 'POST',
 				//url: servletURL + 'BatchDetailsServlet?batchInfoParam=studentDetails',
 				url: "/BatchDetails?batchInfoParam=studentDetails",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					userList=jsonObj[0];
@@ -451,7 +451,7 @@
 		
 		function getAnalyticsModal(userid){
 			
-			document.getElementById("Analytics-jsp").src = "Analytics_new.jsp?&userid=" + userid;
+			document.getElementById("Analytics-jsp").src = "Analytics_new?&userid=" + userid;
 			
 		}
 		
