@@ -193,7 +193,7 @@
 			
 		var streamElem;
 		function getStreamId(stream_id){
-			alert("in get stream");
+			
 			streamId = stream_id;
 			
 			streamElem = document.getElementById(streamId);
@@ -311,24 +311,45 @@
 			courseElem = document.getElementById(course_id);
 			
 			document.getElementById('dropdownMenuButtonCourse').textContent = courseElem.textContent;
-			
-			var batchDropDown=document.getElementById('select-batch-dropdown');
-			while (batchDropDown.hasChildNodes()) {  
-				batchDropDown.removeChild(batchDropDown.firstChild);
-			}
+
+			var myData = {
+					courseId: courseId,
 					
-			for (var k = 0; k < coursesList[course_index].batchNameList.length; k++) {
-				var anchor4 = document.createElement('a');
-				anchor4.className="dropdown-item";
-				anchor4.setAttribute('href', "#");
-				var batchName = coursesList[course_index].batchNameList[k].split("/");
-				//alert("Batch Name  " + batchName[1]);
-			    anchor4.textContent = batchName[1];
-				anchor4.id=batchName[0]+'B';
-				anchor4.setAttribute('onclick', "getBatchId(this.id)");
-			    document.getElementById('select-batch-dropdown').appendChild(anchor4);
-			}
+				};
+			$.ajax({
+				type: 'POST',
+				
+				url: "/BatchNames",
+				data: jQuery.param(myData),
+				dataType: 'json',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				traditional: true,
+				success: function (jsonObj) {
+					batchesList=jsonObj;
 					
+					var batchDropDown=document.getElementById('select-batch-dropdown');
+					while (batchDropDown.hasChildNodes()) {  
+						batchDropDown.removeChild(batchDropDown.firstChild);
+					}
+					
+					
+					for (var i = 0; i < batchesList.length; i++) {
+						var anchor4 = document.createElement('a');
+						anchor4.className="dropdown-item";
+						anchor4.setAttribute('href', "#");
+						anchor4.id = batchesList[i].batchId + 'C';
+						anchor4.textContent = batchesList[i].batchName.toUpperCase().replace("_"," ");
+						anchor4.setAttribute('onclick', "getBatchId(this.id)");
+						document.getElementById('select-batch-dropdown').appendChild(anchor4);
+					}
+					
+				},
+				error: function(){
+					alert("Error");
+					
+				}
+
+				});			
 			
 		}
 		
