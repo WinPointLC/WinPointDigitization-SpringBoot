@@ -734,11 +734,11 @@
 						for(var i=0; i<responseJson.length; i++){
 							
 							var total_no_part = 0;
-							for (var k = 0; k < responseJson[i].batchNameList.length; k++){
+							/* for (var k = 0; k < responseJson[i].batchNameList.length; k++){
 								var batchName = responseJson[i].batchNameList[k].split("/");
 								total_no_part=total_no_part+Number(batchName[2]);	
 							 
-							}
+							} */
 							
 							part_data.push(total_no_part);
 
@@ -755,10 +755,10 @@
 							var cardheader = document.createElement('div');
 							cardheader.className="card-header";
 							
-							var img = document.createElement('img');
+							/* var img = document.createElement('img');
 							img.setAttribute('src',responseJson[i].iconLocation);
 							img.className="course_logo";
-							cardheader.appendChild(img);
+							cardheader.appendChild(img); */
 
 							var h4 = document.createElement('h4');
 							h4.textContent = responseJson[i].courseName;
@@ -801,7 +801,7 @@
 							dropdownmenu.id="dropdown-menu-batches";
 							dropdownmenu.setAttribute('aria-labelledby',"dropdownMenuButton");
 							
-							for (var k = 0; k < responseJson[i].batchNameList.length; k++) {
+							/* for (var k = 0; k < responseJson[i].batchNameList.length; k++) {
 								var anchor  = document.createElement('a');
 								anchor.className="dropdown-item";
 								
@@ -813,7 +813,7 @@
 								anchor.setAttribute('cardId', i+1);
 								anchor.setAttribute('onclick',"getBatchInfo(this.id,this.getAttribute('np'),this.textContent,this.getAttribute('cardId'))");
 								dropdownmenu.appendChild(anchor);	
-							}
+							} */
 							
 							dropdown.appendChild(dropdownmenu);
 							dropdown.appendChild(button);
