@@ -376,7 +376,7 @@
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
-					userList=jsonObj[0];
+					userList=jsonObj;
 					//alert("Userlist length " + userList.length);
 					
 					var counter;

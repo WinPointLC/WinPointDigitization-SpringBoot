@@ -19,11 +19,11 @@ public class BatchDetails {
 //	private Date endDate;
 //	private Integer createdBy;
 //	private Date createdDate;
-//	private String batchName;
+	private String batchName;
 //	private Integer batchTime;
 //	private Integer currentLectureNumber;
 //	private String lectureDuration; 
 //	private Integer totalNumberOfLectures;//
-	private Integer segmentTypeId;//
+//	private Integer segmentTypeId;//
 
 }
