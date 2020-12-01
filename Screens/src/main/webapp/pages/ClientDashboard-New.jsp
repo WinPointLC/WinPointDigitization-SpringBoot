@@ -57,13 +57,6 @@
 	src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 
 <script>
-/* <c:import url="/CourseFeedbackServlet" />
-       <c:set var="feedbackQuestionsList" value="${requestScope.feedbackQuestionsList}" />
-       <c:import url="/ClientDashboardServlet" />
-       <c:set var="studentCourseDetails" value="${requestScope.studentCourseDetailsList}" />
-       <c:set var="studentGACourseDetails" value="${requestScope.studentGACourseDetailsList}" />
- */
-
 
   function sendToCourseRegistrationPage(){
   $.ajax({
@@ -371,11 +364,6 @@ function LogoutSession() {
 				</div>
 			</div>
 
-
-
-
-
-
 			<!-- Adding Iframes here  -->
 			<div class="iframes" id="iframediv"></div>
 
@@ -457,8 +445,6 @@ function LogoutSession() {
 	<!--Paper Analysis modal end-->
 
 	<!-- modal 2: batch announcment -->
-
-
 	<div class="modal fade" id="mymodal2">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -817,7 +803,7 @@ function LogoutSession() {
       frame.setAttribute('width', 1100);
       frame.setAttribute('height', 1000);
       frame.id = 'MainCoursePage-frame';
-    frame.setAttribute('style',"margin-top:3%;");
+      frame.setAttribute('style',"margin-top:3%;");
       document.getElementById('iframediv').appendChild(frame);
       sendToMainCoursePage();
       ShowHideMain();
@@ -902,10 +888,14 @@ function getStreamId(stream_id){
         streamId = stream_id;
         var streamElem = document.getElementById(streamId + 'a');
         var elem;
-        for(i=0; i<streamList.length; i++){
+       /*  for(i=0; i<streamList.length; i++){
           elem = document.getElementById(streamList[i].streamId + 'a');
            elem.className = 'nav-link';
-        }
+        } */
+        <c:forEach items="${streamList}" var="stream">
+		     elem = document.getElementById('${stream.streamId}' + 'a');
+		   	 elem.className = 'nav-link';
+  		</c:forEach>  
         streamElem.className = 'nav-link active';
         var myData = {
           streamId: streamId  
@@ -914,9 +904,9 @@ function getStreamId(stream_id){
             type: 'POST',
            // url: servletURL + 'StreamCourseTypeServlet',
             url: "/StreamCourseType",
-            data: JSON.stringify(myData),
+            data: jQuery.param(myData),
             dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             traditional: true,
             success: function (jsonObj) {
                var courseTypesList=jsonObj;
@@ -982,14 +972,14 @@ function displayStreamCourses(courseType_id, courseTypeName ){
           type: 'POST',
           //url: servletURL + 'StreamCourseTypeUserCoursesServlet',
           url: "/StreamCourseTypeUserCourses",
-          data: JSON.stringify(myData),
+          data: jQuery.param(myData),
           dataType: 'json',
-          contentType: 'application/json; charset=utf-8',
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           traditional: true,
           success: function (jsonObj) {
           document.getElementById('crd').style.display="block";
           var responseJson=jsonObj;
-          var strResJSON = JSON.stringify(responseJson);
+         // var strResJSON = JSON.stringify(responseJson);
           var elem = document.getElementById('courselist');
           if(elem != null){
               elem.parentNode.removeChild(elem);
@@ -1144,7 +1134,17 @@ for(var j=0 ; j<responseJson.length; j++){
          var k=1;
          var srNumb=0;
          var srNumbTheory=0;
-         var feedbackQuestionsList= eval('(' + '${feedbackQuestionsList}' + ')');
+
+         $.ajax({
+				type: 'POST',
+				url: "/FeedbackQuestions",
+				//data: jQuery.param(myData),
+				dataType: 'json',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				traditional: true,
+				success: function (jsonObj) {
+					var feedbackQuestionsList=jsonObj;
+        // var feedbackQuestionsList= eval('(' + '${feedbackQuestionsList}' + ')');
          var formElem = document.getElementById(courseId);
           	if(formElem!=null){
           		formElem.parentNode.removeChild(formElem);
@@ -1263,6 +1263,10 @@ for(var j=0 ; j<responseJson.length; j++){
             form.appendChild(mainDiv);
             form.appendChild(divButton);
             document.getElementById('feedbackFormCard').appendChild(form);
+
+		}
+		  
+	});
 }
 function sendUserFeedback(course_Id){
 	 
@@ -1304,9 +1308,11 @@ function sendUserFeedback(course_Id){
             type: 'POST',
             //url: servletURL + 'CourseFeedbackServlet',
             url: "/CourseFeedback",
-            data: JSON.stringify(feedbackFormResponse),
+            //data: JSON.stringify(feedbackFormResponse),
+            data: jQuery.param(feedbackFormResponse),
             dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
+            //contentType: 'application/json; charset=utf-8',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             traditional: true,
             success: function (jsonObj) {
               alert("sucess ajax call in sendUserFunction")
@@ -1314,7 +1320,7 @@ function sendUserFeedback(course_Id){
             },
             error: function(){
               alert("Error");
-              exampleModalLong
+              
               //document.getElementById("error").innerHTML = "Invalid email or password";
             }});
         
@@ -1511,9 +1517,9 @@ function sendUserFeedback(course_Id){
 			type: 'POST',
 			//url: servletURL + 'PaperAnalysisServlet',
 			url: "/PaperAnalysis",
-			data: JSON.stringify(myData),
+			data: jQuery.param(myData),
 			dataType: 'json',
-			contentType: 'application/json; charset=utf-8',
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			traditional: true,
 			success: function (jsonObj) {
 			
@@ -1778,9 +1784,9 @@ function sendUserFeedback(course_Id){
 				type: 'POST',
 				//url: servletURL + 'AnalyticsServlet?getInfoParam=topicDetails&view=ClientDash',
 				url: "/Analytics?getInfoParam=topicDetails&view=ClientDash",
-				data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					//alert("Success from AnalyticsForm");
@@ -1826,16 +1832,16 @@ function sendUserFeedback(course_Id){
   </script>
 
 			<script>
-var SearchString = window.location.search.substring(1);
+				var SearchString = window.location.search.substring(1);
+				
+				var arr = SearchString.split('&');
+				var data= arr[0].split('=')[1];
+				var decodedData = decodeURIComponent(data);
+				userData=JSON.parse(decodedData);
+				//alert(userData.user);
+				document.getElementById('welcome').innerHTML=userData.user;
 
-var arr = SearchString.split('&');
-var data= arr[0].split('=')[1];
-var decodedData = decodeURIComponent(data);
-userData=JSON.parse(decodedData);
-//alert(userData.user);
-document.getElementById('welcome').innerHTML=userData.user;
-
-</script>
+			</script>
 
 			<script>
 var data;
@@ -1844,22 +1850,22 @@ var streamList;
 var myChart;
 function mainUserFunction(){
 //	alert("this is mainUserFunction");
-	var searchString = window.location.search.substring(1);
+	/* var searchString = window.location.search.substring(1);
   var arr = searchString.split('&');
   var data= arr[0].split('=')[1];
-  var decodedData = decodeURIComponent(data);
+  var decodedData = decodeURIComponent(data); */
   //alert(decodedData);
-  var data1 = decodedData.substring(0, decodedData.indexOf('}')+1);
+//  var data1 = decodedData.substring(0, decodedData.indexOf('}')+1);
   //alert(data1);
-  userProfile =  eval('(' + data1 + ')');
-  var data2 = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
+ // userProfile =  eval('(' + data1 + ')');
+ // var data2 = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
   //alert(data2);
-  streamList = eval('(' + data2 + ')');
+ // streamList = eval('(' + data2 + ')');
  // alert(streamList[0].streamName);
-  document.getElementById('welcome').textContent = userProfile.firstName + " " + userProfile.lastName;
+ // document.getElementById('welcome').textContent = userProfile.firstName + " " + userProfile.lastName;
   // Javascript method's body can be found in ../assets/js/demos.js
     md.initDashboardPageCharts();
-    strResJSON = JSON.stringify(userProfile);
+   // strResJSON = JSON.stringify(userProfile);
 var streamId = 1;
 var courseTypeId = 1;
 var courseTypeName = "";
@@ -1906,38 +1912,27 @@ myChart = new Chart(ctx, {
     }
 });
 
-var searchString = window.location.search.substring(1);
+	    <c:forEach items="${streamList}" var="stream">
+			var div1 = document.createElement('div');
+            div1.id="tab-div";
+            var li = document.createElement('li');
+            li.className='nav-item';
+            li.id = '${stream.streamId}' + 'l';
 
-  var arr = searchString.split('&');
-  var data= arr[0].split('=')[1];
-  var decodedData = decodeURIComponent(data);
-  var data1 = decodedData.substring(0, decodedData.indexOf('}')+1);
-  userProfile =  eval('(' + data1 + ')');
-  document.getElementById('welcome').textContent = userProfile.firstName + " " + userProfile.lastName;
-  var data2 = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
-  streamList = eval('(' + data2 + ')');
-    
-            for(i=0; i<streamList.length; i++){
-              var div1 = document.createElement('div');
-              div1.id="tab-div";
-              var li = document.createElement('li');
-              li.className='nav-item';
-              li.id = streamList[i].streamId + 'l';
-
-              var anchor =document.createElement('a');
-              anchor.setAttribute('href',"#Profile");
-              anchor.setAttribute('data-toggle',"tab");
-              anchor.className='nav-link ';
-              anchor.id = streamList[i].streamId + 'a';
-              anchor.textContent=streamList[i].streamName;
-              li.id = streamList[i].streamId;
-              li.appendChild(anchor);
-              li.setAttribute('onclick', "getStreamId(this.id)");
-              div1.appendChild(li);
-              document.getElementById("nav-tab").appendChild(div1);
-            }
-            
-            var streamElem = document.getElementById(streamList[0].streamId + 'a');
+            var anchor =document.createElement('a');
+            anchor.setAttribute('href',"#Profile");
+            anchor.setAttribute('data-toggle',"tab");
+            anchor.className='nav-link ';
+            anchor.id = '${stream.streamId}' + 'a';
+            anchor.textContent='${stream.streamName}';
+            li.id = '${stream.streamId}'
+            li.appendChild(anchor);
+            li.setAttribute('onclick', "getStreamId(this.id)");
+            div1.appendChild(li);
+            document.getElementById("nav-tab").appendChild(div1);
+		</c:forEach>     
+		     
+            var streamElem = document.getElementById('${firstStreamId}' + 'a');
             streamElem.className='nav-link active';
             var drop1 = document.getElementsByClassName('drop1');
             var btn = document.createElement('button');
@@ -1953,8 +1948,8 @@ var searchString = window.location.search.substring(1);
             dropdownMenu.id='dropdownMenu';
             dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
             document.getElementById('drop11').appendChild(dropdownMenu);
-getStreamId(streamList[0].streamId);
-displayStreamCourses(courseTypeId, courseTypeName);
+			getStreamId('${firstStreamId}');
+			displayStreamCourses(courseTypeId, courseTypeName);
 
 }
 

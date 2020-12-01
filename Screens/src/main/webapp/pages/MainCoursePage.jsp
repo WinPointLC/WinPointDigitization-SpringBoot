@@ -154,35 +154,32 @@
               <script>
              
 		  			//streamList = eval('(' + '${streamlist}' + ')');
-		  			streamList = '${streamList}';
+		  			//streamList = '${streamList}';
+		  			
+		  			<c:forEach items="${streamList}" var="stream">
+			  			  var div1 = document.createElement('div');
+			              div1.id="tab-div";
+			              var li = document.createElement('li');
+			              li.className='nav-item';
+			              li.id = '${stream.streamId}' + 'l';
+			
+			              var anchor =document.createElement('a');
+			              anchor.setAttribute('href',"#Profile");
+			              anchor.setAttribute('data-toggle',"tab");
+			              anchor.className='nav-link ';
+			              anchor.id = '${stream.streamId}' + 'a';
+			              anchor.textContent='${stream.streamName}';
+			              li.id = '${stream.streamId}';
+			             // alert("Li id = " + li.id);
+			              li.appendChild(anchor);
+			              li.setAttribute('onclick', "getStreamId(this.id)");
+			              div1.appendChild(li);
+			              document.getElementById("nav-tab").appendChild(div1);
+					</c:forEach>   
 		
-		            for(i=0; i<streamList.length; i++){
-		             
-		              var div1 = document.createElement('div');
-		              div1.id="tab-div";
-		              var li = document.createElement('li');
-		              li.className='nav-item';
-		              li.id = streamList[i].streamId + 'l';
-		
-		              var anchor =document.createElement('a');
-		              anchor.setAttribute('href',"#Profile");
-		              anchor.setAttribute('data-toggle',"tab");
-		              anchor.className='nav-link ';
-		              anchor.id = streamList[i].streamId + 'a';
-		              anchor.textContent=streamList[i].streamName;
-		              li.id = streamList[i].streamId;
-		             // alert("Li id = " + li.id);
-		              li.appendChild(anchor);
-		              li.setAttribute('onclick', "getStreamId(this.id)");
-		              div1.appendChild(li);
-		              document.getElementById("nav-tab").appendChild(div1);
-		              // End Inserted Code
-		            }
-		            // }
-		            var streamElem = document.getElementById(streamList[0].streamId + 'a');
+		            var streamElem = document.getElementById('${firstStreamId}' + 'a');
 		            streamElem.className='nav-link active';
 		            
-		            //End- Extract Stream List
 		            var drop1 = document.getElementsByClassName('drop1');
 		            var btn = document.createElement('button');
 		            btn.className='btn btn-secondary dropdown-toggle';
@@ -198,7 +195,7 @@
 		            dropdownMenu.id='dropdownMenu';
 		            dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
 		            //Start- Extract Course Type List
-		            var courseTypes = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
+		            /* var courseTypes = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
 		            var courseTypesList = eval('(' + courseTypes + ')');
 		            // var arr2 = ['Modular','TBC','CRT'];
 		            for(i=0; i<courseTypesList.length; i++){
@@ -211,8 +208,18 @@
 		
 		              dropdownMenu.appendChild(dropanchor);
 		              // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
-		            }
-		            document.getElementById('drop11').appendChild(dropdownMenu);
+		            } */
+
+		          <c:forEach items="${courseTypesList}" var="courseType">
+		              var dropanchor = document.createElement('a');
+		              dropanchor.className='dropdown-item';
+		              dropanchor.setAttribute('href',"#");
+		              dropanchor.id='${courseType.courseTypeId}';
+		              dropanchor.textContent=('${courseType.courseTypeName}').toUpperCase();
+		              dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+		              dropdownMenu.appendChild(dropanchor);
+				  </c:forEach>   
+		          document.getElementById('drop11').appendChild(dropdownMenu);
 		         
       </script>
       <!--   Core JS Files   -->
@@ -271,10 +278,16 @@
         
         var streamElem = document.getElementById(streamId + 'a');
         var elem;
-        for(i=0; i<streamList.length; i++){
+       /*  for(i=0; i<streamList.length; i++){
         	elem = document.getElementById(streamList[i].streamId + 'a');
         	 elem.className = 'nav-link';
-        }
+        } */
+
+        <c:forEach items="${streamList}" var="stream">
+		     elem = document.getElementById('${stream.streamId}' + 'a');
+		   	 elem.className = 'nav-link';
+	    </c:forEach>  
+	    
         streamElem.className = 'nav-link active';
        
         elem = document.getElementById('courseList');
@@ -289,9 +302,9 @@
             type: 'POST',
            // url: servletURL + 'StreamCourseTypeServlet',
             url: "/StreamCourseType",
-            data: JSON.stringify(myData),
+            data: jQuery.param(myData),
             dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             traditional: true,
             success: function (jsonObj) {
               var courseTypesList=jsonObj;
@@ -363,9 +376,9 @@
           type: 'POST',
           //url: servletURL + 'StreamCourseTypeCoursesServlet',
           url: "/StreamCourseTypeCourses",
-          data: JSON.stringify(myData),
+          data: jQuery.param(myData),
           dataType: 'json',
-          contentType: 'application/json; charset=utf-8',
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           traditional: true,
           success: function (jsonObj) {
             document.getElementById('CourseCard').style.display="block";
@@ -438,9 +451,9 @@
           type: 'POST',
           //url: servletURL + 'TestSelectServlet',
           url: "/TestSelect",
-          data: JSON.stringify(myData),
+          data: jQuery.param(myData),
           dataType: 'json',
-          contentType: 'application/json; charset=utf-8',
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
           traditional: true,
           success: function (jsonObj) {
 

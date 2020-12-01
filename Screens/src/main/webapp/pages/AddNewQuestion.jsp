@@ -195,11 +195,11 @@
 		<c:forEach items="${streamList}" var="stream">
 			var anchor = document.createElement('a');
 			anchor.className="dropdown-item";
-			anchor.setAttribute('href', "#");
+			anchor.setAttribute('href', "#");	
 			anchor.id = '${stream.streamId}';
 			anchor.textContent='${stream.streamName}'.toUpperCase().replace("_"," ");
 			anchor.setAttribute('onclick', "getStreamId(this.id)");
-			document.getElementById('select-stream-dropdown').appendChild(anchor);
+			document.getElementById('stream-dropdown').appendChild(anchor);
 		</c:forEach>     
 		
 		var streamElem;

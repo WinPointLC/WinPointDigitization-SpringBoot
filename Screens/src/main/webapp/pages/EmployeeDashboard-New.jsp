@@ -543,7 +543,7 @@
 			//alert(userData.user);
 			document.getElementById('welcome').innerHTML=userData.user;
 			
-			var streamList = '${streamList}';
+			//var streamList = '${streamList}';
 			
 			nav=document.createElement('nav');
 			nav.id="tech";
@@ -583,28 +583,25 @@
 			li_1=document.createElement('li');
 			li_1.className="nav-item";
 			
-			for(i=0;i<streamList.length;i++)
-			{
+			<c:forEach items="${streamList}" var="stream">
 				li_1=document.createElement('li');
 				li_1.className="nav-item";
-				li_1.id=streamList[i].streamId ;
+				li_1.id='${stream.streamId}';
 				li_1.setAttribute('onclick', "getstream(this.id)");
 				a_1=document.createElement('a');
-			
 				a_1.className="nav-link active";
-				a_1.id=streamList[i].streamId + 'a';
-				a_1.textContent=streamList[i].streamName.toUpperCase().replace("_"," ");
-
+				a_1.id='${stream.streamId}' + 'a';
+				a_1.textContent='${stream.streamName}'.toUpperCase().replace("_"," ");
 				li_1.appendChild(a_1);
 				ul.appendChild(li_1);
-			}
-			  
+			</c:forEach>     
+		
 			div2.appendChild(ul);
 			div1.appendChild(div2);
 			nav.appendChild(div1);
 			document.getElementById('top-bar').appendChild(nav);
 			
-			var streamElem = document.getElementById(streamList[0].streamId);
+			var streamElem = document.getElementById('${firstStreamId}');
 			streamElem.className='nav-item active stream';
 
 			var div3=document.createElement('div');
@@ -625,7 +622,7 @@
 			div3.appendChild(div_cd);
 			document.getElementById('top-bar').appendChild(div3);
 		  
-			getstream(streamList[0].streamId);
+			getstream('${firstStreamId}');
 			displayStreamCourses(courseTypeId, courseTypeName);
 		   
 
@@ -645,7 +642,8 @@
 				for (i = 0; i < prevElem.length; i++) {
 					prevElem[i].className='nav-item';
 				} 
-				var streamElem = document.getElementById(streamList[streamId-1].streamId);
+				//var streamElem = document.getElementById(streamList[streamId-1].streamId);
+				var streamElem = document.getElementById(streamId);
 				streamElem.className='nav-item active stream';
 				 
 				var myData = {
@@ -656,9 +654,9 @@
 					type: 'POST',
 					//url: servletURL + 'StreamCourseTypeServlet',
 					url: "/StreamCourseType",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						var courseTypesList=jsonObj;
@@ -710,9 +708,9 @@
 					type: 'POST',
 					//url: servletURL + 'StreamCourseTypeCoursesServlet',
 					url: "/StreamCourseTypeCourses",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 				  
@@ -967,9 +965,9 @@
 					type: 'POST',
 					//url: servletURL + 'BatchDetailsServlet?batchInfoParam=batchDetails',
 					url: "/BatchDetails?batchInfoParam=batchDetails",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						var batchDetails=jsonObj; 
@@ -1020,16 +1018,16 @@
 					type: 'POST',
 					//url: servletURL + 'BatchDetailsServlet?batchInfoParam=feeRecords',
 					url: "/BatchDetails?batchInfoParam=feeRecords",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						var feesDetails=jsonObj;
 						
 						var elem = document.getElementById('table-fees');
 						if(elem != null){
-									elem.parentNode.removeChild(elem);
+							elem.parentNode.removeChild(elem);
 						}
 							
 						var fees_table = document.createElement('table');
@@ -1091,9 +1089,9 @@
 					type: 'POST',
 					//url: servletURL + 'BatchDetailsServlet?batchInfoParam=attendance',
 					url: "/BatchDetails?batchInfoParam=attendance",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						var attendanceList=jsonObj;
@@ -1168,8 +1166,8 @@
 					//url: servletURL + 'BatchDetailsServlet?batchInfoParam=evaluation',
 					url: "/BatchDetails?batchInfoParam=evaluation",
 					data: JSON.stringify(myData),
-					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					data: jQuery.param(myData),
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						var marksList=jsonObj;
@@ -1435,7 +1433,8 @@
 		<script type="text/javascript">
 			function LogoutSession() {
 				$.ajax({
-					url: servletURL + 'LogoutServlet',
+					//url: servletURL + 'LogoutServlet',
+					url: "/Logout",
 					type: 'POST',
 					dataType: 'json',
 					contentType: 'application/json; charset=utf-8',
