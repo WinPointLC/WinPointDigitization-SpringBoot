@@ -386,14 +386,14 @@
 			topicElem = document.getElementById(topic_id);
 			
 			document.getElementById('dropdownMenuButtonTopics').textContent = topicElem.textContent;
-			var myData = {
+			/* var myData = {
 					courseId:courseId
-				  };
+				  }; */
 			$.ajax({
 				type: 'POST',
 				//url: servletURL + 'DifficultyLevelServlet',
 				url: "/DifficultyLevel",
-				data: jQuery.param(myData),
+				//data: jQuery.param(myData),
 				dataType: 'json',
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
