@@ -170,7 +170,7 @@
 			anchor.id = '${stream.streamId}';
 			anchor.textContent='${stream.streamName}'.toUpperCase().replace("_"," ");
 			anchor.setAttribute('onclick', "getStreamId(this.id)");
-			document.getElementById('select-stream-dropdown').appendChild(anchor);
+			document.getElementById('stream-dropdown').appendChild(anchor);
 	    </c:forEach>     
 		
 		var streamElem;
@@ -386,7 +386,11 @@ function getFeesInfo(batch_id){
                      td3.textContent = dueAmount;
                      var td4 = document.createElement('td');
                     var paidbtn = document.createElement('button');
-                    paidbtn.textContent = "Paid";
+                    //paidbtn.textContent = "Paid";
+                    if(dueAmount==0)
+						paidbtn.textContent = "Paid";
+					else
+						paidbtn.textContent = "Make Payment";
                     paidbtn.className="btn btn-primary";
                     paidbtn.setAttribute('onclick', "updateFeeStatus(${unpaidStudent.userId}, ${unpaidStudent.courseId}")
                   
