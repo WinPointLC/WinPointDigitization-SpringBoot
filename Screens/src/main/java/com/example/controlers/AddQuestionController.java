@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.model.DifficultyLevel;
 import com.example.model.Streams;
 import com.example.repository.DifficultyLevelRepository;
 import com.example.repository.StreamsRepository;
@@ -48,7 +49,7 @@ public class AddQuestionController {
 	@Autowired
 	DifficultyLevelRepository difficultyLevelRepository;
 	@RequestMapping(value = "/DifficultyLevel", method = RequestMethod.POST)
-	public @ResponseBody List<?> showDifficultyLevel(@RequestParam("courseId") String courseId) {
+	public @ResponseBody List<DifficultyLevel> showDifficultyLevel() {
 		return difficultyLevelRepository.findAll();
 	}
 	

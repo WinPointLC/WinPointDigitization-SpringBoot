@@ -20,14 +20,29 @@ import com.example.service.StudentCourseDetailsService;
 
 @Controller
 public class AllUsersController {
-	@RequestMapping(value = "/")
-	public String showEmpPage() {
-		return "EmployeeDashboard-New";
-
-	}
-
+//	@RequestMapping(value = "/")
+//	public String showEmpPage() {
+//		return "EmployeeDashboard-New";
+//
+//	}
+	
+	
+	
 	@Autowired
 	StreamsRepository stream;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView EmpDashboardPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("EmployeeDashboard-New");
+		List<Streams> c = stream.findAll();
+			
+		mv.addObject("streamList", c);
+		mv.addObject("firstStreamId", c.get(0).getStreamId());
+		return mv;
+	}
+
+	
 
 	@RequestMapping(value = "AllUser", method = RequestMethod.GET)
 	public ModelAndView showAllUserPage() {
