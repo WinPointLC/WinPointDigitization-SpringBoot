@@ -282,7 +282,7 @@
 			courseId = course_id.substring(0, course_id.length - 1);
 			courseElem = document.getElementById(course_id);
 			//alert(coursesList[courseId].courseFees);
-			//document.getElementById('courseFeesdisplay').innerHTML="Course Fees: "+coursesList[courseId].courseFees;
+			document.getElementById('courseFeesdisplay').innerHTML="Course Fees: "+coursesList[courseId].courseFees;
 			
 			document.getElementById('dropdownMenuButtonCourse').textContent = courseElem.textContent;
 			
@@ -331,7 +331,7 @@
 						anchor4.setAttribute('href', "#");
 						anchor4.id = batchesList[i].batchId + 'C';
 						anchor4.textContent = batchesList[i].batchName.toUpperCase().replace("_"," ");
-						anchor4.setAttribute('onclick', "getBatchId(this.id)");
+						anchor4.setAttribute('onclick', "getFeesInfo(this.id)");
 						document.getElementById('select-batch-dropdown').appendChild(anchor4);
 					}
 					
@@ -363,7 +363,7 @@ function getFeesInfo(batch_id){
         $.ajax({
           type: 'POST',
           //url: servletURL + 'BatchDetailsServlet?batchInfoParam=feeRecords',
-          url: "/BatchDetails?batchInfoParam=feeRecords",
+          url: "/BatchDetails",
           data: jQuery.param(myData),
           dataType: 'json',
           contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -418,7 +418,8 @@ function getFeesInfo(batch_id){
                     var td1= document.createElement('td');
                      td1.textContent=i+1;
                      var td2= document.createElement('td');
-                     td2.textContent=feesDetails[i].name;
+                    // td2.textContent=feesDetails[i].name;
+                     feesDetails[i].firstName + " " + feesDetails[i].lastName;
                      var td3= document.createElement('td');
                      td3.textContent = dueAmount;
                      var td4 = document.createElement('td');

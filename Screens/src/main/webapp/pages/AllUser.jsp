@@ -370,7 +370,7 @@
 			$.ajax({
 				type: 'POST',
 				//url: servletURL + 'BatchDetailsServlet?batchInfoParam=studentDetails',
-				url: "/BatchDetails?batchInfoParam=studentDetails",
+				url: "/BatchDetails",
 				data: jQuery.param(myData),
 				dataType: 'json',
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
