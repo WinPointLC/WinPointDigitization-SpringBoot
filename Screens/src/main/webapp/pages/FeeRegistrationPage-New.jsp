@@ -346,7 +346,7 @@
 
 function getFeesInfo(batch_id){
 		 batchId = batch_id.substring(0, batch_id.length - 1); 
-         alert("This is getFeesInfo Function");
+         //alert("This is getFeesInfo Function");
          batchElem = document.getElementById(batch_id);
         // alert("streamid"+streamId);
         // alert("courseTypeId"+courseTypeId);
@@ -390,7 +390,7 @@ function getFeesInfo(batch_id){
                   table2.appendChild(thead);
                   for(i=0;i<feesDetails.length;i++){
                   	userIndex=i;
-                  	alert(userIndex);
+                  	//alert(userIndex);
                   	 var myData2 = {
 			         userId:feesDetails[i].userId,
 			          streamId: streamId,
@@ -413,13 +413,13 @@ function getFeesInfo(batch_id){
            
 					});
               
-                  alert("this is amount due"+" "+dueAmount);
+                  //alert("this is amount due"+" "+dueAmount);
                    var tr=document.createElement('tr')
                     var td1= document.createElement('td');
                      td1.textContent=i+1;
                      var td2= document.createElement('td');
                     // td2.textContent=feesDetails[i].name;
-                     feesDetails[i].firstName + " " + feesDetails[i].lastName;
+                     td2.textContent=feesDetails[i].firstName + " " + feesDetails[i].lastName;
                      var td3= document.createElement('td');
                      td3.textContent = dueAmount;
                      var td4 = document.createElement('td');

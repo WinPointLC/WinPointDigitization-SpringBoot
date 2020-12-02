@@ -38,11 +38,17 @@
       var techArray = [];// = [['Course', 'Marks'],['C', 10],['DS', 40],['Java', 70]];
       var header = ['Course', 'Marks'];
       techArray.push(header);
-      for(var i=0; i<studentCourseDetailsList.length; i++){
+
+      <c:forEach items="${studentCourseDetailsList}" var="det">
+		 var techData = ['${det.courseName}', '${det.courseAggr}'];
+	     techArray.push(techData);
+	  </c:forEach>     
+	
+    /*   for(var i=0; i<studentCourseDetailsList.length; i++){
             // alert(studentCourseDetailsList.courseName);
         var techData = [studentCourseDetailsList[i].courseName, studentCourseDetailsList[i].courseAggr];
         techArray.push(techData);
-      }
+      } */
       // alert("Techarray: "+  techArray);
       var data = new google.visualization.arrayToDataTable(techArray);
 
@@ -63,12 +69,20 @@
           // alert("The user has selected "+" "+value2);
           document.getElementById('clickedcontent1').textContent ="   Subject:   " + value1;
           document.getElementById('clickedcontent2').textContent = "   Marks:   " + value2;
-          for(var i=0; i<studentCourseDetailsList.length; i++){
+
+          <c:forEach items="${studentCourseDetailsList}" var="det">
+		 	    if('${det.courseName}' == value1){
+		  		  courseId = '${det.courseId}';
+		  	      break;
+		  	    }
+ 	      </c:forEach>    
+ 	  
+         /*  for(var i=0; i<studentCourseDetailsList.length; i++){
         	  if(studentCourseDetailsList[i].courseName ==value1){
         		  courseId = studentCourseDetailsList[i].courseId;
         	      break;
         	  }
-          }
+          } */
           drawChart2();
         }
       }
@@ -98,7 +112,7 @@ function drawChart2() {
 				traditional: true,
 				success: function (jsonObj) {
 					//alert("Success from AnalyticsForm");
-					var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+					//var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
 
 					// var topicArray = '[["';
 					// for(var i=0; i<responseJson2.length; i++){
@@ -108,7 +122,7 @@ function drawChart2() {
 					// //alert("******* " + topicArray);
 					// data.addRows(JSON.parse(topicArray));
 
-
+					  var responseJson2=jsonObj;
 			          var topicArray = [];// = [['Course', 'Marks'],['C', 10],['DS', 40],['Java', 70]];
 			          var topicHeader = ['TopicName', 'TopicwiseMarks'];
 			          topicArray.push(topicHeader);
@@ -139,7 +153,7 @@ function drawChart2() {
 }
 </script>
 <!-- Script for GA Section -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart4);
     var value3;
@@ -193,7 +207,7 @@ function drawChart2() {
       chart.draw(data, options);
     }
 
-  </script>
+  </script> -->
   <!-- <script type="text/javascript">
 google.charts.load("current",{'packages':['corechart']});
 //google.charts.setOnLoadCallback(drawChart3);
