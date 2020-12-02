@@ -282,11 +282,11 @@
 			courseId = course_id.substring(0, course_id.length - 1);
 			courseElem = document.getElementById(course_id);
 			//alert(coursesList[courseId].courseFees);
-			document.getElementById('courseFeesdisplay').innerHTML="Course Fees: "+coursesList[courseId].courseFees;
+			//document.getElementById('courseFeesdisplay').innerHTML="Course Fees: "+coursesList[courseId].courseFees;
 			
 			document.getElementById('dropdownMenuButtonCourse').textContent = courseElem.textContent;
 			
-			var batchDropDown=document.getElementById('select-batch-dropdown');
+			/* var batchDropDown=document.getElementById('select-batch-dropdown');
 			while (batchDropDown.hasChildNodes()) {  
 				batchDropDown.removeChild(batchDropDown.firstChild);
 			}
@@ -303,16 +303,53 @@
 				anchor4.setAttribute('onclick', "getFeesInfo(this.id)");
 			    document.getElementById('select-batch-dropdown').appendChild(anchor4);
 			}
+					 */
+			var myData = {
+					courseId: courseId,
 					
-			
+				};
+			$.ajax({
+				type: 'POST',
+				
+				url: "/BatchNames",
+				data: jQuery.param(myData),
+				dataType: 'json',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				traditional: true,
+				success: function (jsonObj) {
+					batchesList=jsonObj;
+					
+					var batchDropDown=document.getElementById('select-batch-dropdown');
+					while (batchDropDown.hasChildNodes()) {  
+						batchDropDown.removeChild(batchDropDown.firstChild);
+					}
+					
+					
+					for (var i = 0; i < batchesList.length; i++) {
+						var anchor4 = document.createElement('a');
+						anchor4.className="dropdown-item";
+						anchor4.setAttribute('href', "#");
+						anchor4.id = batchesList[i].batchId + 'C';
+						anchor4.textContent = batchesList[i].batchName.toUpperCase().replace("_"," ");
+						anchor4.setAttribute('onclick', "getBatchId(this.id)");
+						document.getElementById('select-batch-dropdown').appendChild(anchor4);
+					}
+					
+				},
+				error: function(){
+					alert("Error");
+					
+				}
+
+				});			
 		}
 
 function getFeesInfo(batch_id){
 		 batchId = batch_id.substring(0, batch_id.length - 1); 
          alert("This is getFeesInfo Function");
          batchElem = document.getElementById(batch_id);
-         alert("streamid"+streamId);
-         alert("courseTypeId"+courseTypeId);
+        // alert("streamid"+streamId);
+        // alert("courseTypeId"+courseTypeId);
          var userIndex=0;
          var dueAmount;
 			

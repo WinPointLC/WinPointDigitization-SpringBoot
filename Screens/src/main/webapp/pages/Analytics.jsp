@@ -23,30 +23,10 @@
 	  var studentCourseDetailsList;
 	  var studentGACourseDetailsList;
 	
-	  studentCourseDetailsList = '${studentCourseDetailsList}';
-	  studentGACourseDetailsList = '${studentGACourseDetailsList}';
+	  //studentCourseDetailsList = '${studentCourseDetailsList}';
+	  //studentGACourseDetailsList = '${studentGACourseDetailsList}';
 
- /*  $(document).ready(function(){
-	 //alert("Hello");
-	 var searchString = window.location.search.substring(1);
-	 //alert("SearchString = " + searchString);
-	 var arr = searchString.split('&');
-	 //alert("arra = " + arr);
-	 data= arr[0].split('=')[1];
-
-	 var decodedData = decodeURIComponent(data);
-	 // alert("****" + decodedData);
-	 var studentCourseDetailsListJSON = decodedData.substring(0, decodedData.indexOf(']')+1);
-	 // alert(studentCourseDetailsListJSON);
-	 studentCourseDetailsList =  eval('(' + studentCourseDetailsListJSON + ')');
-	 // alert(studentCourseDetailsList + " " + studentCourseDetailsList.length + " **** "+ studentCourseDetailsList[0].courseTypeName);
-
-	 var decodedNextData = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
-	 // alert(decodedNextData);
-	 var studentGACourseDetailsListJSON = decodedNextData.substring(0, decodedNextData.indexOf(']')+1);
-	 // alert(studentGACourseDetailsListJSON);
-	 studentGACourseDetailsList =  eval('(' + studentGACourseDetailsListJSON + ')');
-  }); */
+ 
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart1);
     var value1;
