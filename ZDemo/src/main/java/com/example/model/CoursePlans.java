@@ -4,15 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import lombok.Data;
+
 //checked
 @Entity
 @Data
-public class Course {
+public class CoursePlans {
+
 	@Id
+	private Integer coursePlansId;
 	private Integer courseId;
-	private String courseName;
-	private Integer streamId;
-	private Integer courseTypeId;
-	private Integer courseFees;
+	private Integer lectureNumber;
+	private String lecturePlan;
+
+//	@ManyToOne
+//	private Course Course;
 
 }

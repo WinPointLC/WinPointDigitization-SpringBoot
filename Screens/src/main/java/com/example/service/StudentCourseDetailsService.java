@@ -18,11 +18,9 @@ public class StudentCourseDetailsService {
 	
 	
 	public List<UserDetails>  userList(Integer batchId){
-		System.out.println("Here i AM\n\n\n\n ");
 		List<UserDetails>users = new ArrayList<>();
 		for(StudentCourseDetails a : studentCourseDetailsRepository.findByBatchId(batchId)){
 			users.add(userDetailsRepository.findByUserId(a.getUserId()));
-			System.out.println(userDetailsRepository.findByUserId(a.getUserId()));
 		}
 		return users;
 	}

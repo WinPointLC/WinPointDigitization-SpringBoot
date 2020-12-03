@@ -20,14 +20,7 @@ import com.example.service.StudentCourseDetailsService;
 
 @Controller
 public class AllUsersController {
-//	@RequestMapping(value = "/")
-//	public String showEmpPage() {
-//		return "EmployeeDashboard-New";
-//
-//	}
-	
-	
-	
+
 	@Autowired
 	StreamsRepository stream;
 
@@ -36,21 +29,15 @@ public class AllUsersController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("EmployeeDashboard-New");
 		List<Streams> c = stream.findAll();
-			
 		mv.addObject("streamList", c);
 		mv.addObject("firstStreamId", c.get(0).getStreamId());
 		return mv;
 	}
 
-	
-
 	@RequestMapping(value = "AllUser", method = RequestMethod.GET)
 	public ModelAndView showAllUserPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("AllUser");
-		for (Streams c : stream.findAll()) {
-			System.out.println(c);
-		}
 		mv.addObject("streamList", stream.findAll());
 		return mv;
 	}
@@ -77,19 +64,20 @@ public class AllUsersController {
 
 	@RequestMapping(value = "/BatchNames", method = RequestMethod.POST)
 	public @ResponseBody List<?> showCourse(@RequestParam("courseId") String courseId) {
-		System.out.println("reached/n/n/n/n/n/n");
 		return batchDetialsRepository.findByCourseId(Integer.parseInt(courseId));
 	}
-	
+
 //	@Autowired
 //	BatchDetialsRepository batchDetialsRepository;
 
-	@Autowired StudentCourseDetailsService StudentCourseDetailsService;
+	@Autowired
+	StudentCourseDetailsService StudentCourseDetailsService;
+
 	@RequestMapping(value = "/BatchDetails", method = RequestMethod.POST)
 	public @ResponseBody List<?> showUsers(@RequestParam("batchId") String batchId) {
-		System.out.println("reached\n\n\n\n\n");
 		System.out.println(batchId);
-		return StudentCourseDetailsService.userList(Integer.parseInt(batchId));
+		System.out.println(StudentCourseDetailsService.userList(Integer.parseInt(batchId)));
+			return StudentCourseDetailsService.userList(Integer.parseInt(batchId));		
 	}
-	
+
 }
