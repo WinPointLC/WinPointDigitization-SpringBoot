@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -27,10 +28,10 @@ public class FeedbackQuestions {
 //	private List<TestFeedback> TestFeedback;
 //	
 //	/////////////////
-//	@ManyToOne
-//	private FeedbackCategory FeedbackCategory;
-//
-//	@ManyToOne
-//	private FeedbackQuestionType FeedbackQuestionType;
+	@ManyToOne
+	private FeedbackCategory FeedbackCategory;
+
+	@ManyToOne
+	private FeedbackQuestionType FeedbackQuestionType;
 
 }

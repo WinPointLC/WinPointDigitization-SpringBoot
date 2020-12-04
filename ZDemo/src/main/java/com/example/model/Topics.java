@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -45,8 +46,8 @@ public class Topics {
 	/////////////////////////
 
 	
-//	@ManyToOne
-//	private Course Course;
+	@ManyToOne
+	private Course Course;
 	
 	
 	

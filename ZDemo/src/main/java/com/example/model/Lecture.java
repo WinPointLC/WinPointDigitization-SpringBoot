@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,7 +23,7 @@ public class Lecture {
 	private String comments;
 	private String absentees;
 
-//	@ManyToOne
-//	private BatchDetails BatchDetails;
+	@ManyToOne
+	private BatchDetails BatchDetails;
 
 }

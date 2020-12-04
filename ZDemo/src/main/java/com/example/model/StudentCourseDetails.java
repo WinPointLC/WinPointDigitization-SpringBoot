@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -50,11 +51,11 @@ public class StudentCourseDetails {
 //	@JoinColumn(name = "gradeId", referencedColumnName = "gradeId")
 //	private List<ReminderType> gradeTypes;
 //
-//	@ManyToOne
-//	private Course Course;
-//	@ManyToOne
-//	private UserProfile UserProfile;
-//	@ManyToOne
-//	private BatchDetails BatchDetails;
+	@ManyToOne
+	private Course Course;
+	@ManyToOne
+	private UserProfile UserProfile;
+	@ManyToOne
+	private BatchDetails BatchDetails;
 
 }

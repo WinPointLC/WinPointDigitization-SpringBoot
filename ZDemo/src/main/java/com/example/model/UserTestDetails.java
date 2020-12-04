@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -75,10 +76,10 @@ public class UserTestDetails {
 //
 //	////////////////////////////
 //
-//	@ManyToOne
-//	private UserProfile UserProfile;
-//
-//	@ManyToOne
-//	private TestDetails TestDetails;
+	@ManyToOne
+	private UserProfile UserProfile;
+
+	@ManyToOne
+	private TestDetails TestDetails;
 
 }

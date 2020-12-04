@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -27,7 +28,7 @@ public class FacultySkills {
 //
 //	/////////////
 //
-//	@ManyToOne
-//	private UserProfile UserProfile;
+	@ManyToOne
+	private UserProfile UserProfile;
 
 }

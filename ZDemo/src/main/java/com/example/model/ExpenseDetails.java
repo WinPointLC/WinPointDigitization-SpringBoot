@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -25,22 +26,22 @@ public class ExpenseDetails {
 	private Integer organizationId;
 	private String receiptNumber;
 
-//	@ManyToOne
-//	private ExpenseType ExpenseTypes;
+	@ManyToOne
+	private ExpenseType ExpenseTypes;
 
-//	@ManyToOne
-//	private Course Course;
-//
-//	@ManyToOne
-//	private BatchDetails BatchDetails;
+	@ManyToOne
+	private Course Course;
 
-//	@ManyToOne
-//	private PaymentMode PaymentMode;
-//
-//	@ManyToOne
-//	private SegmentType SegmentType;
-//
-//	@ManyToOne
-//	private Organization Organizations;
+	@ManyToOne
+	private BatchDetails BatchDetails;
+
+	@ManyToOne
+	private PaymentMode PaymentMode;
+
+	@ManyToOne
+	private SegmentType SegmentType;
+
+	@ManyToOne
+	private Organization Organizations;
 
 }

@@ -2,6 +2,7 @@ package com.example.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -16,7 +17,7 @@ public class CoursePlans {
 	private Integer lectureNumber;
 	private String lecturePlan;
 
-//	@ManyToOne
-//	private Course Course;
+	@ManyToOne
+	private Course Course;
 
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -74,16 +75,16 @@ public class UserProfile {
 //
 //////////////////////////////
 //
-//	@ManyToOne
-//	private SecurityQuestions SecurityQuestions;
-//
-//	@ManyToOne
-//	private UserCategory UserCategory;
-//
-//	@ManyToOne
-//	private TimeSlots TimeSlots;
-//
-//	@ManyToOne
-//	private SegmentType SegmentType;
+	@ManyToOne
+	private SecurityQuestions SecurityQuestions;
+
+	@ManyToOne
+	private UserCategory UserCategory;
+
+	@ManyToOne
+	private TimeSlots TimeSlots;
+
+	@ManyToOne
+	private SegmentType SegmentType;
 
 }

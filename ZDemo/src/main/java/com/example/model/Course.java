@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -76,13 +77,13 @@ public class Course {
 //
 //	///////////////////////////////
 //
-//	@ManyToOne
-//	private Streams stream;
-//
-//	@ManyToOne
-//	private CourseType courseType;
-//
-//	@ManyToOne
-//	private EvaluationType EvaluationType;
+	@ManyToOne
+	private Streams stream;
+
+	@ManyToOne
+	private CourseType courseType;
+
+	@ManyToOne
+	private EvaluationType EvaluationType;
 
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -43,10 +44,10 @@ public class EnquiryDetails {
 	private String suggestion;
 	private Integer activeStatus;
 
-//	@ManyToOne
-//	private TimeSlots TimeSlots;
-//
-//	@ManyToOne
-//	private SegmentType SegmentType;
+	@ManyToOne
+	private TimeSlots TimeSlots;
+
+	@ManyToOne
+	private SegmentType SegmentType;
 
 }

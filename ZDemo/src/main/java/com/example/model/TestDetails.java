@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -40,12 +41,12 @@ public class TestDetails {
 //	
 //	///////////////////////////
 //
-//	@ManyToOne
-//	private Course Course;
-//
-////	
-//
-//	@ManyToOne
-//	private EvaluationType EvaluationType;
+	@ManyToOne
+	private Course Course;
+
+//	
+
+	@ManyToOne
+	private EvaluationType EvaluationType;
 
 }

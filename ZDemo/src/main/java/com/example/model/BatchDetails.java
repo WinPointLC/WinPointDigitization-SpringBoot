@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -49,13 +50,13 @@ public class BatchDetails {
 //	private List<RevenueDetail> RevenueDetail;
 //
 //	/////////////////////////
-//	@ManyToOne
-//	private Course course;
-//
-//	@ManyToOne
-//	private FacultySkills facultySkills;
-//
-//	@ManyToOne
-//	private SegmentType segmentType;
+	@ManyToOne
+	private Course course;
+
+	@ManyToOne
+	private FacultySkills facultySkills;
+
+	@ManyToOne
+	private SegmentType segmentType;
 
 }

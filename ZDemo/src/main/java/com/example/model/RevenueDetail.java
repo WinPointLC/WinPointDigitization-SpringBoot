@@ -2,6 +2,7 @@ package com.example.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -25,25 +26,25 @@ public class RevenueDetail {
 	private String userId;
 	private String receiveDate;
 
-//	@ManyToOne
-//	private RevenueType RevenueType;
-//
-//	@ManyToOne
-//	private Course Course;
-//
-//	@ManyToOne
-//	private BatchDetails BatchDetails;
-//
-//	@ManyToOne
-//	private PaymentMode PaymentMode;
-//
-//	@ManyToOne
-//	private SegmentType SegmentType;
-//
-//	@ManyToOne
-//	private Organization Organization;
-//
-//	@ManyToOne
-//	private UserProfile UserProfile;
+	@ManyToOne
+	private RevenueType RevenueType;
+
+	@ManyToOne
+	private Course Course;
+
+	@ManyToOne
+	private BatchDetails BatchDetails;
+
+	@ManyToOne
+	private PaymentMode PaymentMode;
+
+	@ManyToOne
+	private SegmentType SegmentType;
+
+	@ManyToOne
+	private Organization Organization;
+
+	@ManyToOne
+	private UserProfile UserProfile;
 
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -75,13 +76,13 @@ public class TechnicalQuestionBank {
 //
 //	///////////////////////////
 //
-//	@ManyToOne
-//	private Course Course;
-//
-//	@ManyToOne
-//	private Topics Topics;
-//
-//	@ManyToOne
-//	private DifficultyLevel DifficultyLevel;
+	@ManyToOne
+	private Course Course;
+
+	@ManyToOne
+	private Topics Topics;
+
+	@ManyToOne
+	private DifficultyLevel DifficultyLevel;
 
 }

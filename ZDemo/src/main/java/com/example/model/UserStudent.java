@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,10 +23,10 @@ public class UserStudent {
 	private Integer createdBy;
 	private Date createdDate;
 
-//	@ManyToOne
-//	private ClientCategory ClientCategory;
-//
-//	@ManyToOne
-//	private UserProfile UserProfile;
+	@ManyToOne
+	private ClientCategory ClientCategory;
+
+	@ManyToOne
+	private UserProfile UserProfile;
 
 }

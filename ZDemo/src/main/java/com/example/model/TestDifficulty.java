@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,13 +23,13 @@ public class TestDifficulty {
 	private Integer createdBy;
 	private Date createdDate;
 
-//	@ManyToOne
-//	private TestDetails TestDetails;
-//
-//	@ManyToOne
-//	private Topics Topics;
-//
-//	@ManyToOne
-//	private DifficultyLevel DifficultyLevel;
+	@ManyToOne
+	private TestDetails TestDetails;
+
+	@ManyToOne
+	private Topics Topics;
+
+	@ManyToOne
+	private DifficultyLevel DifficultyLevel;
 
 }
