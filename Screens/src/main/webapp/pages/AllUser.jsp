@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -126,8 +127,7 @@
 	    </div>
 	</div>
     <!-- End of All USer content  -->
-	
-	
+		
 	<!--   Core JS Files   -->
 	<script src="../assets/js/core/jquery.min.js"></script>
 	<script src="../assets/js/core/popper.min.js"></script>
@@ -180,7 +180,8 @@
 		var courseTypeId;
 		var courseId;
 		var batchId;
-
+		//alert('${fn:length(streamList)}');
+		
 		<c:forEach items="${streamList}" var="stream">
 			var anchor = document.createElement('a');
 			anchor.className="dropdown-item";

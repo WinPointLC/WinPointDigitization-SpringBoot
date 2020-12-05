@@ -484,17 +484,9 @@
 				contentType: 'application/json; charset=utf-8',
 				traditional: true,
 				success: function (jsonObj) {
-					//alert("FRom EMPDash");
-					var responseJson1=jsonObj[0], responseJson2=jsonObj[1], responseJson3=jsonObj[2];
-					var locationJson = eval('(' + responseJson1 + ')');
-					//alert("^^^^^^^" + locationJson);
-					if (locationJson.success) {
-						var strResJSON = JSON.stringify(responseJson2);
-						var streamJSON = JSON.stringify(responseJson3);
-						//alert("studentEmail : " + responseJson2.email);
-						window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(streamJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-					}
-				  //window.location.href=;
+					
+						window.location.href = "EmployeeDashboard-New";
+					
 				},
 				error: function(){
 					alert("Error");
@@ -562,26 +554,6 @@
 		}
 	</script>
 	
-	<script>
-	/*
-			var data;
-			var userProfile;
-			var streamList;
-			$(document).ready(function() {
-				var searchString = window.location.search.substring(1);
-				var arr = searchString.split('&');
-				var data= arr[0].split('=')[1];
-				var decodedData = decodeURIComponent(data);
-				var data1 = decodedData.substring(0, decodedData.indexOf('}')+1);
-				userProfile =  eval('(' + data1 + ')');
-				var data2 = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
-				streamList = eval('(' + data2 + ')');
-				alert("stream list length   " + streamList.length);
-				//document.getElementById('welcome').textContent = userProfile.firstName + " " + userProfile.lastName;
-				//md.initDashboardPageCharts();
-				strResJSON = JSON.stringify(userProfile);
-			});
-	*/
-	</script>
+	
 </body>
 </html>

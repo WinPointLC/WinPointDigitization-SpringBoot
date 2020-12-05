@@ -186,9 +186,9 @@
 					type: 'POST',
 					//url: servletURL + 'StreamCourseTypeServlet',
 					url: "/StreamCourseType",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						courseTypeList=jsonObj;
@@ -239,9 +239,9 @@
 					type: 'POST',
 					//url: servletURL + 'StreamCourseTypeCoursesServlet',
 					url: "/StreamCourseTypeCourses",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						coursesList=jsonObj;
@@ -292,9 +292,9 @@
 					type: 'POST',
 					//url: servletURL + 'StreamCourseTypeCoursesServlet',
 					url: "/StreamCourseTypeCourseBatches",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						batchDetailsList=jsonObj;

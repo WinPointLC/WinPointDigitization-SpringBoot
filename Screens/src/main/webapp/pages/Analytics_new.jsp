@@ -22,38 +22,57 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
-	<script src="../assets/js/core/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
   <script type="text/javascript">
-	  var studentCourseDetailsList;
-	  var studentGACourseDetailsList;
-	
-	  //studentCourseDetailsList = '${studentCourseDetailsList}';
-	  //studentGACourseDetailsList = '${studentGACourseDetailsList}';
+  
+  var userId = location.search.substring(1).split("=")[1];
+  //alert("User Id: " + userId);
+  var studentCourseDetailsList;
+  var studentGACourseDetailsList;
 
- 
+  
+  
+			var myData = {
+						userId : userId
+			};
+            $.ajax({
+              type: 'POST',
+              //url: servletURL + 'AnalyticsServlet?getInfoParam=courseDetails&view=userModal',
+              url:"/Analytics?getInfoParam=courseDetails&view=userModal",
+              data: jQuery.param(myData),
+              dataType: 'json',
+              contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+              traditional: true,
+              success: function (jsonObj) {
+                studentCourseDetailsList=jsonObj[1];
+				studentGACourseDetailsList=jsonObj[2];
+				/*
+				alert("1st courseName: " + studentCourseDetailsList[0].courseName);
+				alert("Aggregate: " + studentCourseDetailsList[0].courseAggr);
+				
+				alert("1st GA courseName: " + studentGACourseDetailsList[0].courseName);
+				alert("GA Aggregate: " + studentGACourseDetailsList[0].courseAggr);
+				*/
+			  }
+			  
+		  });
+  
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart1);
     var value1;
     var value2;
     var courseId = 0;
     function drawChart1() {
-     
+      
 
       var techArray = [];// = [['Course', 'Marks'],['C', 10],['DS', 40],['Java', 70]];
       var header = ['Course', 'Marks'];
       techArray.push(header);
-
-      <c:forEach items="${studentCourseDetailsList}" var="det">
-		 var techData = ['${det.courseName}', '${det.courseAggr}'];
-	     techArray.push(techData);
-	  </c:forEach>     
-	
-    /*   for(var i=0; i<studentCourseDetailsList.length; i++){
+      for(var i=0; i<studentCourseDetailsList.length; i++){
             // alert(studentCourseDetailsList.courseName);
         var techData = [studentCourseDetailsList[i].courseName, studentCourseDetailsList[i].courseAggr];
         techArray.push(techData);
-      } */
+      }
       // alert("Techarray: "+  techArray);
       var data = new google.visualization.arrayToDataTable(techArray);
 
@@ -74,20 +93,12 @@
           // alert("The user has selected "+" "+value2);
           document.getElementById('clickedcontent1').textContent ="   Subject:   " + value1;
           document.getElementById('clickedcontent2').textContent = "   Marks:   " + value2;
-
-          <c:forEach items="${studentCourseDetailsList}" var="det">
-		 	    if('${det.courseName}' == value1){
-		  		  courseId = '${det.courseId}';
-		  	      break;
-		  	    }
- 	      </c:forEach>    
- 	  
-         /*  for(var i=0; i<studentCourseDetailsList.length; i++){
+          for(var i=0; i<studentCourseDetailsList.length; i++){
         	  if(studentCourseDetailsList[i].courseName ==value1){
         		  courseId = studentCourseDetailsList[i].courseId;
         	      break;
         	  }
-          } */
+          }
           drawChart2();
         }
       }
@@ -100,34 +111,26 @@
 google.charts.load("current",{'packages':['corechart']});
 //google.charts.setOnLoadCallback(drawChart2);
 function drawChart2() {
-	// var data = new google.visualization.DataTable();
-	// data.addColumn('string', 'Topics');
-	// data.addColumn('number', 'Marks');
-	
+
  	 var myData = {
+					userId:userId,
 	     			courseId: courseId
     	    	  };
 			$.ajax({
 				type: 'POST',
-				//url: servletURL + 'AnalyticsServlet',
-				url: "/AnalyticsData",
-				data: jQuery.param(myData),
+				//url: servletURL + 'AnalyticsServlet?getInfoParam=topicDetails&view=userModal',
+				url:"/Analytics?getInfoParam=topicDetails&view=userModal",
+                data: jQuery.param(myData),
+				//data: JSON.stringify(myData),
 				dataType: 'json',
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (jsonObj) {
 					//alert("Success from AnalyticsForm");
-					//var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
-
-					// var topicArray = '[["';
-					// for(var i=0; i<responseJson2.length; i++){
-					// 	topicArray += responseJson2[i].topicName + '",' + responseJson2[i].topicwiseNumberOfCorrectAns + '],["';
-					// }
-					// topicArray = topicArray.substring(0, topicArray.length-3) + ']';
-					// //alert("******* " + topicArray);
-					// data.addRows(JSON.parse(topicArray));
-
-					  var responseJson2=jsonObj;
+					var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+					
+					alert("1st topicName: " + responseJson2[0].topicName);
+					
 			          var topicArray = [];// = [['Course', 'Marks'],['C', 10],['DS', 40],['Java', 70]];
 			          var topicHeader = ['TopicName', 'TopicwiseMarks'];
 			          topicArray.push(topicHeader);
@@ -136,29 +139,27 @@ function drawChart2() {
 			            var topicData = [responseJson2[i].topicName , responseJson2[i].topicwiseNumberOfCorrectAns];
 			            topicArray.push(topicData);
 			          }
-			
+
 			          // alert("topicArray: "+  topicArray);
 			          var data = new google.visualization.arrayToDataTable(topicArray);
-			
-								var options = {
-									    title: 'Your Topicwise score in Evaluations',
-									     width: 400,
-									     height: 300,
-								};
-								var chart = new google.visualization.BarChart(document.getElementById('barchart'));
-								chart.draw(data, options);
-							},
-							error: function(){
-								//alert("Error");
-								document.getElementById("error").innerHTML = "Invalid email or password";
-							}
-			
-						});
+
+					var options = {
+						    title: 'Your Topicwise score in Evaluations',
+						     width: 400,
+						     height: 300,
+					};
+					var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+					chart.draw(data, options);
+				},
+				error: function(){
+					//alert("Error");
+					document.getElementById("error").innerHTML = "Invalid email or password";
+				}
+
+			});
 
 }
 </script>
-
-
 <!-- Script for GA Section -->
 <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
@@ -174,7 +175,7 @@ function drawChart2() {
    //   var GAData = '[["LR",30],["QA",26],["VR",39],["VA",32]]';
      // data.addRows(JSON.parse(GAData));
 
-    /*   if(studentGACourseDetailsList.length !=0){
+      if(studentGACourseDetailsList.length !=0){
       var generalAptitudeData = '[["';
 		for(var i=0; i<studentGACourseDetailsList.length; i++){
 			generalAptitudeData += studentGACourseDetailsList[i].courseName + '",' + studentGACourseDetailsList[i].courseAggr + '],["';
@@ -183,21 +184,8 @@ function drawChart2() {
 
         //alert(generalAptitudeData);
         data.addRows(JSON.parse(generalAptitudeData));
-      } */
+      }
 
-
-       if ('${fn:length(studentGACourseDetailsList)}' != 0)
-       {
-    	      var generalAptitudeData = '[["';
-    	      <c:forEach items="${studentGACourseDetailsList}" var="det">
-    	        generalAptitudeData += '${det.courseName}' + '",' + '${det.courseAggr}' + '],["';
-    	 	  </c:forEach>  
-    			
-    		  generalAptitudeData = generalAptitudeData.substring(0, generalAptitudeData.length-3) + ']';
-
-    	      //alert(generalAptitudeData);
-    	      data.addRows(JSON.parse(generalAptitudeData));
-    	} 
 
       var options = {
         title: 'My Evaluation Scores'
@@ -214,79 +202,69 @@ function drawChart2() {
           document.getElementById('clickedcontent3').textContent ="   Subject:  " + value3;
           document.getElementById('clickedcontent4').textContent = "  Marks:  " + value4;
 
-         /*  for(var i=0; i<studentGACourseDetailsList.length; i++){
+          for(var i=0; i<studentGACourseDetailsList.length; i++){
         	  if(studentGACourseDetailsList[i].courseName ==value1){
         		  courseId = studentGACourseDetailsList[i].courseId;
         	      break;
         	  }
-          } */
-
-          <c:forEach items="${studentGACourseDetailsList}" var="det">
-	 	    if('${det.courseName}' == value1){
-	  		  courseId = '${det.courseId}';
-	  	      break;
-	  	    }
-          </c:forEach>    
-          drawChart2();
+          }
+          drawChart3();
         }
       }
       google.visualization.events.addListener(chart,'select',selectHandler);
       chart.draw(data, options);
     }
 
-</script> 
- 
+  </script>
  <!--  <script type="text/javascript">
 google.charts.load("current",{'packages':['corechart']});
-//google.charts.setOnLoadCallback(drawChart2);
+//google.charts.setOnLoadCallback(drawChart3);
 function drawChart3() {
-	// var data = new google.visualization.DataTable();
-	// data.addColumn('string', 'Topics');
-	// data.addColumn('number', 'Marks');
-	
- 	 	    var myData = {
+// alert("drawChart2    " + value1);
+
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Topics');
+data.addColumn('number', 'Marks');
+
+ var myData = {
 	     			courseId: courseId
     	    	  };
 			$.ajax({
 				type: 'POST',
-				url: "/AnalyticsGAData",
+				url: '/OnlineEvaluationSystem/CommonController?action=AnalyticsServlet',
 				data: JSON.stringify(myData),
 				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				traditional: true,
 				success: function (jsonObj) {
-					
-					  var responseJson2=jsonObj;
-			          var topicArray = [];// = [['Course', 'Marks'],['C', 10],['DS', 40],['Java', 70]];
-			          var topicHeader = ['TopicName', 'TopicwiseMarks'];
-			          topicArray.push(topicHeader);
-			          for(var i=0; i<responseJson2.length; i++){
-			            // alert(studentCourseDetailsList.courseName);
-			            var topicData = [responseJson2[i].topicName , responseJson2[i].topicwiseNumberOfCorrectAns];
-			            topicArray.push(topicData);
-			          }
-			
-			          // alert("topicArray: "+  topicArray);
-			          var data = new google.visualization.arrayToDataTable(topicArray);
-			
-								var options = {
-									    title: 'Your Topicwise score in Evaluations',
-									     width: 400,
-									     height: 300,
-								};
-								var chart = new google.visualization.BarChart(document.getElementById('barchart'));
-								chart.draw(data, options);
-							},
-							error: function(){
-								//alert("Error");
-								document.getElementById("error").innerHTML = "Invalid email or password";
-							}
-			
-						});
+					//alert("Success from AnalyticsForm");
+					var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
+					alert(responseJson2);
+					var topicArray = '[["';
+					for(var i=0; i<responseJson2.length; i++){
+						topicArray += responseJson2[i].topicName + '",' + responseJson2[i].topicwiseNumberOfCorrectAns + '],["';
+					}
+					topicArray = topicArray.substring(0, topicArray.length-3) + ']';
+					alert("******* " + topicArray);
+					data.addRows(JSON.parse(topicArray));
+					var options = {
+						    title: 'Your Topicwise score in Evaluations',
+						     width: 400,
+						     height: 300,
+					};
+					var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+					chart.draw(data, options);
+				},
+				error: function(){
+					//alert("Error");
+					document.getElementById("error").innerHTML = "Invalid email or password";
+				}
+
+			});
+
 
 }
 </script> -->
- 
 
 </head>
 <body>
@@ -335,7 +313,7 @@ function drawChart3() {
                         <form action="#" class="form">
                           <div class="row">
                             <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
-                              <div id="piechart" style="width: 400px; height: 300px;" class="chart"></div>
+                              <div id="piechart" style="width: 400px; height: 300px; margin-left:-50px;" class="chart"></div>
                             </div>
                             <div class="col-md-4" >
                               <div class="right-side-contents">

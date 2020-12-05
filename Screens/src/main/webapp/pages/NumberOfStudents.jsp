@@ -124,7 +124,7 @@
 			var decodedData = decodeURIComponent(data);
 			addStudentList=JSON.parse(decodedData); */
 
-			var addStudentList = '${addStudentList}';
+			//var addStudentList = '${addStudentList}';
 			
 			var elem = document.getElementById('details-batch');
 			if(elem!=null){
@@ -153,18 +153,17 @@
 			table.appendChild(thead);
 			
 			var tbody = document.createElement('tbody');
-			
-			for(var i=0;i<addStudentList.length;i++){
-				
+
+			<c:forEach items="${addStudentList}" var="det">
 				var tr = document.createElement('tr');
 				var td1 = document.createElement('td');
-				td1.textContent = addStudentList[i].student;
+				td1.textContent = '${det.student}';
 				var td2 = document.createElement('td');
-				td2.textContent = addStudentList[i].registered;
+				td2.textContent = '${det.registered}';
 				var td3 = document.createElement('td');
-				td3.textContent = addStudentList[i].time;
+				td3.textContent = '${det.time}';
 				var td4 = document.createElement('td');
-				td4.textContent = addStudentList[i].startDate;
+				td4.textContent = '${det.startDate}';
 				
 				tr.appendChild(td1);
 				tr.appendChild(td2);
@@ -173,7 +172,8 @@
 				tr.appendChild(td3);
 				
 				tbody.appendChild(tr);
-			}
+			</c:forEach>     
+			
 			table.appendChild(tbody);
 			
 			document.getElementById('table-batch-add-student').appendChild(table);
