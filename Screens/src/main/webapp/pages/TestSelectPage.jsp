@@ -207,9 +207,6 @@
                                
                     //var questionJson = jsonObj[1];
                     var questionJSON = JSON.stringify(questionJson);
-
-                    //var testDetailsJson = jsonObj[2];
-                    //var testDetailsJSON = JSON.stringify(testDetailsJson);
                     
                     window.location.href = "RulesPage" + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(questionJSON) +  "&courseName=" + courseName;
                  
@@ -241,11 +238,8 @@
                                
                     var questionJson = jsonObj[1];
                     var questionJSON = JSON.stringify(questionJson);
-
-                    var testDetailsJson = jsonObj[2];
-                    var testDetailsJSON = JSON.stringify(testDetailsJson);
                     
-                    window.location.href = RulesPage + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(questionJSON) + encodeURIComponent(testDetailsJSON) + "&courseName=" + courseName;
+                    window.location.href = "RulesPage" + "?varid=" + encodeURIComponent(strResJSON) + encodeURIComponent(questionJSON) +  "&courseName=" + courseName;
                   },
                   error: function(){
                     //alert("Error");

@@ -34,58 +34,7 @@
                           <p class="card-category">Complete your FeedBack Form</p>
                         </div>
                         <div class="card-body" id="card-body">
-                          <!-- <form>
-                            <div class="row ">
-                              <div class="col-md-5">
-                                <div class="form-group" >
-                                  <label class="bmd-label-floating">Clarity of Questions</label>
-                                </div>
-                              </div>
-                              <div class="col-md-5">
-                                <div class="star">
-                                  <x-star-rating value="3" number="5"></x-star-rating>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row ">
-                              <div class="col-md-5">
-                                <div class="form-group">
-                                  <label class="bmd-label-floating">Usability of Test Interface</label>
-                                </div>
-
-                              </div>
-                              <div class="col-md-5">
-                                <div class="star">
-                                  <x-star-rating value="3" number="5"></x-star-rating>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row ">
-                              <div class="col-md-5">
-                                <div class="form-group">
-                                  <label class="bmd-label-floating">Usability of Code Editor</label>
-                                </div>
-                              </div>
-                              <div class="col-md-5">
-                                <div class="star">
-                                  <x-star-rating value="3" number="5"></x-star-rating>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="row">
-                              <div class="col-md-12 ">
-                                <div class="form-group">
-                                  <label class="bmd-label-floating">Additional Comments</label>
-                                  <textarea name="TellUs" rows="4" cols="80" class="form-control"></textarea>
-                                </div>
-                              </div>
-                            </div>
-
-                            <button type="button" class="btn btn-primary pull-right" onclick="saveFeedback()">Save</button>
-                            <div class="clearfix"></div>
-
-                          </form>-->
+                         
                         </div>
 
                       </div>
@@ -97,7 +46,34 @@
 
                 <script type="text/javascript">
 
+                var fname='${firstName}';
+                var lname='${lastName}';
+
                 function saveFeedback() {
+
+                    var userFeedback = [];
+                    for(var i=0; i<feedbackQuestionsList.length; i++){
+                  	    console.log(i);
+                  	    var curStarRateElemVal = document.getElementById(feedbackQuestionsList[i].feedbackQuestionId).value;
+                  	    var feedback = {
+                  	    		feedbackQuestionId : feedbackQuestionsList[i].feedbackQuestionId,
+                  	    		response : curStarRateElemVal
+                  	    };
+                  	    userFeedback.push(feedback);
+                  	}
+
+                    //alert(userFeedback[0].feedbackQuestionId + " " + userFeedback[0].response);
+
+                  
+                        //alert(locationJson.fistName);
+                        var marksJSON = JSON.stringify(result);
+                        //window.location.href = "Result" + "?varid=" + encodeURIComponent(marksJSON) + "&firstName=" + "Pragya" +  "&lastName=" + "Korpal" ;
+                        window.location.href = "Result" + "?varid=" + encodeURIComponent(marksJSON) + "&firstName=" + fname +  "&lastName=" + lname ;
+                     
+                    //document.getElementById('ResultPage').showModal();
+                  }
+
+                /* function saveFeedback() {
 
                   var userFeedback = [];
                   for(var i=0; i<feedbackQuestionsList.length; i++){
@@ -114,19 +90,15 @@
 
                   $.ajax({
                     type: 'POST',
-                    url: servletURL + 'FeedbackServlet',
+                    //url: servletURL + 'FeedbackServlet',
+                    url: "/TestFeedback",
                     data: JSON.stringify(userFeedback) + JSON.stringify(result),
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     traditional: true,
                     success: function (jsonObj) {
-                      //alert("Success");
-                      var responseJson1=jsonObj[0];
-                      var locationJson = eval('(' + responseJson1 + ')');
-                      //alert(locationJson.location);
-                      //alert(locationJson.fistName);
-                      var marksJSON = JSON.stringify(result);
-                      window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON) + "&firstName=" + locationJson.firstName +  "&lastName=" + locationJson.lastName ;
+                    	 var marksJSON = JSON.stringify(result);
+                    	 window.location.href = "Result" + "?varid=" + encodeURIComponent(marksJSON) + "&firstName=" + fname +  "&lastName=" + lname ;
                     },
                     error: function(){
                       alert("Error");
@@ -134,7 +106,7 @@
 
                   });
                   //document.getElementById('ResultPage').showModal();
-                }
+                } */
               </script>
               <script type="text/javascript">
               //code to make it dynamic

@@ -212,7 +212,7 @@
 	  	  }
       }
       var answerStrList = ["A", "B", "C", "D"];
-      alert(answerList);
+     // alert(answerList);
       for(i=0; i<answerList.length; i++){
     	 //alert("answerList[" + i + "] = " + answerList[i]);
     	 //alert("answerStrList[answerList[i]-1] = " + answerStrList[answerList[i]-1]);
@@ -240,15 +240,14 @@
      	//alert("hours : " + hours + " minutes : " + minutes + " seconds " + seconds);
      	//alert("courseId before submit = " + courseId);
      	
-     	var marksJSON=[
+     	var marksJSON=
 			  			{
-			  				question:"q1"	
-			  			},
-			  			{
-			  				question:"q2"				
+			  				courseName:"c",
+			  				marks:25,
+			  				totalMarks:30
 			  			}
-		  			
-	  				]
+			  			
+     	marksJSON=JSON.stringify(marksJSON);
 
      	var feedbackQuestionsJSON=[
   			{
@@ -259,10 +258,11 @@
   			}
 			
 			]
-     	
 
-     	 window.location.href = "Result" + "?varid=" +encodeURIComponent(marksJSON) + encodeURIComponent(feedbackQuestionsJSON);
-      
+     	feedbackQuestionsJSON=JSON.stringify(feedbackQuestionsJSON);
+     	
+     	window.location.href = "FeedBackForm" + "?varid=" + encodeURIComponent(marksJSON) + encodeURIComponent(feedbackQuestionsJSON);
+     	
     
         }
    /*  function callServlet() {
@@ -291,7 +291,8 @@
 
  $.ajax({
 	 	type: 'POST',
-        url: servletURL + 'ResultServlet',
+        //url: servletURL + 'ResultServlet',
+        url: "/Result",
         data: JSON.stringify(answerList) + JSON.stringify(questionsList) + JSON.stringify(isCorrect) + JSON.stringify(myData),
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
@@ -299,15 +300,15 @@
 
         success: function (jsonObj) {
           //alert("Success");
-          var responseJson1=jsonObj[0];
-          var locationJson = eval('(' + responseJson1 + ')');
-          var responseJson2 = jsonObj[1];
-          //alert(responseJson2);
-          var feedbackQuestionsJSON = JSON.stringify(responseJson2);
-          //alert(feedbackQuestionsJSON);
-          var marksJSON = JSON.stringify(myData);
-          //alert("marksJSON = " + marksJSON);
-          window.location.href = locationJson.location + "?varid=" + encodeURIComponent(marksJSON) + encodeURIComponent(feedbackQuestionsJSON);
+          var marksJSON=jsonObj[0];
+          
+          marksJSON=JSON.stringify(marksJSON);
+
+          var feedbackQuestionsJSON=jsonObj[1];
+
+          feedbackQuestionsJSON=JSON.stringify(feedbackQuestionsJSON);
+       	
+          window.location.href = "FeedBackForm" + "?varid=" + encodeURIComponent(marksJSON) + encodeURIComponent(feedbackQuestionsJSON);
         },
         error: function(){
           alert("Error");

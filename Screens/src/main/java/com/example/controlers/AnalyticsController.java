@@ -46,6 +46,17 @@ public class AnalyticsController {
 	}
 	
 	
+	
+	@RequestMapping(value = "FeedBackForm")
+	public ModelAndView showFeedBackFormPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("FeedBackForm");
+		mv.addObject("firstName", "Pragya");
+		mv.addObject("lastName", "Korpal");
+		return mv;
+	}
+	
+	
 	@Autowired
 	StreamsRepository stream;
 	@Autowired

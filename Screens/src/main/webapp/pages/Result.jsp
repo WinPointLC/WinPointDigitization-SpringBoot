@@ -130,6 +130,7 @@
           var data= arr[0].split('=')[1];
           var resultJson = decodeURIComponent(data);
           var result =  eval('(' + resultJson + ')');
+          //alert(result);
           var firstName = (arr[1].split('=')[1]).toUpperCase();
           var lastName = (arr[2].split('=')[1]).toUpperCase();
           //alert(result.numberOfAttempedQuestions + ' ' + result.numberOfCorrectAnswers + ' ' + result.numberOfTotalQuestions);
@@ -152,13 +153,7 @@
           var wrongAns = document.getElementById('wrongAns');
           wrongAns.textContent =wrongAnswer ;
 
-          /* var searchString = window.location.search.substring(1);
-          var arr = searchString.split('&');
-          var data= arr[0].split('=')[1];
-          var resultJson = decodeURIComponent(data);
-          var result =  eval('(' + resultJson + ')');
-          var firstName = (arr[1].split('=')[1]).toUpperCase();
-          var lastName = (arr[2].split('=')[1]).toUpperCase(); */
+         
           //alert(correctAnswer + ' ' + attemptedQues + ' ' + wrongAnswer);
           document.getElementById('courseName').textContent = result.courseName;
           document.getElementById('score').textContent = result.marks + '/' + result.totalMarks;

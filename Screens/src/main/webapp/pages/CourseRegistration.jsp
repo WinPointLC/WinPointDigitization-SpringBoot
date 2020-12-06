@@ -160,9 +160,12 @@
               </div>
               <script>
 
+              var streamIdList=[];
+
               <c:forEach items="${streamList}" var="stream">
                   var div1 = document.createElement('div');
 	              div1.id="tab-div";
+	              streamIdList.push('${stream.streamId}');
 	              var li = document.createElement('li');
 	              li.className='nav-item';
 	              li.id =  '${stream.streamId}' + 'l';
@@ -318,14 +321,14 @@
         
         var streamElem = document.getElementById(streamId + 'a');
         var elem;
-       /*  for(i=0; i<streamList.length; i++){
-        	elem = document.getElementById(streamList[i].streamId + 'a');
+        for(i=0; i<streamIdList.length; i++){
+        	elem = document.getElementById(streamIdList[i] + 'a');
         	 elem.className = 'nav-link';
-        } */
-        <c:forEach items="${streamList}" var="stream">
+        } 
+       /*  <c:forEach items="${streamList}" var="stream">
 		     elem = document.getElementById('${stream.streamId}' + 'a');
 		   	 elem.className = 'nav-link';
-  		</c:forEach>  
+  		</c:forEach>   */
         streamElem.className = 'nav-link active';
        
         elem = document.getElementById('courseList');

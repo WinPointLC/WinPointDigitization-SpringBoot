@@ -465,7 +465,7 @@
   			
   			]
          
-              window.location.href = "TestSelectPage" + "?varid="+encodeURIComponent(JSON.stringify(responseJson));;
+              window.location.href = "TestSelectPage" + "?varid="+encodeURIComponent(JSON.stringify(responseJson));
            
         } 
 
@@ -566,16 +566,8 @@
           traditional: true,
           success: function (jsonObj) {
 
-            var responseJson1 = jsonObj[0];
-            var locationJson = eval('(' + responseJson1 + ')');
-
-            var responseJson2=jsonObj[1];
-            var strResJSON = JSON.stringify(responseJson2);
-            for(i=0; i<responseJson2.length; i++){
-              //alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
-            }
-            //window.location.href = locationJson.location;
-            window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON);
+            var responseJson = jsonObj;
+            window.location.href = "TestSelectPage" + "?varid="+encodeURIComponent(JSON.stringify(responseJson));
           },
           error: function(){
             alert("Error");
