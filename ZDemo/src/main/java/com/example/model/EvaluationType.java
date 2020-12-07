@@ -1,9 +1,12 @@
 package com.example.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -20,14 +23,15 @@ public class EvaluationType {
 
 	
 //	
-//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
-//	private List<Course> Course;
-//	
-//	
-//	@OneToMany(targetEntity = TestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
-//	private List<TestDetails> TestDetails;	
+	@OneToMany(targetEntity = Course.class)
+	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
+	private Set<Course> Course;
+	
+	
+	@OneToMany(targetEntity = TestDetails.class)
+	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
+	private Set
+	<TestDetails> TestDetails;	
 	
 /////////////////////////////////
 	

@@ -17,12 +17,13 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "p_id")
 	private int pid;
-	private String ProductName;
+	private String ProductName; 
 	private int qty;
 	private int price;
 	private int idLet;
 	private int productTypeId;
 
-	@ManyToOne
-	Product product;
+
+//	@ManyToOne
+//	private Customer customer;
 }

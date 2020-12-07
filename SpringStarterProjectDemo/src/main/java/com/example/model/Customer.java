@@ -20,13 +20,12 @@ public  class Customer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Id")
-	private int Id;
+	private int id;
 	private String name;
 	private String email;
 	
 	@OneToMany(targetEntity = Product.class)
-	@JoinColumn(name = "IdLet", referencedColumnName = "id")
+	@JoinColumn(name = "idLet", referencedColumnName = "id")
 	private List<Product> products;
 
 	

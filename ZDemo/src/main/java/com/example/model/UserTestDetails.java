@@ -1,10 +1,12 @@
 package com.example.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -26,60 +28,56 @@ public class UserTestDetails {
 	private Integer attempted;
 	private String evaluationDone;
 
-//	@OneToMany(targetEntity = StudentsModularTestResult_C_TBC.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentsModularTestResult_C_TBC> ModularTestResult_C_TBC;
+	@OneToMany(targetEntity = StudentsModularTestResult_C_TBC.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentsModularTestResult_C_TBC> ModularTestResult_C_TBC;
+
+	@OneToMany(targetEntity = StudentTestResult_C_Modular.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResult_C_Modular> StudentTestResult_C_Modular;
 //
-//	@OneToMany(targetEntity = StudentTestResult_C_Modular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResult_C_Modular> StudentTestResult_C_Modular;
+	@OneToMany(targetEntity = StudentTestResult_CPP_CRT.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResult_CPP_CRT> StudentTestResult_CPP_CRT;
 //
-//	@OneToMany(targetEntity = StudentTestResult_CPP_CRT.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResult_CPP_CRT> StudentTestResult_CPP_CRT;
+	@OneToMany(targetEntity = StudentTestResult_CPP_Modular.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
 //
-//	@ManyToOne(targetEntity = StudentTestResult_CPP_Modular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
+	@OneToMany(targetEntity = StudentTestResult_CPP_TBC.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResult_CPP_TBC> StudentTestResult_CPP_TBC;
 //
-//	@OneToMany(targetEntity = StudentTestResult_CPP_TBC.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResult_CPP_TBC> StudentTestResult_CPP_TBC;
+	@OneToMany(targetEntity = StudentTestResultComputerNetwork_CRT.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResultComputerNetwork_CRT> StudentTestResultComputerNetwork_CRT;
 //
-//	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResultComputerNetwork_CRT> StudentTestResultComputerNetwork_CRT;
-//
-//	@ManyToOne(targetEntity = StudentTestResultJava_CRT.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResultJava_CRT> StudentTestResultJava_CRT;
-//
-//	@ManyToOne(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResultJava_TBC> StudentTestResultJava_TBC;
-//
-//	@ManyToOne(targetEntity = StudentTestResultJavaModular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResultJavaModular> StudentTestResultJavaModular;
-//
-//	@OneToMany(targetEntity = StudentTestResultJavascriptModular.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResultJavascriptModular> StudentTestResultJavascriptModular;
-//
-//	@ManyToOne(targetEntity = StudentTestResultOperatingSystem_CRT.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
-//
-//	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private List<TestFeedback> TestFeedback;
+	@OneToMany(targetEntity = StudentTestResultJava_CRT.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResultJava_CRT> StudentTestResultJava_CRT;
+
+	@OneToMany(targetEntity = StudentTestResultJava_TBC.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResultJava_TBC> StudentTestResultJava_TBC;
+
+	@OneToMany(targetEntity = StudentTestResultJavaModular.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResultJavaModular> StudentTestResultJavaModular;
+
+	@OneToMany(targetEntity = StudentTestResultJavascriptModular.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResultJavascriptModular> StudentTestResultJavascriptModular;
+
+	@OneToMany(targetEntity = StudentTestResultOperatingSystem_CRT.class)
+	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
+	private Set<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
+
+	
+	
+	
 //
 //	////////////////////////////
 //
-	@ManyToOne
-	private UserProfile UserProfile;
-
-	@ManyToOne
-	private TestDetails TestDetails;
+	
 
 }

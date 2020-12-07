@@ -1,7 +1,12 @@
 package com.example.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -13,4 +18,7 @@ public class ReminderType {
 	private Integer reminderTypeId;
 	private String reminderTypeCategory;
 	
+	@OneToMany(targetEntity = StudentCourseDetails.class)
+	@JoinColumn(name = "reminderTypeId", referencedColumnName = "reminderTypeId")
+	private Set<StudentCourseDetails> StudentCourseDetails;
 }

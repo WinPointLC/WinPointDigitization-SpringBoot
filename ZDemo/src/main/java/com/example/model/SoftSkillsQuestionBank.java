@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -15,8 +14,8 @@ public class SoftSkillsQuestionBank {
 //	fk
 	@Id
 	private String questionId;
-	private String courseId;
-	private String topicId;
+	private Integer courseId;
+	private Integer topicId;
 	private String question;
 	private String option1;
 	private String option2;
@@ -30,13 +29,6 @@ public class SoftSkillsQuestionBank {
 	private String createdBy;
 	private Date createdDate;
 
-	@ManyToOne
-	private Course Course;
 
-	@ManyToOne
-	private Topics Topics;
-
-	@ManyToOne
-	private DifficultyLevel DifficultyLevel;
 
 }

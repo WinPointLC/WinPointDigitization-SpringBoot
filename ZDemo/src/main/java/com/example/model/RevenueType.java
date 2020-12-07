@@ -1,7 +1,11 @@
 package com.example.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -14,9 +18,9 @@ public class RevenueType {
 	private String revenueTypeName;
 
 	
-//	@OneToMany(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
-//	private List<RevenueDetail> RevenueDetail;
+	@OneToMany(targetEntity = RevenueDetail.class)
+	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
+	private Set<RevenueDetail> RevenueDetail;
 	
 	
 //////////////////////

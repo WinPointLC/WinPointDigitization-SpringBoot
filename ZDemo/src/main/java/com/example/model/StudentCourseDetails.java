@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -33,29 +32,13 @@ public class StudentCourseDetails {
 	private String coursewareIssued;
 	private String assignmentsIssued;
 	private String assignmentsSubmitted;
-	private String reminderTypeId;//
+	private Integer reminderTypeId;//
 	private Integer feeReminderCount;
 	private Integer studentCount;
 	private Integer dueAmount;
 	private Integer percentageAttendance;
 	
-	
-	
-//	private BatchDetails batchDetails;
-
-//	@OneToMany(targetEntity = ReminderType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "reminderTypeId", referencedColumnName = "reminderTypeId")
-//	private List<ReminderType> remainderTypes;
 //
-//	@OneToMany(targetEntity = GradingSystem.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "gradeId", referencedColumnName = "gradeId")
-//	private List<ReminderType> gradeTypes;
-//
-	@ManyToOne
-	private Course Course;
-	@ManyToOne
-	private UserProfile UserProfile;
-	@ManyToOne
-	private BatchDetails BatchDetails;
+	
 
 }

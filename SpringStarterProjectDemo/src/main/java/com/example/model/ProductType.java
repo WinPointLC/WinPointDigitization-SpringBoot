@@ -25,7 +25,7 @@ public class ProductType {
 	private String description;
 
 	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "productTypeId", referencedColumnName = "productTypeId")
+//	@JoinColumn(name = "productTypeId", referencedColumnName = "productTypeId")
 	private List<Product> products;
 
 	public int getpt_id() {

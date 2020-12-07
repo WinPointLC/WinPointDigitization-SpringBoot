@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,10 +21,5 @@ public class TestFeedback {
 	private Integer createdBy;
 	private Date createdDate;
 
-	@ManyToOne
-	private FeedbackQuestions FeedbackQuestions;
-
-	@ManyToOne
-	private UserTestDetails UserTestDetails;
 
 }

@@ -21,17 +21,6 @@ public class CourseFeedback {
 	private String markedForReview;
 	private Integer createdBy;
 	private Date createdDate;
-	
-//	@OneToMany(targetEntity = UserProfile.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private List<UserProfile> userProfile;
-//	
-//	@OneToMany(targetEntity = Course.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-//	private List<Course> courses;
-//	
-//	@OneToMany(targetEntity = FeedbackQuestions.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
-//	private List<FeedbackQuestions> feedbackQuestions;
+
 //	
 }

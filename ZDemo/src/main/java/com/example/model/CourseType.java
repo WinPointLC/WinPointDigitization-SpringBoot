@@ -1,9 +1,12 @@
 package com.example.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 //checked//
@@ -18,16 +21,19 @@ public class CourseType {
 	
 	
 	
-//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
-//	private List<Course> Course;
+	@OneToMany(targetEntity = Course.class)
+	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
+	private Set<Course> Course;
 //	
 //	
 //	
-//	@OneToMany(targetEntity = StreamCourseType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
-//	private List<StreamCourseType> StreamCourseType;
+	@OneToMany(targetEntity = StreamCourseType.class)
+	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
+	private Set<StreamCourseType> StreamCourseType;
 	
+	@OneToMany(targetEntity = ToolTips.class)
+	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
+	private Set<ToolTips> ToolTips;	
 	
 ///////////////////////////
 

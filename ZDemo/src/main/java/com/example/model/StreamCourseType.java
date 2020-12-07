@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -19,10 +18,5 @@ public class StreamCourseType {
 	private Date createdDate;
 	private String createdBy;
 
-	@ManyToOne
-	private Streams Streams;
-
-	@ManyToOne
-	private CourseType CourseType;
 
 }

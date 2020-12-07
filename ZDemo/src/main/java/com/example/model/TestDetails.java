@@ -1,10 +1,12 @@
 package com.example.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -15,7 +17,7 @@ public class TestDetails {
 //	redo fk
 	@Id
 	private Integer testDetailId;
-	private String courseId;//
+	private Integer courseId;//
 	private Integer testNumber;
 	private Integer totalQuestions;
 	private String rules;
@@ -26,27 +28,19 @@ public class TestDetails {
 	private Date createdDate;
 	
 	
+	@OneToMany(targetEntity = UserTestDetails.class)
+	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
+	private Set<UserTestDetails> UserTestDetails;
 	
-//	@OneToMany(targetEntity = TestDifficulty.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
-//	private List<TestDifficulty> TestDifficulty;
-//	
-//	
-//	@OneToMany(targetEntity = UserTestDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "testDetailsId", referencedColumnName = "testDetailsId")
-//	private List<UserTestDetails> UserTestDetails;
+	
+	
+	
 //
 //	
 //	
 //	
 //	///////////////////////////
 //
-	@ManyToOne
-	private Course Course;
-
-//	
-
-	@ManyToOne
-	private EvaluationType EvaluationType;
+	
 
 }

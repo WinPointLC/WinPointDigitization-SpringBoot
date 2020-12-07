@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -24,13 +23,9 @@ public class ToolTips {
 	
 	
 	
-	@ManyToOne
-	private CourseType CourseType;
 //	
 //	
-//	@OneToMany(targetEntity = ToolTips.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
-//	private List<ToolTips> ToolTips;	
+
 //	
 	
 

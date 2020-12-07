@@ -1,7 +1,11 @@
 package com.example.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -14,15 +18,15 @@ public class TimeSlots {
 	private String timeSlotsDescription;
 	
 	
-//	@OneToMany(targetEntity = EnquiryDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-//	private List<EnquiryDetails> EnquiryDetails;
-//	
-//	
-//	
-//	@OneToMany(targetEntity = UserProfile.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-//	private List<UserProfile> UserProfile;
+	@OneToMany(targetEntity = EnquiryDetails.class)
+	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
+	private Set<EnquiryDetails> EnquiryDetails;
+	
+	
+	
+	@OneToMany(targetEntity = UserProfile.class)
+	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
+	private Set<UserProfile> UserProfile;
 	
 	
 	

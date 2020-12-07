@@ -1,9 +1,12 @@
 package com.example.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -17,16 +20,15 @@ public class Streams {
 	private Integer createdBy;
 	private Date createdDate;
 	
+	
+	@OneToMany(targetEntity = StreamCourseType.class)
+	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
+	Set<StreamCourseType> streamCourseType;
 
-//	@OneToMany(targetEntity = Course.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
-//	private List<Course> Course;
-//	
-//	
-//	@OneToMany(targetEntity = StreamCourseType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
-//	private List<StreamCourseType> StreamCourseType;
-//	
+	@OneToMany(targetEntity = Course.class)
+	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
+	Set<Course> Course;
+
 	
 	
 	//////////////////////

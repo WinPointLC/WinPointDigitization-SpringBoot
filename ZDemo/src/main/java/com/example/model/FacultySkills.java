@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,13 +21,12 @@ public class FacultySkills {
 	private String segmentTypeId;
 	private String timeSlotsId;
 
-//	@OneToMany(targetEntity = BatchDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "facultyUserId", referencedColumnName = "facultyId")
-//	private List<BatchDetails> BatchDetails;
+	
+	
+	//doubt 
 //
 //	/////////////
 //
-	@ManyToOne
-	private UserProfile UserProfile;
+	
 
 }

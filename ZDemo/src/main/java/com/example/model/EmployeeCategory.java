@@ -1,9 +1,12 @@
 package com.example.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 //checked
@@ -16,11 +19,11 @@ public class EmployeeCategory {
 	private Integer createdBy;
 	private Date createdDate;
 
+	@OneToMany(targetEntity = EmployeeDetails.class)
+	@JoinColumn(name = "employeeCategoryId", referencedColumnName = "employeeCategoryId")
+	private Set<EmployeeDetails> EmployeeDetails;
 	
 	
-//	@OneToMany(targetEntity = EmployeeCategory.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "employeeCategoryId", referencedColumnName = "employeeCategoryId")
-//	private List<EmployeeDetails> EmployeeDetails;
 	
 	//////////////////
 

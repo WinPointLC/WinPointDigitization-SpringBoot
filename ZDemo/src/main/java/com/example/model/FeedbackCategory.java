@@ -1,7 +1,11 @@
 package com.example.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -14,9 +18,9 @@ public class FeedbackCategory {
 	private String feedbackCategoryDescription;
 
 	
-//	@OneToMany(targetEntity = FeedbackQuestions.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
-//	private List<FeedbackQuestions> FeedbackQuestions;
+	@OneToMany(targetEntity = FeedbackQuestions.class)
+	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
+	private Set<FeedbackQuestions> FeedbackQuestions;
 	
 	///////////////////
 }

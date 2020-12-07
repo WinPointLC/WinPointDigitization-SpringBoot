@@ -1,10 +1,12 @@
 package com.example.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -23,13 +25,9 @@ public class TestDifficulty {
 	private Integer createdBy;
 	private Date createdDate;
 
-	@ManyToOne
-	private TestDetails TestDetails;
 
-	@ManyToOne
-	private Topics Topics;
-
-	@ManyToOne
-	private DifficultyLevel DifficultyLevel;
+	@OneToMany(targetEntity = TestDetails.class)
+	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
+	private Set<TestDetails> TestDetails;
 
 }
