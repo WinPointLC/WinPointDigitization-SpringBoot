@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.model.Course;
 import com.example.model.CourseType;
 import com.example.model.Streams;
 import com.example.repository.BatchDetialsRepository;
@@ -54,7 +55,7 @@ public class AllUsersController {
 	CourseRepository CourseRepository;
 
 	@RequestMapping(value = "/StreamCourseTypeCourses", method = RequestMethod.POST)
-	public @ResponseBody List<?> showCourse(@RequestParam("streamId") String streamId,
+	public @ResponseBody List<Course> showCourse(@RequestParam("streamId") String streamId,
 			@RequestParam("courseTypeId") String courseTypeId) {
 		return CourseRepository.findByCourseTypeIdAndName(Integer.parseInt(courseTypeId), Integer.parseInt(streamId));
 	}

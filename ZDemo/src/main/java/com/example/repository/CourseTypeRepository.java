@@ -7,7 +7,6 @@ import com.example.model.CourseType;
 
 @Repository
 public interface CourseTypeRepository extends JpaRepository<CourseType, Integer>{
-	
+	CourseType findByCourseTypeId(Integer courseTypeId);
 }
 
-//public class CourseTypeRepository{}

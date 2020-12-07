@@ -3,7 +3,7 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.model.CourseType;
-import com.example.repository.CourseTypeRepository;
 import com.example.repository.StreamsRepository;
+import com.example.service.CourseTypeService;
 
-@Repository
+@Controller
 public class AllUserController {
 	
 	@Autowired
@@ -29,10 +29,10 @@ public class AllUserController {
 	}
 	
 	@Autowired
-	CourseTypeRepository CourseTypeRepository;
+	CourseTypeService courseTypeService;
 
 	@RequestMapping(value = "/StreamCourseType", method = RequestMethod.POST)
 	public @ResponseBody List<CourseType> showCourseType(@RequestParam("streamId") String streamId) {
-		return CourseTypeRepository.findByStreamId(Integer.parseInt(streamId));
+		return courseTypeService.CourseTypeList(Integer.parseInt(streamId));
 	}
 }
