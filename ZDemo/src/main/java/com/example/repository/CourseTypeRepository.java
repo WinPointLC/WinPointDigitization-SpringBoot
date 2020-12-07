@@ -5,9 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.example.model.CourseType;
 
-//@Repository
-//public interface CourseTypeRepository extends JpaRepository<CourseType, Integer>{
-//	
-//}
+@Repository
+public interface CourseTypeRepository extends JpaRepository<CourseType, Integer>{
+	
+}
 
-public class CourseTypeRepository{}
+//public class CourseTypeRepository{}

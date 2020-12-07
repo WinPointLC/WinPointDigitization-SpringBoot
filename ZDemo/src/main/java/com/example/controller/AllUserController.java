@@ -17,22 +17,22 @@ import com.example.repository.StreamsRepository;
 @Repository
 public class AllUserController {
 	
-//	@Autowired
-//	StreamsRepository StreamsRepository;
+	@Autowired
+	StreamsRepository StreamsRepository;
 	
 	@RequestMapping(value = "AllUser", method = RequestMethod.GET)
 	public ModelAndView showAllUserPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("AllUser");
-//		mv.addObject("streamList", StreamsRepository.findAll());
+		mv.addObject("streamList", StreamsRepository.findAll());
 		return mv;
 	}
 	
-//	@Autowired
-//	CourseTypeRepository CourseTypeRepository;
-//
-//	@RequestMapping(value = "/StreamCourseType", method = RequestMethod.POST)
-//	public @ResponseBody List<CourseType> showCourseType(@RequestParam("streamId") String streamId) {
-//		return CourseTypeRepository.findByStreamId(Integer.parseInt(streamId));
-//	}
+	@Autowired
+	CourseTypeRepository CourseTypeRepository;
+
+	@RequestMapping(value = "/StreamCourseType", method = RequestMethod.POST)
+	public @ResponseBody List<CourseType> showCourseType(@RequestParam("streamId") String streamId) {
+		return CourseTypeRepository.findByStreamId(Integer.parseInt(streamId));
+	}
 }

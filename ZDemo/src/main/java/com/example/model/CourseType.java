@@ -17,7 +17,7 @@ public class CourseType {
 	private Integer courseTypeId;
 	private String courseTypeName;
 	private Integer createdBy;
-	private Date createddDate;
+	private Date createdDate;
 	
 	
 	
