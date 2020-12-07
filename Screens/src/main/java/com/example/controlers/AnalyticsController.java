@@ -74,6 +74,35 @@ public class AnalyticsController {
 			
 		return mv;
 	}
+	
+	@RequestMapping(value = "CourseSelectScreen", method = RequestMethod.GET)
+	public ModelAndView showCourseSelectScreen() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("CourseSelectScreen");
+		List<Streams> c = stream.findAll();
+		
+		mv.addObject("streamList", c);
+		
+			
+		return mv;
+	}
+	
+	@RequestMapping(value = "PriorityOfCourses", method = RequestMethod.GET)
+	public ModelAndView showPriorityOfCoursesScreen() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("PriorityOfCourses");
+		List<Streams> c = stream.findAll();
+		
+		mv.addObject("streamList", c);
+		
+			
+		return mv;
+	}
+	
+	@RequestMapping(value = "fs")
+	public String showMainBatchPage() {
+		return "MainBatchPage";
+	}
 
 	
 }
