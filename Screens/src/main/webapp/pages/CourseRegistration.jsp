@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Main Course Page</title>
+    <title>Course Registration Page</title>
     <meta charset="utf-8">
       <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -24,7 +24,7 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card-header heading">
-                      <h3>Tests Offered</h3>
+                      <h3>Course Registration</h3>
                     </div>
                   </div>
                 </div>
@@ -51,13 +51,16 @@
                       <div class="card-body" id="courses">
                         <div class="tab-content" id="tab-content">
                           <div class="tab-pane active" id="profile"><br><br>
-                            
-                             <div class="row" id='courseList'></div>
-                         
-                          </div>
-
+                           
+                           <div class="row" id='courseList'></div>
+                              </div>
+							<div class="tab-pane active" id="registration">
+							   <h6 id="courseName"></h6>
+							 <a href="#" onclick="submitCourseRegistration()"><button class="Signbtn" type="button">Submit</button></a>
+							<!-- <a href="#" onclick="alert('From Submit')"><button class="Signbtn" type="button">Submit</button></a> -->
+							</div>
                               <div class="tab-pane" id="messages">
-                              
+                               
                               <div class="row">
                                 <div class="col-lg-3 col-md-6 col-sm-6 column1">
                                   <div class="card card-stats">
@@ -65,7 +68,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(0, 208, 139);" id="row1-card1">
                                         <i class="material-icons">sort_by_alpha</i>
                                       </div>
-                                      <a href="TestSelectPage" ><p class="card-category">English Language Skills</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">English Language Skills</p></a>
                                     </div>
 
                                   </div>
@@ -76,7 +79,7 @@
                                       <div class="card-icon" style="font-size:20px; background-color:rgb(180, 3, 136);" id="row1-card1">
                                         <i class="material-icons">record_voice_over</i>
                                       </div>
-                                      <a href="TestSelectPage" ><p class="card-category">Oral Communication</p></a>
+                                      <a href="TestSelectPage.jsp" ><p class="card-category">Oral Communication</p></a>
                                     </div>
 
                                   </div>
@@ -88,7 +91,7 @@
                                       <div class="card-icon">
                                         <i class="material-icons">how_to_reg</i>
                                       </div>
-                                      <a href="TestSelectPage" >    <p class="card-category">Personality Development</p></a>
+                                      <a href="TestSelectPage.jsp" >    <p class="card-category">Personality Development</p></a>
                                     </div>
                                   </div>
                                 </div>
@@ -106,7 +109,7 @@
                                     <div class="card-icon" style="font-size:20px; background-color:rgb(111, 209, 13)" id="row1-card1">
                                       <i class="material-icons">exposure</i>
                                     </div>
-                                    <a href="TestSelectPage" ><p class="card-category">Quantitative Aptitude</p></a>
+                                    <a href="TestSelectPage.jsp" ><p class="card-category">Quantitative Aptitude</p></a>
                                   </div>
 
                                 </div>
@@ -117,7 +120,7 @@
                                     <div class="card-icon" style="font-size:20px;">
                                       <i class="material-icons">extension</i>
                                     </div>
-                                    <a href="TestSelectPage" ><p class="card-category">Logical Reasoning</p></a>
+                                    <a href="TestSelectPage.jsp" ><p class="card-category">Logical Reasoning</p></a>
                                   </div>
 
                                 </div>
@@ -129,7 +132,7 @@
                                     <div class="card-icon" style="background-color:rgb(218, 113, 31);">
                                       <i class="material-icons">find_in_page</i>
                                     </div>
-                                    <a href="TestSelectPage" ><p class="card-category">Verbal Reasoning</p></a>
+                                    <a href="TestSelectPage.jsp" ><p class="card-category">Verbal Reasoning</p></a>
                                   </div>
                                 </div>
                               </div>
@@ -139,7 +142,7 @@
                                     <div class="card-icon" style="font-size:20px; background-color:rgb(251, 26, 30);">
                                       <i class="material-icons">spellcheck</i>
                                     </div>
-                                    <a href="TestSelectPage" ><p class="card-category">Verbal Ability</p></a>
+                                    <a href="TestSelectPage.jsp" ><p class="card-category">Verbal Ability</p></a>
                                   </div>
 
                                 </div>
@@ -156,81 +159,109 @@
                 </div>
               </div>
               <script>
-             
-		  			//streamList = eval('(' + '${streamlist}' + ')');
-		  			//streamList = '${streamList}';
-		  			
-		  			var streamIdList=[];
-		  			
-		  			<c:forEach items="${streamList}" var="stream">
-			  			  var div1 = document.createElement('div');
-			              div1.id="tab-div";
-			              streamIdList.push('${stream.streamId}');
-			              var li = document.createElement('li');
-			              li.className='nav-item';
-			              li.id = '${stream.streamId}' + 'l';
-			
-			              var anchor =document.createElement('a');
-			              anchor.setAttribute('href',"#Profile");
-			              anchor.setAttribute('data-toggle',"tab");
-			              anchor.className='nav-link ';
-			              anchor.id = '${stream.streamId}' + 'a';
-			              anchor.textContent='${stream.streamName}';
-			              li.id = '${stream.streamId}';
-			             // alert("Li id = " + li.id);
-			              li.appendChild(anchor);
-			              li.setAttribute('onclick', "getStreamId(this.id)");
-			              div1.appendChild(li);
-			              document.getElementById("nav-tab").appendChild(div1);
-					</c:forEach>   
-		
-		            var streamElem = document.getElementById('${firstStreamId}' + 'a');
-		            streamElem.className='nav-link active';
-		            
-		            var drop1 = document.getElementsByClassName('drop1');
-		            var btn = document.createElement('button');
-		            btn.className='btn btn-secondary dropdown-toggle';
-		            btn.id='dropdownMenuButton';
-		            btn.setAttribute('data-toggle', "dropdown");
-		            btn.setAttribute('aria-haspopup', "true");
-		            btn.setAttribute('aria-expanded',"false");
-		            btn.textContent="Course Category";
-		            document.getElementById('drop11').appendChild(btn);
-		           
-		            var dropdownMenu = document.createElement('div');
-		            dropdownMenu.className='dropdown-menu';
-		            dropdownMenu.id='dropdownMenu';
-		            dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-		            
-		            //Start- Extract Course Type List
-		            /* var courseTypes = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
-		            var courseTypesList = eval('(' + courseTypes + ')');
-		            // var arr2 = ['Modular','TBC','CRT'];
-		            for(i=0; i<courseTypesList.length; i++){
-		              var dropanchor = document.createElement('a');
-		              dropanchor.className='dropdown-item';
-		              dropanchor.setAttribute('href',"#");
-		              dropanchor.id=courseTypesList[i].courseTypeId;
-		              dropanchor.textContent=(courseTypesList[i].courseTypeName).toUpperCase();
-		              dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
-		
-		              dropdownMenu.appendChild(dropanchor);
-		              // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
-		            } */
 
-		           <c:forEach items="${courseTypesList}" var="courseType">  	 
-		              var dropanchor = document.createElement('a');
-		              dropanchor.className='dropdown-item';
-		              dropanchor.setAttribute('href',"#");
-		              dropanchor.id='${courseType.courseTypeId}';
-		           
-		              dropanchor.textContent=('${courseType.courseTypeName}').toUpperCase();
-		              dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
-		              dropdownMenu.appendChild(dropanchor);
-				  </c:forEach>
-				 
-		          document.getElementById('drop11').appendChild(dropdownMenu);
-		         
+              var streamIdList=[];
+
+              <c:forEach items="${streamList}" var="stream">
+                  var div1 = document.createElement('div');
+	              div1.id="tab-div";
+	              streamIdList.push('${stream.streamId}');
+	              var li = document.createElement('li');
+	              li.className='nav-item';
+	              li.id =  '${stream.streamId}' + 'l';
+	
+	              var anchor =document.createElement('a');
+	              anchor.setAttribute('href',"#Profile");
+	              anchor.setAttribute('data-toggle',"tab");
+	              anchor.className='nav-link ';
+	              anchor.id =  '${stream.streamId}' + 'a';
+	              anchor.textContent= '${stream.streamName}';
+	              li.id =  '${stream.streamId}';
+	              li.appendChild(anchor);
+	              li.setAttribute('onclick', "getStreamId(this.id)");
+	              div1.appendChild(li);
+	              document.getElementById("nav-tab").appendChild(div1);
+  		      </c:forEach>     
+  		  
+            var streamElem = document.getElementById('${firstStreamId}' + 'a');
+            streamElem.className='nav-link active';
+            
+            //End- Extract Stream List
+            var drop1 = document.getElementsByClassName('drop1');
+            var btn = document.createElement('button');
+            btn.className='btn btn-secondary dropdown-toggle';
+            btn.id='dropdownMenuButton';
+            btn.setAttribute('data-toggle', "dropdown");
+            btn.setAttribute('aria-haspopup', "true");
+            btn.setAttribute('aria-expanded',"false");
+            btn.textContent="Course Category";
+            document.getElementById('drop11').appendChild(btn);
+
+            var dropdownMenu = document.createElement('div');
+            dropdownMenu.className='dropdown-menu';
+            dropdownMenu.id='dropdownMenu';
+            dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+            //Start- Extract Course Type List
+          /*   var decodedData1 = decodedData.substring(decodedData.indexOf(']')+1, decodedData.length);
+            var courseTypes = decodedData1.substring(0, decodedData1.indexOf(']')+1);
+            var courseTypesList = eval('(' + courseTypes + ')'); */
+         //   alert("courseTypesList" + courseTypesList);
+            
+            
+            // var arr2 = ['Modular','TBC','CRT'];
+            /* for(i=0; i<courseTypesList.length; i++){
+              var dropanchor = document.createElement('a');
+              dropanchor.className='dropdown-item';
+              dropanchor.setAttribute('href',"#");
+              dropanchor.id=courseTypesList[i].courseTypeId;
+              dropanchor.textContent=(courseTypesList[i].courseTypeName).toUpperCase();
+              dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+
+              dropdownMenu.appendChild(dropanchor);
+              // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
+            } */
+
+            <c:forEach items="${courseTypesList}" var="courseType">
+	            var dropanchor = document.createElement('a');
+	            dropanchor.className='dropdown-item';
+	            dropanchor.setAttribute('href',"#");
+	            dropanchor.id='${courseType.courseTypeId}';
+	            dropanchor.textContent=('${courseType.courseTypeName}').toUpperCase();
+	            dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+	            dropdownMenu.appendChild(dropanchor);
+		  	</c:forEach>   
+            document.getElementById('drop11').appendChild(dropdownMenu);
+
+            var studentCoursesCourseIdList = [];
+            <c:forEach items="${studentCoursesList}" var="studentCourses">
+	            studentCoursesCourseIdList.push('${studentCourses.courseId}');
+	  		</c:forEach>   
+
+	  		var studentGACoursesCourseIdList = [];
+	        <c:forEach items="${studentGACoursesList}" var="studentGACourses">
+	         	studentGACoursesCourseIdList.push('${studentGACourses.courseId}');
+		    </c:forEach>   
+            
+           /*  var decodedData2 = decodedData1.substring(decodedData1.indexOf(']')+1, decodedData1.length);
+            var studentCourses = decodedData2.substring(0, decodedData2.indexOf(']')+1);
+            var studentCoursesList = eval('(' + studentCourses + ')');
+     //       alert("studentCoursesList " + studentCoursesList);
+            var studentCoursesCourseIdList = [];
+            for(var i=0; i<studentCoursesList.length; i++){
+   //         	alert("courseId = " + studentCoursesList[i].courseName);
+            	studentCoursesCourseIdList.push(studentCoursesList[i].courseId);
+            }
+            //alert("studentCoursesCourseIdList length: " + studentCoursesCourseIdList.length);
+            
+            var decodedData3 = decodedData2.substring(decodedData2.indexOf(']')+1, decodedData2.length);
+            var studentGACourses = decodedData3.substring(0, decodedData3.indexOf(']')+1);
+            var studentGACoursesList = eval('(' + studentGACourses + ')');
+       //     alert("studentGACoursesList = " + studentGACoursesList);
+            var studentGACoursesCourseIdList = [];
+            for(var i=0; studentGACoursesList.length; i++){
+            	studentGACoursesCourseIdList.push(studentGACoursesList[i].courseId);
+            } */
+                
       </script>
       <!--   Core JS Files   -->
       <script src="../assets/js/core/jquery.min.js"></script>
@@ -281,23 +312,23 @@
       //alert(streamList[i].streamId + ":" + streamList[i].streamName);
      
       var streamId=1;
+      var courseId=1;
+      var courseName;
       var courseTypeId;
-
+      
       function getStreamId(stream_id){
     	  streamId = stream_id;
         
         var streamElem = document.getElementById(streamId + 'a');
         var elem;
-         for(i=0; i<streamIdList.length; i++){
+        for(i=0; i<streamIdList.length; i++){
         	elem = document.getElementById(streamIdList[i] + 'a');
         	 elem.className = 'nav-link';
         } 
-
-        /* <c:forEach items="${streamList}" var="stream">
+       /*  <c:forEach items="${streamList}" var="stream">
 		     elem = document.getElementById('${stream.streamId}' + 'a');
 		   	 elem.className = 'nav-link';
-	    </c:forEach>   */
-	    
+  		</c:forEach>   */
         streamElem.className = 'nav-link active';
        
         elem = document.getElementById('courseList');
@@ -310,16 +341,14 @@
         };
         $.ajax({
             type: 'POST',
-           // url: servletURL + 'StreamCourseTypeServlet',
             url: "/StreamCourseType",
             data: jQuery.param(myData),
             dataType: 'json',
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             traditional: true,
             success: function (jsonObj) {
-              var courseTypesList=jsonObj;
-             // alert(courseTypesList.length);
-             
+                var courseTypesList=jsonObj;
+                
 	            elem = document.getElementById('dropdownMenu');
 	            if(elem != null){
 	            	elem.parentNode.removeChild(elem);
@@ -371,105 +400,6 @@
       }
 
       function displayStreamCourses(courseType_id, courseTypeName ){
-
-    	  var responseJson=[
-  			{
-  				courseId:"1",
-  				courseName:"c"
-  				
-  				
-  			},
-  			{
-  				courseId:"2",
-  				courseName:"ds"
-  				
-  				
-  			}
-  			
-  			]
-          //var streamId = stream_id;
-          courseTypeId = courseType_id;
-          //alert("stream_id = " + streamId + "courseType_id = " + courseType_id);
-          
-            document.getElementById('dropdownMenuButton').textContent = courseTypeName;
-          
-         
-              document.getElementById('CourseCard').style.display="block";
-              //var responseJson=jsonObj;
-             
-              var elem = document.getElementById('courseList');
-              if(elem != null){
-              	elem.parentNode.removeChild(elem);
-              }
-              //document.getElementById('profile').removeChild(document.getElementById('xyz'));
-
-              for(i=0; i<(responseJson.length); i=i+3){
-                var row  = document.createElement('div');
-                row.className='row';
-                row.id="courseList";
-                for(j=i; j<i+3 && j<responseJson.length; j++){
-                  //alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
-                  var column = document.createElement('div');
-                  column.className='col-lg-3 col-md-6 col-sm-6 column3';
-                  var cardstats = document.createElement('div');
-                  cardstats.className='card card-stats';
-                  var cardheader = document.createElement('div');
-                  cardheader.className='card-header  card-header-primary card-header-icon';
-                  var cardicon = document.createElement('div');
-                  cardicon.className='card-icon';
-                  //var image =document.createElement('img');
-                  //image.setAttribute('src', responseJson[j].iconLocation);
-                 // image.setAttribute('style', " height: 60px; width: 60px; ");
-                 // image.setAttribute('alt',"java");
-  			    //cardicon.appendChild(image);
-  				cardheader.appendChild(cardicon);
-                  var anchor = document.createElement('a');
-                  anchor.setAttribute('id', responseJson[j].courseId);
-                  anchor.setAttribute('href', "#");
-                  var courseName =responseJson[j].courseName;
-                 // alert("CourseName = "+courseName);
-                  anchor.setAttribute('onclick',"displayTestSelect(this.id,'" +  courseName + "')");
-                  var para = document.createElement('p');
-                  para.className='card-category';
-                  para.textContent=responseJson[j].courseName;
-                  anchor.appendChild(para);
-                  cardheader.appendChild(anchor);
-                  cardstats.appendChild(cardheader);
-                  column.appendChild(cardstats);
-                  row.appendChild(column);
-                }
-                  document.getElementById('profile').appendChild(row);
-              
-        }
-      }
-
-      function displayTestSelect(courseId, courseName){
-          //alert("DisplayTestSelect Id = " + courseId);
-         
-         	var responseJson=[
-	  			{
-	  				evaluationTypeName:"Test1",
-	  				courseName:"c",
-	  				testDetailId:1,
-	  				feeStatus:true,
-	  				attempted:false,
-	  			},
-	  			{
-	  				evaluationTypeName:"Test2",
-	  				courseName:"c",
-	  				testDetailId:1,
-	  				feeStatus:false,
-	  				attempted:false,
-	  				
-	  			}
-  			
-  			]
-         
-              window.location.href = "TestSelectPage" + "?varid="+encodeURIComponent(JSON.stringify(responseJson));
-           
-        } 
-
-      /* function displayStreamCourses(courseType_id, courseTypeName ){
         //var streamId = stream_id;
         courseTypeId = courseType_id;
         //alert("stream_id = " + streamId + "courseType_id = " + courseType_id);
@@ -483,7 +413,6 @@
 
         $.ajax({
           type: 'POST',
-          //url: servletURL + 'StreamCourseTypeCoursesServlet',
           url: "/StreamCourseTypeCourses",
           data: jQuery.param(myData),
           dataType: 'json',
@@ -492,7 +421,8 @@
           success: function (jsonObj) {
             document.getElementById('CourseCard').style.display="block";
             var responseJson=jsonObj;
-           
+           // var strResJSON = JSON.stringify(responseJson);
+
             var elem = document.getElementById('courseList');
             if(elem != null){
             	elem.parentNode.removeChild(elem);
@@ -521,14 +451,25 @@
 				cardheader.appendChild(cardicon);
                 var anchor = document.createElement('a');
                 anchor.setAttribute('id', responseJson[j].courseId);
-                anchor.setAttribute('href', "#");
+                
                 var courseName =responseJson[j].courseName;
-               // alert("CourseName = "+courseName);
-                anchor.setAttribute('onclick',"displayTestSelect(this.id,'" +  courseName + "')");
+               
                 var para = document.createElement('p');
                 para.className='card-category';
-                para.textContent=responseJson[j].courseName;
                 anchor.appendChild(para);
+                
+                if((studentCoursesCourseIdList!=null && studentCoursesCourseIdList.includes(responseJson[j].courseId))||
+                        (studentGACoursesCourseIdList!=null && studentGACoursesCourseIdList.includes(responseJson[j].courseId))){
+                   	//alert("Already Registered Course");
+                   	anchor.removeAttribute('href');
+                	para.textContent = courseName + '  Registered';
+                } 
+             	else{
+             		//alert("Course not registered");
+             		para.textContent=courseName;
+             		anchor.setAttribute('href', "#");
+             		anchor.setAttribute('onclick',"displayRegistrationForm(this.id,'" +  courseName + "',"+ streamId +" )");
+             	}
                 cardheader.appendChild(anchor);
                 cardstats.appendChild(cardheader);
                 column.appendChild(cardstats);
@@ -536,6 +477,8 @@
               }
                 document.getElementById('profile').appendChild(row);
             }
+            document.getElementById('profile').style.display = "block";
+            document.getElementById('registration').style.display="none";
           },
           error: function(){
             alert("Error");
@@ -545,10 +488,65 @@
 
         });
       }
+      function displayRegistrationForm(selectedCourseId, selectedCourseName, selectedStreamId){
+    	  courseId = selectedCourseId;
+    	  streamId = selectedStreamId;
+    	  courseName = selectedCourseName;
+    	  //alert("Register for the course " + courseName);
+    	  document.getElementById('profile').style.display = "none";
+    	  document.getElementById('courseName').innerHTML="Registration for " + courseName + " Course";
+    	  document.getElementById('registration').style.display = "block";
+      }
+      function submitCourseRegistration(){
+    	  //alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
+    	  var myData = {
+    	          streamId: streamId,
+    	          courseTypeId: courseTypeId,
+    	          courseId: courseId,
+    	          courseName: courseName
+    	        };
+				
+    	  var feeStatus = 'PAID'; 
+    		  
+    	        $.ajax({
+    	          type: 'POST',
+    	          //url: servletURL + 'CourseRegistrationServlet&feeStatus=' + feeStatus,
+    	          url: "/CourseRegistration&feeStatus=" + feeStatus,
+    	          data: jQuery.param(myData),
+    	          dataType: 'json',
+    	          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+    	          traditional: true,
+    	          success: function (jsonObj) {
+
+    	            var responseJson1 = jsonObj[0];
+    	            var locationJson = eval('(' + responseJson1 + ')');
+
+    	            var responseJson2=jsonObj[1];
+    	            var responseJson3=jsonObj[2];
+    	            
+    	            var studCourseDetailsJSON = JSON.stringify(responseJson2);
+    	            var studGACourseDetailsJSON = JSON.stringify(responseJson3);
+    	            var courseTypeJSON = JSON.stringify(courseTypesList);
+    	            var streamJSON = JSON.stringify(streamList);
+    	            
+    	            //window.location.href = locationJson.location;
+    	          // window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+    	            window.location.href = locationJson.location + "?varid=" + encodeURIComponent(streamJSON) + encodeURIComponent(courseTypeJSON)+ encodeURIComponent(studCourseDetailsJSON) + encodeURIComponent(studGACourseDetailsJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
+    	          },
+    	          error: function(){
+    	            alert("Error");
+    	           // document.getElementById("error").innerHTML = "Invalid email or password";
+    	          }
+
+
+    	        });
+      }
       function displayTestSelect(courseId, courseName){
         //alert("DisplayTestSelect Id = " + courseId);
-       
+        //var streamId = 1;
+        //var courseTypeId = courseTypeId;
         var courseId = courseId;
+        //alert(courseName);
         var myData = {
           streamId: streamId,
           courseTypeId: courseTypeId,
@@ -566,8 +564,16 @@
           traditional: true,
           success: function (jsonObj) {
 
-            var responseJson = jsonObj;
-            window.location.href = "TestSelectPage" + "?varid="+encodeURIComponent(JSON.stringify(responseJson));
+            var responseJson1 = jsonObj[0];
+            var locationJson = eval('(' + responseJson1 + ')');
+
+            var responseJson2=jsonObj[1];
+            var strResJSON = JSON.stringify(responseJson2);
+            for(i=0; i<responseJson2.length; i++){
+              //alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
+            }
+            //window.location.href = locationJson.location;
+            window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
           },
           error: function(){
             alert("Error");
@@ -576,7 +582,7 @@
 
 
         });
-      } */
+      }
       </script>
     </body>
   </html>

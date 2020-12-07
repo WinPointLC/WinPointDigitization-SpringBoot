@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 
@@ -18,6 +17,7 @@
 	  <!-- own CSS -->
 	  
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	  <link rel="stylesheet" href="../assets/css/magnific-popup.css" media="screen" />
 	
 	  <meta charset="utf-8" />
@@ -28,48 +28,121 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 	</head>
 	<body>
-		<!--batch add student content -->
-		<div class="container-fluid" id="batch-add-student">
-			<div class="card card-plain">
-				<div class="card-header card-header-primary">
-				  <h3 class="card-title mt-0" style="margin-left:42%">Add Student to Batch</h3>
-				</div><br>
-			</div>
+		<!--batch feedback content -->
+			<br></br>
+	<div class="card card-nav-tabs">
+			<div class="card-header card-header-primary">
+			<h4 class="text-center" style="font-size:30px">Batch Feedback Screen
+			<i class="material-icons" style="float:right;height:100%;
+			font-size:40px;position:relative;margin-left:1120px;margin-top:-40px;">help_center</i></h4>
+			<!--<table>
+			<tr>
+			<td><input type="button" id="btnback" class="text-left" value="Back" style="float:left;height:50px">
+			</input></td>
+			<input type="button" id="btnback" class="text-right" value="Back1" style="float:right;height:50px">
 			
-			<div class="card">
-				<div class="card-body">
-				  <div class="table-responsive" id="table-batch-add-student">
-					
-				  </div>
-			    </div>
-			</div><br>
-			<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#mymodal_email">Email</button>
-			
-		</div>
-		<!-- batch add student content end -->
-		
-		<!--email modal start-->
-		<div class="modal fade" id="mymodal_email" >
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2 id="modal-title" class="modal-title" tabindex="0" style="color:purple">Email</h2>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<label>Subject:</label>
-						<input class="form-control" type="text" value="Launch of a new batch for the computer network course"/><br><br>
-						
-						<label>Message:</label>
-						<textarea class="form-control" rows=3 type="text">Hello, New Computer Network Batch is going to start form 2020-12-23</textarea><br><br>
-						<button type="button" class="btn btn-primary" data-dismiss="modal" >SEND</button>
-					</div>						 
-				</div>
+			<td></td>
+			</tr>
+			</table>-->
 			</div>
+	<div style="margin-left:1%;margin-right:1%">
+		<div class="card-body" style="width:100%">
+			<h5 style="color:black;margin-top:5px">Batch Name </h5>
+		<table style="width:100%; border-collapse:collapse;border-color:#fffff">
+		<tr>
+           <!-- <td style="width:50%; padding:20px;vertical-align:top;" rowspan="3" colspan="4">
+				<h5 align="center-left" style="color:black">Weighted objective response</h5>
+				<label for="exampleFormControlTextarea1"></label>
+						<textarea class="form-controls" id="exampleFormControlTextarea1" rows="20" cols="120"></textarea>
+				<h5 align="center-left" style="color:black">Questions</h5>
+			</td>-->
+			<td>
+			<div style="height:500px; width:500px;">
+			<canvas id="barChart">
+			</canvas>
+			</div>
+			<script>
+			
+			var marksList=[
+			{
+				fullName:"Pragya Korpal",
+				marks:"70"
+				
+				
+			},
+			{
+				fullName:"Abhishek Dixit",
+				marks:"70"
+				
+				
+			},
+			{
+				fullName:"Surbhi Joshi",
+				marks:"70"
+				
+				
+			}
+			]
+			
+			var chartStudentName = new Array();
+			var chartData= new Array();
+			for(var j=0 ; j<marksList.length; j++){
+
+			  chartStudentName.push(marksList[j].fullName);
+			  chartData.push(marksList[j].marks);
+
+			  }
+			var ctx = document.getElementById("barChart").getContext('2d');
+						var myChart = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: chartStudentName,
+								datasets: [{
+									label: 'Marks of Students',
+									data: chartData,
+									backgroundColor: "#33AEEF",
+									borderWidth: 3
+								   
+								}]
+							},
+							options: {
+								scales: { 
+									yAxes: [{
+										ticks: {
+											beginAtZero: true
+										}
+									}]
+								}
+							}
+						});
+						</script>
+					</td>
+			<td style="font-size:20px;width:50%;padding:20px;vertical-align:top;">
+                <p style="color:black">Overall experiences :
+				<input type="text" value="" size="3"></input>
+				</p>
+				<br></br>
+				<br></br>
+				<br></br>
+				<p style="color:black">Total Feedback Received:
+				<input type="text" value="" size="3"></input>
+				</p>
+			</td>
+		</tr>
+		<!--<tr>
+			<br></br>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>-->
+		</table>
+		<div style="text-align:center">
+			<input type="button" class="btn btn-primary" value="Individual Feedback" style="width:200px;height:50px;"/>
 		</div>
-		<!--email modal end-->
+		</div>
+	</div>
+	</div>
+		<!--batch feedback content end-->
 		
 	    <!--   Core JS Files   -->
 		<script src="../assets/js/core/jquery.min.js"></script>
@@ -115,68 +188,5 @@
 		<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 		<script src="../assets/demo/demo.js"></script>
 		
-		<script>
-
-			/* var SearchString = window.location.search.substring(1);
-			
-			var arr = SearchString.split('&');
-			var data= arr[0].split('=')[1];
-			var decodedData = decodeURIComponent(data);
-			addStudentList=JSON.parse(decodedData); */
-
-			//var addStudentList = '${addStudentList}';
-			
-			var elem = document.getElementById('details-batch');
-			if(elem!=null){
-				elem.parentNode.removeChild(elem);
-			}
-			
-			var table = document.createElement('table');
-			table.className="table table-hover";
-			table.id="details-batch";
-			var thead = document.createElement('thead');
-			
-			var th1 = document.createElement('th');
-			th1.textContent = "Student";
-			var th2 = document.createElement('th');
-			th2.textContent = "Registered";
-			var th3 = document.createElement('th');
-			th3.textContent = "Preferred Batch";
-			var th4 = document.createElement('th');
-			th4.textContent = "Start Date";
-					
-			thead.appendChild(th1);
-			thead.appendChild(th2);
-			thead.appendChild(th4);
-			thead.appendChild(th3);
-			
-			table.appendChild(thead);
-			
-			var tbody = document.createElement('tbody');
-
-			<c:forEach items="${addStudentList}" var="det">
-				var tr = document.createElement('tr');
-				var td1 = document.createElement('td');
-				td1.textContent = '${det.student}';
-				var td2 = document.createElement('td');
-				td2.textContent = '${det.registered}';
-				var td3 = document.createElement('td');
-				td3.textContent = '${det.time}';
-				var td4 = document.createElement('td');
-				td4.textContent = '${det.startDate}';
-				
-				tr.appendChild(td1);
-				tr.appendChild(td2);
-				
-				tr.appendChild(td4);
-				tr.appendChild(td3);
-				
-				tbody.appendChild(tr);
-			</c:forEach>     
-			
-			table.appendChild(tbody);
-			
-			document.getElementById('table-batch-add-student').appendChild(table);
-		</script>
 	</body>
 </html>	

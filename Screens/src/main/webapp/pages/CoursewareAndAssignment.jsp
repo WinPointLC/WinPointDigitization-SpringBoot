@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 
@@ -28,11 +27,84 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 	</head>
 	<body>
+		<!--courseware and assignment content -->
+			<br></br>
+	<div class="card card-nav-tabs">
+			<div class="card-header card-header-primary">
+			<h4 class="text-center" style="font-size:30px">Courseware and Assignment
+			<!--<td><input type="button" id="btnback" class="text-left" value="Back" style="float:left;height:50px">
+			</input></td>-->
+			<i class="material-icons" style="float:right;height:100%;
+			font-size:40px;position:relative;margin-left:1120px;margin-top:-40px;">help_center</i></h4>
+			</div>
+		<div style="margin-left:1%;margin-right:1%">
+		<div class="card-body" style="width:100%"><br>
+		<h5 style="margin-left:0%;font-size:18px;margin-top:5px">Batch Name </h5>
+			<table class="table" style="background-color:white">
+						<thead>
+						<tr>
+							<th class="text-center"></th>
+							<th style="font-size:18px">Name</th>
+							<th style="font-size:18px">Fees Status</th>
+							<th style="font-size:18px">Courseware</th>
+							<th style="font-size:18px">Assignment Issued</th>
+							<th style="font-size:18px">Assignment Submitted</th>
+						</tr>
+						</thead>
+				<tbody>
+					<tr>
+						<td class="text-center" style="width:200px height:200px"></td>
+						<td style="font-size:15px width:200px height:200px">Abc</td>
+						<td style="font-size:15px width:200px height:200px">paid</td>
+						<td style="font-size:15px width:200px height:200px">java</td>
+						<td style="font-size:15px width:200px height:200px">yes</td>
+				        <td class="td-actions" style="width:200px height:200px">no</td>
+					</tr>
+					<tr>
+						<td class="text-center" style="width:200px height:200px"></td>
+						<td style="font-size:15px width:200px height:200px">pqr</td>
+						<td style="font-size:15px width:200px height:200px">not paid</td>
+						<td style="font-size:15px width:200px height:200px">c++</td>
+						<td style="font-size:15px width:200px height:200px">no</td>
+				        <td class="td-actions" style="width:200px height:200px">yes</td>
+					</tr>
+					<tr>
+						<td class="text-center" style="width:200px height:200px"></td>
+						<td style="font-size:15px width:200px height:200px">aaa</td>
+						<td style="font-size:15px width:200px height:200px">c#</td>
+						<td style="font-size:15px width:200px height:200px">paid</td>
+						<td style="font-size:15px width:200px height:200px">yes</td>
+				        <td class="td-actions" style="width:200px height:200px">no</td>
+					</tr>
+					<tr>
+						<td class="text-center" style="width:200px height:200px"></td>
+						<td style="font-size:15px width:200px height:200px">axz</td>
+						<td style="font-size:15px width:200px height:200px">html</td>
+						<td style="font-size:15px width:200px height:200px">not paid</td>
+						<td style="font-size:15px width:200px height:200px">yes</td>
+				        <td class="td-actions" style="width:200px height:200px">yes</td>
+					</tr>
+					<tr>
+						<td ></td>
+						<td ></td>
+						<td ></td>
+						<td ></td>
+						<td ></td>
+				        <td ></td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+		<!--courseware and assignment content end-->
+		
 		<!--batch add student content -->
-		<div class="container-fluid" id="batch-add-student">
+		<!--<div class="container-fluid" id="batch-add-student">
 			<div class="card card-plain">
 				<div class="card-header card-header-primary">
-				  <h3 class="card-title mt-0" style="margin-left:42%">Add Student to Batch</h3>
+				  <h3 class="card-title mt-0" style="margin-left:42%">Courseware and Assignment</h3>
 				</div><br>
 			</div>
 			
@@ -45,7 +117,7 @@
 			</div><br>
 			<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#mymodal_email">Email</button>
 			
-		</div>
+		</div>-->
 		<!-- batch add student content end -->
 		
 		<!--email modal start-->
@@ -116,15 +188,30 @@
 		<script src="../assets/demo/demo.js"></script>
 		
 		<script>
-
-			/* var SearchString = window.location.search.substring(1);
 			
-			var arr = SearchString.split('&');
-			var data= arr[0].split('=')[1];
-			var decodedData = decodeURIComponent(data);
-			addStudentList=JSON.parse(decodedData); */
-
-			//var addStudentList = '${addStudentList}';
+			var addStudentList=[
+			{
+				student:"Pragya Korpal",
+				registered:"true",
+				time:"Morning",
+				startDate:"2020-10-30"
+				
+			},
+			{
+				student:"Abhishek Dixit",
+				registered:"true",
+				time:"Evening",
+				startDate:"2020-10-30"
+				
+			},
+			{
+				student:"Surbhi Joshi",
+				registered:"false",
+				time:"Morning",
+				startDate:"2020-10-30"
+				
+			}
+			]
 			
 			var elem = document.getElementById('details-batch');
 			if(elem!=null){
@@ -137,13 +224,15 @@
 			var thead = document.createElement('thead');
 			
 			var th1 = document.createElement('th');
-			th1.textContent = "Student";
+			th1.textContent = "Name";
 			var th2 = document.createElement('th');
-			th2.textContent = "Registered";
+			th2.textContent = "Fees Status";
 			var th3 = document.createElement('th');
-			th3.textContent = "Preferred Batch";
+			th3.textContent = "Courseware";
 			var th4 = document.createElement('th');
-			th4.textContent = "Start Date";
+			th4.textContent = "Assignment Issued ";
+			var th5 = document.createElement('th');
+			th5.textContent = "Assignment Submitted ";
 					
 			thead.appendChild(th1);
 			thead.appendChild(th2);
@@ -153,17 +242,18 @@
 			table.appendChild(thead);
 			
 			var tbody = document.createElement('tbody');
-
-			<c:forEach items="${addStudentList}" var="det">
+			
+			for(var i=0;i<addStudentList.length;i++){
+				
 				var tr = document.createElement('tr');
 				var td1 = document.createElement('td');
-				td1.textContent = '${det.student}';
+				td1.textContent = addStudentList[i].student;
 				var td2 = document.createElement('td');
-				td2.textContent = '${det.registered}';
+				td2.textContent = addStudentList[i].registered;
 				var td3 = document.createElement('td');
-				td3.textContent = '${det.time}';
+				td3.textContent = addStudentList[i].time;
 				var td4 = document.createElement('td');
-				td4.textContent = '${det.startDate}';
+				td4.textContent = addStudentList[i].startDate;
 				
 				tr.appendChild(td1);
 				tr.appendChild(td2);
@@ -172,8 +262,7 @@
 				tr.appendChild(td3);
 				
 				tbody.appendChild(tr);
-			</c:forEach>     
-			
+			}
 			table.appendChild(tbody);
 			
 			document.getElementById('table-batch-add-student').appendChild(table);

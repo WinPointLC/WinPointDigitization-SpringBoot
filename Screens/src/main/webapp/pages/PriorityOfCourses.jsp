@@ -147,21 +147,18 @@
 			var courseId;
 			
 			//streamList = eval('(' + '${streamlist}' + ')');
-			streamList = '${streamList}';
+			//streamList = '${streamList}';
 						
 			//alert("From AllUser streamList.length = "+streamList.length);
-			for (var i = 0; i < streamList.length; i++) {
+			<c:forEach items="${streamList}" var="stream">
 				var anchor = document.createElement('a');
 				anchor.className="dropdown-item";
 				anchor.setAttribute('href', "#");
-				anchor.id = streamList[i].streamId;
-				//alert(streamList[i]);
-				anchor.textContent = streamList[i].streamName.toUpperCase().replace("_"," ");
-				//anchor.textContent = streamList[i];
-				//alert("From AllUser Stream Name  " + streamList[i].streamName);
+				anchor.id = '${stream.streamId}';
+				anchor.textContent='${stream.streamName}'.toUpperCase().replace("_"," ");
 				anchor.setAttribute('onclick', "getStreamId(this.id)");
 				document.getElementById('select-stream-dropdown').appendChild(anchor);
-			}
+			</c:forEach>    
 			
 			var streamElem;
 			function getStreamId(stream_id){
@@ -183,9 +180,9 @@
 					type: 'POST',
 					//url: servletURL + 'StreamCourseTypeServlet',
 					url: "/StreamCourseType",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						courseTypeList=jsonObj;
@@ -235,9 +232,9 @@
 				$.ajax({
 					type: 'POST',
 					url: "/PriorityCourses",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 
@@ -402,9 +399,9 @@
 					type: 'POST',
 					//url: servletURL + 'StreamCourseTypeCoursesServlet',
 					url: "/AvailableTime",
-					data: JSON.stringify(myData),
+					data: jQuery.param(myData),
 					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
 						timeWiseList=jsonObj;

@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 
@@ -28,50 +27,152 @@
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 	</head>
 	<body>
-		<!--batch add student content -->
-		<div class="container-fluid" id="batch-add-student">
-			<div class="card card-plain">
-				<div class="card-header card-header-primary">
-				  <h3 class="card-title mt-0" style="margin-left:42%">Add Student to Batch</h3>
-				</div><br>
+		<!--Attendance records page -->
+	<br></br>
+	<div class="card card-nav-tabs">
+	<div class="card-header card-header-primary">
+			<h4 class="text-center" style="font-size:30px">Attendance Record Screen
+				<!--<input type="button" id="btnback" class="text-right" value="Back1" style="float:right;height:50px">-->
+			<i class="material-icons" style="float:right;height:100%;
+			font-size:40px;position:relative;margin-left:1120px;margin-top:-40px;">help_center</i></h4>
+	</div>
+	<div class="card-body">
+	<h5 style="font-size:18px;margin-top:5px">Batch Name </h5>
+	<div class="row" style="height:100%">
+		<div class="col-md-6">
+
+		<div class="card">
+			<div>
+				<div class="card-body primary">
+				<div class="dropdown" align="left" id="stream-dropdown-div">
+					<button class="btn btn-secondary dropdown-toggle"style="margin-left:0px;width:500px;"
+					type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+					aria-haspopup="true" aria-expanded="false">
+						Select Lecture :
+					</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-stream-dropdown"style="float:right;
+				width:500px"> 
+					<a class="dropdown-item" href="#">Action</a>
+					<a class="dropdown-item" href="#">Another action</a>
+					<a class="dropdown-item" href="#">Something else here</a>
+				</div>
+				</div>
+				
+				</div>
 			</div>
-			
-			<div class="card">
-				<div class="card-body">
+			<div class="card-body-primary">
+				<p style="color:gray;margin-left:1px;">Lecture Date : 22 Oct 2019 </p>
+			<div class="card-body">
 				  <div class="table-responsive" id="table-batch-add-student">
 					
 				  </div>
-			    </div>
-			</div><br>
-			<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#mymodal_email">Email</button>
-			
-		</div>
-		<!-- batch add student content end -->
-		
-		<!--email modal start-->
-		<div class="modal fade" id="mymodal_email" >
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2 id="modal-title" class="modal-title" tabindex="0" style="color:purple">Email</h2>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<label>Subject:</label>
-						<input class="form-control" type="text" value="Launch of a new batch for the computer network course"/><br><br>
-						
-						<label>Message:</label>
-						<textarea class="form-control" rows=3 type="text">Hello, New Computer Network Batch is going to start form 2020-12-23</textarea><br><br>
-						<button type="button" class="btn btn-primary" data-dismiss="modal" >SEND</button>
-					</div>						 
-				</div>
+			</div>
+	 <!--<table class="table" border="1px solid black" style="background-color:white">
+		<thead>
+        <tr>
+            <th style="width:20%;color:light gray">Students</th>
+            <th style="font-size:15px" colspan="2"></th>
+            <th></th>
+            <th colspan="2"></th>
+            <th class="text-right" style="font-size:15px">Records</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+		<tr>
+            <td class="text-center"></td>
+            <td></td>
+            <td></td>
+            <td>No Conents in table</td>
+            <td></td>
+            <td></td>
+        </tr>
+		<tr>
+            <td class="text-center"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+    </tbody>
+</table>-->
 			</div>
 		</div>
-		<!--email modal end-->
+		</div>
 		
-	    <!--   Core JS Files   -->
+		<div class="col-md-6">
+		<div class="card">
+			<div>
+				<div class="card-body primary">
+				
+				
+				</div>
+			</div>
+			<div class="card-body-primary">
+				<table class="table">
+						<thead>
+						<tr>
+							<th class="text-center"></th>
+							<th style="font-size:18px">Student</th>
+							<th style="font-size:18px">Enquired</th>
+							<th style="font-size:18px">Registered</th>
+						</tr>
+						</thead>
+				<tbody>
+				<tr>
+					<td class="text-center"></td>
+					<td style="font-size:15px">abc</td>
+					<td style="font-size:15px">false</td>
+					<td style="font-size:15px">true</td>
+				</tr>
+				<tr>
+					<td class="text-center"></td>
+					<td style="font-size:15px">purva khot</td>
+					<td style="font-size:15px">false</td>
+					<td style="font-size:15px">true</td>
+				</tr>
+				<tr>
+					<td class="text-center"></td>
+					<td style="font-size:15px">pqr</td>
+					<td style="font-size:15px">false</td>
+					<td style="font-size:15px">false</td>
+				</tr>
+				<tr>
+					<td class="text-center"></td>
+					<td style="font-size:15px">xyz</td>
+					<td style="font-size:15px">false</td>
+					<td style="font-size:15px">true</td>
+				</tr>
+				<tr>
+					<td class="text-center"></td>
+					<td style="font-size:15px">aaa</td>
+					<td style="font-size:15px">true</td>
+					<td style="font-size:15px">false</td>
+				</tr>
+        </tbody>
+</table>
+			</div>
+		</div>
+		</div>
+		<div style="text-align:center;margin-left:600px">
+			<input type="button" class="btn btn-primary" value="SAVE" style="width:140px;height:40px;"/>
+		</div>
+	</div>
+	
+	</div>
+</div>
+<!--End attendance record page content -->
+	 <!--   Core JS Files   -->
 		<script src="../assets/js/core/jquery.min.js"></script>
 		<script src="../assets/js/core/popper.min.js"></script>
 		<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
@@ -114,17 +215,31 @@
 		<script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
 		<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 		<script src="../assets/demo/demo.js"></script>
-		
 		<script>
-
-			/* var SearchString = window.location.search.substring(1);
 			
-			var arr = SearchString.split('&');
-			var data= arr[0].split('=')[1];
-			var decodedData = decodeURIComponent(data);
-			addStudentList=JSON.parse(decodedData); */
-
-			//var addStudentList = '${addStudentList}';
+			var addStudentList=[
+			{
+				student:"Pragya Korpal",
+				registered:"true",
+				time:"Morning",
+				startDate:"2020-10-30"
+				
+			},
+			{
+				student:"Abhishek Dixit",
+				registered:"true",
+				time:"Evening",
+				startDate:"2020-10-30"
+				
+			},
+			{
+				student:"Surbhi Joshi",
+				registered:"false",
+				time:"Morning",
+				startDate:"2020-10-30"
+				
+			}
+			]
 			
 			var elem = document.getElementById('details-batch');
 			if(elem!=null){
@@ -139,11 +254,11 @@
 			var th1 = document.createElement('th');
 			th1.textContent = "Student";
 			var th2 = document.createElement('th');
-			th2.textContent = "Registered";
+			th2.textContent = "";
 			var th3 = document.createElement('th');
-			th3.textContent = "Preferred Batch";
+			th3.textContent = "Records";
 			var th4 = document.createElement('th');
-			th4.textContent = "Start Date";
+			th4.textContent = "";
 					
 			thead.appendChild(th1);
 			thead.appendChild(th2);
@@ -153,17 +268,18 @@
 			table.appendChild(thead);
 			
 			var tbody = document.createElement('tbody');
-
-			<c:forEach items="${addStudentList}" var="det">
+			
+			for(var i=0;i<addStudentList.length;i++){
+				
 				var tr = document.createElement('tr');
 				var td1 = document.createElement('td');
-				td1.textContent = '${det.student}';
+				td1.textContent = addStudentList[i].student;
 				var td2 = document.createElement('td');
-				td2.textContent = '${det.registered}';
+				td2.textContent = addStudentList[i].registered;
 				var td3 = document.createElement('td');
-				td3.textContent = '${det.time}';
+				td3.textContent = addStudentList[i].time;
 				var td4 = document.createElement('td');
-				td4.textContent = '${det.startDate}';
+				td4.textContent = addStudentList[i].startDate;
 				
 				tr.appendChild(td1);
 				tr.appendChild(td2);
@@ -172,11 +288,13 @@
 				tr.appendChild(td3);
 				
 				tbody.appendChild(tr);
-			</c:forEach>     
-			
+			}
 			table.appendChild(tbody);
 			
 			document.getElementById('table-batch-add-student').appendChild(table);
 		</script>
+		
+		
+		
 	</body>
 </html>	
