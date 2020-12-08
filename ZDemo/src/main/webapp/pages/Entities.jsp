@@ -452,7 +452,7 @@
 			var result = 0;
 			for (var p in obj) {
 				
-				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )) {
+				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
 					//alert(p);
 					col_names.push(p);
 					result = result+1;
@@ -474,7 +474,7 @@
 				   var id = obj[p];
 				}
 			
-				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )) {
+				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
 				
 					var det = document.createElement('td');
 					det.textContent=obj[p];
@@ -560,15 +560,15 @@
 				entityDetailList=jsonObj;
 				alert("Entity List "+ entityDetailList);
 				
-				entityDetailList=JSON.parse(entityDetailList); 
-				alert("Entity List as object "+ entityDetailList[0]);
+				//entityDetailList=JSON.parse(entityDetailList); 
+				//alert("Entity List as object "+ entityDetailList[0]);
 				
 				var col_names = [];
 				function countColumns(obj) {
 					var result = 0;
 					for (var p in obj) {
 						
-						if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )) {
+						if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
 							//alert(p);
 							col_names.push(p);
 							result = result+1;
