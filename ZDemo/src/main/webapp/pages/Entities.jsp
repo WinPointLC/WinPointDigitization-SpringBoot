@@ -376,7 +376,7 @@
 		$.ajax({
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
-			url:"/Entity?entityInfoParam=" + entityName + "&activity=update",
+			url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
 			//data: JSON.stringify(myData),
 			data: jQuery.param(myData),
 			//dataType: 'json',
