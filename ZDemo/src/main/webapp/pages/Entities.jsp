@@ -377,9 +377,11 @@
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
 			url:"/Entity?entityInfoParam=" + entityName + "&activity=update",
-			data: JSON.stringify(myData),
+			//data: JSON.stringify(myData),
+			data: jQuery.param(myData),
 			//dataType: 'json',
-			contentType: 'application/json; charset=utf-8',
+			//contentType: 'application/json; charset=utf-8',
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			traditional: true,
 			success: function () {
 				alert("sucess ajax call for add and delete");
