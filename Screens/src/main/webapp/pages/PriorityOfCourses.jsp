@@ -16,7 +16,7 @@
 	  <!-- Material Kit CSS -->
 	  <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet"/>
 	  <!-- own CSS -->
-	  
+	  <link href="../css/employee_new_2.css" rel="stylesheet" />
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	  <link rel="stylesheet" href="../assets/css/magnific-popup.css" media="screen" />
 	
@@ -229,9 +229,9 @@
 						{
 							courseName:"C",
 							segmentType:"Individual",
-							noOfStudents:1,
+							noOfStudents:5,
 							startDate:"2020-10-30",
-							totalRevenue:8000,
+							totalRevenue:50000,
 							availableTime:['Morning','Evening']
 						},
 						{
@@ -298,9 +298,10 @@
 							td2.textContent = priorityCourseList[i].segmentType;
 							var td3 = document.createElement('td');
 							var numStudLink = document.createElement('a');
-							numStudLink.id = "numStudents"
+							numStudLink.id = "numStudents"+(i+1);
+							numStudLink.className = "disabled-link";
 							numStudLink.textContent = 0+"/"+priorityCourseList[i].noOfStudents;
-							numStudLink.setAttribute('href',"noOfStudents");
+							numStudLink.setAttribute('href',"NumberOfStudents");
 							//numStudLink.setAttribute('onclick', "noOfStudPage()");
 							td3.appendChild(numStudLink);
 							var td4 = document.createElement('td');
@@ -330,6 +331,7 @@
 							button_fac.setAttribute('aria-haspopup', "true");
 							button_fac.setAttribute('aria-expanded', "false");
 							button_fac.textContent = 'Faculty';
+							button_fac.id = 'FacultyDropdown'+(i+1);
 							var dropdownmenu_fac = document.createElement('div');
 							dropdownmenu_fac.className="dropdown-menu";
 							dropdownmenu_fac.id="dropdown-menu-faculty"+(i+1);
@@ -354,13 +356,10 @@
 							}
 							dropdown_at.appendChild(dropdownmenu_at);
 							dropdown_at.appendChild(button_at);
-							td5.appendChild(dropdown_at);
-							
-							
-							
+							td5.appendChild(dropdown_at);		
 							
 							var td7 = document.createElement('td');
-							td7.id = "revenue";
+							td7.id = "revenue"+(i+1);
 							td7.textContent = 0+"/"+priorityCourseList[i].totalRevenue;
 							
 							var td8  = document.createElement('td');
@@ -369,6 +368,7 @@
 							launchBtn.textContent = "Launch";
 							//launchBtn.setAttribute('data-toggle',"modal");
 							//launchBtn.setAttribute('data-target',"#mymodal_error");
+							launchBtn.setAttribute('onclick', "batchLaunchPage()");
 							td8.appendChild(launchBtn);
 
 							
@@ -389,6 +389,11 @@
 						document.getElementById('priority-courses').appendChild(table);
 						
 					
+			}
+
+			function batchLaunchPage(){
+
+				window.location.href = "BatchLaunch";
 			}
 		
 			/* function getCourseTypeId(courseType_id){
@@ -557,18 +562,14 @@
 				
 				document.getElementById('availableTimeDropdown'+index).textContent = availableTimeElem.textContent;
 
-				var timeWiseList=
+					var timeWiseList=
 					
 					{
-						
-						numberOfStudents:5,
-						
-						totalRevenue:50000,
+						numberOfStudents:5,						
+						revenue:50000,
 						faculty:['Anjali Parkhi','Makarand Parkhi']
 					}
 					
-	
-				
 						//timeWiseList=jsonObj;
 						//for (var i = 0; i < timeWiseList.length; i++) {
 						//alert(timeWiseList.faculty.length);
@@ -577,17 +578,26 @@
 								anchor.className="dropdown-item";
 								anchor.textContent = timeWiseList.faculty[k];
 								//alert("in func    ");
+								anchor.setAttribute('index', index);
+								anchor.setAttribute('onclick', "getFaculty(this.textContent,this.getAttribute('index'))");
 								
 								document.getElementById("dropdown-menu-faculty"+index).appendChild(anchor);	
 							//}
 							
 							document.getElementById("dropdown-faculty"+index).appendChild(document.getElementById("dropdown-menu-faculty"+index));
-							document.getElementById("numStudents").textContent = timeWiseList.numberOfStudents+"/"+totalStudents;
-							document.getElementById("revenue").textContent = timeWiseList.revenue+"/"+totalRevenue;
+							document.getElementById("numStudents"+index).textContent = timeWiseList.numberOfStudents+"/"+totalStudents;
+							document.getElementById("numStudents"+index).className = "";
+							document.getElementById("revenue"+index).textContent = timeWiseList.revenue+"/"+totalRevenue;
 						}
 						
 					
 			} 
+
+			function getFaculty(faculty,index){
+
+				document.getElementById('FacultyDropdown'+index).textContent = faculty;
+			}
+			
 
 
 			/* function getAvailableTime(available_time,totalStudents,totalRevenue,index){

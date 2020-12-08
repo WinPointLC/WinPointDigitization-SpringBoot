@@ -75,10 +75,10 @@ public class AnalyticsController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "CourseSelectScreen", method = RequestMethod.GET)
-	public ModelAndView showCourseSelectScreen() {
+	@RequestMapping(value = "LectureView", method = RequestMethod.GET)
+	public ModelAndView showLectureViewScreen() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("CourseSelectScreen");
+		mv.setViewName("LectureView");
 		List<Streams> c = stream.findAll();
 		
 		mv.addObject("streamList", c);
@@ -92,16 +92,23 @@ public class AnalyticsController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("PriorityOfCourses");
 		List<Streams> c = stream.findAll();
-		
-		mv.addObject("streamList", c);
-		
-			
+		mv.addObject("streamList", c);		
 		return mv;
 	}
 	
 	@RequestMapping(value = "fs")
 	public String showMainBatchPage() {
 		return "MainBatchPage";
+	}
+	
+	@RequestMapping(value = "NumberOfStudents")
+	public String showNumberOfStudentsPage() {
+		return "NumberOfStudents";
+	}
+	
+	@RequestMapping(value = "BatchLaunch")
+	public String showBatchLaunchPage() {
+		return "BatchLaunch";
 	}
 
 	

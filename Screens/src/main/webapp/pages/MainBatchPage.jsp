@@ -62,7 +62,7 @@
 					</div>
 				  </div>
 				  <div class="card-body"><br>
-					   <h4><a href="CourseSelectScreen" style="margin-left:41%">Select Course</a></h4><br>
+					   <h4><a href="LectureView" style="margin-left:41%">Lecture View</a></h4><br>
 				  </div>
 			  </div>
 			</div>
