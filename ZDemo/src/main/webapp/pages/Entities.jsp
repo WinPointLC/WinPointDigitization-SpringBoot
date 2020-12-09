@@ -57,7 +57,7 @@
 								<div class="dropdown">
 
 									<button class="btn btn-secondary dropdown-toggle "
-										type="button" id="dropdownMenuButton" data-toggle="dropdown"
+										type="button" id="dropdownMenuButtonEntity" data-toggle="dropdown"
 										data-display="static" aria-haspopup="true"
 										aria-expanded="false" style="display: block; margin: auto;">
 										SELECT ENTITY</button>
@@ -135,9 +135,8 @@
 						<div class="card" id="entityTable" style="display: none;">
 							<div class="card-header card-header-primary">
 								<p>
-								<h4 class="card-title " style="display: inline;">Entity
-									Name</h4>
-								<a style="margin-left: 550px;" data-toggle="modal"
+								<h4 class="card-title " style="display: inline;" id="entity_name"></h4>
+								<a style="margin-left: 480px;" data-toggle="modal"
 									data-target="#addRowModal"> Add a row <i
 									class="material-icons">add_circle</i>
 
@@ -317,9 +316,16 @@
 		
 		var form = document.getElementById('addRowForm'); 
 		form.reset();
+
+		function CourseType() {
+			  
+			   this.courseTypeName = 'abc';
+			  
+			}
+		CourseType.prototype = Object.create(CourseType.prototype);
+		add_rows.push(CourseType.prototype);
 		
-		
-		add_rows.push(row_data);
+		//add_rows.push(row_data);
 		/*
 		for(i=0;i<add_rows.length;i++){
 			alert("row pushed:" + add_rows[i]);
@@ -548,6 +554,7 @@
 	
 		entityName=entity_name.replace(/\s+/g, "");
 		//alert(entityName);
+		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
 		
 		$.ajax({
 			type: 'POST',
@@ -592,6 +599,7 @@
 				var cardBody = document.createElement('div');
 				cardBody.className="card-body";	
 				cardBody.id="cardBody";	
+				document.getElementById('entity_name').textContent = entity_name;
 				
 				var tableRes = document.createElement('div');
 				tableRes.className="table-responsive";

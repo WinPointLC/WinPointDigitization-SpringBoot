@@ -57,7 +57,7 @@
 								<div class="dropdown">
 
 									<button class="btn btn-secondary dropdown-toggle "
-										type="button" id="dropdownMenuButton" data-toggle="dropdown"
+										type="button" id="dropdownMenuButtonEntity" data-toggle="dropdown"
 										data-display="static" aria-haspopup="true"
 										aria-expanded="false" style="display: block; margin: auto;">
 										SELECT ENTITY</button>
@@ -135,9 +135,8 @@
 						<div class="card" id="entityTable" style="display: none;">
 							<div class="card-header card-header-primary">
 								<p>
-								<h4 class="card-title " style="display: inline;">Entity
-									Name</h4>
-								<a style="margin-left: 550px;" data-toggle="modal"
+								<h4 class="card-title " style="display: inline;" id="entity_name"></h4>
+								<a style="margin-left: 480px;" data-toggle="modal"
 									data-target="#addRowModal"> Add a row <i
 									class="material-icons">add_circle</i>
 
@@ -320,6 +319,7 @@
 		
 		
 		add_rows.push(row_data);
+		
 		/*
 		for(i=0;i<add_rows.length;i++){
 			alert("row pushed:" + add_rows[i]);
@@ -546,8 +546,10 @@
 	
 		entityName=entity_name.replace(/\s+/g, "");
 		//alert(entityName);
+		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
 		
-		$.ajax({
+		
+		/* $.ajax({
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=read',
 			url:"/Entity?entityInfoParam=" + entityName + "&activity=read",
@@ -555,14 +557,24 @@
 			dataType: 'json',
 			contentType: 'application/json; charset=utf-8',
 			traditional: true,
-			success: function (jsonObj) {
+			success: function (jsonObj) { */
 			
-				entityDetailList=jsonObj;
-				alert("Entity List "+ entityDetailList);
+				//entityDetailList=jsonObj;
+				//alert("Entity List "+ entityDetailList);
 				
 				//entityDetailList=JSON.parse(entityDetailList); 
 				//alert("Entity List as object "+ entityDetailList[0]);
 				
+				var entityDetailList=[
+		  			{
+		  				question:"q1"	
+		  			},
+		  			{
+		  				question:"q2"				
+		  			}
+					
+					]
+						
 				var col_names = [];
 				function countColumns(obj) {
 					var result = 0;
@@ -590,6 +602,7 @@
 				var cardBody = document.createElement('div');
 				cardBody.className="card-body";	
 				cardBody.id="cardBody";	
+				document.getElementById('entity_name').textContent = entity_name;
 				
 				var tableRes = document.createElement('div');
 				tableRes.className="table-responsive";
@@ -662,11 +675,11 @@
 				form_modal.appendChild(btn_add_row);
 				
 				document.getElementById('addRowForm').appendChild(form_modal);
-			},
+			/* },
 			error: function(){
 				alert("Error");
 			}
-		});
+		}); */
 			
 	}
 				

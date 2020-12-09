@@ -45,6 +45,12 @@ public class AnalyticsController {
 		return "Result";
 	}
 	
+	@RequestMapping(value = "/Entities", method = RequestMethod.GET)
+	public ModelAndView showEntityPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Entities");
+		return mv;
+	}
 	
 	
 	@RequestMapping(value = "FeedBackForm")
