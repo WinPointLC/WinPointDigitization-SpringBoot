@@ -19,5 +19,5 @@ public class ReminderType {
 	
 	@OneToMany(targetEntity = StudentCourseDetails.class)
 	@JoinColumn(name = "reminderTypeId", referencedColumnName = "reminderTypeId")
-	private Set<StudentCourseDetails> StudentCourseDetails;
+	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 }

@@ -23,7 +23,7 @@ public class SecurityQuestions {
 
 	@OneToMany(targetEntity = UserProfile.class)
 	@JoinColumn(name = "securityQuestionId", referencedColumnName = "securityQuestionId")
-	private Set<UserProfile> UserProfile;
+	private Set<UserProfile> mappingUserProfile;
 	
 	//////////////////////
 

@@ -20,30 +20,30 @@ public class SegmentType {
 //	
 	@OneToMany(targetEntity = BatchDetails.class)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private Set<BatchDetails> BatchDetails;
+	private Set<BatchDetails> mappingBatchDetails;
 //	
 //	
 //	
 	@OneToMany(targetEntity = EnquiryDetails.class)
 	@JoinColumn(name = "segementTypeId", referencedColumnName = "segmentTypeId")
-	private Set<EnquiryDetails> EnquiryDetails;
+	private Set<EnquiryDetails> mappingEnquiryDetails;
 //	
 //	
 //	
 	@OneToMany(targetEntity = ExpenseDetails.class)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private Set<ExpenseDetails> ExpenseDetails;
+	private Set<ExpenseDetails> mappingExpenseDetails;
 //	
 //	
 	@OneToMany(targetEntity = RevenueDetail.class)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private Set<RevenueDetail> RevenueDetail;
+	private Set<RevenueDetail> mappingRevenueDetail;
 	
 	
 	
 	@OneToMany(targetEntity = UserProfile.class)
 	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
-	private Set<UserProfile> UserProfile;
+	private Set<UserProfile> mappingUserProfile;
 	
 	/////////////
 

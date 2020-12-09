@@ -22,22 +22,22 @@ public class DifficultyLevel {
 
 	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 	
 	
 	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
+	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 	
 	
 	@OneToMany(targetEntity = DifficultyLevel.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
+	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 	
 	
 	@OneToMany(targetEntity = DifficultyLevel.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<TestDifficulty> TestDifficulty;
+	private Set<TestDifficulty> mappingTestDifficulty;
 	
 	////////////////////////////
 }

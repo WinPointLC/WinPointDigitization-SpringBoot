@@ -378,7 +378,7 @@
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
 			url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
 			//data: JSON.stringify(myData),
-			data: jQuery.param(myData),
+			data: myData,
 			//dataType: 'json',
 			//contentType: 'application/json; charset=utf-8',
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

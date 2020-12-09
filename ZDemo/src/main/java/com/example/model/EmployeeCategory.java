@@ -21,7 +21,7 @@ public class EmployeeCategory {
 
 	@OneToMany(targetEntity = EmployeeDetails.class)
 	@JoinColumn(name = "employeeCategoryId", referencedColumnName = "employeeCategoryId")
-	private Set<EmployeeDetails> EmployeeDetails;
+	private Set<EmployeeDetails> mappingEmployeeDetails;
 	
 	
 	

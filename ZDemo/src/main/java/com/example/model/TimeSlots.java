@@ -20,13 +20,13 @@ public class TimeSlots {
 	
 	@OneToMany(targetEntity = EnquiryDetails.class)
 	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-	private Set<EnquiryDetails> EnquiryDetails;
+	private Set<EnquiryDetails> mappingEnquiryDetails;
 	
 	
 	
 	@OneToMany(targetEntity = UserProfile.class)
 	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-	private Set<UserProfile> UserProfile;
+	private Set<UserProfile> mappingUserProfile;
 	
 	
 	

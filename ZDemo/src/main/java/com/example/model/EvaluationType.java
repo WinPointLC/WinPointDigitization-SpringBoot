@@ -25,13 +25,13 @@ public class EvaluationType {
 //	
 	@OneToMany(targetEntity = Course.class)
 	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
-	private Set<Course> Course;
+	private Set<Course> mappingCourse;
 	
 	
 	@OneToMany(targetEntity = TestDetails.class)
 	@JoinColumn(name = "evaluationTypeId", referencedColumnName = "evaluationTypeId")
 	private Set
-	<TestDetails> TestDetails;	
+	<TestDetails> mappingTestDetails;	
 	
 /////////////////////////////////
 	

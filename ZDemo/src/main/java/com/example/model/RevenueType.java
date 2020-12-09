@@ -20,7 +20,7 @@ public class RevenueType {
 	
 	@OneToMany(targetEntity = RevenueDetail.class)
 	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
-	private Set<RevenueDetail> RevenueDetail;
+	private Set<RevenueDetail> mappingRevenueDetail;
 	
 	
 //////////////////////

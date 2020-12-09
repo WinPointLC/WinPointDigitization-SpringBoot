@@ -23,11 +23,11 @@ public class Streams {
 	
 	@OneToMany(targetEntity = StreamCourseType.class)
 	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
-	Set<StreamCourseType> streamCourseType;
+	Set<StreamCourseType> mappingStreamCourseType;
 
 	@OneToMany(targetEntity = Course.class)
 	@JoinColumn(name = "streamId", referencedColumnName = "streamId")
-	Set<Course> Course;
+	Set<Course> mappingCourse;
 
 	
 	

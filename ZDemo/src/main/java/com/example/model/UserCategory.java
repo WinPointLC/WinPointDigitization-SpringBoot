@@ -22,7 +22,7 @@ public class UserCategory {
 	
 	@OneToMany(targetEntity = UserProfile.class)
 	@JoinColumn(name = "userCategoryId", referencedColumnName = "userCategoryId")
-	private Set<UserProfile> UserProfile;
+	private Set<UserProfile> mappingUserProfile;
 	
 	///////////////////
 }
