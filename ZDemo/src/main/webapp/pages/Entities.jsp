@@ -322,7 +322,8 @@
 			   this.courseTypeName = 'abc';
 			  
 			}
-		CourseType.prototype = Object.create(CourseType.prototype);
+		//CourseType.prototype = Object.create(CourseType.prototype);
+		CourseType.prototype = new CourseType;
 		add_rows.push(CourseType.prototype);
 		
 		//add_rows.push(row_data);
