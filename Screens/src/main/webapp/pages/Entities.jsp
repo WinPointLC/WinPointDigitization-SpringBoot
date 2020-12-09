@@ -255,7 +255,17 @@
 			new_row.appendChild(det_1);
 			//alert("data pushed: "+row_data[i]);
 		}
-	
+		//alert(col_names[0]);
+		for (var i = 0; i < row_data.length; i++) {
+			//alert(col_names[i]);
+			add_rows.push({
+				[col_names[i]]: row_data[i],
+		       
+		    });
+		}
+		for(i=0;i<add_rows.length;i++){
+			alert("row pushed:" + add_rows[i]);
+		}
 	
 		var det_op  = document.createElement('td');
 			
@@ -318,7 +328,7 @@
 		form.reset();
 		
 		
-		add_rows.push(row_data);
+		//add_rows.push(row_data);
 		
 		/*
 		for(i=0;i<add_rows.length;i++){
@@ -541,7 +551,7 @@
 		else
 			document.getElementById('del_link').className="";
 	}
-	
+	var  entityDetailList;
     function showBody(entity_name){
 	
 		entityName=entity_name.replace(/\s+/g, "");
@@ -565,7 +575,7 @@
 				//entityDetailList=JSON.parse(entityDetailList); 
 				//alert("Entity List as object "+ entityDetailList[0]);
 				
-				var entityDetailList=[
+			 entityDetailList=[
 		  			{
 		  				question:"q1"	
 		  			},
