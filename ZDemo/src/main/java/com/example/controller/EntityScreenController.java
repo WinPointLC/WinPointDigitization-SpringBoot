@@ -12,6 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.model.CourseType;
+import com.example.model.DifficultyLevel;
+import com.example.model.EmployeeCategory;
+import com.example.model.EvaluationType;
+import com.example.model.FeedbackCategory;
+import com.example.model.FeedbackQuestionType;
+import com.example.model.GradingSystem;
+import com.example.model.OrganizationType;
+import com.example.model.Streams;
 import com.example.repository.CourseTypeRepository;
 import com.example.repository.DifficultyLevelRepository;
 import com.example.repository.EmployeeCategoryRepository;
@@ -155,7 +163,7 @@ public class EntityScreenController {
 	}
 	
 	@RequestMapping(value = "/EntityUpdate", method = RequestMethod.POST)
-	public void updateCourseType(@RequestParam String entityInfoParam,@RequestParam(value = "addRows")Object[]addRows) {
+	public void updateCourseType(@RequestParam String entityInfoParam,@RequestParam(value = "addRows")List<CourseType>addRows) {
 		System.out.println("\n\n\n\n\n\n\n\n"+entityInfoParam+"\n\n\n\n\n\n\n\n");
 		switch (entityInfoParam) {
 		
@@ -169,29 +177,54 @@ public class EntityScreenController {
 			
 		case "DifficultyLevel":
 			
-			System.out.println(DifficultyLevelRepository.findAll());
+			for(Object x : addRows) {
+				DifficultyLevel difficultyLevel = (DifficultyLevel)x;
+				DifficultyLevelRepository.save(difficultyLevel);
+			}			
+			
 			break;
 			
 		case "Stream":
-			System.out.println(StreamsRepository.findAll());
+			for(Object x : addRows) {
+				Streams streams = (Streams)x;
+				StreamsRepository.save(streams);
+			}
 			break;
 		case "EmployeeCategory":
-			System.out.println(EmployeeCategoryRepository.findAll());
+			for(Object x : addRows) {
+				EmployeeCategory employeeCategory = (EmployeeCategory)x;
+				EmployeeCategoryRepository.save(employeeCategory);
+			}
 			break;			
 		case "EvaluationType":
-			System.out.println(EvaluationTypeRepository.findAll());
+			for(Object x : addRows) {
+				EvaluationType evaluationType = (EvaluationType)x;
+				EvaluationTypeRepository.save(evaluationType);
+			}
 			break;
 		case "FeedbackCategory":
-			System.out.println(FeedbackCategoryRepository.findAll());
+			for(Object x : addRows) {
+				FeedbackCategory feedbackCategory = (FeedbackCategory)x;
+				FeedbackCategoryRepository.save(feedbackCategory);
+			}
 			break;
-		case "FeebackQuestionType":
-			System.out.println(FeedbackQuestionTypeRepositoy.findAll());
+		case "FeedbackQuestionType":
+			for(Object x : addRows) {
+				FeedbackQuestionType feedbackQuestionType = (FeedbackQuestionType)x;
+				FeedbackQuestionTypeRepositoy.save(feedbackQuestionType);
+			}
 			break;			
 		case "GradingSystem":
-			System.out.println(GradingSystemRepository.findAll());
+			for(Object x : addRows) {
+				GradingSystem gradingSystem = (GradingSystem)x;
+				GradingSystemRepository.save(gradingSystem);
+			}
 			break;
 		case "OrganizationType":
-			System.out.println(OrganizationTypeRepository.findAll());
+			for(Object x : addRows) {
+				OrganizationType organizationType = (OrganizationType)x;
+				OrganizationTypeRepository.save(organizationType);
+			}
 			break;
 		case "ReminderType":
 			System.out.println(ReminderTypeRepository.findAll());
