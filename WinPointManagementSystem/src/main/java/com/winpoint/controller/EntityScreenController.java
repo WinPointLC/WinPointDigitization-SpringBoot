@@ -147,55 +147,187 @@ public class EntityScreenController {
 			return list;
 
 		case "EmployeeCategory":
-			System.out.println(employeeCategoryRepository.findAll());
-			return employeeCategoryRepository.findAll();
+			 
+			list = employeeCategoryRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<EmployeeCategory> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new EmployeeCategory());
+				for(EmployeeCategory x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "EvaluationType":
-			System.out.println(evaluationTypeRepository.findAll());
-			return evaluationTypeRepository.findAll();
+			
+			list = evaluationTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<EvaluationType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new EvaluationType());
+				for(EvaluationType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "FeedbackCategory":
-			System.out.println(feedbackCategoryRepository.findAll());
-			return feedbackCategoryRepository.findAll();
+			
+			list = feedbackCategoryRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<FeedbackCategory> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new FeedbackCategory());
+				for(FeedbackCategory x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
-		case "FeebackQuestionType":
-			System.out.println(feedbackQuestionTypeRepositoy.findAll());
-			return feedbackQuestionTypeRepositoy.findAll();
+		case "FeedbackQuestionType":
+			
+			list = feedbackQuestionTypeRepositoy.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<FeedbackQuestionType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new FeedbackQuestionType());
+				for(FeedbackQuestionType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
 
 		case "GradingSystem":
-			System.out.println(gradingSystemRepository.findAll());
-			return gradingSystemRepository.findAll();
+			
+			list = gradingSystemRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<GradingSystem> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new GradingSystem());
+				for(GradingSystem x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "OrganizationType":
-			System.out.println(organizationTypeRepository.findAll());
-			return organizationTypeRepository.findAll();
+			
+			list = organizationTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<OrganizationType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new OrganizationType());
+				for(OrganizationType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "PaymentType":
-			return paymentModeRepository.findAll();
+			
+			list = gradingSystemRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<PaymentMode> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new PaymentMode());
+				for(PaymentMode x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "ReminderType":
-			System.out.println(reminderTypeRepository.findAll());
-			return reminderTypeRepository.findAll();
+			
+			list = reminderTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<ReminderType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new ReminderType());
+				for(ReminderType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "RevenueType":
-			System.out.println(revenueTypeRepository.findAll());
-			return revenueTypeRepository.findAll();
+			
+			list = revenueTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<RevenueType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new RevenueType());
+				for(RevenueType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "SecurityQuestions":
-			System.out.println(securityQuestionsRepository.findAll());
-			return securityQuestionsRepository.findAll();
+			
+			list = securityQuestionsRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<SecurityQuestions> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new SecurityQuestions());
+				for(SecurityQuestions x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "SegmentType":
-			System.out.println(segmentTypeRepository.findAll());
-			return segmentTypeRepository.findAll();
+			
+			list = segmentTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<SegmentType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new SegmentType());
+				for(SegmentType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "TimeSlots":
-			System.out.println(timeSlotsRepository.findAll());
-			return timeSlotsRepository.findAll();
+			
+			list = timeSlotsRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<TimeSlots> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new TimeSlots());
+				for(TimeSlots x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		case "UserCategory":
-			System.out.println(userCategoryRepository.findAll());
-			return userCategoryRepository.findAll();
+			
+			list = userCategoryRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<UserCategory> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new UserCategory());
+				for(UserCategory x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		default:
 			return null;
