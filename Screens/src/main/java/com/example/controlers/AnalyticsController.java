@@ -127,6 +127,7 @@ public class AnalyticsController {
 		
 		  for (CourseType c : CourseTypeArray) { 
 			  System.out.println("List: course type name  "  + c.getCourseTypeName());
+			  System.out.println("List: course type id  "  + c.getCourseTypeId());
 			  
 		  
 		  

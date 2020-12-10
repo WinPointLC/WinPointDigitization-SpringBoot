@@ -255,30 +255,15 @@
 			new_row.appendChild(det_1);
 			//alert("data pushed: "+row_data[i]);
 		}
-
+		var obj="{";
 		for (var i = 0; i < row_data.length; i++) {
-			if(entity=='GradingSystem'){
-				add_rows.push({
-					marksLowerLimit: row_data[0],
-					marksHigherLimit:  row_data[1]
-			       
-			    }); 
-			}
-			else if(entity=='EvaluationType'){
-				add_rows.push({
-					evaluationTypeName: row_data[0],
-					offlineCheck:  row_data[1]
-			       
-			    }); 
-				
-			}
-			else{
-				add_rows.push({
-					[col_names[i]]: row_data[i],
-			       
-			    }); 
-			}
+			obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
 		}
+
+		obj=obj.slice(0, -1);
+		obj=obj+"}";
+		obj=JSON.parse(obj);
+		add_rows.push(obj);
 		for(i=0;i<add_rows.length;i++){
 			alert("row pushed:" + add_rows[i]);
 		}
@@ -343,16 +328,8 @@
 		
 		var form = document.getElementById('addRowForm'); 
 		form.reset();
-/* 
-		function CourseType() {
-			  
-			   this.courseTypeName = 'abc';
-			  
-			} */
-		<!---->
-		//CourseType.prototype = Object.create(CourseType.prototype);
-		//CourseType.prototype = new CourseType;
-		//add_rows.push(CourseType.prototype);
+
+		
 		
 		//add_rows.push(row_data);
 		/*

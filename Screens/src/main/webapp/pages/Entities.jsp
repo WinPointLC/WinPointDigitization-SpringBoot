@@ -257,16 +257,16 @@
 			//alert("data pushed: "+row_data[i]);
 		}
 		//alert(col_names[0]);
-		//var obj="'{";
+		var obj="{";
 		for (var i = 0; i < row_data.length; i++) {
 			//alert(row_data[i]);
 			//alert(col_names[i]);
 			//alert("in here");
 			//alert(obj);
 			
-			//obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
+			obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
 			//obj=obj+col_names[i]+":"+"\""+row_data[i]+"\"" + ",";
-			if(entity=='GradingSystem'){
+			/* if(entity=='GradingSystem'){
 				add_rows.push({
 					marksLowerLimit: row_data[0],
 					marksHigherLimit:  row_data[1]
@@ -286,19 +286,19 @@
 					[col_names[i]]: row_data[i],
 			       
 			    }); 
-			}
+			} */
 		}
 		//obj=(JSON.stringify(obj));
-		//obj=obj.slice(0, -1);
-		//obj=obj+"}'";
+		obj=obj.slice(0, -1);
+		obj=obj+"}";
 		//obj=JSON.parse(obj);
 		//obj='{"courseTypeName":"q3"}';
-		//obj=JSON.parse(obj);
+		obj=JSON.parse(obj);
 		//var obj = (new Function( "return " + obj ) )() ;
-		//alert(obj);
+		alert(obj);
 		//var s='{ "name":"John", "age":30, "city":"New York"}';
 		
-		
+		add_rows.push(obj);
 		
 		for(i=0;i<add_rows.length;i++){
 			alert("row pushed:" + add_rows[i]);
@@ -618,13 +618,13 @@
 			 entityDetailList=[
 		  			{
 		  				courseTypeName:"CT1"	
-			  				//,
-		  				//	courseTypeId:1	
+			  				,
+		  					courseTypeId:1	
 		  			},
 		  			{
 		  				courseTypeName:"CT2"
-			  				//,
-		  				//courseTypeId:2		
+			  				,
+		  				courseTypeId:2		
 		  			}
 					
 					]
