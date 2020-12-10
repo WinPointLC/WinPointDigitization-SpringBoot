@@ -140,7 +140,7 @@
 									data-target="#addRowModal"> Add a row <i
 									class="material-icons">add_circle</i>
 
-								</a> <a style="margin-left: 30px;" onclick="delRow()"> Delete
+								</a> <a style="margin-left: 30px;" onclick="delRow()" id="del_link"> Delete
 									rows <i class="material-icons">remove_circle</i>
 
 								</a>
@@ -237,7 +237,7 @@
 
 	<script type="text/javascript">
     var add_rows = new Array();
-    function addRow(col_count){
+    function addRow(col_count,entity){
 		var row_data = new Array();
 		
 						
@@ -257,15 +257,49 @@
 			//alert("data pushed: "+row_data[i]);
 		}
 		//alert(col_names[0]);
+		//var obj="'{";
 		for (var i = 0; i < row_data.length; i++) {
 			//alert(row_data[i]);
 			//alert(col_names[i]);
 			//alert("in here");
-			add_rows.push({
-				[col_names[i]]: row_data[i],
-		       
-		    });
+			//alert(obj);
+			
+			//obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
+			//obj=obj+col_names[i]+":"+"\""+row_data[i]+"\"" + ",";
+			if(entity=='GradingSystem'){
+				add_rows.push({
+					marksLowerLimit: row_data[0],
+					marksHigherLimit:  row_data[1]
+			       
+			    }); 
+			}
+			else if(entity=='EvaluationType'){
+				add_rows.push({
+					evaluationTypeName: row_data[0],
+					offlineCheck:  row_data[1]
+			       
+			    }); 
+				
+			}
+			else{
+				add_rows.push({
+					[col_names[i]]: row_data[i],
+			       
+			    }); 
+			}
 		}
+		//obj=(JSON.stringify(obj));
+		//obj=obj.slice(0, -1);
+		//obj=obj+"}'";
+		//obj=JSON.parse(obj);
+		//obj='{"courseTypeName":"q3"}';
+		//obj=JSON.parse(obj);
+		//var obj = (new Function( "return " + obj ) )() ;
+		//alert(obj);
+		//var s='{ "name":"John", "age":30, "city":"New York"}';
+		
+		
+		
 		for(i=0;i<add_rows.length;i++){
 			alert("row pushed:" + add_rows[i]);
 		}
@@ -404,6 +438,7 @@
 	            alert("Error");
 	        }
 	    });
+	    add_rows=[];
 		
 	}
 	</script>
@@ -582,12 +617,14 @@
 				
 			 entityDetailList=[
 		  			{
-		  				courseTypeName:"CT1"	,
-		  					courseTypeId:1	
+		  				courseTypeName:"CT1"	
+			  				//,
+		  				//	courseTypeId:1	
 		  			},
 		  			{
-		  				courseTypeName:"CT2",
-		  				courseTypeId:2		
+		  				courseTypeName:"CT2"
+			  				//,
+		  				//courseTypeId:2		
 		  			}
 					
 					]
@@ -687,7 +724,8 @@
 				btn_add_row.className='btn btn-primary';
 				btn_add_row.setAttribute('type','button');
 				btn_add_row.setAttribute('col-cnt',col_cnt);
-				btn_add_row.setAttribute('onclick',"addRow(this.getAttribute('col-cnt'))");
+				btn_add_row.setAttribute('entity',entityName);
+				btn_add_row.setAttribute('onclick',"addRow(this.getAttribute('col-cnt'),this.getAttribute('entity'))");
 				btn_add_row.textContent='Add';
 				form_modal.appendChild(btn_add_row);
 				

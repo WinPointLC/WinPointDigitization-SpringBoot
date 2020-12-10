@@ -140,7 +140,7 @@
 									data-target="#addRowModal"> Add a row <i
 									class="material-icons">add_circle</i>
 
-								</a> <a style="margin-left: 30px;" onclick="delRow()"> Delete
+								</a> <a style="margin-left: 30px;" onclick="delRow()" id="del_link"> Delete
 									rows <i class="material-icons">remove_circle</i>
 
 								</a>
@@ -237,7 +237,7 @@
 
 	<script type="text/javascript">
     var add_rows = new Array();
-    function addRow(col_count){
+    function addRow(col_count,entity){
 		var row_data = new Array();
 						
 		row_count++;
@@ -257,12 +257,27 @@
 		}
 
 		for (var i = 0; i < row_data.length; i++) {
-			alert(row_data[i]);
-			alert(col_names[i]);
-			add_rows.push({
-				[col_names[i]]: row_data[i],
-		       
-		    });
+			if(entity=='GradingSystem'){
+				add_rows.push({
+					marksLowerLimit: row_data[0],
+					marksHigherLimit:  row_data[1]
+			       
+			    }); 
+			}
+			else if(entity=='EvaluationType'){
+				add_rows.push({
+					evaluationTypeName: row_data[0],
+					offlineCheck:  row_data[1]
+			       
+			    }); 
+				
+			}
+			else{
+				add_rows.push({
+					[col_names[i]]: row_data[i],
+			       
+			    }); 
+			}
 		}
 		for(i=0;i<add_rows.length;i++){
 			alert("row pushed:" + add_rows[i]);
@@ -415,6 +430,7 @@
 	            alert("Error");
 	        }
 	    });
+		add_rows=[];
 		
 	}
 	</script>
@@ -685,7 +701,8 @@
 				btn_add_row.className='btn btn-primary';
 				btn_add_row.setAttribute('type','button');
 				btn_add_row.setAttribute('col-cnt',col_cnt);
-				btn_add_row.setAttribute('onclick',"addRow(this.getAttribute('col-cnt'))");
+				btn_add_row.setAttribute('entity',entityName);
+				btn_add_row.setAttribute('onclick',"addRow(this.getAttribute('col-cnt'),this.getAttribute('entity'))");
 				btn_add_row.textContent='Add';
 				form_modal.appendChild(btn_add_row);
 				
