@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -14,6 +15,7 @@ import lombok.Data;
 @Data
 public class EmployeeCategory {
 	@Id
+	@GeneratedValue
 	private Integer employeeCategoryId;
 	private String employeeCategoryName;
 	private Integer createdBy;

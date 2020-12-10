@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -14,11 +15,13 @@ import lombok.Data;
 @Data
 public class DifficultyLevel {
 	@Id
+	@GeneratedValue
 	private Integer difficultyLevelId;
 	private String difficultyLevelName;
 	private Integer createdBy;
 	private Date createdDate;
 	
+
 
 	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
