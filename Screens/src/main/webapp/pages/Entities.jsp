@@ -239,6 +239,7 @@
     var add_rows = new Array();
     function addRow(col_count){
 		var row_data = new Array();
+		
 						
 		row_count++;
 		var new_row = document.createElement('tr');
@@ -257,7 +258,9 @@
 		}
 		//alert(col_names[0]);
 		for (var i = 0; i < row_data.length; i++) {
+			//alert(row_data[i]);
 			//alert(col_names[i]);
+			//alert("in here");
 			add_rows.push({
 				[col_names[i]]: row_data[i],
 		       
@@ -377,17 +380,19 @@
 		for(i=0;i<del_rows.length;i++){
 			alert("del : " + del_rows[i]);
 		}
+
+		//alert(entityName+"Update");
 		
-		
-		var myData = {
+		/* var myData = {
 		  addRows: add_rows,
-		  delRowIds: del_rows
-		};
+		  //delRowIds: del_rows
+		} ;*/
 		$.ajax({
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
-			url:"/Entity?entityInfoParam=" + entityName + "&activity=update",
-			data: JSON.stringify(myData),
+			//url:"/Entity?entityInfoParam=" + entityName + "&activity=update",
+			url:entityName+"Update",
+			data: JSON.stringify(add_rows),
 			//dataType: 'json',
 			contentType: 'application/json; charset=utf-8',
 			traditional: true,
@@ -462,7 +467,7 @@
 			var result = 0;
 			for (var p in obj) {
 				
-				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
+				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("mapping")==false )) {
 					//alert(p);
 					col_names.push(p);
 					result = result+1;
@@ -484,7 +489,7 @@
 				   var id = obj[p];
 				}
 			
-				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
+				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("mapping")==false )) {
 				
 					var det = document.createElement('td');
 					det.textContent=obj[p];
@@ -577,10 +582,12 @@
 				
 			 entityDetailList=[
 		  			{
-		  				question:"q1"	
+		  				courseTypeName:"CT1"	,
+		  					courseTypeId:1	
 		  			},
 		  			{
-		  				question:"q2"				
+		  				courseTypeName:"CT2",
+		  				courseTypeId:2		
 		  			}
 					
 					]
@@ -590,7 +597,7 @@
 					var result = 0;
 					for (var p in obj) {
 						
-						if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
+						if( (p!='createdBy') && (p!='createdDate')&&  ( p.includes("mapping")==false )) {
 							//alert(p);
 							col_names.push(p);
 							result = result+1;

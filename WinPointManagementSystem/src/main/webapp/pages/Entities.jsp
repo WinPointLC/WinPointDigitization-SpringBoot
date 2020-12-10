@@ -255,6 +255,18 @@
 			new_row.appendChild(det_1);
 			//alert("data pushed: "+row_data[i]);
 		}
+
+		for (var i = 0; i < row_data.length; i++) {
+			alert(row_data[i]);
+			alert(col_names[i]);
+			add_rows.push({
+				[col_names[i]]: row_data[i],
+		       
+		    });
+		}
+		for(i=0;i<add_rows.length;i++){
+			alert("row pushed:" + add_rows[i]);
+		}
 	
 	
 		var det_op  = document.createElement('td');
@@ -316,16 +328,16 @@
 		
 		var form = document.getElementById('addRowForm'); 
 		form.reset();
-
+/* 
 		function CourseType() {
 			  
 			   this.courseTypeName = 'abc';
 			  
-			}
+			} */
 		<!---->
 		//CourseType.prototype = Object.create(CourseType.prototype);
-		CourseType.prototype = new CourseType;
-		add_rows.push(CourseType.prototype);
+		//CourseType.prototype = new CourseType;
+		//add_rows.push(CourseType.prototype);
 		
 		//add_rows.push(row_data);
 		/*
@@ -377,19 +389,23 @@
 		}
 		
 		
-		var myData = {
+		//alert(entityName+"Update");
+		
+		/* var myData = {
 		  addRows: add_rows,
-		  delRowIds: del_rows
-		};
+		  //delRowIds: del_rows
+		} ;*/
 		$.ajax({
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
-			url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
+			//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
+			url:entityName+"Update",
+			data: JSON.stringify(add_rows),
 			//data: JSON.stringify(myData),
-			data: myData,
+			//data: myData,
 			//dataType: 'json',
-			//contentType: 'application/json; charset=utf-8',
-			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			contentType: 'application/json; charset=utf-8',
+			//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 			traditional: true,
 			success: function () {
 				alert("sucess ajax call for add and delete");

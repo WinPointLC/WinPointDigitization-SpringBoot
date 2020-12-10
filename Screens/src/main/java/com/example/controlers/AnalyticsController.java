@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.model.CourseType;
 import com.example.model.Streams;
+
 import com.example.repository.CourseTypeRepository;
 import com.example.repository.StreamsRepository;
 
@@ -117,5 +120,19 @@ public class AnalyticsController {
 		return "BatchLaunch";
 	}
 
+	@RequestMapping(value = "CourseTypeUpdate")
+	@ResponseBody
+	public void saveCourseTypeList(@RequestBody CourseType[] CourseTypeArray) {
+		//System.out.println(CourseTypeArray[0]);
+		
+		  for (CourseType c : CourseTypeArray) { 
+			  System.out.println("List: course type name  "  + c.getCourseTypeName());
+			  System.out.println("List: course type ID  "  + c.getCourseTypeId());
+		  
+		  
+		  
+		  }
+		 
+	}
 	
 }
