@@ -105,8 +105,13 @@ public class EntityScreenController {
 	@RequestMapping(value = "/Entity", method = RequestMethod.POST)
 	public @ResponseBody List<?> showCourseType(@RequestParam String entityInfoParam) {
 		List<?>list ;
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println("EntityInfoParam : "+entityInfoParam);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
 		switch (entityInfoParam) {
 		case "CourseType":
+			System.out.println("@##############################################################");
 			list = courseTypeRepository.findAll();
 			System.out.println(list +" "+ list.isEmpty());
 			if(list.isEmpty()) {
@@ -117,6 +122,7 @@ public class EntityScreenController {
 					System.out.println(x);
 				return empList;
 			}
+			System.out.println(list);
 			return list;
 
 		case "DifficultyLevel":
@@ -147,9 +153,9 @@ public class EntityScreenController {
 			return list;
 
 		case "EmployeeCategory":
-			 
+			System.out.println("@##############################################################");
 			list = employeeCategoryRepository.findAll();
-			System.out.println(list +" "+ list.isEmpty());
+			System.out.println(list +" - "+ list.isEmpty());
 			if(list.isEmpty()) {
 				List<EmployeeCategory> empList = new ArrayList<>();
 				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
@@ -158,6 +164,7 @@ public class EntityScreenController {
 					System.out.println(x);
 				return empList;
 			}
+			System.out.println(list);
 			return list;
 
 		case "EvaluationType":
@@ -341,7 +348,8 @@ public class EntityScreenController {
 	@RequestMapping(value = "/CourseTypeUpdate", method = RequestMethod.POST)
 	public void updateCourseType(@RequestBody CourseType addRows[]) {
 		for (CourseType courseType : addRows) {
-//			System.out.println(courseType);
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(courseType);
 			courseTypeRepository.save(courseType);
 
 		}

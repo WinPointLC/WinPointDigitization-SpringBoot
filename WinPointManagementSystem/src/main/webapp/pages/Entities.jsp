@@ -238,6 +238,7 @@
 	<script type="text/javascript">
     var add_rows = new Array();
     function addRow(col_count,entity){
+        alert("Entered in add row");
 		var row_data = new Array();
 						
 		row_count++;
@@ -256,14 +257,17 @@
 			//alert("data pushed: "+row_data[i]);
 		}
 		var obj="{";
+		alert(row_data.length);
 		for (var i = 0; i < row_data.length; i++) {
 			obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
+			alert(obj);
 		}
 
 		obj=obj.slice(0, -1);
 		obj=obj+"}";
 		obj=JSON.parse(obj);
 		add_rows.push(obj);
+		
 		for(i=0;i<add_rows.length;i++){
 			alert("row pushed:" + add_rows[i]);
 		}
@@ -691,7 +695,8 @@
 				btn_add_row.setAttribute('type','button');
 				btn_add_row.setAttribute('col-cnt',col_cnt);
 				btn_add_row.setAttribute('entity',entityName);
-				btn_add_row.setAttribute('onclick',"addRow(this.getAttribute('col-cnt'),this.getAttribute('entity'))");
+				btn_add_row.setAttribute('onclick',"addRow(this.getAttribute('col-cnt'),this.getAttribute('entity'))");				
+				//btn_add_row.setAttribute('onclick',"addRow("+this.getAttribute('col-cnt')+","+this.getAttribute('entity')+")");
 				btn_add_row.textContent='Add';
 				form_modal.appendChild(btn_add_row);
 				
