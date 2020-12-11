@@ -483,73 +483,85 @@
     }
 	
 	function addPrevRows(obj) {
-			
-			var table_row=document.createElement('tr');
-			row_count++;
-			table_row.id=row_count+'r';
-			for (var p in obj) {
-			
-				if( p.includes("Id")==true){
-				   var id = obj[p];
+			//alert(obj);
+			var flag=0;
+			for (var p in obj)
+			{
+				if(obj[p]!=null){
+					flag=1;
 				}
-			
-				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
-				
-					var det = document.createElement('td');
-					det.textContent=obj[p];
-					table_row.appendChild(det);				
-					
-				}	
-			}  
+			}
 
-			var button_edit  = document.createElement('button');
-			button_edit.setAttribute('type',"button");
-			button_edit.setAttribute('rel',"tooltip");
-			button_edit.setAttribute('title',"Edit");
-			button_edit.id="btn-edit";
-			button_edit.className = "btn btn-primary btn-link btn-sm";
-			
-			var icon_edit = document.createElement('div');
-			var img = document.createElement('img');
-			img.setAttribute('src','../assets/img/edit.png');
-			img.setAttribute('style', "width:20px;height:20px;");
-			icon_edit.appendChild(img);
-			button_edit.appendChild(icon_edit);
-			button_edit.setAttribute('row_no', row_count+'r');
-			col_count=countColumns(entityDetailList[0]);
-			button_edit.setAttribute('column-cnt', col_count);
-			button_edit.setAttribute('onclick', "editRow(this.getAttribute('row_no'),this.getAttribute('column-cnt'))");
-			table_row.appendChild(button_edit);
-			
-			
-			var div_check=document.createElement('div');
-			div_check.className="form-check";
-			var check_label=document.createElement('label');
-			check_label.className="form-check-label";
-			div_check.appendChild(check_label);
-			var inputCheck=document.createElement('input');
-			inputCheck.className="form-check-input chk prev_chk";
-			inputCheck.setAttribute('type','checkbox');
-			inputCheck.setAttribute('del_id',id);
-			inputCheck.id=row_count+"c";
-			inputCheck.setAttribute('onclick','disable_del(this.id)');
-			//alert(inputCheck.id);
-			inputCheck.setAttribute('name',checkboxName);
-			
-			check_label.appendChild(inputCheck);
-			var checksp1=document.createElement('span');
-			checksp1.className="form-check-sign";
-			check_label.appendChild(checksp1);
-			var checksp2=document.createElement('span');
-			checksp2.className="check";
-			checksp1.appendChild(checksp2);
-			table_row.appendChild(div_check);
-			
-			var sheet_check = document.createElement('style')
-			sheet_check.innerHTML = ".form-check{margin-left:80px; margin-top:-32px!important;}";
-			document.body.appendChild(sheet_check);
+			if(flag==1){
+				var table_row=document.createElement('tr');
+				row_count++;
+				table_row.id=row_count+'r';
 	
-			document.getElementById('table-entity').appendChild(table_row);
+				for (var p in obj) {
+					//alert(p);
+				
+					if( p.includes("Id")==true){
+					   var id = obj[p];
+					}
+				
+					if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
+					
+						var det = document.createElement('td');
+						det.textContent=obj[p];
+						table_row.appendChild(det);				
+						
+					}	
+				}  
+	
+				var button_edit  = document.createElement('button');
+				button_edit.setAttribute('type',"button");
+				button_edit.setAttribute('rel',"tooltip");
+				button_edit.setAttribute('title',"Edit");
+				button_edit.id="btn-edit";
+				button_edit.className = "btn btn-primary btn-link btn-sm";
+				
+				var icon_edit = document.createElement('div');
+				var img = document.createElement('img');
+				img.setAttribute('src','../assets/img/edit.png');
+				img.setAttribute('style', "width:20px;height:20px;");
+				icon_edit.appendChild(img);
+				button_edit.appendChild(icon_edit);
+				button_edit.setAttribute('row_no', row_count+'r');
+				col_count=countColumns(entityDetailList[0]);
+				button_edit.setAttribute('column-cnt', col_count);
+				button_edit.setAttribute('onclick', "editRow(this.getAttribute('row_no'),this.getAttribute('column-cnt'))");
+				table_row.appendChild(button_edit);
+				
+				
+				var div_check=document.createElement('div');
+				div_check.className="form-check";
+				var check_label=document.createElement('label');
+				check_label.className="form-check-label";
+				div_check.appendChild(check_label);
+				var inputCheck=document.createElement('input');
+				inputCheck.className="form-check-input chk prev_chk";
+				inputCheck.setAttribute('type','checkbox');
+				inputCheck.setAttribute('del_id',id);
+				inputCheck.id=row_count+"c";
+				inputCheck.setAttribute('onclick','disable_del(this.id)');
+				//alert(inputCheck.id);
+				inputCheck.setAttribute('name',checkboxName);
+				
+				check_label.appendChild(inputCheck);
+				var checksp1=document.createElement('span');
+				checksp1.className="form-check-sign";
+				check_label.appendChild(checksp1);
+				var checksp2=document.createElement('span');
+				checksp2.className="check";
+				checksp1.appendChild(checksp2);
+				table_row.appendChild(div_check);
+				
+				var sheet_check = document.createElement('style')
+				sheet_check.innerHTML = ".form-check{margin-left:80px; margin-top:-32px!important;}";
+				document.body.appendChild(sheet_check);
+		
+				document.getElementById('table-entity').appendChild(table_row);
+			}
 		}
 		
 	function disable_del(checkbox_id){

@@ -627,10 +627,13 @@
 		  				courseTypeId:2		
 		  			}
 					
-					]
-						
+					] 
+
+				
+				//alert(entityDetailList);
 				var col_names = [];
 				function countColumns(obj) {
+					//alert(obj);
 					var result = 0;
 					for (var p in obj) {
 						
@@ -644,8 +647,10 @@
 					}              
 					return result;
 				}
-	
+				
+			    
 				col_cnt=countColumns(entityDetailList[0]); 
+				//alert(col_cnt);
 			  
 				var elem = document.getElementById('cardBody');
 				if (elem!=null){
