@@ -386,7 +386,7 @@
 		}
 		
 		
-		//alert(entityName+"Update");
+	/* 	alert(entityName+"Update"); */
 		
 		/* var myData = {
 		  addRows: add_rows,
@@ -587,7 +587,7 @@
     function showBody(entity_name){
 	
 		entityName=entity_name.replace(/\s+/g, "");
-		//alert(entityName);
+		//alert("SELECTED FROM CHOICE BOX : "+entityName);
 		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
 		
 		$.ajax({

@@ -126,7 +126,9 @@ public class EntityScreenController {
 			return list;
 
 		case "DifficultyLevel":
-			list = null;
+			System.out.println("@##############################################################");
+
+
 			list = difficultyLevelRepository.findAll();
 			System.out.println(list +" "+ list.isEmpty());
 			if(list.isEmpty()) {
