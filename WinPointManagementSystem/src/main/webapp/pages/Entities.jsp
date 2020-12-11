@@ -238,7 +238,7 @@
 	<script type="text/javascript">
     var add_rows = new Array();
     function addRow(col_count,entity){
-        alert("Entered in add row");
+        //alert("Entered in add row");
 		var row_data = new Array();
 						
 		row_count++;
@@ -257,10 +257,11 @@
 			//alert("data pushed: "+row_data[i]);
 		}
 		var obj="{";
-		alert(row_data.length);
+		//alert(row_data.length);
 		for (var i = 0; i < row_data.length; i++) {
+			//alert(col_names[i]);
 			obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
-			alert(obj);
+			//alert(obj);
 		}
 
 		obj=obj.slice(0, -1);
@@ -412,7 +413,7 @@
 	        }
 	    });
 		add_rows=[];
-		
+		col_names=[];
 	}
 	</script>
 
@@ -472,8 +473,10 @@
 	var entityDetailList;
 	
 	function countColumns(obj) {
+		    col_names = [];
 			var result = 0;
 			for (var p in obj) {
+				//alert("here");
 				
 				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
 					//alert(p);
@@ -566,6 +569,10 @@
 		
 				document.getElementById('table-entity').appendChild(table_row);
 			}
+			else
+				{
+					col_count=countColumns(entityDetailList[0]);
+				}
 		}
 		
 	function disable_del(checkbox_id){
