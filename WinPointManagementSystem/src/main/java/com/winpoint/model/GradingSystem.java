@@ -17,7 +17,7 @@ public class GradingSystem {
 //	checked
 	@Id
 	@GeneratedValue
-	private String gradeId;
+	private Integer gradeId;
 	private Integer marksLowerLimit;
 	private Integer marksHigherLimit;
 	private Integer createdBy;

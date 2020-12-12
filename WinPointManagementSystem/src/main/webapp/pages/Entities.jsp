@@ -147,7 +147,7 @@
 								</p>
 							</div>
 							<div id="entity-table"></div>
-							<button type="button" style="margin-left: 400px;"
+							<button type="submit" style="margin-left: 400px;"
 								class="btn btn-primary" onclick='submit()'>Submit</button>
 						</div>
 					</div>
@@ -260,7 +260,10 @@
 		//alert(row_data.length);
 		for (var i = 0; i < row_data.length; i++) {
 			//alert(col_names[i]);
-			obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
+			if(isNaN(row_data[i]))
+				obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
+			else
+				obj=obj+"\""+col_names[i]+"\""+":"+row_data[i] + ",";
 			//alert(obj);
 		}
 
@@ -414,6 +417,7 @@
 	    });
 		add_rows=[];
 		col_names=[];
+		location.reload();
 	}
 	</script>
 

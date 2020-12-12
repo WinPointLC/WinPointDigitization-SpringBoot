@@ -139,6 +139,7 @@ public class EntityScreenController {
 					System.out.println(x);
 				return empList;
 			}
+			System.out.println(list);
 			return list;
 
 		case "Stream":
@@ -242,7 +243,7 @@ public class EntityScreenController {
 
 		case "PaymentType":
 			
-			list = gradingSystemRepository.findAll();
+			list = paymentModeRepository.findAll();
 			System.out.println(list +" "+ list.isEmpty());
 			if(list.isEmpty()) {
 				List<PaymentMode> empList = new ArrayList<>();
