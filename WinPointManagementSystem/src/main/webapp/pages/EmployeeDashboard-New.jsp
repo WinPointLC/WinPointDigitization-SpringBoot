@@ -289,6 +289,7 @@
 			<iframe src="AddNewUser" width="1000" height="700" id="AddNewUser-jsp"></iframe>
 			<iframe src="AddNewQuestion" width="1000" height="700" id="AddNewQuestion-jsp"></iframe>
 			<iframe src="Entities" width="1000" height="700" id="Entities-jsp"></iframe>
+			<iframe src="RevenueTracker" width="1000" height="700" id="RevenueTracker-jsp"></iframe>
 		</div>
 		
 		<!-- Script for showing and hiding Jsp  -->
@@ -300,6 +301,7 @@
 			document.getElementById('AddNewUser-jsp').style.display="none";
 			document.getElementById('AddNewQuestion-jsp').style.display="none";
 			document.getElementById('Entities-jsp').style.display="none";
+			document.getElementById('RevenueTracker-jsp').style.display="none";
 		  
 			var elem = document.getElementById('User-frame');
 			if(elem != null){
@@ -313,6 +315,7 @@
 				document.getElementById('AllUser-jsp').style.display = "none";
 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('Entities-jsp').style.display="none";
+				document.getElementById('RevenueTracker-jsp').style.display="none";
 			
 		   
 				var elem = document.getElementById('User-frame');
@@ -328,6 +331,7 @@
 				document.getElementById('AddNewUser-jsp').style.display = "none";
 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('Entities-jsp').style.display="none";
+				document.getElementById('RevenueTracker-jsp').style.display="none";
 			
 				var elem = document.getElementById('User-frame');
 				if(elem != null){
@@ -342,6 +346,7 @@
 				document.getElementById('AddNewQuestion-jsp').style.display="none";
 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('Entities-jsp').style.display="none";
+				document.getElementById('RevenueTracker-jsp').style.display="none";
 		 
 				var elem = document.getElementById('User-frame');
 				if(elem != null){
@@ -356,6 +361,7 @@
 				document.getElementById('AllUser-jsp').style.display = "none";
 				document.getElementById('main-content').style.display = "none";
 				document.getElementById('Entities-jsp').style.display="none";
+				document.getElementById('RevenueTracker-jsp').style.display="none";
 
 				var elem = document.getElementById('User-frame');
 				if(elem != null){
@@ -371,6 +377,7 @@
 				document.getElementById('AllUser-jsp').style.display = "none";
 				document.getElementById('main-content').style.display = "none";
 				document.getElementById('Entities-jsp').style.display="none";
+				document.getElementById('RevenueTracker-jsp').style.display="none";
 			 
 				userframe = document.createElement('iframe');
 				userframe.setAttribute('src',jspURL + "User.jsp?varid=");
@@ -392,6 +399,7 @@
 				document.getElementById('main-content').style.display = "none";
 				document.getElementById('AddNewQuestion-jsp').style.display="none";
 				document.getElementById('Entities-jsp').style.display="none";
+				document.getElementById('RevenueTracker-jsp').style.display="none";
 		 
 				var elem = document.getElementById('User-frame');
 				if(elem != null){
@@ -410,6 +418,7 @@
 				document.getElementById('AllUser-jsp').style.display = "none";
 				document.getElementById('main-content').style.display = "none";
 				document.getElementById('AddNewQuestion-jsp').style.display="none";
+				document.getElementById('RevenueTracker-jsp').style.display="none";
 		 
 				var elem = document.getElementById('User-frame');
 				if(elem != null){
@@ -420,7 +429,8 @@
 			};
 
 			document.getElementById('revenue-tracker-link').onclick=function() {
-			
+
+				document.getElementById('RevenueTracker-jsp').style.display="block";
 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('AddNewUser-jsp').style.display = "none";
 				document.getElementById('AllUser-jsp').style.display = "none";
