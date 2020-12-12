@@ -477,5 +477,15 @@ public class EntityScreenController {
 			userCategoryRepository.save(userCategory);
 		}
 	}
+	
+	@RequestMapping(value = "/CourseTypeDelete", method = RequestMethod.POST)
+	public void deleteCourseType(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			
+
+		}
+	}
 
 }

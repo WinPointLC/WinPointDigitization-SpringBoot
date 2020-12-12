@@ -395,29 +395,55 @@
 		  addRows: add_rows,
 		  //delRowIds: del_rows
 		} ;*/
-		$.ajax({
-			type: 'POST',
-			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
-			//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
-			url:entityName+"Update",
-			data: JSON.stringify(add_rows),
-			//data: JSON.stringify(myData),
-			//data: myData,
-			//dataType: 'json',
-			contentType: 'application/json; charset=utf-8',
-			//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-			traditional: true,
-			success: function () {
-				alert("sucess ajax call for add and delete");
-				
-		    },
-			error: function(){
-	            alert("Error");
-	        }
-	    });
+		if(add_rows!=null){
+			$.ajax({
+				type: 'POST',
+				//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
+				//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
+				url:entityName+"Update",
+				data: JSON.stringify(add_rows),
+				//data: JSON.stringify(myData),
+				//data: myData,
+				//dataType: 'json',
+				contentType: 'application/json; charset=utf-8',
+				//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				traditional: true,
+				success: function () {
+					alert("sucess ajax call for add and delete");
+					
+			    },
+				error: function(){
+		            alert("Error");
+		        }
+		    });
+		}
+
+		if(del_rows!=null){
+			$.ajax({
+				type: 'POST',
+				//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
+				//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
+				url:entityName+"Delete",
+				data: JSON.stringify(del_rows),
+				//data: JSON.stringify(myData),
+				//data: myData,
+				//dataType: 'json',
+				contentType: 'application/json; charset=utf-8',
+				//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+				traditional: true,
+				success: function () {
+					alert("sucess ajax call for add and delete");
+					
+			    },
+				error: function(){
+		            alert("Error");
+		        }
+		    });
+		}
 		add_rows=[];
 		col_names=[];
 		location.reload();
+		
 	}
 	</script>
 
@@ -597,7 +623,7 @@
 		$.ajax({
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=read',
-			url:"/Entity?entityInfoParam=" + entityName + "&activity=read",
+			url:"/Entity?entityInfoParam=" + entityName,
 			//data: JSON.stringify(myData),
 			dataType: 'json',
 			contentType: 'application/json; charset=utf-8',
