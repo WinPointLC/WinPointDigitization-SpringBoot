@@ -22,7 +22,6 @@ public class CourseType {
 	private Date createdDate;
 	
 	
-	
 	@OneToMany(targetEntity = Course.class)
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private Set<Course> mappingCourse;
@@ -35,6 +34,4 @@ public class CourseType {
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private Set<ToolTips> mappingToolTips;	
 	
-///////////////////////////
-
 }

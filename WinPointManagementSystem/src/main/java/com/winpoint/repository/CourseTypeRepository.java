@@ -10,8 +10,5 @@ public interface CourseTypeRepository extends JpaRepository<CourseType, Integer>
 	CourseType findByCourseTypeId(Integer courseTypeId);
 	
 	
-//	void getCourseTypeList
-	
-	
 }
 

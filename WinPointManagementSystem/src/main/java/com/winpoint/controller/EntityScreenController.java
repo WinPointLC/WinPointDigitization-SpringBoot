@@ -477,14 +477,152 @@ public class EntityScreenController {
 			userCategoryRepository.save(userCategory);
 		}
 	}
+	//###################################################################################
+	//###################################################################################
+	//###################################################################################
+	//Delete
 	
 	@RequestMapping(value = "/CourseTypeDelete", method = RequestMethod.POST)
 	public void deleteCourseType(@RequestBody Integer delRows[]) {
 		for (Integer item : delRows) {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println(item);
-			
+			courseTypeRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/DifficutyLevelDelete", method = RequestMethod.POST)
+	public void deleteDifficutyLevel(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			difficultyLevelRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/EmployeeCategoryRepositoryDelete", method = RequestMethod.POST)
+	public void deleteEmployeeCategoryRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			employeeCategoryRepository.deleteById(item);
+		}
+	}
 
+	@RequestMapping(value = "/EvaluationTypeRepositoryDelete", method = RequestMethod.POST)
+	public void deleteEvaluationTypeRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			evaluationTypeRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/FeebackCategoryRepositoryDelete", method = RequestMethod.POST)
+	public void deleteFeebackCategoryRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			feedbackCategoryRepository.deleteById(item);
+		}
+	}
+
+	@RequestMapping(value = "/FeedbackQuestionTypeRepositoyDelete", method = RequestMethod.POST)
+	public void deleteFeedbackQuestionTypeRepositoy(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			feedbackQuestionTypeRepositoy.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/OrganizationTypeRepositoryDelete", method = RequestMethod.POST)
+	public void deleteOrganizationTypeRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			organizationTypeRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/GradingSystemRepositoryDelete", method = RequestMethod.POST)
+	public void deleteGradingSystemRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+//			gradingSystemRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/ReminderTypeRepositoryDelete", method = RequestMethod.POST)
+	public void deleteReminderTypeRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			reminderTypeRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/RevenueTypeRepositoryDelete", method = RequestMethod.POST)
+	public void deleteRevenueTypeRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			revenueTypeRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/SecurityQuestionsRepositoryDelete", method = RequestMethod.POST)
+	public void deleteSecurityQuestionsRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			securityQuestionsRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/SegmentTypeRepositoryDelete", method = RequestMethod.POST)
+	public void deleteSegmentTypeRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			segmentTypeRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/StreamsRepositoryDelete", method = RequestMethod.POST)
+	public void deleteStreamsRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			streamsRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/TimeSlotsRepositoryDelete", method = RequestMethod.POST)
+	public void deleteTimeSlotsRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			timeSlotsRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/UserCategoryRepositoryDelete", method = RequestMethod.POST)
+	public void deleteUserCategoryRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			userCategoryRepository.deleteById(item);
+		}
+	}
+	
+	@RequestMapping(value = "/PaymentModeRepositoryDelete", method = RequestMethod.POST)
+	public void deleteUserPaymentModeRepository(@RequestBody Integer delRows[]) {
+		for (Integer item : delRows) {
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println(item);
+			paymentModeRepository.deleteById(item);
 		}
 	}
 

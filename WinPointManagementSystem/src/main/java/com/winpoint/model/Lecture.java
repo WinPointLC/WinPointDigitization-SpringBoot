@@ -21,7 +21,5 @@ public class Lecture {
 	private Date lectureDate;
 	private String comments;
 	private String absentees;
-
-
-
+	
 }

@@ -20,8 +20,6 @@ public class DifficultyLevel {
 	private String difficultyLevelName;
 	private Integer createdBy;
 	private Date createdDate;
-	
-
 
 	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
@@ -33,14 +31,13 @@ public class DifficultyLevel {
 	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 	
 	
-	@OneToMany(targetEntity = DifficultyLevel.class)
+	@OneToMany(targetEntity = TechnicalQuestionBank.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 	
 	
-	@OneToMany(targetEntity = DifficultyLevel.class)
+	@OneToMany(targetEntity = TestDifficulty.class)
 	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 	private Set<TestDifficulty> mappingTestDifficulty;
 	
-	////////////////////////////
 }

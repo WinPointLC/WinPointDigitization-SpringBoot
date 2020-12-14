@@ -25,4 +25,5 @@ public class CourseTypeService {
 		}
 		return courseTypeList;
 	}
+	
 }
