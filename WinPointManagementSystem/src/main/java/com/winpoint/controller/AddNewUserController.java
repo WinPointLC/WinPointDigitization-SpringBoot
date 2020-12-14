@@ -11,7 +11,7 @@ public class AddNewUserController {
 	@RequestMapping(value = "/AddNewUser", method = RequestMethod.GET)
 	public ModelAndView showAddNewUserPage() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("SignupForm");
+		mv.setViewName("AddNewUser");
 		return mv;
 	}
 

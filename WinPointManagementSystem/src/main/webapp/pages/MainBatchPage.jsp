@@ -39,15 +39,15 @@
 			<div class="row">
 			<div class="col-md-6">
 			  <div class="card" style="height:350px;">
-				  <div class="card-header-text" style="margin-left:30px;" >
-					<div class="card-text" style="background-color:#000080;">
-					  <h3 class="card-title" style="width:520px;text-align:center" >Batch Scheduler</h3>
+				  <div class="card-header-text" style="margin-left:3%; " >
+					<div class="card-text" style="background-color:#000080;width:100%;">
+					  <h3 class="card-title" style="width:450px;text-align:center" >Batch Scheduler</h3>
 					</div>
 				  </div>
 				  <div class="card-body"><br>
 					   <h4><a href="#" style="margin-left:39%">Take Enquiry</a></h4><br>
 					   <h4><a href="#" style="margin-left:38%">Enquiry Details</a></h4><br>
-					   <h4><a href="PriorityOfCourses" style="margin-left:20%">Categorised Recommendation of Courses</a></h4><br>
+					   <h4><a href="PriorityOfCourses" style="margin-left:15%">Categorised Recommendation of Courses</a></h4><br>
 					   <h4><a href="#" style="margin-left:34%">New Batch Scheduler</a></h4>
 					   
 				  </div>
@@ -56,9 +56,9 @@
 			
 			<div class="col-md-6">
 			  <div class="card" style="height:350px;">
-				  <div class="card-header-text" style="margin-left:30px;" >
-					<div class="card-text" style="background-color:#000080;">
-					  <h3 class="card-title" style="width:520px;text-align:center">Batch Tracker</h3>
+				  <div class="card-header-text" style="margin-left:3%;" >
+					<div class="card-text" style="background-color:#000080;width:100%;">
+					  <h3 class="card-title" style="width:450px;text-align:center">Batch Tracker</h3>
 					</div>
 				  </div>
 				  <div class="card-body"><br>
