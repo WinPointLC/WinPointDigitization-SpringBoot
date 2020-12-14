@@ -546,11 +546,11 @@ public class EntityScreenController {
 	}
 	
 	@RequestMapping(value = "/GradingSystemRepositoryDelete", method = RequestMethod.POST)
-	public void deleteGradingSystemRepository(@RequestBody Integer delRows[]) {
-		for (Integer item : delRows) {
+	public void deleteGradingSystemRepository(@RequestBody String delRows[]) {
+		for (String item : delRows) {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println(item);
-//			gradingSystemRepository.deleteById(item);
+			gradingSystemRepository.deleteById(item);
 		}
 	}
 	

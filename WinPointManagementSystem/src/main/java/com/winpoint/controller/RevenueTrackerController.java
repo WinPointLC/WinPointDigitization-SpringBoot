@@ -32,10 +32,5 @@ public class RevenueTrackerController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/EnquiryDetails", method = RequestMethod.GET)
-	public ModelAndView showEnquiryDetailsPage() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("EnquiryDetails");
-		return mv;
-	}
+	
 }
