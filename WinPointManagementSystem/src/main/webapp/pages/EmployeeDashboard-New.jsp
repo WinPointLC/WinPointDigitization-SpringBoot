@@ -289,7 +289,7 @@
 			<iframe src="AddNewUser" width="1000" height="700" id="AddNewUser-jsp"></iframe>
 			<iframe src="AddNewQuestion" width="1000" height="700" id="AddNewQuestion-jsp"></iframe>
 			<iframe src="Entities" width="1000" height="700" id="Entities-jsp"></iframe>
-			<iframe src="RevenueTracker" width="1000" height="700" id="RevenueTracker-jsp"></iframe>
+			<iframe src="RevenueTracker" width="1000" height="550" id="RevenueTracker-jsp"></iframe>
 		</div>
 		
 		<!-- Script for showing and hiding Jsp  -->

@@ -45,7 +45,7 @@
 					</div>
 				  </div>
 				  <div class="card-body"><br>
-					   <h4><a href="#" style="margin-left:39%">Take Enquiry</a></h4><br>
+					   <h4><a href="SignUpRevenueTracker" style="margin-left:39%">Take Enquiry</a></h4><br>
 					   <h4><a href="EnquiryDetails" style="margin-left:38%">Enquiry Details</a></h4><br>
 					   <h4><a href="PriorityOfCourses" style="margin-left:15%">Categorised Recommendation of Courses</a></h4><br>
 					   <h4><a href="#" style="margin-left:34%">New Batch Scheduler</a></h4>
