@@ -117,7 +117,7 @@
 						 <form:input type="text" class="form-control inputFileVisible" path="college" placeholder="Enter College Name"/>
 						</div>
 					</div>
-					<div class="form-row">
+					<%-- <div class="form-row">
 						<div class="col">
 						  <label for="degree">Degree</label> 
 							<form:select id="degree" class="form-control" path="degree" style="height:32px">
@@ -128,6 +128,16 @@
 							<option>M.E</option>
 							<option>MBA</option>
 							</form:select>
+						 </div>
+					</div> --%>
+					
+					<div class="form-row">
+						<div class="col">
+						  <label for="degree">Degree</label> 
+							 <form:select class="form-control" path = "degree">
+				                     <form:option value = "NONE" label = "Select"/>
+				                     <form:options items = "${degreeList}" />
+				             </form:select>  
 						 </div>
 					</div>
 					<div class="form-row">

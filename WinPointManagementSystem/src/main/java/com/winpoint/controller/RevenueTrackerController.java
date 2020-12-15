@@ -1,6 +1,9 @@
 package com.winpoint.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,17 +41,32 @@ public class RevenueTrackerController {
 		return mv;
 	}
 	
+	
+	  @RequestMapping(value = "/SignUpRevenueTracker", method = RequestMethod.GET)
+	  public ModelAndView showSignUpRevenueTrackerPage() {
+		  ModelAndView mv = new ModelAndView();
+		  mv.setViewName("SignUpForm"); 
+		  List<String> list=new ArrayList<String>();  
+		  list.add("MCA");  
+		  list.add("BCA");  
+		  list.add("BE");  
+		  
+		  mv.addObject("degreeList",list);	
+		  return mv; 
+	}
+	 
+	
 	/*
-	 * @RequestMapping(value = "/SignUpRevenueTracker", method = RequestMethod.GET)
-	 * public ModelAndView showSignUpRevenueTrackerPage() { ModelAndView mv = new
-	 * ModelAndView(); mv.setViewName("SignUpForm"); return mv; }
+	 * @GetMapping("/SignUpRevenueTracker") public String showForm(@ModelAttribute
+	 * EnquiryDetails enquiryDetails) { return "SignUpForm"; }
 	 */
 	
-	  @GetMapping("/SignUpRevenueTracker") 
-	  public String showForm(@ModelAttribute EnquiryDetails enquiryDetails)
-	  {
-		  return "SignUpForm";
-	  }
+	@ModelAttribute("enquiryDetails")
+	   public  EnquiryDetails getDegreeList() {
+		EnquiryDetails user =new EnquiryDetails();
+	      
+	      return user;
+	   }
 	
 	  
 	  @PostMapping("/saveForm") 
