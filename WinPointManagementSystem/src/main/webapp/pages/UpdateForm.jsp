@@ -172,7 +172,7 @@
 			
 		document.getElementById("fName").value='${user.firstName}';
 		document.getElementById("lName").value='${user.lastName}';
-		document.getElementById("mobNo").value='${user.mobileNumber}';
+		document.getElementById("mobNo").value='${user.MobileNo}';
 		document.getElementById("email").value='${user.emailId}';
 		document.getElementById("college").value='${user.college}';
 		document.getElementById("branch").value='${user.branch}';

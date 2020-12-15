@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.winpoint.repository.StreamsRepository;
-
+import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.Streams;
 import com.winpoint.model.UserProfile;
 
@@ -45,14 +45,14 @@ public class RevenueTrackerController {
 	 */
 	
 	  @GetMapping("/SignUpRevenueTracker") 
-	  public String showForm(@ModelAttribute UserProfile userProfile)
+	  public String showForm(@ModelAttribute EnquiryDetails enquiryDetails)
 	  {
 		  return "SignUpForm";
 	  }
 	
 	  
 	  @PostMapping("/saveForm") 
-	  public String saveForm(UserProfile user,RedirectAttributes redirectAttributes)
+	  public String saveForm(EnquiryDetails user,RedirectAttributes redirectAttributes)
 	  {
 		  System.out.println("USER:  "+ user.getFirstName());
 		  System.out.println("USER:  "+ user.getGender());
@@ -64,7 +64,7 @@ public class RevenueTrackerController {
 		public ModelAndView showUpdateForm() {
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("UpdateForm");
-			UserProfile user =new UserProfile();
+			EnquiryDetails user =new EnquiryDetails();
 			user.setFirstName("Pragya");
 			mv.addObject("user", user);		
 			
