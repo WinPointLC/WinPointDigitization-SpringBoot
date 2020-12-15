@@ -50,6 +50,7 @@ public class RevenueTrackerController {
 		  return "SignUpForm";
 	  }
 	
+	  
 	  @PostMapping("/saveForm") 
 	  public String saveForm(UserProfile user,RedirectAttributes redirectAttributes)
 	  {
@@ -58,4 +59,15 @@ public class RevenueTrackerController {
 		  return "redirect:/EnquiryDetails";
 		  
 	  }
+	  
+	  @RequestMapping(value = "UpdateForm", method = RequestMethod.GET)
+		public ModelAndView showUpdateForm() {
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("UpdateForm");
+			UserProfile user =new UserProfile();
+			user.setFirstName("Pragya");
+			mv.addObject("user", user);		
+			
+			return mv;
+		}
 }

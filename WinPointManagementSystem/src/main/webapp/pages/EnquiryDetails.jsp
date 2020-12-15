@@ -24,7 +24,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-	<style>body{padding-top: 60px;}</style>
 
     <link href="C:/Users/Admin/Desktop/screendevlopment/WebContent/login-register-master/assets/css/bootstrap.css" rel="stylesheet" />
 
@@ -55,8 +54,8 @@
 		</div>
 		</div>
 			<div class="card-footer text-muted"><!--style="background:linear-gradient(60deg, #26c6da, #00acc1)-->
-			<a href="javascript:;" class="btn btn-primary" style="float:left;height:35px">Cancel</a>
-			<a href="javascript:;" class="btn btn-primary" style="float:right;height:35px">Submit</a>
+			<!-- <a href="javascript:;" class="btn btn-primary" style="float:left;height:35px">Cancel</a> -->
+			<a href="javascript:;" class="btn btn-primary" style="float:right;height:35px" onclick="updateForm()">Submit</a>
 			</div>
 		</div>
 		</div>
@@ -110,6 +109,7 @@
 					var addStudentBtn = document.createElement('btn');
 					addStudentBtn.className="btn btn-primary"
 					addStudentBtn.textContent = "Update";
+					addStudentBtn.setAttribute('onclick',"updateForm()");
 					td5.appendChild(addStudentBtn);
 
 					tr.appendChild(td1);
@@ -125,6 +125,11 @@
 			table.appendChild(tbody);
 			
 			document.getElementById('table-enquiry-details').appendChild(table);
+
+			function updateForm(){
+				window.location.href="UpdateForm";
+
+			}
 		</script>
 
 	</body>

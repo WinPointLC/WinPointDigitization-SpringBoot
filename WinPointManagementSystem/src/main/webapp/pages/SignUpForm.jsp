@@ -71,14 +71,14 @@
 						<form:input type="email" class="form-control" path="emailId" placeholder="Email Id"/>
 						</div>
 					</div>
-					<%-- <div class="form-row">
+					 <div class="form-row">
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Date Of Birth</label>
-						 <form:input type="text" path="birthDate" onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control"/>
+						 <form:input type="date" path="birthDate" class="form-control"/>
 						 </div>
 						 </div>
-					</div> --%>
+					</div> 
 					<div class="form-row">
 					<div class="col">
 						 <label class="label-control">Gender</label><br> 
