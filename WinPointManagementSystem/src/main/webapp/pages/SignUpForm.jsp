@@ -233,7 +233,7 @@
 						 </div>
 					</div>
 					
-					<%--  <div class="form-row">
+				<div class="form-row">
 						<div class="col">
 						  <label for="avail_time">Available Time</label> 
 							 <form:select class="form-control selectpicker" path = "timeSlotsId" required="true">
@@ -241,7 +241,7 @@
 				                     <form:options items = "${availableTimeList}" />
 				             </form:select>  
 						 </div>
-					</div>  --%>
+					</div>  
 					
 					<div class="form-row">
 						<div class="col">
