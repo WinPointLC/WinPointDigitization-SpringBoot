@@ -1,6 +1,10 @@
 package com.winpoint.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,12 +83,23 @@ public class RevenueTrackerController {
 	 
 	  
 	  @PostMapping("/saveForm") 
-	  public String saveForm(EnquiryDetails user,RedirectAttributes redirectAttributes)
+	  public String saveForm(EnquiryDetails user,RedirectAttributes redirectAttributes) throws ParseException
 	  {
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		  System.out.println("USER:  "+ user.getFirstName());
 		  System.out.println("USER:  "+ user.getGender());
 		  System.out.println("USER:  "+ user.getDegree());
-		  System.out.println("USER:  "+ user.getBirthDate());
+		  System.out.println("USER:  "+ user.getBirthDateString());
+		  DateFormat df = new SimpleDateFormat("dd/MM/yyy hh:mm a Z");
+		  String t = user.getBirthDateString().toString();
+//		  String tt = "04/26/2013 05:30 AM GMT -1200";
+		  Date d= df.parse(t);
+		  user.setBirthDate(d);
+		  
+		  
+//		  System.out.println("USER:  "+ user.getBirthDate()); 
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			 
 		  enquiryDetailsRepository.save(user);
 		  return "redirect:/EnquiryDetails";
 		  

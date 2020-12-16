@@ -1,5 +1,8 @@
 package com.winpoint.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -44,5 +47,6 @@ public class EnquiryDetails {
 	private Integer segmentTypeId;
 	private String suggestion;
 	private Integer activeStatus;
-
+	private String birthDateString;
+	
 }

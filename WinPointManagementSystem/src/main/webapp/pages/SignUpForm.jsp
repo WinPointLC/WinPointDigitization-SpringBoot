@@ -77,7 +77,7 @@
 						 <label class="label-control">Date Of Birth</label>
 						<%--  <form:input type="date" path="birthDate" class="form-control" required="true"/> --%>
 						<%--  <form:input type="text"  path="birthDate" min="97-01-01" max="30-12-31" onfocus="this.type='date'" placeholder="yy-mm-dd" onblur="if(this.value==='')this.type='text'" class="form-control" required="true"/> --%>
-						  <form:input type="text"  path="birthDate" placeholder="yy-mm-dd"  class="form-control" required="true"/>
+						  <form:input type="text"  path="birthDateString" placeholder="yyyy-mm-dd"  class="form-control" required="true" id="bdayId"/>
 						 </div>
 						 </div>
 					</div>  
@@ -323,16 +323,25 @@
 					
 				</div>
 			</div>
-			<!--  <input type="button" class="btn btn-primary" style="margin-left:45%" value="Submit" onclick="submitForm()"/> -->
-			  <input type="submit" class="btn btn-primary" style="margin-left:45%" value="Submit"/>
-			<!--<div id="sliderRegular" class="slider"></div>-->
+<!-- 			 <input type="button" class="btn btn-primary" style="margin-left:45%" value="Submit" onclick="submitForm()"/>
+ -->		  <input type="submit" class="btn btn-primary" style="margin-left:45%" value="Submit"/>
+ 			<!--<div id="sliderRegular" class="slider"></div>-->
 				</form:form>
 
 			</div>
 		
 		
 	<!--End Signup formPage-->
-
+	<script type="text/javascript">
+	function submitForm(){
+		var birthdate = document.getElementById("bdayId");
+		alert("DATE - "+birthdate.value);
+		//DateFormat df = new SimpleDateFormat("dd/MM/yyy hh:mm a Z");
+		//String t = birthdate.value;
+		//Date convertedBirthDate = df.parse(t);
+		//alert("Converted Birth date : "+convertedBirthDate);
+	}
+	</script>
 	
 	</body>
 </html>	

@@ -48,6 +48,4 @@ public class SegmentType {
 	private Set<UserProfile> mappingUserProfile;
 	
 	/////////////
-
-
 }
