@@ -74,6 +74,7 @@ public class RevenueTrackerController {
 	  {
 		  System.out.println("USER:  "+ user.getFirstName());
 		  System.out.println("USER:  "+ user.getGender());
+		  System.out.println("USER:  "+ user.getDegree());
 		  return "redirect:/EnquiryDetails";
 		  
 	  }

@@ -50,32 +50,32 @@
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="firstname">First Name :</label> -->
-						<form:input type="text" class="form-control" path="firstName" placeholder="First name"/>
+						<form:input type="text" class="form-control" path="firstName" placeholder="First name" required="true"/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="lastname">Last Name :</label> -->
-						<form:input type="text" class="form-control" path="lastName" placeholder="Last name"/>
+						<form:input type="text" class="form-control" path="lastName" placeholder="Last name" required="true"/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="mobnum">Mobile Number :</label> -->
-						<form:input type="text" class="form-control" path="MobileNo" placeholder="Mobile Number"/>
+						<form:input type="text" class="form-control" path="MobileNo" placeholder="Mobile Number" required="true"/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="email">Email Id:</label> -->
-						<form:input type="email" class="form-control" path="emailId" placeholder="Email Id"/>
+						<form:input type="email" class="form-control" path="emailId" placeholder="Email Id" required="true"/>
 						</div>
 					</div>
 					<%--  <div class="form-row">
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Date Of Birth</label>
-						 <form:input type="date" path="birthDate" class="form-control"/>
+						 <form:input type="date" path="birthDate" class="form-control" required="true"/>
 						 </div>
 						 </div>
 					</div>  --%>
@@ -84,7 +84,7 @@
 						 <label class="label-control">Gender</label><br> 
 						 <div class="form-check form-check-radio">
 							<label class="form-check-label">
-						 <form:radiobutton class="form-check-input" path="gender" value="Male"/> 
+						 <form:radiobutton class="form-check-input" path="gender" value="Male" checked="true"/> 
 						
 							Male
 								<span class="circle">
@@ -114,7 +114,7 @@
 					<div class="form-row">
 						<div class="col">
 						<!--  <label class="label-control">College</label> -->
-						 <form:input type="text" class="form-control inputFileVisible" path="college" placeholder="Enter College Name"/>
+						 <form:input type="text" class="form-control inputFileVisible" path="college" required="true" placeholder="Enter College Name"/>
 						</div>
 					</div>
 					<%-- <div class="form-row">
@@ -131,19 +131,19 @@
 						 </div>
 					</div> --%>
 					
-					<div class="form-row">
+					 <div class="form-row">
 						<div class="col">
 						  <label for="degree">Degree</label> 
-							 <form:select class="form-control" path = "degree">
+							 <form:select class="form-control selectpicker" path = "degree" required="true">
 				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${degreeList}" />
 				             </form:select>  
 						 </div>
-					</div>
+					</div> 
 					<div class="form-row">
 						<div class="col">
 						 <!-- <label class="label-control">Branch</label> -->
-						 <form:input type="text" class="form-control inputFileVisible" path="branch" placeholder="Enter Branch"/>
+						 <form:input type="text" class="form-control inputFileVisible" required="true" path="branch" placeholder="Enter Branch"/>
 						 </div>
 					</div>
 				</div>
@@ -172,7 +172,7 @@
 					<div class="form-row">
 						<div class="col">
 						<!--  <label class="label-control">Year of Graduation</label> -->
-						 <form:input type="text" class="form-control inputFileVisible" path="yearOfGraduation" placeholder="Enter year of graduation"/>
+						 <form:input type="text" class="form-control inputFileVisible" required="true" path="yearOfGraduation" placeholder="Enter year of graduation"/>
 						 </div>
 					</div>
 					<div class="form-row">
@@ -181,6 +181,133 @@
 						 <form:input type="text" class="form-control inputFileVisible" path="role" placeholder="Enter Role"/>
 						 </div>
 					</div>
+					
+					<div class="form-row">
+						<div class="col">
+						
+						 <form:input type="text" class="form-control inputFileVisible" path="experience" placeholder="Experience (in months)" required="true"/>
+						 </div>
+					</div>
+					
+					
+				</div>
+			</div>
+			
+			<div class="card card-nav-tabs">
+					<h4 class="card-header card-header-primary">Enquiry Details</h4>
+				<div class="card-body">
+				
+					<div class="form-row">
+						<div class="col">
+						  <label for="Courses_Interested_in">Courses Interested in</label> 
+							 <form:select class="form-control selectpicker" path = "courseInterestedIn" multiple="true" required="true">
+				                    <%--  <form:option value = "NONE" label = "Select"/> --%>
+				                     <form:options items = "${courseInterestedInList}" />
+				             </form:select>  
+						 </div>
+					</div>
+					
+					<div class="form-row">
+						<div class="col">
+							 <label class="label-control">Eligibility</label>
+							 <div class="form-check form-check-radio">
+								<label class="form-check-label">
+							 <form:radiobutton class="form-check-input" path="eligibility" value="Eligible" checked="true"/> 
+							
+								Eligible
+									<span class="circle">
+									<span class="check"></span>
+									</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<div class="col">
+						  <label for="Courses_Already_done">Courses Already Done</label> 
+							 <form:select class="form-control selectpicker" path = "courseAlreadyDone" multiple="true" >
+				                    <%--  <form:option value = "NONE" label = "Select"/> --%>
+				                     <form:options items = "${courseAlreadyDone}" />
+				             </form:select>  
+						 </div>
+					</div>
+					
+					<%--  <div class="form-row">
+						<div class="col">
+						  <label for="avail_time">Available Time</label> 
+							 <form:select class="form-control selectpicker" path = "timeSlotsId" required="true">
+				                     <form:option value = "NONE" label = "Select"/>
+				                     <form:options items = "${availableTimeList}" />
+				             </form:select>  
+						 </div>
+					</div>  --%>
+					
+					<div class="form-row">
+						<div class="col">
+						
+						 <form:input type="text" class="form-control inputFileVisible" path="reference" placeholder="Reference"/>
+						 </div>
+					</div>
+					
+					 <%--  <div class="form-row">
+						<div class="col">
+						<div class="form-group">
+						 <label class="label-control">Date Of Enquiry</label>
+						 <form:input type="date" path="dateOfEnquiry" required="true" class="form-control"/>
+						 </div>
+						 </div>
+					</div>   --%>
+					
+					<div class="form-row">
+						<div class="col">
+						
+						 <form:input type="text" class="form-control inputFileVisible" path="recommendation" placeholder="Recommendation"/>
+						 </div>
+					</div>
+					
+					 <%--  <div class="form-row">
+						<div class="col">
+						<div class="form-group">
+						 <label class="label-control">Start Date</label>
+						 <form:input type="date" path="startDate" required="true" class="form-control"/>
+						 </div>
+						 </div>
+					</div>   --%>
+					
+					  <%-- <div class="form-row">
+						<div class="col">
+						  <label for="segment_type">Segment Type</label> 
+							 <form:select class="form-control selectpicker" path = "segmentTypeId" required="true">
+				                     <form:option value = "NONE" label = "Select"/>
+				                     <form:options items = "${segmentTypeList}" />
+				             </form:select>  
+						 </div>
+					</div>   --%>
+				
+					<div class="form-row">
+						<div class="col">
+						
+						 <form:input type="text" class="form-control inputFileVisible" path="suggestion" placeholder="Suggestions"/>
+						 </div>
+					</div>
+					
+					<%-- <div class="form-row">
+						<div class="col">
+							 <label class="label-control">Active Status</label>
+							 <div class="form-check form-check-radio">
+								<label class="form-check-label">
+							 <form:radiobutton class="form-check-input" path="activeStatus" value="Active" checked="true"/> 
+							
+								Active
+									<span class="circle">
+									<span class="check"></span>
+									</span>
+								</label>
+							</div>
+						</div>
+					</div> --%>
+					
 				</div>
 			</div>
 			<!--  <input type="button" class="btn btn-primary" style="margin-left:45%" value="Submit" onclick="submitForm()"/> -->
