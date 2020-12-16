@@ -115,7 +115,7 @@ public class RevenueTrackerController {
 			  //HahMap< segmentname, id > segmentmap;
 			  // moening - segmentmap.get(moening)
 		  }
-		  mv.addObject("segmentTypeList",segmentlist);	 
+		  mv.addObject("segmentTypeList",segmentTypeList);	 
 		  
 		  // Course already done
 		  List<Course> courseAlreadyDone = courseRepository.findAll();
@@ -140,7 +140,7 @@ public class RevenueTrackerController {
 			  System.out.println("DATA segemnt type - " + s.getTimeSlotsDescription());
 			  availableTimelist.add(s.getTimeSlotsDescription());
 		  }
-		  mv.addObject("availableTimeList",availableTimelist);
+		  mv.addObject("availableTimeList",availableTimeList);
 		  
 		  
 		  mv.addObject("degreeList",list);	

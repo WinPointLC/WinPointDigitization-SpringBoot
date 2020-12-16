@@ -236,10 +236,15 @@
 				<div class="form-row">
 						<div class="col">
 						  <label for="avail_time">Available Time</label> 
-							 <form:select class="form-control selectpicker" path = "timeSlotsId" required="true">
+						   <form:select name="availableTime" path = "timeSlotsId" required="true">
+								<c:forEach items="${availableTimeList}" var="availableTime">
+   									 <option name="availableTime" value="${availableTime.timeSlotsId}">${availableTime.timeSlotsDescription}</option>
+								</c:forEach>
+						</form:select>
+							<%--  <form:select class="form-control selectpicker" path = "timeSlotsId" required="true">
 				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${availableTimeList}" />
-				             </form:select>  
+				             </form:select> --%>  
 						 </div>
 					</div>  
 					
@@ -275,13 +280,25 @@
 						 </div>
 					</div>   --%>
 					
+
+					
+					
+					
 					  <div class="form-row">
 						<div class="col">
 						  <label for="segment_type">Segment Type</label> 
-							 <form:select class="form-control selectpicker" path = "segmentTypeId" required="true">
+						  <form:select name="segmentType" path = "segmentTypeId" required="true">
+								<c:forEach items="${segmentTypeList}" var="segmentType">
+   									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
+								</c:forEach>
+						</form:select>
+						  
+						  
+						  
+						<%-- 	 <form:select class="form-control selectpicker" path = "segmentTypeId" required="true">
 				                     <!--<form:option value = "NONE" label = "Select"/>-->
 				                     <form:options items = "${segmentTypeList}" />
-				             </form:select>  
+				             </form:select>   --%>
 						 </div>
 					</div>  
 				

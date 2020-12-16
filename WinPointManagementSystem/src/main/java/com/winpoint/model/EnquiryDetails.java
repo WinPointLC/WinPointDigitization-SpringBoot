@@ -3,6 +3,7 @@ package com.winpoint.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -13,6 +14,7 @@ public class EnquiryDetails {
 //	creation of fk
 //	schema checked
 	@Id
+	@GeneratedValue
 	private Integer enquiryId;
 	private String firstName;
 	private String lastName;
