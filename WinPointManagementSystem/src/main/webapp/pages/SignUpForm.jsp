@@ -279,7 +279,7 @@
 						<div class="col">
 						  <label for="segment_type">Segment Type</label> 
 							 <form:select class="form-control selectpicker" path = "segmentTypeId" required="true">
-				                     <form:option value = "NONE" label = "Select"/>
+				                     <!--<form:option value = "NONE" label = "Select"/>-->
 				                     <form:options items = "${segmentTypeList}" />
 				             </form:select>  
 						 </div>

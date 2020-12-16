@@ -94,10 +94,12 @@ public class RevenueTrackerController {
 		  
 		  
 		  List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
+		  List<String> segmentlist=new ArrayList<String>();  
 		  for(SegmentType s: segmentTypeList) {
 			  System.out.println("DATA segemnt type - " + s.getSegmentTypeName());
+			  segmentlist.add(s.getSegmentTypeName());
 		  }
-		  mv.addObject("segmentTypeList",segmentTypeList);	 
+		  mv.addObject("segmentTypeList",segmentlist);	 
 		  
 		  mv.addObject("degreeList",list);	
 		  return mv; 
