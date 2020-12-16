@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.winpoint.repository.CourseRepository;
+import com.winpoint.repository.EnquiryDetailsRepository;
 import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.StreamsRepository;
 import com.winpoint.repository.TimeSlotsRepository;
@@ -73,6 +74,8 @@ public class RevenueTrackerController {
 	      return user;
 	   }
 	
+	  @Autowired
+	  EnquiryDetailsRepository enquiryDetailsRepository;
 	 
 	  
 	  @PostMapping("/saveForm") 
@@ -81,9 +84,11 @@ public class RevenueTrackerController {
 		  System.out.println("USER:  "+ user.getFirstName());
 		  System.out.println("USER:  "+ user.getGender());
 		  System.out.println("USER:  "+ user.getDegree());
+		  enquiryDetailsRepository.save(user);
 		  return "redirect:/EnquiryDetails";
 		  
 	  }
+	  
 	  @Autowired
 	  SegmentTypeRepository segmentTypeRepository;
 	  @Autowired
@@ -107,6 +112,8 @@ public class RevenueTrackerController {
 		  for(SegmentType s: segmentTypeList) {
 			  System.out.println("DATA segemnt type - " + s.getSegmentTypeName());
 			  segmentlist.add(s.getSegmentTypeName());
+			  //HahMap< segmentname, id > segmentmap;
+			  // moening - segmentmap.get(moening)
 		  }
 		  mv.addObject("segmentTypeList",segmentlist);	 
 		  
@@ -139,21 +146,5 @@ public class RevenueTrackerController {
 		  mv.addObject("degreeList",list);	
 		  return mv; 
 	}
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 	  
 }
