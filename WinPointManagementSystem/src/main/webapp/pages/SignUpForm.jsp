@@ -71,14 +71,16 @@
 						<form:input type="email" class="form-control" path="emailId" placeholder="Email Id" required="true"/>
 						</div>
 					</div>
-					<%--  <div class="form-row">
+					  <div class="form-row">
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Date Of Birth</label>
-						 <form:input type="date" path="birthDate" class="form-control" required="true"/>
+						<%--  <form:input type="date" path="birthDate" class="form-control" required="true"/> --%>
+						<%--  <form:input type="text"  path="birthDate" min="97-01-01" max="30-12-31" onfocus="this.type='date'" placeholder="yy-mm-dd" onblur="if(this.value==='')this.type='text'" class="form-control" required="true"/> --%>
+						  <form:input type="text"  path="birthDate" placeholder="yy-mm-dd"  class="form-control" required="true"/>
 						 </div>
 						 </div>
-					</div>  --%>
+					</div>  
 					<div class="form-row">
 					<div class="col">
 						 <label class="label-control">Gender</label><br> 
@@ -201,7 +203,7 @@
 						<div class="col">
 						  <label for="Courses_Interested_in">Courses Interested in</label> 
 							 <form:select class="form-control selectpicker" path = "courseInterestedIn" multiple="true" required="true">
-				                    <%--  <form:option value = "NONE" label = "Select"/> --%>
+				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${courseInterestedInList}" />
 				             </form:select>  
 						 </div>
@@ -236,15 +238,12 @@
 				<div class="form-row">
 						<div class="col">
 						  <label for="avail_time">Available Time</label> 
-						   <form:select name="availableTime" path = "timeSlotsId" required="true">
+						   <form:select name="availableTime" class="form-control selectpicker" path = "timeSlotsId" required="true">
 								<c:forEach items="${availableTimeList}" var="availableTime">
    									 <option name="availableTime" value="${availableTime.timeSlotsId}">${availableTime.timeSlotsDescription}</option>
 								</c:forEach>
 						</form:select>
-							<%--  <form:select class="form-control selectpicker" path = "timeSlotsId" required="true">
-				                     <form:option value = "NONE" label = "Select"/>
-				                     <form:options items = "${availableTimeList}" />
-				             </form:select> --%>  
+							
 						 </div>
 					</div>  
 					
@@ -287,7 +286,7 @@
 					  <div class="form-row">
 						<div class="col">
 						  <label for="segment_type">Segment Type</label> 
-						  <form:select name="segmentType" path = "segmentTypeId" required="true">
+						  <form:select name="segmentType" class="form-control selectpicker" path = "segmentTypeId" required="true">
 								<c:forEach items="${segmentTypeList}" var="segmentType">
    									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
 								</c:forEach>
@@ -295,10 +294,7 @@
 						  
 						  
 						  
-						<%-- 	 <form:select class="form-control selectpicker" path = "segmentTypeId" required="true">
-				                     <!--<form:option value = "NONE" label = "Select"/>-->
-				                     <form:options items = "${segmentTypeList}" />
-				             </form:select>   --%>
+						
 						 </div>
 					</div>  
 				
