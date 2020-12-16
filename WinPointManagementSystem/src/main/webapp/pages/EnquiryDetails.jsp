@@ -97,9 +97,9 @@
 			<c:forEach items="${enquiryList}" var="det">
 					var tr = document.createElement('tr');
 					var td1 = document.createElement('td');
-					td1.textContent = '${det.name}';
+					td1.textContent = '${det.firstName}'+" "+ '${det.firstName}' ;
 					var td2 = document.createElement('td');
-					td2.textContent = '${det.course}';
+					td2.textContent = '${det.courseInterestedIn}';
 					var td3 = document.createElement('td');
 					td3.textContent = '${det.eligibility}';
 					var td4 = document.createElement('td');
