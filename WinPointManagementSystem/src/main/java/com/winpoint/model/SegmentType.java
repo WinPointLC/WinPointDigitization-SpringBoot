@@ -27,7 +27,7 @@ public class SegmentType {
 //	
 //	
 	@OneToMany(targetEntity = EnquiryDetails.class)
-	@JoinColumn(name = "segementTypeId", referencedColumnName = "segmentTypeId")
+	@JoinColumn(name = "segmentTypeId", referencedColumnName = "segmentTypeId")
 	private Set<EnquiryDetails> mappingEnquiryDetails;
 //	
 //	

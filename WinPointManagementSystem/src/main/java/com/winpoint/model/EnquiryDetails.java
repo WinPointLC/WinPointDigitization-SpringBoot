@@ -43,6 +43,4 @@ public class EnquiryDetails {
 	private String suggestion;
 	private Integer activeStatus;
 
-	
-
 }
