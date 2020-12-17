@@ -205,7 +205,7 @@
 						 </div>
 				</div>
 					
-				<input type="button" class="btn btn-primary" style="align-item:center;margin-left:400px" value="Update"></input>
+				<input type="button" class="btn btn-primary" style="align-item:center;margin-left:400px" onclick="update()" value="Update"></input>
 				</form>
 
 				</div>
@@ -239,6 +239,7 @@
 					success: function (jsonObj) {
 
 							updateFormDet=jsonObj;
+						
 							//alert(updateFormDet);
 
 							document.getElementById("fName").value=updateFormDet.firstName;
@@ -261,7 +262,7 @@
 							document.getElementById("experience").value=updateFormDet.experience;
 							document.getElementById("courses_interested").value=updateFormDet.courseInterestedIn;
 							document.getElementById("courses_done").value=updateFormDet.courseAlreadyDone;
-							document.getElementById("available_time").value=updateFormDet.courseAlreadyDone;
+							
 							document.getElementById("reference").value=updateFormDet.reference;
 
 							document.getElementById("Date_Of_Enquiry").value=updateFormDet.dateOfEnquiryString;
@@ -275,6 +276,46 @@
 					}
 
 				});
+
+			function update(){
+
+				var myData={
+						firstName:document.getElementById("fName").value,
+						lastName:document.getElementById("lName").value,
+						MobileNo:document.getElementById("mobNo").value,
+						emailId:document.getElementById("email").value,
+						college:document.getElementById("college").value,
+						designation:document.getElementById("designation").value,
+						domain:document.getElementById("domain").value,
+						yearOfGraduation:document.getElementById("yearGrad").value,
+						role:document.getElementById("role").value,
+						birthDateString:document.getElementById("dob").value,
+						degree:document.getElementById("degree").value,
+						experience:document.getElementById("experience").value,
+						courseInterestedIn:document.getElementById("courses_interested").value,
+						courseAlreadyDone:document.getElementById("courses_done").value,
+						reference:document.getElementById("reference").value,
+						dateOfEnquiryString:document.getElementById("Date_Of_Enquiry").value,
+						startDateString:document.getElementById("Start_Date").value,
+						recommendation:document.getElementById("recommendation").value			
+				}
+				$.ajax({
+					type: 'POST',
+					
+					url: "/SaveUpdateData",
+					data: JSON.stringify(myData),
+					//data: jQuery.param(myData),
+					//dataType: 'json',
+					contentType: 'application/json; charset=utf-8',
+					//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					traditional: true,
+					success: function () {
+						
+						alert("Success in updating");
+
+					}
+				});
+			}
 			
 	</script>
 	
