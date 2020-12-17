@@ -37,9 +37,9 @@ public class TechnicalQuestionBank {
 	private String createdBy;
 	private Date createdDate;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
-	private Course mappingCourse;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "courseId", nullable = false)
+//	private Course mappingCourse;
 	
 //	@OneToMany(targetEntity = StudentsModularTestResult_C_TBC.class)
 //    @JoinColumn(name = "questionId", referencedColumnName = "questionId")

@@ -103,10 +103,10 @@ public class Course{
 //	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
 //	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
 
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingCourse")
-	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
+//	@OneToMany(cascade = CascadeType.ALL, 
+//			  fetch = FetchType.LAZY, 
+//			  mappedBy = "mappingCourse")
+//	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
 	
 //	@OneToMany(targetEntity = Topics.class)
 //	@JoinColumn(name = "courseId", referencedColumnName = "courseId")

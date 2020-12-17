@@ -53,6 +53,10 @@ public class StudentCourseDetails {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "expenseTypeId", nullable = false)
+	private ExpenseType mappingExpenseType;
 
 
 }
