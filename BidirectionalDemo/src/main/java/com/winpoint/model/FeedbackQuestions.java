@@ -25,14 +25,14 @@ public class FeedbackQuestions {
 	
 	
 	
-	@OneToMany(targetEntity = FeedbackQuestions.class)
-	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
-	private Set<TestFeedback> TestFeedback;
+//	@OneToMany(targetEntity = FeedbackQuestions.class)
+//	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
+//	private Set<TestFeedback> TestFeedback;
 	
 	
-	@OneToMany(targetEntity = CourseFeedback.class)
-	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
-	private Set<CourseFeedback> CourseFeedback;
+//	@OneToMany(targetEntity = CourseFeedback.class)
+//	@JoinColumn(name = "feedbackQuestionId", referencedColumnName = "feedbackQuestionId")
+//	private Set<CourseFeedback> CourseFeedback;
 //	
 //	/////////////////
 	

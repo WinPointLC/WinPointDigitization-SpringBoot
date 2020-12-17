@@ -23,7 +23,7 @@ public class SecurityQuestions {
 	private Date createdDate;
 	
 
-	@OneToMany(targetEntity = UserProfile.class)
+//	@OneToMany(targetEntity = UserProfile.class)
 	@JoinColumn(name = "securityQuestionId", referencedColumnName = "securityQuestionId")
 	private Set<UserProfile> mappingUserProfile;
 	

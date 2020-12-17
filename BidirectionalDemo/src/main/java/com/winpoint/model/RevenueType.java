@@ -20,9 +20,9 @@ public class RevenueType {
 	private String revenueTypeName;
 
 	
-	@OneToMany(targetEntity = RevenueDetail.class)
-	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
-	private Set<RevenueDetail> mappingRevenueDetail;
+//	@OneToMany(targetEntity = RevenueDetail.class)
+//	@JoinColumn(name = "revenueTypeId", referencedColumnName = "revenueTypeId")
+//	private Set<RevenueDetail> mappingRevenueDetail;
 	
 	
 //////////////////////

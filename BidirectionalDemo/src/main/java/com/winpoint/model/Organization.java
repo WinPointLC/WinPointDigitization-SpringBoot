@@ -20,15 +20,15 @@ public class Organization {
 	
 
 
-	@OneToMany(targetEntity = ExpenseDetails.class)
-	@JoinColumn(name = "organizationId", referencedColumnName = "organizationId")
-	private Set<ExpenseDetails> ExpenseDetails;
+//	@OneToMany(targetEntity = ExpenseDetails.class)
+//	@JoinColumn(name = "organizationId", referencedColumnName = "organizationId")
+//	private Set<ExpenseDetails> ExpenseDetails;
 	
 	
 	
-	@OneToMany(targetEntity = RevenueDetail.class)
-	@JoinColumn(name = "organizationId", referencedColumnName = "organizationId")
-	private Set<RevenueDetail> RevenueDetail;
+//	@OneToMany(targetEntity = RevenueDetail.class)
+//	@JoinColumn(name = "organizationId", referencedColumnName = "organizationId")
+//	private Set<RevenueDetail> RevenueDetail;
 
 	////////////////////
 }

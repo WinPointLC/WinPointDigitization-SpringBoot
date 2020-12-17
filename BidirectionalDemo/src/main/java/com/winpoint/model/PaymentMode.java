@@ -19,15 +19,15 @@ public class PaymentMode {
 	private Integer paymentModeId;
 	private String paymentModeName;
 	
-	@OneToMany(targetEntity = ExpenseDetails.class)
-	@JoinColumn(name = "paymentModeId", referencedColumnName = "paymentModeId")
-	private Set<ExpenseDetails> mappingExpenseDetails;
+//	@OneToMany(targetEntity = ExpenseDetails.class)
+//	@JoinColumn(name = "paymentModeId", referencedColumnName = "paymentModeId")
+//	private Set<ExpenseDetails> mappingExpenseDetails;
 	
 	
 	
-	@OneToMany(targetEntity = RevenueDetail.class)
-	@JoinColumn(name = "paymentModeId", referencedColumnName = "paymentModeId")
-	private Set<RevenueDetail> mappingRevenueDetail;
+//	@OneToMany(targetEntity = RevenueDetail.class)
+//	@JoinColumn(name = "paymentModeId", referencedColumnName = "paymentModeId")
+//	private Set<RevenueDetail> mappingRevenueDetail;
 	
 	
 	//////////////////

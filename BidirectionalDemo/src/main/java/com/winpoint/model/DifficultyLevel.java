@@ -21,23 +21,23 @@ public class DifficultyLevel {
 	private Integer createdBy;
 	private Date createdDate;
 
-	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
-	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
+//	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
+//	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 	
 	
-	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
-	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
+//	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
+//	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
+//	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 	
 	
-	@OneToMany(targetEntity = TechnicalQuestionBank.class)
-	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
+//	@OneToMany(targetEntity = TechnicalQuestionBank.class)
+//	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
+//	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 	
 	
-	@OneToMany(targetEntity = TestDifficulty.class)
-	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
-	private Set<TestDifficulty> mappingTestDifficulty;
+//	@OneToMany(targetEntity = TestDifficulty.class)
+//	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
+//	private Set<TestDifficulty> mappingTestDifficulty;
 	
 }

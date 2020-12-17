@@ -29,53 +29,53 @@ public class Course{
 	private Date createdDate;
 	private Integer logoLocation;
 	
-	@OneToMany(targetEntity = StudentCourseDetails.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<StudentCourseDetails> StudentCourseDetails;
-
-	@OneToMany(targetEntity = BatchDetails.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<BatchDetails> BatchDetails;
-
-	@OneToMany(targetEntity = Course.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<CoursePlans> CoursePlans;
-
-	@OneToMany(targetEntity = ExpenseDetails.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<ExpenseDetails> ExpenseDetails;
-	
-	
-	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
-	
-	
-	@OneToMany(targetEntity = RevenueDetail.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<RevenueDetail> RevenueDetail;
-	
-	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
-	
-	
-	@OneToMany(targetEntity = Course.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
-	
-	
-	@OneToMany(targetEntity = Topics.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<Topics> Topics;
-	
-	@OneToMany(targetEntity = TestDetails.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<TestDetails> TestDetails;	
-	
-	@OneToMany(targetEntity = CourseFeedback.class)
-	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
-	private Set<CourseFeedback> CourseFeedback;
+//	@OneToMany(targetEntity = StudentCourseDetails.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<StudentCourseDetails> StudentCourseDetails;
+//
+//	@OneToMany(targetEntity = BatchDetails.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<BatchDetails> BatchDetails;
+//
+//	@OneToMany(targetEntity = Course.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<CoursePlans> CoursePlans;
+//
+//	@OneToMany(targetEntity = ExpenseDetails.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<ExpenseDetails> ExpenseDetails;
+//	
+//	
+//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+//	
+//	
+//	@OneToMany(targetEntity = RevenueDetail.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<RevenueDetail> RevenueDetail;
+//	
+//	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
+//	
+//	
+//	@OneToMany(targetEntity = Course.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
+//	
+//	
+//	@OneToMany(targetEntity = Topics.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<Topics> Topics;
+//	
+//	@OneToMany(targetEntity = TestDetails.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<TestDetails> TestDetails;	
+//	
+//	@OneToMany(targetEntity = CourseFeedback.class)
+//	@JoinColumn(name = "courseId", referencedColumnName = "courseId")
+//	private Set<CourseFeedback> CourseFeedback;
 //
 //	///////////////////////////////
 //
