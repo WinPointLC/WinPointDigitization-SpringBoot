@@ -2,7 +2,10 @@ package com.winpoint.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -13,6 +16,8 @@ import lombok.Data;
 public class CourseFeedback {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="courseFeedbackId", updatable=false)
 	private Integer courseFeedbackId;
 	private Integer userId;		//this both two are composite key s
 	private Integer courseId;		

@@ -1,6 +1,9 @@
 package com.winpoint.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -11,6 +14,8 @@ public class RevenueDetail {
 //	checked
 //	fk
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="revenueDetailId", updatable=false)
 	private String revenueDetailId;
 	private Integer revenueTypeId;
 	private String receiptNumber;
