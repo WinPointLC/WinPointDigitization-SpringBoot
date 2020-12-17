@@ -3,8 +3,10 @@ package com.winpoint.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,6 +33,11 @@ public class ClientCategory {
 //	@OneToMany(targetEntity = UserStudent.class)
 //	@JoinColumn(name = "clientCategoryId", referencedColumnName = "clientCategoryId")
 //	Set<UserStudent> UserStudent;
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingBatchDetails")
+	Set<UserStudent> UserStudent;
 	
 	/////////////
 	

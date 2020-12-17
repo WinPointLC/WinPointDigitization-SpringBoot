@@ -2,9 +2,12 @@ package com.winpoint.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -21,7 +24,7 @@ public class RevenueDetail {
 	private String receiptNumber;
 	private String payerDescription;
 	private Integer courseId;
-	private Integer batchId;
+//	private Integer batchId;
 	private String revenueAmount;
 	private Integer paymentModeId;
 	private String chequeNumber;
@@ -30,6 +33,9 @@ public class RevenueDetail {
 	private Integer userId;
 	private String receiveDate;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "batchId", nullable = false)
+	private BatchDetails mappingBatchDetails;
 
 
 }
