@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -28,13 +29,18 @@ public class Course{
 	private Integer courseDuration;
 	private Integer courseFees;
 	private Integer streamId;
-	private Integer courseTypeId;
+//	private Integer courseTypeId;
 	private String coursewareExist;
 	private Integer evaluationTypeId;
 	private Integer totalTests;
 	private Integer createdBy;
 	private Date createdDate;
 	private Integer logoLocation;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseTypeId", nullable = false)
+	private Course mappingCourseType;
 	
 //	@OneToMany(targetEntity = StudentCourseDetails.class)
 //	@JoinColumn(name = "courseId", referencedColumnName = "courseId")

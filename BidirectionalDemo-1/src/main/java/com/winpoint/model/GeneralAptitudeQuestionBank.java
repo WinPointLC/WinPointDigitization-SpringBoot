@@ -38,7 +38,7 @@ public class GeneralAptitudeQuestionBank {
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
-	private Course mappingCourse;
+    @JoinColumn(name = "courseTypeId", nullable = false)
+	private CourseType mappingCourse;
 
 }
