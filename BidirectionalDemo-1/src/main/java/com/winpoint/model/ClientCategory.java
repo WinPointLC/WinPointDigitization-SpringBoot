@@ -36,7 +36,7 @@ public class ClientCategory {
 	
 	@OneToMany(cascade = CascadeType.ALL, 
 			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingBatchDetails")
+			  mappedBy = "mappingClientCategory")
 	Set<UserStudent> UserStudent;
 	
 	/////////////
