@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,7 +25,7 @@ public class StudentCourseDetails {
 	private Integer studentCourseDetailsId;
 	private Integer userId;//
 	private Integer courseId;// composite pk
-	private Integer batchId;//
+//	private Integer batchId;
 	private String courseName;
 	private String logoLocation;
 	private String courseTypeName;
@@ -42,5 +45,10 @@ public class StudentCourseDetails {
 	private Integer studentCount;
 	private Integer dueAmount;
 	private Integer percentageAttendance;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "batchId", nullable = false)
+	private BatchDetails mappingBatchDetails;
+
 
 }

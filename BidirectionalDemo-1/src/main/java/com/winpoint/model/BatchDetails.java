@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -38,14 +37,18 @@ public class BatchDetails {
 	private Integer totalNumberOfLectures;
 	private Integer segmentTypeId;
 
-//	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
-//	private Set<BatchDetails> batchDetails;
-//
+
 //	@OneToMany(targetEntity = StudentCourseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
 //	private Set<StudentCourseDetails> StudentCourseDetails;
 //
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingBatchDetails")
+	private Set<StudentCourseDetails> StudentCourseDetails;
+
+	
 //	@OneToMany(targetEntity = ExpenseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
 //	private Set<ExpenseDetails> ExpenseDetails;
