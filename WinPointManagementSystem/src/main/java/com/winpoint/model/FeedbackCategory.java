@@ -20,7 +20,7 @@ public class FeedbackCategory {
 	private String feedbackCategoryDescription;
 
 	
-//	@OneToMany(targetEntity = FeedbackQuestions.class)
+	@OneToMany(targetEntity = FeedbackQuestions.class)
 	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
 	private Set<FeedbackQuestions> mappingFeedbackQuestions;
 	

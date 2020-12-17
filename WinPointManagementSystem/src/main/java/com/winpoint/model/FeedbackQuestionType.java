@@ -21,7 +21,7 @@ public class FeedbackQuestionType {
 	
 	
 	
-//	@OneToMany(targetEntity = FeedbackQuestions.class)
+	@OneToMany(targetEntity = FeedbackQuestions.class)
 	@JoinColumn(name = "feedbackQuestionTypeId", referencedColumnName = "feedbackQuestionTypeId")
 	private Set<FeedbackQuestions> mappingFeedbackQuestions;
 	

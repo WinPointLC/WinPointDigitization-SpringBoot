@@ -24,7 +24,7 @@ public class GradingSystem {
 	private Date createdDate;
 	
 	
-//	@OneToMany(targetEntity = StudentCourseDetails.class)
+	@OneToMany(targetEntity = StudentCourseDetails.class)
 	@JoinColumn(name = "gradeId", referencedColumnName = "gradeId")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 	

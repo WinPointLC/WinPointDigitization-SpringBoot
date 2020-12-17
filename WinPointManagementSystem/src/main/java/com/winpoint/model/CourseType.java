@@ -22,15 +22,15 @@ public class CourseType {
 	private Date createdDate;
 	
 	
-//	@OneToMany(targetEntity = Course.class)
+	@OneToMany(targetEntity = Course.class)
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private Set<Course> mappingCourse;
 
-//	@OneToMany(targetEntity = StreamCourseType.class)
+	@OneToMany(targetEntity = StreamCourseType.class)
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private Set<StreamCourseType> mappingStreamCourseType;
 	
-//	@OneToMany(targetEntity = ToolTips.class)
+	@OneToMany(targetEntity = ToolTips.class)
 	@JoinColumn(name = "courseTypeId", referencedColumnName = "courseTypeId")
 	private Set<ToolTips> mappingToolTips;	
 	

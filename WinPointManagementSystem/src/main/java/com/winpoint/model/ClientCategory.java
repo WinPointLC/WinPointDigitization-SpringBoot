@@ -23,7 +23,7 @@ public class ClientCategory {
 	
 	
 	
-//	@OneToMany(targetEntity = UserStudent.class)
+	@OneToMany(targetEntity = UserStudent.class)
 	@JoinColumn(name = "clientCategoryId", referencedColumnName = "clientCategoryId")
 	Set<UserStudent> UserStudent;
 	
