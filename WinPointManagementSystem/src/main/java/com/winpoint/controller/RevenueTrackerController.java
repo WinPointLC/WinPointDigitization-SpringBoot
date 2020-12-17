@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,6 +26,7 @@ import com.winpoint.repository.EnquiryDetailsRepository;
 import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.StreamsRepository;
 import com.winpoint.repository.TimeSlotsRepository;
+
 import com.winpoint.model.Course;
 import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SegmentType;
@@ -59,14 +62,14 @@ public class RevenueTrackerController {
 	
 	  // Update form
 	  @RequestMapping(value = "UpdateForm", method = RequestMethod.GET)
-		public ModelAndView showUpdateForm() {
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("UpdateForm");
-			EnquiryDetails user =new EnquiryDetails();
-			user.setFirstName("Pragya");
-			mv.addObject("user", user);		
+		public String showUpdateForm() {
 			
-			return mv;
+			/*
+			 * EnquiryDetails user =new EnquiryDetails(); user.setFirstName("Pragya");
+			 * mv.addObject("user", user);
+			 */	
+			
+			return "UpdateForm";
 		}
 	  
 	  
@@ -166,5 +169,10 @@ public class RevenueTrackerController {
 		  mv.addObject("degreeList",list);	
 		  return mv; 
 	}
+	  
+	  @RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
+		public void showEnquiry(@RequestParam("enquiryId") String enquiryId) {
+			System.out.println(enquiryId);
+		}
 	  
 }

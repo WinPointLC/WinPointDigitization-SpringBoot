@@ -20,6 +20,7 @@
 	  <link href="../css/employee_new_2.css" rel="stylesheet" />
 	  <link href="C:/Users/Admin/Desktop/screendevlopment/WebContent/jsp/position.css" rel="stylesheet" />
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	  <script src="../assets/js/core/jquery.min.js"></script>
 	  <link rel="stylesheet" href="../assets/css/magnific-popup.css" media="screen" />
 	
 	  <meta charset="utf-8" />
@@ -164,11 +165,43 @@
 
 	
 	</body>
-	
+	<script>
+		queryString = window.location.search;
+		//alert(queryString);
+		urlParams = new URLSearchParams(queryString);
+		//alert(urlParams.get('enquiryid'));
+		enquiryId=urlParams.get('enquiryid');
+
+				var myData = {
+				 	enquiryId: enquiryId
+				};
+				
+				$.ajax({
+					type: 'POST',
+					
+					url: "/getUpdateFormList",
+					
+					data: jQuery.param(myData),
+					dataType: 'json',
+					
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					traditional: true,
+					success: function (jsonObj) {
+
+							updateFormList=jsonObj;
+					},
+					error: function(){
+						alert("Error");
+						//document.getElementById("error").innerHTML = "Invalid email or password";
+					}
+
+				});
+			
+	</script>
 	<!-- <script type="text/javascript">
 		alert('${user.firstName}');
 	</script> -->
-	<script>
+	<!-- <script>
 			
 		document.getElementById("fName").value='${user.firstName}';
 		document.getElementById("lName").value='${user.lastName}';
@@ -186,5 +219,5 @@
 		document.getElementById("degree").value='${user.degree}'; 
 		
 		
-	</script>
+	</script> -->
 </html>	

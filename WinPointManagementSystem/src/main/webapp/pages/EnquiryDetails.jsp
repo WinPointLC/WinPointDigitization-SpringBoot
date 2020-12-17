@@ -55,7 +55,7 @@
 		</div>
 			<div class="card-footer text-muted"><!--style="background:linear-gradient(60deg, #26c6da, #00acc1)-->
 			<!-- <a href="javascript:;" class="btn btn-primary" style="float:left;height:35px">Cancel</a> -->
-			<a href="javascript:;" class="btn btn-primary" style="float:right;height:35px" onclick="updateForm()">Submit</a>
+			<a href="javascript:;" class="btn btn-primary" style="float:right;height:35px">Submit</a>
 			</div>
 		</div>
 		</div>
@@ -109,7 +109,9 @@
 					var addStudentBtn = document.createElement('btn');
 					addStudentBtn.className="btn btn-primary"
 					addStudentBtn.textContent = "Update";
-					addStudentBtn.setAttribute('onclick',"updateForm()");
+					addStudentBtn.setAttribute('enq','${det.enquiryId}');
+					
+					addStudentBtn.setAttribute('onclick',"updateForm(this.getAttribute('enq'))");
 					td5.appendChild(addStudentBtn);
 
 					tr.appendChild(td1);
@@ -126,9 +128,10 @@
 			
 			document.getElementById('table-enquiry-details').appendChild(table);
 
-			function updateForm(){
-				window.location.href="UpdateForm";
-
+			function updateForm(enquiry){
+				//alert(enquiry);
+				
+				window.location.href = "UpdateForm" + "?enquiryid="+enquiry;
 			}
 		</script>
 
