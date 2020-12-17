@@ -20,13 +20,4 @@ public class ToolTips {
 	private Integer createdBy;
 	private Date createdDate;
 	
-	
-	
-	
-//	
-//	
-
-//	
-	
-
 }

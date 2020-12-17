@@ -21,6 +21,4 @@ public class StudentsModularTestResult_C_TBC {
 	private Integer createdBy;
 	private Date createdDate;
 
-	
-
 }

@@ -37,8 +37,5 @@ public class StudentCourseDetails {
 	private Integer studentCount;
 	private Integer dueAmount;
 	private Integer percentageAttendance;
-	
-//
-	
 
 }

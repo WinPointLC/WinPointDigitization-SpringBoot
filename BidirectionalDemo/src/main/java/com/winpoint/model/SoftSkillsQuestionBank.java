@@ -29,6 +29,4 @@ public class SoftSkillsQuestionBank {
 	private String createdBy;
 	private Date createdDate;
 
-
-
 }

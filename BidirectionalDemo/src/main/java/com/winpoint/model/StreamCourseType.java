@@ -18,5 +18,4 @@ public class StreamCourseType {
 	private Date createdDate;
 	private String createdBy;
 
-
 }

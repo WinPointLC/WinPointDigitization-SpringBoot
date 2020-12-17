@@ -22,6 +22,4 @@ public class StudentTestResult_CPP_Modular {
 	private Integer createdBy;
 	private Date createdDate;
 
-	
-
 }
