@@ -2,8 +2,14 @@ package com.winpoint.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -13,8 +19,9 @@ public class StudentTestResult_C_Modular {
 //	checked
 //	fk
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="StudentTestResult_C_Modular", updatable=false)
 	private Integer StudentTestResult_C_ModularId;
-	private Integer userTestId;
 	private Integer qNumber;
 	private Integer questionId;
 	private Character studentResponse;
@@ -22,4 +29,7 @@ public class StudentTestResult_C_Modular {
 	private Integer createdBy;
 	private Date createdDate;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userTestId", nullable = false)
+	private UserTestDetails mappingUserTestDetails;
 }

@@ -1,9 +1,16 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -13,6 +20,8 @@ public class UserTestDetails {
 //	checked 
 //	redo fk
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="userTestId", updatable=false)
 	private Integer userTestId;//
 	private Integer userId;//
 	private Integer testDetailsId;//
@@ -28,15 +37,34 @@ public class UserTestDetails {
 //	@OneToMany(targetEntity = StudentsModularTestResult_C_TBC.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentsModularTestResult_C_TBC> ModularTestResult_C_TBC;
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentsModularTestResult_C_TBC> ModularTestResult_C_TBC;
+	
 //
 //	@OneToMany(targetEntity = StudentTestResult_C_Modular.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResult_C_Modular> StudentTestResult_C_Modular;
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResult_C_Modular> StudentTestResult_C_Modular;
+	
+	
 ////
 //	@OneToMany(targetEntity = StudentTestResult_CPP_CRT.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResult_CPP_CRT> StudentTestResult_CPP_CRT;
 ////
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResult_CPP_CRT> StudentTestResult_CPP_CRT;
+	
+	
 //	@OneToMany(targetEntity = StudentTestResult_CPP_Modular.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
