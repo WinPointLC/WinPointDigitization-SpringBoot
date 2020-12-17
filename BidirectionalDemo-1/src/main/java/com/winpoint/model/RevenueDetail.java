@@ -23,7 +23,7 @@ public class RevenueDetail {
 	private Integer revenueTypeId;
 	private String receiptNumber;
 	private String payerDescription;
-	private Integer courseId;
+//	private Integer courseId;
 //	private Integer batchId;
 	private String revenueAmount;
 	private Integer paymentModeId;
@@ -38,4 +38,8 @@ public class RevenueDetail {
 	private BatchDetails mappingBatchDetails;
 
 
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseId", nullable = false)
+	private Course mappingCourse;
+	
 }

@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -19,7 +22,7 @@ public class TechnicalQuestionBank {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="questionId", updatable=false)	
 	private Integer questionId;
-	private String courseId;
+//	private String courseId;
 	private String topicId;
 	private String question;
 	private String option1;
@@ -34,6 +37,10 @@ public class TechnicalQuestionBank {
 	private String createdBy;
 	private Date createdDate;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseId", nullable = false)
+	private Course mappingCourse;
+	
 //	@OneToMany(targetEntity = StudentsModularTestResult_C_TBC.class)
 //    @JoinColumn(name = "questionId", referencedColumnName = "questionId")
 //	private Set<StudentsModularTestResult_C_TBC> ModularTestResult_C_TBC;

@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -19,7 +22,7 @@ public class GeneralAptitudeQuestionBank {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="questionId", updatable=false)
 	private Integer questionId;
-	private Integer courseId;
+//	private Integer courseId;
 	private Integer topicId;
 	private String question;
 	private String option1;
@@ -34,6 +37,8 @@ public class GeneralAptitudeQuestionBank {
 	private String createdBy;
 	private Date createdDate;
 
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseId", nullable = false)
+	private Course mappingCourse;
 
 }

@@ -24,7 +24,7 @@ public class StudentCourseDetails {
 	@Column(name="studentCourseDetailsId", updatable=false)	
 	private Integer studentCourseDetailsId;
 	private Integer userId;//
-	private Integer courseId;// composite pk
+//	private Integer courseId;// composite pk
 //	private Integer batchId;
 	private String courseName;
 	private String logoLocation;
@@ -49,6 +49,10 @@ public class StudentCourseDetails {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "batchId", nullable = false)
 	private BatchDetails mappingBatchDetails;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseId", nullable = false)
+	private Course mappingCourse;
 
 
 }

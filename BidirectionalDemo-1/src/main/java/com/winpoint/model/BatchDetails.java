@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -24,7 +26,7 @@ public class BatchDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="batchId", updatable=false)
 	private Integer batchId;
-	private Integer courseId;
+//	private Integer courseId;
 	private Integer facultyUserId;
 	private Date beginDate;
 	private Date endDate;
@@ -36,8 +38,14 @@ public class BatchDetails {
 	private String lectureDuration;
 	private Integer totalNumberOfLectures;
 	private Integer segmentTypeId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseId", nullable = false)
+	private Course mappingCourse;
 
-
+	
+	
+	
 //	@OneToMany(targetEntity = StudentCourseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
 //	private Set<StudentCourseDetails> StudentCourseDetails;
