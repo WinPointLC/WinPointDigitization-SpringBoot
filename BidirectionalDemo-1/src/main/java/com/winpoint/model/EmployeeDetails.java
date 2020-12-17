@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -22,10 +25,13 @@ public class EmployeeDetails {
 	private Integer userId;
 	private Double employeeSalary;
 	private String dateOfJoining;
-	private Integer employeeCategoryId;
+//	private Integer employeeCategoryId;
 	private Integer createdBy;
 	private Date createdDate;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employeeCategoryId", nullable = false)
+	private EmployeeCategory mappingEmployeeCategory;
 
 	
 }
