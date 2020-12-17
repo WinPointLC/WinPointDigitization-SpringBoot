@@ -32,10 +32,15 @@ public class TechnicalQuestionBank {
 	private Character correctOption;
 	private Integer marks;
 	private String explanation;
-	private Integer difficultyLevelId;
+//	private Integer difficultyLevelId;
 	private String inCrt;
 	private String createdBy;
 	private Date createdDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "difficultyLevelId", nullable = false)
+	private DifficultyLevel mappingDifficultyLevel;
+
 
 //	@ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "courseId", nullable = false)

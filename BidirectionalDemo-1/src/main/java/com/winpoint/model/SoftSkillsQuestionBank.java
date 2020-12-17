@@ -32,7 +32,7 @@ public class SoftSkillsQuestionBank {
 	private Character correctOption;
 	private Integer marks;
 	private String explanation;
-	private Integer difficultyLevelId;
+//	private Integer difficultyLevelId;
 	private String inCrt;
 	private String createdBy;
 	private Date createdDate;
@@ -40,5 +40,10 @@ public class SoftSkillsQuestionBank {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "difficultyLevelId", nullable = false)
+	private DifficultyLevel mappingDifficultyLevel;
+
 
 }

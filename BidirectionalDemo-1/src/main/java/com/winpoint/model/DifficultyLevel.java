@@ -39,16 +39,28 @@ public class DifficultyLevel {
 //	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
 //	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 //	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
-	
-	
+
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingDifficultyLevel")
+	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 	
 //	@OneToMany(targetEntity = TechnicalQuestionBank.class)
 //	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 //	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
-	
+
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingDifficultyLevel")
+	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 	
 //	@OneToMany(targetEntity = TestDifficulty.class)
 //	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 //	private Set<TestDifficulty> mappingTestDifficulty;
 	
+
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingDifficultyLevel")
+	private Set<TestDifficulty> mappingTestDifficulty;	
 }
