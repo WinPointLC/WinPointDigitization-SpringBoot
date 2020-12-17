@@ -19,7 +19,7 @@ public class ExpenseType {
 	
 	
 	
-	@OneToMany(targetEntity = ExpenseDetails.class)
+//	@OneToMany(targetEntity = ExpenseDetails.class)
 	@JoinColumn(name = "expenseTypeId", referencedColumnName = "expenseTypeId")
 	private Set<ExpenseDetails> ExpenseDetails;
 
