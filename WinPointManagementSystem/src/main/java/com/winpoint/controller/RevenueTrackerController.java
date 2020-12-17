@@ -171,8 +171,10 @@ public class RevenueTrackerController {
 	}
 	  
 	  @RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
-		public void showEnquiry(@RequestParam("enquiryId") String enquiryId) {
+		public EnquiryDetails showEnquiry(@RequestParam("enquiryId") String enquiryId) {
 			System.out.println(enquiryId);
+			return enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get();
+			
 		}
 	  
 }
