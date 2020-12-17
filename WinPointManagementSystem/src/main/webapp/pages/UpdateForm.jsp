@@ -38,7 +38,7 @@
 	<body>
 	
 		<!--Update form Page-->
-		<br></br>
+		
 		<div class="card card-nav-tabs">
 				<h4 class="card-header card-header-primary">Update Form</h4>
 				<br></br>
@@ -72,7 +72,7 @@
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Date Of Birth</label>
-						 <input type="text" id="dob"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" required>
+						 <input type="text" id="dob"  class="form-control" required>
 						 </div>
 						 </div>
 				</div>
@@ -154,8 +154,58 @@
 						 <input type="text" id="role" class="form-control inputFileVisible"/>
 						 </div>
 				</div>
+				
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Experience (in months)</label>
+						 <input type="text" id="experience" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
 			
-				<input type="button" class="btn btn-primary" style="align-item:center;margin-left:550px" value="Update"></input>
+			
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Courses Interested in</label>
+						 <input type="text" id="courses_interested" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
+				
+			    <div class="row">
+						<div class="col">
+						 <label class="label-control">Courses Already Done</label>
+						 <input type="text" id="courses_done" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
+				
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Reference</label>
+						 <input type="text" id="reference" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
+				
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Date Of Enquiry</label>
+						 <input type="text" id="Date_Of_Enquiry" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
+				
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Recommendation</label>
+						 <input type="text" id="recommendation" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
+				
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Start Date</label>
+						 <input type="text" id="Start_Date" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
+					
+				<input type="button" class="btn btn-primary" style="align-item:center;margin-left:400px" value="Update"></input>
 				</form>
 
 				</div>
@@ -188,7 +238,36 @@
 					traditional: true,
 					success: function (jsonObj) {
 
-							updateFormList=jsonObj;
+							updateFormDet=jsonObj;
+							//alert(updateFormDet);
+
+							document.getElementById("fName").value=updateFormDet.firstName;
+							document.getElementById("lName").value=updateFormDet.lastName;
+							document.getElementById("mobNo").value=updateFormDet.MobileNo;
+
+							document.getElementById("email").value=updateFormDet.emailId;
+							document.getElementById("college").value=updateFormDet.college;
+							document.getElementById("branch").value=updateFormDet.branch;
+
+							document.getElementById("occupation").value=updateFormDet.occupation;
+							document.getElementById("designation").value=updateFormDet.designation;
+							document.getElementById("domain").value=updateFormDet.domain;
+
+							document.getElementById("yearGrad").value=updateFormDet.yearOfGraduation;
+							document.getElementById("role").value=updateFormDet.role;
+							document.getElementById(updateFormDet.gender).setAttribute("checked",true);
+							document.getElementById("dob").value=updateFormDet.birthDateString;
+							document.getElementById("degree").value=updateFormDet.degree;
+							document.getElementById("experience").value=updateFormDet.experience;
+							document.getElementById("courses_interested").value=updateFormDet.courseInterestedIn;
+							document.getElementById("courses_done").value=updateFormDet.courseAlreadyDone;
+							document.getElementById("available_time").value=updateFormDet.courseAlreadyDone;
+							document.getElementById("reference").value=updateFormDet.reference;
+
+							document.getElementById("Date_Of_Enquiry").value=updateFormDet.dateOfEnquiryString;
+							document.getElementById("Start_Date").value=updateFormDet.startDateString;
+							document.getElementById("recommendation").value=updateFormDet.recommendation;
+		
 					},
 					error: function(){
 						alert("Error");
@@ -198,26 +277,5 @@
 				});
 			
 	</script>
-	<!-- <script type="text/javascript">
-		alert('${user.firstName}');
-	</script> -->
-	<!-- <script>
-			
-		document.getElementById("fName").value='${user.firstName}';
-		document.getElementById("lName").value='${user.lastName}';
-		document.getElementById("mobNo").value='${user.MobileNo}';
-		document.getElementById("email").value='${user.emailId}';
-		document.getElementById("college").value='${user.college}';
-		document.getElementById("branch").value='${user.branch}';
-		document.getElementById("occupation").value='${user.occupation}';
-		document.getElementById("designation").value='${user.designation}';
-		document.getElementById("domain").value='${user.domain}';
-		document.getElementById("yearGrad").value='${user.yearOfGraduation}';
-		document.getElementById("role").value='${user.role}';
-		document.getElementById('${user.gender}').setAttribute("checked",true);
-		document.getElementById("dob").value='${user.birthDate}';
-		document.getElementById("degree").value='${user.degree}'; 
-		
-		
-	</script> -->
+	
 </html>	
