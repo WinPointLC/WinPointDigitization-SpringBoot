@@ -32,7 +32,7 @@ import com.winpoint.repository.CourseTypeRepository;
 import com.winpoint.repository.DifficultyLevelRepository;
 import com.winpoint.repository.EmployeeCategoryRepository;
 import com.winpoint.repository.EvaluationTypeRepository;
-import com.winpoint.repository.FeebackCategoryRepository;
+import com.winpoint.repository.FeedbackCategoryRepository;
 import com.winpoint.repository.FeedbackQuestionTypeRepositoy;
 import com.winpoint.repository.GradingSystemRepository;
 import com.winpoint.repository.OrganizationTypeRepository;
@@ -67,7 +67,7 @@ public class EntityScreenController {
 	EvaluationTypeRepository evaluationTypeRepository;
 
 	@Autowired
-	FeebackCategoryRepository feedbackCategoryRepository;
+	FeedbackCategoryRepository feedbackCategoryRepository;
 
 	@Autowired
 	FeedbackQuestionTypeRepositoy feedbackQuestionTypeRepositoy;
