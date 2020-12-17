@@ -22,5 +22,4 @@ public class StudentTestResult_C_Modular {
 	private Integer createdBy;
 	private Date createdDate;
 
-	
 }

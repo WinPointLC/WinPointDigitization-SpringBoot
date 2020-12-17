@@ -22,6 +22,4 @@ public class StudentTestResultJava_CRT {
 	private Integer createdBy;
 	private Date createdDate;
 
-	
-
 }

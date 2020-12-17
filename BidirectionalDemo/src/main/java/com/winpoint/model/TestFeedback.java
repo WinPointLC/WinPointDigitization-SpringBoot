@@ -21,5 +21,4 @@ public class TestFeedback {
 	private Integer createdBy;
 	private Date createdDate;
 
-
 }

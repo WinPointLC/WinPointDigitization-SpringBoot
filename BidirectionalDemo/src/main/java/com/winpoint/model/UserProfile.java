@@ -1,12 +1,9 @@
 package com.winpoint.model;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -47,38 +44,38 @@ public class UserProfile {
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
 	
-	@OneToMany(targetEntity = FacultySkills.class)
-	@JoinColumn(name = "facultyUserId", referencedColumnName = "userId")
-	private Set<FacultySkills> FacultySkills;
-
-	@OneToMany(targetEntity = StudentCourseDetails.class)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private Set<StudentCourseDetails> StudentCourseDetails;
-
-//	@OneToMany(targetEntity = UserProfile.class)
+//	@OneToMany(targetEntity = FacultySkills.class)
 //	@JoinColumn(name = "facultyUserId", referencedColumnName = "userId")
-//	private Set<UserProfile> employeeCategories;
-
-	@OneToMany(targetEntity = EmployeeDetails.class)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private Set<EmployeeDetails> EmployeeDetails;
-
-	@OneToMany(targetEntity = RevenueDetail.class)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private Set<RevenueDetail> RevenueDetail;
-
-	@OneToMany(targetEntity = UserTestDetails.class)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private Set<UserTestDetails> UserTestDetails;
-
-	@OneToMany(targetEntity = UserStudent.class)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private Set<UserStudent> UserStudent;
-	
-	
-	@OneToMany(targetEntity = CourseFeedback.class)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private Set<CourseFeedback> CourseFeedback;
+//	private Set<FacultySkills> FacultySkills;
+//
+//	@OneToMany(targetEntity = StudentCourseDetails.class)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private Set<StudentCourseDetails> StudentCourseDetails;
+//
+////	@OneToMany(targetEntity = UserProfile.class)
+////	@JoinColumn(name = "facultyUserId", referencedColumnName = "userId")
+////	private Set<UserProfile> employeeCategories;
+//
+//	@OneToMany(targetEntity = EmployeeDetails.class)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private Set<EmployeeDetails> EmployeeDetails;
+//
+//	@OneToMany(targetEntity = RevenueDetail.class)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private Set<RevenueDetail> RevenueDetail;
+//
+//	@OneToMany(targetEntity = UserTestDetails.class)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private Set<UserTestDetails> UserTestDetails;
+//
+//	@OneToMany(targetEntity = UserStudent.class)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private Set<UserStudent> UserStudent;
+//	
+//	
+//	@OneToMany(targetEntity = CourseFeedback.class)
+//	@JoinColumn(name = "userId", referencedColumnName = "userId")
+//	private Set<CourseFeedback> CourseFeedback;
 //
 //////////////////////////////
 //

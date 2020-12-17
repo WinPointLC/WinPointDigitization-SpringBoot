@@ -22,6 +22,4 @@ public class StudentTestResultJava_TBC {
 	private Integer createdBy;
 	private Date createdDate;
 
-
-
 }

@@ -23,6 +23,4 @@ public class UserStudent {
 	private Integer createdBy;
 	private Date createdDate;
 
-	
-
 }

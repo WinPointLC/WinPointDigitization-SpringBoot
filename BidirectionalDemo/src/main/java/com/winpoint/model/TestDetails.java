@@ -1,12 +1,9 @@
 package com.winpoint.model;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -28,19 +25,9 @@ public class TestDetails {
 	private Date createdDate;
 	
 	
-	@OneToMany(targetEntity = UserTestDetails.class)
-	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
-	private Set<UserTestDetails> UserTestDetails;
-	
-	
-	
-	
-//
-//	
-//	
-//	
-//	///////////////////////////
-//
+//	@OneToMany(targetEntity = UserTestDetails.class)
+//	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
+//	private Set<UserTestDetails> UserTestDetails;
 	
 
 }

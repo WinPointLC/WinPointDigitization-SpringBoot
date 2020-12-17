@@ -22,6 +22,4 @@ public class StudentTestResultJavaModular {
 	private Integer createdBy;
 	private Date createdDate;
 
-	
-
 }
