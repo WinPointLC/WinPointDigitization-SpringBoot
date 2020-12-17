@@ -3,8 +3,10 @@ package com.winpoint.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -16,8 +18,8 @@ import lombok.Data;
 public class SecurityQuestions {
 //	checked
 	@Id
-	@GeneratedValue
-	private Integer securityQuestionId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="securityQuestion", updatable=false)	
 	private String securityQuestion;
 	private Integer createdBy;
 	private Date createdDate;

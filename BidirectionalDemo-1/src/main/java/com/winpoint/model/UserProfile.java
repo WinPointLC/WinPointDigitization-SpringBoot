@@ -2,7 +2,10 @@ package com.winpoint.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -13,6 +16,8 @@ public class UserProfile {
 //	checked
 //	redo fk
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="userId", updatable=false)	
 	private Integer userId;
 	private String firstName;
 	private String lastName;
@@ -27,7 +32,7 @@ public class UserProfile {
 	private String photoLocation;
 	private String password;
 	private String gender;
-	private Integer securityQuestionId;
+//	private Integer securityQuestionId;
 	private String securityQuestion;
 	private String securityAnswer;
 	private Integer userCategoryId;

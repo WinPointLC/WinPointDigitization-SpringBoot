@@ -2,7 +2,10 @@ package com.winpoint.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -14,6 +17,8 @@ public class StudentCourseDetails {
 //	fk
 //	comp fk
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="studentCourseDetailsId", updatable=false)	
 	private Integer studentCourseDetailsId;
 	private Integer userId;//
 	private Integer courseId;// composite pk

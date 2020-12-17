@@ -2,7 +2,10 @@ package com.winpoint.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -13,6 +16,8 @@ public class SoftSkillsQuestionBank {
 //	checked
 //	fk
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="questionId", updatable=false)	
 	private String questionId;
 	private Integer courseId;
 	private Integer topicId;
