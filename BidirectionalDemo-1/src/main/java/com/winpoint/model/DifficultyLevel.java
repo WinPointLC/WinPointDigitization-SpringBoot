@@ -3,8 +3,10 @@ package com.winpoint.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,10 +30,16 @@ public class DifficultyLevel {
 //	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 //	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingDifficultyLevel")
+	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
+
 	
 //	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
 //	@JoinColumn(name = "difficultyLevelId", referencedColumnName = "difficultyLevelId")
 //	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
+	
 	
 	
 //	@OneToMany(targetEntity = TechnicalQuestionBank.class)
