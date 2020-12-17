@@ -69,34 +69,97 @@ public class UserTestDetails {
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
 ////
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
+	
+	
 //	@OneToMany(targetEntity = StudentTestResult_CPP_TBC.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResult_CPP_TBC> StudentTestResult_CPP_TBC;
 ////
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResult_CPP_TBC> StudentTestResult_CPP_TBC;
+	
+	
+	
 //	@OneToMany(targetEntity = StudentTestResultComputerNetwork_CRT.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResultComputerNetwork_CRT> StudentTestResultComputerNetwork_CRT;
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResultComputerNetwork_CRT> StudentTestResultComputerNetwork_CRT;
+	
+	
 ////
 //	@OneToMany(targetEntity = StudentTestResultJava_CRT.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResultJava_CRT> StudentTestResultJava_CRT;
 //
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResultJava_CRT> StudentTestResultJava_CRT;
+	
+	
 //	@OneToMany(targetEntity = StudentTestResultJava_TBC.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResultJava_TBC> StudentTestResultJava_TBC;
 //
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResultJava_TBC> StudentTestResultJava_TBC;
+	
+	
+	
 //	@OneToMany(targetEntity = StudentTestResultJavaModular.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResultJavaModular> StudentTestResultJavaModular;
 //
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResultJavaModular> StudentTestResultJavaModular;
+	
 //	@OneToMany(targetEntity = StudentTestResultJavascriptModular.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResultJavascriptModular> StudentTestResultJavascriptModular;
 //
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResultJavascriptModular> StudentTestResultJavascriptModular;
+	
+	
+	
 //	@OneToMany(targetEntity = StudentTestResultOperatingSystem_CRT.class)
 //	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
 //	private Set<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
 //
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingUserTestDetails")
+	private Set<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
+	
+	
 //	
 	
 	
