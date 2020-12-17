@@ -90,13 +90,18 @@ public class RevenueTrackerController {
 		  System.out.println("USER:  "+ user.getGender());
 		  System.out.println("USER:  "+ user.getDegree());
 		  System.out.println("USER:  "+ user.getBirthDateString());
-		  DateFormat df = new SimpleDateFormat("dd/MM/yyy hh:mm a Z");
+		  DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 		  String t = user.getBirthDateString().toString();
-//		  String tt = "04/26/2013 05:30 AM GMT -1200";
 		  Date d= df.parse(t);
-		  user.setBirthDate(d);
+		  user.setBirthDate(d);	 
 		  
+		  String t1 = user.getDateOfEnquiryString().toString();
+		  Date d1= df.parse(t1);
+		  user.setDateOfEnquiry(d1);	 
 		  
+		  String t2 = user.getStartDateString().toString();
+		  Date d2= df.parse(t2);
+		  user.setStartDate(d2);	 
 //		  System.out.println("USER:  "+ user.getBirthDate()); 
 		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			 
@@ -128,8 +133,7 @@ public class RevenueTrackerController {
 		  for(SegmentType s: segmentTypeList) {
 			  System.out.println("DATA segemnt type - " + s.getSegmentTypeName());
 			  segmentlist.add(s.getSegmentTypeName());
-			  //HahMap< segmentname, id > segmentmap;
-			  // moening - segmentmap.get(moening)
+			  
 		  }
 		  mv.addObject("segmentTypeList",segmentTypeList);	 
 		  

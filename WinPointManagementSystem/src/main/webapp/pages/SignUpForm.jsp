@@ -203,7 +203,7 @@
 						<div class="col">
 						  <label for="Courses_Interested_in">Courses Interested in</label> 
 							 <form:select class="form-control selectpicker" path = "courseInterestedIn" multiple="true" required="true">
-				                     <form:option value = "NONE" label = "Select"/>
+				                     <%-- <form:option value = "NONE" label = "Select"/> --%>
 				                     <form:options items = "${courseInterestedInList}" />
 				             </form:select>  
 						 </div>
@@ -254,14 +254,14 @@
 						 </div>
 					</div>
 					
-					 <%--  <div class="form-row">
+					  <div class="form-row">
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Date Of Enquiry</label>
-						 <form:input type="date" path="dateOfEnquiry" required="true" class="form-control"/>
+						 <form:input type="text" path="dateOfEnquiryString" placeholder="yyyy-mm-dd" required="true" class="form-control"/>
 						 </div>
 						 </div>
-					</div>   --%>
+					</div>  
 					
 					<div class="form-row">
 						<div class="col">
@@ -270,14 +270,14 @@
 						 </div>
 					</div>
 					
-					 <%--  <div class="form-row">
+					  <div class="form-row">
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Start Date</label>
-						 <form:input type="date" path="startDate" required="true" class="form-control"/>
+						 <form:input type="text" path="startDateString" placeholder="yyyy-mm-dd" required="true" class="form-control"/>
 						 </div>
 						 </div>
-					</div>   --%>
+					</div>  
 					
 
 					
@@ -305,12 +305,12 @@
 						 </div>
 					</div>
 					
-					<%-- <div class="form-row">
+					 <div class="form-row">
 						<div class="col">
 							 <label class="label-control">Active Status</label>
 							 <div class="form-check form-check-radio">
 								<label class="form-check-label">
-							 <form:radiobutton class="form-check-input" path="activeStatus" value="Active" checked="true"/> 
+							 <form:radiobutton class="form-check-input" path="activeStatus" value="1" checked="true"/> 
 							
 								Active
 									<span class="circle">
@@ -319,7 +319,7 @@
 								</label>
 							</div>
 						</div>
-					</div> --%>
+					</div> 
 					
 				</div>
 			</div>
@@ -336,10 +336,7 @@
 	function submitForm(){
 		var birthdate = document.getElementById("bdayId");
 		alert("DATE - "+birthdate.value);
-		//DateFormat df = new SimpleDateFormat("dd/MM/yyy hh:mm a Z");
-		//String t = birthdate.value;
-		//Date convertedBirthDate = df.parse(t);
-		//alert("Converted Birth date : "+convertedBirthDate);
+		
 	}
 	</script>
 	

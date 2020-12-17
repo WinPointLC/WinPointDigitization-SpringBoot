@@ -48,5 +48,7 @@ public class EnquiryDetails {
 	private String suggestion;
 	private Integer activeStatus;
 	private String birthDateString;
+	private String dateOfEnquiryString;
+	private String startDateString;
 	
 }
