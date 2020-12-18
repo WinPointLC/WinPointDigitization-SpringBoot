@@ -31,12 +31,16 @@ public class Course{
 	private Integer streamId;
 //	private Integer courseTypeId;
 	private String coursewareExist;
-	private Integer evaluationTypeId;
+//	private Integer evaluationTypeId;
 	private Integer totalTests;
 	private Integer createdBy;
 	private Date createdDate;
 	private Integer logoLocation;
 	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "evaluationTypeId", nullable = false)
+	private TestDetails mappingEvaluationType;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseTypeId", nullable = false)

@@ -28,9 +28,13 @@ public class TestDetails {
 	private String rules;
 	private String testFees;
 	private String negativeMarking;
-	private Integer evaluationTypeId;
+//	private Integer evaluationTypeId;
 	private Integer createdBy;
 	private Date createdDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "evaluationTypeId", nullable = false)
+	private TestDetails mappingEvaluationType;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId", nullable = false)
