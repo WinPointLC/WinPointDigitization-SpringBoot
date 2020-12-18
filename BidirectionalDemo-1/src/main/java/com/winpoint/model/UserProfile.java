@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -36,10 +38,8 @@ public class UserProfile {
 	private String photoLocation;
 	private String password;
 	private String gender;
-//	private Integer securityQuestionId;
 	private String securityQuestion;
 	private String securityAnswer;
-	private Integer userCategoryId;
 	private String occupation;
 	private String organization;
 	private String designation;
@@ -142,6 +142,12 @@ public class UserProfile {
 	
 //////////////////////////////
 //
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userCategoryId", nullable = false)
+	private UserProfile mappingUserCategory;
+//	
 	
 
 }
