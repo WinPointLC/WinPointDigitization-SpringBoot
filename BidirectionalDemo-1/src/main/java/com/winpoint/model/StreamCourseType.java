@@ -21,8 +21,6 @@ public class StreamCourseType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="streamCourseTypeId", updatable=false)	
 	private Integer streamCourseTypeId;
-	private Integer streamId;
-//	private Integer courseTypeId;
 	private Date createdDate;
 	private String createdBy;
 
@@ -30,4 +28,9 @@ public class StreamCourseType {
     @JoinColumn(name = "courseTypeId", nullable = false)
 	private Course mappingCourseType;
 	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "streamId", nullable = false)
+	private Streams mappingStreams;
 }
