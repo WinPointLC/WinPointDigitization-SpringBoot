@@ -32,7 +32,7 @@ public class StudentCourseDetails {
 	private String feedbackGiven;
 	private String certificateGiven;
 	private Integer courseAggr;
-	private String gradeId;//
+//	private Integer gradeId;//
 	private String feeStatus;
 	private Integer createdBy;
 	private Date createdDate;
@@ -44,6 +44,11 @@ public class StudentCourseDetails {
 	private Integer studentCount;
 	private Integer dueAmount;
 	private Integer percentageAttendance;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "gradeId", nullable = false)
+	private GradingSystem mappingGradingSystem;
+
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "batchId", nullable = false)
