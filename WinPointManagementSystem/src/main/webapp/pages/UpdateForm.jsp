@@ -109,7 +109,7 @@
 						<div class="col">
 						 <label for="degree">Degree</label>
 							<select id="degree" class="form-control" style="height:32px">
-							<option selected>Choose....</option>
+							<!-- <option selected>Choose....</option> -->
 							<option>BCA</option>
 							<option>MCA</option>
 							<option>B.E</option>
@@ -329,6 +329,7 @@
 				
 
 				var myData={
+						enquiryId:enquiryId,
 						firstName:document.getElementById("fName").value,
 						lastName:document.getElementById("lName").value,
 						MobileNo:document.getElementById("mobNo").value,
