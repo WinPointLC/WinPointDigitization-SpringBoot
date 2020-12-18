@@ -26,11 +26,15 @@ public class RevenueDetail {
 //	private Integer courseId;
 //	private Integer batchId;
 	private String revenueAmount;
-	private Integer paymentModeId;
+//	private Integer paymentModeId;
 	private String chequeNumber;
 	private Integer segmentTypeId;
 //	private Integer organizationId;
 	private String receiveDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "paymentModeId", nullable = false)
+	private PaymentMode mappingPaymentMode; 
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "organizationId", nullable = false)

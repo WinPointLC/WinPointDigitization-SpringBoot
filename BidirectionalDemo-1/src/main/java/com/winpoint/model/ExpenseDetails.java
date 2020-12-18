@@ -27,11 +27,15 @@ public class ExpenseDetails {
 	private String expenseDescription;
 //	private Integer courseId;
 //	private Integer batchId;
-	private Integer paymentModeId;
+//	private Integer paymentModeId;
 	private String chequeNumber;
 	private Integer segemntTypeId;
 //	private Integer organizationId;
 	private String receiptNumber;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "paymentModeId", nullable = false)
+	private PaymentMode mappingPaymentMode;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "batchId", nullable = false)
