@@ -37,9 +37,6 @@ public class TestDifficulty {
 //	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
 //	private Set<TestDetails> TestDetails;
 	
-
-	
-	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topicId", nullable = false)
 	private Topics mappingTopics;
