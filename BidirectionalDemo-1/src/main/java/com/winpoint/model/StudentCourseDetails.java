@@ -39,11 +39,16 @@ public class StudentCourseDetails {
 	private String coursewareIssued;
 	private String assignmentsIssued;
 	private String assignmentsSubmitted;
-	private Integer reminderTypeId;//
+//	private Integer reminderTypeId;//
 	private Integer feeReminderCount;
 	private Integer studentCount;
 	private Integer dueAmount;
 	private Integer percentageAttendance;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "reminderTypeId", nullable = false)
+	private ReminderType mappingReminderType; 
+
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gradeId", nullable = false)
