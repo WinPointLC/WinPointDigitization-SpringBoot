@@ -23,7 +23,6 @@ public class SoftSkillsQuestionBank {
 	@Column(name="questionId", updatable=false)	
 	private Integer questionId;
 //	private Integer courseId;
-	private Integer topicId;
 	private String question;
 	private String option1;
 	private String option2;
@@ -45,5 +44,11 @@ public class SoftSkillsQuestionBank {
     @JoinColumn(name = "difficultyLevelId", nullable = false)
 	private DifficultyLevel mappingDifficultyLevel;
 
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "topicId", nullable = false)
+	private Topics mappingTopics;
+	
+	
 
 }

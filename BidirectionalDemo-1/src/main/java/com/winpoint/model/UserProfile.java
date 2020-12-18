@@ -147,6 +147,9 @@ public class UserProfile {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userCategoryId", nullable = false)
 	private UserProfile mappingUserCategory;
+	
+	
+	
 //	
 	
 

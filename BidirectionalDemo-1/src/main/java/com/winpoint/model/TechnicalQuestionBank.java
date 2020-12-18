@@ -22,8 +22,6 @@ public class TechnicalQuestionBank {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="questionId", updatable=false)	
 	private Integer questionId;
-//	private String courseId;
-	private String topicId;
 	private String question;
 	private String option1;
 	private String option2;
@@ -32,7 +30,6 @@ public class TechnicalQuestionBank {
 	private Character correctOption;
 	private Integer marks;
 	private String explanation;
-//	private Integer difficultyLevelId;
 	private String inCrt;
 	private String createdBy;
 	private Date createdDate;
@@ -90,6 +87,16 @@ public class TechnicalQuestionBank {
 //	@JoinColumn(name = "questionId", referencedColumnName = "questionId")
 //	private Set<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
 
+	
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "topicId", nullable = false)
+	private Topics mappingTopics;
+	
+	
+	
 
 
 }
