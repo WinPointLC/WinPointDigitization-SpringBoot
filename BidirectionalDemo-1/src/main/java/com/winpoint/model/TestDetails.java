@@ -1,7 +1,9 @@
 package com.winpoint.model;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -22,13 +25,11 @@ public class TestDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="testDetailId", updatable=false)	
 	private Integer testDetailId;
-//	private Integer courseId;//
 	private Integer testNumber;
 	private Integer totalQuestions;
 	private String rules;
 	private String testFees;
 	private String negativeMarking;
-//	private Integer evaluationTypeId;
 	private Integer createdBy;
 	private Date createdDate;
 	
@@ -44,5 +45,9 @@ public class TestDetails {
 //	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
 //	private Set<UserTestDetails> UserTestDetails;
 	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingTestDetails")
+	private Set<TestDifficulty> mappingTestDifficulty;
 
 }
