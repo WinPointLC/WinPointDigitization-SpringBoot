@@ -20,7 +20,7 @@ public class SecurityQuestions {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="securityQuestion", updatable=false)	
-	private String securityQuestion;
+	private Integer securityQuestionId;
 	private Integer createdBy;
 	private Date createdDate;
 	
