@@ -29,8 +29,12 @@ public class RevenueDetail {
 	private Integer paymentModeId;
 	private String chequeNumber;
 	private Integer segmentTypeId;
-	private Integer organizationId;
+//	private Integer organizationId;
 	private String receiveDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "organizationId", nullable = false)
+	private Organization mappingOrganization; 
 
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "batchId", nullable = false)
