@@ -1,5 +1,7 @@
 package com.winpoint.repository;
 
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,14 +14,19 @@ public interface EnquiryDetailsRepository extends JpaRepository<EnquiryDetails, 
 
 	
 	@Modifying
-	@Query("UPDATE ENQUIRY_DETAILS a SET a.firstName = ?1 , a.lastName = ?2, a.emailId = ?3, "
-			+ "a.mobileNo = ?4, a.address = ?5, a.birthDate =?6 , a.college = ?7, a.degree=?8, a.branch =?9, a.occupation=?10,"
-			+ "a.deginatation =?11 , a.domain =?12 , a.role = ?13, a.experience = ?14, a.createdBy =?15 , a.dateOfEnquiry =?16,"
-			+ "a.gender = ?17, a.yearOfGraduation = ?18, a.recommendation = ?19, a.recommendation = ?20, a.eligibility = ?21, "
-			+ "a.courseInterestedIn = ?22,a.reference = ?23, a.timeSlotId = ?24, a.courseAlreadyDone = ?25, a.startDate = ?26,"
-			+ "a.segmentTypeId= ?27,a.suggestion=?28,a.activeStatus= ?29, a.birthDateString = ?30, a.dateOfEnquiryString = ?31,"
-			+ "a.startDateString = ?32")
-	void updateEnquiryDetails();
+	@Query("UPDATE ENQUIRY_DETAILS a SET a.firstName = ?2 , a.lastName = ?3, a.emailId = ?4, "
+			+ "a.mobileNo = ?5, a.address = ?6, a.birthDate =?7 , a.college = ?8, a.degree=?9, a.branch =?10, a.occupation=?11,"
+			+ "a.deginatation =?12 , a.domain =?13 , a.role = ?14, a.experience = ?15, a.createdBy =?16 , a.dateOfEnquiry =?17,"
+			+ "a.gender = ?18, a.yearOfGraduation = ?19, a.recommendation = ?20, a.recommendation = ?21, a.eligibility = ?22, "
+			+ "a.courseInterestedIn = ?23,a.reference = ?24, a.timeSlotId = ?25, a.courseAlreadyDone = ?26, a.startDate = ?27,"
+			+ "a.segmentTypeId= ?28,a.suggestion=?29,a.activeStatus= ?30, a.birthDateString = ?31, a.dateOfEnquiryString = ?32,"
+			+ "a.startDateString = ?33 WHERE A.enquiryId = ?1")
+	void updateEnquiryDetails(Integer enquiryId, String firstName, String lastName, String emailId, String mobileNo,
+			String address, Date birthDate, String college, String degree, String branch,  String occupation,
+			String designation, String domain, String role, Integer experience, Integer createdBy, Date dateOfEnquiry,
+			String gender, Integer yearOfGraduation, String recommendation, String eligibility, String courseInterestedIn,
+			String reference, Integer timeSlotsId, String courseAlreadyDone, Date startDate, Integer segmentTypeId,
+			String suggestion, Integer activeStatus, String birthDateString, String dateOfEnquiryString, String startDateString);
 	
 	
 }
