@@ -20,7 +20,7 @@ public class RevenueDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="revenueDetailId", updatable=false)
 	private Integer revenueDetailId;
-	private Integer revenueTypeId;
+//	private Integer revenueTypeId;
 	private String receiptNumber;
 	private String payerDescription;
 //	private Integer courseId;
@@ -31,6 +31,11 @@ public class RevenueDetail {
 	private Integer segmentTypeId;
 //	private Integer organizationId;
 	private String receiveDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "revenueTypeId", nullable = false)
+	private RevenueType mappingRevenueType; 
+
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "paymentModeId", nullable = false)
