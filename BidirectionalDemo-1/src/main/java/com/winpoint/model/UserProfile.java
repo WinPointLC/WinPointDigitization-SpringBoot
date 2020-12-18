@@ -52,6 +52,20 @@ public class UserProfile {
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "securityQuestionId", nullable = false)
+	private SecurityQuestions mappingSecurityQuestions; 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	@OneToMany(targetEntity = FacultySkills.class)
 //	@JoinColumn(name = "facultyUserId", referencedColumnName = "userId")
 //	private Set<FacultySkills> FacultySkills;
