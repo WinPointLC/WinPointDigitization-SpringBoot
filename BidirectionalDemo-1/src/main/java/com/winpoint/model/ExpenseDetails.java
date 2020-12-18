@@ -30,7 +30,7 @@ public class ExpenseDetails {
 	private Integer paymentModeId;
 	private String chequeNumber;
 	private Integer segemntTypeId;
-	private Integer organizationId;
+//	private Integer organizationId;
 	private String receiptNumber;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -40,6 +40,11 @@ public class ExpenseDetails {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "organizationId", nullable = false)
+	private Organization mappingOrganization; 
+
 
 
 }
