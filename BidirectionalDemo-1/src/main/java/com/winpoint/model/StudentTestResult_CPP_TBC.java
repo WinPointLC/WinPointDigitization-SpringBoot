@@ -23,7 +23,6 @@ public class StudentTestResult_CPP_TBC {
 	@Column(name="StudentTestResult_CPP_TBC_Id", updatable=false)	
 	private Integer StudentTestResult_CPP_TBC_Id;
 	private Integer qNumber;
-	private Integer questionId;
 	private Character studentResponse;
 	private String isCorrect;
 	private Integer createdBy;
@@ -35,4 +34,9 @@ public class StudentTestResult_CPP_TBC {
     @JoinColumn(name = "userTestId", nullable = false)
 	private UserTestDetails mappingUserTestDetails;
 
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "questionId", nullable = false)
+	private TechnicalQuestionBank mappingTechnicalQuestionBank;
 }
