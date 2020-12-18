@@ -48,7 +48,6 @@ public class UserProfile {
 	private Integer experience;
 	private Integer createdBy;
 	private Date createDate;
-	private Integer timeSlotsId;
 	private Integer segmentTypeId;
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
@@ -147,6 +146,13 @@ public class UserProfile {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userCategoryId", nullable = false)
 	private UserProfile mappingUserCategory;
+	
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "timeSlotsId", nullable = false)
+	private TimeSlots mappingTimeSlots;
 	
 	
 	

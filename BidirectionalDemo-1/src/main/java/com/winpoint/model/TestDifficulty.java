@@ -24,7 +24,6 @@ public class TestDifficulty {
 	@Column(name="testDifficultyLevelId", updatable=false)	
 	private Integer testDifficultyLevelId;
 	private Integer testDetailId; // comp pk
-//	private Integer difficultyLevelId;
 	private Integer numberOfQuestions;
 	private Integer createdBy;
 	private Date createdDate;
@@ -38,12 +37,7 @@ public class TestDifficulty {
 //	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
 //	private Set<TestDetails> TestDetails;
 	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -1,15 +1,15 @@
 package com.winpoint.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -44,7 +44,6 @@ public class EnquiryDetails {
 	private String eligibility;
 	private String courseInterestedIn;
 	private String reference;
-	private Integer timeSlotsId;
 	private String courseAlreadyDone;
 	private Date startDate;
 	private Integer segmentTypeId;
@@ -53,5 +52,15 @@ public class EnquiryDetails {
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "timeSlotsId", nullable = false)
+	private TimeSlots mappingTimeSlots;
+	
+	
+	
+	
 	
 }
