@@ -22,7 +22,6 @@ public class CourseFeedback {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="courseFeedbackId", updatable=false)
 	private Integer courseFeedbackId;
-	private Integer userId;		//this both two are composite key s
 //	private Integer courseId;		
 	private Integer feedbackQuestionId;
 	private String response;
@@ -33,6 +32,12 @@ public class CourseFeedback {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+	private UserProfile mappingUserProfile;
 	
 //	
 }

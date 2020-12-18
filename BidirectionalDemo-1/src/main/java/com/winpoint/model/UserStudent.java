@@ -23,7 +23,6 @@ public class UserStudent {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="userStudentId", updatable=false)	
 	private Integer userStudentId;
-	private Integer userId;
 	private String parentName;
 	private String parentMobileNumber;
 //	private Integer clientCategoryId;
@@ -33,6 +32,11 @@ public class UserStudent {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clientCategoryId", nullable = false)
 	private ClientCategory mappingClientCategory;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+	private UserProfile mappingUserProfile;
 
 
 }

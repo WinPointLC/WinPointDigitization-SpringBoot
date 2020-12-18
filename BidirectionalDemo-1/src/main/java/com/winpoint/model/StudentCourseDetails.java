@@ -23,7 +23,6 @@ public class StudentCourseDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="studentCourseDetailsId", updatable=false)	
 	private Integer studentCourseDetailsId;
-	private Integer userId;//
 //	private Integer courseId;// composite pk
 //	private Integer batchId;
 	private String courseName;
@@ -58,5 +57,9 @@ public class StudentCourseDetails {
     @JoinColumn(name = "expenseTypeId", nullable = false)
 	private ExpenseType mappingExpenseType;
 
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+	private UserProfile mappingUserProfile;
 
 }

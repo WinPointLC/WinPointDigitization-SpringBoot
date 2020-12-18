@@ -30,7 +30,6 @@ public class RevenueDetail {
 	private String chequeNumber;
 	private Integer segmentTypeId;
 	private Integer organizationId;
-	private Integer userId;
 	private String receiveDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -41,5 +40,10 @@ public class RevenueDetail {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+	private UserProfile mappingUserProfile;
 	
 }

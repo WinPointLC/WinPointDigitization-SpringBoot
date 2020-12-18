@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -23,7 +25,6 @@ public class UserTestDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="userTestId", updatable=false)
 	private Integer userTestId;//
-	private Integer userId;//
 	private Integer testDetailsId;//
 	private Integer marksReceived;
 	private String timeTaken;
@@ -160,6 +161,12 @@ public class UserTestDetails {
 	private Set<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
 	
 	
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+	private UserProfile mappingUserProfile;
 //	
 	
 	

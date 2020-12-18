@@ -22,7 +22,6 @@ public class EmployeeDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="employeeDetailsId", updatable=false)
 	private Integer employeeDetailsId;
-	private Integer userId;
 	private Double employeeSalary;
 	private String dateOfJoining;
 //	private Integer employeeCategoryId;
@@ -34,4 +33,7 @@ public class EmployeeDetails {
 	private EmployeeCategory mappingEmployeeCategory;
 
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", nullable = false)
+	private UserProfile mappingUserProfile;
 }
