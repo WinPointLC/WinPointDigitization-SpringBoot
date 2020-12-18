@@ -26,9 +26,14 @@ public class FeedbackQuestions {
 	private Integer feedbackQuestionId;
 //	private Integer feedbackCategoryId;
 	private String feedbackQuestion;
-	private Integer feedbackQuestionTypeId;
+//	private Integer feedbackQuestionTypeId;
 	private Integer createdBy;
 	private Date createdDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "feedbackQuestionTypeId", nullable = false)
+	private FeedbackQuestionType mappingFeedbackQuestionType; 
+
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackCategoryId", nullable = false)
