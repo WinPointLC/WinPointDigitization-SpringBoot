@@ -151,14 +151,22 @@ public class RevenueTrackerController {
 	}
 
 	// Update form
-	@RequestMapping(value = "UpdateForm", method = RequestMethod.GET)
-	public String showUpdateForm() {
-
-//			  EnquiryDetails user =new EnquiryDetails(); 
-//			  user.setFirstName("Pragya");
-//			  mv.addObject("user", user);
-
-		return "UpdateForm";
+	/*
+	 * @RequestMapping(value = "UpdateForm", method = RequestMethod.GET) public
+	 * String showUpdateForm() {
+	 * 
+	 * return "UpdateForm"; }
+	 */
+	
+	@RequestMapping(value = "/UpdateForm", method = RequestMethod.GET)
+	public ModelAndView showUpdateForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("UpdateForm");
+		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
+		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
+		mv.addObject("availableTimeList", availableTimeList);
+		mv.addObject("segmentTypeList", segmentTypeList);
+		return mv;
 	}
 
 	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
@@ -172,6 +180,8 @@ public class RevenueTrackerController {
 	public void updateEnquiry(@RequestBody EnquiryDetails enquiry) {
 		System.out.println("*************");
 		System.out.println(enquiry.getFirstName());
+		System.out.println(enquiry.getTimeSlotsId());
+		System.out.println(enquiry.getSegmentTypeId());
 
 	}
 
