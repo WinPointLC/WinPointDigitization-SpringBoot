@@ -204,6 +204,20 @@
 						 <input type="text" id="Start_Date" class="form-control inputFileVisible"/>
 						 </div>
 				</div>
+				
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Available Time</label>
+						 <input type="text" id="avail_time" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
+				
+				<div class="row">
+						<div class="col">
+						 <label class="label-control">Segment Type</label>
+						 <input type="text" id="Seg_type" class="form-control inputFileVisible"/>
+						 </div>
+				</div>
 					
 				<input type="button" class="btn btn-primary" style="align-item:center;margin-left:400px" onclick="update()" value="Update"></input>
 				</form>
@@ -221,6 +235,8 @@
 		urlParams = new URLSearchParams(queryString);
 		//alert(urlParams.get('enquiryid'));
 		enquiryId=urlParams.get('enquiryid');
+
+		
 
 				var myData = {
 				 	enquiryId: enquiryId
@@ -268,6 +284,22 @@
 							document.getElementById("Date_Of_Enquiry").value=updateFormDet.dateOfEnquiryString;
 							document.getElementById("Start_Date").value=updateFormDet.startDateString;
 							document.getElementById("recommendation").value=updateFormDet.recommendation;
+
+							<c:forEach items="${availableTimeList}" var="availableTime">
+								if('${availableTime.timeSlotsId}'==updateFormDet.timeSlotsId){
+											//alert('${availableTime.timeSlotsDescription}');
+									document.getElementById("avail_time").value='${availableTime.timeSlotsDescription}';
+									
+									}
+							</c:forEach>   
+
+							<c:forEach items="${segmentTypeList}" var="segmentType">
+								if('${segmentType.segmentTypeId}'==updateFormDet.segmentTypeId){
+										//alert('${segmentType.segmentTypeName}');
+									document.getElementById("Seg_type").value='${segmentType.segmentTypeName}';
+									
+								}
+							</c:forEach>     
 		
 					},
 					error: function(){
@@ -278,6 +310,23 @@
 				});
 
 			function update(){
+
+				var timeSlotsId;
+				var segmentTypeId;
+				<c:forEach items="${availableTimeList}" var="availableTime">
+					if(document.getElementById("avail_time").value=='${availableTime.timeSlotsDescription}'){
+							//alert('${availableTime.timeSlotsId}');
+						timeSlotsId='${availableTime.timeSlotsId}';
+					}
+				</c:forEach>   
+
+				<c:forEach items="${segmentTypeList}" var="segmentType">
+					if(document.getElementById("Seg_type").value=='${segmentType.segmentTypeName}'){
+							//alert('${segmentType.segmentTypeId}');
+						segmentTypeId='${segmentType.segmentTypeId}';
+					}
+			    </c:forEach>   
+				
 
 				var myData={
 						firstName:document.getElementById("fName").value,
@@ -297,7 +346,10 @@
 						reference:document.getElementById("reference").value,
 						dateOfEnquiryString:document.getElementById("Date_Of_Enquiry").value,
 						startDateString:document.getElementById("Start_Date").value,
-						recommendation:document.getElementById("recommendation").value			
+						recommendation:document.getElementById("recommendation").value,
+						timeSlotsId:timeSlotsId,
+						segmentTypeId:segmentTypeId
+							
 				}
 				$.ajax({
 					type: 'POST',

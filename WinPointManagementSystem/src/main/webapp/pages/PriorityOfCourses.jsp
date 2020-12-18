@@ -217,181 +217,9 @@
 			var courseTypeElem;
 			var coursesList;
 
-			function getCourseTypeId(courseType_id){
-				courseTypeId = courseType_id.substring(0, courseType_id.length-2);
-				
-				courseTypeElem = document.getElementById(courseType_id);
-				
-				document.getElementById('dropdownMenuButtonCourseType').textContent = courseTypeElem.textContent;
-	
-				
-					    var priorityCourseList=[
-						{
-							courseName:"C",
-							segmentType:"Individual",
-							noOfStudents:1,
-							startDate:"2020-10-30",
-							totalRevenue:8000,
-							availableTime:['Morning','Evening']
-						},
-						{
-							courseName:"Data Structures",
-							segmentType:"Corporate",
-							noOfStudents:5,
-							startDate:"2020-10-30",
-							totalRevenue:50000,
-							availableTime:['Morning','Afternoon','Evening']
-						},
-						{
-							courseName:"JavaScript",
-							segmentType:"College",
-							noOfStudents:5,
-							startDate:"2020-10-30",
-							totalRevenue:50000,
-							availableTime:['Morning','Evening']
-						}
-						]	
-						//priorityCourseList=jsonObj;
-
-						var elem = document.getElementById('priority-table');
-						if(elem!=null){
-							elem.parentNode.removeChild(elem);
-						}
-						
-						var table = document.createElement('table');
-						table.className="table table-hover";
-						table.id="priority-table";
-						var thead = document.createElement('thead');
-						
-						var th1 = document.createElement('th');
-						th1.textContent = "Course Name";
-						var th2 = document.createElement('th');
-						th2.textContent = "Segment Type";
-						var th3 = document.createElement('th');
-						th3.textContent = "No of Students";
-						var th4 = document.createElement('th');
-						th4.textContent = "Begin Date";
-						var th5 = document.createElement('th');
-						th5.textContent = "Available Time";
-						var th6 = document.createElement('th');
-						th6.textContent = "Faculty Name";
-						var th7 = document.createElement('th');
-						th7.textContent = "Total Revenue";
-						
-						thead.appendChild(th1);
-						thead.appendChild(th2);		
-						thead.appendChild(th4);
-						thead.appendChild(th5);
-						thead.appendChild(th6);
-						thead.appendChild(th3);
-						thead.appendChild(th7);
-						table.appendChild(thead);
-						
-						var tbody = document.createElement('tbody');
-						
-						for(var i=0;i<priorityCourseList.length;i++){
-							
-							var tr = document.createElement('tr');
-							var td1 = document.createElement('td');
-							td1.textContent = priorityCourseList[i].courseName;
-							var td2 = document.createElement('td');
-							td2.textContent = priorityCourseList[i].segmentType;
-							var td3 = document.createElement('td');
-							var numStudLink = document.createElement('a');
-							numStudLink.id = "numStudents"
-							numStudLink.textContent = 0+"/"+priorityCourseList[i].noOfStudents;
-							numStudLink.setAttribute('href',"noOfStudents");
-							//numStudLink.setAttribute('onclick', "noOfStudPage()");
-							td3.appendChild(numStudLink);
-							var td4 = document.createElement('td');
-							td4.textContent = priorityCourseList[i].startDate;
-							
-							var td5 = document.createElement('td');
-							var dropdown_at = document.createElement('div');
-							dropdown_at.className="dropdown";
-							var button_at = document.createElement('button');
-							button_at.className="btn btn-secondary dropdown-toggle";
-							button_at.setAttribute('data-toggle',"dropdown");
-							button_at.setAttribute('aria-haspopup', "true");
-							button_at.setAttribute('aria-expanded', "false");
-							button_at.textContent = 'Time';
-							button_at.id = 'availableTimeDropdown'+(i+1);
-							var dropdownmenu_at = document.createElement('div');
-							dropdownmenu_at.className="dropdown-menu";
-							dropdownmenu_at.setAttribute('aria-labelledby',"dropdownMenuButton");	
-
-							var td6 = document.createElement('td');
-							var dropdown_fac = document.createElement('div');
-							dropdown_fac.className="dropdown";
-							dropdown_fac.id="dropdown-faculty"+(i+1);
-							var button_fac = document.createElement('button');
-							button_fac.className="btn btn-secondary dropdown-toggle";
-							button_fac.setAttribute('data-toggle',"dropdown");
-							button_fac.setAttribute('aria-haspopup', "true");
-							button_fac.setAttribute('aria-expanded', "false");
-							button_fac.textContent = 'Faculty';
-							var dropdownmenu_fac = document.createElement('div');
-							dropdownmenu_fac.className="dropdown-menu";
-							dropdownmenu_fac.id="dropdown-menu-faculty"+(i+1);
-							
-							dropdownmenu_fac.setAttribute('aria-labelledby',"dropdownMenuButton");	
-							dropdown_fac.appendChild(dropdownmenu_fac);
-							dropdown_fac.appendChild(button_fac);
-							td6.appendChild(dropdown_fac);
-							//var availableTime=['Morning','Evening','Weekend'];
-							for (var k = 0; k < priorityCourseList[i].availableTime.length; k++) {
-								var anchor  = document.createElement('a');
-								anchor.className="dropdown-item";
-								anchor.id = priorityCourseList[i].availableTime[k];
-								anchor.textContent = priorityCourseList[i].availableTime[k];
-								anchor.setAttribute('totalStudents', priorityCourseList[i].noOfStudents);
-								anchor.setAttribute('totalRevenue', priorityCourseList[i].totalRevenue);
-								anchor.setAttribute('index', i+1);
-								
-								anchor.setAttribute('onclick',"getAvailableTime(this.id,this.getAttribute('totalStudents'),this.getAttribute('totalRevenue'),this.getAttribute('index'))");
-								//anchor.setAttribute('onclick', "getAvailableTime(this.id)");
-								dropdownmenu_at.appendChild(anchor);	
-							}
-							dropdown_at.appendChild(dropdownmenu_at);
-							dropdown_at.appendChild(button_at);
-							td5.appendChild(dropdown_at);
-							
-							
-							
-							
-							var td7 = document.createElement('td');
-							td7.id = "revenue";
-							td7.textContent = 0+"/"+priorityCourseList[i].totalRevenue;
-							
-							var td8  = document.createElement('td');
-							var launchBtn = document.createElement('btn');
-							launchBtn.className="btn btn-primary"
-							launchBtn.textContent = "Launch";
-							//launchBtn.setAttribute('data-toggle',"modal");
-							//launchBtn.setAttribute('data-target',"#mymodal_error");
-							td8.appendChild(launchBtn);
-
-							
-							tr.appendChild(td1);
-							tr.appendChild(td2);
-							
-							tr.appendChild(td4);
-							tr.appendChild(td5);
-							tr.appendChild(td6);
-							tr.appendChild(td3);
-							tr.appendChild(td7);
-							tr.appendChild(td8);
-							
-							tbody.appendChild(tr);
-						}
-						table.appendChild(tbody);
-						
-						document.getElementById('priority-courses').appendChild(table);
-						
-					
-			}
+			
 		
-			/* function getCourseTypeId(courseType_id){
+			 function getCourseTypeId(courseType_id){
 				courseTypeId = courseType_id.substring(0, courseType_id.length-2);
 				
 				courseTypeElem = document.getElementById(courseType_id);
@@ -548,49 +376,11 @@
 					}
 	
 				});
-			} */
-
-			function getAvailableTime(available_time,totalStudents,totalRevenue,index){
-				availableTime = available_time;
-				
-				availableTimeElem = document.getElementById(available_time);
-				
-				document.getElementById('availableTimeDropdown'+index).textContent = availableTimeElem.textContent;
-
-				var timeWiseList=
-					
-					{
-						
-						numberOfStudents:5,
-						
-						totalRevenue:50000,
-						faculty:['Anjali Parkhi','Makarand Parkhi']
-					}
-					
-	
-				
-						//timeWiseList=jsonObj;
-						//for (var i = 0; i < timeWiseList.length; i++) {
-						//alert(timeWiseList.faculty.length);
-							for (var k = 0; k < timeWiseList.faculty.length; k++) {
-								var anchor  = document.createElement('a');
-								anchor.className="dropdown-item";
-								anchor.textContent = timeWiseList.faculty[k];
-								//alert("in func    ");
-								
-								document.getElementById("dropdown-menu-faculty"+index).appendChild(anchor);	
-							//}
-							
-							document.getElementById("dropdown-faculty"+index).appendChild(document.getElementById("dropdown-menu-faculty"+index));
-							document.getElementById("numStudents").textContent = timeWiseList.numberOfStudents+"/"+totalStudents;
-							document.getElementById("revenue").textContent = timeWiseList.revenue+"/"+totalRevenue;
-						}
-						
-					
 			} 
 
+			
 
-			/* function getAvailableTime(available_time,totalStudents,totalRevenue,index){
+			function getAvailableTime(available_time,totalStudents,totalRevenue,index){
 				availableTime = available_time;
 				
 				availableTimeElem = document.getElementById(available_time);
@@ -630,7 +420,7 @@
 					}
 	
 				});
-			} */
+			} 
 			
 
 		</script>
