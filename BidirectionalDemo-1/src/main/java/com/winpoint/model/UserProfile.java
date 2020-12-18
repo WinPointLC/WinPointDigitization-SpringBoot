@@ -48,9 +48,13 @@ public class UserProfile {
 	private Integer experience;
 	private Integer createdBy;
 	private Date createDate;
-	private Integer segmentTypeId;
+//	private Integer segmentTypeId;
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "segmentTypeId", nullable = false)
+	private SegmentType mappingSegmentType;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "securityQuestionId", nullable = false)

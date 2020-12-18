@@ -29,9 +29,13 @@ public class ExpenseDetails {
 //	private Integer batchId;
 //	private Integer paymentModeId;
 	private String chequeNumber;
-	private Integer segemntTypeId;
+//	private Integer segemntTypeId;
 //	private Integer organizationId;
 	private String receiptNumber;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "segmentTypeId", nullable = false)
+	private SegmentType mappingSegmentType;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "paymentModeId", nullable = false)

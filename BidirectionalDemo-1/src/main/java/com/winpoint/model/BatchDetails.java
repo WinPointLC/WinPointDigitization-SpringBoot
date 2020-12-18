@@ -37,7 +37,20 @@ public class BatchDetails {
 	private Integer currentLectureNumber;
 	private String lectureDuration;
 	private Integer totalNumberOfLectures;
-	private Integer segmentTypeId;
+//	private Integer segmentTypeId;
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "segmentTypeId", nullable = false)
+	private SegmentType mappingSegmentType; 
+
+	
+	
+	
+	
+	
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId", nullable = false)

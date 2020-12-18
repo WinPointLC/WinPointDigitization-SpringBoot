@@ -46,14 +46,16 @@ public class EnquiryDetails {
 	private String reference;
 	private String courseAlreadyDone;
 	private Date startDate;
-	private Integer segmentTypeId;
+//	private Integer segmentTypeId;
 	private String suggestion;
 	private Integer activeStatus;
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;
 	
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "segmentTypeId", nullable = false)
+	private SegmentType mappingSegmentType;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "timeSlotsId", nullable = false)
