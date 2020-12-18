@@ -28,10 +28,7 @@ public class Course{
 	private String preRequisite;
 	private Integer courseDuration;
 	private Integer courseFees;
-	private Integer streamId;
-//	private Integer courseTypeId;
 	private String coursewareExist;
-//	private Integer evaluationTypeId;
 	private Integer totalTests;
 	private Integer createdBy;
 	private Date createdDate;
@@ -144,6 +141,12 @@ public class Course{
 			  fetch = FetchType.LAZY, 
 			  mappedBy = "mappingCourse")
 	private Set<CourseFeedback> CourseFeedback;
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "streamId", nullable = false)
+	private Streams mappingStreams;
 	
 //	///////////////////////////////
 //

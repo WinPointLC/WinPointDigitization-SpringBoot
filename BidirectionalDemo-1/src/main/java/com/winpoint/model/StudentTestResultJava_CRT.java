@@ -23,7 +23,6 @@ public class StudentTestResultJava_CRT {
 	@Column(name="StudentTestResultJava_CRT_Id", updatable=false)	
 	private Integer StudentTestResultJava_CRT_Id;
 	private Integer qNumber;
-	private Integer questionId;
 	private Character studentResponse;
 	private String isCorrect;
 	private Integer createdBy;
@@ -34,5 +33,9 @@ public class StudentTestResultJava_CRT {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userTestId", nullable = false)
 	private UserTestDetails mappingUserTestDetails;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "questionId", nullable = false)
+	private TechnicalQuestionBank mappingTechnicalQuestionBank;
 
 }

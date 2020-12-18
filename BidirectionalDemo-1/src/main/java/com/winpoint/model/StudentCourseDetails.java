@@ -23,8 +23,6 @@ public class StudentCourseDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="studentCourseDetailsId", updatable=false)	
 	private Integer studentCourseDetailsId;
-//	private Integer courseId;// composite pk
-//	private Integer batchId;
 	private String courseName;
 	private String logoLocation;
 	private String courseTypeName;
@@ -32,14 +30,12 @@ public class StudentCourseDetails {
 	private String feedbackGiven;
 	private String certificateGiven;
 	private Integer courseAggr;
-//	private Integer gradeId;//
 	private String feeStatus;
 	private Integer createdBy;
 	private Date createdDate;
 	private String coursewareIssued;
 	private String assignmentsIssued;
 	private String assignmentsSubmitted;
-//	private Integer reminderTypeId;//
 	private Integer feeReminderCount;
 	private Integer studentCount;
 	private Integer dueAmount;
