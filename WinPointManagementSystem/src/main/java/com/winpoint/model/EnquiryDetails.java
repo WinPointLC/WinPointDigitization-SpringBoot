@@ -1,8 +1,5 @@
 package com.winpoint.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -22,7 +19,7 @@ public class EnquiryDetails {
 	private String firstName;
 	private String lastName;
 	private String emailId;
-	private String MobileNo;
+	private String mobileNo;
 	private String address;
 	private Date birthDate;
 	private String college;
