@@ -23,7 +23,7 @@ public class CourseFeedback {
 	@Column(name="courseFeedbackId", updatable=false)
 	private Integer courseFeedbackId;
 //	private Integer courseId;		
-	private Integer feedbackQuestionId;
+//	private Integer feedbackQuestionId;
 	private String response;
 	private String markedForReview;
 	private Integer createdBy;
@@ -33,11 +33,13 @@ public class CourseFeedback {
     @JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 	
-	
-	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "feedbackQuestionId", nullable = false)
+	private FeedbackQuestions mappingFeedbackQuestions; 
 	
 //	
 }
