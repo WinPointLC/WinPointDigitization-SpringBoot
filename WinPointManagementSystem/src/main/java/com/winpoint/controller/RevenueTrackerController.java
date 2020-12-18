@@ -182,7 +182,7 @@ public class RevenueTrackerController {
 		System.out.println(enquiry.getFirstName());
 		System.out.println(enquiry.getTimeSlotsId());
 		System.out.println(enquiry.getSegmentTypeId());
-
+		
 	}
 
 }

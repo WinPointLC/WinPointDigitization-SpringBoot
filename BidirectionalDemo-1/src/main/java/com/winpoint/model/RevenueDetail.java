@@ -19,7 +19,7 @@ public class RevenueDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="revenueDetailId", updatable=false)
-	private String revenueDetailId;
+	private Integer revenueDetailId;
 	private Integer revenueTypeId;
 	private String receiptNumber;
 	private String payerDescription;
