@@ -94,9 +94,11 @@
 											<a class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">Segment Type</a> <a
 												class="dropdown-item" href="#"
-												onclick="showBody(this.textContent)">Stream</a> <a
+												onclick="showBody(this.textContent)">Stream</a> 
+					<!-- 							<a
 												class="dropdown-item" href="#"
-												onclick="showBody(this.textContent)">Student Category</a> <a
+												onclick="showBody(this.textContent)">Student Category</a>  -->
+												<a
 												class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">Time Slots</a> <a
 												class="dropdown-item" href="#"
