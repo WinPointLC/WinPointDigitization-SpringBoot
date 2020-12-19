@@ -25,7 +25,6 @@ public class UserStudent {
 	private Integer userStudentId;
 	private String parentName;
 	private String parentMobileNumber;
-//	private Integer clientCategoryId;
 	private Integer createdBy;
 	private Date createdDate;
 	

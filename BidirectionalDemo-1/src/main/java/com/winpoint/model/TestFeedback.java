@@ -24,7 +24,6 @@ public class TestFeedback {
 	@Column(name="testFeebackId", updatable=false)	
 	private Integer testFeebackId;
 	private Integer userTestId;
-//	private Integer feedbackQuestionId;
 	private String response;
 	private Integer createdBy;
 	private Date createdDate;
