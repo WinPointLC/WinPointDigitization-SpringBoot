@@ -81,6 +81,9 @@
 												onclick="showBody(this.textContent)">Organization Type</a> <a
 												class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">Grading System</a>
+												<a
+												class="dropdown-item" href="#"
+													onclick="showBody(this.textContent)">Course</a>
 										</div>
 										<div class="pull-right">
 											<a class="dropdown-item" href="#"
@@ -109,6 +112,57 @@
 
 
 								</div>
+								
+								 <div class="row">
+						 <div class="dropdown"><!--second dropdown select stream -->
+
+									<button class="btn btn-secondary dropdown-toggle "
+										type="button" id="dropdownMenuSelectStream" data-toggle="dropdown"
+										data-display="static" aria-haspopup="true"
+										aria-expanded="false" style="display:none; margin: auto;margin-left:200px">
+										SELECT STREAM</button>
+
+									<div class="dropdown-menu entity-menu"
+										aria-labelledby="dropdownMenuButton">
+										<div class="pull-left">
+											<a class="dropdown-item" href="#">Technical</a> 
+											<a class="dropdown-item" href="#">Soft skills</a> 
+											<a class="dropdown-item" href="#">GA</a> 
+										</div>
+										
+									
+									</div>
+
+
+								</div><!---Second dropdown end-->
+								
+								 <div class="dropdown"><!--third dropdown select stream -->
+
+									<button class="btn btn-secondary dropdown-toggle "
+										type="button" id="dropdownMenuSelectCoursetype" data-toggle="dropdown"
+										data-display="static" aria-haspopup="true"
+										aria-expanded="false" style="display:none; margin: auto;margin-left:600px">
+										SELECT COURSETYPE</button>
+
+									<div class="dropdown-menu entity-menu"
+										aria-labelledby="dropdownMenuButton">
+										<div class="pull-left">
+											<a class="dropdown-item" href="#"
+												onclick="showBody('Course','display',this.textContent)">MODULAR</a> <a
+												class="dropdown-item" href="#"
+												onclick="showBody('Course','display',this.textContent)">CRT</a> <a
+												class="dropdown-item" href="#"
+												onclick="showBody('Course','display',this.textContent)">TBC</a> 
+									
+										</div>
+										
+									
+									</div>
+
+
+								</div><!---third dropdown end-->
+							</div>
+								
 								<!--   1.  Course Type
 						2.  Difficulty Level
 						3.  Employee Category
@@ -616,11 +670,14 @@
 			document.getElementById('del_link').className="";
 	}
 	
-    function showBody(entity_name){
+    function showBody(entity_name,flag,courseValue){
 	
 		entityName=entity_name.replace(/\s+/g, "");
 		//alert("SELECTED FROM CHOICE BOX : "+entityName);
 		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
+
+		document.getElementById('dropdownMenuSelectStream').style.display="none";
+		document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
 		
 		$.ajax({
 			type: 'POST',
@@ -666,6 +723,35 @@
 				cardBody.className="card-body";	
 				cardBody.id="cardBody";	
 				document.getElementById('entity_name').textContent = entity_name;
+
+				if((entity_name=="Course")&&(flag!="display"))
+				{
+					alert("Course is there");
+					
+					document.getElementById('dropdownMenuSelectStream').style.display="block";
+					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
+					document.getElementById('entityTable').style.display="none";
+						document.getElementById('dropdownMenuSelectCoursetype').textContent="SELECT COURSETYPE";
+					
+				}
+				
+				else if((entity_name=="Course")&&(flag=="display"))
+				{
+					alert("Course is there");
+					
+					document.getElementById('dropdownMenuSelectStream').style.display="block";
+					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
+					document.getElementById('entityTable').style.display="block";
+					document.getElementById('dropdownMenuSelectCoursetype').textContent=courseValue;
+					
+				}
+				else if (entity_name!="Course")
+				{
+					alert("Course is not there");
+					document.getElementById('dropdownMenuSelectStream').style.display="none";
+					document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
+					document.getElementById('entityTable').style.display="block";
+				}
 				
 				var tableRes = document.createElement('div');
 				tableRes.className="table-responsive";

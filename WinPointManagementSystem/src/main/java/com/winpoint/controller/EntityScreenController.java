@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.winpoint.model.Course;
 import com.winpoint.model.CourseType;
 import com.winpoint.model.DifficultyLevel;
 import com.winpoint.model.EmployeeCategory;
@@ -28,6 +29,7 @@ import com.winpoint.model.SegmentType;
 import com.winpoint.model.Streams;
 import com.winpoint.model.TimeSlots;
 import com.winpoint.model.UserCategory;
+import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.CourseTypeRepository;
 import com.winpoint.repository.DifficultyLevelRepository;
 import com.winpoint.repository.EmployeeCategoryRepository;
@@ -101,6 +103,9 @@ public class EntityScreenController {
 
 	@Autowired
 	PaymentModeRepository paymentModeRepository;
+	
+	@Autowired
+	CourseRepository courseRepository;
 
 	@RequestMapping(value = "/Entity", method = RequestMethod.POST)
 	public @ResponseBody List<?> showCourseType(@RequestParam String entityInfoParam) {
@@ -334,6 +339,20 @@ public class EntityScreenController {
 				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
 				empList.add(new UserCategory());
 				for(UserCategory x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+			
+		case "Course":
+			
+			list = courseRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<Course> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new Course());
+				for(Course x:empList)
 					System.out.println(x);
 				return empList;
 			}

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -15,6 +16,7 @@ import lombok.Data;
 @Data
 public class Course{
 	@Id
+	@GeneratedValue
 	private Integer courseId;
 	private String courseName;
 	private String preRequisite;
