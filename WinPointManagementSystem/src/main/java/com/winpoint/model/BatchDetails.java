@@ -4,10 +4,14 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -19,8 +23,10 @@ import lombok.Data;
 public class BatchDetails {
 //	checked//
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="batchId", updatable=false)
 	private Integer batchId;
-	private Integer courseId;
+//	private Integer courseId;
 	private Integer facultyUserId;
 	private Date beginDate;
 	private Date endDate;
@@ -31,26 +37,62 @@ public class BatchDetails {
 	private Integer currentLectureNumber;
 	private String lectureDuration;
 	private Integer totalNumberOfLectures;
-	private Integer segmentTypeId;
+//	private Integer segmentTypeId;
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "segmentTypeId", nullable = false)
+	private SegmentType mappingSegmentType; 
 
-	@OneToMany(targetEntity = BatchDetails.class,  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
-	private Set<BatchDetails> batchDetails;
+	
+	
+	
+	
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "courseId", nullable = false)
+	private Course mappingCourse;
 
-	@OneToMany(targetEntity = StudentCourseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	
+	
+	
+//	@OneToMany(targetEntity = StudentCourseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+//	private Set<StudentCourseDetails> StudentCourseDetails;
+	
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingBatchDetails")
 	private Set<StudentCourseDetails> StudentCourseDetails;
 
-	@OneToMany(targetEntity = ExpenseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	
+//	@OneToMany(targetEntity = ExpenseDetails.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+//	private Set<ExpenseDetails> ExpenseDetails;
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingBatchDetails")
 	private Set<ExpenseDetails> ExpenseDetails;
+	
+//	@OneToMany(targetEntity = Lecture.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+//	private Set<Lecture> Lecture;
 
-	@OneToMany(targetEntity = Lecture.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingBatchDetails")
 	private Set<Lecture> Lecture;
+	
+//	@OneToMany(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+//	private Set<RevenueDetail> RevenueDetail;
 
-	@OneToMany(targetEntity = RevenueDetail.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "batchId", referencedColumnName = "batchId")
+	@OneToMany(cascade = CascadeType.ALL, 
+			  fetch = FetchType.LAZY, 
+			  mappedBy = "mappingBatchDetails")
 	private Set<RevenueDetail> RevenueDetail;
 
 //	/////////////////////////

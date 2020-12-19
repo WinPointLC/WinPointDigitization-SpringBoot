@@ -2,9 +2,14 @@ package com.winpoint.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -14,12 +19,13 @@ public class EnquiryDetails {
 //	creation of fk
 //	schema checked
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="enquiryId", updatable=false)
 	private Integer enquiryId;
 	private String firstName;
 	private String lastName;
 	private String emailId;
-	private String mobileNo;
+	private String MobileNo;
 	private String address;
 	private Date birthDate;
 	private String college;
@@ -38,14 +44,25 @@ public class EnquiryDetails {
 	private String eligibility;
 	private String courseInterestedIn;
 	private String reference;
-	private Integer timeSlotsId;
 	private String courseAlreadyDone;
 	private Date startDate;
-	private Integer segmentTypeId;
+//	private Integer segmentTypeId;
 	private String suggestion;
 	private Integer activeStatus;
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "segmentTypeId", nullable = false)
+	private SegmentType mappingSegmentType;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "timeSlotsId", nullable = false)
+	private TimeSlots mappingTimeSlots;
+	
+	
+	
+	
 	
 }

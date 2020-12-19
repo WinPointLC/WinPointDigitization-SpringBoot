@@ -180,8 +180,8 @@ public class RevenueTrackerController {
 	public void updateEnquiry(@RequestBody EnquiryDetails enquiry) {
 		System.out.println("*************");
 		System.out.println(enquiry.getFirstName());
-		System.out.println(enquiry.getTimeSlotsId());
-		System.out.println(enquiry.getSegmentTypeId());
+//		System.out.println(enquiry.getTimeSlotsId());
+//		System.out.println(enquiry.getSegmentTypeId());
 		
 	}
 
