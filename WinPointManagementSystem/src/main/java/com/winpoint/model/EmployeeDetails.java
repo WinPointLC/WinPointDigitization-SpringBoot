@@ -13,27 +13,26 @@ import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
-//checked
-//TO DO
 @Entity
 @Data
 public class EmployeeDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="employeeDetailsId", updatable=false)
+	@Column(name = "employeeDetailsId", updatable = false)
 	private Integer employeeDetailsId;
 	private Double employeeSalary;
 	private String dateOfJoining;
-//	private Integer employeeCategoryId;
 	private Integer createdBy;
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employeeCategoryId", nullable = false)
+	@JoinColumn(name = "employeeCategoryId", nullable = false)
 	private EmployeeCategory mappingEmployeeCategory;
 
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
+	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
+
+	private Integer userId = mappingUserProfile.getUserId();
+	private Integer employeeCategoryId = mappingEmployeeCategory.getEmployeeCategoryId();
 }

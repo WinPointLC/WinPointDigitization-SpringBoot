@@ -16,12 +16,10 @@ import lombok.Data;
 @Entity
 @Data
 public class Lecture {
-//	checked 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="lectureId", updatable=false)
+	@Column(name = "lectureId", updatable = false)
 	private Integer lectureId;
-//	private Integer batchId;
 	private Integer lectureNumber;
 	private Integer lectureDuration;
 	private Date startTime;
@@ -29,9 +27,10 @@ public class Lecture {
 	private Date lectureDate;
 	private String comments;
 	private String absentees;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "batchId", nullable = false)
+	@JoinColumn(name = "batchId", nullable = false)
 	private BatchDetails mappingBatchDetails;
-	
+
+	private Integer batchId = mappingBatchDetails.getBatchId();
 }

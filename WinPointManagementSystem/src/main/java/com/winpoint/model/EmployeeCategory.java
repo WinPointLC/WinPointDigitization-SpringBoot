@@ -10,32 +10,22 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
-//checked
+
 @Entity
 @Data
 public class EmployeeCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="employeeCategoryId", updatable=false)
+	@Column(name = "employeeCategoryId", updatable = false)
 	private Integer employeeCategoryId;
 	private String employeeCategoryName;
 	private Integer createdBy;
 	private Date createdDate;
 
-//	@OneToMany(targetEntity = EmployeeDetails.class)
-//	@JoinColumn(name = "employeeCategoryId", referencedColumnName = "employeeCategoryId")
-//	private Set<EmployeeDetails> mappingEmployeeDetails;
-//	
-
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingEmployeeCategory")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingEmployeeCategory")
 	private Set<EmployeeDetails> mappingEmployeeDetails;
-	
-	//////////////////
 
 }

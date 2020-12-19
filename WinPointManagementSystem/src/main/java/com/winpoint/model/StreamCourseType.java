@@ -16,21 +16,21 @@ import lombok.Data;
 @Entity
 @Data
 public class StreamCourseType {
-//	checked
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="streamCourseTypeId", updatable=false)	
+	@Column(name = "streamCourseTypeId", updatable = false)
 	private Integer streamCourseTypeId;
 	private Date createdDate;
 	private String createdBy;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseTypeId", nullable = false)
+	@JoinColumn(name = "courseTypeId", nullable = false)
 	private Course mappingCourseType;
-	
-	
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "streamId", nullable = false)
+	@JoinColumn(name = "streamId", nullable = false)
 	private Streams mappingStreams;
+
+	private Integer courseTypeId = mappingCourseType.getCourseTypeId();
+	private Integer streamId = mappingStreams.getStreamId();
 }

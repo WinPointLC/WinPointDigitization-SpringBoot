@@ -16,12 +16,9 @@ import lombok.Data;
 @Entity
 @Data
 public class StudentCourseDetails {
-//	checked
-//	fk
-//	comp fk
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="studentCourseDetailsId", updatable=false)	
+	@Column(name = "studentCourseDetailsId", updatable = false)
 	private Integer studentCourseDetailsId;
 	private String courseName;
 	private String logoLocation;
@@ -40,32 +37,41 @@ public class StudentCourseDetails {
 	private Integer studentCount;
 	private Integer dueAmount;
 	private Integer percentageAttendance;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "reminderTypeId", nullable = false)
-	private ReminderType mappingReminderType; 
+	private ReminderType mappingReminderType;
 
-	
+	private Integer reminderTypeId = mappingReminderType.getReminderTypeId();
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gradeId", nullable = false)
+	@JoinColumn(name = "gradeId", nullable = false)
 	private GradingSystem mappingGradingSystem;
 
-	
+	private Integer gradeId = mappingGradingSystem.getGradeId();
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "batchId", nullable = false)
+	@JoinColumn(name = "batchId", nullable = false)
 	private BatchDetails mappingBatchDetails;
 
+	private Integer batchId = mappingBatchDetails.getBatchId();
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
+	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
-	
+
+	private Integer courseId = mappingCourse.getCourseId();
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "expenseTypeId", nullable = false)
+	@JoinColumn(name = "expenseTypeId", nullable = false)
 	private ExpenseType mappingExpenseType;
 
-	
+	private Integer expenseTypeId = mappingExpenseType.getExpenseTypeId();
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
+	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
+
+	private Integer userId = mappingUserProfile.getUserId();
 
 }

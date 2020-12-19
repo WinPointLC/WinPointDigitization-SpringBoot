@@ -11,22 +11,21 @@ import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
-//checked
 @Entity
 @Data
 public class CoursePlans {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="coursePlansId", updatable=false)
+	@Column(name = "coursePlansId", updatable = false)
 	private Integer coursePlansId;
-//	private Integer courseId;
 	private Integer lectureNumber;
 	private String lecturePlan;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
+	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 
-	
+	private Integer courseId = mappingCourse.getCourseId();
+
 }

@@ -16,11 +16,9 @@ import lombok.Data;
 @Entity
 @Data
 public class StudentTestResult_CPP_CRT {
-//	checked
-//	fk
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="StudentTestResult_CPP_CRT_Id", updatable=false)
+	@Column(name = "StudentTestResult_CPP_CRT_Id", updatable = false)
 	private Integer StudentTestResult_CPP_CRT_Id;
 	private Integer qNumber;
 	private Character studentResponse;
@@ -28,14 +26,15 @@ public class StudentTestResult_CPP_CRT {
 	private Integer createdBy;
 	private Date createdDate;
 
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userTestId", nullable = false)
+	@JoinColumn(name = "userTestId", nullable = false)
 	private UserTestDetails mappingUserTestDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "questionId", nullable = false)
+	@JoinColumn(name = "questionId", nullable = false)
 	private TechnicalQuestionBank mappingTechnicalQuestionBank;
 
+	private Integer userTestId = mappingUserTestDetails.getUserTestId();
+	private Integer questionId = mappingTechnicalQuestionBank.getQuestionId();
 
 }

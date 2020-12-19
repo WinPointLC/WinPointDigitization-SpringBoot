@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -17,20 +16,12 @@ import lombok.Data;
 @Entity
 @Data
 public class FeedbackQuestionType {
-//	checked
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="feedbackQuestionTypeId", updatable=false)
+	@Column(name = "feedbackQuestionTypeId", updatable = false)
 	private Integer feedbackQuestionTypeId;
 	private String feedbackQuestionType;
-	
-	
-	
-//	@OneToMany(targetEntity = FeedbackQuestions.class)
-//	@JoinColumn(name = "feedbackQuestionTypeId", referencedColumnName = "feedbackQuestionTypeId")
-//	private Set<FeedbackQuestions> mappingFeedbackQuestions;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingFeedbackQuestionType")
-	private Set<FeedbackQuestions> mappingFeedbackQuestions;}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackQuestionType")
+	private Set<FeedbackQuestions> mappingFeedbackQuestions;
+}

@@ -19,11 +19,9 @@ import lombok.Data;
 @Entity
 @Data
 public class TestDetails {
-//	checked
-//	redo fk
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="testDetailId", updatable=false)	
+	@Column(name = "testDetailId", updatable = false)
 	private Integer testDetailId;
 	private Integer testNumber;
 	private Integer totalQuestions;
@@ -32,22 +30,14 @@ public class TestDetails {
 	private String negativeMarking;
 	private Integer createdBy;
 	private Date createdDate;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "evaluationTypeId", nullable = false)
-	private TestDetails mappingEvaluationType;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
+	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
-	
-//	@OneToMany(targetEntity = UserTestDetails.class)
-//	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
-//	private Set<UserTestDetails> UserTestDetails;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTestDetails")
+
+	private Integer courseId = mappingCourse.getCourseId();
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDetails")
 	private Set<TestDifficulty> mappingTestDifficulty;
 
 }

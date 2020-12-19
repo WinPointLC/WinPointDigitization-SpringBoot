@@ -20,7 +20,7 @@ public class EnquiryDetails {
 //	schema checked
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="enquiryId", updatable=false)
+	@Column(name = "enquiryId", updatable = false)
 	private Integer enquiryId;
 	private String firstName;
 	private String lastName;
@@ -46,23 +46,21 @@ public class EnquiryDetails {
 	private String reference;
 	private String courseAlreadyDone;
 	private Date startDate;
-//	private Integer segmentTypeId;
 	private String suggestion;
 	private Integer activeStatus;
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
 	private SegmentType mappingSegmentType;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "timeSlotsId", nullable = false)
+	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
-	
-	
-	
-	
-	
+
+	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
+	private Integer timeSlotsId = mappingTimeSlots.getTimeSlotsId();
+
 }

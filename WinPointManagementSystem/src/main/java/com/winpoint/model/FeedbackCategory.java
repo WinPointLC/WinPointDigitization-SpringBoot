@@ -16,20 +16,13 @@ import lombok.Data;
 @Entity
 @Data
 public class FeedbackCategory {
-//	checked//
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="feedbackCategoryId", updatable=false)
+	@Column(name = "feedbackCategoryId", updatable = false)
 	private Integer feedbackCategoryId;
 	private String feedbackCategoryDescription;
 
-	
-//	@OneToMany(targetEntity = FeedbackQuestions.class)
-//	@JoinColumn(name = "feedbackCategoryId", referencedColumnName = "feedbackCategoryId")
-//	private Set<FeedbackQuestions> mappingFeedbackQuestions;
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingFeedbackCategory")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackCategory")
 	private Set<FeedbackQuestions> mappingFeedbackQuestions;
-	
+
 }

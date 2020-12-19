@@ -16,11 +16,10 @@ import lombok.Data;
 @Entity
 @Data
 public class GeneralAptitudeQuestionBank {
-//	checked//
-//	fk
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="questionId", updatable=false)
+	@Column(name = "questionId", updatable = false)
 	private Integer questionId;
 	private String question;
 	private String option1;
@@ -35,17 +34,18 @@ public class GeneralAptitudeQuestionBank {
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseTypeId", nullable = false)
+	@JoinColumn(name = "courseTypeId", nullable = false)
 	private CourseType mappingCourse;
-	
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "difficultyLevelId", nullable = false)
+	@JoinColumn(name = "difficultyLevelId", nullable = false)
 	private DifficultyLevel mappingDifficultyLevel;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "topicId", nullable = false)
+	@JoinColumn(name = "topicId", nullable = false)
 	private Topics mappingTopics;
-	
-	
+
+	private Integer courseTypeId = mappingCourse.getCourseTypeId();
+	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
+	private Integer topicId = mappingTopics.getTopicId();
 }

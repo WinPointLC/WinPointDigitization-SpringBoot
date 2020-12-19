@@ -13,10 +13,9 @@ import lombok.Data;
 @Entity
 @Data
 public class Rules {
-//	checked
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="rulesId", updatable=false)
+	@Column(name = "rulesId", updatable = false)
 	private Integer rulesId;
 	private String rulesDescription;
 	private Integer createdBy;

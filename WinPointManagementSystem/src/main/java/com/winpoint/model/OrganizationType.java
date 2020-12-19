@@ -11,12 +11,10 @@ import lombok.Data;
 @Entity
 @Data
 public class OrganizationType {
-//	checked
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="organizationTypeId", updatable=false)
+	@Column(name = "organizationTypeId", updatable = false)
 	private Integer organizationTypeId;
 	private String organizationTypeName;
-	
 
 }

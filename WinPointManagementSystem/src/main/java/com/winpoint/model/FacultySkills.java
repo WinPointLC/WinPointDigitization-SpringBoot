@@ -16,11 +16,10 @@ import lombok.Data;
 @Entity
 @Data
 public class FacultySkills {
-//	checked
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="facultySkillsId", updatable=false)
+	@Column(name = "facultySkillsId", updatable = false)
 	private Integer facultySkillsId;
 	private String skillSetId;
 	private Integer createdBy;
@@ -29,13 +28,9 @@ public class FacultySkills {
 	private String timeSlotsId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
+	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
-	
-	//doubt 
-//
-//	/////////////
-//
-	
+
+	private Integer userId = mappingUserProfile.getUserId();
 
 }

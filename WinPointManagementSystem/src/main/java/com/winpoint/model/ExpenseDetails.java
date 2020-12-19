@@ -19,40 +19,39 @@ import lombok.Data;
 public class ExpenseDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="expenseDetailsId", updatable=false)
+	@Column(name = "expenseDetailsId", updatable = false)
 	private Integer expenseDetailsId;
 	private Integer expenseTypeId;
 	private Date expenseDate;
 	private Integer expenseAmount;
-	private String expenseDescription;
-//	private Integer courseId;
-//	private Integer batchId;
-//	private Integer paymentModeId;
+	private String expenseDescription;;
 	private String chequeNumber;
-//	private Integer segemntTypeId;
-//	private Integer organizationId;
 	private String receiptNumber;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
 	private SegmentType mappingSegmentType;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "paymentModeId", nullable = false)
+	@JoinColumn(name = "paymentModeId", nullable = false)
 	private PaymentMode mappingPaymentMode;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "batchId", nullable = false)
+	@JoinColumn(name = "batchId", nullable = false)
 	private BatchDetails mappingBatchDetails;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
+	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "organizationId", nullable = false)
-	private Organization mappingOrganization; 
+	private Organization mappingOrganization;
 
-
+	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
+	private Integer paymentModeId = mappingPaymentMode.getPaymentModeId();
+	private Integer batchId = mappingBatchDetails.getBatchId();
+	private Integer courseId = mappingCourse.getCourseId();
+	private Integer organizationId = mappingOrganization.getOrganizationId();
 
 }

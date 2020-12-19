@@ -11,10 +11,9 @@ import lombok.Data;
 @Entity
 @Data
 public class Room {
-//	checked
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="roomId", updatable=false)
+	@Column(name = "roomId", updatable = false)
 	private Integer roomId;
 	private Integer roomCapacity;
 	private Boolean roomAvailable;

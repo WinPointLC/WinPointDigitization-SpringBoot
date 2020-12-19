@@ -12,34 +12,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
-//checked
-//fk remain
+
 @Entity
 @Data
 public class CourseFeedback {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="courseFeedbackId", updatable=false)
+	@Column(name = "courseFeedbackId", updatable = false)
 	private Integer courseFeedbackId;
-//	private Integer courseId;		
-//	private Integer feedbackQuestionId;
 	private String response;
 	private String markedForReview;
 	private Integer createdBy;
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
+	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
+	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackQuestionId", nullable = false)
-	private FeedbackQuestions mappingFeedbackQuestions; 
-	
-//	
+	private FeedbackQuestions mappingFeedbackQuestions;
+
+	private Integer courseId = mappingCourse.getCourseId();
+	private Integer feedbackQuestionId = mappingFeedbackQuestions.getFeedbackQuestionId();
+	private Integer userId = mappingUserProfile.getUserId();
+
 }
