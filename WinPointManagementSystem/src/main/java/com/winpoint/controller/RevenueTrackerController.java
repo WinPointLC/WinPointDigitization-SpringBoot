@@ -58,39 +58,57 @@ public class RevenueTrackerController {
 	 */
 
 	// Sign up form
-	@ModelAttribute("enquiryDetails")
-	public EnquiryDetails getDegreeList() {
-		EnquiryDetails user = new EnquiryDetails();
+//	@ModelAttribute("enquiryDetails")
+//	public EnquiryDetails getDegreeList() {
+//		System.out.println("~121212121212121211212121212121212121212121212121212121212121212");
+//
+//		EnquiryDetails user = new EnquiryDetails();	
+//		
+//		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~121212121212121211212121212121212121212121212121212121212121212~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+//
+//		return user;
+//	}
 
-		return user;
-	}
-
+//	@RequestMapping(value = "/enquiryDetails", method = RequestMethod.GET) 
+//	public ModelAndView displayLogin(EnquiryDetails enquiryDetails) { 
+//		ModelAndView mv = new ModelAndView();
+//		mv.setView("\SignUpPage.jsp");
+//	    return "enquiryDetails"; 
+//	}
+	
+//	@RequestMapping(value="")
+//	
+	
+	
+	
+	
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 
+//	@ModelAttribute("enquiryDetails")
 	@PostMapping("/saveForm")
-	public String saveForm(EnquiryDetails user, RedirectAttributes redirectAttributes) throws ParseException {
+	public String saveForm(@ModelAttribute EnquiryDetails enquiryDetails, RedirectAttributes redirectAttributes) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println("USER:  " + user.getFirstName());
-		System.out.println("USER:  " + user.getGender());
-		System.out.println("USER:  " + user.getDegree());
-		System.out.println("USER:  " + user.getBirthDateString());
-		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-		String t = user.getBirthDateString().toString();
-		Date d = df.parse(t);
-		user.setBirthDate(d);
-
-		String t1 = user.getDateOfEnquiryString().toString();
-		Date d1 = df.parse(t1);
-		user.setDateOfEnquiry(d1);
-
-		String t2 = user.getStartDateString().toString();
-		Date d2 = df.parse(t2);
-		user.setStartDate(d2);
-//		  System.out.println("USER:  "+ user.getBirthDate()); 
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-		enquiryDetailsRepository.save(user);
+		System.out.println("USER:  " + enquiryDetails.getFirstName());
+		System.out.println("USER:  " + enquiryDetails.getGender());
+		System.out.println("USER:  " + enquiryDetails.getDegree());
+		System.out.println("USER:  " + enquiryDetails.getBirthDateString());
+//		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+//		String t = enquiryDetails.getBirthDateString().toString();
+//		Date d = df.parse(t);
+//		enquiryDetails.setBirthDate(d);
+//
+//		String t1 = enquiryDetails.getDateOfEnquiryString().toString();
+//		Date d1 = df.parse(t1);
+//		enquiryDetails.setDateOfEnquiry(d1);
+//
+//		String t2 = enquiryDetails.getStartDateString().toString();
+//		Date d2 = df.parse(t2);
+//		enquiryDetails.setStartDate(d2);
+////		  System.out.println("USER:  "+ user.getBirthDate()); 
+//		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+//
+//		enquiryDetailsRepository.save(enquiryDetails);
 		return "redirect:/EnquiryDetails";
 
 	}
@@ -103,7 +121,7 @@ public class RevenueTrackerController {
 	TimeSlotsRepository timeSlotsRepository;
 
 	@RequestMapping(value = "/SignUpRevenueTracker", method = RequestMethod.GET)
-	public ModelAndView showSignUpRevenueTrackerPage() {
+	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SignUpForm");
 		List<String> list = new ArrayList<String>();
@@ -138,13 +156,13 @@ public class RevenueTrackerController {
 		}
 		mv.addObject("courseInterestedInList", courseInterestedInlist);
 		// Available time
-		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
-		List<String> availableTimelist = new ArrayList<String>();
-		for (TimeSlots s : availableTimeList) {
-			System.out.println("DATA segemnt type - " + s.getTimeSlotsDescription());
-			availableTimelist.add(s.getTimeSlotsDescription());
-		}
-		mv.addObject("availableTimeList", availableTimeList);
+//		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
+//		List<String> availableTimelist = new ArrayList<String>();
+//		for (TimeSlots s : availableTimeList) {
+//			System.out.println("DATA segement type - " + s.getTimeSlotsDescription());
+//			availableTimelist.add(s.getTimeSlotsDescription());
+//		}
+//		mv.addObject("availableTimeList", availableTimeList);
 
 		mv.addObject("degreeList", list);
 		return mv;

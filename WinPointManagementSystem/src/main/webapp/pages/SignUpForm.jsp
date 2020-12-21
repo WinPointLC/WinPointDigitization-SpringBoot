@@ -43,6 +43,7 @@
 		<div class="card card-nav-tabs"><br>
 				<h4 class="card-header card-header-primary">Sign Up Form</h4>
 				<br>
+				 
 				  <form:form method="post" action="saveForm" modelAttribute="enquiryDetails">
 			<div class="card card-nav-tabs">
 					<h4 class="card-header card-header-primary">Personal Details</h4>
@@ -133,9 +134,17 @@
 						 </div>
 					</div> --%>
 					
+					<script>
+					alert("ALERT 1");
+					</script>
 					 <div class="form-row">
+					 
 						<div class="col">
+						
+							
+						
 						  <label for="degree">Degree</label> 
+						  	
 							 <form:select class="form-control selectpicker" path = "degree" required="true">
 				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${degreeList}" />
@@ -235,17 +244,18 @@
 						 </div>
 					</div>
 					
-				<div class="form-row">
+				<%-- <div class="form-row">
 						<div class="col">
+							alert("Entered the Time Slots.....");
 						  <label for="avail_time">Available Time</label> 
 						   <form:select name="availableTime" class="form-control selectpicker" path = "timeSlotsId" required="true">
 								<c:forEach items="${availableTimeList}" var="availableTime">
    									 <option name="availableTime" value="${availableTime.timeSlotsId}">${availableTime.timeSlotsDescription}</option>
 								</c:forEach>
 						</form:select>
-							
+							alert("After the Time Slots......");
 						 </div>
-					</div>  
+					</div> --%>  
 					
 					<div class="form-row">
 						<div class="col">

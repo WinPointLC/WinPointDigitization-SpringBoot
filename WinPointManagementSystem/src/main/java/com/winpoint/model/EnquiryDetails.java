@@ -1,5 +1,6 @@
 package com.winpoint.model;
 
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import lombok.Data;
 
@@ -51,6 +54,7 @@ public class EnquiryDetails {
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;
+//	private Integer timeSlotsId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
@@ -60,6 +64,8 @@ public class EnquiryDetails {
 	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
 
+
+	
 //	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
 //	private Integer timeSlotsId = mappingTimeSlots.getTimeSlotsId();
 
