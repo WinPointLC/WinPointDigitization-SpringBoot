@@ -42,8 +42,8 @@ public class BatchDetails {
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 
-	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
+//	private Integer courseId = mappingCourse.getCourseId();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingBatchDetails")
 	private Set<StudentCourseDetails> StudentCourseDetails;

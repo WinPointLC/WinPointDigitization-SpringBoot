@@ -47,9 +47,9 @@ public class TechnicalQuestionBank {
 	@JoinColumn(name = "topicId", nullable = false)
 	private Topics mappingTopics;
 
-	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
-	private Integer courseId = mappingCourse.getCourseId();
-	private Integer topicId = mappingTopics.getTopicId();
+//	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
+//	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer topicId = mappingTopics.getTopicId();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
 	private Set<StudentsModularTestResult_C_TBC> mappingStudentsModularTestResult_C_TBC;

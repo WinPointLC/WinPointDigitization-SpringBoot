@@ -8,5 +8,5 @@ import com.winpoint.model.OrganizationType;
 
 @Repository
 public interface OrganizationTypeRepository extends JpaRepository<OrganizationType, Integer>{
-	OrganizationType findByOrganizationTypeName(String OrganizationTypeNanem);
+//	OrganizationType findByOrganizationTypeName(String OrganizationTypeNanem);
 }

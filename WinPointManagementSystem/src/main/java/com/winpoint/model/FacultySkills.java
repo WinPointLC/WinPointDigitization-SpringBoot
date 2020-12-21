@@ -31,6 +31,6 @@ public class FacultySkills {
 	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
 
-	private Integer userId = mappingUserProfile.getUserId();
+//	private Integer userId = mappingUserProfile.getUserId();
 
 }

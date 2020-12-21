@@ -35,6 +35,6 @@ public class StudentTestResultJavascriptModular {
 	@JoinColumn(name = "questionId", nullable = false)
 	private TechnicalQuestionBank mappingTechnicalQuestionBank;
 
-	private Integer userTestId = mappingUserTestDetails.getUserTestId();
-	private Integer questionId = mappingTechnicalQuestionBank.getQuestionId();
+//	private Integer userTestId = mappingUserTestDetails.getUserTestId();
+//	private Integer questionId = mappingTechnicalQuestionBank.getQuestionId();
 }

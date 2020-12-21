@@ -38,8 +38,8 @@ public class CourseFeedback {
 	@JoinColumn(name = "feedbackQuestionId", nullable = false)
 	private FeedbackQuestions mappingFeedbackQuestions;
 
-	private Integer courseId = mappingCourse.getCourseId();
-	private Integer feedbackQuestionId = mappingFeedbackQuestions.getFeedbackQuestionId();
-	private Integer userId = mappingUserProfile.getUserId();
+//	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer feedbackQuestionId = mappingFeedbackQuestions.getFeedbackQuestionId();
+//	private Integer userId = mappingUserProfile.getUserId();
 
 }

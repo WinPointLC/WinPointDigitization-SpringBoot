@@ -42,36 +42,36 @@ public class StudentCourseDetails {
 	@JoinColumn(name = "reminderTypeId", nullable = false)
 	private ReminderType mappingReminderType;
 
-	private Integer reminderTypeId = mappingReminderType.getReminderTypeId();
+//	private Integer reminderTypeId = mappingReminderType.getReminderTypeId();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "gradeId", nullable = false)
 	private GradingSystem mappingGradingSystem;
 
-	private Integer gradeId = mappingGradingSystem.getGradeId();
+//	private Integer gradeId = mappingGradingSystem.getGradeId();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
 	private BatchDetails mappingBatchDetails;
 
-	private Integer batchId = mappingBatchDetails.getBatchId();
+//	private Integer batchId = mappingBatchDetails.getBatchId();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 
-	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer courseId = mappingCourse.getCourseId();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "expenseTypeId", nullable = false)
 	private ExpenseType mappingExpenseType;
 
-	private Integer expenseTypeId = mappingExpenseType.getExpenseTypeId();
+//	private Integer expenseTypeId = mappingExpenseType.getExpenseTypeId();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
 
-	private Integer userId = mappingUserProfile.getUserId();
+//	private Integer userId = mappingUserProfile.getUserId();
 
 }

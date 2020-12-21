@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -34,6 +36,12 @@ public class DifficultyLevel {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
-	private Set<TestDifficulty> mappingTestDifficulty;
+
+	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "difficultyLevelId", nullable = false)
+//	private DifficultyLevel mappingDifficultyLevel;
+
+	
 }
+

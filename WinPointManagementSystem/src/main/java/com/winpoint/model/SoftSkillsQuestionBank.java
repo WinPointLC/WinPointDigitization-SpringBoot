@@ -44,8 +44,8 @@ public class SoftSkillsQuestionBank {
 	@JoinColumn(name = "topicId", nullable = false)
 	private Topics mappingTopics;
 
-	private Integer courseId = mappingCourse.getCourseId();
-	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
-	private Integer topicId = mappingTopics.getTopicId();
+//	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
+//	private Integer topicId = mappingTopics.getTopicId();
 
 }

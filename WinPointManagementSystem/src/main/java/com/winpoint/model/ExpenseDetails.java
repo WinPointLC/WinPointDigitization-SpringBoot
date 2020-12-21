@@ -48,10 +48,10 @@ public class ExpenseDetails {
 	@JoinColumn(name = "organizationId", nullable = false)
 	private Organization mappingOrganization;
 
-	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-	private Integer paymentModeId = mappingPaymentMode.getPaymentModeId();
-	private Integer batchId = mappingBatchDetails.getBatchId();
-	private Integer courseId = mappingCourse.getCourseId();
-	private Integer organizationId = mappingOrganization.getOrganizationId();
+//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
+//	private Integer paymentModeId = mappingPaymentMode.getPaymentModeId();
+//	private Integer batchId = mappingBatchDetails.getBatchId();
+//	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer organizationId = mappingOrganization.getOrganizationId();
 
 }

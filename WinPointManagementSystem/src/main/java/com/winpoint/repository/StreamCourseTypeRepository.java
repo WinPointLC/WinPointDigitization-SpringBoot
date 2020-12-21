@@ -9,5 +9,5 @@ import com.winpoint.model.StreamCourseType;
 
 @Repository
 public interface StreamCourseTypeRepository extends JpaRepository<StreamCourseType, Integer>{
-	List<StreamCourseType> findByStreamId(Integer streamId);
+//	List<StreamCourseType> findByStreamId(Integer streamId);
 }

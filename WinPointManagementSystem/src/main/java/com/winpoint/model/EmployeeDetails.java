@@ -33,6 +33,6 @@ public class EmployeeDetails {
 	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
 
-	private Integer userId = mappingUserProfile.getUserId();
-	private Integer employeeCategoryId = mappingEmployeeCategory.getEmployeeCategoryId();
+//	private Integer userId = mappingUserProfile.getUserId();
+//	private Integer employeeCategoryId = mappingEmployeeCategory.getEmployeeCategoryId();
 }

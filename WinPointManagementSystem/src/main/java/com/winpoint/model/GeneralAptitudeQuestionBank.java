@@ -45,7 +45,7 @@ public class GeneralAptitudeQuestionBank {
 	@JoinColumn(name = "topicId", nullable = false)
 	private Topics mappingTopics;
 
-	private Integer courseTypeId = mappingCourse.getCourseTypeId();
-	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
-	private Integer topicId = mappingTopics.getTopicId();
+//	private Integer courseTypeId = mappingCourse.getCourseTypeId();
+//	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
+//	private Integer topicId = mappingTopics.getTopicId();
 }

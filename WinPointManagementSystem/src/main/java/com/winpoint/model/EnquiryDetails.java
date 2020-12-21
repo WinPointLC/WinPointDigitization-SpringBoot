@@ -60,7 +60,7 @@ public class EnquiryDetails {
 	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
 
-	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-	private Integer timeSlotsId = mappingTimeSlots.getTimeSlotsId();
+//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
+//	private Integer timeSlotsId = mappingTimeSlots.getTimeSlotsId();
 
 }

@@ -34,9 +34,9 @@ public class FeedbackQuestions {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackCategoryId", nullable = false)
 	private FeedbackCategory mappingFeedbackCategory;
-
-	private Integer feedbackQuestionTypeId = mappingFeedbackQuestionType.getFeedbackQuestionTypeId();
-	private Integer feedbackCategoryId = mappingFeedbackCategory.getFeedbackCategoryId();
+//
+//	private Integer feedbackQuestionTypeId = mappingFeedbackQuestionType.getFeedbackQuestionTypeId();
+//	private Integer feedbackCategoryId = mappingFeedbackCategory.getFeedbackCategoryId();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackQuestions")
 	private Set<TestFeedback> TestFeedback;

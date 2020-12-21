@@ -45,9 +45,9 @@ public class Course {
 	@JoinColumn(name = "streamId", nullable = false)
 	private Streams mappingStreams;
 
-	private Integer evaluationTypeId = mappingEvaluationType.getEvaluationTypeId();
-	private Integer courseTypeId = mappingCourseType.getCourseTypeId();
-	private Integer streamId = mappingStreams.getStreamId();
+//	private Integer evaluationTypeId = mappingEvaluationType.getEvaluationTypeId();
+//	private Integer courseTypeId = mappingCourseType.getCourseTypeId();
+//	private Integer streamId = mappingStreams.getStreamId();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<StudentCourseDetails> StudentCourseDetails;

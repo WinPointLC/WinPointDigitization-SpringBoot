@@ -32,5 +32,5 @@ public class Lecture {
 	@JoinColumn(name = "batchId", nullable = false)
 	private BatchDetails mappingBatchDetails;
 
-	private Integer batchId = mappingBatchDetails.getBatchId();
+//	private Integer batchId = mappingBatchDetails.getBatchId();
 }

@@ -7,6 +7,5 @@ import com.winpoint.model.FeedbackQuestionType;
 
 @Repository
 public interface FeedbackQuestionTypeRepositoy extends JpaRepository<FeedbackQuestionType, Integer>{
-	FeedbackQuestionType findByFeedbackQuestionType(String FeedbackQuestionTypeName);
-
+//	FeedbackQuestionType findByFeedbackQuestionType(String FeedbackQuestionTypeName);
 }

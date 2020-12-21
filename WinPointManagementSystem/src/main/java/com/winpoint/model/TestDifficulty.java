@@ -24,35 +24,24 @@ public class TestDifficulty {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="testDifficultyLevelId", updatable=false)	
+	@Column(name = "testDifficultyLevelId", updatable = false)
 	private Integer testDetailId; // comp pk
 	private Integer numberOfQuestions;
 	private Integer createdBy;
 	private Date createdDate;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "difficultyLevelId", nullable = false)
-	private DifficultyLevel mappingDifficultyLevel;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDetails")
+	private Set<TestDifficulty> mappingTestDifficulty;
 
-	
 //	@OneToMany(targetEntity = TestDetails.class)
 //	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
 //	private Set<TestDetails> TestDetails;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTestDifficulty")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDifficulty")
 	private Set<TestDetails> mappingTestDetails;
-	
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "topicId", nullable = false)
+	@JoinColumn(name = "topicId", nullable = false)
 	private Topics mappingTopics;
-	
-	
-	
-	
-	
-	
 
 }

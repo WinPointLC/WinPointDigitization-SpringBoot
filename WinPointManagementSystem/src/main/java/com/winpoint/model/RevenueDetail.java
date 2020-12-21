@@ -56,11 +56,11 @@ public class RevenueDetail {
 	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
 
-	private Integer revenueTypeId = mappingRevenueType.getRevenueTypeId();
-	private Integer courseId = mappingCourse.getCourseId();
-	private Integer batchId = mappingBatchDetails.getBatchId();
-	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-	private Integer organizationId = mappingOrganization.getOrganizationId();
-	private Integer paymentModeId = mappingPaymentMode.getPaymentModeId();
+//	private Integer revenueTypeId = mappingRevenueType.getRevenueTypeId();
+//	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer batchId = mappingBatchDetails.getBatchId();
+//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
+//	private Integer organizationId = mappingOrganization.getOrganizationId();
+//	private Integer paymentModeId = mappingPaymentMode.getPaymentModeId();
 
 }

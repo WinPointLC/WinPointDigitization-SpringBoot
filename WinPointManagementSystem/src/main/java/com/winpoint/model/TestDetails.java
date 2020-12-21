@@ -34,10 +34,25 @@ public class TestDetails {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "evaluationTypeId", nullable = false)
+	private EvaluationType mappingEvaluationType;
 
-	private Integer courseId = mappingCourse.getCourseId();
+//	private Integer courseId = mappingCourse.getCourseId();
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDetails")
-	private Set<TestDifficulty> mappingTestDifficulty;
+	
+	
+	
+	
+	
+	
+	
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDetails")
+//	private Set<TestDifficulty> mappingTestDifficulty;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "testDifficultyLevelId", nullable = false)
+	private TestDifficulty mappingTestDifficulty;
 
 }

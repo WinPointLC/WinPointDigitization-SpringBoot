@@ -31,6 +31,7 @@ public class StreamCourseType {
 	@JoinColumn(name = "streamId", nullable = false)
 	private Streams mappingStreams;
 
-	private Integer courseTypeId = mappingCourseType.getCourseTypeId();
-	private Integer streamId = mappingStreams.getStreamId();
+//	private Integer courseTypeId = mappingCourseType.getCourseTypeId();
+//	private I treamId();
+//	private Integer streamId1 = mappingStreams.getStreamId();
 }
