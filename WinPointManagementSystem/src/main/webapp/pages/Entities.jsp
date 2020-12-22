@@ -24,10 +24,7 @@
 <!-- Material Kit CSS -->
 <link href="../assets/css/material-dashboard.css?v=2.1.1"
 	rel="stylesheet" />
-<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>-->
 
-<!-- own CSS -->
-<!-- own CSS -->
 <style>
 .disabled-link {
 	color: currentColor;
@@ -114,27 +111,21 @@
 								</div>
 								
 								 <div class="row">
-						 <div class="dropdown"><!--second dropdown select stream -->
+									 <div class="dropdown"><!--second dropdown select stream -->
 
-									<button class="btn btn-secondary dropdown-toggle "
-										type="button" id="dropdownMenuSelectStream" data-toggle="dropdown"
-										data-display="static" aria-haspopup="true"
-										aria-expanded="false" style="display:none; margin: auto;margin-left:200px">
-										SELECT STREAM</button>
+										<button class="btn btn-secondary dropdown-toggle "
+											type="button" id="dropdownMenuSelectStream" data-toggle="dropdown"
+											data-display="static" aria-haspopup="true"
+											aria-expanded="false" style="display:none; margin: auto;margin-left:200px">
+											SELECT STREAM</button>
 
-									<div class="dropdown-menu entity-menu"
-										aria-labelledby="dropdownMenuButton">
-										<div class="pull-left">
-											<a class="dropdown-item" href="#">Technical</a> 
-											<a class="dropdown-item" href="#">Soft skills</a> 
-											<a class="dropdown-item" href="#">GA</a> 
-										</div>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-stream-dropdown">
+
+                  						</div>
 										
-									
-									</div>
-
-
 								</div><!---Second dropdown end-->
+								
+								
 								
 								 <div class="dropdown"><!--third dropdown select stream -->
 
@@ -144,20 +135,9 @@
 										aria-expanded="false" style="display:none; margin: auto;margin-left:600px">
 										SELECT COURSETYPE</button>
 
-									<div class="dropdown-menu entity-menu"
-										aria-labelledby="dropdownMenuButton">
-										<div class="pull-left">
-											<a class="dropdown-item" href="#"
-												onclick="showBody('Course','display',this.textContent)">MODULAR</a> <a
-												class="dropdown-item" href="#"
-												onclick="showBody('Course','display',this.textContent)">CRT</a> <a
-												class="dropdown-item" href="#"
-												onclick="showBody('Course','display',this.textContent)">TBC</a> 
-									
-										</div>
-										
-									
-									</div>
+									 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-coursetype-dropdown">
+
+                    				</div>
 
 
 								</div><!---third dropdown end-->
@@ -675,7 +655,6 @@
 		entityName=entity_name.replace(/\s+/g, "");
 		//alert("SELECTED FROM CHOICE BOX : "+entityName);
 		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
-
 		document.getElementById('dropdownMenuSelectStream').style.display="none";
 		document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
 		
@@ -731,7 +710,31 @@
 					document.getElementById('dropdownMenuSelectStream').style.display="block";
 					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
 					document.getElementById('entityTable').style.display="none";
-						document.getElementById('dropdownMenuSelectCoursetype').textContent="SELECT COURSETYPE";
+					document.getElementById('dropdownMenuSelectCoursetype').textContent="SELECT COURSETYPE";
+
+					$.ajax({
+						type: 'POST',
+						url: "/Streams",
+						dataType: 'json',
+						
+						contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+						traditional: true,
+						success: function (jsonObj) {
+
+								streamList=jsonObj;
+
+								for (var i = 0; i < streamList.length; i++) {
+									var anchor2 = document.createElement('a');
+									anchor2.className="dropdown-item";
+									anchor2.setAttribute('href', "#");
+									anchor2.id = streamList[i].streamId;
+									anchor2.textContent = streamList[i].streamName.toUpperCase().replace("_"," ");
+									anchor2.setAttribute('onclick', "getStreamId(this.id)");
+									document.getElementById('select-stream-dropdown').appendChild(anchor2);
+								}
+							
+						}
+					});
 					
 				}
 				
@@ -832,6 +835,60 @@
 			}
 		});
 			
+	}
+
+    var streamElem;
+	function getStreamId(stream_id){
+		
+		streamId = stream_id;
+		
+		streamElem = document.getElementById(streamId);
+		
+		document.getElementById('dropdownMenuSelectStream').textContent = streamElem.textContent;
+		
+		document.getElementById('dropdownMenuSelectCoursetype').textContent = 'SELECT COURSETYPE';
+					
+	    var myData = {
+			streamId: streamId
+		};
+		
+		$.ajax({
+			type: 'POST',
+			//url: servletURL + 'StreamCourseTypeServlet',
+			url: "/StreamCourseType",
+			//data: JSON.stringify(myData),
+			data: jQuery.param(myData),
+			dataType: 'json',
+			//contentType: 'application/json; charset=utf-8',
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+			traditional: true,
+			success: function (jsonObj) {
+				courseTypeList=jsonObj;
+				
+				var courseTypeDropDown=document.getElementById('select-coursetype-dropdown');
+				while (courseTypeDropDown.hasChildNodes()) {  
+					courseTypeDropDown.removeChild(courseTypeDropDown.firstChild);
+				}
+
+				//alert("courseTypeList.length = "+courseTypeList.length);
+				for (var i = 0; i < courseTypeList.length; i++) {
+					var anchor2 = document.createElement('a');
+					anchor2.className="dropdown-item";
+					anchor2.setAttribute('href', "#");
+					anchor2.id = courseTypeList[i].courseTypeId + 'CT';
+					//alert("courseType Name  " + courseTypeList[i].courseTypeName);
+					anchor2.textContent = courseTypeList[i].courseTypeName.toUpperCase().replace("_"," ");
+					anchor2.setAttribute('onclick', "getCourseTypeId(this.id)");
+					document.getElementById('select-coursetype-dropdown').appendChild(anchor2);
+				}
+				
+			},
+			error: function(){
+				alert("Error");
+				//document.getElementById("error").innerHTML = "Invalid email or password";
+			}
+
+		});
 	}
 				
 </script>

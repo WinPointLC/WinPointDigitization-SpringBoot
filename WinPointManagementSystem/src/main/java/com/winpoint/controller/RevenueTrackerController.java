@@ -87,7 +87,7 @@ public class RevenueTrackerController {
 
 //	@ModelAttribute("enquiryDetails")
 	@PostMapping("/saveForm")
-	public String saveForm(@ModelAttribute EnquiryDetails enquiryDetails, RedirectAttributes redirectAttributes) throws ParseException {
+	public String saveForm(EnquiryDetails enquiryDetails,TimeSlots timeSlots,SegmentType segmentType) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + enquiryDetails.getFirstName());
 		System.out.println("USER:  " + enquiryDetails.getGender());
@@ -121,7 +121,7 @@ public class RevenueTrackerController {
 	TimeSlotsRepository timeSlotsRepository;
 
 	@RequestMapping(value = "/SignUpRevenueTracker", method = RequestMethod.GET)
-	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails) {
+	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,@ModelAttribute TimeSlots timeSlots,@ModelAttribute SegmentType segmentType) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SignUpForm");
 		List<String> list = new ArrayList<String>();

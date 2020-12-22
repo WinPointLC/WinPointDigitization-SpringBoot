@@ -44,7 +44,7 @@
 				<h4 class="card-header card-header-primary">Sign Up Form</h4>
 				<br>
 				 
-				  <form:form method="post" action="saveForm" modelAttribute="enquiryDetails">
+				  <form:form method="post" action="saveForm" id="enqForm" modelAttribute="enquiryDetails">
 			<div class="card card-nav-tabs">
 					<h4 class="card-header card-header-primary">Personal Details</h4>
 				<div class="card-body">
@@ -120,23 +120,7 @@
 						 <form:input type="text" class="form-control inputFileVisible" path="college" required="true" placeholder="Enter College Name"/>
 						</div>
 					</div>
-					<%-- <div class="form-row">
-						<div class="col">
-						  <label for="degree">Degree</label> 
-							<form:select id="degree" class="form-control" path="degree" style="height:32px">
-							<option selected>Choose....</option>
-							<option>BCA</option>
-							<option>MCA</option>
-							<option>B.E</option>
-							<option>M.E</option>
-							<option>MBA</option>
-							</form:select>
-						 </div>
-					</div> --%>
 					
-					<script>
-					alert("ALERT 1");
-					</script>
 					 <div class="form-row">
 					 
 						<div class="col">
@@ -243,19 +227,21 @@
 				             </form:select>  
 						 </div>
 					</div>
-					
-				<%-- <div class="form-row">
+				
+				<form:form id="timeSlotsForm" method="post" action="saveForm" modelAttribute="timeSlots">	
+				 <div class="form-row">
 						<div class="col">
-							alert("Entered the Time Slots.....");
+							
 						  <label for="avail_time">Available Time</label> 
 						   <form:select name="availableTime" class="form-control selectpicker" path = "timeSlotsId" required="true">
 								<c:forEach items="${availableTimeList}" var="availableTime">
    									 <option name="availableTime" value="${availableTime.timeSlotsId}">${availableTime.timeSlotsDescription}</option>
 								</c:forEach>
 						</form:select>
-							alert("After the Time Slots......");
+							
 						 </div>
-					</div> --%>  
+				</div>
+				</form:form> 
 					
 					<div class="form-row">
 						<div class="col">
@@ -292,21 +278,18 @@
 
 					
 					
-					
-					  <div class="form-row">
+					<form:form id="segmentForm" method="post" action="saveForm" modelAttribute="segmentType">	
+					   <div class="form-row">
 						<div class="col">
 						  <label for="segment_type">Segment Type</label> 
 						  <form:select name="segmentType" class="form-control selectpicker" path = "segmentTypeId" required="true">
 								<c:forEach items="${segmentTypeList}" var="segmentType">
    									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
 								</c:forEach>
-						</form:select>
-						  
-						  
-						  
-						
+						</form:select>	
 						 </div>
-					</div>  
+					</div>   
+					</form:form>	
 				
 					<div class="form-row">
 						<div class="col">
@@ -333,8 +316,8 @@
 					
 				</div>
 			</div>
-<!-- 			 <input type="button" class="btn btn-primary" style="margin-left:45%" value="Submit" onclick="submitForm()"/>
- -->		  <input type="submit" class="btn btn-primary" style="margin-left:45%" value="Submit"/>
+ 			 <input type="button" class="btn btn-primary" style="margin-left:40%;width:15%;" value="Submit" onclick="submitForm()"/>
+ 		<!--    <input type="submit" class="btn btn-primary" style="margin-left:45%" value="Submit"/>-->
  			<!--<div id="sliderRegular" class="slider"></div>-->
 				</form:form>
 
@@ -344,8 +327,11 @@
 	<!--End Signup formPage-->
 	<script type="text/javascript">
 	function submitForm(){
-		var birthdate = document.getElementById("bdayId");
-		alert("DATE - "+birthdate.value);
+		//var birthdate = document.getElementById("bdayId");
+		//alert("DATE - "+birthdate.value);
+		   $('#enqForm').submit();
+		   $('#timeSlotsForm').submit();
+		   $('#segmentForm').submit();
 		
 	}
 	</script>
