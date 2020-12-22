@@ -111,12 +111,12 @@
 								</div>
 								
 								 <div class="row">
-									 <div class="dropdown"><!--second dropdown select stream -->
+									 <div class="dropdown column"><!--second dropdown select stream -->
 
 										<button class="btn btn-secondary dropdown-toggle "
 											type="button" id="dropdownMenuSelectStream" data-toggle="dropdown"
 											data-display="static" aria-haspopup="true"
-											aria-expanded="false" style="display:none; margin: auto;margin-left:200px">
+											aria-expanded="false" style="display:none;margin-left:200px">
 											SELECT STREAM</button>
 
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-stream-dropdown">
@@ -127,12 +127,12 @@
 								
 								
 								
-								 <div class="dropdown"><!--third dropdown select stream -->
+								 <div class="dropdown column"><!--third dropdown select stream -->
 
 									<button class="btn btn-secondary dropdown-toggle "
 										type="button" id="dropdownMenuSelectCoursetype" data-toggle="dropdown"
 										data-display="static" aria-haspopup="true"
-										aria-expanded="false" style="display:none; margin: auto;margin-left:600px">
+										aria-expanded="false" style="display:none; margin-left:250px">
 										SELECT COURSETYPE</button>
 
 									 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-coursetype-dropdown">
@@ -711,6 +711,7 @@
 					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
 					document.getElementById('entityTable').style.display="none";
 					document.getElementById('dropdownMenuSelectCoursetype').textContent="SELECT COURSETYPE";
+					document.getElementById('dropdownMenuSelectStream').textContent="SELECT STREAM";
 
 					$.ajax({
 						type: 'POST',
@@ -722,6 +723,11 @@
 						success: function (jsonObj) {
 
 								streamList=jsonObj;
+
+								var streamDropDown=document.getElementById('select-stream-dropdown');
+								while (streamDropDown.hasChildNodes()) {  
+									streamDropDown.removeChild(streamDropDown.firstChild);
+								}
 
 								for (var i = 0; i < streamList.length; i++) {
 									var anchor2 = document.createElement('a');
@@ -786,7 +792,7 @@
 				
 				document.getElementById('entity-table').appendChild(cardBody);
 				
-				document.getElementById('entityTable').style.display="block";
+				//document.getElementById('entityTable').style.display="block";
 				
 				for(var i=0;i<entityDetailList.length;i++){	
 					addPrevRows(entityDetailList[i]);

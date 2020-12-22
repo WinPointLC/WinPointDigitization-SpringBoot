@@ -20,9 +20,12 @@ public class CourseTypeService {
 	
 	public List<CourseType> CourseTypeList(Integer streamId) {
 		List<CourseType> courseTypeList = new ArrayList<>();
-		for(StreamCourseType streamCourseType:StreamCourseTypeRepository.findByStreamId(streamId)) {
-//			courseTypeList.add(CourseTypeRepository.findByCourseTypeId(streamCourseType.getCourseTypeId()));
-		}
+		/*
+		 * for(StreamCourseType
+		 * streamCourseType:StreamCourseTypeRepository.findByStreamId(streamId)) { //
+		 * courseTypeList.add(CourseTypeRepository.findByCourseTypeId(streamCourseType.
+		 * getCourseTypeId())); }
+		 */
 		return courseTypeList;
 	}
 	

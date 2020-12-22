@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 
@@ -67,45 +68,7 @@
 					
 				  </div>
 			</div>
-	 <!--<table class="table" border="1px solid black" style="background-color:white">
-		<thead>
-        <tr>
-            <th style="width:20%;color:light gray">Students</th>
-            <th style="font-size:15px" colspan="2"></th>
-            <th></th>
-            <th colspan="2"></th>
-            <th class="text-right" style="font-size:15px">Records</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="text-center"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        
-		<tr>
-            <td class="text-center"></td>
-            <td></td>
-            <td></td>
-            <td>No Conents in table</td>
-            <td></td>
-            <td></td>
-        </tr>
-		<tr>
-            <td class="text-center"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        
-    </tbody>
-</table>-->
+	
 			</div>
 		</div>
 		</div>
@@ -119,48 +82,10 @@
 				</div>
 			</div>
 			<div class="card-body-primary">
-				<table class="table">
-						<thead>
-						<tr>
-							<th class="text-center"></th>
-							<th style="font-size:18px">Student</th>
-							<th style="font-size:18px">Enquired</th>
-							<th style="font-size:18px">Registered</th>
-						</tr>
-						</thead>
-				<tbody>
-				<tr>
-					<td class="text-center"></td>
-					<td style="font-size:15px">abc</td>
-					<td style="font-size:15px">false</td>
-					<td style="font-size:15px">true</td>
-				</tr>
-				<tr>
-					<td class="text-center"></td>
-					<td style="font-size:15px">purva khot</td>
-					<td style="font-size:15px">false</td>
-					<td style="font-size:15px">true</td>
-				</tr>
-				<tr>
-					<td class="text-center"></td>
-					<td style="font-size:15px">pqr</td>
-					<td style="font-size:15px">false</td>
-					<td style="font-size:15px">false</td>
-				</tr>
-				<tr>
-					<td class="text-center"></td>
-					<td style="font-size:15px">xyz</td>
-					<td style="font-size:15px">false</td>
-					<td style="font-size:15px">true</td>
-				</tr>
-				<tr>
-					<td class="text-center"></td>
-					<td style="font-size:15px">aaa</td>
-					<td style="font-size:15px">true</td>
-					<td style="font-size:15px">false</td>
-				</tr>
-        </tbody>
-</table>
+				<div class="table-responsive" id="table-attendance-details">
+				
+				</div>
+			
 			</div>
 		</div>
 		</div>
@@ -294,6 +219,106 @@
 			document.getElementById('table-batch-add-student').appendChild(table);
 		</script>
 		
+		<script>
+			
+			var attendanceList=[
+			{
+				name:"pragya",
+				course:"16,1",
+				eligibility:"true",
+				suggestion:"Nothing",
+				//endDate:"2020-11-30"
+			},
+			{
+				name:"abhishek",
+				course:"16,17,1",
+				eligibility:"true",
+				suggestion:"practice more",
+				//endDate:"2020-11-30"
+			},
+			{
+				name:"surbhi",
+				course:"16,1",
+				eligibility:"true",
+				suggestion:"work hard on basic concepts",
+				//endDate:"2020-11-30"
+			},
+			{
+				name:"aayush",
+				course:"16,17",
+				eligibility:"true",
+				suggestion:"nothing",
+				//endDate:"2020-11-30"
+			}
+			]
+			
+			var elem = document.getElementById('details-attendance');
+			if(elem!=null){
+				elem.parentNode.removeChild(elem);
+			}
+			
+			var table = document.createElement('table');
+			table.className="table table-hover";
+			table.id="details-attendance";
+			var thead = document.createElement('thead');
+			
+			var th1 = document.createElement('th');
+			th1.textContent = "Name";
+			var th2 = document.createElement('th');
+			th2.textContent = "";
+			var th3 = document.createElement('th');
+			th3.textContent = "";
+			var th4 = document.createElement('th');
+			th4.textContent = "Suggestion";
+			/*var th5 = document.createElement('th');
+			th5.textContent = "Update";*/
+			
+			thead.appendChild(th1);
+			thead.appendChild(th2);
+			thead.appendChild(th3);
+			thead.appendChild(th4);
+			//thead.appendChild(th5);
+			//thead.appendChild(th6);
+			table.appendChild(thead);
+			
+			var tbody = document.createElement('tbody');
+			
+			for(var i=0;i<attendanceList.length;i++){
+				
+				var tr = document.createElement('tr');
+				var td1 = document.createElement('td');
+				td1.textContent = attendanceList[i].name;
+				var td2 = document.createElement('td');
+				td2.textContent = attendanceList[i].course;
+				var td3 = document.createElement('td');
+				td3.textContent = attendanceList[i].eligibility;
+				var td4 = document.createElement('td');
+				td4.textContent = attendanceList[i].suggestion;
+				
+				//var td5 = document.createElement('td');
+				//td5.textContent = batchDetailsList[i].endDate;
+				
+				//var td6  = document.createElement('td');
+				/*var addStudentBtn = document.createElement('btn');
+				addStudentBtn.className="btn btn-primary"
+				addStudentBtn.textContent = "Update";
+				td5.appendChild(addStudentBtn);*/
+
+				
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				tr.appendChild(td3);
+				tr.appendChild(td4);
+				//tr.appendChild(td5);
+				//tr.appendChild(td6);
+				
+				tbody.appendChild(tr);
+			}
+			table.appendChild(tbody);
+			
+			document.getElementById('table-attendance-details').appendChild(table);
+		</script>
+
 		
 		
 	</body>

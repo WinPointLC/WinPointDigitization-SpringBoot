@@ -644,5 +644,14 @@ public class EntityScreenController {
 			paymentModeRepository.deleteById(item);
 		}
 	}
+	
+	//###################################################################################
+	//###################################################################################
+	//###################################################################################
+	//Streams
+	@RequestMapping(value = "/Streams", method = RequestMethod.POST)
+	public @ResponseBody List<Streams> showStreams() {
+		return streamsRepository.findAll();
+	}
 
 }
