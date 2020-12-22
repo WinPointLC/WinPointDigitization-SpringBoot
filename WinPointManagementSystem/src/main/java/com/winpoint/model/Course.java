@@ -39,7 +39,7 @@ public class Course {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
-	private Course mappingCourseType;
+	private CourseType mappingCourseType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "streamId", nullable = false)
