@@ -41,13 +41,6 @@ public class TestDetails {
 
 //	private Integer courseId = mappingCourse.getCourseId();
 
-	
-	
-	
-	
-	
-	
-	
 //	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDetails")
 //	private Set<TestDifficulty> mappingTestDifficulty;
 	
