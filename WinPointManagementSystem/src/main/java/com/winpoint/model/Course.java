@@ -33,6 +33,8 @@ public class Course {
 	private Date createdDate;
 	private Integer logoLocation;
 
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "evaluationTypeId", nullable = false)
 	private EvaluationType mappingEvaluationType;
