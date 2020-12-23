@@ -19,6 +19,7 @@
 	  <!-- own CSS -->
 	  <link href="../css/employee_new_2.css" rel="stylesheet" />
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	  <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 	  <link rel="stylesheet" href="../assets/css/magnific-popup.css" media="screen" />
 
 	  <meta charset="utf-8" />
@@ -228,12 +229,12 @@
 						 </div>
 					</div>
 				
-				<form:form id="timeSlotsForm" method="post" action="saveForm" modelAttribute="timeSlots">	
+				 <form:form id="timeSlotsForm" method="post" action="saveForm" modelAttribute="timeSlots">	
 				 <div class="form-row">
 						<div class="col">
 							
 						  <label for="avail_time">Available Time</label> 
-						   <form:select name="availableTime" class="form-control selectpicker" path = "timeSlotsId" required="true">
+						   <form:select name="availableTime" class="form-control selectpicker" path = "timeSlotsId" id="avail_time" required="true">
 								<c:forEach items="${availableTimeList}" var="availableTime">
    									 <option name="availableTime" value="${availableTime.timeSlotsId}">${availableTime.timeSlotsDescription}</option>
 								</c:forEach>
@@ -241,7 +242,7 @@
 							
 						 </div>
 				</div>
-				</form:form> 
+				</form:form>  
 					
 					<div class="form-row">
 						<div class="col">
@@ -274,22 +275,19 @@
 						 </div>
 						 </div>
 					</div>  
-					
-
-					
-					
-					<form:form id="segmentForm" method="post" action="saveForm" modelAttribute="segmentType">	
+						
+					 <form:form id="segmentForm" method="post" action="saveForm" modelAttribute="segmentType">	
 					   <div class="form-row">
 						<div class="col">
 						  <label for="segment_type">Segment Type</label> 
-						  <form:select name="segmentType" class="form-control selectpicker" path = "segmentTypeId" required="true">
+						  <form:select name="segmentType" class="form-control selectpicker" id="seg_type" path = "segmentTypeId" required="true">
 								<c:forEach items="${segmentTypeList}" var="segmentType">
    									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
 								</c:forEach>
 						</form:select>	
 						 </div>
 					</div>   
-					</form:form>	
+					</form:form>	 
 				
 					<div class="form-row">
 						<div class="col">
@@ -329,11 +327,39 @@
 	function submitForm(){
 		//var birthdate = document.getElementById("bdayId");
 		//alert("DATE - "+birthdate.value);
+		timeSlotsId=document.getElementById("avail_time").value;
+		segmentTypeId=document.getElementById("seg_type").value;
+
+			var myData = {
+					timeSlotsid: timeSlotsId,
+					segmentTypeid:segmentTypeId
+				};
+				
+				$.ajax({
+					type: 'POST',
+					
+					url: "/TimeAndSegment",
+				
+					data: jQuery.param(myData),
+					//dataType: 'json',
+					
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					traditional: true,
+					success: function () {
+
+					}
+
+				});
+
+		//	alert("Back here");
 		   $('#enqForm').submit();
-		   $('#timeSlotsForm').submit();
-		   $('#segmentForm').submit();
+		   
+		   //$('#timeSlotsForm').submit();
+		   //$('#segmentForm').submit();
 		
 	}
+
+	
 	</script>
 	
 	</body>

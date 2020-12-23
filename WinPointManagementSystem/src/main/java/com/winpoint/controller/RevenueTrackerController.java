@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import com.winpoint.model.Course;
 import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SegmentType;
@@ -78,40 +79,57 @@ public class RevenueTrackerController {
 	
 //	@RequestMapping(value="")
 //	
+	Integer timeSlotsId;
+	Integer segmentTypeId;
 	
-	
+	@RequestMapping(value = "/TimeAndSegment", method = RequestMethod.POST)
+	public @ResponseBody void getTimeAndSegment(@RequestParam("timeSlotsid") String timeSlotsid,@RequestParam("segmentTypeid") String segmentTypeid) {
+		System.out.println("timeSlotsId  " + timeSlotsid);
+		timeSlotsId=Integer.parseInt(timeSlotsid);
+		System.out.println("segmentTypeId  " + segmentTypeid);
+		segmentTypeId=Integer.parseInt(segmentTypeid);
+	}
 	
 	
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 
+	EnquiryDetails finalUser;
 //	@ModelAttribute("enquiryDetails")
 	@PostMapping("/saveForm")
-	public String saveForm(EnquiryDetails enquiryDetails,TimeSlots timeSlots,SegmentType segmentType) throws ParseException {
+	public String saveForm(EnquiryDetails enquiryDetails,RedirectAttributes redirectAttributes) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + enquiryDetails.getFirstName());
 		System.out.println("USER:  " + enquiryDetails.getGender());
 		System.out.println("USER:  " + enquiryDetails.getDegree());
 		System.out.println("USER:  " + enquiryDetails.getBirthDateString());
-//		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-//		String t = enquiryDetails.getBirthDateString().toString();
-//		Date d = df.parse(t);
-//		enquiryDetails.setBirthDate(d);
-//
-//		String t1 = enquiryDetails.getDateOfEnquiryString().toString();
-//		Date d1 = df.parse(t1);
-//		enquiryDetails.setDateOfEnquiry(d1);
-//
-//		String t2 = enquiryDetails.getStartDateString().toString();
-//		Date d2 = df.parse(t2);
-//		enquiryDetails.setStartDate(d2);
-////		  System.out.println("USER:  "+ user.getBirthDate()); 
+		
+		//System.out.println("timeSlots:  " + timeSlots.getTimeSlotsId());
+		
+		
+		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+		String t = enquiryDetails.getBirthDateString().toString();
+		Date d = df.parse(t);
+		enquiryDetails.setBirthDate(d);
+
+		String t1 = enquiryDetails.getDateOfEnquiryString().toString();
+		Date d1 = df.parse(t1);
+		enquiryDetails.setDateOfEnquiry(d1);
+
+		String t2 = enquiryDetails.getStartDateString().toString();
+		Date d2 = df.parse(t2);
+		enquiryDetails.setStartDate(d2);
+		//System.out.println("USER:  "+ user.getBirthDate()); 
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //
-//		enquiryDetailsRepository.save(enquiryDetails);
+	//	enquiryDetailsRepository.save(enquiryDetails);
+		finalUser=enquiryDetails;
+		System.out.println("USER final:  " + finalUser.getBirthDateString());
 		return "redirect:/EnquiryDetails";
 
 	}
+	
+	
 
 	@Autowired
 	SegmentTypeRepository segmentTypeRepository;
@@ -156,13 +174,13 @@ public class RevenueTrackerController {
 		}
 		mv.addObject("courseInterestedInList", courseInterestedInlist);
 		// Available time
-//		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
+		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
 //		List<String> availableTimelist = new ArrayList<String>();
 //		for (TimeSlots s : availableTimeList) {
 //			System.out.println("DATA segement type - " + s.getTimeSlotsDescription());
 //			availableTimelist.add(s.getTimeSlotsDescription());
 //		}
-//		mv.addObject("availableTimeList", availableTimeList);
+		mv.addObject("availableTimeList", availableTimeList);
 
 		mv.addObject("degreeList", list);
 		return mv;
