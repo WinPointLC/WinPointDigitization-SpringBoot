@@ -1,6 +1,5 @@
 package com.winpoint.model;
 
-import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,12 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class EnquiryDetails {
 //	creation of fk
 //	schema checked

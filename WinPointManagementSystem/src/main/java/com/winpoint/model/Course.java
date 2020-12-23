@@ -14,10 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,9 +49,7 @@ public class Course {
 	@JoinColumn(name = "streamId", nullable = false)
 	private Streams mappingStreams;
 
-//	private Integer evaluationTypeId = mappingEvaluationType.getEvaluationTypeId();
-//	private Integer courseTypeId = mappingCourseType.getCourseTypeId();
-//	private Integer streamId = mappingStreams.getStreamId();
+
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<StudentCourseDetails> StudentCourseDetails;
