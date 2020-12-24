@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,6 +47,7 @@ public class Course {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
+	@JsonManagedReference
 	private CourseType mappingCourseType;
 
 	@ManyToOne(fetch = FetchType.LAZY)

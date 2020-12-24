@@ -111,121 +111,28 @@ public class EntityScreenController {
 
 	@RequestMapping(value = "/Entity", method = RequestMethod.POST)
 	public @ResponseBody List<CourseType> showCourseType(@RequestParam String entityInfoParam) {
-		List<?>list ;
+//		List<?>list ;
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println("EntityInfoParam : "+entityInfoParam);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
-		
-		
-		
 		
 		switch (entityInfoParam) {
 		case "CourseType":
 			System.out.println("@##############################################################");
 			List<CourseType> list1 = courseTypeRepository.findAll();
 			System.out.println(list1 +" "+ list1.isEmpty());
-//			if(list1.isEmpty()) {
-//				List<CourseType> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new CourseType());
-//				for(CourseType x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			System.out.println("@##############################################################");
-//			
-//			System.out.println(list1);
-//			for(CourseType courseType: list1) {
-				
-//				System.out.println(courseType);
-//				System.out.println("~~~~~~~~~~~~~~~~~~Course");
-//				for(Course x: courseType.getMappingCourse()) {
-//					System.out.println(x);
-//					System.out.println(x.getCourseName());
-//				}
-//				System.out.println("~~~~~~~~~~~~~~~~~~StreamCourseType");
-//				for(StreamCourseType x: courseType.getMappingStreamCourseType()) {
-//					System.out.println(x);
-//					System.out.println(x.getStreamCourseTypeId());
-//				}
-//				System.out.println("~~~~~~~~~~~~~~~~~~ToolTips");
-//				for(ToolTips x: courseType.getMappingToolTips()) {
-//					System.out.println(x);
-//					System.out.println(x.getToolTipDescription());
-//				}
-//			}
-//			System.out.println("@##############################################################");
-			//List<Course> trial = new ArrayList<>();
+			if(list1.isEmpty()) {
+				List<CourseType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new CourseType());
+				for(CourseType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			System.out.println("@##############################################################");
+		
 			
-//			System.out.println(list1);
-//			System.out.println("LIST ! @@@@@@@@@@@@@");
-			
-			Course course = new Course();
-			Course course1 = new Course();
-			StreamCourseType streamCourseType = new StreamCourseType();
-			ToolTips toolTips = new ToolTips();
-
-			List<Course> mappingCourse = new ArrayList<Course>();
-			mappingCourse.add(course);
-			mappingCourse.add(course1);
-			mappingCourse.add(new Course());
-
-			List<StreamCourseType> mappingStreamCourseType = new ArrayList<StreamCourseType>();
-			mappingStreamCourseType.add(streamCourseType);
-			
-			List<ToolTips> mappingToolTips = new ArrayList<ToolTips>();
-			mappingToolTips.add(toolTips);
-			
-			CourseType courseType = new CourseType(1,"Modular",null,null,mappingCourse,mappingStreamCourseType,mappingToolTips);
-			System.out.println("OBJECT : "+courseType);
-			
-			List<Course> mappingCourse1 = new ArrayList<Course>();
-			List<StreamCourseType> mappingStreamCourseType1 = new ArrayList<StreamCourseType>();
-			List<ToolTips> mappingToolTips1 = new ArrayList<ToolTips>();
-			CourseType courseType1 = new CourseType(2,"TBC",null,null,mappingCourse1,mappingStreamCourseType1,mappingToolTips1);
-//			System.out.println("OBJECT : "+courseType1);
-
-			
-			
-			
-			List<CourseType> courseTypeList = new ArrayList<>();
-//			courseTypeList.add(courseType);
-//			courseTypeList.add(courseType1);
-			
-			System.out.println("DATA  :: "+ list1.get(0));
-			
-			// course
-			
-//			for(CourseType courseType11: list1) {
-//			courseTypeList.add(list1.get(0));
-//			courseTypeList.add(list1.get(1));
-			courseType = list1.get(1);
-//			courseType.setMappingCourse(null);
-			courseType.setMappingStreamCourseType(null);
-//			courseType.setMappingToolTips(null);
-			courseTypeList.add(courseType);
-
-//			}
-			
-			
-			
-			
-			
-//			for(CourseType courseType11: list1) {
-//				courseTypeList.add(list1.get(0));
-//				courseTypeList.add(list1.get(1));
-//				courseType = list1.get(2);
-//				courseType = courseType11;
-//				courseType.setMappingCourse(null);
-//				courseType11.setMappingStreamCourseType(null);
-//				courseType.setMappingToolTips(null);
-//				courseTypeList.add(courseType11);
-
-//				}
-
-			
-			return courseTypeList;
+			return list1;
 
 //		case "DifficultyLevel":
 //			System.out.println("@##############################################################");
