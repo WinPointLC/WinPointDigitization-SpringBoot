@@ -108,7 +108,7 @@ public class EntityScreenController {
 	CourseRepository courseRepository;
 
 	@RequestMapping(value = "/Entity", method = RequestMethod.POST)
-	public @ResponseBody List<?> showCourseType(@RequestParam String entityInfoParam) {
+	public @ResponseBody CourseType showCourseType(@RequestParam String entityInfoParam) {
 		List<?>list ;
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println("EntityInfoParam : "+entityInfoParam);
@@ -117,9 +117,9 @@ public class EntityScreenController {
 		switch (entityInfoParam) {
 		case "CourseType":
 			System.out.println("@##############################################################");
-			list = courseTypeRepository.findAll();
-			System.out.println(list +" "+ list.isEmpty());
-			if(list.isEmpty()) {
+			List<CourseType> list1 = courseTypeRepository.findAll();
+			System.out.println(list1 +" "+ list1.isEmpty());
+			if(list1.isEmpty()) {
 				List<CourseType> empList = new ArrayList<>();
 				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
 				empList.add(new CourseType());
@@ -127,8 +127,19 @@ public class EntityScreenController {
 					System.out.println(x);
 				return empList;
 			}
-			System.out.println(list);
-			return list;
+			System.out.println("@##############################################################");
+			
+			System.out.println(list1);
+			for(CourseType courseType: list1) {
+				System.out.println(courseType);
+				System.out.println("~~~~~~~~~~~~~~~~~~");
+				for(Course x: courseType.getMappingCourse()) {
+					System.out.println(x);
+				}
+			}
+			System.out.println("@##############################################################");
+			//List<Course> trial = new ArrayList<>();
+			return new CourseType();
 
 		case "DifficultyLevel":
 			System.out.println("@##############################################################");

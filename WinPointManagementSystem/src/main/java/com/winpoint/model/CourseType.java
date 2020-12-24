@@ -1,6 +1,8 @@
 package com.winpoint.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,11 +16,13 @@ import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
-public class CourseType {
+@ToString
+public class CourseType{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "courseTypeId", updatable = false)
@@ -28,12 +32,14 @@ public class CourseType {
 	private Date createdDate;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
-	private Set<Course> mappingCourse;
+	private List<Course> mappingCourse;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
-	private Set<StreamCourseType> mappingStreamCourseType;
+	private List<StreamCourseType> mappingStreamCourseType;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
-	private Set<ToolTips> mappingToolTips;
+	private List<ToolTips> mappingToolTips;
+	
+	
 
 }

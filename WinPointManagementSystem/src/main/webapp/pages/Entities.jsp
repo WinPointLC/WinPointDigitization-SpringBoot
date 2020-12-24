@@ -657,19 +657,19 @@
 		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
 		document.getElementById('dropdownMenuSelectStream').style.display="none";
 		document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
-		
+		alert("INFO : "+entityName);
 		$.ajax({
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=read',
+			
 			url:"/Entity?entityInfoParam=" + entityName,
 			//data: JSON.stringify(myData),
 			dataType: 'json',
-			contentType: 'application/json; charset=utf-8',
-			traditional: true,
+			contentType: 'application/json; charset=utf-8', 			traditional: true,
 			success: function (jsonObj) {
-			
-				entityDetailList=jsonObj;
-				alert("Entity List "+ entityDetailList);
+			 	alert("HELLO");
+				/* entityDetailList=jsonObj;
+				alert("Entity List "+ entityDetailList) 
 				
 				//entityDetailList=JSON.parse(entityDetailList); 
 				//alert("Entity List as object "+ entityDetailList[0]);
@@ -686,9 +686,9 @@
 							
 						} 
 							
-					}              
-					return result;
-				}
+					}               */
+					return 0;
+ 				}
 	
 				col_cnt=countColumns(entityDetailList[0]); 
 			  
