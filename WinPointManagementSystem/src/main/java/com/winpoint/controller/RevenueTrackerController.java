@@ -122,7 +122,7 @@ public class RevenueTrackerController {
 		//System.out.println("USER:  "+ user.getBirthDate()); 
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //
-	//	enquiryDetailsRepository.save(enquiryDetails);
+		enquiryDetailsRepository.save(enquiryDetails);
 		finalUser=enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
 		return "redirect:/EnquiryDetails";

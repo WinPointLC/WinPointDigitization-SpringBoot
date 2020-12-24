@@ -24,10 +24,7 @@
 
 	  <meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-
 	
-
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
 
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
@@ -45,32 +42,32 @@
 				<h4 class="card-header card-header-primary">Sign Up Form</h4>
 				<br>
 				 
-				  <form:form method="post" action="saveForm" id="enqForm" modelAttribute="enquiryDetails">
+				  <form:form method="post" action="saveForm"  id="enqForm" modelAttribute="enquiryDetails">
 			<div class="card card-nav-tabs">
 					<h4 class="card-header card-header-primary">Personal Details</h4>
 				<div class="card-body">
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="firstname">First Name :</label> -->
-						<form:input type="text" class="form-control" path="firstName" placeholder="First name" required="true"/>
+						<form:input type="text" class="form-control" path="firstName" id="firstName" placeholder="First name" required="true"/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="lastname">Last Name :</label> -->
-						<form:input type="text" class="form-control" path="lastName" placeholder="Last name" required="true"/>
+						<form:input type="text" class="form-control" path="lastName" id="lastName" placeholder="Last name" required="true"/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="mobnum">Mobile Number :</label> -->
-						<form:input type="text" class="form-control" path="MobileNo" placeholder="Mobile Number" required="true"/>
+						<form:input type="text" class="form-control" path="MobileNo" id="mobNo" placeholder="Mobile Number" required="true"/>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="col">
 						<!-- <label for="email">Email Id:</label> -->
-						<form:input type="email" class="form-control" path="emailId" placeholder="Email Id" required="true"/>
+						<form:input type="email" class="form-control" path="emailId" id="email" placeholder="Email Id" required="true"/>
 						</div>
 					</div>
 					  <div class="form-row">
@@ -314,8 +311,8 @@
 					
 				</div>
 			</div>
- 			 <input type="button" class="btn btn-primary" style="margin-left:40%;width:15%;" value="Submit" onclick="submitForm()"/>
- 		<!--    <input type="submit" class="btn btn-primary" style="margin-left:45%" value="Submit"/>-->
+ 			<input type="button" class="btn btn-primary" style="margin-left:40%;width:15%;" value="Submit" onclick="submitForm()"/>
+ 		    <!-- <input type="submit"  class="btn btn-primary" style="margin-left:45%" value="Submit"/>-->
  			<!--<div id="sliderRegular" class="slider"></div>-->
 				</form:form>
 
@@ -324,12 +321,17 @@
 		
 	<!--End Signup formPage-->
 	<script type="text/javascript">
+	var flag=0;
 	function submitForm(){
 		//var birthdate = document.getElementById("bdayId");
 		//alert("DATE - "+birthdate.value);
+		//alert("here");
+		
 		timeSlotsId=document.getElementById("avail_time").value;
 		segmentTypeId=document.getElementById("seg_type").value;
 
+		validation();
+		if(flag==1){
 			var myData = {
 					timeSlotsid: timeSlotsId,
 					segmentTypeid:segmentTypeId
@@ -350,15 +352,42 @@
 					}
 
 				});
-
+				 $('#enqForm').submit();
+		}
 		//	alert("Back here");
-		   $('#enqForm').submit();
+		  
 		   
 		   //$('#timeSlotsForm').submit();
 		   //$('#segmentForm').submit();
 		
 	}
 
+	function validation(){
+		var fname = document.getElementById('firstName').value;
+		var lname = document.getElementById('lastName').value;
+		var mobNo = document.getElementById('mobNo').value;
+		var email = document.getElementById('email').value;
+		var bday = document.getElementById('bdayId').value;
+		 if (fname == "") {
+		      alert("Enter the First Name");
+		      
+		 }
+		 else if(lname==""){
+		      alert("Enter the Last Name");
+		 }
+		 else if(mobNo==""){
+		      alert("Enter the Mobile Number");
+		 }
+		 else if(email==""){
+		      alert("Enter the Email Id");
+		 }
+		 else if(bday==""){
+		      alert("Enter the Date of Birth");
+		 }
+		 else{
+			flag=1;
+		}
+	}
 	
 	</script>
 	

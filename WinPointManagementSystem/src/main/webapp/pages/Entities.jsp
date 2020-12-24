@@ -668,11 +668,8 @@
 			contentType: 'application/json; charset=utf-8', 			traditional: true,
 			success: function (jsonObj) {
 			 	alert("HELLO");
-				/* entityDetailList=jsonObj;
+			 /*   entityDetailList=jsonObj;
 				alert("Entity List "+ entityDetailList) 
-				
-				//entityDetailList=JSON.parse(entityDetailList); 
-				//alert("Entity List as object "+ entityDetailList[0]);
 				
 				var col_names = [];
 				function countColumns(obj) {
@@ -686,8 +683,8 @@
 							
 						} 
 							
-					}               */
-					return 0;
+					}               
+					return result;
  				}
 	
 				col_cnt=countColumns(entityDetailList[0]); 
@@ -834,7 +831,7 @@
 				btn_add_row.textContent='Add';
 				form_modal.appendChild(btn_add_row);
 				
-				document.getElementById('addRowForm').appendChild(form_modal);
+				document.getElementById('addRowForm').appendChild(form_modal); */
 			},
 			error: function(){
 				alert("Error");
