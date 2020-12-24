@@ -34,7 +34,8 @@ public class Course {
 	private Integer createdBy;
 	private Date createdDate;
 	private Integer logoLocation;
-
+	
+	
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)

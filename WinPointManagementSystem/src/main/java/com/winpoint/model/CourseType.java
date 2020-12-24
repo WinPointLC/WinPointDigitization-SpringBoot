@@ -1,9 +1,7 @@
 package com.winpoint.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,6 +29,34 @@ public class CourseType{
 	private Integer createdBy;
 	private Date createdDate;
 
+	
+	
+	
+	public CourseType(Integer courseTypeId, String courseTypeName, Integer createdBy, Date createdDate) {
+		super();
+		this.courseTypeId = courseTypeId;
+		this.courseTypeName = courseTypeName;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+	}
+
+	public CourseType() {
+		super();
+	}
+	
+	public CourseType(Integer courseTypeId, String courseTypeName, Integer createdBy, Date createdDate,
+			List<Course> mappingCourse, List<StreamCourseType> mappingStreamCourseType,
+			List<ToolTips> mappingToolTips) {
+		super();
+		this.courseTypeId = courseTypeId;
+		this.courseTypeName = courseTypeName;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.mappingCourse = mappingCourse;
+		this.mappingStreamCourseType = mappingStreamCourseType;
+		this.mappingToolTips = mappingToolTips;
+	}
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<Course> mappingCourse;
 

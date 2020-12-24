@@ -668,7 +668,9 @@
 			contentType: 'application/json; charset=utf-8', 			traditional: true,
 			success: function (jsonObj) {
 			 	alert("HELLO");
-			 /*   entityDetailList=jsonObj;
+			 	alert(jsonObj[1]);
+			 	alert(jsonObj[0].courseTypeName);
+			    entityDetailList=jsonObj;
 				alert("Entity List "+ entityDetailList) 
 				
 				var col_names = [];
@@ -831,7 +833,7 @@
 				btn_add_row.textContent='Add';
 				form_modal.appendChild(btn_add_row);
 				
-				document.getElementById('addRowForm').appendChild(form_modal); */
+				document.getElementById('addRowForm').appendChild(form_modal); 
 			},
 			error: function(){
 				alert("Error");
