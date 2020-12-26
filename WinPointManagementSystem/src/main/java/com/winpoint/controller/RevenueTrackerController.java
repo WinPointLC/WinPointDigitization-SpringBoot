@@ -40,6 +40,13 @@ public class RevenueTrackerController {
 		mv.setViewName("MainBatchPage");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
+	public ModelAndView showLectureViewPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("LectureView");
+		return mv;
+	}
 
 	@Autowired
 	StreamsRepository stream;
@@ -53,32 +60,7 @@ public class RevenueTrackerController {
 		return mv;
 	}
 
-	/*
-	 * @GetMapping("/SignUpRevenueTracker") public String showForm(@ModelAttribute
-	 * EnquiryDetails enquiryDetails) { return "SignUpForm"; }
-	 */
-
-	// Sign up form
-//	@ModelAttribute("enquiryDetails")
-//	public EnquiryDetails getDegreeList() {
-//		System.out.println("~121212121212121211212121212121212121212121212121212121212121212");
-//
-//		EnquiryDetails user = new EnquiryDetails();	
-//		
-//		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~121212121212121211212121212121212121212121212121212121212121212~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-//
-//		return user;
-//	}
-
-//	@RequestMapping(value = "/enquiryDetails", method = RequestMethod.GET) 
-//	public ModelAndView displayLogin(EnquiryDetails enquiryDetails) { 
-//		ModelAndView mv = new ModelAndView();
-//		mv.setView("\SignUpPage.jsp");
-//	    return "enquiryDetails"; 
-//	}
 	
-//	@RequestMapping(value="")
-//	
 	Integer timeSlotsId;
 	Integer segmentTypeId;
 	
@@ -122,7 +104,7 @@ public class RevenueTrackerController {
 		//System.out.println("USER:  "+ user.getBirthDate()); 
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //
-		enquiryDetailsRepository.save(enquiryDetails);
+		//enquiryDetailsRepository.save(enquiryDetails);
 		finalUser=enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
 		return "redirect:/EnquiryDetails";

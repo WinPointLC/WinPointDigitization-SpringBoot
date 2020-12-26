@@ -115,7 +115,7 @@
 					<div class="form-row">
 						<div class="col">
 						<!--  <label class="label-control">College</label> -->
-						 <form:input type="text" class="form-control inputFileVisible" path="college" required="true" placeholder="Enter College Name"/>
+						 <form:input type="text" class="form-control inputFileVisible" path="college" id="college" required="true" placeholder="Enter College Name"/>
 						</div>
 					</div>
 					
@@ -127,8 +127,8 @@
 						
 						  <label for="degree">Degree</label> 
 						  	
-							 <form:select class="form-control selectpicker" path = "degree" required="true">
-				                     <form:option value = "NONE" label = "Select"/>
+							 <form:select class="form-control selectpicker" path = "degree"  id="degree" required="true">
+				                     <%-- <form:option value = "NONE" label = "Select"/> --%>
 				                     <form:options items = "${degreeList}" />
 				             </form:select>  
 						 </div>
@@ -136,7 +136,7 @@
 					<div class="form-row">
 						<div class="col">
 						 <!-- <label class="label-control">Branch</label> -->
-						 <form:input type="text" class="form-control inputFileVisible" required="true" path="branch" placeholder="Enter Branch"/>
+						 <form:input type="text" class="form-control inputFileVisible" required="true" id="branch" path="branch" placeholder="Enter Branch"/>
 						 </div>
 					</div>
 				</div>
@@ -165,7 +165,7 @@
 					<div class="form-row">
 						<div class="col">
 						<!--  <label class="label-control">Year of Graduation</label> -->
-						 <form:input type="text" class="form-control inputFileVisible" required="true" path="yearOfGraduation" placeholder="Enter year of graduation"/>
+						 <form:input type="text" class="form-control inputFileVisible" required="true" id="yearOfGraduation" path="yearOfGraduation" placeholder="Enter year of graduation"/>
 						 </div>
 					</div>
 					<div class="form-row">
@@ -178,7 +178,7 @@
 					<div class="form-row">
 						<div class="col">
 						
-						 <form:input type="text" class="form-control inputFileVisible" path="experience" placeholder="Experience (in months)" required="true"/>
+						 <form:input type="text" class="form-control inputFileVisible" path="experience" id="experience" placeholder="Experience (in months)" required="true"/>
 						 </div>
 					</div>
 					
@@ -193,7 +193,7 @@
 					<div class="form-row">
 						<div class="col">
 						  <label for="Courses_Interested_in">Courses Interested in</label> 
-							 <form:select class="form-control selectpicker" path = "courseInterestedIn" multiple="true" required="true">
+							 <form:select class="form-control selectpicker" path = "courseInterestedIn" id="course_interested" multiple="true" required="true">
 				                     <%-- <form:option value = "NONE" label = "Select"/> --%>
 				                     <form:options items = "${courseInterestedInList}" />
 				             </form:select>  
@@ -205,7 +205,7 @@
 							 <label class="label-control">Eligibility</label>
 							 <div class="form-check form-check-radio">
 								<label class="form-check-label">
-							 <form:radiobutton class="form-check-input" path="eligibility" value="Eligible" checked="true"/> 
+							 <form:radiobutton class="form-check-input" path="eligibility" value="Eligible"  checked="true"/> 
 							
 								Eligible
 									<span class="circle">
@@ -252,7 +252,7 @@
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Date Of Enquiry</label>
-						 <form:input type="text" path="dateOfEnquiryString" placeholder="yyyy-mm-dd" required="true" class="form-control"/>
+						 <form:input type="text" path="dateOfEnquiryString" placeholder="yyyy-mm-dd" id="date_enquiry" required="true" class="form-control"/>
 						 </div>
 						 </div>
 					</div>  
@@ -268,7 +268,7 @@
 						<div class="col">
 						<div class="form-group">
 						 <label class="label-control">Start Date</label>
-						 <form:input type="text" path="startDateString" placeholder="yyyy-mm-dd" required="true" class="form-control"/>
+						 <form:input type="text" path="startDateString" placeholder="yyyy-mm-dd" id="date_start" required="true" class="form-control"/>
 						 </div>
 						 </div>
 					</div>  
@@ -368,6 +368,20 @@
 		var mobNo = document.getElementById('mobNo').value;
 		var email = document.getElementById('email').value;
 		var bday = document.getElementById('bdayId').value;
+
+		var college = document.getElementById('college').value;
+		var degree = document.getElementById('degree').value;
+		var branch = document.getElementById('branch').value;
+
+		var yearGrad = document.getElementById('yearOfGraduation').value;
+		var experience = document.getElementById('experience').value;
+
+		var courses_interested = document.getElementById('course_interested').value;
+		var time = document.getElementById('avail_time').value;
+		var date_enq = document.getElementById('date_enquiry').value;
+		var start_date = document.getElementById('date_start').value;
+		var seg_type = document.getElementById('seg_type').value;
+		
 		 if (fname == "") {
 		      alert("Enter the First Name");
 		      
@@ -384,6 +398,40 @@
 		 else if(bday==""){
 		      alert("Enter the Date of Birth");
 		 }
+
+		 else if(college==""){
+		      alert("Enter college");
+		 }
+		 else if(degree==""){
+		      alert("Enter degree");
+		 }
+		 else if(branch==""){
+		      alert("Enter branch");
+		 }
+
+		 else if(yearGrad==""){
+		      alert("Enter year of graduation");
+		 }
+		 else if(experience==""){
+		      alert("Enter the experience");
+		 }
+
+		 else if(courses_interested==""){
+		      alert("Enter courses interested in");
+		 }
+		 else if(time==""){
+		      alert("Enter the available time");
+		 }
+		 else if(date_enq==""){
+		      alert("Enter the Date of enquiry");
+		 }
+		 else if(start_date==""){
+		      alert("Enter the start date");
+		 }
+		 else if(seg_type==""){
+		      alert("Enter the Segment Type");
+		 }
+		 
 		 else{
 			flag=1;
 		}
