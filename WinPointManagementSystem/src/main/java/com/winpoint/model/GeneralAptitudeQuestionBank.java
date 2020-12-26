@@ -39,17 +39,17 @@ public class GeneralAptitudeQuestionBank {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private CourseType mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "difficultyLevelId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private DifficultyLevel mappingDifficultyLevel;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "topicId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Topics mappingTopics;
 
 }

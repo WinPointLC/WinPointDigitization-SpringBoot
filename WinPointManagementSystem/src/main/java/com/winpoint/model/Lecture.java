@@ -34,7 +34,7 @@ public class Lecture {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private BatchDetails mappingBatchDetails;
 
 }

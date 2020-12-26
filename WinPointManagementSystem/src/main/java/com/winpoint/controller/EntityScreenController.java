@@ -118,9 +118,9 @@ public class EntityScreenController {
 		
 		switch (entityInfoParam) {
 		case "CourseType":
-			System.out.println("@##############################################################");
+//			System.out.println("@##############################################################");
 			List<CourseType> list1 = courseTypeRepository.findAll();
-			System.out.println(list1 +" "+ list1.isEmpty());
+//			System.out.println(list1 +" "+ list1.isEmpty());
 			if(list1.isEmpty()) {
 				List<CourseType> empList = new ArrayList<>();
 				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
@@ -129,8 +129,7 @@ public class EntityScreenController {
 					System.out.println(x);
 				return empList;
 			}
-			System.out.println("@##############################################################");
-		
+//			System.out.println("@##############################################################");	
 			
 			return list1;
 

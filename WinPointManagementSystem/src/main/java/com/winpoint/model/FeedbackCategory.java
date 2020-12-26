@@ -26,7 +26,7 @@ public class FeedbackCategory {
 	private Integer feedbackCategoryId;
 	private String feedbackCategoryDescription;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackCategory")
 	private Set<FeedbackQuestions> mappingFeedbackQuestions;
 

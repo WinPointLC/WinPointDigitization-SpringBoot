@@ -41,27 +41,27 @@ public class BatchDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Course mappingCourse;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingBatchDetails")
 	private Set<StudentCourseDetails> StudentCourseDetails;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingBatchDetails")
 	private Set<ExpenseDetails> ExpenseDetails;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingBatchDetails")
 	private Set<Lecture> Lecture;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingBatchDetails")
 	private Set<RevenueDetail> RevenueDetail;
 

@@ -33,27 +33,27 @@ public class ExpenseDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "paymentModeId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private PaymentMode mappingPaymentMode;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private BatchDetails mappingBatchDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Course mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "organizationId", nullable = false)
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Organization mappingOrganization;
 
 }

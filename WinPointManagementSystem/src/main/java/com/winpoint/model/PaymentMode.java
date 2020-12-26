@@ -26,11 +26,11 @@ public class PaymentMode {
 	private Integer paymentModeId;
 	private String paymentModeName;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingPaymentMode")
 	private Set<ExpenseDetails> mappingExpenseDetails;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingPaymentMode")
 	private Set<RevenueDetail> mappingRevenueDetail;
 
