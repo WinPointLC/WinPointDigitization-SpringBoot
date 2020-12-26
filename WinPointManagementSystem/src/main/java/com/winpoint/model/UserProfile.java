@@ -14,9 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -55,51 +52,40 @@ public class UserProfile {
 	private Boolean activeStatus;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
-	@JsonBackReference
 	private Set<FacultySkills> mappingFacultySkills;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
-	@JsonBackReference
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
-	@JsonBackReference
 	private Set<EmployeeDetails> mappingEmployeeDetails;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
-	@JsonBackReference
 	private Set<RevenueDetail> mappingRevenueDetail;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
-	@JsonBackReference
 	private Set<UserTestDetails> mappingUserTestDetails;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
-	@JsonBackReference
 	private Set<UserStudent> mappingUserStudent;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
-	@JsonBackReference
 	private Set<CourseFeedback> mappingCourseFeedback;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userCategoryId", nullable = false)
-	@JsonManagedReference
 	private UserProfile mappingUserCategory;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "securityQuestionId", nullable = false)
-	@JsonManagedReference
 	private SecurityQuestions mappingSecurityQuestions;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "timeSlotsId", nullable = false)
-	@JsonManagedReference
 	private TimeSlots mappingTimeSlots;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
-	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 }

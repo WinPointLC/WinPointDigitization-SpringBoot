@@ -14,9 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,16 +33,13 @@ public class TestDifficulty {
 	private Date createdDate;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDetails")
-	@JsonBackReference
 	private Set<TestDifficulty> mappingTestDifficulty;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDifficulty")
-	@JsonBackReference
 	private Set<TestDetails> mappingTestDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "topicId", nullable = false)
-	@JsonManagedReference
 	private Topics mappingTopics;
 
 }

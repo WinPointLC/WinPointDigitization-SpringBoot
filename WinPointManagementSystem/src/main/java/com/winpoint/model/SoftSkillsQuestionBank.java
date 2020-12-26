@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,17 +36,14 @@ public class SoftSkillsQuestionBank {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
-	@JsonManagedReference
 	private Course mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "difficultyLevelId", nullable = false)
-	@JsonManagedReference
 	private DifficultyLevel mappingDifficultyLevel;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "topicId", nullable = false)
-	@JsonManagedReference
 	private Topics mappingTopics;
 
 }

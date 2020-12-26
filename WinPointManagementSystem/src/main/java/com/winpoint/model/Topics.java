@@ -14,9 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Data;
 
 @Entity
@@ -34,23 +31,18 @@ public class Topics {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
-	@JsonManagedReference
 	private Course mappingCourse;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
-	@JsonBackReference
 	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
-	@JsonBackReference
 	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
-	@JsonBackReference
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
-	@JsonBackReference
 	private Set<TestDifficulty> mappingTestDifficulty;
 
 }

@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,12 +29,10 @@ public class UserStudent {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "clientCategoryId", nullable = false)
-	@JsonManagedReference
 	private ClientCategory mappingClientCategory;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
-	@JsonManagedReference
 	private UserProfile mappingUserProfile;
 
 }

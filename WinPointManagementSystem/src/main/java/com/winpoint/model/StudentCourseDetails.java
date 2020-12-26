@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,32 +42,26 @@ public class StudentCourseDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "reminderTypeId", nullable = false)
-	@JsonManagedReference
 	private ReminderType mappingReminderType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "gradeId", nullable = false)
-	@JsonManagedReference
 	private GradingSystem mappingGradingSystem;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
-	@JsonManagedReference
 	private BatchDetails mappingBatchDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
-	@JsonManagedReference
 	private Course mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "expenseTypeId", nullable = false)
-	@JsonManagedReference
 	private ExpenseType mappingExpenseType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
-	@JsonManagedReference
 	private UserProfile mappingUserProfile;
 
 }
