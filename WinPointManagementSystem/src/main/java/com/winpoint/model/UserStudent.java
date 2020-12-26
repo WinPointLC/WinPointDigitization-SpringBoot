@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,26 +20,23 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserStudent {
-//	checked
-//	redo fk
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="userStudentId", updatable=false)	
+	@Column(name = "userStudentId", updatable = false)
 	private Integer userStudentId;
 	private String parentName;
 	private String parentMobileNumber;
 	private Integer createdBy;
 	private Date createdDate;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clientCategoryId", nullable = false)
-	private ClientCategory mappingClientCategory;
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
-	private UserProfile mappingUserProfile;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "clientCategoryId", nullable = false)
+	@JsonManagedReference
+	private ClientCategory mappingClientCategory;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId", nullable = false)
+	@JsonManagedReference
+	private UserProfile mappingUserProfile;
 
 }

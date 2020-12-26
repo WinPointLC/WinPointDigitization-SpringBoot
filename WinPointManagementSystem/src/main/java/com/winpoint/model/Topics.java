@@ -14,87 +14,43 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 @Entity
 @Data
 public class Topics {
-//	checked
-//	fk
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="topicId", updatable=false)	
+	@Column(name = "topicId", updatable = false)
 	private Integer topicId;
 	private String topicName;
 	private Integer minimumNoOfQuestionsForTest;
 	private Integer createdBy;
 	private Date createdDate;
 	private Integer topicDuration;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "courseId", nullable = false)
-	private Course mappingCourse;
-	
-//	@OneToMany(targetEntity = GeneralAptitudeQuestionBank.class)
-//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-//	private Set<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTopics")
-	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
-//	
-//	
-//	@OneToMany(targetEntity = SoftSkillsQuestionBank.class)
-//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-//	private Set<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
-//	
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTopics")
-	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
-	
-	
-	
-//	
-//	@OneToMany(targetEntity = Topics.class)
-//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-//	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
-//	
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTopics")
-	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
-	
-	
-	
-//	@OneToMany(targetEntity = Topics.class)
-//	@JoinColumn(name = "topicId", referencedColumnName = "topicId")
-//	private Set<TestDifficulty> TestDifficulty;
-	
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTopics")
-	private Set<TestDifficulty> mappingTestDifficulty;
-	
-	
-	
-	/////////////////////////
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "courseId", nullable = false)
+	@JsonManagedReference
+	private Course mappingCourse;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
+	@JsonBackReference
+	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
+	@JsonBackReference
+	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
+	@JsonBackReference
+	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
+	@JsonBackReference
+	private Set<TestDifficulty> mappingTestDifficulty;
+
 }

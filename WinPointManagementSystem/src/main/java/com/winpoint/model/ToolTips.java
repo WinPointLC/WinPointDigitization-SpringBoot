@@ -11,22 +11,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 
 @Entity
 @Getter
 @Setter
 public class ToolTips {
-//	checked
-//	fk redo
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="toolTipId", updatable=false)	
 	private Integer toolTipId;
-//	private Integer courseTypeId;
 	private String toolTipDescription;
 	private Integer createdBy;
 	private Date createdDate;
@@ -34,6 +32,7 @@ public class ToolTips {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseTypeId", nullable = false)
+	@JsonManagedReference
 	private Course mappingCourseType;
 
 }

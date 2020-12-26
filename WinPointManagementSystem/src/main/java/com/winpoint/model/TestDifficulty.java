@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,23 +30,22 @@ public class TestDifficulty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "testDifficultyLevelId", updatable = false)
-	private Integer testDetailId; // comp pk
+	private Integer testDetailId;
 	private Integer numberOfQuestions;
 	private Integer createdBy;
 	private Date createdDate;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDetails")
+	@JsonBackReference
 	private Set<TestDifficulty> mappingTestDifficulty;
 
-//	@OneToMany(targetEntity = TestDetails.class)
-//	@JoinColumn(name = "testDetailId", referencedColumnName = "testDetailId")
-//	private Set<TestDetails> TestDetails;
-
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTestDifficulty")
+	@JsonBackReference
 	private Set<TestDetails> mappingTestDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "topicId", nullable = false)
+	@JsonManagedReference
 	private Topics mappingTopics;
 
 }

@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,9 +27,9 @@ public class UserTestDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="userTestId", updatable=false)
-	private Integer userTestId;//
-	private Integer testDetailsId;//
+	@Column(name = "userTestId", updatable = false)
+	private Integer userTestId;
+	private Integer testDetailsId;
 	private Integer marksReceived;
 	private String timeTaken;
 	private Integer numberOfRegistration;
@@ -36,144 +39,53 @@ public class UserTestDetails {
 	private Integer attempted;
 	private String evaluationDone;
 
-//	@OneToMany(targetEntity = StudentsModularTestResult_C_TBC.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentsModularTestResult_C_TBC> ModularTestResult_C_TBC;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentsModularTestResult_C_TBC> ModularTestResult_C_TBC;
-	
-//
-//	@OneToMany(targetEntity = StudentTestResult_C_Modular.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResult_C_Modular> StudentTestResult_C_Modular;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResult_C_Modular> StudentTestResult_C_Modular;
-	
-	
-////
-//	@OneToMany(targetEntity = StudentTestResult_CPP_CRT.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResult_CPP_CRT> StudentTestResult_CPP_CRT;
-////
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResult_CPP_CRT> StudentTestResult_CPP_CRT;
-	
-	
-//	@OneToMany(targetEntity = StudentTestResult_CPP_Modular.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
-////
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResult_CPP_Modular> StudentTestResult_CPP_Modular;
-	
-	
-//	@OneToMany(targetEntity = StudentTestResult_CPP_TBC.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResult_CPP_TBC> StudentTestResult_CPP_TBC;
-////
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResult_CPP_TBC> StudentTestResult_CPP_TBC;
-	
-	
-	
-//	@OneToMany(targetEntity = StudentTestResultComputerNetwork_CRT.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResultComputerNetwork_CRT> StudentTestResultComputerNetwork_CRT;
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResultComputerNetwork_CRT> StudentTestResultComputerNetwork_CRT;
-	
-	
-////
-//	@OneToMany(targetEntity = StudentTestResultJava_CRT.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResultJava_CRT> StudentTestResultJava_CRT;
-//
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResultJava_CRT> StudentTestResultJava_CRT;
-	
-	
-//	@OneToMany(targetEntity = StudentTestResultJava_TBC.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResultJava_TBC> StudentTestResultJava_TBC;
-//
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResultJava_TBC> StudentTestResultJava_TBC;
-	
-	
-	
-//	@OneToMany(targetEntity = StudentTestResultJavaModular.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResultJavaModular> StudentTestResultJavaModular;
-//
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResultJavaModular> StudentTestResultJavaModular;
-	
-//	@OneToMany(targetEntity = StudentTestResultJavascriptModular.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResultJavascriptModular> StudentTestResultJavascriptModular;
-//
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResultJavascriptModular> StudentTestResultJavascriptModular;
-	
-	
-	
-//	@OneToMany(targetEntity = StudentTestResultOperatingSystem_CRT.class)
-//	@JoinColumn(name = "userTestId", referencedColumnName = "userTestId")
-//	private Set<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
-//
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserTestDetails")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserTestDetails")
+	@JsonBackReference
 	private Set<StudentTestResultOperatingSystem_CRT> StudentTestResultOperatingSystem_CRT;
-	
-	
-	
-	
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
+	@JoinColumn(name = "userId", nullable = false)
+	@JsonManagedReference
 	private UserProfile mappingUserProfile;
-//	
-	
-	
-//
-//	////////////////////////////
-//
-	
 
 }

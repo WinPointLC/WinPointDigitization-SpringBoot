@@ -18,8 +18,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RevenueDetail {
-//	checked
-//	fk
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "revenueDetailId", updatable = false)

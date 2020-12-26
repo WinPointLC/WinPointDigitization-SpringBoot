@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,17 +27,22 @@ public class SegmentType {
 	private String segmentTypeName;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
+	@JsonBackReference
 	private Set<BatchDetails> mappingBatchDetails;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
+	@JsonBackReference
 	private Set<EnquiryDetails> mappingEnquiryDetails;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
+	@JsonBackReference
 	private Set<ExpenseDetails> mappingExpenseDetails;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
+	@JsonBackReference
 	private Set<RevenueDetail> mappingRevenueDetail;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
+	@JsonBackReference
 	private Set<UserProfile> mappingUserProfile;
 }

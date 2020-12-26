@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,10 +24,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserProfile {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="userId", updatable=false)	
+	@Column(name = "userId", updatable = false)
 	private Integer userId;
 	private String firstName;
 	private String lastName;
@@ -49,89 +51,55 @@ public class UserProfile {
 	private Integer experience;
 	private Integer createdBy;
 	private Date createDate;
-//	private Integer segmentTypeId;
 	private String courseAlreadyDone;
 	private Boolean activeStatus;
-	
-//	@OneToMany(targetEntity = FacultySkills.class)
-//	@JoinColumn(name = "facultyUserId", referencedColumnName = "userId")
-//	private Set<FacultySkills> FacultySkills;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserProfile")
-	private Set<FacultySkills> mappingFacultySkills;
-//
-//	@OneToMany(targetEntity = StudentCourseDetails.class)
-//	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private Set<StudentCourseDetails> StudentCourseDetails;
-//
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserProfile")
-	private Set<StudentCourseDetails> mappingStudentCourseDetails;
-	
-//	@OneToMany(targetEntity = EmployeeDetails.class)
-//	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private Set<EmployeeDetails> EmployeeDetails;
-//
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserProfile")
-	private Set<EmployeeDetails> mappingEmployeeDetails;
-	
-//	@OneToMany(targetEntity = RevenueDetail.class)
-//	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private Set<RevenueDetail> RevenueDetail;
-//
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserProfile")
-	private Set<RevenueDetail> mappingRevenueDetail;
-	
-//	@OneToMany(targetEntity = UserTestDetails.class)
-//	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private Set<UserTestDetails> UserTestDetails;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserProfile")
-	private Set<UserTestDetails> mappingUserTestDetails;
-	
-//	@OneToMany(targetEntity = UserStudent.class)
-//	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private Set<UserStudent> UserStudent;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserProfile")
-	private Set<UserStudent> mappingUserStudent;
-	
-//	@OneToMany(targetEntity = CourseFeedback.class)
-//	@JoinColumn(name = "userId", referencedColumnName = "userId")
-//	private Set<CourseFeedback> CourseFeedback;
 
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserProfile")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	@JsonBackReference
+	private Set<FacultySkills> mappingFacultySkills;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	@JsonBackReference
+	private Set<StudentCourseDetails> mappingStudentCourseDetails;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	@JsonBackReference
+	private Set<EmployeeDetails> mappingEmployeeDetails;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	@JsonBackReference
+	private Set<RevenueDetail> mappingRevenueDetail;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	@JsonBackReference
+	private Set<UserTestDetails> mappingUserTestDetails;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	@JsonBackReference
+	private Set<UserStudent> mappingUserStudent;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	@JsonBackReference
 	private Set<CourseFeedback> mappingCourseFeedback;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userCategoryId", nullable = false)
+	@JoinColumn(name = "userCategoryId", nullable = false)
+	@JsonManagedReference
 	private UserProfile mappingUserCategory;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "securityQuestionId", nullable = false)
+	@JoinColumn(name = "securityQuestionId", nullable = false)
+	@JsonManagedReference
 	private SecurityQuestions mappingSecurityQuestions;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "timeSlotsId", nullable = false)
+	@JoinColumn(name = "timeSlotsId", nullable = false)
+	@JsonManagedReference
 	private TimeSlots mappingTimeSlots;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "segmentTypeId", nullable = false)
+	@JoinColumn(name = "segmentTypeId", nullable = false)
+	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
-	
 }

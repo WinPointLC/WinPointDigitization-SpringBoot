@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,51 +42,61 @@ public class TechnicalQuestionBank {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "difficultyLevelId", nullable = false)
+	@JsonManagedReference
 	private DifficultyLevel mappingDifficultyLevel;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
+	@JsonManagedReference
 	private Course mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "topicId", nullable = false)
+	@JsonManagedReference
 	private Topics mappingTopics;
 
-//	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
-//	private Integer courseId = mappingCourse.getCourseId();
-//	private Integer topicId = mappingTopics.getTopicId();
-
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentsModularTestResult_C_TBC> mappingStudentsModularTestResult_C_TBC;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResult_C_Modular> mappingStudentTestResult_C_Modular;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResult_CPP_CRT> mappingStudentTestResult_CPP_CRT;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResult_CPP_Modular> mappingStudentTestResult_CPP_Modular;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResult_CPP_TBC> mappingStudentTestResult_CPP_TBC;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResultComputerNetwork_CRT> mappingStudentTestResultComputerNetwork_CRT;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResultJava_CRT> mappingStudentTestResultJava_CRT;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResultJava_TBC> mappingStudentTestResultJava_TBC;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResultJavaModular> mappingStudentTestResultJavaModular;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResultJavascriptModular> mappingStudentTestResultJavascriptModular;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
+	@JsonBackReference
 	private Set<StudentTestResultOperatingSystem_CRT> mappingStudentTestResultOperatingSystem_CRT;
 
 }

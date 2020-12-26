@@ -12,30 +12,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class UserCategory {	
-//	checked
+public class UserCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="userCategoryId", updatable=false)	
+	@Column(name = "userCategoryId", updatable = false)
 	private Integer userCategoryId;
 	private String userCategoryName;
 	private Integer createdBy;
 	private Date createdDate;
-	
-//	@OneToMany(targetEntity = UserProfile.class)
-//	@JoinColumn(name = "userCategoryId", referencedColumnName = "userCategoryId")
-//	private Set<UserProfile> mappingUserProfile;
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingUserCategory")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserCategory")
+	@JsonBackReference
 	private Set<UserProfile> mappingUserProfile;
-	
-	///////////////////
+
 }

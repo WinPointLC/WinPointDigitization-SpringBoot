@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,36 +20,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TimeSlots {
-//	checked 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="timeSlotsId", updatable=false)	
+	@Column(name = "timeSlotsId", updatable = false)
 	private Integer timeSlotsId;
 	private String timeSlotsDescription;
-	
-	
-//	@OneToMany(targetEntity = EnquiryDetails.class)
-//	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-//	private Set<EnquiryDetails> mappingEnquiryDetails;
-//	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTimeSlots")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTimeSlots")
+	@JsonBackReference
 	private Set<EnquiryDetails> mappingEnquiryDetails;
-	
-//	
-//	
-//	@OneToMany(targetEntity = UserProfile.class)
-//	@JoinColumn(name = "timeSlotsId", referencedColumnName = "timeSlotsId")
-//	private Set<UserProfile> mappingUserProfile;
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.LAZY, 
-			  mappedBy = "mappingTimeSlots")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTimeSlots")
+	@JsonBackReference
 	private Set<UserProfile> mappingUserProfile;
-	
-	
-//////////////////////
+
 }
