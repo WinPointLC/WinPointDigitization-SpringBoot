@@ -1,5 +1,6 @@
 package com.winpoint.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Course {
+public class Course implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "courseId", updatable = false)
@@ -40,60 +41,47 @@ public class Course {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "evaluationTypeId", nullable = false)
-//	@JsonManagedReference
 	private EvaluationType mappingEvaluationType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
-	@JsonManagedReference
+	@JsonBackReference(value = "mappingCourseRef")
 	private CourseType mappingCourseType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "streamId", nullable = false)
-//	@JsonManagedReference
 	private Streams mappingStreams;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<StudentCourseDetails> StudentCourseDetails;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<BatchDetails> BatchDetails;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<CoursePlans> CoursePlans;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<ExpenseDetails> ExpenseDetails;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<RevenueDetail> RevenueDetail;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<Topics> Topics;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<TestDetails> TestDetails;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<CourseFeedback> CourseFeedback;
 

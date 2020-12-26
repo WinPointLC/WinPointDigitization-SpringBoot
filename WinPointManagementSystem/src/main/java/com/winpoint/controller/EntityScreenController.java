@@ -372,6 +372,7 @@ public class EntityScreenController {
 
 	@RequestMapping(value = "/CourseTypeUpdate", method = RequestMethod.POST)
 	public void updateCourseType(@RequestBody CourseType addRows[]) {
+		System.out.println("!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!");
 		for (CourseType courseType : addRows) {
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println(courseType);

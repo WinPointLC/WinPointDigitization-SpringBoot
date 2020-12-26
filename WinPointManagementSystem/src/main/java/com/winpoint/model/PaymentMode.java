@@ -26,11 +26,9 @@ public class PaymentMode {
 	private Integer paymentModeId;
 	private String paymentModeName;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingPaymentMode")
 	private Set<ExpenseDetails> mappingExpenseDetails;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingPaymentMode")
 	private Set<RevenueDetail> mappingRevenueDetail;
 

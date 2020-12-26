@@ -29,7 +29,6 @@ public class EmployeeCategory {
 	private Integer createdBy;
 	private Date createdDate;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingEmployeeCategory")
 	private Set<EmployeeDetails> mappingEmployeeDetails;
 

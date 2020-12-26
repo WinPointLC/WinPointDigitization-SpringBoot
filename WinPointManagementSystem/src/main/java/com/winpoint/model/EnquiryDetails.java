@@ -58,12 +58,10 @@ public class EnquiryDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
-//	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "timeSlotsId", nullable = false)
-//	@JsonManagedReference
 	private TimeSlots mappingTimeSlots;
 
 }

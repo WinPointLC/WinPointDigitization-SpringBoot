@@ -30,7 +30,6 @@ public class GradingSystem {
 	private Integer createdBy;
 	private Date createdDate;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingGradingSystem")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 }

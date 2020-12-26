@@ -12,8 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +27,6 @@ public class ClientCategory {
 	private Integer createdBy;
 	private Date createdDate;
 
-	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingClientCategory")
 	Set<UserStudent> UserStudent;
 

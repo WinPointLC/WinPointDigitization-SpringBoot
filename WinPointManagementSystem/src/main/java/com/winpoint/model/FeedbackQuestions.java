@@ -34,19 +34,15 @@ public class FeedbackQuestions {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackQuestionTypeId", nullable = false)
-//	@JsonManagedReference
 	private FeedbackQuestionType mappingFeedbackQuestionType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackCategoryId", nullable = false)
-//	@JsonManagedReference
 	private FeedbackCategory mappingFeedbackCategory;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackQuestions")
 	private Set<TestFeedback> TestFeedback;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackQuestions")
 	private Set<CourseFeedback> CourseFeedback;
 

@@ -32,17 +32,14 @@ public class CourseFeedback {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
-//	@JsonManagedReference
 	private Course mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
-//	@JsonManagedReference
 	private UserProfile mappingUserProfile;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackQuestionId", nullable = false)
-//	@JsonManagedReference
 	private FeedbackQuestions mappingFeedbackQuestions;
 	
 }

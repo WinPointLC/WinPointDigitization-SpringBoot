@@ -33,7 +33,6 @@ public class FacultySkills {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
-//	@JsonManagedReference
 	private UserProfile mappingUserProfile;
 
 }

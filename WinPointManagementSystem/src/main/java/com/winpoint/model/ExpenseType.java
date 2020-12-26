@@ -26,7 +26,6 @@ public class ExpenseType {
 	private Integer expenseTypeId;
 	private String expenseTypeName;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingExpenseType")
 	private Set<StudentCourseDetails> StudentCourseDetails;
 

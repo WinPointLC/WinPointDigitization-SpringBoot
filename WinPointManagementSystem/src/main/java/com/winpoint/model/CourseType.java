@@ -1,5 +1,6 @@
 package com.winpoint.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +25,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class CourseType{
+@JsonIgnoreProperties("inspection")
+public class CourseType implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "courseTypeId", updatable = false)
@@ -60,17 +64,16 @@ public class CourseType{
 	}
 	
 	@JsonBackReference
+	@JsonManagedReference(value = "mappingCourseRef")
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<Course> mappingCourse;
-
 	
+	@JsonManagedReference(value = "mappingCourseTypeRef2")
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<StreamCourseType> mappingStreamCourseType;
 
-	
+	@JsonManagedReference(value = "mappingCourseTypeRef3")
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<ToolTips> mappingToolTips;
 	
-	
-
 }

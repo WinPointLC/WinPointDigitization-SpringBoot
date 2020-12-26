@@ -29,15 +29,12 @@ public class DifficultyLevel {
 	private Integer createdBy;
 	private Date createdDate;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 

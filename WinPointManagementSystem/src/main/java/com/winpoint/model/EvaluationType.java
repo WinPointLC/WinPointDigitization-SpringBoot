@@ -30,11 +30,9 @@ public class EvaluationType {
 	private Integer createdBy;
 	private Date createdDate;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingEvaluationType")
 	private Set<Course> mappingCourse;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingEvaluationType")
 	private Set<TestDetails> mappingTestDetails;
 

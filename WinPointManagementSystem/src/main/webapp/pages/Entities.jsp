@@ -54,10 +54,10 @@
 								<div class="dropdown">
 
 									<button class="btn btn-secondary dropdown-toggle "
-										type="button" id="dropdownMenuButtonEntity" data-toggle="dropdown"
-										data-display="static" aria-haspopup="true"
-										aria-expanded="false" style="display: block; margin: auto;">
-										SELECT ENTITY</button>
+										type="button" id="dropdownMenuButtonEntity"
+										data-toggle="dropdown" data-display="static"
+										aria-haspopup="true" aria-expanded="false"
+										style="display: block; margin: auto;">SELECT ENTITY</button>
 
 									<div class="dropdown-menu entity-menu"
 										aria-labelledby="dropdownMenuButton">
@@ -77,10 +77,9 @@
 												Type</a> <a class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">Organization Type</a> <a
 												class="dropdown-item" href="#"
-												onclick="showBody(this.textContent)">Grading System</a>
-												<a
+												onclick="showBody(this.textContent)">Grading System</a> <a
 												class="dropdown-item" href="#"
-													onclick="showBody(this.textContent)">Course</a>
+												onclick="showBody(this.textContent)">Course</a>
 										</div>
 										<div class="pull-right">
 											<a class="dropdown-item" href="#"
@@ -94,12 +93,11 @@
 											<a class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">Segment Type</a> <a
 												class="dropdown-item" href="#"
-												onclick="showBody(this.textContent)">Stream</a> 
-					<!-- 							<a
+												onclick="showBody(this.textContent)">Stream</a>
+											<!-- 							<a
 												class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">Student Category</a>  -->
-												<a
-												class="dropdown-item" href="#"
+											<a class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">Time Slots</a> <a
 												class="dropdown-item" href="#"
 												onclick="showBody(this.textContent)">User Category</a>
@@ -109,40 +107,46 @@
 
 
 								</div>
-								
-								 <div class="row">
-									 <div class="dropdown column"><!--second dropdown select stream -->
+
+								<div class="row">
+									<div class="dropdown column">
+										<!--second dropdown select stream -->
 
 										<button class="btn btn-secondary dropdown-toggle "
-											type="button" id="dropdownMenuSelectStream" data-toggle="dropdown"
-											data-display="static" aria-haspopup="true"
-											aria-expanded="false" style="display:none;margin-left:200px">
-											SELECT STREAM</button>
+											type="button" id="dropdownMenuSelectStream"
+											data-toggle="dropdown" data-display="static"
+											aria-haspopup="true" aria-expanded="false"
+											style="display: none; margin-left: 200px">SELECT
+											STREAM</button>
 
-										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-stream-dropdown">
+										<div class="dropdown-menu"
+											aria-labelledby="dropdownMenuButton"
+											id="select-stream-dropdown"></div>
 
-                  						</div>
-										
-								</div><!---Second dropdown end-->
-								
-								
-								
-								 <div class="dropdown column"><!--third dropdown select stream -->
-
-									<button class="btn btn-secondary dropdown-toggle "
-										type="button" id="dropdownMenuSelectCoursetype" data-toggle="dropdown"
-										data-display="static" aria-haspopup="true"
-										aria-expanded="false" style="display:none; margin-left:250px">
-										SELECT COURSETYPE</button>
-
-									 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-coursetype-dropdown">
-
-                    				</div>
+									</div>
+									<!---Second dropdown end-->
 
 
-								</div><!---third dropdown end-->
-							</div>
-								
+
+									<div class="dropdown column">
+										<!--third dropdown select stream -->
+
+										<button class="btn btn-secondary dropdown-toggle "
+											type="button" id="dropdownMenuSelectCoursetype"
+											data-toggle="dropdown" data-display="static"
+											aria-haspopup="true" aria-expanded="false"
+											style="display: none; margin-left: 250px">SELECT
+											COURSETYPE</button>
+
+										<div class="dropdown-menu"
+											aria-labelledby="dropdownMenuButton"
+											id="select-coursetype-dropdown"></div>
+
+
+									</div>
+									<!---third dropdown end-->
+								</div>
+
 								<!--   1.  Course Type
 						2.  Difficulty Level
 						3.  Employee Category
@@ -171,13 +175,14 @@
 						<div class="card" id="entityTable" style="display: none;">
 							<div class="card-header card-header-primary">
 								<p>
-								<h4 class="card-title " style="display: inline;" id="entity_name"></h4>
+								<h4 class="card-title " style="display: inline;"
+									id="entity_name"></h4>
 								<a style="margin-left: 480px;" data-toggle="modal"
 									data-target="#addRowModal"> Add a row <i
 									class="material-icons">add_circle</i>
 
-								</a> <a style="margin-left: 30px;" onclick="delRow()" id="del_link"> Delete
-									rows <i class="material-icons">remove_circle</i>
+								</a> <a style="margin-left: 30px;" onclick="delRow()" id="del_link">
+									Delete rows <i class="material-icons">remove_circle</i>
 
 								</a>
 								</p>
@@ -200,8 +205,8 @@
 						<div class="copyright float-right">
 							&copy;
 							<script>
-			  document.write(new Date().getFullYear())
-			  </script>
+								document.write(new Date().getFullYear())
+							</script>
 							, made with <i class="material-icons">favorite</i> by <a
 								href="https://www.winpointlc.com" target="_blank">WinPoint
 								Team</a> for a better education.
@@ -272,215 +277,219 @@
 	<!--EDIT ROW MODAL END-->
 
 	<script type="text/javascript">
-    var add_rows = new Array();
-    function addRow(col_count,entity){
-        //alert("Entered in add row");
-		var row_data = new Array();
-						
-		row_count++;
-		var new_row = document.createElement('tr');
-		new_row.id=row_count+'r';	
-		//alert(new_row.id);
-		
-		for(i=0;i<col_count;i++){
-			var det_1  = document.createElement('td');
-			det_1.textContent=document.getElementById('exampleColumn'+(i+1)).value;
-			var data=det_1.textContent;
-			row_data.push(data);
-			//row_data.push('pushed');
-			det_1.id=row_count+'d1';
-			new_row.appendChild(det_1);
-			//alert("data pushed: "+row_data[i]);
-		}
-		var obj="{";
-		//alert(row_data.length);
-		for (var i = 0; i < row_data.length; i++) {
-			//alert(col_names[i]);
-			if(isNaN(row_data[i]))
-				obj=obj+"\""+col_names[i]+"\""+":"+"\""+row_data[i]+"\"" + ",";
-			else
-				obj=obj+"\""+col_names[i]+"\""+":"+row_data[i] + ",";
-			//alert(obj);
+		var add_rows = new Array();
+		function addRow(col_count, entity) {
+			//alert("Entered in add row");
+			var row_data = new Array();
+
+			row_count++;
+			var new_row = document.createElement('tr');
+			new_row.id = row_count + 'r';
+			//alert(new_row.id);
+
+			for (i = 0; i < col_count; i++) {
+				var det_1 = document.createElement('td');
+				det_1.textContent = document.getElementById('exampleColumn'
+						+ (i + 1)).value;
+				var data = det_1.textContent;
+				row_data.push(data);
+				//row_data.push('pushed');
+				det_1.id = row_count + 'd1';
+				new_row.appendChild(det_1);
+				//alert("data pushed: "+row_data[i]);
+			}
+			var obj = "{";
+			//alert(row_data.length);
+			for (var i = 0; i < row_data.length; i++) {
+				//alert(col_names[i]);
+				if (isNaN(row_data[i]))
+					obj = obj + "\"" + col_names[i] + "\"" + ":" + "\""
+							+ row_data[i] + "\"" + ",";
+				else
+					obj = obj + "\"" + col_names[i] + "\"" + ":" + row_data[i]
+							+ ",";
+				//alert(obj);
+			}
+
+			obj = obj.slice(0, -1);
+			obj = obj + "}";
+			obj = JSON.parse(obj);
+			add_rows.push(obj);
+
+			for (i = 0; i < add_rows.length; i++) {
+				//alert("row pushed:" + add_rows[i]);
+			}
+
+			var det_op = document.createElement('td');
+
+			var button_edit = document.createElement('button');
+			button_edit.setAttribute('type', "button");
+			button_edit.setAttribute('rel', "tooltip");
+			button_edit.setAttribute('title', "Edit");
+			button_edit.id = "btn-edit";
+			button_edit.className = "btn btn-primary btn-link btn-sm";
+
+			var button_rem = document.createElement('button');
+			button_rem.setAttribute('type', "button");
+			button_rem.setAttribute('rel', "tooltip");
+			button_rem.setAttribute('title', "Remove");
+			button_rem.className = "btn btn-danger btn-link btn-sm";
+
+			var div_check = document.createElement('div');
+			div_check.className = "form-check";
+			var check_label = document.createElement('label');
+			check_label.className = "form-check-label";
+			div_check.appendChild(check_label);
+			var inputCheck = document.createElement('input');
+			inputCheck.className = "form-check-input chk";
+			inputCheck.setAttribute('type', 'checkbox');
+			inputCheck.id = row_count + "c";
+			inputCheck.setAttribute('name', checkboxName);
+
+			check_label.appendChild(inputCheck);
+			var checksp1 = document.createElement('span');
+			checksp1.className = "form-check-sign";
+			check_label.appendChild(checksp1);
+			var checksp2 = document.createElement('span');
+			checksp2.className = "check";
+			checksp1.appendChild(checksp2);
+
+			var icon_edit = document.createElement('div');
+			var img = document.createElement('img');
+			img.setAttribute('src', '../assets/img/edit.png');
+			img.setAttribute('style', "width:20px;height:20px;");
+			icon_edit.appendChild(img);
+			button_edit.appendChild(icon_edit);
+			//button_edit.setAttribute('data-toggle', 'modal');
+			//button_edit.setAttribute('data-target', '#editRowModal');
+			button_edit.setAttribute('row_no', row_count + 'r');
+			button_edit.setAttribute('column-cnt', col_count);
+			button_edit
+					.setAttribute('onclick',
+							"editRow(this.getAttribute('row_no'),this.getAttribute('column-cnt'))");
+
+			det_op.appendChild(button_edit);
+
+			var sheet_check = document.createElement('style')
+			sheet_check.innerHTML = ".form-check{margin-left:80px; margin-top:-32px!important;}";
+			document.body.appendChild(sheet_check);
+			det_op.appendChild(div_check);
+
+			new_row.appendChild(det_op);
+
+			document.getElementById('table-entity').appendChild(new_row);
+
+			var form = document.getElementById('addRowForm');
+			form.reset();
+
+			//add_rows.push(row_data);
+			/*
+			for(i=0;i<add_rows.length;i++){
+				alert("row pushed:" + add_rows[i]);
+			}*/
 		}
 
-		obj=obj.slice(0, -1);
-		obj=obj+"}";
-		obj=JSON.parse(obj);
-		add_rows.push(obj);
-		
-		for(i=0;i<add_rows.length;i++){
-			//alert("row pushed:" + add_rows[i]);
-		}
-	
-	
-		var det_op  = document.createElement('td');
-			
-		var button_edit  = document.createElement('button');
-		button_edit.setAttribute('type',"button");
-		button_edit.setAttribute('rel',"tooltip");
-		button_edit.setAttribute('title',"Edit");
-		button_edit.id="btn-edit";
-		button_edit.className = "btn btn-primary btn-link btn-sm";
-		
-		var button_rem  = document.createElement('button');
-		button_rem.setAttribute('type',"button");
-		button_rem.setAttribute('rel',"tooltip");
-		button_rem.setAttribute('title',"Remove");
-		button_rem.className = "btn btn-danger btn-link btn-sm";
-		
-		var div_check=document.createElement('div');
-		div_check.className="form-check";
-		var check_label=document.createElement('label');
-		check_label.className="form-check-label";
-		div_check.appendChild(check_label);
-		var inputCheck=document.createElement('input');
-		inputCheck.className="form-check-input chk";
-		inputCheck.setAttribute('type','checkbox');
-		inputCheck.id=row_count+"c";
-		inputCheck.setAttribute('name',checkboxName);
-		
-		check_label.appendChild(inputCheck);
-		var checksp1=document.createElement('span');
-		checksp1.className="form-check-sign";
-		check_label.appendChild(checksp1);
-		var checksp2=document.createElement('span');
-		checksp2.className="check";
-		checksp1.appendChild(checksp2);
-		
-		var icon_edit = document.createElement('div');
-		var img = document.createElement('img');
-		img.setAttribute('src','../assets/img/edit.png');
-		img.setAttribute('style', "width:20px;height:20px;");
-	    icon_edit.appendChild(img);
-		button_edit.appendChild(icon_edit);
-		//button_edit.setAttribute('data-toggle', 'modal');
-		//button_edit.setAttribute('data-target', '#editRowModal');
-		button_edit.setAttribute('row_no', row_count+'r');
-		button_edit.setAttribute('column-cnt', col_count);
-		button_edit.setAttribute('onclick', "editRow(this.getAttribute('row_no'),this.getAttribute('column-cnt'))");
-		
-		det_op.appendChild(button_edit);
-		
-		var sheet_check = document.createElement('style')
-		sheet_check.innerHTML = ".form-check{margin-left:80px; margin-top:-32px!important;}";
-		document.body.appendChild(sheet_check);
-		det_op.appendChild(div_check);
-	
-		new_row.appendChild(det_op);
-		
-		document.getElementById('table-entity').appendChild(new_row);
-		
-		var form = document.getElementById('addRowForm'); 
-		form.reset();
+		function removeRow(row_id) {
 
-		
-		
-		//add_rows.push(row_data);
-		/*
-		for(i=0;i<add_rows.length;i++){
-			alert("row pushed:" + add_rows[i]);
-		}*/
-	}
-
-	function removeRow(row_id){
-	
-		//alert(row_id);
-		var elem = document.getElementById(row_id);
-		elem.parentNode.removeChild(elem);
-		
-	}
-
-	function submit(){
-	
-		for(i=0;i<add_rows.length;i++){
-			//alert("add row: " + add_rows[i]);
-		}
-		var del_rows = new Array();
-		var checkboxes= document.getElementsByClassName('prev_chk');
-		var checkboxes_checked=[];
-			 
-		for(var i = 0; i<checkboxes.length; i++){
-			 if(checkboxes[i].checked){
-			
-			  checkboxes_checked.push(checkboxes[i].id);
-			  del_rows.push(checkboxes[i].getAttribute('del_id'));
-			 }
-		}
-		//alert(checkboxes_checked)
-		
-		for(var i = 0; i<checkboxes_checked.length; i++){
-		
-			 //alert(checkboxes_checked.length);
-			rowDel=checkboxes_checked[i].substring(0,checkboxes_checked[i].length - 1)+'r';
-			//alert(rowDel);
-			
-			elem = document.getElementById(rowDel);
-			
+			//alert(row_id);
+			var elem = document.getElementById(row_id);
 			elem.parentNode.removeChild(elem);
-			
-		}
-		
-		for(i=0;i<del_rows.length;i++){
-			//alert("del : " + del_rows[i]);
-		}
-		
-		
-	/* 	alert(entityName+"Update"); */
-		
-		/* var myData = {
-		  addRows: add_rows,
-		  //delRowIds: del_rows
-		} ;*/
-		if(add_rows!=null){
-			$.ajax({
-				type: 'POST',
-				//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
-				//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
-				url:entityName+"Update",
-				data: JSON.stringify(add_rows),
-				//data: JSON.stringify(myData),
-				//data: myData,
-				//dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
-				//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-				traditional: true,
-				success: function () {
-					//alert("sucess ajax call for add and delete");
-					
-			    },
-				error: function(){
-		            //alert("Error");
-		        }
-		    });
+
 		}
 
-		if(del_rows!=null){
-			$.ajax({
-				type: 'POST',
-				//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
-				//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
-				url:entityName+"Delete",
-				data: JSON.stringify(del_rows),
-				//data: JSON.stringify(myData),
-				//data: myData,
-				//dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
-				//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-				traditional: true,
-				success: function () {
-					//alert("sucess ajax call for add and delete");
-					
-			    },
-				error: function(){
-		            //alert("Error");
-		        }
-		    });
+		function submit() {
+
+			for (i = 0; i < add_rows.length; i++) {
+				//alert("add row: " + add_rows[i]);
+			}
+			var del_rows = new Array();
+			var checkboxes = document.getElementsByClassName('prev_chk');
+			var checkboxes_checked = [];
+
+			for (var i = 0; i < checkboxes.length; i++) {
+				if (checkboxes[i].checked) {
+
+					checkboxes_checked.push(checkboxes[i].id);
+					del_rows.push(checkboxes[i].getAttribute('del_id'));
+				}
+			}
+			//alert(checkboxes_checked)
+
+			for (var i = 0; i < checkboxes_checked.length; i++) {
+
+				//alert(checkboxes_checked.length);
+				rowDel = checkboxes_checked[i].substring(0,
+						checkboxes_checked[i].length - 1)
+						+ 'r';
+				//alert(rowDel);
+
+				elem = document.getElementById(rowDel);
+
+				elem.parentNode.removeChild(elem);
+
+			}
+
+			for (i = 0; i < del_rows.length; i++) {
+				//alert("del : " + del_rows[i]);
+			}
+
+			/* 	alert(entityName+"Update"); */
+
+			/* var myData = {
+			  addRows: add_rows,
+			  //delRowIds: del_rows
+			} ;*/
+			if (add_rows != null) {
+				alert("SUCCESS");
+				$.ajax({
+					type : 'POST',
+					//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
+					//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
+					url : entityName + "Update",
+					data : JSON.stringify(add_rows),
+					//data: JSON.stringify(myData),
+					//data: myData,
+					//dataType: 'json',
+					contentType : 'application/json; charset=utf-8',
+					//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					traditional : true,
+					success : function() {
+						alert("sucess ajax call for add and delete");
+
+					},
+					error : function() {
+						//alert("Error");
+					}
+				});
+			}
+
+			if (del_rows != null) {
+				$.ajax({
+					type : 'POST',
+					//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=update',
+					//url:"/EntityUpdate?entityInfoParam=" + entityName + "&activity=update",
+					url : entityName + "Delete",
+					data : JSON.stringify(del_rows),
+					//data: JSON.stringify(myData),
+					//data: myData,
+					//dataType: 'json',
+					contentType : 'application/json; charset=utf-8',
+					//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					traditional : true,
+					success : function() {
+						//alert("sucess ajax call for add and delete");
+
+					},
+					error : function() {
+						//alert("Error");
+					}
+				});
+			}
+			add_rows = [];
+			col_names = [];
+			location.reload();
+
 		}
-		add_rows=[];
-		col_names=[];
-		location.reload();
-		
-	}
 	</script>
 
 	<!--   Core JS Files   -->
@@ -529,684 +538,884 @@
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/demo/demo.js"></script>
 	<script type="text/javascript">
+		var entityName;
+		var col_names = [];
+		var col_count;
+		var row_count;
+		row_count = 0;
+		var CourseTypeList;
+		var entityDetailList;
 
-	var entityName;
-	var col_names = [];
-	var col_count;
-	var row_count;
-	row_count=0;
-	var CourseTypeList;
-	var entityDetailList;
-	
-	function countColumns(obj) {
-		    col_names = [];
+		function countColumns(obj) {
+			col_names = [];
 			var result = 0;
-			for (var p in obj) {
+			for ( var p in obj) {
 				//alert("here");
-				
-				if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
+
+				if ((p != 'createdBy') && (p != 'createdDate')
+						&& (p.includes("Id") == false)
+						&& (p.includes("mapping") == false)) {
 					//alert(p);
 					col_names.push(p);
-					result = result+1;
-					
-				} 
-					
-			}              
+					result = result + 1;
+
+				}
+
+			}
 			return result;
-    }
-	
-	function addPrevRows(obj) {
+		}
+
+		function addPrevRows(obj) {
 			//alert(obj);
-			var flag=0;
-			for (var p in obj)
-			{
-				if(obj[p]!=null){
-					flag=1;
+			var flag = 0;
+			for ( var p in obj) {
+				if (obj[p] != null) {
+					flag = 1;
 				}
 			}
 
-			if(flag==1){
-				var table_row=document.createElement('tr');
+			if (flag == 1) {
+				var table_row = document.createElement('tr');
 				row_count++;
-				table_row.id=row_count+'r';
-	
-				for (var p in obj) {
+				table_row.id = row_count + 'r';
+
+				for ( var p in obj) {
 					//alert(p);
-				
-					if( p.includes("Id")==true){
-					   var id = obj[p];
+
+					if (p.includes("Id") == true) {
+						var id = obj[p];
 					}
-				
-					if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
-					
+
+					if ((p != 'createdBy') && (p != 'createdDate')
+							&& (p.includes("Id") == false)
+							&& (p.includes("mapping") == false)) {
+
 						var det = document.createElement('td');
-						det.textContent=obj[p];
-						table_row.appendChild(det);				
-						
-					}	
-				}  
-	
-				var button_edit  = document.createElement('button');
-				button_edit.setAttribute('type',"button");
-				button_edit.setAttribute('rel',"tooltip");
-				button_edit.setAttribute('title',"Edit");
-				button_edit.id="btn-edit";
+						det.textContent = obj[p];
+						table_row.appendChild(det);
+
+					}
+				}
+
+				var button_edit = document.createElement('button');
+				button_edit.setAttribute('type', "button");
+				button_edit.setAttribute('rel', "tooltip");
+				button_edit.setAttribute('title', "Edit");
+				button_edit.id = "btn-edit";
 				button_edit.className = "btn btn-primary btn-link btn-sm";
-				
+
 				var icon_edit = document.createElement('div');
 				var img = document.createElement('img');
-				img.setAttribute('src','../assets/img/edit.png');
+				img.setAttribute('src', '../assets/img/edit.png');
 				img.setAttribute('style', "width:20px;height:20px;");
 				icon_edit.appendChild(img);
 				button_edit.appendChild(icon_edit);
-				button_edit.setAttribute('row_no', row_count+'r');
-				col_count=countColumns(entityDetailList[0]);
+				button_edit.setAttribute('row_no', row_count + 'r');
+				col_count = countColumns(entityDetailList[0]);
 				button_edit.setAttribute('column-cnt', col_count);
-				button_edit.setAttribute('onclick', "editRow(this.getAttribute('row_no'),this.getAttribute('column-cnt'))");
+				button_edit
+						.setAttribute('onclick',
+								"editRow(this.getAttribute('row_no'),this.getAttribute('column-cnt'))");
 				table_row.appendChild(button_edit);
-				
-				
-				var div_check=document.createElement('div');
-				div_check.className="form-check";
-				var check_label=document.createElement('label');
-				check_label.className="form-check-label";
+
+				var div_check = document.createElement('div');
+				div_check.className = "form-check";
+				var check_label = document.createElement('label');
+				check_label.className = "form-check-label";
 				div_check.appendChild(check_label);
-				var inputCheck=document.createElement('input');
-				inputCheck.className="form-check-input chk prev_chk";
-				inputCheck.setAttribute('type','checkbox');
-				inputCheck.setAttribute('del_id',id);
-				inputCheck.id=row_count+"c";
-				inputCheck.setAttribute('onclick','disable_del(this.id)');
+				var inputCheck = document.createElement('input');
+				inputCheck.className = "form-check-input chk prev_chk";
+				inputCheck.setAttribute('type', 'checkbox');
+				inputCheck.setAttribute('del_id', id);
+				inputCheck.id = row_count + "c";
+				inputCheck.setAttribute('onclick', 'disable_del(this.id)');
 				//alert(inputCheck.id);
-				inputCheck.setAttribute('name',checkboxName);
-				
+				inputCheck.setAttribute('name', checkboxName);
+
 				check_label.appendChild(inputCheck);
-				var checksp1=document.createElement('span');
-				checksp1.className="form-check-sign";
+				var checksp1 = document.createElement('span');
+				checksp1.className = "form-check-sign";
 				check_label.appendChild(checksp1);
-				var checksp2=document.createElement('span');
-				checksp2.className="check";
+				var checksp2 = document.createElement('span');
+				checksp2.className = "check";
 				checksp1.appendChild(checksp2);
 				table_row.appendChild(div_check);
-				
+
 				var sheet_check = document.createElement('style')
 				sheet_check.innerHTML = ".form-check{margin-left:80px; margin-top:-32px!important;}";
 				document.body.appendChild(sheet_check);
-		
+
 				document.getElementById('table-entity').appendChild(table_row);
+			} else {
+				col_count = countColumns(entityDetailList[0]);
 			}
-			else
-				{
-					col_count=countColumns(entityDetailList[0]);
-				}
 		}
-		
-	function disable_del(checkbox_id){
-		
-		var cb=document.getElementById(checkbox_id);
-		if(cb.checked)
-			document.getElementById('del_link').className="disabled-link";
-		else
-			document.getElementById('del_link').className="";
-	}
-	
-    function showBody(entity_name,flag,courseValue){
-	
-		entityName=entity_name.replace(/\s+/g, "");
-		//alert("SELECTED FROM CHOICE BOX : "+entityName);
-		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
-		document.getElementById('dropdownMenuSelectStream').style.display="none";
-		document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
-		//alert("INFO : "+entityName);
-		$.ajax({
-			type: 'POST',
-			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=read',
-			
-			url:"/Entity?entityInfoParam=" + entityName,
-			//data: JSON.stringify(myData),
-			dataType: 'json',
-			contentType: 'application/json; charset=utf-8', 			traditional: true,
-			success: function (jsonObj) {
-			 	//alert("HELLO");
-			 	//alert(jsonObj[1]);
-			 	//alert(jsonObj[0].courseTypeName);
-			    entityDetailList=jsonObj;
-				//alert("Entity List "+ entityDetailList) 
-				
-				var col_names = [];
-				function countColumns(obj) {
-					var result = 0;
-					for (var p in obj) {
-						
-						if( (p!='createdBy') && (p!='createdDate')&& ( p.includes("Id")==false )&& ( p.includes("mapping")==false )) {
-							//alert(p);
-							col_names.push(p);
-							result = result+1;
-							
-						} 
-							
-					}               
-					return result;
- 				}
-	
-				col_cnt=countColumns(entityDetailList[0]); 
-			  
-				var elem = document.getElementById('cardBody');
-				if (elem!=null){
-					elem.parentNode.removeChild(elem);
-				}
-				row_count=0;
-				
-				var cardBody = document.createElement('div');
-				cardBody.className="card-body";	
-				cardBody.id="cardBody";	
-				document.getElementById('entity_name').textContent = entity_name;
 
-				if((entity_name=="Course")&&(flag!="display"))
-				{
-					//alert("Course is there");
-					
-					document.getElementById('dropdownMenuSelectStream').style.display="block";
-					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
-					document.getElementById('entityTable').style.display="none";
-					document.getElementById('dropdownMenuSelectCoursetype').textContent="SELECT COURSETYPE";
-					document.getElementById('dropdownMenuSelectStream').textContent="SELECT STREAM";
+		function disable_del(checkbox_id) {
 
-					$.ajax({
-						type: 'POST',
-						url: "/Streams",
-						dataType: 'json',
-						
-						contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-						traditional: true,
-						success: function (jsonObj) {
+			var cb = document.getElementById(checkbox_id);
+			if (cb.checked)
+				document.getElementById('del_link').className = "disabled-link";
+			else
+				document.getElementById('del_link').className = "";
+		}
 
-								streamList=jsonObj;
+		function showBody(entity_name, flag, courseValue) {
 
-								var streamDropDown=document.getElementById('select-stream-dropdown');
-								while (streamDropDown.hasChildNodes()) {  
-									streamDropDown.removeChild(streamDropDown.firstChild);
+			entityName = entity_name.replace(/\s+/g, "");
+			//alert("SELECTED FROM CHOICE BOX : "+entityName);
+			document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
+			document.getElementById('dropdownMenuSelectStream').style.display = "none";
+			document.getElementById('dropdownMenuSelectCoursetype').style.display = "none";
+			//alert("INFO : "+entityName);
+			$
+					.ajax({
+						type : 'POST',
+						//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=read',
+
+						url : "/Entity?entityInfoParam=" + entityName,
+						//data: JSON.stringify(myData),
+						dataType : 'json',
+						contentType : 'application/json; charset=utf-8',
+						traditional : true,
+						success : function(jsonObj) {
+							//alert("HELLO");
+							//alert(jsonObj[1]);
+							//alert(jsonObj[0].courseTypeName);
+							entityDetailList = jsonObj;
+							//alert("Entity List "+ entityDetailList) 
+
+							var col_names = [];
+							function countColumns(obj) {
+								var result = 0;
+								for ( var p in obj) {
+
+									if ((p != 'createdBy')
+											&& (p != 'createdDate')
+											&& (p.includes("Id") == false)
+											&& (p.includes("mapping") == false)) {
+										//alert(p);
+										col_names.push(p);
+										result = result + 1;
+
+									}
+
 								}
+								return result;
+							}
 
-								for (var i = 0; i < streamList.length; i++) {
-									var anchor2 = document.createElement('a');
-									anchor2.className="dropdown-item";
-									anchor2.setAttribute('href', "#");
-									anchor2.id = streamList[i].streamId;
-									anchor2.textContent = streamList[i].streamName.toUpperCase().replace("_"," ");
-									anchor2.setAttribute('onclick', "getStreamId(this.id)");
-									document.getElementById('select-stream-dropdown').appendChild(anchor2);
-								}
-							
+							col_cnt = countColumns(entityDetailList[0]);
+
+							var elem = document.getElementById('cardBody');
+							if (elem != null) {
+								elem.parentNode.removeChild(elem);
+							}
+							row_count = 0;
+
+							var cardBody = document.createElement('div');
+							cardBody.className = "card-body";
+							cardBody.id = "cardBody";
+							document.getElementById('entity_name').textContent = entity_name;
+
+							if ((entity_name == "Course")
+									&& (flag != "display")) {
+								//alert("Course is there");
+
+								document
+										.getElementById('dropdownMenuSelectStream').style.display = "block";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').style.display = "block";
+								document.getElementById('entityTable').style.display = "none";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').textContent = "SELECT COURSETYPE";
+								document
+										.getElementById('dropdownMenuSelectStream').textContent = "SELECT STREAM";
+
+								$
+										.ajax({
+											type : 'POST',
+											url : "/Streams",
+											dataType : 'json',
+
+											contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+											traditional : true,
+											success : function(jsonObj) {
+
+												streamList = jsonObj;
+
+												var streamDropDown = document
+														.getElementById('select-stream-dropdown');
+												while (streamDropDown
+														.hasChildNodes()) {
+													streamDropDown
+															.removeChild(streamDropDown.firstChild);
+												}
+
+												for (var i = 0; i < streamList.length; i++) {
+													var anchor2 = document
+															.createElement('a');
+													anchor2.className = "dropdown-item";
+													anchor2.setAttribute(
+															'href', "#");
+													anchor2.id = streamList[i].streamId;
+													anchor2.textContent = streamList[i].streamName
+															.toUpperCase()
+															.replace("_", " ");
+													anchor2
+															.setAttribute(
+																	'onclick',
+																	"getStreamId(this.id)");
+													document
+															.getElementById(
+																	'select-stream-dropdown')
+															.appendChild(
+																	anchor2);
+												}
+
+											}
+										});
+
+							}
+
+							else if ((entity_name == "Course")
+									&& (flag == "display")) {
+								//alert("Course is there");
+
+								document
+										.getElementById('dropdownMenuSelectStream').style.display = "block";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').style.display = "block";
+								document.getElementById('entityTable').style.display = "block";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').textContent = courseValue;
+
+							} else if (entity_name != "Course") {
+								//alert("Course is not there");
+								document
+										.getElementById('dropdownMenuSelectStream').style.display = "none";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').style.display = "none";
+								document.getElementById('entityTable').style.display = "block";
+							}
+
+							var tableRes = document.createElement('div');
+							tableRes.className = "table-responsive";
+
+							var tableEntity = document.createElement('table');
+							tableEntity.id = "table-entity";
+							tableEntity.className = "table";
+
+							var thead = document.createElement('thead');
+							thead.className = "text-primary";
+
+							for (var i = 0; i < col_cnt; i++) {
+
+								var th1 = document.createElement('th');
+
+								th1.textContent = col_names[i].charAt(0)
+										.toUpperCase()
+										+ col_names[i].slice(1).replace(
+												/([a-z0-9])([A-Z])/g, '$1 $2');
+
+								thead.appendChild(th1);
+
+							}
+							tableEntity.appendChild(thead);
+
+							tableRes.appendChild(tableEntity);
+							cardBody.appendChild(tableRes);
+
+							var tbody = document.createElement('tbody');
+							tbody.id = "table-rows";
+							tableEntity.appendChild(tbody);
+
+							document.getElementById('entity-table')
+									.appendChild(cardBody);
+
+							//document.getElementById('entityTable').style.display="block";
+
+							for (var i = 0; i < entityDetailList.length; i++) {
+								addPrevRows(entityDetailList[i]);
+							}
+
+							var form_modal = document.createElement('div');
+							form_modal.id = 'formModalAddRow';
+
+							var elem = document
+									.getElementById('formModalAddRow');
+							if (elem != null) {
+								elem.parentNode.removeChild(elem);
+							}
+
+							for (var i = 0; i < col_cnt; i++) {
+
+								var fg = document.createElement('div');
+								fg.className = "form-group";
+								var label = document.createElement('label');
+								label.setAttribute("for", 'exampleColumn'
+										+ (i + 1));
+								label.textContent = col_names[i].charAt(0)
+										.toUpperCase()
+										+ col_names[i].slice(1).replace(
+												/([a-z0-9])([A-Z])/g, '$1 $2');
+								fg.appendChild(label);
+
+								var input = document.createElement('input');
+								input.setAttribute("type", 'text');
+								input.className = "form-control";
+								input.id = "exampleColumn" + (i + 1);
+								fg.appendChild(input);
+
+								form_modal.appendChild(fg);
+
+							}
+							var btn_add_row = document.createElement('button');
+							btn_add_row.className = 'btn btn-primary';
+							btn_add_row.setAttribute('type', 'button');
+							btn_add_row.setAttribute('col-cnt', col_cnt);
+							btn_add_row.setAttribute('entity', entityName);
+							btn_add_row
+									.setAttribute('onclick',
+											"addRow(this.getAttribute('col-cnt'),this.getAttribute('entity'))");
+							//btn_add_row.setAttribute('onclick',"addRow("+this.getAttribute('col-cnt')+","+this.getAttribute('entity')+")");
+							btn_add_row.textContent = 'Add';
+							form_modal.appendChild(btn_add_row);
+
+							document.getElementById('addRowForm').appendChild(
+									form_modal);
+						},
+						error : function() {
+							//alert("Error");
 						}
 					});
-					
-				}
-				
-				else if((entity_name=="Course")&&(flag=="display"))
-				{
-					//alert("Course is there");
-					
-					document.getElementById('dropdownMenuSelectStream').style.display="block";
-					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
-					document.getElementById('entityTable').style.display="block";
-					document.getElementById('dropdownMenuSelectCoursetype').textContent=courseValue;
-					
-				}
-				else if (entity_name!="Course")
-				{
-					//alert("Course is not there");
-					document.getElementById('dropdownMenuSelectStream').style.display="none";
-					document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
-					document.getElementById('entityTable').style.display="block";
-				}
-				
-				var tableRes = document.createElement('div');
-				tableRes.className="table-responsive";
 
-				var tableEntity = document.createElement('table');
-				tableEntity.id="table-entity";
-				tableEntity.className="table";
-				
-				var thead = document.createElement('thead');
-				thead.className="text-primary";
-				
-				for(var i=0;i<col_cnt;i++){
-				
-					var th1 = document.createElement('th');
-					
-					th1.textContent=col_names[i].charAt(0).toUpperCase()+ col_names[i].slice(1).replace(/([a-z0-9])([A-Z])/g, '$1 $2');
-					
-					thead.appendChild(th1);
-					
-				}
-				tableEntity.appendChild(thead);
-				
-				tableRes.appendChild(tableEntity);
-				cardBody.appendChild(tableRes);
-				
-				var tbody = document.createElement('tbody');
-				tbody.id="table-rows";
-				tableEntity.appendChild(tbody);
-				
-				document.getElementById('entity-table').appendChild(cardBody);
-				
-				//document.getElementById('entityTable').style.display="block";
-				
-				for(var i=0;i<entityDetailList.length;i++){	
-					addPrevRows(entityDetailList[i]);
-				}
-				
-				var form_modal=document.createElement('div');
-				form_modal.id='formModalAddRow';
-				
-				var elem = document.getElementById('formModalAddRow');
-				if (elem!=null){
-					elem.parentNode.removeChild(elem);
-				}
-				
-				for(var i=0;i<col_cnt;i++){
-				
-					var fg = document.createElement('div');
-					fg.className="form-group";
-					var label = document.createElement('label');
-					label.setAttribute("for",'exampleColumn'+(i+1));
-					label.textContent=col_names[i].charAt(0).toUpperCase()+ col_names[i].slice(1).replace(/([a-z0-9])([A-Z])/g, '$1 $2');
-					fg.appendChild(label);
-					
-					var input = document.createElement('input');
-					input.setAttribute("type",'text');
-					input.className="form-control";
-					input.id="exampleColumn"+(i+1);
-					fg.appendChild(input);
-					
-					form_modal.appendChild(fg);
-					
-				}
-				var btn_add_row=document.createElement('button');
-				btn_add_row.className='btn btn-primary';
-				btn_add_row.setAttribute('type','button');
-				btn_add_row.setAttribute('col-cnt',col_cnt);
-				btn_add_row.setAttribute('entity',entityName);
-				btn_add_row.setAttribute('onclick',"addRow(this.getAttribute('col-cnt'),this.getAttribute('entity'))");				
-				//btn_add_row.setAttribute('onclick',"addRow("+this.getAttribute('col-cnt')+","+this.getAttribute('entity')+")");
-				btn_add_row.textContent='Add';
-				form_modal.appendChild(btn_add_row);
-				
-				document.getElementById('addRowForm').appendChild(form_modal); 
-			},
-			error: function(){
-				//alert("Error");
-			}
-		});
-			
-	}
+		}
 
-    var streamElem;
-	function getStreamId(stream_id){
-		
-		streamId = stream_id;
-		
-		streamElem = document.getElementById(streamId);
-		
-		document.getElementById('dropdownMenuSelectStream').textContent = streamElem.textContent;
-		
-		document.getElementById('dropdownMenuSelectCoursetype').textContent = 'SELECT COURSETYPE';
-					
-	    var myData = {
-			streamId: streamId
-		};
-		
-		$.ajax({
-			type: 'POST',
-			//url: servletURL + 'StreamCourseTypeServlet',
-			url: "/StreamCourseType",
-			//data: JSON.stringify(myData),
-			data: jQuery.param(myData),
-			dataType: 'json',
-			//contentType: 'application/json; charset=utf-8',
-			contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-			traditional: true,
-			success: function (jsonObj) {
-				courseTypeList=jsonObj;
-				
-				var courseTypeDropDown=document.getElementById('select-coursetype-dropdown');
-				while (courseTypeDropDown.hasChildNodes()) {  
-					courseTypeDropDown.removeChild(courseTypeDropDown.firstChild);
-				}
+		var streamElem;
+		function getStreamId(stream_id) {
 
-				//alert("courseTypeList.length = "+courseTypeList.length);
-				for (var i = 0; i < courseTypeList.length; i++) {
-					var anchor2 = document.createElement('a');
-					anchor2.className="dropdown-item";
-					anchor2.setAttribute('href', "#");
-					anchor2.id = courseTypeList[i].courseTypeId + 'CT';
-					//alert("courseType Name  " + courseTypeList[i].courseTypeName);
-					anchor2.textContent = courseTypeList[i].courseTypeName.toUpperCase().replace("_"," ");
-					anchor2.setAttribute('onclick', "getCourseTypeId(this.id)");
-					document.getElementById('select-coursetype-dropdown').appendChild(anchor2);
-				}
-				
-			},
-			error: function(){
-				//alert("Error");
-				//document.getElementById("error").innerHTML = "Invalid email or password";
-			}
+			streamId = stream_id;
 
-		});
-	}
-				
-</script>
+			streamElem = document.getElementById(streamId);
+
+			document.getElementById('dropdownMenuSelectStream').textContent = streamElem.textContent;
+
+			document.getElementById('dropdownMenuSelectCoursetype').textContent = 'SELECT COURSETYPE';
+
+			var myData = {
+				streamId : streamId
+			};
+
+			$
+					.ajax({
+						type : 'POST',
+						//url: servletURL + 'StreamCourseTypeServlet',
+						url : "/StreamCourseType",
+						//data: JSON.stringify(myData),
+						data : jQuery.param(myData),
+						dataType : 'json',
+						//contentType: 'application/json; charset=utf-8',
+						contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+						traditional : true,
+						success : function(jsonObj) {
+							courseTypeList = jsonObj;
+
+							var courseTypeDropDown = document
+									.getElementById('select-coursetype-dropdown');
+							while (courseTypeDropDown.hasChildNodes()) {
+								courseTypeDropDown
+										.removeChild(courseTypeDropDown.firstChild);
+							}
+
+							//alert("courseTypeList.length = "+courseTypeList.length);
+							for (var i = 0; i < courseTypeList.length; i++) {
+								var anchor2 = document.createElement('a');
+								anchor2.className = "dropdown-item";
+								anchor2.setAttribute('href', "#");
+								anchor2.id = courseTypeList[i].courseTypeId
+										+ 'CT';
+								//alert("courseType Name  " + courseTypeList[i].courseTypeName);
+								anchor2.textContent = courseTypeList[i].courseTypeName
+										.toUpperCase().replace("_", " ");
+								anchor2.setAttribute('onclick',
+										"getCourseTypeId(this.id)");
+								document.getElementById(
+										'select-coursetype-dropdown')
+										.appendChild(anchor2);
+							}
+
+						},
+						error : function() {
+							//alert("Error");
+							//document.getElementById("error").innerHTML = "Invalid email or password";
+						}
+
+					});
+		}
+	</script>
 
 	<script type="text/javascript">
+		var rowId;
+		var checkboxName = "checkBox";
 
-	var rowId;
-	var checkboxName="checkBox";
-  
-  function editRow(row_id,col_cnt){
-	rowId=row_id;
-	
-    var children = document.getElementById(rowId).childNodes; 
-	
-	var form_modal=document.createElement('div');
-	form_modal.id='formModalEditRow';
-	
-	var elem = document.getElementById('formModalEditRow');
-	if (elem!=null){
-		elem.parentNode.removeChild(elem);
-	}
-	
-	for(var i=0;i<col_cnt;i++){
-	
-		var fg = document.createElement('div');
-		fg.className="form-group";
-		var label = document.createElement('label');
-		label.setAttribute("for",'editColumn'+(i+1));
-		label.textContent=col_names[i].charAt(0).toUpperCase()+ col_names[i].slice(1).replace(/([a-z0-9])([A-Z])/g, '$1 $2');
-		fg.appendChild(label);
-		
-		var input = document.createElement('input');
-		input.setAttribute("type",'text');
-		input.className="form-control";
-		input.id="editColumn"+(i+1);
-		fg.appendChild(input);
-		
-		form_modal.appendChild(fg);
-		
-	}
-	
-	var btn_edit_row=document.createElement('button');
-	btn_edit_row.className='btn btn-primary';
-	btn_edit_row.setAttribute('type','button');
-	btn_edit_row.setAttribute('col-cnt',col_cnt);
-	btn_edit_row.setAttribute('onclick',"editRowDet(this.getAttribute('col-cnt'))");
-	btn_edit_row.textContent='Edit';
-	form_modal.appendChild(btn_edit_row);
-	
-	document.getElementById('editRowForm').appendChild(form_modal);
-	
-    $("#editRowModal").modal();
-	
-	for(var i=0;i<col_cnt;i++){
-	
-		document.getElementById('editColumn'+(i+1)).value=children[i].innerHTML;
-		
-	}
-	
-	
-  };
-  
-  function editRowDet(col_cnt){
-	var children = document.getElementById(rowId).childNodes;
-    //alert(children[0].innerHTML);
+		function editRow(row_id, col_cnt) {
+			rowId = row_id;
 
-	for(var i=0;i<col_cnt;i++){
-	
-		children[i].innerHTML=document.getElementById('editColumn'+(i+1)).value;
-		
-	}
-   
-  }
-  
-  
-    function delRow(){
-        var elem ;
-        var elem_par;
-        var elem_par_2;
-        var checkboxes_checked=[];
-        var j=0;
-		var rowDel;
+			var children = document.getElementById(rowId).childNodes;
 
-	  //alert(row_count)
-	  if(row_count==0){
-		//alert("There is no row in the table")
-	  }
-	  else{
-			var checkboxes= document.getElementsByClassName('chk');
-		 
-			for(var i = 0; i<checkboxes.length; i++){
-				 if(checkboxes[i].checked){
-				
-				  checkboxes_checked.push(checkboxes[i].id);
-				 }
-			}
-			//alert(checkboxes_checked)
-			
-			
+			var form_modal = document.createElement('div');
+			form_modal.id = 'formModalEditRow';
 
-			for(var i = 0; i<checkboxes_checked.length; i++){
-			
-				 //alert(checkboxes_checked.length);
-				rowDel=checkboxes_checked[i].substring(0,checkboxes_checked[i].length - 1)+'r';
-				//alert(rowDel);
-			
-				elem = document.getElementById(rowDel);
-				
+			var elem = document.getElementById('formModalEditRow');
+			if (elem != null) {
 				elem.parentNode.removeChild(elem);
 			}
+
+			for (var i = 0; i < col_cnt; i++) {
+
+				var fg = document.createElement('div');
+				fg.className = "form-group";
+				var label = document.createElement('label');
+				label.setAttribute("for", 'editColumn' + (i + 1));
+				label.textContent = col_names[i].charAt(0).toUpperCase()
+						+ col_names[i].slice(1).replace(/([a-z0-9])([A-Z])/g,
+								'$1 $2');
+				fg.appendChild(label);
+
+				var input = document.createElement('input');
+				input.setAttribute("type", 'text');
+				input.className = "form-control";
+				input.id = "editColumn" + (i + 1);
+				fg.appendChild(input);
+
+				form_modal.appendChild(fg);
+
+			}
+
+			var btn_edit_row = document.createElement('button');
+			btn_edit_row.className = 'btn btn-primary';
+			btn_edit_row.setAttribute('type', 'button');
+			btn_edit_row.setAttribute('col-cnt', col_cnt);
+			btn_edit_row.setAttribute('onclick',
+					"editRowDet(this.getAttribute('col-cnt'))");
+			btn_edit_row.textContent = 'Edit';
+			form_modal.appendChild(btn_edit_row);
+
+			document.getElementById('editRowForm').appendChild(form_modal);
+
+			$("#editRowModal").modal();
+
+			for (var i = 0; i < col_cnt; i++) {
+
+				document.getElementById('editColumn' + (i + 1)).value = children[i].innerHTML;
+
+			}
+
+		};
+
+		function editRowDet(col_cnt) {
+			var children = document.getElementById(rowId).childNodes;
+			//alert(children[0].innerHTML);
+
+			for (var i = 0; i < col_cnt; i++) {
+
+				children[i].innerHTML = document.getElementById('editColumn'
+						+ (i + 1)).value;
+
+			}
+
 		}
-	  }
-</script>
+
+		function delRow() {
+			var elem;
+			var elem_par;
+			var elem_par_2;
+			var checkboxes_checked = [];
+			var j = 0;
+			var rowDel;
+
+			//alert(row_count)
+			if (row_count == 0) {
+				//alert("There is no row in the table")
+			} else {
+				var checkboxes = document.getElementsByClassName('chk');
+
+				for (var i = 0; i < checkboxes.length; i++) {
+					if (checkboxes[i].checked) {
+
+						checkboxes_checked.push(checkboxes[i].id);
+					}
+				}
+				//alert(checkboxes_checked)
+
+				for (var i = 0; i < checkboxes_checked.length; i++) {
+
+					//alert(checkboxes_checked.length);
+					rowDel = checkboxes_checked[i].substring(0,
+							checkboxes_checked[i].length - 1)
+							+ 'r';
+					//alert(rowDel);
+
+					elem = document.getElementById(rowDel);
+
+					elem.parentNode.removeChild(elem);
+				}
+			}
+		}
+	</script>
 
 
 	<script>
+		$(document)
+				.ready(
+						function() {
+							$()
+									.ready(
+											function() {
+												$sidebar = $('.sidebar');
 
+												$sidebar_img_container = $sidebar
+														.find('.sidebar-background');
 
-$(document).ready(function() {
-  $().ready(function() {
-    $sidebar = $('.sidebar');
+												$full_page = $('.full-page');
 
-    $sidebar_img_container = $sidebar.find('.sidebar-background');
+												$sidebar_responsive = $('body > .navbar-collapse');
 
-    $full_page = $('.full-page');
+												window_width = $(window)
+														.width();
 
-    $sidebar_responsive = $('body > .navbar-collapse');
+												fixed_plugin_open = $(
+														'.sidebar .sidebar-wrapper .nav li.active a p')
+														.html();
 
-    window_width = $(window).width();
+												if (window_width > 767
+														&& fixed_plugin_open == 'Dashboard') {
+													if ($(
+															'.fixed-plugin .dropdown')
+															.hasClass(
+																	'show-dropdown')) {
+														$(
+																'.fixed-plugin .dropdown')
+																.addClass(
+																		'open');
+													}
 
-    fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+												}
 
-    if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-      if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-        $('.fixed-plugin .dropdown').addClass('open');
-      }
+												$('.fixed-plugin a')
+														.click(
+																function(event) {
+																	// Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+																	if ($(this)
+																			.hasClass(
+																					'switch-trigger')) {
+																		if (event.stopPropagation) {
+																			event
+																					.stopPropagation();
+																		} else if (window.event) {
+																			window.event.cancelBubble = true;
+																		}
+																	}
+																});
 
-    }
+												$(
+														'.fixed-plugin .active-color span')
+														.click(
+																function() {
+																	$full_page_background = $('.full-page-background');
 
-    $('.fixed-plugin a').click(function(event) {
-      // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-      if ($(this).hasClass('switch-trigger')) {
-        if (event.stopPropagation) {
-          event.stopPropagation();
-        } else if (window.event) {
-          window.event.cancelBubble = true;
-        }
-      }
-    });
+																	$(this)
+																			.siblings()
+																			.removeClass(
+																					'active');
+																	$(this)
+																			.addClass(
+																					'active');
 
-    $('.fixed-plugin .active-color span').click(function() {
-      $full_page_background = $('.full-page-background');
+																	var new_color = $(
+																			this)
+																			.data(
+																					'color');
 
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
+																	if ($sidebar.length != 0) {
+																		$sidebar
+																				.attr(
+																						'data-color',
+																						new_color);
+																	}
 
-      var new_color = $(this).data('color');
+																	if ($full_page.length != 0) {
+																		$full_page
+																				.attr(
+																						'filter-color',
+																						new_color);
+																	}
 
-      if ($sidebar.length != 0) {
-        $sidebar.attr('data-color', new_color);
-      }
+																	if ($sidebar_responsive.length != 0) {
+																		$sidebar_responsive
+																				.attr(
+																						'data-color',
+																						new_color);
+																	}
+																});
 
-      if ($full_page.length != 0) {
-        $full_page.attr('filter-color', new_color);
-      }
+												$(
+														'.fixed-plugin .background-color .badge')
+														.click(
+																function() {
+																	$(this)
+																			.siblings()
+																			.removeClass(
+																					'active');
+																	$(this)
+																			.addClass(
+																					'active');
 
-      if ($sidebar_responsive.length != 0) {
-        $sidebar_responsive.attr('data-color', new_color);
-      }
-    });
+																	var new_color = $(
+																			this)
+																			.data(
+																					'background-color');
 
-    $('.fixed-plugin .background-color .badge').click(function() {
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
+																	if ($sidebar.length != 0) {
+																		$sidebar
+																				.attr(
+																						'data-background-color',
+																						new_color);
+																	}
+																});
 
-      var new_color = $(this).data('background-color');
+												$('.fixed-plugin .img-holder')
+														.click(
+																function() {
+																	$full_page_background = $('.full-page-background');
 
-      if ($sidebar.length != 0) {
-        $sidebar.attr('data-background-color', new_color);
-      }
-    });
+																	$(this)
+																			.parent(
+																					'li')
+																			.siblings()
+																			.removeClass(
+																					'active');
+																	$(this)
+																			.parent(
+																					'li')
+																			.addClass(
+																					'active');
 
-    $('.fixed-plugin .img-holder').click(function() {
-      $full_page_background = $('.full-page-background');
+																	var new_image = $(
+																			this)
+																			.find(
+																					"img")
+																			.attr(
+																					'src');
 
-      $(this).parent('li').siblings().removeClass('active');
-      $(this).parent('li').addClass('active');
+																	if ($sidebar_img_container.length != 0
+																			&& $('.switch-sidebar-image input:checked').length != 0) {
+																		$sidebar_img_container
+																				.fadeOut(
+																						'fast',
+																						function() {
+																							$sidebar_img_container
+																									.css(
+																											'background-image',
+																											'url("'
+																													+ new_image
+																													+ '")');
+																							$sidebar_img_container
+																									.fadeIn('fast');
+																						});
+																	}
 
+																	if ($full_page_background.length != 0
+																			&& $('.switch-sidebar-image input:checked').length != 0) {
+																		var new_image_full_page = $(
+																				'.fixed-plugin li.active .img-holder')
+																				.find(
+																						'img')
+																				.data(
+																						'src');
 
-      var new_image = $(this).find("img").attr('src');
+																		$full_page_background
+																				.fadeOut(
+																						'fast',
+																						function() {
+																							$full_page_background
+																									.css(
+																											'background-image',
+																											'url("'
+																													+ new_image_full_page
+																													+ '")');
+																							$full_page_background
+																									.fadeIn('fast');
+																						});
+																	}
 
-      if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-        $sidebar_img_container.fadeOut('fast', function() {
-          $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-          $sidebar_img_container.fadeIn('fast');
-        });
-      }
+																	if ($('.switch-sidebar-image input:checked').length == 0) {
+																		var new_image = $(
+																				'.fixed-plugin li.active .img-holder')
+																				.find(
+																						"img")
+																				.attr(
+																						'src');
+																		var new_image_full_page = $(
+																				'.fixed-plugin li.active .img-holder')
+																				.find(
+																						'img')
+																				.data(
+																						'src');
 
-      if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+																		$sidebar_img_container
+																				.css(
+																						'background-image',
+																						'url("'
+																								+ new_image
+																								+ '")');
+																		$full_page_background
+																				.css(
+																						'background-image',
+																						'url("'
+																								+ new_image_full_page
+																								+ '")');
+																	}
 
-        $full_page_background.fadeOut('fast', function() {
-          $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-          $full_page_background.fadeIn('fast');
-        });
-      }
+																	if ($sidebar_responsive.length != 0) {
+																		$sidebar_responsive
+																				.css(
+																						'background-image',
+																						'url("'
+																								+ new_image
+																								+ '")');
+																	}
+																});
 
-      if ($('.switch-sidebar-image input:checked').length == 0) {
-        var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-        var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+												$('.switch-sidebar-image input')
+														.change(
+																function() {
+																	$full_page_background = $('.full-page-background');
 
-        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-      }
+																	$input = $(this);
 
-      if ($sidebar_responsive.length != 0) {
-        $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-      }
-    });
+																	if ($input
+																			.is(':checked')) {
+																		if ($sidebar_img_container.length != 0) {
+																			$sidebar_img_container
+																					.fadeIn('fast');
+																			$sidebar
+																					.attr(
+																							'data-image',
+																							'#');
+																		}
 
-    $('.switch-sidebar-image input').change(function() {
-      $full_page_background = $('.full-page-background');
+																		if ($full_page_background.length != 0) {
+																			$full_page_background
+																					.fadeIn('fast');
+																			$full_page
+																					.attr(
+																							'data-image',
+																							'#');
+																		}
 
-      $input = $(this);
+																		background_image = true;
+																	} else {
+																		if ($sidebar_img_container.length != 0) {
+																			$sidebar
+																					.removeAttr('data-image');
+																			$sidebar_img_container
+																					.fadeOut('fast');
+																		}
 
-      if ($input.is(':checked')) {
-        if ($sidebar_img_container.length != 0) {
-          $sidebar_img_container.fadeIn('fast');
-          $sidebar.attr('data-image', '#');
-        }
+																		if ($full_page_background.length != 0) {
+																			$full_page
+																					.removeAttr(
+																							'data-image',
+																							'#');
+																			$full_page_background
+																					.fadeOut('fast');
+																		}
 
-        if ($full_page_background.length != 0) {
-          $full_page_background.fadeIn('fast');
-          $full_page.attr('data-image', '#');
-        }
+																		background_image = false;
+																	}
+																});
 
-        background_image = true;
-      } else {
-        if ($sidebar_img_container.length != 0) {
-          $sidebar.removeAttr('data-image');
-          $sidebar_img_container.fadeOut('fast');
-        }
+												$('.switch-sidebar-mini input')
+														.change(
+																function() {
+																	$body = $('body');
 
-        if ($full_page_background.length != 0) {
-          $full_page.removeAttr('data-image', '#');
-          $full_page_background.fadeOut('fast');
-        }
+																	$input = $(this);
 
-        background_image = false;
-      }
-    });
+																	if (md.misc.sidebar_mini_active == true) {
+																		$(
+																				'body')
+																				.removeClass(
+																						'sidebar-mini');
+																		md.misc.sidebar_mini_active = false;
 
-    $('.switch-sidebar-mini input').change(function() {
-      $body = $('body');
+																		$(
+																				'.sidebar .sidebar-wrapper, .main-panel')
+																				.perfectScrollbar();
 
-      $input = $(this);
+																	} else {
 
-      if (md.misc.sidebar_mini_active == true) {
-        $('body').removeClass('sidebar-mini');
-        md.misc.sidebar_mini_active = false;
+																		$(
+																				'.sidebar .sidebar-wrapper, .main-panel')
+																				.perfectScrollbar(
+																						'destroy');
 
-        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+																		setTimeout(
+																				function() {
+																					$(
+																							'body')
+																							.addClass(
+																									'sidebar-mini');
 
-      } else {
+																					md.misc.sidebar_mini_active = true;
+																				},
+																				300);
+																	}
 
-        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+																	// we simulate the window Resize so the charts will get updated in realtime.
+																	var simulateWindowResize = setInterval(
+																			function() {
+																				window
+																						.dispatchEvent(new Event(
+																								'resize'));
+																			},
+																			180);
 
-        setTimeout(function() {
-          $('body').addClass('sidebar-mini');
+																	// we stop the simulation of Window Resize after the animations are completed
+																	setTimeout(
+																			function() {
+																				clearInterval(simulateWindowResize);
+																			},
+																			1000);
 
-          md.misc.sidebar_mini_active = true;
-        }, 300);
-      }
-
-      // we simulate the window Resize so the charts will get updated in realtime.
-      var simulateWindowResize = setInterval(function() {
-        window.dispatchEvent(new Event('resize'));
-      }, 180);
-
-      // we stop the simulation of Window Resize after the animations are completed
-      setTimeout(function() {
-        clearInterval(simulateWindowResize);
-      }, 1000);
-
-    });
-  });
-});
-</script>
+																});
+											});
+						});
+	</script>
 	<script type="text/javascript">
-function LogoutSession() {
-    $.ajax({
-      url: servletURL + 'LogoutServlet',
-      type: 'POST',
-      dataType: 'json',
-      contentType: 'application/json; charset=utf-8',
-      traditional: true,
-      success: function (jsonObj) {
-        var responseJson1=jsonObj[0];
-        var locationJson = eval('(' + responseJson1 + ')');
-        window.location.href = locationJson.location;
-      },
-      error: function () {
-        //alert("You are in error function of LogoutAjax call ");
-      }
-    });
+		function LogoutSession() {
+			$.ajax({
+				url : servletURL + 'LogoutServlet',
+				type : 'POST',
+				dataType : 'json',
+				contentType : 'application/json; charset=utf-8',
+				traditional : true,
+				success : function(jsonObj) {
+					var responseJson1 = jsonObj[0];
+					var locationJson = eval('(' + responseJson1 + ')');
+					window.location.href = locationJson.location;
+				},
+				error : function() {
+					//alert("You are in error function of LogoutAjax call ");
+				}
+			});
 
-}
-
-</script>
+		}
+	</script>
 	<script>
-
-
-</script>
+		
+	</script>
 
 </body>
 

@@ -27,11 +27,9 @@ public class Organization {
 	private String organizationName;
 	private String organizationType;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingOrganization")
 	private Set<ExpenseDetails> ExpenseDetails;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingOrganization")
 	private Set<RevenueDetail> RevenueDetail;
 

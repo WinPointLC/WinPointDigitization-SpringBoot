@@ -31,12 +31,10 @@ public class EmployeeDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "employeeCategoryId", nullable = false)
-//	@JsonManagedReference
 	private EmployeeCategory mappingEmployeeCategory;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
-//	@JsonManagedReference
 	private UserProfile mappingUserProfile;
 
 }

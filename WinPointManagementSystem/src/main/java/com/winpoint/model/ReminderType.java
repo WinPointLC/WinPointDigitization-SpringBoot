@@ -26,7 +26,6 @@ public class ReminderType {
 	private Integer reminderTypeId;
 	private String reminderTypeCategory;
 
-//	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingReminderType")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
