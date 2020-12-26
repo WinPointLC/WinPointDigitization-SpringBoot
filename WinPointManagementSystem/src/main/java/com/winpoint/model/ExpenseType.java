@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +26,7 @@ public class ExpenseType {
 	private Integer expenseTypeId;
 	private String expenseTypeName;
 
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingExpenseType")
 	private Set<StudentCourseDetails> StudentCourseDetails;
 

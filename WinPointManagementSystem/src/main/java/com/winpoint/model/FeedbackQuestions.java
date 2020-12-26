@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,9 +42,11 @@ public class FeedbackQuestions {
 //	private Integer feedbackQuestionTypeId = mappingFeedbackQuestionType.getFeedbackQuestionTypeId();
 //	private Integer feedbackCategoryId = mappingFeedbackCategory.getFeedbackCategoryId();
 
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackQuestions")
 	private Set<TestFeedback> TestFeedback;
 
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackQuestions")
 	private Set<CourseFeedback> CourseFeedback;
 

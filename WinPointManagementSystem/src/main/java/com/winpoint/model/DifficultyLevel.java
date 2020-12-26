@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,12 +29,15 @@ public class DifficultyLevel {
 	private Integer createdBy;
 	private Date createdDate;
 
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 
