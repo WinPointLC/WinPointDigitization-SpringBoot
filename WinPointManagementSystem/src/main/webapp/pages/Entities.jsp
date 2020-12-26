@@ -309,7 +309,7 @@
 		add_rows.push(obj);
 		
 		for(i=0;i<add_rows.length;i++){
-			alert("row pushed:" + add_rows[i]);
+			//alert("row pushed:" + add_rows[i]);
 		}
 	
 	
@@ -393,7 +393,7 @@
 	function submit(){
 	
 		for(i=0;i<add_rows.length;i++){
-			alert("add row: " + add_rows[i]);
+			//alert("add row: " + add_rows[i]);
 		}
 		var del_rows = new Array();
 		var checkboxes= document.getElementsByClassName('prev_chk');
@@ -421,7 +421,7 @@
 		}
 		
 		for(i=0;i<del_rows.length;i++){
-			alert("del : " + del_rows[i]);
+			//alert("del : " + del_rows[i]);
 		}
 		
 		
@@ -445,11 +445,11 @@
 				//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function () {
-					alert("sucess ajax call for add and delete");
+					//alert("sucess ajax call for add and delete");
 					
 			    },
 				error: function(){
-		            alert("Error");
+		            //alert("Error");
 		        }
 		    });
 		}
@@ -468,11 +468,11 @@
 				//contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function () {
-					alert("sucess ajax call for add and delete");
+					//alert("sucess ajax call for add and delete");
 					
 			    },
 				error: function(){
-		            alert("Error");
+		            //alert("Error");
 		        }
 		    });
 		}
@@ -657,7 +657,7 @@
 		document.getElementById('dropdownMenuButtonEntity').textContent = entity_name;
 		document.getElementById('dropdownMenuSelectStream').style.display="none";
 		document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
-		alert("INFO : "+entityName);
+		//alert("INFO : "+entityName);
 		$.ajax({
 			type: 'POST',
 			//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=read',
@@ -667,11 +667,11 @@
 			dataType: 'json',
 			contentType: 'application/json; charset=utf-8', 			traditional: true,
 			success: function (jsonObj) {
-			 	alert("HELLO");
-			 	alert(jsonObj[1]);
-			 	alert(jsonObj[0].courseTypeName);
+			 	//alert("HELLO");
+			 	//alert(jsonObj[1]);
+			 	//alert(jsonObj[0].courseTypeName);
 			    entityDetailList=jsonObj;
-				alert("Entity List "+ entityDetailList) 
+				//alert("Entity List "+ entityDetailList) 
 				
 				var col_names = [];
 				function countColumns(obj) {
@@ -704,7 +704,7 @@
 
 				if((entity_name=="Course")&&(flag!="display"))
 				{
-					alert("Course is there");
+					//alert("Course is there");
 					
 					document.getElementById('dropdownMenuSelectStream').style.display="block";
 					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
@@ -745,7 +745,7 @@
 				
 				else if((entity_name=="Course")&&(flag=="display"))
 				{
-					alert("Course is there");
+					//alert("Course is there");
 					
 					document.getElementById('dropdownMenuSelectStream').style.display="block";
 					document.getElementById('dropdownMenuSelectCoursetype').style.display="block";
@@ -755,7 +755,7 @@
 				}
 				else if (entity_name!="Course")
 				{
-					alert("Course is not there");
+					//alert("Course is not there");
 					document.getElementById('dropdownMenuSelectStream').style.display="none";
 					document.getElementById('dropdownMenuSelectCoursetype').style.display="none";
 					document.getElementById('entityTable').style.display="block";
@@ -836,7 +836,7 @@
 				document.getElementById('addRowForm').appendChild(form_modal); 
 			},
 			error: function(){
-				alert("Error");
+				//alert("Error");
 			}
 		});
 			
@@ -889,7 +889,7 @@
 				
 			},
 			error: function(){
-				alert("Error");
+				//alert("Error");
 				//document.getElementById("error").innerHTML = "Invalid email or password";
 			}
 
@@ -979,7 +979,7 @@
 
 	  //alert(row_count)
 	  if(row_count==0){
-		alert("There is no row in the table")
+		//alert("There is no row in the table")
 	  }
 	  else{
 			var checkboxes= document.getElementsByClassName('chk');
@@ -1196,7 +1196,7 @@ function LogoutSession() {
         window.location.href = locationJson.location;
       },
       error: function () {
-        alert("You are in error function of LogoutAjax call ");
+        //alert("You are in error function of LogoutAjax call ");
       }
     });
 
