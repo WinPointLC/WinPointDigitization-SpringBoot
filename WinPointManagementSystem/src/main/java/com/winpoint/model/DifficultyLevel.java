@@ -42,4 +42,3 @@ public class DifficultyLevel {
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 
 }
-

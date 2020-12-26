@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,7 +34,7 @@ public class Lecture {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
+	@JsonManagedReference
 	private BatchDetails mappingBatchDetails;
 
-//	private Integer batchId = mappingBatchDetails.getBatchId();
 }
