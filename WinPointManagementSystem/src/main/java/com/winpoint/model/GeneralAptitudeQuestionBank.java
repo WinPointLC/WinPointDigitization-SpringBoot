@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,17 +39,17 @@ public class GeneralAptitudeQuestionBank {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
+	@JsonManagedReference
 	private CourseType mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "difficultyLevelId", nullable = false)
+	@JsonManagedReference
 	private DifficultyLevel mappingDifficultyLevel;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "topicId", nullable = false)
+	@JsonManagedReference
 	private Topics mappingTopics;
 
-//	private Integer courseTypeId = mappingCourse.getCourseTypeId();
-//	private Integer difficultyLevelId = mappingDifficultyLevel.getDifficultyLevelId();
-//	private Integer topicId = mappingTopics.getTopicId();
 }

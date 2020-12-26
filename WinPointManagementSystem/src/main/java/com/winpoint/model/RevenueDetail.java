@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,45 +26,43 @@ public class RevenueDetail {
 	private Integer revenueDetailId;
 	private String receiptNumber;
 	private String payerDescription;
-
 	private String revenueAmount;
 	private String chequeNumber;
-
 	private String receiveDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
+	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "revenueTypeId", nullable = false)
+	@JsonManagedReference
 	private RevenueType mappingRevenueType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "paymentModeId", nullable = false)
+	@JsonManagedReference
 	private PaymentMode mappingPaymentMode;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "organizationId", nullable = false)
+	@JsonManagedReference
 	private Organization mappingOrganization;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
+	@JsonManagedReference
 	private BatchDetails mappingBatchDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
+	@JsonManagedReference
 	private Course mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
+	@JsonManagedReference
 	private UserProfile mappingUserProfile;
-
-//	private Integer revenueTypeId = mappingRevenueType.getRevenueTypeId();
-//	private Integer courseId = mappingCourse.getCourseId();
-//	private Integer batchId = mappingBatchDetails.getBatchId();
-//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-//	private Integer organizationId = mappingOrganization.getOrganizationId();
-//	private Integer paymentModeId = mappingPaymentMode.getPaymentModeId();
 
 }

@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -40,14 +41,13 @@ public class BatchDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
+	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
+	@JsonManagedReference
 	private Course mappingCourse;
-
-//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-//	private Integer courseId = mappingCourse.getCourseId();
 
 	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingBatchDetails")

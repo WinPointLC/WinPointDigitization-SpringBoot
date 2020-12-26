@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -53,19 +55,15 @@ public class EnquiryDetails {
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;
-//	private Integer timeSlotsId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
+	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "timeSlotsId", nullable = false)
+	@JsonManagedReference
 	private TimeSlots mappingTimeSlots;
-
-
-	
-//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-//	private Integer timeSlotsId = mappingTimeSlots.getTimeSlotsId();
 
 }

@@ -28,6 +28,4 @@ public class CoursePlans {
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 
-//	private Integer courseId = mappingCourse.getCourseId();
-
 }

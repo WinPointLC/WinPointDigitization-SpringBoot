@@ -37,12 +37,10 @@ public class Course {
 	private Integer createdBy;
 	private Date createdDate;
 	private Integer logoLocation;
-	
-	
-	
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "evaluationTypeId", nullable = false)
+	@JsonManagedReference
 	private EvaluationType mappingEvaluationType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -52,8 +50,8 @@ public class Course {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "streamId", nullable = false)
+	@JsonManagedReference
 	private Streams mappingStreams;
-
 
 	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")

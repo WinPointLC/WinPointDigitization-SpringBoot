@@ -41,12 +41,5 @@ public class DifficultyLevel {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingDifficultyLevel")
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 
-
-	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "difficultyLevelId", nullable = false)
-//	private DifficultyLevel mappingDifficultyLevel;
-
-	
 }
 

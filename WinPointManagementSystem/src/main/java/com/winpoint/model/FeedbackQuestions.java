@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,14 +34,13 @@ public class FeedbackQuestions {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackQuestionTypeId", nullable = false)
+	@JsonManagedReference
 	private FeedbackQuestionType mappingFeedbackQuestionType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "feedbackCategoryId", nullable = false)
+	@JsonManagedReference
 	private FeedbackCategory mappingFeedbackCategory;
-//
-//	private Integer feedbackQuestionTypeId = mappingFeedbackQuestionType.getFeedbackQuestionTypeId();
-//	private Integer feedbackCategoryId = mappingFeedbackCategory.getFeedbackCategoryId();
 
 	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingFeedbackQuestions")

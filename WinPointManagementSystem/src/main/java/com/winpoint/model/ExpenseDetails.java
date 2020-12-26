@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,28 +33,27 @@ public class ExpenseDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
+	@JsonManagedReference
 	private SegmentType mappingSegmentType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "paymentModeId", nullable = false)
+	@JsonManagedReference
 	private PaymentMode mappingPaymentMode;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
+	@JsonManagedReference
 	private BatchDetails mappingBatchDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
+	@JsonManagedReference
 	private Course mappingCourse;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "organizationId", nullable = false)
+	@JsonManagedReference
 	private Organization mappingOrganization;
-
-//	private Integer segmentTypeId = mappingSegmentType.getSegmentTypeId();
-//	private Integer paymentModeId = mappingPaymentMode.getPaymentModeId();
-//	private Integer batchId = mappingBatchDetails.getBatchId();
-//	private Integer courseId = mappingCourse.getCourseId();
-//	private Integer organizationId = mappingOrganization.getOrganizationId();
 
 }
