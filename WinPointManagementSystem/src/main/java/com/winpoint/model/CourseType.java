@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -62,17 +63,21 @@ public class CourseType implements Serializable{
 		this.mappingStreamCourseType = mappingStreamCourseType;
 		this.mappingToolTips = mappingToolTips;
 	}
-	
-	@JsonBackReference
-	@JsonManagedReference(value = "mappingCourseRef")
+	//@JsonBackReference(value = "mappingCourseRef")
+	//@JsonManagedReference(value = "mappingCourseRef")
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<Course> mappingCourse;
 	
-	@JsonManagedReference(value = "mappingCourseTypeRef2")
+//	@JsonBackReference(value = "mappingCourseRef1")
+	//@JsonManagedReference(value = "mappingCourseTypeRef1")
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<StreamCourseType> mappingStreamCourseType;
 
-	@JsonManagedReference(value = "mappingCourseTypeRef3")
+//	@JsonBackReference(value = "mappingCourseRef2")
+	//@JsonManagedReference(value = "mappingCourseTypeRef2")
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<ToolTips> mappingToolTips;
 	

@@ -45,7 +45,8 @@ public class Course implements Serializable{
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
-	@JsonBackReference(value = "mappingCourseRef")
+//	@JsonBackReference(value = "mappingCourseRef")
+//	@JsonManagedReference(value = "mappingCourseRef")
 	private CourseType mappingCourseType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
