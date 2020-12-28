@@ -286,8 +286,9 @@
 							document.getElementById("recommendation").value=updateFormDet.recommendation;
 
 							<c:forEach items="${availableTimeList}" var="availableTime">
+							
 								if('${availableTime.timeSlotsId}'==updateFormDet.timeSlotsId){
-											//alert('${availableTime.timeSlotsDescription}');
+											alert('${availableTime.timeSlotsDescription}');
 									document.getElementById("avail_time").value='${availableTime.timeSlotsDescription}';
 									
 									}
@@ -295,7 +296,7 @@
 
 							<c:forEach items="${segmentTypeList}" var="segmentType">
 								if('${segmentType.segmentTypeId}'==updateFormDet.segmentTypeId){
-										//alert('${segmentType.segmentTypeName}');
+										alert('${segmentType.segmentTypeName}');
 									document.getElementById("Seg_type").value='${segmentType.segmentTypeName}';
 									
 								}

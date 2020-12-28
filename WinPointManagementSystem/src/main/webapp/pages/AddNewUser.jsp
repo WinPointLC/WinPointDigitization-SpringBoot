@@ -380,24 +380,14 @@
      $.ajax({
          type: 'POST',
          //url: servletURL + 'SignUpServlet',
-         url: "/SignUp",
+         url: "/saveNewUser",
          data: JSON.stringify(myData),
-         dataType: 'json',
+        // dataType: 'json',
          contentType: 'application/json; charset=utf-8',
          traditional: true,
-         success: function (jsonObj) {
-          //alert("Success from LoginForm");
-             var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
-             var locationJson = eval('(' + responseJson1 + ')');
-             //var studentJson = eval('(' + responseJson2 + ')');
-              if (locationJson.success) {
-            var strResJSON = JSON.stringify(responseJson2);
-            //alert("studentEmail : " + responseJson2.email);
-              window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-          } else {
-                 $('#ajaxGetUserServletResponse').text(responseText);
-          }
-         },
+         success: function () {
+          
+          },
          error: function(){
           alert("Error: Emailid already exists");
           //document.getElementById("error").innerHTML = "Invalid email or password";
