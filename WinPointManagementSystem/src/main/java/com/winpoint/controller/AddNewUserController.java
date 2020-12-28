@@ -33,8 +33,9 @@ public class AddNewUserController {
 	public ModelAndView showAddNewUserPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("AddNewUser");
-		List<SecurityQuestions> segmentTypeList = securityQuestionsRepository.findAll();
-
+		List<SecurityQuestions> securityQuestionsList = securityQuestionsRepository.findAll();
+//		mv.addObjects("securityQuestionsList",securityQuestionsList);
+		mv.addObject("securityQuestionsList", securityQuestionsList);
 		return mv;
 	}
 	
