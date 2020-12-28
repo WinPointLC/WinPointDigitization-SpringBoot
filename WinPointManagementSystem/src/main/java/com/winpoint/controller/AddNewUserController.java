@@ -35,7 +35,7 @@ public class AddNewUserController {
 		mv.setViewName("AddNewUser");
 		List<SecurityQuestions> securityQuestionsList = securityQuestionsRepository.findAll();
 //		mv.addObjects("securityQuestionsList",securityQuestionsList);
-		mv.addObject("securityQuestionsList", securityQuestionsList);
+		mv.addObject("securityQuestions", securityQuestionsList);
 		return mv;
 	}
 	

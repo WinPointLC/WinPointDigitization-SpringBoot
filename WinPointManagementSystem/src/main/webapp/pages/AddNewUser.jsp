@@ -79,9 +79,9 @@
                                     </script>
                                   </c:forEach>
 
-                                  <div class="form-group">
+                                <%--   <div class="form-group">
 
-                                    <%-- <!--  <div class="dropdown-menu" id = "secQuest" aria-labelledby="dropdownMenuButton"></div>--> --%>
+                                    <!--  <div class="dropdown-menu" id = "secQuest" aria-labelledby="dropdownMenuButton"></div>-->
                                     <div id="drop11" class="dropdown drop1">
                                       <!-- <input type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Security Question">
                                     --> </div>
@@ -120,7 +120,7 @@
                                     </c:forEach>
                                     <script>document.getElementById('drop11').appendChild(dropdownMenu);</script>
 
-                                  </div>
+                                  </div> --%>
                                   <!--    <div class="form-group">
                                   <input class="form-control" type="text" id="securityQuestion" placeholder="Security Question" required>
                                 </div>-->

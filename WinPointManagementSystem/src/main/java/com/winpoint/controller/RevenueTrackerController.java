@@ -202,6 +202,7 @@ public class RevenueTrackerController {
 	public ModelAndView showUpdateForm() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UpdateForm");
+		
 		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
 		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
 		mv.addObject("availableTimeList", availableTimeList);
@@ -212,6 +213,9 @@ public class RevenueTrackerController {
 	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
 	public @ResponseBody EnquiryDetails showEnquiry(@RequestParam("enquiryId") String enquiryId) {
 		System.out.println(enquiryId);
+		
+		
+		
 		return enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get();
 
 	}
