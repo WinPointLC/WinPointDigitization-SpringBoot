@@ -313,19 +313,33 @@
 
 				var timeSlotsId;
 				var segmentTypeId;
+				var timeSlotsDescription;
+				var segmentTypeName;
 				<c:forEach items="${availableTimeList}" var="availableTime">
 					if(document.getElementById("avail_time").value=='${availableTime.timeSlotsDescription}'){
 							//alert('${availableTime.timeSlotsId}');
 						timeSlotsId='${availableTime.timeSlotsId}';
+						timeSlotsDescription='${availableTime.timeSlotsDescription}';
 					}
 				</c:forEach>   
+
+				var mappingTimeSlots={
+						timeSlotsId:timeSlotsId,
+						timeSlotsDescription:timeSlotsDescription
+				}
 
 				<c:forEach items="${segmentTypeList}" var="segmentType">
 					if(document.getElementById("Seg_type").value=='${segmentType.segmentTypeName}'){
 							//alert('${segmentType.segmentTypeId}');
 						segmentTypeId='${segmentType.segmentTypeId}';
+						segmentTypeName='${segmentType.segmentTypeName}';
 					}
 			    </c:forEach>   
+
+			    var mappingSegmentType={
+			    		segmentTypeId:segmentTypeId,
+			    		segmentTypeName:segmentTypeName
+				}
 				
 
 				var myData={
@@ -348,8 +362,11 @@
 						dateOfEnquiryString:document.getElementById("Date_Of_Enquiry").value,
 						startDateString:document.getElementById("Start_Date").value,
 						recommendation:document.getElementById("recommendation").value,
-						timeSlotsId:timeSlotsId,
-						segmentTypeId:segmentTypeId
+						//timeSlotsId:timeSlotsId,
+						//segmentTypeId:segmentTypeId
+						mappingTimeSlots:mappingTimeSlots,
+						mappingSegmentType,mappingSegmentType
+						
 							
 				}
 				$.ajax({
