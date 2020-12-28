@@ -63,20 +63,17 @@ public class CourseType implements Serializable{
 		this.mappingStreamCourseType = mappingStreamCourseType;
 		this.mappingToolTips = mappingToolTips;
 	}
-	//@JsonBackReference(value = "mappingCourseRef")
-	//@JsonManagedReference(value = "mappingCourseRef")
+	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<Course> mappingCourse;
 	
-//	@JsonBackReference(value = "mappingCourseRef1")
-	//@JsonManagedReference(value = "mappingCourseTypeRef1")
+
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<StreamCourseType> mappingStreamCourseType;
 
-//	@JsonBackReference(value = "mappingCourseRef2")
-	//@JsonManagedReference(value = "mappingCourseTypeRef2")
+
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<ToolTips> mappingToolTips;

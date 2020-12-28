@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
@@ -45,44 +46,64 @@ public class Course implements Serializable{
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
-//	@JsonBackReference(value = "mappingCourseRef")
-//	@JsonManagedReference(value = "mappingCourseRef")
 	private CourseType mappingCourseType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "streamId", nullable = false)
 	private Streams mappingStreams;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<StudentCourseDetails> StudentCourseDetails;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<BatchDetails> BatchDetails;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<CoursePlans> CoursePlans;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<ExpenseDetails> ExpenseDetails;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<RevenueDetail> RevenueDetail;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<Topics> Topics;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<TestDetails> TestDetails;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<CourseFeedback> CourseFeedback;
 
