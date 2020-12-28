@@ -93,7 +93,7 @@ public class RevenueTrackerController {
 	EnquiryDetails finalUser;
 //	@ModelAttribute("enquiryDetails")
 	@PostMapping("/saveForm")
-	public String saveForm(EnquiryDetails enquiryDetails) throws ParseException {
+	public String saveForm(EnquiryDetails enquiryDetails,RedirectAttributes redirectAttributes) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + enquiryDetails.getFirstName());
 		System.out.println("USER:  " + enquiryDetails.getGender());
@@ -123,7 +123,11 @@ public class RevenueTrackerController {
 		enquiryDetailsRepository.save(enquiryDetails);
 		finalUser=enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
-		return Location;
+		if(Location.equals("LoginForm"))
+			return "LoginForm";
+		else
+			return "redirect:/EnquiryDetails";
+		//return Location;
 
 	}
 	
