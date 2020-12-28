@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -45,15 +46,13 @@ public class AddNewUserController {
 	SecurityQuestionsRepository securityQuestionsRepository;
 
 
-	@PostMapping("/saveNewUser")
-	public void saveForm(UserProfile userProfile,RedirectAttributes redirectAttributes) throws ParseException {
+	@RequestMapping("/saveNewUser")
+	public void saveForm(@RequestBody UserProfile userProfile){
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + userProfile.getFirstName());
 		System.out.println("USER:  " + userProfile.getGender());
-		System.out.println("USER:  " + userProfile.getDegree());
-		System.out.println("USER:  " + userProfile.getBirthDate());
-		System.out.println("USER:  " + userProfile.getMappingTimeSlots());
-		System.out.println("USER:  " + userProfile.getMappingSegmentType());		
+		
+		System.out.println("USER:  " + userProfile.getMappingSecurityQuestions());		
 		
 //		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 //		String t = userProfile.getBirthDate().toString();

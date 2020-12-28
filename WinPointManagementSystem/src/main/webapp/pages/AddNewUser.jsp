@@ -365,99 +365,111 @@
 								</script>
 								
 								<script>
-     function submitSignUpDetails(){
-       //alert("Submit Sign Up Details");
-       alert($('#securityQuestion').val());
-    	 <c:forEach items="${securityQuestions}" var="securityQuestion">
-			if(document.getElementById("securityQuestion").value=='${securityQuestion.securityQuestion}'){
-					alert('${securityQuestion.securityQuestionId}');
-				securityQuestionId='${securityQuestion.securityQuestionId}';
-				securityQuestionName='${securityQuestion.securityQuestionName}';
-			}
-		</c:forEach>   
-       
-       var firstName = $('#firstName').val();
-       var lastName = $('#lastName').val();
-       var email = $('#email').val();
-       var password = $('#password').val();
-       var gender = $('#gender').val();
-       var mobileNumber = $('#mobileNumber').val();
-       var securityQuestion = $('#securityQuestion').val();
-       var securityAnswer =  $('#securityAnswer').val();
-       var userCategoryId = 1;
-       //alert(gender);
-       var myData = {
 
-           firstName: firstName,
-           lastName: lastName,
-           email: email,
-           password: password,
-           gender:gender,
-           mobileNumber: mobileNumber,
-           securityQuestion: securityQuestion,
-           securityAnswer: securityAnswer,
-           userCategoryId: userCategoryId
-         };
-     //alert("*** " + JSON.stringify(myData));
-     //console.log(myData);
-     $.ajax({
-         type: 'POST',
-         //url: servletURL + 'SignUpServlet',
-         url: "/saveNewUser",
-         data: JSON.stringify(myData),
-        // dataType: 'json',
-         contentType: 'application/json; charset=utf-8',
-         traditional: true,
-         success: function () {
-          
-          },
-         error: function(){
-          alert("Error: Emailid already exists");
-          //document.getElementById("error").innerHTML = "Invalid email or password";
-         }
-
-     });
-     validator();
-  }
-
-  function validator() {
-    var ffname = document.getElementById('firstName').value;
-    var llname = document.getElementById('lastName').value;
-    var email = document.getElementById('email').value;
-    var uname = document.getElementById('userName').value;
-    var pass = document.getElementById('password').value;
-    var mobileNumber = document.getElementById('mobileNumber').value;
-
-    if (ffname == "") {
-      alert("Enter the firstName");
-    }
-    else if(llname==""){
-      alert("Enter the LastName");
-    }
-    else if(email==""){
-      alert("Enter the emailName");
-    }
-    else if(uname==""){
-      alert("Enter the UserName");
-    }
-    else if(pass==""){
-      alert("Enter the Password");
-    }
-    else if(mobileNumber==""){
-      alert("Enter the Mobile Number");
-    }
-    Mobilevalidator();
-  }
-  //code for Mobile Validation
-  function Mobilevalidator() {
-
-       var mobile = document.getElementById("mobileNumber").value;
-       var pattern = /^[7-9][0-9]{9}$/;
-       if (pattern.test(mobile)) {
-           return true;
-       }
-       return false;
-
-   }
-  </script>
+								var securityQuestionId;
+								var securityQuestion
+		     function submitSignUpDetails(){
+		       //alert("Submit Sign Up Details");
+		       //alert($('#securityQuestion').val());
+		    	 <c:forEach items="${securityQuestions}" var="securityQuestion">
+					if(document.getElementById("securityQuestion").value=='${securityQuestion.securityQuestion}'){
+						//	alert('${securityQuestion.securityQuestionId}');
+						securityQuestionId='${securityQuestion.securityQuestionId}';
+						securityQuestion='${securityQuestion.securityQuestion}';
+					}
+				</c:forEach>   
+		
+				var mappingSecurityQuestions={
+						securityQuestionId:securityQuestionId,
+						securityQuestion:securityQuestion
+		
+				}
+		       
+		       var firstName = $('#firstName').val();
+		       var lastName = $('#lastName').val();
+		       var email = $('#email').val();
+		       var password = $('#password').val();
+		       var gender = $('#gender').val();
+		       var mobileNumber = $('#mobileNumber').val();
+		       var securityQuestion = $('#securityQuestion').val();
+		       var securityAnswer =  $('#securityAnswer').val();
+		      // alert(securityAnswer);
+		     //  var userCategoryId = 1;
+		       //alert(gender);
+		       var myData = {
+		
+		    	   firstName: firstName,
+		    	   lastName: lastName,
+		    	   emailId: email,
+		    	   password: password,
+		           gender:gender,
+		           mobileNumber: mobileNumber,
+		           securityQuestion: securityQuestion,
+		           securityAnswer: securityAnswer,
+		           mappingSecurityQuestions:mappingSecurityQuestions
+		         //  userCategoryId: userCategoryId
+		         };
+		     alert("*** " + JSON.stringify(myData));
+		     //console.log(myData);
+		     $.ajax({
+		         type: 'POST',
+		         //url: servletURL + 'SignUpServlet',
+		         url: "/saveNewUser",
+		         data: JSON.stringify(myData),
+		        // dataType: 'json',
+		         contentType: 'application/json; charset=utf-8',
+		         traditional: true,
+		         success: function () {
+		          
+		          },
+		         error: function(){
+		          alert("Error: Emailid already exists");
+		          //document.getElementById("error").innerHTML = "Invalid email or password";
+		         }
+		
+		     });
+		     validator();
+		  }
+		
+		  function validator() {
+			  //alert("here");
+		    var ffname = document.getElementById('firstName').value;
+		    var llname = document.getElementById('lastName').value;
+		    var email = document.getElementById('email').value;
+		    var uname = document.getElementById('userName').value;
+		    var pass = document.getElementById('password').value;
+		    var mobileNumber = document.getElementById('mobileNumber').value;
+		
+		    if (ffname == "") {
+		      alert("Enter the firstName");
+		    }
+		    else if(llname==""){
+		      alert("Enter the LastName");
+		    }
+		    else if(email==""){
+		      alert("Enter the emailName");
+		    }
+		    else if(uname==""){
+		      alert("Enter the UserName");
+		    }
+		    else if(pass==""){
+		      alert("Enter the Password");
+		    }
+		    else if(mobileNumber==""){
+		      alert("Enter the Mobile Number");
+		    }
+		    Mobilevalidator();
+		  }
+		  //code for Mobile Validation
+		  function Mobilevalidator() {
+		
+		       var mobile = document.getElementById("mobileNumber").value;
+		       var pattern = /^[7-9][0-9]{9}$/;
+		       if (pattern.test(mobile)) {
+		           return true;
+		       }
+		       return false;
+		
+		   }
+		  </script>
                               </body>
