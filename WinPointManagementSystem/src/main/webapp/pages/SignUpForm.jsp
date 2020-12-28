@@ -239,7 +239,7 @@
 						 </div>
 					</div>
 				
-				 <form:form id="timeSlotsForm" method="post" action="saveForm" modelAttribute="timeSlots">	
+				<%--  <form:form id="timeSlotsForm" method="post" action="saveForm" modelAttribute="timeSlots">	
 				 <div class="form-row">
 						<div class="col">
 							
@@ -252,7 +252,20 @@
 							
 						 </div>
 				</div>
-				</form:form>  
+				</form:form>   --%>
+				
+				 <div class="form-row">
+						<div class="col">
+							
+						  <label for="avail_time">Available Time</label> 
+						   <form:select name="availableTime" class="form-control selectpicker" path = "mappingTimeSlots" id="avail_time" required="true">
+								<c:forEach items="${availableTimeList}" var="availableTime">
+   									 <option name="availableTime" value="${availableTime.timeSlotsId}">${availableTime.timeSlotsDescription}</option>
+								</c:forEach>
+						</form:select>
+							
+						 </div>
+				</div>
 					
 					<div class="form-row">
 						<div class="col">
@@ -286,7 +299,7 @@
 						 </div>
 					</div>  
 						
-					 <form:form id="segmentForm" method="post" action="saveForm" modelAttribute="segmentType">	
+					<%--  <form:form id="segmentForm" method="post" action="saveForm" modelAttribute="segmentType">	
 					   <div class="form-row">
 						<div class="col">
 						  <label for="segment_type">Segment Type</label> 
@@ -297,7 +310,18 @@
 						</form:select>	
 						 </div>
 					</div>   
-					</form:form>	
+					</form:form>	 --%>
+					
+					<div class="form-row">
+						<div class="col">
+						  <label for="segment_type">Segment Type</label> 
+						  <form:select name="segmentType" class="form-control selectpicker" id="seg_type" path = "mappingSegmentType" required="true">
+								<c:forEach items="${segmentTypeList}" var="segmentType">
+   									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
+								</c:forEach>
+						</form:select>	
+						 </div>
+					</div>   
 					
 					<div class="form-row">
 						<div class="col">
@@ -322,7 +346,7 @@
 						</div>
 					</div> 
 					
-					 <form:form id="passwordForm" method="post" action="saveForm" modelAttribute="userProfile">	
+					<%--  <form:form id="passwordForm" method="post" action="saveForm" modelAttribute="userProfile">	
 				 <div class="form-row">
 						<div class="col">
 							
@@ -330,7 +354,7 @@
 							
 						 </div>
 				</div>
-				</form:form>
+				</form:form> --%>
 					
 					
 					
@@ -356,24 +380,24 @@
 		//alert("DATE - "+birthdate.value);
 		//alert("here");
 		
-		timeSlotsId=document.getElementById("avail_time").value;
-		segmentTypeId=document.getElementById("seg_type").value;
-		password=document.getElementById("password").value;
+		//timeSlotsId=document.getElementById("avail_time").value;
+		//segmentTypeId=document.getElementById("seg_type").value;
+		//password=document.getElementById("password").value;
 		
 
 		validation();
 		if(flag==1){
 			var myData = {
-					timeSlotsid: timeSlotsId,
-					segmentTypeid:segmentTypeId,
-					Password: password,
+					//timeSlotsid: timeSlotsId,
+					//segmentTypeid:segmentTypeId,
+					//Password: password,
 					location:location_next		
 				};
 				
 				$.ajax({
 					type: 'POST',
 					
-					url: "/TimeAndSegment",
+					url: "/LocationNext",
 				
 					data: jQuery.param(myData),
 					//dataType: 'json',
@@ -400,7 +424,7 @@
 		var lname = document.getElementById('lastName').value;
 		var mobNo = document.getElementById('mobNo').value;
 		var email = document.getElementById('email').value;
-		var password= document.getElementById('password').value;
+		//var password= document.getElementById('password').value;
 		var bday = document.getElementById('bdayId').value;
 
 		var college = document.getElementById('college').value;
@@ -429,9 +453,9 @@
 		 else if(email==""){
 		      alert("Enter the Email Id");
 		 }
-		 else if(password==""){
+		 /* else if(password==""){
 		      alert("Enter password");
-		 } 
+		 }  */
 		 else if(bday==""){
 		      alert("Enter the Date of Birth");
 		 }

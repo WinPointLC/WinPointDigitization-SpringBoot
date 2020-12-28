@@ -64,20 +64,22 @@ public class RevenueTrackerController {
 	}
 
 	
-	Integer timeSlotsId;
-	Integer segmentTypeId;
-	String password;
+	//Integer timeSlotsId;
+	//Integer segmentTypeId;
+	//String password;
 	String Location;
 	
 	
-	@RequestMapping(value = "/TimeAndSegment", method = RequestMethod.POST)
-	public @ResponseBody void getTimeAndSegment(@RequestParam("timeSlotsid") String timeSlotsid,@RequestParam("segmentTypeid") String segmentTypeid,@RequestParam("Password") String Password,@RequestParam("location") String location) {
-		System.out.println("timeSlotsId  " + timeSlotsid);
-		timeSlotsId=Integer.parseInt(timeSlotsid);
-		System.out.println("segmentTypeId  " + segmentTypeid);
-		segmentTypeId=Integer.parseInt(segmentTypeid);
-		System.out.println("password  " + Password);
-		password=Password;
+	@RequestMapping(value = "/LocationNext", method = RequestMethod.POST)
+	public @ResponseBody void getTimeAndSegment(@RequestParam("location") String location) {
+		/*
+		 * System.out.println("timeSlotsId  " + timeSlotsid);
+		 * timeSlotsId=Integer.parseInt(timeSlotsid);
+		 * System.out.println("segmentTypeId  " + segmentTypeid);
+		 * segmentTypeId=Integer.parseInt(segmentTypeid);
+		 */
+	//	System.out.println("password  " + Password);
+		//password=Password;
 		System.out.println("location  " + location);
 		Location=location;
 		
@@ -97,6 +99,8 @@ public class RevenueTrackerController {
 		System.out.println("USER:  " + enquiryDetails.getGender());
 		System.out.println("USER:  " + enquiryDetails.getDegree());
 		System.out.println("USER:  " + enquiryDetails.getBirthDateString());
+		System.out.println("USER:  " + enquiryDetails.getMappingTimeSlots());
+		System.out.println("USER:  " + enquiryDetails.getMappingSegmentType());
 		
 		//System.out.println("timeSlots:  " + timeSlots.getTimeSlotsId());
 		
@@ -116,7 +120,7 @@ public class RevenueTrackerController {
 		//System.out.println("USER:  "+ user.getBirthDate()); 
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //
-		//enquiryDetailsRepository.save(enquiryDetails);
+		enquiryDetailsRepository.save(enquiryDetails);
 		finalUser=enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
 		return Location;
