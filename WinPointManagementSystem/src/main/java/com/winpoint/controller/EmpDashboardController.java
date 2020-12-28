@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.winpoint.model.CourseType;
 import com.winpoint.model.Streams;
 import com.winpoint.repository.CourseTypeRepository;
 import com.winpoint.repository.StreamsRepository;
@@ -30,18 +29,6 @@ public class EmpDashboardController {
 		System.out.println(c);
 		mv.addObject("streamList", c);
 		//mv.addObject("firstStreamId", c.get(0).getStreamId());
-		
-		
-	
-		
-		Streams stream = new Streams();
-		CourseType cour = new CourseType();
-		cour.setCourseTypeName("tream");
-		stream.setStreamName("streamtr");
-		cour.getMappingStream().add(stream);
-		stream.getMappingCourseType().add(cour);
-		CourseTypeRepository.save(cour);
-		System.out.println("hey");
 		return mv;
 	}
 	
