@@ -13,12 +13,14 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@Data
 public class EnquiryDetails {
 //	creation of fk
 //	schema checked
@@ -29,7 +31,7 @@ public class EnquiryDetails {
 	private String firstName;
 	private String lastName;
 	private String emailId;
-	private String MobileNo;
+	private String mobileNo;
 	private String address;
 	private Date birthDate;
 	private String college;

@@ -96,7 +96,7 @@ public class RevenueTrackerController {
 	public String saveForm(EnquiryDetails enquiryDetails,RedirectAttributes redirectAttributes) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + enquiryDetails.getFirstName());
-		System.out.println("USER:  " + enquiryDetails.getGender());
+		System.out.println("USER:  " + enquiryDetails.getMobileNo());
 		System.out.println("USER:  " + enquiryDetails.getDegree());
 		System.out.println("USER:  " + enquiryDetails.getBirthDateString());
 		System.out.println("USER:  " + enquiryDetails.getMappingTimeSlots());
@@ -214,12 +214,33 @@ public class RevenueTrackerController {
 	public @ResponseBody EnquiryDetails showEnquiry(@RequestParam("enquiryId") String enquiryId) {
 		System.out.println(enquiryId);
 		
-		
-		
+		System.out.println();
+		EnquiryDetails enquiryDetails = new EnquiryDetails();
+		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getMobileNo());
+		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getFirstName());
+
 		return enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get();
 
 	}
 
+//	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
+//	public @ResponseBody Optional<EnquiryDetails> showEnquiry(@RequestParam("enquiryId") String enquiryId) {
+//		System.out.println(enquiryId);
+//		
+//		System.out.println();
+//		EnquiryDetails enquiryDetails = new EnquiryDetails();
+//		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getMobileNo());
+//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getFirstName());
+//
+//		//List<EnquiryDetails> enquiryDetailsList = (List<EnquiryDetails>) (enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)));
+//		Optional<EnquiryDetails> enquiryDetailsList = enquiryDetailsRepository.findById(Integer.parseInt(enquiryId));	
+//		
+//		
+//		return enquiryDetailsList;
+//	}
+	
 	@RequestMapping(value = "/SaveUpdateData", method = RequestMethod.POST)
 	public void updateEnquiry(@RequestBody EnquiryDetails enquiry) {
 		System.out.println("*************");

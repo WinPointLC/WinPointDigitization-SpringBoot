@@ -282,7 +282,7 @@
 
 							document.getElementById("fName").value=updateFormDet.firstName;
 							document.getElementById("lName").value=updateFormDet.lastName;
-							document.getElementById("mobNo").value=updateFormDet.MobileNo;
+							document.getElementById("mobNo").value=updateFormDet.mobileNo;
 
 							document.getElementById("email").value=updateFormDet.emailId;
 							document.getElementById("college").value=updateFormDet.college;
@@ -369,7 +369,7 @@
 						enquiryId:enquiryId,
 						firstName:document.getElementById("fName").value,
 						lastName:document.getElementById("lName").value,
-						MobileNo:document.getElementById("mobNo").value,
+						mobileNo:document.getElementById("mobNo").value,
 						emailId:document.getElementById("email").value,
 						college:document.getElementById("college").value,
 						designation:document.getElementById("designation").value,
