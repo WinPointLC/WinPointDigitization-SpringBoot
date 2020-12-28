@@ -25,11 +25,14 @@ import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SegmentType;
 import com.winpoint.model.Streams;
 import com.winpoint.model.TimeSlots;
+
+import com.winpoint.model.UserProfile;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.EnquiryDetailsRepository;
 import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.StreamsRepository;
 import com.winpoint.repository.TimeSlotsRepository;
+
 
 @Controller
 public class RevenueTrackerController {
@@ -63,13 +66,22 @@ public class RevenueTrackerController {
 	
 	Integer timeSlotsId;
 	Integer segmentTypeId;
+	String password;
+	String Location;
+	
 	
 	@RequestMapping(value = "/TimeAndSegment", method = RequestMethod.POST)
-	public @ResponseBody void getTimeAndSegment(@RequestParam("timeSlotsid") String timeSlotsid,@RequestParam("segmentTypeid") String segmentTypeid) {
+	public @ResponseBody void getTimeAndSegment(@RequestParam("timeSlotsid") String timeSlotsid,@RequestParam("segmentTypeid") String segmentTypeid,@RequestParam("Password") String Password,@RequestParam("location") String location) {
 		System.out.println("timeSlotsId  " + timeSlotsid);
 		timeSlotsId=Integer.parseInt(timeSlotsid);
 		System.out.println("segmentTypeId  " + segmentTypeid);
 		segmentTypeId=Integer.parseInt(segmentTypeid);
+		System.out.println("password  " + Password);
+		password=Password;
+		System.out.println("location  " + location);
+		Location=location;
+		
+		
 	}
 	
 	
@@ -79,7 +91,7 @@ public class RevenueTrackerController {
 	EnquiryDetails finalUser;
 //	@ModelAttribute("enquiryDetails")
 	@PostMapping("/saveForm")
-	public String saveForm(EnquiryDetails enquiryDetails,RedirectAttributes redirectAttributes) throws ParseException {
+	public String saveForm(EnquiryDetails enquiryDetails) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + enquiryDetails.getFirstName());
 		System.out.println("USER:  " + enquiryDetails.getGender());
@@ -107,7 +119,7 @@ public class RevenueTrackerController {
 		//enquiryDetailsRepository.save(enquiryDetails);
 		finalUser=enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
-		return "redirect:/EnquiryDetails";
+		return Location;
 
 	}
 	
@@ -119,9 +131,10 @@ public class RevenueTrackerController {
 	CourseRepository courseRepository;
 	@Autowired
 	TimeSlotsRepository timeSlotsRepository;
+	
 
 	@RequestMapping(value = "/SignUpRevenueTracker", method = RequestMethod.GET)
-	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,@ModelAttribute TimeSlots timeSlots,@ModelAttribute SegmentType segmentType) {
+	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,@ModelAttribute TimeSlots timeSlots,@ModelAttribute SegmentType segmentType,@ModelAttribute UserProfile userProfile) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SignUpForm");
 		List<String> list = new ArrayList<String>();
@@ -163,7 +176,8 @@ public class RevenueTrackerController {
 //			availableTimelist.add(s.getTimeSlotsDescription());
 //		}
 		mv.addObject("availableTimeList", availableTimeList);
-
+		mv.addObject("location", "EnquiryDetails");
+		
 		mv.addObject("degreeList", list);
 		return mv;
 	}

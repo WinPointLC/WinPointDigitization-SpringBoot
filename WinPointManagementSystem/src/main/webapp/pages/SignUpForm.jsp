@@ -70,6 +70,19 @@
 						<form:input type="email" class="form-control" path="emailId" id="email" placeholder="Email Id" required="true"/>
 						</div>
 					</div>
+					
+				<%--  <form:form id="passwordForm" method="post" action="saveForm" modelAttribute="userProfile">	
+				 <div class="form-row">
+						<div class="col">
+							
+						 <form:input type="password" class="form-control" path="password" id="password" placeholder="Password" required="true"/>
+							
+						 </div>
+				</div>
+				</form:form>    --%>
+					
+					
+					
 					  <div class="form-row">
 						<div class="col">
 						<div class="form-group">
@@ -284,8 +297,8 @@
 						</form:select>	
 						 </div>
 					</div>   
-					</form:form>	 
-				
+					</form:form>	
+					
 					<div class="form-row">
 						<div class="col">
 						
@@ -309,6 +322,18 @@
 						</div>
 					</div> 
 					
+					 <form:form id="passwordForm" method="post" action="saveForm" modelAttribute="userProfile">	
+				 <div class="form-row">
+						<div class="col">
+							
+						 <form:input type="password" class="form-control" path="password" id="password" placeholder="Enter Password" required="true"/>
+							
+						 </div>
+				</div>
+				</form:form>
+					
+					
+					
 				</div>
 			</div>
  			<input type="button" class="btn btn-primary" style="margin-left:40%;width:15%;" value="Submit" onclick="submitForm()"/>
@@ -321,6 +346,10 @@
 		
 	<!--End Signup formPage-->
 	<script type="text/javascript">
+
+	var location_next='${location}'
+	//alert(location_next);
+	
 	var flag=0;
 	function submitForm(){
 		//var birthdate = document.getElementById("bdayId");
@@ -329,12 +358,16 @@
 		
 		timeSlotsId=document.getElementById("avail_time").value;
 		segmentTypeId=document.getElementById("seg_type").value;
+		password=document.getElementById("password").value;
+		
 
 		validation();
 		if(flag==1){
 			var myData = {
 					timeSlotsid: timeSlotsId,
-					segmentTypeid:segmentTypeId
+					segmentTypeid:segmentTypeId,
+					Password: password,
+					location:location_next		
 				};
 				
 				$.ajax({
@@ -367,6 +400,7 @@
 		var lname = document.getElementById('lastName').value;
 		var mobNo = document.getElementById('mobNo').value;
 		var email = document.getElementById('email').value;
+		var password= document.getElementById('password').value;
 		var bday = document.getElementById('bdayId').value;
 
 		var college = document.getElementById('college').value;
@@ -395,6 +429,9 @@
 		 else if(email==""){
 		      alert("Enter the Email Id");
 		 }
+		 else if(password==""){
+		      alert("Enter password");
+		 } 
 		 else if(bday==""){
 		      alert("Enter the Date of Birth");
 		 }

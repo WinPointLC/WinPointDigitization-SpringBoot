@@ -28,13 +28,13 @@
                   <div class="col-sm-4 col-md-4 col-lg-12 text-left ml-auto mr-auto" id="form-outter">
                     <form name="form1">
                       <h3 class="form-signup-heading text-center">SignUP Form</h3>
-                      <div class="form-group">
+                    <!--   <div class="form-group">
                         <select class="form-control AddUser" name="dropdown" required>
                           <option>Select which user to create</option>
                           <option>Add Admin</option>
                           <option>Add Student</option>
                         </select>
-                      </div>
+                      </div> -->
                       <div class="form-group">
                         <input class="form-control" type="text" id="firstName" placeholder="Enter first name" required>
                         </div>
@@ -132,6 +132,7 @@
                                     <a href="#" onclick="submitSignUpDetails()"><button class="Signbtn" type="button">Submit</button></a>
                                   </form>
                                 </div>
+                              </div>
                               </div>
 
                               <!--   Core JS Files   -->

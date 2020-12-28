@@ -18,7 +18,7 @@ public class EmpDashboardController {
 	@Autowired
 	StreamsRepository stream;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee", method = RequestMethod.GET)
 	public ModelAndView EmpDashboardPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("EmployeeDashboard-New");
