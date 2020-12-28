@@ -205,19 +205,41 @@
 						 </div>
 				</div>
 				
-				<div class="row">
+				<!-- <div class="row">
 						<div class="col">
 						 <label class="label-control">Available Time</label>
 						 <input type="text" id="avail_time" class="form-control inputFileVisible"/>
 						 </div>
+				</div> -->
+				
+				 <div class="row">
+						<div class="col">
+						 <label class="label-control">Available Time</label>
+						  <select name="availableTime" class="form-control selectpicker"  id="avail_time" required>
+								<c:forEach items="${availableTimeList}" var="availableTime">
+   									 <option name="availableTime">${availableTime.timeSlotsDescription}</option>
+								</c:forEach>
+						</select>
+						 </div>
 				</div>
 				
-				<div class="row">
+				<!-- <div class="row">
 						<div class="col">
 						 <label class="label-control">Segment Type</label>
 						 <input type="text" id="Seg_type" class="form-control inputFileVisible"/>
 						 </div>
+				</div> -->
+				<div class="row">
+					<div class="col">
+					 <label class="label-control">Segment Type</label>
+				<select name="segmentType" class="form-control selectpicker" id="Seg_type"  required>
+								<c:forEach items="${segmentTypeList}" var="segmentType">
+   									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
+								</c:forEach>
+				</select>	
+					</div>
 				</div>
+					
 					
 				<input type="button" class="btn btn-primary" style="align-item:center;margin-left:400px" onclick="update()" value="Update"></input>
 				</form>
@@ -256,7 +278,7 @@
 
 							updateFormDet=jsonObj;
 						
-							//alert(updateFormDet);
+							//alert(updateFormDet.mappingTimeSlots);
 
 							document.getElementById("fName").value=updateFormDet.firstName;
 							document.getElementById("lName").value=updateFormDet.lastName;
@@ -287,15 +309,15 @@
 
 							<c:forEach items="${availableTimeList}" var="availableTime">
 							
-								if('${availableTime.timeSlotsId}'==updateFormDet.timeSlotsId){
-											alert('${availableTime.timeSlotsDescription}');
+								if('${availableTime.timeSlotsId}'==updateFormDet.mappingTimeSlots.timeSlotsId){
+										//	alert('${availableTime.timeSlotsDescription}');
 									document.getElementById("avail_time").value='${availableTime.timeSlotsDescription}';
 									
 									}
 							</c:forEach>   
 
 							<c:forEach items="${segmentTypeList}" var="segmentType">
-								if('${segmentType.segmentTypeId}'==updateFormDet.segmentTypeId){
+								if('${segmentType.segmentTypeId}'==updateFormDet.mappingSegmentType.segmentTypeId){
 										alert('${segmentType.segmentTypeName}');
 									document.getElementById("Seg_type").value='${segmentType.segmentTypeName}';
 									
