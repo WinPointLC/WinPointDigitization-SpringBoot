@@ -64,6 +64,19 @@
                                   <%-- <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="You can enter 10 digits only"> --%>
                                   <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number">
                                   </div>
+                                  
+                                <%--    <div class="form-row">
+								<div class="col">
+									
+								  <label for="Security_Question">Security Question</label> 
+								   <select name="Security_Question" class="form-control selectpicker"  id="securityQuestion" required>
+										<c:forEach items="${securityQuestions}" var="securityQuestion">
+		   									 <option name="securityQuestions" value="${securityQuestions.securityQuestionId}">${securityQuestions.securityQuestion}</option>
+										</c:forEach>
+								</select>
+									
+								 </div>
+						</div> --%>
                                   <div class="form-group">
                                     <select class="form-control" id="securityQuestion" required>
                                       <option value="">Security Question</option>
@@ -75,6 +88,7 @@
 
                                     var option = document.createElement('option');
                                     option.textContent = "${securityQuestion.securityQuestion}";
+                                    option.value="${securityQuestion.securityQuestion}"
                                     selectVar.appendChild(option);
                                     </script>
                                   </c:forEach>
@@ -353,6 +367,15 @@
 								<script>
      function submitSignUpDetails(){
        //alert("Submit Sign Up Details");
+       alert($('#securityQuestion').val());
+    	 <c:forEach items="${securityQuestions}" var="securityQuestion">
+			if(document.getElementById("securityQuestion").value=='${securityQuestion.securityQuestion}'){
+					alert('${securityQuestion.securityQuestionId}');
+				securityQuestionId='${securityQuestion.securityQuestionId}';
+				securityQuestionName='${securityQuestion.securityQuestionName}';
+			}
+		</c:forEach>   
+       
        var firstName = $('#firstName').val();
        var lastName = $('#lastName').val();
        var email = $('#email').val();

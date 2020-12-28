@@ -316,13 +316,23 @@
 									}
 							</c:forEach>   
 
-							<c:forEach items="${segmentTypeList}" var="segmentType">
+							<c:forEach items="${availableTimeList}" var="availableTime">
+							
+							if('${availableTime.timeSlotsId}'==updateFormDet.mappingTimeSlots.timeSlotsId){
+									//	alert('${availableTime.timeSlotsDescription}');
+								document.getElementById("avail_time").value='${availableTime.timeSlotsDescription}';
+								
+								}
+						</c:forEach>   
+						
+							/* <c:forEach items="${segmentTypeList}" var="segmentType">
 								if('${segmentType.segmentTypeId}'==updateFormDet.mappingSegmentType.segmentTypeId){
 										alert('${segmentType.segmentTypeName}');
+										alert(document.getElementById("Seg_type"));
 									document.getElementById("Seg_type").value='${segmentType.segmentTypeName}';
 									
 								}
-							</c:forEach>     
+							</c:forEach>    */  
 		
 					},
 					error: function(){
