@@ -24,19 +24,31 @@ import com.winpoint.model.SecurityQuestions;
 import com.winpoint.model.SegmentType;
 import com.winpoint.model.TimeSlots;
 import com.winpoint.model.UserProfile;
+import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.SecurityQuestionsRepository;
+import com.winpoint.repository.SegmentTypeRepository;
+import com.winpoint.repository.TimeSlotsRepository;
 import com.winpoint.repository.UserProfileRepository;
 
 @Controller
 public class AddNewUserController {
+	
+	@Autowired
+	SegmentTypeRepository segmentTypeRepository;
+	
+	@Autowired
+	TimeSlotsRepository timeSlotsRepository;
 	
 	@RequestMapping(value = "/AddNewUser", method = RequestMethod.GET)
 	public ModelAndView showAddNewUserPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("AddNewUser");
 		List<SecurityQuestions> securityQuestionsList = securityQuestionsRepository.findAll();
-//		mv.addObjects("securityQuestionsList",securityQuestionsList);
+		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
+		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
 		mv.addObject("securityQuestions", securityQuestionsList);
+		mv.addObject("availableTimeList", availableTimeList);
+		mv.addObject("segmentTypeList", segmentTypeList);
 		return mv;
 	}
 	
@@ -52,30 +64,13 @@ public class AddNewUserController {
 		System.out.println("USER:  " + userProfile.getFirstName());
 		System.out.println("USER:  " + userProfile.getGender());
 		
-		System.out.println("USER:  " + userProfile.getMappingSecurityQuestions());		
-		
-//		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-//		String t = userProfile.getBirthDate().toString();
-//		Date d = df.parse(t);
-//		userProfile.setBirthDate(d);
-
-//		String t1 = userProfile.getDateOfEnquiryString().toString();
-//		Date d1 = df.parse(t1);
-//		userProfile.setDateOfEnquiry(d1);
-//
-//		String t2 = userProfile.getStartDateString().toString();
-//		Date d2 = df.parse(t2);
-//		userProfile.setStartDate(d2);
-	
+		System.out.println("USER:  " + userProfile.getMappingSecurityQuestions());	
+		System.out.println("USER:  " + userProfile.getMappingTimeSlots());	
+		System.out.println("USER:  " + userProfile.getMappingSegmentType());
+		System.out.println("USER:  " + userProfile.getMappingUserCategory());
 		
 		userProfileRepository.save(userProfile);
-//		finalUser=userProfile;
-//		System.out.println("USER final:  " + finalUser.getBirthDateString());
-//		if(Location.equals("LoginForm"))
-//			return "LoginForm";
-//		else
-//			return "redirect:/EnquiryDetails";
-//		return Location;
+
 
 	}
 	

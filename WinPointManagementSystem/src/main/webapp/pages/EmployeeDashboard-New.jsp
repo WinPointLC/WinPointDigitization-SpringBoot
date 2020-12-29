@@ -377,11 +377,12 @@
 				document.getElementById('RevenueTracker-jsp').style.display="none";
 			 
 				userframe = document.createElement('iframe');
-				userframe.setAttribute('src',jspURL + "User.jsp?varid=");
-				userframe.setAttribute('width', 1100);
-				userframe.setAttribute('height', 1000);
+				//userframe.setAttribute('src',jspURL + "User.jsp?varid=");
+				userframe.setAttribute('src',"User");
+				userframe.setAttribute('width', 1000);
+				userframe.setAttribute('height', 500);
 				userframe.id = 'User-frame';
-				userframe.setAttribute('style',"margin-top:10%;");
+				userframe.setAttribute('style',"margin-top:5%;");
 				document.getElementById('iframediv').appendChild(userframe);
 				var source2 = encodeURIComponent(strResJSON);
 				var iframe_ele2 = document.getElementById("User-frame");

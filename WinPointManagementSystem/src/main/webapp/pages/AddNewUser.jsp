@@ -54,8 +54,9 @@
                                 <input  type="password" id="password" class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
+                                 <label class="label-control">Gender</label>
                                   <select class="form-control" id="gender" required>
-                                    <option value="">Gender</option>
+                                    <!--  <option value="">Gender</option>-->
                                     <option>Male</option>
                                     <option>Female</option>
                                   </select>
@@ -65,21 +66,11 @@
                                   <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number">
                                   </div>
                                   
-                                <%--    <div class="form-row">
-								<div class="col">
-									
-								  <label for="Security_Question">Security Question</label> 
-								   <select name="Security_Question" class="form-control selectpicker"  id="securityQuestion" required>
-										<c:forEach items="${securityQuestions}" var="securityQuestion">
-		   									 <option name="securityQuestions" value="${securityQuestions.securityQuestionId}">${securityQuestions.securityQuestion}</option>
-										</c:forEach>
-								</select>
-									
-								 </div>
-						</div> --%>
+                               
                                   <div class="form-group">
+                                  <label class="label-control">Security Question</label>
                                     <select class="form-control" id="securityQuestion" required>
-                                      <option value="">Security Question</option>
+                                      <!--  <option value="">Security Question</option>-->
                                     </select>
                                   </div>
                                   <script> var selectVar = document.getElementById('securityQuestion');</script>
@@ -92,56 +83,46 @@
                                     selectVar.appendChild(option);
                                     </script>
                                   </c:forEach>
-
-                                <%--   <div class="form-group">
-
-                                    <!--  <div class="dropdown-menu" id = "secQuest" aria-labelledby="dropdownMenuButton"></div>-->
-                                    <div id="drop11" class="dropdown drop1">
-                                      <!-- <input type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Security Question">
-                                    --> </div>
-                                    <script>
-                                    var drop1 = document.getElementsByClassName('drop1');
-                                    var btn = document.createElement('button');
-                                    btn.className='btn btn-secondary dropdown-toggle';
-                                    btn.id='dropdownMenuButton';
-                                    btn.setAttribute('data-toggle', "dropdown");
-                                    btn.setAttribute('aria-haspopup', "true");
-                                    btn.setAttribute('aria-expanded',"false");
-                                    btn.textContent="Security Question";
-                                    document.getElementById('drop11').appendChild(btn);
-
-                                    var dropdownMenu = document.createElement('div');
-                                    dropdownMenu.className='dropdown-menu';
-                                    dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-                                    </script>
-
-                                    <c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
-
-                                      <script>
-                                      //code to open a modal on click
-                                      // window.onload=function(){
-                                      //   document.getElementById("modal-btn").click();
-                                      // };
-
-                                      var dropanchor = document.createElement('a');
-                                      dropanchor.className='dropdown-item';
-                                      dropanchor.setAttribute('href',"#");
-                                      //dropanchor.id=courseTypesList[i].courseTypeId;
-                                      dropanchor.textContent="${securityQuestion}";
-                                      //dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
-                                      dropdownMenu.appendChild(dropanchor);
-                                      </script>
-                                    </c:forEach>
-                                    <script>document.getElementById('drop11').appendChild(dropdownMenu);</script>
-
-                                  </div> --%>
-                                  <!--    <div class="form-group">
-                                  <input class="form-control" type="text" id="securityQuestion" placeholder="Security Question" required>
-                                </div>-->
+                                  
 
                                 <div class="form-group">
                                   <input class="form-control" type="text" id="securityAnswer" placeholder="Security Answer" required>
                                   </div>
+                                  
+                                    <div class="form-group">
+                                  <label class="label-control">Available Time</label>
+                                    <select class="form-control" id="avail_time" required>
+                                      
+                                    </select>
+                                  </div>
+                                  
+                                    <script> var selectVar = document.getElementById('avail_time');</script>
+                                  <c:forEach var="availableTime" items= "${availableTimeList}" varStatus="i">
+                                    <script>
+
+                                    var option = document.createElement('option');
+                                    option.textContent = "${availableTime.timeSlotsDescription}";
+                                    option.value="${availableTime.timeSlotsDescription}"
+                                    selectVar.appendChild(option);
+                                    </script>
+                                  </c:forEach>
+                                  
+                                   <div class="form-group">
+                                  <label class="label-control">Segment Type</label>
+                                    <select class="form-control" id="Seg_type" required>
+                                      
+                                    </select>
+                                  </div>
+                                  <script> var selectVar = document.getElementById('Seg_type');</script>
+                                  <c:forEach var="segmentType" items= "${segmentTypeList}" varStatus="i">
+                                    <script>
+
+                                    var option = document.createElement('option');
+                                    option.textContent = "${segmentType.segmentTypeName}";
+                                    option.value="${segmentType.segmentTypeName}"
+                                    selectVar.appendChild(option);
+                                    </script>
+                                  </c:forEach>
                                   <br>
                                     <a href="#" onclick="submitSignUpDetails()"><button class="Signbtn" type="button">Submit</button></a>
                                   </form>
@@ -367,23 +348,56 @@
 								<script>
 
 								var securityQuestionId;
+								var timeSlotsId;
 								var securityQuestion
+								var timeSlotsDescription;
+								var segmentTypeName;
+								var segmentTypeId;
 		     function submitSignUpDetails(){
 		       //alert("Submit Sign Up Details");
 		       //alert($('#securityQuestion').val());
-		    	 <c:forEach items="${securityQuestions}" var="securityQuestion">
-					if(document.getElementById("securityQuestion").value=='${securityQuestion.securityQuestion}'){
-						//	alert('${securityQuestion.securityQuestionId}');
-						securityQuestionId='${securityQuestion.securityQuestionId}';
-						securityQuestion='${securityQuestion.securityQuestion}';
+		    	 <c:forEach items="${availableTimeList}" var="availableTime">
+					if(document.getElementById("avail_time").value=='${availableTime.timeSlotsDescription}'){
+						
+						timeSlotsId='${availableTime.timeSlotsId}';
+						timeSlotsDescription='${availableTime.timeSlotsDescription}';
 					}
 				</c:forEach>   
 		
-				var mappingSecurityQuestions={
-						securityQuestionId:securityQuestionId,
-						securityQuestion:securityQuestion
+				var mappingTimeSlots={
+						timeSlotsId:timeSlotsId,
+						timeSlotsDescription:timeSlotsDescription
 		
 				}
+
+
+				 <c:forEach items="${segmentTypeList}" var="segmentType">
+				if(document.getElementById("Seg_type").value=='${segmentType.segmentTypeName}'){
+					
+					segmentTypeId='${segmentType.segmentTypeId}';
+					segmentTypeName='${segmentType.segmentTypeName}';
+				}
+			</c:forEach>   
+	
+			var mappingSegmentType={
+					segmentTypeId:segmentTypeId,
+					segmentTypeName:segmentTypeName
+	
+			}
+			
+				<c:forEach items="${securityQuestions}" var="securityQuestion">
+				if(document.getElementById("securityQuestion").value=='${securityQuestion.securityQuestion}'){
+					//	alert('${securityQuestion.securityQuestionId}');
+					securityQuestionId='${securityQuestion.securityQuestionId}';
+					securityQuestion='${securityQuestion.securityQuestion}';
+				}
+			</c:forEach>   
+
+			var mappingSecurityQuestions={
+					securityQuestionId:securityQuestionId,
+					securityQuestion:securityQuestion
+	
+			}
 		       
 		       var firstName = $('#firstName').val();
 		       var lastName = $('#lastName').val();
@@ -394,7 +408,18 @@
 		       var securityQuestion = $('#securityQuestion').val();
 		       var securityAnswer =  $('#securityAnswer').val();
 		      // alert(securityAnswer);
-		     //  var userCategoryId = 1;
+		       var userCategoryId = 2;
+		       var userCategoryName="Admin";
+		       var createdBy = null;
+		       var createdDate=null;
+
+		       var mappingUserCategory={
+		    		   userCategoryId:userCategoryId,
+		    		   userCategoryName:userCategoryName,
+		    		   createdBy:createdBy,
+		    			createdDate:createdDate
+		
+				}
 		       //alert(gender);
 		       var myData = {
 		
@@ -406,10 +431,13 @@
 		           mobileNumber: mobileNumber,
 		           securityQuestion: securityQuestion,
 		           securityAnswer: securityAnswer,
-		           mappingSecurityQuestions:mappingSecurityQuestions
+		           mappingSecurityQuestions:mappingSecurityQuestions,
+		           mappingSegmentType:mappingSegmentType,
+		           mappingTimeSlots:mappingTimeSlots,
+		           mappingUserCategory:mappingUserCategory
 		         //  userCategoryId: userCategoryId
 		         };
-		     alert("*** " + JSON.stringify(myData));
+		     //alert("*** " + JSON.stringify(myData));
 		     //console.log(myData);
 		     $.ajax({
 		         type: 'POST',
