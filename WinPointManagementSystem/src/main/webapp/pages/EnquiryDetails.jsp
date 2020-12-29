@@ -63,6 +63,8 @@
 		<!--End enquiry details Page-->
 		<script>
 
+			//alert("here");
+
 			var elem = document.getElementById('details-enquiry');
 			if(elem!=null){
 				elem.parentNode.removeChild(elem);
@@ -75,8 +77,8 @@
 			
 			var th1 = document.createElement('th');
 			th1.textContent = "Name";
-			var th2 = document.createElement('th');
-			th2.textContent = "Course";
+		//	var th2 = document.createElement('th');
+		//	th2.textContent = "Course";
 			var th3 = document.createElement('th');
 			th3.textContent = "Eligibility";
 			var th4 = document.createElement('th');
@@ -85,7 +87,7 @@
 			th5.textContent = "Update";
 			
 			thead.appendChild(th1);
-			thead.appendChild(th2);
+			//thead.appendChild(th2);
 			thead.appendChild(th3);
 			thead.appendChild(th4);
 			thead.appendChild(th5);
@@ -98,8 +100,7 @@
 					var tr = document.createElement('tr');
 					var td1 = document.createElement('td');
 					td1.textContent = '${det.firstName}'+" "+ '${det.lastName}' ;
-					var td2 = document.createElement('td');
-					td2.textContent = '${det.courseInterestedIn}';
+					
 					var td3 = document.createElement('td');
 					td3.textContent = '${det.eligibility}';
 					var td4 = document.createElement('td');
@@ -115,7 +116,7 @@
 					td5.appendChild(addStudentBtn);
 
 					tr.appendChild(td1);
-					tr.appendChild(td2);
+					//tr.appendChild(td2);
 					tr.appendChild(td3);
 					tr.appendChild(td4);
 					tr.appendChild(td5);

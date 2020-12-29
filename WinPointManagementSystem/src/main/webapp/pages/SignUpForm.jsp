@@ -203,15 +203,21 @@
 					<h4 class="card-header card-header-primary">Enquiry Details</h4>
 				<div class="card-body">
 				
-					<div class="form-row">
+					 <div class="form-row">
 						<div class="col">
 						  <label for="Courses_Interested_in">Courses Interested in</label> 
-							 <form:select class="form-control selectpicker" path = "courseInterestedIn" id="course_interested" multiple="true" required="true">
-				                     <%-- <form:option value = "NONE" label = "Select"/> --%>
+							 <%-- <form:select class="form-control selectpicker" path = "mappingCourseInterestedIn" id="course_interested" multiple="true" required="true">
+				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${courseInterestedInList}" />
-				             </form:select>  
+				             </form:select>   --%>
+				             
+				             <form:select  class="form-control selectpicker" path = "mappingCourseInterestedIn" id="course_interested" multiple="true">
+								<c:forEach items="${courseInterestedInList}" var="course">
+   									 <option name="course" value="${course.courseId}">${course.courseName}</option>
+								</c:forEach>
+						</form:select>
 						 </div>
-					</div>
+					</div> 
 					
 					<div class="form-row">
 						<div class="col">
@@ -232,10 +238,16 @@
 					<div class="form-row">
 						<div class="col">
 						  <label for="Courses_Already_done">Courses Already Done</label> 
-							 <form:select class="form-control selectpicker" path = "courseAlreadyDone" multiple="true" >
-				                    <%--  <form:option value = "NONE" label = "Select"/> --%>
+							<%--  <form:select class="form-control selectpicker" path = "mappingCoursesAlreadyDone" multiple="true" >
+				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${courseAlreadyDone}" />
-				             </form:select>  
+				             </form:select>   --%>
+				             
+				             <form:select  class="form-control selectpicker" path = "mappingCoursesAlreadyDone"  multiple="true">
+								<c:forEach items="${courseAlreadyDone}" var="course">
+   									 <option name="course" value="${course.courseId}">${course.courseName}</option>
+								</c:forEach>
+						</form:select>
 						 </div>
 					</div>
 				
@@ -479,7 +491,7 @@
 
 		 else if(courses_interested==""){
 		      alert("Enter courses interested in");
-		 }
+		 } 
 		 else if(time==""){
 		      alert("Enter the available time");
 		 }

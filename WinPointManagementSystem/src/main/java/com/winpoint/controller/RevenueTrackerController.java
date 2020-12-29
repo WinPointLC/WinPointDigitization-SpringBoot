@@ -167,7 +167,7 @@ public class RevenueTrackerController {
 			System.out.println("DATA segemnt type - " + s.getCourseName());
 			courseAlreadyDonelist.add(s.getCourseName());
 		}
-		mv.addObject("courseAlreadyDone", courseAlreadyDonelist);
+		mv.addObject("courseAlreadyDone", courseAlreadyDone);
 		// Course Interested in
 		List<Course> courseInterestedInList = courseRepository.findAll();
 		List<String> courseInterestedInlist = new ArrayList<String>();
@@ -175,7 +175,7 @@ public class RevenueTrackerController {
 			System.out.println("DATA segemnt type - " + s.getCourseName());
 			courseInterestedInlist.add(s.getCourseName());
 		}
-		mv.addObject("courseInterestedInList", courseInterestedInlist);
+		mv.addObject("courseInterestedInList", courseInterestedInList);
 		// Available time
 		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
 //		List<String> availableTimelist = new ArrayList<String>();
