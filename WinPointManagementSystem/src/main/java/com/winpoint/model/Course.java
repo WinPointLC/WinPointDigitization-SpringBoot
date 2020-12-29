@@ -1,7 +1,8 @@
 package com.winpoint.model;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,12 +13,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Course implements Serializable{
+public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "courseId", updatable = false)
@@ -106,5 +106,14 @@ public class Course implements Serializable{
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<CourseFeedback> CourseFeedback;
+	
+	
+	@ManyToMany(mappedBy = "mappingCourseInterestedIn")
+	List<EnquiryDetails> mappingInterestedEnquiryDetails = new ArrayList<>();
+	
+	@ManyToMany(mappedBy = "mappingCoursesAlreadyDone")
+	List<EnquiryDetails> mappingCoursesDoneEnquiryDetails = new ArrayList<>();
+	
+	
 
 }
