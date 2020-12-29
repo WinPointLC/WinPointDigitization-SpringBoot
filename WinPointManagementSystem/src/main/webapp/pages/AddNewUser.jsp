@@ -451,7 +451,7 @@
 		          
 		          },
 		         error: function(){
-		          alert("Error: Emailid already exists");
+		         /*  alert("Error: Emailid already exists"); */
 		          //document.getElementById("error").innerHTML = "Invalid email or password";
 		         }
 		

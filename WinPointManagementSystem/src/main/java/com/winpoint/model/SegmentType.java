@@ -1,5 +1,7 @@
 package com.winpoint.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,6 +28,7 @@ public class SegmentType {
 	private Integer segmentTypeId;
 	private String segmentTypeName;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
 	private Set<BatchDetails> mappingBatchDetails;
 
@@ -33,12 +36,15 @@ public class SegmentType {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
 	private Set<EnquiryDetails> mappingEnquiryDetails;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
 	private Set<ExpenseDetails> mappingExpenseDetails;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
 	private Set<RevenueDetail> mappingRevenueDetail;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSegmentType")
-	private Set<UserProfile> mappingUserProfile;
+	private List<UserProfile> mappingUserProfile = new ArrayList<UserProfile>();
 }

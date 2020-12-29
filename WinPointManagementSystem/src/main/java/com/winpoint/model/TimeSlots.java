@@ -30,6 +30,7 @@ public class TimeSlots {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTimeSlots")
 	private Set<EnquiryDetails> mappingEnquiryDetails;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTimeSlots")
 	private Set<UserProfile> mappingUserProfile;
 
