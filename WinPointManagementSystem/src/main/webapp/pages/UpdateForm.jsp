@@ -282,7 +282,7 @@
 
 							document.getElementById("fName").value=updateFormDet.firstName;
 							document.getElementById("lName").value=updateFormDet.lastName;
-							document.getElementById("mobNo").value=updateFormDet.MobileNo;
+							document.getElementById("mobNo").value=updateFormDet.mobileNo;
 
 							document.getElementById("email").value=updateFormDet.emailId;
 							document.getElementById("college").value=updateFormDet.college;
@@ -316,13 +316,23 @@
 									}
 							</c:forEach>   
 
-							<c:forEach items="${segmentTypeList}" var="segmentType">
+							<c:forEach items="${availableTimeList}" var="availableTime">
+							
+							if('${availableTime.timeSlotsId}'==updateFormDet.mappingTimeSlots.timeSlotsId){
+									//	alert('${availableTime.timeSlotsDescription}');
+								document.getElementById("avail_time").value='${availableTime.timeSlotsDescription}';
+								
+								}
+						</c:forEach>   
+						
+							/* <c:forEach items="${segmentTypeList}" var="segmentType">
 								if('${segmentType.segmentTypeId}'==updateFormDet.mappingSegmentType.segmentTypeId){
 										alert('${segmentType.segmentTypeName}');
+										alert(document.getElementById("Seg_type"));
 									document.getElementById("Seg_type").value='${segmentType.segmentTypeName}';
 									
 								}
-							</c:forEach>     
+							</c:forEach>    */  
 		
 					},
 					error: function(){
@@ -369,7 +379,7 @@
 						enquiryId:enquiryId,
 						firstName:document.getElementById("fName").value,
 						lastName:document.getElementById("lName").value,
-						MobileNo:document.getElementById("mobNo").value,
+						mobileNo:document.getElementById("mobNo").value,
 						emailId:document.getElementById("email").value,
 						college:document.getElementById("college").value,
 						designation:document.getElementById("designation").value,

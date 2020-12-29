@@ -16,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,7 +34,7 @@ public class EnquiryDetails {
 	private String firstName;
 	private String lastName;
 	private String emailId;
-	private String MobileNo;
+	private String mobileNo;
 	private String address;
 	private Date birthDate;
 	private String college;
