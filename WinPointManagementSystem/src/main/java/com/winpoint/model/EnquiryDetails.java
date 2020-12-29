@@ -51,9 +51,7 @@ public class EnquiryDetails {
 	private Integer yearOfGraduation;
 	private String recommendation;
 	private String eligibility;
-	private String courseInterestedIn;
 	private String reference;
-	private String courseAlreadyDone;
 	private Date startDate;
 	private String suggestion;
 	private Integer activeStatus;
