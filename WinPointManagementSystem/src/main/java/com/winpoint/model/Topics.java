@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -33,15 +35,23 @@ public class Topics {
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
 	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
 	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
 	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
 	private Set<TestDifficulty> mappingTestDifficulty;
 

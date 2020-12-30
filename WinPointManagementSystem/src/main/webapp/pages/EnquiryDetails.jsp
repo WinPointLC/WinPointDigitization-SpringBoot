@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html lang="en">
 
@@ -63,6 +64,8 @@
 		<!--End enquiry details Page-->
 		<script>
 
+			//alert("here");
+
 			var elem = document.getElementById('details-enquiry');
 			if(elem!=null){
 				elem.parentNode.removeChild(elem);
@@ -93,13 +96,24 @@
 			table.appendChild(thead);
 			
 			var tbody = document.createElement('tbody');
+			//var courses=[];
 			
 			<c:forEach items="${enquiryList}" var="det">
 					var tr = document.createElement('tr');
 					var td1 = document.createElement('td');
 					td1.textContent = '${det.firstName}'+" "+ '${det.lastName}' ;
+					//alert('${det.mappingCourseInterestedIn}');
 					var td2 = document.createElement('td');
-					td2.textContent = '${det.courseInterestedIn}';
+					td2.textContent="";
+					//alert('${fn:length('${det.mappingCourseInterestedIn}')}');
+					
+					<c:forEach items="${det.mappingCourseInterestedIn}" var="course">
+   						 //alert('${course.courseName}')
+   						 td2.textContent=td2.textContent+'${course.courseName}'+' , '
+					</c:forEach>
+   						 td2.textContent=td2.textContent.substring(0, td2.textContent.length - 2);
+   						//alert(td2.textContent.substring(0, td2.textContent.length - 2));
+   						
 					var td3 = document.createElement('td');
 					td3.textContent = '${det.eligibility}';
 					var td4 = document.createElement('td');

@@ -1,6 +1,8 @@
 package com.winpoint.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -28,6 +30,6 @@ public class SecurityQuestions {
 	private Date createdDate;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSecurityQuestions")
-	private Set<UserProfile> mappingUserProfile;
+	private List<UserProfile> mappingUserProfile = new ArrayList<UserProfile>();
 
 }

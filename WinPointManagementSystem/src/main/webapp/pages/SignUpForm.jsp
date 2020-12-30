@@ -70,6 +70,19 @@
 						<form:input type="email" class="form-control" path="emailId" id="email" placeholder="Email Id" required="true"/>
 						</div>
 					</div>
+					
+				<%--  <form:form id="passwordForm" method="post" action="saveForm" modelAttribute="userProfile">	
+				 <div class="form-row">
+						<div class="col">
+							
+						 <form:input type="password" class="form-control" path="password" id="password" placeholder="Password" required="true"/>
+							
+						 </div>
+				</div>
+				</form:form>    --%>
+					
+					
+					
 					  <div class="form-row">
 						<div class="col">
 						<div class="form-group">
@@ -190,15 +203,21 @@
 					<h4 class="card-header card-header-primary">Enquiry Details</h4>
 				<div class="card-body">
 				
-					<div class="form-row">
+					 <div class="form-row">
 						<div class="col">
 						  <label for="Courses_Interested_in">Courses Interested in</label> 
-							 <form:select class="form-control selectpicker" path = "courseInterestedIn" id="course_interested" multiple="true" required="true">
-				                     <%-- <form:option value = "NONE" label = "Select"/> --%>
+							 <%-- <form:select class="form-control selectpicker" path = "mappingCourseInterestedIn" id="course_interested" multiple="true" required="true">
+				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${courseInterestedInList}" />
-				             </form:select>  
+				             </form:select>   --%>
+				             
+				             <form:select  class="form-control selectpicker" path = "mappingCourseInterestedIn" id="course_interested" multiple="true">
+								<c:forEach items="${courseInterestedInList}" var="course">
+   									 <option name="course" value="${course.courseId}">${course.courseName}</option>
+								</c:forEach>
+						</form:select>
 						 </div>
-					</div>
+					</div> 
 					
 					<div class="form-row">
 						<div class="col">
@@ -219,14 +238,20 @@
 					<div class="form-row">
 						<div class="col">
 						  <label for="Courses_Already_done">Courses Already Done</label> 
-							 <form:select class="form-control selectpicker" path = "courseAlreadyDone" multiple="true" >
-				                    <%--  <form:option value = "NONE" label = "Select"/> --%>
+							<%--  <form:select class="form-control selectpicker" path = "mappingCoursesAlreadyDone" multiple="true" >
+				                     <form:option value = "NONE" label = "Select"/>
 				                     <form:options items = "${courseAlreadyDone}" />
-				             </form:select>  
+				             </form:select>   --%>
+				             
+				             <form:select  class="form-control selectpicker" path = "mappingCoursesAlreadyDone"  multiple="true">
+								<c:forEach items="${courseAlreadyDone}" var="course">
+   									 <option name="course" value="${course.courseId}">${course.courseName}</option>
+								</c:forEach>
+						</form:select>
 						 </div>
 					</div>
 				
-				 <form:form id="timeSlotsForm" method="post" action="saveForm" modelAttribute="timeSlots">	
+				<%--  <form:form id="timeSlotsForm" method="post" action="saveForm" modelAttribute="timeSlots">	
 				 <div class="form-row">
 						<div class="col">
 							
@@ -239,7 +264,20 @@
 							
 						 </div>
 				</div>
-				</form:form>  
+				</form:form>   --%>
+				
+				 <div class="form-row">
+						<div class="col">
+							
+						  <label for="avail_time">Available Time</label> 
+						   <form:select name="availableTime" class="form-control selectpicker" path = "mappingTimeSlots" id="avail_time" required="true">
+								<c:forEach items="${availableTimeList}" var="availableTime">
+   									 <option name="availableTime" value="${availableTime.timeSlotsId}">${availableTime.timeSlotsDescription}</option>
+								</c:forEach>
+						</form:select>
+							
+						 </div>
+				</div>
 					
 					<div class="form-row">
 						<div class="col">
@@ -273,7 +311,7 @@
 						 </div>
 					</div>  
 						
-					 <form:form id="segmentForm" method="post" action="saveForm" modelAttribute="segmentType">	
+					<%--  <form:form id="segmentForm" method="post" action="saveForm" modelAttribute="segmentType">	
 					   <div class="form-row">
 						<div class="col">
 						  <label for="segment_type">Segment Type</label> 
@@ -284,8 +322,19 @@
 						</form:select>	
 						 </div>
 					</div>   
-					</form:form>	 
-				
+					</form:form>	 --%>
+					
+					<div class="form-row">
+						<div class="col">
+						  <label for="segment_type">Segment Type</label> 
+						  <form:select name="segmentType" class="form-control selectpicker" id="seg_type" path = "mappingSegmentType" required="true">
+								<c:forEach items="${segmentTypeList}" var="segmentType">
+   									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
+								</c:forEach>
+						</form:select>	
+						 </div>
+					</div>   
+					
 					<div class="form-row">
 						<div class="col">
 						
@@ -309,6 +358,18 @@
 						</div>
 					</div> 
 					
+					<%--  <form:form id="passwordForm" method="post" action="saveForm" modelAttribute="userProfile">	
+				 <div class="form-row">
+						<div class="col">
+							
+						 <form:input type="password" class="form-control" path="password" id="password" placeholder="Enter Password" required="true"/>
+							
+						 </div>
+				</div>
+				</form:form> --%>
+					
+					
+					
 				</div>
 			</div>
  			<input type="button" class="btn btn-primary" style="margin-left:40%;width:15%;" value="Submit" onclick="submitForm()"/>
@@ -321,26 +382,34 @@
 		
 	<!--End Signup formPage-->
 	<script type="text/javascript">
+
+	var location_next='${location}'
+	//alert(location_next);
+	
 	var flag=0;
 	function submitForm(){
 		//var birthdate = document.getElementById("bdayId");
 		//alert("DATE - "+birthdate.value);
 		//alert("here");
 		
-		timeSlotsId=document.getElementById("avail_time").value;
-		segmentTypeId=document.getElementById("seg_type").value;
+		//timeSlotsId=document.getElementById("avail_time").value;
+		//segmentTypeId=document.getElementById("seg_type").value;
+		//password=document.getElementById("password").value;
+		
 
 		validation();
 		if(flag==1){
 			var myData = {
-					timeSlotsid: timeSlotsId,
-					segmentTypeid:segmentTypeId
+					//timeSlotsid: timeSlotsId,
+					//segmentTypeid:segmentTypeId,
+					//Password: password,
+					location:location_next		
 				};
 				
 				$.ajax({
 					type: 'POST',
 					
-					url: "/TimeAndSegment",
+					url: "/LocationNext",
 				
 					data: jQuery.param(myData),
 					//dataType: 'json',
@@ -367,6 +436,7 @@
 		var lname = document.getElementById('lastName').value;
 		var mobNo = document.getElementById('mobNo').value;
 		var email = document.getElementById('email').value;
+		//var password= document.getElementById('password').value;
 		var bday = document.getElementById('bdayId').value;
 
 		var college = document.getElementById('college').value;
@@ -395,6 +465,9 @@
 		 else if(email==""){
 		      alert("Enter the Email Id");
 		 }
+		 /* else if(password==""){
+		      alert("Enter password");
+		 }  */
 		 else if(bday==""){
 		      alert("Enter the Date of Birth");
 		 }
@@ -418,7 +491,7 @@
 
 		 else if(courses_interested==""){
 		      alert("Enter courses interested in");
-		 }
+		 } 
 		 else if(time==""){
 		      alert("Enter the available time");
 		 }

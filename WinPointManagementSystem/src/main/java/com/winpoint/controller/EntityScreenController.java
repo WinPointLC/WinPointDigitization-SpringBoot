@@ -26,10 +26,8 @@ import com.winpoint.model.ReminderType;
 import com.winpoint.model.RevenueType;
 import com.winpoint.model.SecurityQuestions;
 import com.winpoint.model.SegmentType;
-import com.winpoint.model.StreamCourseType;
 import com.winpoint.model.Streams;
 import com.winpoint.model.TimeSlots;
-import com.winpoint.model.ToolTips;
 import com.winpoint.model.UserCategory;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.CourseTypeRepository;
@@ -51,10 +49,13 @@ import com.winpoint.repository.UserCategoryRepository;
 
 @Controller
 public class EntityScreenController {
+	@Autowired
+	StreamsRepository stream;
 	@RequestMapping(value = "/Entities", method = RequestMethod.GET)
 	public ModelAndView showEntityPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Entities");
+		mv.addObject("streamList", stream.findAll());
 		return mv;
 	}
 
@@ -110,17 +111,15 @@ public class EntityScreenController {
 	CourseRepository courseRepository;
 
 	@RequestMapping(value = "/Entity", method = RequestMethod.POST)
-	public @ResponseBody List<CourseType> showCourseType(@RequestParam String entityInfoParam) {
-//		List<?>list ;
+	public @ResponseBody List<?> showCourseType(@RequestParam String entityInfoParam) {
+		List<?>list ;
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println("EntityInfoParam : "+entityInfoParam);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		
 		switch (entityInfoParam) {
 		case "CourseType":
-//			System.out.println("@##############################################################");
 			List<CourseType> list1 = courseTypeRepository.findAll();
-//			System.out.println(list1 +" "+ list1.isEmpty());
 			if(list1.isEmpty()) {
 				List<CourseType> empList = new ArrayList<>();
 				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
@@ -129,237 +128,236 @@ public class EntityScreenController {
 					System.out.println(x);
 				return empList;
 			}
-//			System.out.println("@##############################################################");	
 			
 			return list1;
 
-//		case "DifficultyLevel":
-//			System.out.println("@##############################################################");
-//
-//
-//			list = difficultyLevelRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<DifficultyLevel> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new DifficultyLevel());
-//				for(DifficultyLevel x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			System.out.println(list);
-//			return list;
-//
-//		case "Stream":
-//			list = streamsRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<Streams> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new Streams());
-//				for(Streams x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "EmployeeCategory":
-//			System.out.println("@##############################################################");
-//			list = employeeCategoryRepository.findAll();
-//			System.out.println(list +" - "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<EmployeeCategory> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new EmployeeCategory());
-//				for(EmployeeCategory x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			System.out.println(list);
-//			return list;
-//
-//		case "EvaluationType":
-//			
-//			list = evaluationTypeRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<EvaluationType> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new EvaluationType());
-//				for(EvaluationType x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "FeedbackCategory":
-//			
-//			list = feedbackCategoryRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<FeedbackCategory> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new FeedbackCategory());
-//				for(FeedbackCategory x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "FeedbackQuestionType":
-//			
-//			list = feedbackQuestionTypeRepositoy.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<FeedbackQuestionType> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new FeedbackQuestionType());
-//				for(FeedbackQuestionType x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//
-//		case "GradingSystem":
-//			
-//			list = gradingSystemRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<GradingSystem> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new GradingSystem());
-//				for(GradingSystem x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "OrganizationType":
-//			
-//			list = organizationTypeRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<OrganizationType> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new OrganizationType());
-//				for(OrganizationType x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "PaymentType":
-//			
-//			list = paymentModeRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<PaymentMode> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new PaymentMode());
-//				for(PaymentMode x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "ReminderType":
-//			
-//			list = reminderTypeRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<ReminderType> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new ReminderType());
-//				for(ReminderType x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "RevenueType":
-//			
-//			list = revenueTypeRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<RevenueType> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new RevenueType());
-//				for(RevenueType x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "SecurityQuestions":
-//			
-//			list = securityQuestionsRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<SecurityQuestions> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new SecurityQuestions());
-//				for(SecurityQuestions x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "SegmentType":
-//			
-//			list = segmentTypeRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<SegmentType> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new SegmentType());
-//				for(SegmentType x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "TimeSlots":
-//			
-//			list = timeSlotsRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<TimeSlots> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new TimeSlots());
-//				for(TimeSlots x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//
-//		case "UserCategory":
-//			
-//			list = userCategoryRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<UserCategory> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new UserCategory());
-//				for(UserCategory x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
-//			
-//		case "Course":
-//			
-//			list = courseRepository.findAll();
-//			System.out.println(list +" "+ list.isEmpty());
-//			if(list.isEmpty()) {
-//				List<Course> empList = new ArrayList<>();
-//				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
-//				empList.add(new Course());
-//				for(Course x:empList)
-//					System.out.println(x);
-//				return empList;
-//			}
-//			return list;
+		case "DifficultyLevel":
+			System.out.println("@##############################################################");
+
+
+			list = difficultyLevelRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<DifficultyLevel> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new DifficultyLevel());
+				for(DifficultyLevel x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			System.out.println(list);
+			return list;
+
+		case "Stream":
+			list = streamsRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<Streams> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new Streams());
+				for(Streams x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "EmployeeCategory":
+			System.out.println("@##############################################################");
+			list = employeeCategoryRepository.findAll();
+			System.out.println(list +" - "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<EmployeeCategory> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new EmployeeCategory());
+				for(EmployeeCategory x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			System.out.println(list);
+			return list;
+
+		case "EvaluationType":
+			
+			list = evaluationTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<EvaluationType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new EvaluationType());
+				for(EvaluationType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "FeedbackCategory":
+			
+			list = feedbackCategoryRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<FeedbackCategory> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new FeedbackCategory());
+				for(FeedbackCategory x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "FeedbackQuestionType":
+			
+			list = feedbackQuestionTypeRepositoy.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<FeedbackQuestionType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new FeedbackQuestionType());
+				for(FeedbackQuestionType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+
+		case "GradingSystem":
+			
+			list = gradingSystemRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<GradingSystem> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new GradingSystem());
+				for(GradingSystem x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "OrganizationType":
+			
+			list = organizationTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<OrganizationType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new OrganizationType());
+				for(OrganizationType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "PaymentType":
+			
+			list = paymentModeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<PaymentMode> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new PaymentMode());
+				for(PaymentMode x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "ReminderType":
+			
+			list = reminderTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<ReminderType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new ReminderType());
+				for(ReminderType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "RevenueType":
+			
+			list = revenueTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<RevenueType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new RevenueType());
+				for(RevenueType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "SecurityQuestions":
+			
+			list = securityQuestionsRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<SecurityQuestions> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new SecurityQuestions());
+				for(SecurityQuestions x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "SegmentType":
+			
+			list = segmentTypeRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<SegmentType> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new SegmentType());
+				for(SegmentType x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "TimeSlots":
+			
+			list = timeSlotsRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<TimeSlots> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new TimeSlots());
+				for(TimeSlots x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+
+		case "UserCategory":
+			
+			list = userCategoryRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<UserCategory> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new UserCategory());
+				for(UserCategory x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
+			
+		case "Course":
+			
+			list = courseRepository.findAll();
+			System.out.println(list +" "+ list.isEmpty());
+			if(list.isEmpty()) {
+				List<Course> empList = new ArrayList<>();
+				System.out.println("\n\n\n\n\n\n\n\nWelcome \n\n\n\n\n\n\n\n");
+				empList.add(new Course());
+				for(Course x:empList)
+					System.out.println(x);
+				return empList;
+			}
+			return list;
 
 		default:
 			return null;
@@ -368,7 +366,6 @@ public class EntityScreenController {
 	}
 	
 	
-	/////////////////////////////////////////////////////////////////////////////
 
 	@RequestMapping(value = "/CourseTypeUpdate", method = RequestMethod.POST)
 	public void updateCourseType(@RequestBody CourseType addRows[]) {
@@ -653,9 +650,9 @@ public class EntityScreenController {
 	//###################################################################################
 	//###################################################################################
 	//Streams
-	@RequestMapping(value = "/Streams", method = RequestMethod.POST)
-	public @ResponseBody List<Streams> showStreams() {
-		return streamsRepository.findAll();
-	}
-
+	/*
+	 * @RequestMapping(value = "/Streams", method = RequestMethod.POST)
+	 * public @ResponseBody List<Streams> showStreams() { return
+	 * streamsRepository.findAll(); }
+	 */
 }

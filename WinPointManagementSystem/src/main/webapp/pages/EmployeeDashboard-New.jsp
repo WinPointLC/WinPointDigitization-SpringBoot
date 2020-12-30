@@ -19,10 +19,7 @@
 	  <link href="../css/employee_new_2.css" rel="stylesheet" />
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	  <link rel="stylesheet" href="../assets/css/magnific-popup.css" media="screen" />
-	  <!--<script>
-		 <c:import url="/FeeDetailsServlet" />
-		 <c:set var="unpaidStudentsList" value="${requestScope.unpaidStudentsList}" />
-	  </script>-->
+	  
 	  <SCRIPT src="http://java.com/js/dtjava.js"></SCRIPT>
 	  <script type="text/javascript" src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 
@@ -286,7 +283,7 @@
 		<div class="Include-jsp" id="iframediv">
 			<iframe src="FeeRegistrationPage-New" width="1000" height="700" id="Fee-jsp"></iframe>
 			<iframe src="AllUser" width="1000" height="700" id="AllUser-jsp"></iframe>
-			<iframe src="AddNewUser" width="1000" height="700" id="AddNewUser-jsp"></iframe>
+			<iframe src="AddNewUser" width="1000" height="550" id="AddNewUser-jsp"></iframe>
 			<iframe src="AddNewQuestion" width="1000" height="700" id="AddNewQuestion-jsp"></iframe>
 			<iframe src="Entities" width="1000" height="700" id="Entities-jsp"></iframe>
 			<iframe src="RevenueTracker" width="1000" height="550" id="RevenueTracker-jsp"></iframe>
@@ -380,11 +377,12 @@
 				document.getElementById('RevenueTracker-jsp').style.display="none";
 			 
 				userframe = document.createElement('iframe');
-				userframe.setAttribute('src',jspURL + "User.jsp?varid=");
-				userframe.setAttribute('width', 1100);
-				userframe.setAttribute('height', 1000);
+				//userframe.setAttribute('src',jspURL + "User.jsp?varid=");
+				userframe.setAttribute('src',"User");
+				userframe.setAttribute('width', 1000);
+				userframe.setAttribute('height', 500);
 				userframe.id = 'User-frame';
-				userframe.setAttribute('style',"margin-top:10%;");
+				userframe.setAttribute('style',"margin-top:5%;");
 				document.getElementById('iframediv').appendChild(userframe);
 				var source2 = encodeURIComponent(strResJSON);
 				var iframe_ele2 = document.getElementById("User-frame");

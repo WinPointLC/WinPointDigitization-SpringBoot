@@ -25,11 +25,14 @@ import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SegmentType;
 import com.winpoint.model.Streams;
 import com.winpoint.model.TimeSlots;
+
+import com.winpoint.model.UserProfile;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.EnquiryDetailsRepository;
 import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.StreamsRepository;
 import com.winpoint.repository.TimeSlotsRepository;
+
 
 @Controller
 public class RevenueTrackerController {
@@ -61,15 +64,26 @@ public class RevenueTrackerController {
 	}
 
 	
-	Integer timeSlotsId;
-	Integer segmentTypeId;
+	//Integer timeSlotsId;
+	//Integer segmentTypeId;
+	//String password;
+	String Location;
 	
-	@RequestMapping(value = "/TimeAndSegment", method = RequestMethod.POST)
-	public @ResponseBody void getTimeAndSegment(@RequestParam("timeSlotsid") String timeSlotsid,@RequestParam("segmentTypeid") String segmentTypeid) {
-		System.out.println("timeSlotsId  " + timeSlotsid);
-		timeSlotsId=Integer.parseInt(timeSlotsid);
-		System.out.println("segmentTypeId  " + segmentTypeid);
-		segmentTypeId=Integer.parseInt(segmentTypeid);
+	
+	@RequestMapping(value = "/LocationNext", method = RequestMethod.POST)
+	public @ResponseBody void getTimeAndSegment(@RequestParam("location") String location) {
+		/*
+		 * System.out.println("timeSlotsId  " + timeSlotsid);
+		 * timeSlotsId=Integer.parseInt(timeSlotsid);
+		 * System.out.println("segmentTypeId  " + segmentTypeid);
+		 * segmentTypeId=Integer.parseInt(segmentTypeid);
+		 */
+	//	System.out.println("password  " + Password);
+		//password=Password;
+		System.out.println("location  " + location);
+		Location=location;
+		
+		
 	}
 	
 	
@@ -82,9 +96,11 @@ public class RevenueTrackerController {
 	public String saveForm(EnquiryDetails enquiryDetails,RedirectAttributes redirectAttributes) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + enquiryDetails.getFirstName());
-		System.out.println("USER:  " + enquiryDetails.getGender());
+		System.out.println("USER:  " + enquiryDetails.getMobileNo());
 		System.out.println("USER:  " + enquiryDetails.getDegree());
 		System.out.println("USER:  " + enquiryDetails.getBirthDateString());
+		System.out.println("USER:  " + enquiryDetails.getMappingTimeSlots());
+		System.out.println("USER:  " + enquiryDetails.getMappingSegmentType());
 		
 		//System.out.println("timeSlots:  " + timeSlots.getTimeSlotsId());
 		
@@ -104,10 +120,14 @@ public class RevenueTrackerController {
 		//System.out.println("USER:  "+ user.getBirthDate()); 
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //
-		//enquiryDetailsRepository.save(enquiryDetails);
+		enquiryDetailsRepository.save(enquiryDetails);
 		finalUser=enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
-		return "redirect:/EnquiryDetails";
+		if(Location.equals("LoginForm"))
+			return "LoginForm";
+		else
+			return "redirect:/EnquiryDetails";
+		//return Location;
 
 	}
 	
@@ -119,9 +139,10 @@ public class RevenueTrackerController {
 	CourseRepository courseRepository;
 	@Autowired
 	TimeSlotsRepository timeSlotsRepository;
+	
 
 	@RequestMapping(value = "/SignUpRevenueTracker", method = RequestMethod.GET)
-	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,@ModelAttribute TimeSlots timeSlots,@ModelAttribute SegmentType segmentType) {
+	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,@ModelAttribute TimeSlots timeSlots,@ModelAttribute SegmentType segmentType,@ModelAttribute UserProfile userProfile) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SignUpForm");
 		List<String> list = new ArrayList<String>();
@@ -146,7 +167,7 @@ public class RevenueTrackerController {
 			System.out.println("DATA segemnt type - " + s.getCourseName());
 			courseAlreadyDonelist.add(s.getCourseName());
 		}
-		mv.addObject("courseAlreadyDone", courseAlreadyDonelist);
+		mv.addObject("courseAlreadyDone", courseAlreadyDone);
 		// Course Interested in
 		List<Course> courseInterestedInList = courseRepository.findAll();
 		List<String> courseInterestedInlist = new ArrayList<String>();
@@ -154,7 +175,7 @@ public class RevenueTrackerController {
 			System.out.println("DATA segemnt type - " + s.getCourseName());
 			courseInterestedInlist.add(s.getCourseName());
 		}
-		mv.addObject("courseInterestedInList", courseInterestedInlist);
+		mv.addObject("courseInterestedInList", courseInterestedInList);
 		// Available time
 		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
 //		List<String> availableTimelist = new ArrayList<String>();
@@ -163,7 +184,8 @@ public class RevenueTrackerController {
 //			availableTimelist.add(s.getTimeSlotsDescription());
 //		}
 		mv.addObject("availableTimeList", availableTimeList);
-
+		mv.addObject("location", "EnquiryDetails");
+		
 		mv.addObject("degreeList", list);
 		return mv;
 	}
@@ -176,30 +198,32 @@ public class RevenueTrackerController {
 	 * return "UpdateForm"; }
 	 */
 	
-	@RequestMapping(value = "/UpdateForm", method = RequestMethod.GET)
-	public ModelAndView showUpdateForm() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("UpdateForm");
-		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
-		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
-		mv.addObject("availableTimeList", availableTimeList);
-		mv.addObject("segmentTypeList", segmentTypeList);
-		return mv;
-	}
 
-	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
-	public @ResponseBody EnquiryDetails showEnquiry(@RequestParam("enquiryId") String enquiryId) {
-		System.out.println(enquiryId);
-		return enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get();
-
-	}
-
+//	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
+//	public @ResponseBody Optional<EnquiryDetails> showEnquiry(@RequestParam("enquiryId") String enquiryId) {
+//		System.out.println(enquiryId);
+//		
+//		System.out.println();
+//		EnquiryDetails enquiryDetails = new EnquiryDetails();
+//		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getMobileNo());
+//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getFirstName());
+//
+//		//List<EnquiryDetails> enquiryDetailsList = (List<EnquiryDetails>) (enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)));
+//		Optional<EnquiryDetails> enquiryDetailsList = enquiryDetailsRepository.findById(Integer.parseInt(enquiryId));	
+//		
+//		
+//		return enquiryDetailsList;
+//	}
+	
 	@RequestMapping(value = "/SaveUpdateData", method = RequestMethod.POST)
 	public void updateEnquiry(@RequestBody EnquiryDetails enquiry) {
 		System.out.println("*************");
 		System.out.println(enquiry.getFirstName());
 //		System.out.println(enquiry.getTimeSlotsId());
 //		System.out.println(enquiry.getSegmentTypeId());
+		System.out.println(enquiry.getMappingTimeSlots());
+		System.out.println(enquiry.getMappingSegmentType());
 		
 	}
 

@@ -1,6 +1,8 @@
 package com.winpoint.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,7 +12,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +32,15 @@ public class Streams {
 	private Integer createdBy;
 	private Date createdDate;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingStreams")
-	private Set<StreamCourseType> mappingStreamCourseType;
-
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingStreams")
 	private Set<Course> mappingCourse;
+	
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "mappingStream")
+	private List<CourseType> mappingCourseType = new ArrayList<CourseType>();
+	
+	
 
 }

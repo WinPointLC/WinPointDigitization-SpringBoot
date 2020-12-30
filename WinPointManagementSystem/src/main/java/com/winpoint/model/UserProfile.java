@@ -74,7 +74,7 @@ public class UserProfile {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userCategoryId", nullable = false)
-	private UserProfile mappingUserCategory;
+	private UserCategory mappingUserCategory;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "securityQuestionId", nullable = false)

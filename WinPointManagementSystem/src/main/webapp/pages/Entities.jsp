@@ -660,6 +660,7 @@
 				document.getElementById('del_link').className = "";
 		}
 
+		var entityDetailList;
 		function showBody(entity_name, flag, courseValue) {
 
 			entityName = entity_name.replace(/\s+/g, "");
@@ -668,7 +669,99 @@
 			document.getElementById('dropdownMenuSelectStream').style.display = "none";
 			document.getElementById('dropdownMenuSelectCoursetype').style.display = "none";
 			//alert("INFO : "+entityName);
-			$
+			if ((entity_name == "Course")
+									&& (flag != "display")) {
+								//alert("Course is there");
+
+								document
+										.getElementById('dropdownMenuSelectStream').style.display = "block";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').style.display = "block";
+								document.getElementById('entityTable').style.display = "none";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').textContent = "SELECT COURSETYPE";
+								document
+										.getElementById('dropdownMenuSelectStream').textContent = "SELECT STREAM";
+
+								<c:forEach items="${streamList}" var="stream">
+									var anchor = document.createElement('a');
+									anchor.className="dropdown-item";
+									anchor.setAttribute('href', "#");
+									anchor.id = '${stream.streamId}';
+									anchor.textContent='${stream.streamName}'.toUpperCase().replace("_"," ");
+									anchor.setAttribute('onclick', "getStreamId(this.id)");
+									document.getElementById('select-stream-dropdown').appendChild(anchor);
+								</c:forEach>     
+
+								/* $
+										.ajax({
+											type : 'POST',
+											url : "/Streams",
+											dataType : 'json',
+
+											contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+											traditional : true,
+											success : function(jsonObj) {
+
+												streamList = jsonObj;
+												
+
+												var streamDropDown = document
+														.getElementById('select-stream-dropdown');
+												while (streamDropDown
+														.hasChildNodes()) {
+													streamDropDown
+															.removeChild(streamDropDown.firstChild);
+												}
+
+												for (var i = 0; i < streamList.length; i++) {
+													var anchor2 = document
+															.createElement('a');
+													anchor2.className = "dropdown-item";
+													anchor2.setAttribute(
+															'href', "#");
+													anchor2.id = streamList[i].streamId;
+													anchor2.textContent = streamList[i].streamName
+															.toUpperCase()
+															.replace("_", " ");
+													anchor2
+															.setAttribute(
+																	'onclick',
+																	"getStreamId(this.id)");
+													document
+															.getElementById(
+																	'select-stream-dropdown')
+															.appendChild(
+																	anchor2);
+												}
+
+											}
+										});
+ */
+							}
+
+							else if ((entity_name == "Course")
+									&& (flag == "display")) {
+								//alert("Course is there");
+
+								document
+										.getElementById('dropdownMenuSelectStream').style.display = "block";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').style.display = "block";
+								document.getElementById('entityTable').style.display = "block";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').textContent = courseValue;
+
+							} else if (entity_name != "Course") {
+								//alert("Course is not there");
+								document
+										.getElementById('dropdownMenuSelectStream').style.display = "none";
+								document
+										.getElementById('dropdownMenuSelectCoursetype').style.display = "none";
+								document.getElementById('entityTable').style.display = "block";
+							}
+			
+			 $
 					.ajax({
 						type : 'POST',
 						//url: servletURL + 'EntityServlet?entityInfoParam=' + entityName + '&activity=read',
@@ -717,86 +810,7 @@
 							cardBody.id = "cardBody";
 							document.getElementById('entity_name').textContent = entity_name;
 
-							if ((entity_name == "Course")
-									&& (flag != "display")) {
-								//alert("Course is there");
-
-								document
-										.getElementById('dropdownMenuSelectStream').style.display = "block";
-								document
-										.getElementById('dropdownMenuSelectCoursetype').style.display = "block";
-								document.getElementById('entityTable').style.display = "none";
-								document
-										.getElementById('dropdownMenuSelectCoursetype').textContent = "SELECT COURSETYPE";
-								document
-										.getElementById('dropdownMenuSelectStream').textContent = "SELECT STREAM";
-
-								$
-										.ajax({
-											type : 'POST',
-											url : "/Streams",
-											dataType : 'json',
-
-											contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-											traditional : true,
-											success : function(jsonObj) {
-
-												streamList = jsonObj;
-
-												var streamDropDown = document
-														.getElementById('select-stream-dropdown');
-												while (streamDropDown
-														.hasChildNodes()) {
-													streamDropDown
-															.removeChild(streamDropDown.firstChild);
-												}
-
-												for (var i = 0; i < streamList.length; i++) {
-													var anchor2 = document
-															.createElement('a');
-													anchor2.className = "dropdown-item";
-													anchor2.setAttribute(
-															'href', "#");
-													anchor2.id = streamList[i].streamId;
-													anchor2.textContent = streamList[i].streamName
-															.toUpperCase()
-															.replace("_", " ");
-													anchor2
-															.setAttribute(
-																	'onclick',
-																	"getStreamId(this.id)");
-													document
-															.getElementById(
-																	'select-stream-dropdown')
-															.appendChild(
-																	anchor2);
-												}
-
-											}
-										});
-
-							}
-
-							else if ((entity_name == "Course")
-									&& (flag == "display")) {
-								//alert("Course is there");
-
-								document
-										.getElementById('dropdownMenuSelectStream').style.display = "block";
-								document
-										.getElementById('dropdownMenuSelectCoursetype').style.display = "block";
-								document.getElementById('entityTable').style.display = "block";
-								document
-										.getElementById('dropdownMenuSelectCoursetype').textContent = courseValue;
-
-							} else if (entity_name != "Course") {
-								//alert("Course is not there");
-								document
-										.getElementById('dropdownMenuSelectStream').style.display = "none";
-								document
-										.getElementById('dropdownMenuSelectCoursetype').style.display = "none";
-								document.getElementById('entityTable').style.display = "block";
-							}
+							
 
 							var tableRes = document.createElement('div');
 							tableRes.className = "table-responsive";
@@ -888,10 +902,11 @@
 							//alert("Error");
 						}
 					});
-
+ 
 		}
 
 		var streamElem;
+		var streamId;
 		function getStreamId(stream_id) {
 
 			streamId = stream_id;
@@ -902,7 +917,38 @@
 
 			document.getElementById('dropdownMenuSelectCoursetype').textContent = 'SELECT COURSETYPE';
 
-			var myData = {
+			var courseTypeDropDown = document.getElementById('select-coursetype-dropdown');
+			while (courseTypeDropDown.hasChildNodes()) {
+				courseTypeDropDown
+						.removeChild(courseTypeDropDown.firstChild);
+			}
+
+			<c:forEach items="${streamList}" var="stream">
+				if('${stream.streamId}'==streamId)
+					{
+						//alert("'${stream.mappingCourseType}'");
+						<c:forEach items="${stream.mappingCourseType}" var="det">
+							 //alert('${course.courseName}')
+							var anchor2 = document.createElement('a');
+							anchor2.className="dropdown-item";
+							anchor2.setAttribute('href', "#");
+							anchor2.id = '${det.courseTypeId}' + 'CT';
+							//alert("courseType Name  " + courseTypeList[i].courseTypeName);
+							anchor2.textContent = '${det.courseTypeName}'.toUpperCase().replace("_"," ");
+							anchor2.setAttribute('onclick', "getCourseTypeId(this.id)");
+							document.getElementById('select-coursetype-dropdown').appendChild(anchor2);
+							 
+						</c:forEach>
+					}
+	       </c:forEach>     
+
+			/* alert(streamList[0].mappingCourseType);
+			 for(var i=0;i<streamList.length;i++){
+				if(streamList[i].streamId==streamId)
+					alert(streamList[i].mappingCourseType);
+			}   */
+
+			/* var myData = {
 				streamId : streamId
 			};
 
@@ -950,7 +996,49 @@
 							//document.getElementById("error").innerHTML = "Invalid email or password";
 						}
 
-					});
+					}); */
+		}
+
+		var courseTypeId;
+		function getCourseTypeId(courseType_id){
+			
+			courseTypeId = courseType_id.substring(0, courseType_id.length-2);
+			
+			courseTypeElem = document.getElementById(courseType_id);
+			
+			document.getElementById('dropdownMenuSelectCoursetype').textContent = courseTypeElem.textContent;
+
+			var myData = {
+					streamId: streamId,
+					courseTypeId:courseTypeId
+				};
+				$.ajax({
+					type: 'POST',
+					//url: servletURL + 'StreamCourseTypeCoursesServlet',
+					url: "/StreamCourseTypeCourses",
+					data: jQuery.param(myData),
+					dataType: 'json',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					traditional: true,
+					success: function (jsonObj) {
+						coursesList=jsonObj;
+
+						//alert(coursesList);
+						
+						entityDetailList=coursesList;
+
+						//alert(entityDetailList);
+
+						document.getElementById('entityTable').style.display = "block";
+
+						
+					},
+					error: function(){
+						alert("Error");
+						//document.getElementById("error").innerHTML = "Invalid email or password";
+					}
+
+				});
 		}
 	</script>
 

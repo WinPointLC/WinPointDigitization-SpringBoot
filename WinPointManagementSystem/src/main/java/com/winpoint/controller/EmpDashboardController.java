@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.Streams;
+import com.winpoint.repository.CourseTypeRepository;
 import com.winpoint.repository.StreamsRepository;
 
 @Controller
@@ -17,8 +18,10 @@ public class EmpDashboardController {
 	
 	@Autowired
 	StreamsRepository stream;
+	@Autowired 
+	CourseTypeRepository CourseTypeRepository;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee", method = RequestMethod.GET)
 	public ModelAndView EmpDashboardPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("EmployeeDashboard-New");

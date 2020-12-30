@@ -28,13 +28,13 @@
                   <div class="col-sm-4 col-md-4 col-lg-12 text-left ml-auto mr-auto" id="form-outter">
                     <form name="form1">
                       <h3 class="form-signup-heading text-center">SignUP Form</h3>
-                      <div class="form-group">
+                    <!--   <div class="form-group">
                         <select class="form-control AddUser" name="dropdown" required>
                           <option>Select which user to create</option>
                           <option>Add Admin</option>
                           <option>Add Student</option>
                         </select>
-                      </div>
+                      </div> -->
                       <div class="form-group">
                         <input class="form-control" type="text" id="firstName" placeholder="Enter first name" required>
                         </div>
@@ -54,8 +54,9 @@
                                 <input  type="password" id="password" class="form-control" placeholder="Password" required>
                                 </div>
                                 <div class="form-group">
+                                 <label class="label-control">Gender</label>
                                   <select class="form-control" id="gender" required>
-                                    <option value="">Gender</option>
+                                    <!--  <option value="">Gender</option>-->
                                     <option>Male</option>
                                     <option>Female</option>
                                   </select>
@@ -64,9 +65,12 @@
                                   <%-- <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="You can enter 10 digits only"> --%>
                                   <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile Number">
                                   </div>
+                                  
+                               
                                   <div class="form-group">
+                                  <label class="label-control">Security Question</label>
                                     <select class="form-control" id="securityQuestion" required>
-                                      <option value="">Security Question</option>
+                                      <!--  <option value="">Security Question</option>-->
                                     </select>
                                   </div>
                                   <script> var selectVar = document.getElementById('securityQuestion');</script>
@@ -75,63 +79,55 @@
 
                                     var option = document.createElement('option');
                                     option.textContent = "${securityQuestion.securityQuestion}";
+                                    option.value="${securityQuestion.securityQuestion}"
                                     selectVar.appendChild(option);
                                     </script>
                                   </c:forEach>
-
-                                  <div class="form-group">
-
-                                    <%-- <!--  <div class="dropdown-menu" id = "secQuest" aria-labelledby="dropdownMenuButton"></div>--> --%>
-                                    <div id="drop11" class="dropdown drop1">
-                                      <!-- <input type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Security Question">
-                                    --> </div>
-                                    <script>
-                                    var drop1 = document.getElementsByClassName('drop1');
-                                    var btn = document.createElement('button');
-                                    btn.className='btn btn-secondary dropdown-toggle';
-                                    btn.id='dropdownMenuButton';
-                                    btn.setAttribute('data-toggle', "dropdown");
-                                    btn.setAttribute('aria-haspopup', "true");
-                                    btn.setAttribute('aria-expanded',"false");
-                                    btn.textContent="Security Question";
-                                    document.getElementById('drop11').appendChild(btn);
-
-                                    var dropdownMenu = document.createElement('div');
-                                    dropdownMenu.className='dropdown-menu';
-                                    dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-                                    </script>
-
-                                    <c:forEach var="securityQuestion" items= "${securityQuestions}" varStatus="i">
-
-                                      <script>
-                                      //code to open a modal on click
-                                      // window.onload=function(){
-                                      //   document.getElementById("modal-btn").click();
-                                      // };
-
-                                      var dropanchor = document.createElement('a');
-                                      dropanchor.className='dropdown-item';
-                                      dropanchor.setAttribute('href',"#");
-                                      //dropanchor.id=courseTypesList[i].courseTypeId;
-                                      dropanchor.textContent="${securityQuestion}";
-                                      //dropanchor.setAttribute('onclick',"displayStreamCourses(this.id)");
-                                      dropdownMenu.appendChild(dropanchor);
-                                      </script>
-                                    </c:forEach>
-                                    <script>document.getElementById('drop11').appendChild(dropdownMenu);</script>
-
-                                  </div>
-                                  <!--    <div class="form-group">
-                                  <input class="form-control" type="text" id="securityQuestion" placeholder="Security Question" required>
-                                </div>-->
+                                  
 
                                 <div class="form-group">
                                   <input class="form-control" type="text" id="securityAnswer" placeholder="Security Answer" required>
                                   </div>
+                                  
+                                    <div class="form-group">
+                                  <label class="label-control">Available Time</label>
+                                    <select class="form-control" id="avail_time" required>
+                                      
+                                    </select>
+                                  </div>
+                                  
+                                    <script> var selectVar = document.getElementById('avail_time');</script>
+                                  <c:forEach var="availableTime" items= "${availableTimeList}" varStatus="i">
+                                    <script>
+
+                                    var option = document.createElement('option');
+                                    option.textContent = "${availableTime.timeSlotsDescription}";
+                                    option.value="${availableTime.timeSlotsDescription}"
+                                    selectVar.appendChild(option);
+                                    </script>
+                                  </c:forEach>
+                                  
+                                   <div class="form-group">
+                                  <label class="label-control">Segment Type</label>
+                                    <select class="form-control" id="Seg_type" required>
+                                      
+                                    </select>
+                                  </div>
+                                  <script> var selectVar = document.getElementById('Seg_type');</script>
+                                  <c:forEach var="segmentType" items= "${segmentTypeList}" varStatus="i">
+                                    <script>
+
+                                    var option = document.createElement('option');
+                                    option.textContent = "${segmentType.segmentTypeName}";
+                                    option.value="${segmentType.segmentTypeName}"
+                                    selectVar.appendChild(option);
+                                    </script>
+                                  </c:forEach>
                                   <br>
                                     <a href="#" onclick="submitSignUpDetails()"><button class="Signbtn" type="button">Submit</button></a>
                                   </form>
                                 </div>
+                              </div>
                               </div>
 
                               <!--   Core JS Files   -->
@@ -350,100 +346,157 @@
 								</script>
 								
 								<script>
-     function submitSignUpDetails(){
-       //alert("Submit Sign Up Details");
-       var firstName = $('#firstName').val();
-       var lastName = $('#lastName').val();
-       var email = $('#email').val();
-       var password = $('#password').val();
-       var gender = $('#gender').val();
-       var mobileNumber = $('#mobileNumber').val();
-       var securityQuestion = $('#securityQuestion').val();
-       var securityAnswer =  $('#securityAnswer').val();
-       var userCategoryId = 1;
-       //alert(gender);
-       var myData = {
 
-           firstName: firstName,
-           lastName: lastName,
-           email: email,
-           password: password,
-           gender:gender,
-           mobileNumber: mobileNumber,
-           securityQuestion: securityQuestion,
-           securityAnswer: securityAnswer,
-           userCategoryId: userCategoryId
-         };
-     //alert("*** " + JSON.stringify(myData));
-     //console.log(myData);
-     $.ajax({
-         type: 'POST',
-         //url: servletURL + 'SignUpServlet',
-         url: "/SignUp",
-         data: JSON.stringify(myData),
-         dataType: 'json',
-         contentType: 'application/json; charset=utf-8',
-         traditional: true,
-         success: function (jsonObj) {
-          //alert("Success from LoginForm");
-             var responseJson1=jsonObj[0], responseJson2=jsonObj[1];
-             var locationJson = eval('(' + responseJson1 + ')');
-             //var studentJson = eval('(' + responseJson2 + ')');
-              if (locationJson.success) {
-            var strResJSON = JSON.stringify(responseJson2);
-            //alert("studentEmail : " + responseJson2.email);
-              window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) +"&username=" + "Anjali" +"&password=" + "Anjali";
-          } else {
-                 $('#ajaxGetUserServletResponse').text(responseText);
-          }
-         },
-         error: function(){
-          alert("Error: Emailid already exists");
-          //document.getElementById("error").innerHTML = "Invalid email or password";
-         }
+								var securityQuestionId;
+								var timeSlotsId;
+								var securityQuestion
+								var timeSlotsDescription;
+								var segmentTypeName;
+								var segmentTypeId;
+		     function submitSignUpDetails(){
+		       //alert("Submit Sign Up Details");
+		       //alert($('#securityQuestion').val());
+		    	 <c:forEach items="${availableTimeList}" var="availableTime">
+					if(document.getElementById("avail_time").value=='${availableTime.timeSlotsDescription}'){
+						
+						timeSlotsId='${availableTime.timeSlotsId}';
+						timeSlotsDescription='${availableTime.timeSlotsDescription}';
+					}
+				</c:forEach>   
+		
+				var mappingTimeSlots={
+						timeSlotsId:timeSlotsId,
+						timeSlotsDescription:timeSlotsDescription
+		
+				}
 
-     });
-     validator();
-  }
 
-  function validator() {
-    var ffname = document.getElementById('firstName').value;
-    var llname = document.getElementById('lastName').value;
-    var email = document.getElementById('email').value;
-    var uname = document.getElementById('userName').value;
-    var pass = document.getElementById('password').value;
-    var mobileNumber = document.getElementById('mobileNumber').value;
+				 <c:forEach items="${segmentTypeList}" var="segmentType">
+				if(document.getElementById("Seg_type").value=='${segmentType.segmentTypeName}'){
+					
+					segmentTypeId='${segmentType.segmentTypeId}';
+					segmentTypeName='${segmentType.segmentTypeName}';
+				}
+			</c:forEach>   
+	
+			var mappingSegmentType={
+					segmentTypeId:segmentTypeId,
+					segmentTypeName:segmentTypeName
+	
+			}
+			
+				<c:forEach items="${securityQuestions}" var="securityQuestion">
+				if(document.getElementById("securityQuestion").value=='${securityQuestion.securityQuestion}'){
+					//	alert('${securityQuestion.securityQuestionId}');
+					securityQuestionId='${securityQuestion.securityQuestionId}';
+					securityQuestion='${securityQuestion.securityQuestion}';
+				}
+			</c:forEach>   
 
-    if (ffname == "") {
-      alert("Enter the firstName");
-    }
-    else if(llname==""){
-      alert("Enter the LastName");
-    }
-    else if(email==""){
-      alert("Enter the emailName");
-    }
-    else if(uname==""){
-      alert("Enter the UserName");
-    }
-    else if(pass==""){
-      alert("Enter the Password");
-    }
-    else if(mobileNumber==""){
-      alert("Enter the Mobile Number");
-    }
-    Mobilevalidator();
-  }
-  //code for Mobile Validation
-  function Mobilevalidator() {
+			var mappingSecurityQuestions={
+					securityQuestionId:securityQuestionId,
+					securityQuestion:securityQuestion
+	
+			}
+		       
+		       var firstName = $('#firstName').val();
+		       var lastName = $('#lastName').val();
+		       var email = $('#email').val();
+		       var password = $('#password').val();
+		       var gender = $('#gender').val();
+		       var mobileNumber = $('#mobileNumber').val();
+		       var securityQuestion = $('#securityQuestion').val();
+		       var securityAnswer =  $('#securityAnswer').val();
+		      // alert(securityAnswer);
+		       var userCategoryId = 2;
+		       var userCategoryName="Admin";
+		       var createdBy = null;
+		       var createdDate=null;
 
-       var mobile = document.getElementById("mobileNumber").value;
-       var pattern = /^[7-9][0-9]{9}$/;
-       if (pattern.test(mobile)) {
-           return true;
-       }
-       return false;
+		       var mappingUserCategory={
+		    		   userCategoryId:userCategoryId,
+		    		   userCategoryName:userCategoryName,
+		    		   createdBy:createdBy,
+		    			createdDate:createdDate
+		
+				}
+		       //alert(gender);
+		       var myData = {
+		
+		    	   firstName: firstName,
+		    	   lastName: lastName,
+		    	   emailId: email,
+		    	   password: password,
+		           gender:gender,
+		           mobileNumber: mobileNumber,
+		           securityQuestion: securityQuestion,
+		           securityAnswer: securityAnswer,
+		           mappingSecurityQuestions:mappingSecurityQuestions,
+		           mappingSegmentType:mappingSegmentType,
+		           mappingTimeSlots:mappingTimeSlots,
+		           mappingUserCategory:mappingUserCategory
+		         //  userCategoryId: userCategoryId
+		         };
+		     //alert("*** " + JSON.stringify(myData));
+		     //console.log(myData);
+		     $.ajax({
+		         type: 'POST',
+		         //url: servletURL + 'SignUpServlet',
+		         url: "/saveNewUser",
+		         data: JSON.stringify(myData),
+		        // dataType: 'json',
+		         contentType: 'application/json; charset=utf-8',
+		         traditional: true,
+		         success: function () {
+		          
+		          }
+		
+		     });
+			
+		     location.reload();
 
-   }
-  </script>
+		     validator();
+		  }
+		
+		  function validator() {
+			  //alert("here");
+		    var ffname = document.getElementById('firstName').value;
+		    var llname = document.getElementById('lastName').value;
+		    var email = document.getElementById('email').value;
+		    var uname = document.getElementById('userName').value;
+		    var pass = document.getElementById('password').value;
+		    var mobileNumber = document.getElementById('mobileNumber').value;
+		
+		    if (ffname == "") {
+		      alert("Enter the firstName");
+		    }
+		    else if(llname==""){
+		      alert("Enter the LastName");
+		    }
+		    else if(email==""){
+		      alert("Enter the emailName");
+		    }
+		    else if(uname==""){
+		      alert("Enter the UserName");
+		    }
+		    else if(pass==""){
+		      alert("Enter the Password");
+		    }
+		    else if(mobileNumber==""){
+		      alert("Enter the Mobile Number");
+		    }
+		    Mobilevalidator();
+		  }
+		  //code for Mobile Validation
+		  function Mobilevalidator() {
+		
+		       var mobile = document.getElementById("mobileNumber").value;
+		       var pattern = /^[7-9][0-9]{9}$/;
+		       if (pattern.test(mobile)) {
+		           return true;
+		       }
+		       return false;
+		
+		   }
+		  </script>
                               </body>

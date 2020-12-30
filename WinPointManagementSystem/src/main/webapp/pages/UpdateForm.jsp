@@ -163,7 +163,7 @@
 				</div>
 			
 			
-				<div class="row">
+				<!-- <div class="row">
 						<div class="col">
 						 <label class="label-control">Courses Interested in</label>
 						 <input type="text" id="courses_interested" class="form-control inputFileVisible"/>
@@ -175,6 +175,28 @@
 						 <label class="label-control">Courses Already Done</label>
 						 <input type="text" id="courses_done" class="form-control inputFileVisible"/>
 						 </div>
+				</div> -->
+				
+				 <div class="row">
+				 	<div class="col">
+					<label class="label-control">Courses Interested in</label>
+					 <select  class="form-control selectpicker"  id="course_interested" multiple>
+									<c:forEach items="${courseInterestedInList}" var="course">
+	   									 <option value="${course.courseId}">${course.courseName}</option>
+									</c:forEach>
+					</select>
+					</div>
+				</div>
+				
+				 <div class="row">
+				 	<div class="col">
+				 <label class="label-control">Courses Already Done</label>
+					 <select  class="form-control selectpicker"  id="course_interested" multiple>
+									<c:forEach items="${courseAlreadyDone}" var="course">
+	   									 <option value="${course.courseId}">${course.courseName}</option>
+									</c:forEach>
+					</select>
+					</div>
 				</div>
 				
 				<div class="row">
@@ -205,19 +227,41 @@
 						 </div>
 				</div>
 				
-				<div class="row">
+				<!-- <div class="row">
 						<div class="col">
 						 <label class="label-control">Available Time</label>
 						 <input type="text" id="avail_time" class="form-control inputFileVisible"/>
 						 </div>
+				</div> -->
+				
+				 <div class="row">
+						<div class="col">
+						 <label class="label-control">Available Time</label>
+						  <select name="availableTime" class="form-control selectpicker"  id="avail_time" required>
+								<c:forEach items="${availableTimeList}" var="availableTime">
+   									 <option name="availableTime">${availableTime.timeSlotsDescription}</option>
+								</c:forEach>
+						</select>
+						 </div>
 				</div>
 				
-				<div class="row">
+				<!-- <div class="row">
 						<div class="col">
 						 <label class="label-control">Segment Type</label>
 						 <input type="text" id="Seg_type" class="form-control inputFileVisible"/>
 						 </div>
+				</div> -->
+				<div class="row">
+					<div class="col">
+					 <label class="label-control">Segment Type</label>
+				<select name="segmentType" class="form-control selectpicker" id="Seg_type"  required>
+								<c:forEach items="${segmentTypeList}" var="segmentType">
+   									 <option name="segmentType" value="${segmentType.segmentTypeId}">${segmentType.segmentTypeName}</option>
+								</c:forEach>
+				</select>	
+					</div>
 				</div>
+					
 					
 				<input type="button" class="btn btn-primary" style="align-item:center;margin-left:400px" onclick="update()" value="Update"></input>
 				</form>
@@ -255,12 +299,15 @@
 					success: function (jsonObj) {
 
 							updateFormDet=jsonObj;
+
+							alert(updateFormDet)
 						
-							//alert(updateFormDet);
+							alert(updateFormDet.mappingCoursesAlreadyDone);
+							alert(updateFormDet.mappingCourseInterestedIn)
 
 							document.getElementById("fName").value=updateFormDet.firstName;
 							document.getElementById("lName").value=updateFormDet.lastName;
-							document.getElementById("mobNo").value=updateFormDet.MobileNo;
+							document.getElementById("mobNo").value=updateFormDet.mobileNo;
 
 							document.getElementById("email").value=updateFormDet.emailId;
 							document.getElementById("college").value=updateFormDet.college;
@@ -276,8 +323,8 @@
 							document.getElementById("dob").value=updateFormDet.birthDateString;
 							document.getElementById("degree").value=updateFormDet.degree;
 							document.getElementById("experience").value=updateFormDet.experience;
-							document.getElementById("courses_interested").value=updateFormDet.courseInterestedIn;
-							document.getElementById("courses_done").value=updateFormDet.courseAlreadyDone;
+							//document.getElementById("courses_interested").value=updateFormDet.courseInterestedIn;
+							//document.getElementById("courses_done").value=updateFormDet.courseAlreadyDone;
 							
 							document.getElementById("reference").value=updateFormDet.reference;
 
@@ -286,20 +333,31 @@
 							document.getElementById("recommendation").value=updateFormDet.recommendation;
 
 							<c:forEach items="${availableTimeList}" var="availableTime">
-								if('${availableTime.timeSlotsId}'==updateFormDet.timeSlotsId){
-											//alert('${availableTime.timeSlotsDescription}');
+							
+								if('${availableTime.timeSlotsId}'==updateFormDet.mappingTimeSlots.timeSlotsId){
+										//	alert('${availableTime.timeSlotsDescription}');
 									document.getElementById("avail_time").value='${availableTime.timeSlotsDescription}';
 									
 									}
 							</c:forEach>   
 
-							<c:forEach items="${segmentTypeList}" var="segmentType">
-								if('${segmentType.segmentTypeId}'==updateFormDet.segmentTypeId){
-										//alert('${segmentType.segmentTypeName}');
+							<c:forEach items="${availableTimeList}" var="availableTime">
+							
+							if('${availableTime.timeSlotsId}'==updateFormDet.mappingTimeSlots.timeSlotsId){
+									//	alert('${availableTime.timeSlotsDescription}');
+								document.getElementById("avail_time").value='${availableTime.timeSlotsDescription}';
+								
+								}
+						</c:forEach>   
+						
+							/* <c:forEach items="${segmentTypeList}" var="segmentType">
+								if('${segmentType.segmentTypeId}'==updateFormDet.mappingSegmentType.segmentTypeId){
+										alert('${segmentType.segmentTypeName}');
+										alert(document.getElementById("Seg_type"));
 									document.getElementById("Seg_type").value='${segmentType.segmentTypeName}';
 									
 								}
-							</c:forEach>     
+							</c:forEach>    */  
 		
 					},
 					error: function(){
@@ -313,26 +371,40 @@
 
 				var timeSlotsId;
 				var segmentTypeId;
+				var timeSlotsDescription;
+				var segmentTypeName;
 				<c:forEach items="${availableTimeList}" var="availableTime">
 					if(document.getElementById("avail_time").value=='${availableTime.timeSlotsDescription}'){
 							//alert('${availableTime.timeSlotsId}');
 						timeSlotsId='${availableTime.timeSlotsId}';
+						timeSlotsDescription='${availableTime.timeSlotsDescription}';
 					}
 				</c:forEach>   
+
+				var mappingTimeSlots={
+						timeSlotsId:timeSlotsId,
+						timeSlotsDescription:timeSlotsDescription
+				}
 
 				<c:forEach items="${segmentTypeList}" var="segmentType">
 					if(document.getElementById("Seg_type").value=='${segmentType.segmentTypeName}'){
 							//alert('${segmentType.segmentTypeId}');
 						segmentTypeId='${segmentType.segmentTypeId}';
+						segmentTypeName='${segmentType.segmentTypeName}';
 					}
 			    </c:forEach>   
+
+			    var mappingSegmentType={
+			    		segmentTypeId:segmentTypeId,
+			    		segmentTypeName:segmentTypeName
+				}
 				
 
 				var myData={
 						enquiryId:enquiryId,
 						firstName:document.getElementById("fName").value,
 						lastName:document.getElementById("lName").value,
-						MobileNo:document.getElementById("mobNo").value,
+						mobileNo:document.getElementById("mobNo").value,
 						emailId:document.getElementById("email").value,
 						college:document.getElementById("college").value,
 						designation:document.getElementById("designation").value,
@@ -348,8 +420,11 @@
 						dateOfEnquiryString:document.getElementById("Date_Of_Enquiry").value,
 						startDateString:document.getElementById("Start_Date").value,
 						recommendation:document.getElementById("recommendation").value,
-						timeSlotsId:timeSlotsId,
-						segmentTypeId:segmentTypeId
+						//timeSlotsId:timeSlotsId,
+						//segmentTypeId:segmentTypeId
+						mappingTimeSlots:mappingTimeSlots,
+						mappingSegmentType,mappingSegmentType
+						
 							
 				}
 				$.ajax({

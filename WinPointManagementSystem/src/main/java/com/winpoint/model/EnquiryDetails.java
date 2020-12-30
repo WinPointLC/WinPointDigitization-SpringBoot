@@ -1,7 +1,11 @@
 package com.winpoint.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,9 +13,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class EnquiryDetails {
+public class EnquiryDetails implements Serializable{
 //	creation of fk
 //	schema checked
 	@Id
@@ -29,7 +35,7 @@ public class EnquiryDetails {
 	private String firstName;
 	private String lastName;
 	private String emailId;
-	private String MobileNo;
+	private String mobileNo;
 	private String address;
 	private Date birthDate;
 	private String college;
@@ -46,9 +52,7 @@ public class EnquiryDetails {
 	private Integer yearOfGraduation;
 	private String recommendation;
 	private String eligibility;
-	private String courseInterestedIn;
 	private String reference;
-	private String courseAlreadyDone;
 	private Date startDate;
 	private String suggestion;
 	private Integer activeStatus;
@@ -56,6 +60,7 @@ public class EnquiryDetails {
 	private String dateOfEnquiryString;
 	private String startDateString;
 
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
 	private SegmentType mappingSegmentType;
@@ -63,5 +68,15 @@ public class EnquiryDetails {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
+	
+	//@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "enquiryDetailsCoursesInterestedIn", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
+	List<Course> mappingCourseInterestedIn = new ArrayList<>();
+	
+	//@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "enquiryDetailsCoursesAlreadyDone", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
+	List<Course> mappingCoursesAlreadyDone = new ArrayList<>();
 
 }
