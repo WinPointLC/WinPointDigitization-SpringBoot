@@ -299,8 +299,11 @@
 					success: function (jsonObj) {
 
 							updateFormDet=jsonObj;
+
+							alert(updateFormDet)
 						
-							alert(updateFormDet.mappingCourseAlreadyDone);
+							alert(updateFormDet.mappingCoursesAlreadyDone);
+							alert(updateFormDet.mappingCourseInterestedIn)
 
 							document.getElementById("fName").value=updateFormDet.firstName;
 							document.getElementById("lName").value=updateFormDet.lastName;
