@@ -760,6 +760,7 @@
 										.getElementById('dropdownMenuSelectCoursetype').style.display = "none";
 								document.getElementById('entityTable').style.display = "block";
 							}
+			
 			 $
 					.ajax({
 						type : 'POST',
@@ -1021,8 +1022,16 @@
 					traditional: true,
 					success: function (jsonObj) {
 						coursesList=jsonObj;
+
+						//alert(coursesList);
 						
 						entityDetailList=coursesList;
+
+						//alert(entityDetailList);
+
+						document.getElementById('entityTable').style.display = "block";
+
+						
 					},
 					error: function(){
 						alert("Error");
