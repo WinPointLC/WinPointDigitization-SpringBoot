@@ -115,6 +115,11 @@ public class Course {
 	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingCoursesAlreadyDone")
 	List<EnquiryDetails> mappingCoursesDoneEnquiryDetails = new ArrayList<>();
+
+	@Override
+	public String toString() {
+		return "Course [courseId=" + courseId + "]";
+	}
 	
 	
 }

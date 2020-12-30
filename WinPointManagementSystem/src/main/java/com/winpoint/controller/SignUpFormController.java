@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.Course;
@@ -16,6 +18,7 @@ import com.winpoint.model.SegmentType;
 import com.winpoint.model.TimeSlots;
 import com.winpoint.model.UserProfile;
 import com.winpoint.repository.CourseRepository;
+import com.winpoint.repository.EnquiryDetailsRepository;
 import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.TimeSlotsRepository;
 
@@ -67,18 +70,47 @@ public class SignUpFormController {
 		mv.addObject("courseInterestedInList", courseInterestedInList);
 		// Available time
 		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
-//		List<String> availableTimelist = new ArrayList<String>();
-//		for (TimeSlots s : availableTimeList) {
-//			System.out.println("DATA segement type - " + s.getTimeSlotsDescription());
-//			availableTimelist.add(s.getTimeSlotsDescription());
-//		}
 		mv.addObject("availableTimeList", availableTimeList);
 		mv.addObject("location", "LoginForm");
 
 		mv.addObject("degreeList", list);
 		return mv;
-	
-	
 	}
+	
+	@Autowired
+	EnquiryDetailsRepository enquiryDetailsRepository;
+	
+	@RequestMapping(value = "/UpdateForm", method = RequestMethod.GET)
+	public ModelAndView showUpdateForm() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("UpdateForm");
+		
+		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
+		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
+		List<Course> courseInterestedInList = courseRepository.findAll();
+		List<Course> courseAlreadyDone = courseRepository.findAll();
+		mv.addObject("availableTimeList", availableTimeList);
+		mv.addObject("segmentTypeList", segmentTypeList);
+		mv.addObject("courseInterestedInList", courseInterestedInList);
+		mv.addObject("courseAlreadyDone", courseAlreadyDone);
+		return mv;
+	}
+
+	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
+	public @ResponseBody EnquiryDetails showEnquiry(@RequestParam String enquiryId) {
+//		System.out.println(enquiryId);
+//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getMobileNo());
+//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getFirstName());
+		EnquiryDetails x = enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get();
+		for(Course a: x.getMappingCourseInterestedIn()) {
+			System.out.println(a);
+		}
+		for(Course a: x.getMappingCoursesAlreadyDone()) {
+			System.out.println(a);
+		}
+		return null;
+
+	}
+
 
 }

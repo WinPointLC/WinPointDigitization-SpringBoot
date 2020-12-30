@@ -198,35 +198,6 @@ public class RevenueTrackerController {
 	 * return "UpdateForm"; }
 	 */
 	
-	@RequestMapping(value = "/UpdateForm", method = RequestMethod.GET)
-	public ModelAndView showUpdateForm() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("UpdateForm");
-		
-		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
-		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
-		List<Course> courseInterestedInList = courseRepository.findAll();
-		List<Course> courseAlreadyDone = courseRepository.findAll();
-		mv.addObject("availableTimeList", availableTimeList);
-		mv.addObject("segmentTypeList", segmentTypeList);
-		mv.addObject("courseInterestedInList", courseInterestedInList);
-		mv.addObject("courseAlreadyDone", courseAlreadyDone);
-		return mv;
-	}
-
-	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
-	public @ResponseBody EnquiryDetails showEnquiry(@RequestParam("enquiryId") String enquiryId) {
-		System.out.println(enquiryId);
-		
-		System.out.println();
-		EnquiryDetails enquiryDetails = new EnquiryDetails();
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getMobileNo());
-		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getFirstName());
-
-		return enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get();
-
-	}
 
 //	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
 //	public @ResponseBody Optional<EnquiryDetails> showEnquiry(@RequestParam("enquiryId") String enquiryId) {
