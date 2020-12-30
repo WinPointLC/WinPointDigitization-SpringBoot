@@ -163,7 +163,7 @@
 				</div>
 			
 			
-				<div class="row">
+				<!-- <div class="row">
 						<div class="col">
 						 <label class="label-control">Courses Interested in</label>
 						 <input type="text" id="courses_interested" class="form-control inputFileVisible"/>
@@ -175,6 +175,25 @@
 						 <label class="label-control">Courses Already Done</label>
 						 <input type="text" id="courses_done" class="form-control inputFileVisible"/>
 						 </div>
+				</div> -->
+				
+				 <div class="row">
+					<label class="label-control">Courses Interested in</label>
+					 <select  class="form-control selectpicker"  id="course_interested" multiple>
+									<c:forEach items="${courseInterestedInList}" var="course">
+	   									 <option value="${course.courseId}">${course.courseName}</option>
+									</c:forEach>
+					</select>
+				</div>
+				
+				 <div class="row">
+				 
+				 <label class="label-control">Courses Already Done</label>
+					 <select  class="form-control selectpicker"  id="course_interested" multiple>
+									<c:forEach items="${courseAlreadyDone}" var="course">
+	   									 <option value="${course.courseId}">${course.courseName}</option>
+									</c:forEach>
+					</select>
 				</div>
 				
 				<div class="row">
@@ -278,7 +297,7 @@
 
 							updateFormDet=jsonObj;
 						
-							//alert(updateFormDet.mappingTimeSlots);
+							alert(updateFormDet.mappingCourseAlreadyDone);
 
 							document.getElementById("fName").value=updateFormDet.firstName;
 							document.getElementById("lName").value=updateFormDet.lastName;
@@ -298,8 +317,8 @@
 							document.getElementById("dob").value=updateFormDet.birthDateString;
 							document.getElementById("degree").value=updateFormDet.degree;
 							document.getElementById("experience").value=updateFormDet.experience;
-							document.getElementById("courses_interested").value=updateFormDet.courseInterestedIn;
-							document.getElementById("courses_done").value=updateFormDet.courseAlreadyDone;
+							//document.getElementById("courses_interested").value=updateFormDet.courseInterestedIn;
+							//document.getElementById("courses_done").value=updateFormDet.courseAlreadyDone;
 							
 							document.getElementById("reference").value=updateFormDet.reference;
 

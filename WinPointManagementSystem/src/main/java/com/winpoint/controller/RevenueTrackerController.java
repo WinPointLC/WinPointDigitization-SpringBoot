@@ -205,8 +205,12 @@ public class RevenueTrackerController {
 		
 		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
 		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
+		List<Course> courseInterestedInList = courseRepository.findAll();
+		List<Course> courseAlreadyDone = courseRepository.findAll();
 		mv.addObject("availableTimeList", availableTimeList);
 		mv.addObject("segmentTypeList", segmentTypeList);
+		mv.addObject("courseInterestedInList", courseInterestedInList);
+		mv.addObject("courseAlreadyDone", courseAlreadyDone);
 		return mv;
 	}
 
