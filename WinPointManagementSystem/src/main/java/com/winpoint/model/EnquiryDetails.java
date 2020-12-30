@@ -1,5 +1,6 @@
 package com.winpoint.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class EnquiryDetails {
+public class EnquiryDetails implements Serializable{
 //	creation of fk
 //	schema checked
 	@Id
@@ -59,6 +60,7 @@ public class EnquiryDetails {
 	private String dateOfEnquiryString;
 	private String startDateString;
 
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
 	private SegmentType mappingSegmentType;
@@ -67,10 +69,12 @@ public class EnquiryDetails {
 	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "enquiryDetailsCoursesInterestedIn", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
 	List<Course> mappingCourseInterestedIn = new ArrayList<>();
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "enquiryDetailsCoursesAlreadyDone", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
 	List<Course> mappingCoursesAlreadyDone = new ArrayList<>();

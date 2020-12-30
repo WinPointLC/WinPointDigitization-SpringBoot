@@ -1,5 +1,6 @@
 package com.winpoint.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TimeSlots {
+public class TimeSlots implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "timeSlotsId", updatable = false)

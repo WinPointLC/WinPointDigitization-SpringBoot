@@ -107,10 +107,11 @@ public class Course {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<CourseFeedback> CourseFeedback;
 	
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingCourseInterestedIn")
 	List<EnquiryDetails> mappingInterestedEnquiryDetails = new ArrayList<>();
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingCoursesAlreadyDone")
 	List<EnquiryDetails> mappingCoursesDoneEnquiryDetails = new ArrayList<>();
 	
