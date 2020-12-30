@@ -996,6 +996,15 @@
 
 					}); */
 		}
+
+		function getCourseTypeId(courseType_id){
+			
+			courseTypeId = courseType_id.substring(0, courseType_id.length-2);
+			
+			courseTypeElem = document.getElementById(courseType_id);
+			
+			document.getElementById('dropdownMenuSelectCoursetype').textContent = courseTypeElem.textContent;
+		}
 	</script>
 
 	<script type="text/javascript">
