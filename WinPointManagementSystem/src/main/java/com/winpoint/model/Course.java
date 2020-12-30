@@ -115,5 +115,4 @@ public class Course {
 	List<EnquiryDetails> mappingCoursesDoneEnquiryDetails = new ArrayList<>();
 	
 	
-
 }
