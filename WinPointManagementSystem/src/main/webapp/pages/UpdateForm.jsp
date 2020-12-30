@@ -178,22 +178,25 @@
 				</div> -->
 				
 				 <div class="row">
+				 	<div class="col">
 					<label class="label-control">Courses Interested in</label>
 					 <select  class="form-control selectpicker"  id="course_interested" multiple>
 									<c:forEach items="${courseInterestedInList}" var="course">
 	   									 <option value="${course.courseId}">${course.courseName}</option>
 									</c:forEach>
 					</select>
+					</div>
 				</div>
 				
 				 <div class="row">
-				 
+				 	<div class="col">
 				 <label class="label-control">Courses Already Done</label>
 					 <select  class="form-control selectpicker"  id="course_interested" multiple>
 									<c:forEach items="${courseAlreadyDone}" var="course">
 	   									 <option value="${course.courseId}">${course.courseName}</option>
 									</c:forEach>
 					</select>
+					</div>
 				</div>
 				
 				<div class="row">

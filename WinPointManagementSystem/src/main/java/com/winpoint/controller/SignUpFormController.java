@@ -108,7 +108,7 @@ public class SignUpFormController {
 		for(Course a: x.getMappingCoursesAlreadyDone()) {
 			System.out.println(a);
 		}
-		return null;
+		return x;
 
 	}
 
