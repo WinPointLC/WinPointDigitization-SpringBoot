@@ -14,17 +14,13 @@ import com.winpoint.model.BatchDetails;
 import com.winpoint.model.Course;
 import com.winpoint.repository.BatchDetialsRepository;
 import com.winpoint.repository.CourseRepository;
-import com.winpoint.repository.CourseTypeRepository;
 import com.winpoint.repository.StreamsRepository;
-import com.winpoint.service.StudentCourseDetailsService;
 
 @Controller
 public class AllUsersController {
 
 	@Autowired
 	StreamsRepository stream;
-
-	
 
 	@RequestMapping(value = "AllUser", method = RequestMethod.GET)
 	public ModelAndView showAllUserPage() {
@@ -33,14 +29,6 @@ public class AllUsersController {
 		mv.addObject("streamList", stream.findAll());
 		return mv;
 	}
-
-	@Autowired
-	CourseTypeRepository CourseTypeRepository;
-//
-//	@RequestMapping(value = "/StreamCourseType", method = RequestMethod.POST)
-//	public @ResponseBody List<CourseType> showCourseType(@RequestParam("streamId") String streamId) {
-//		return CourseTypeRepository.findByStreamId(Integer.parseInt(streamId));
-//	}
 
 	@Autowired
 	CourseRepository CourseRepository;
@@ -65,18 +53,5 @@ public class AllUsersController {
 		}
 		return list;
 	}
-
-//	@Autowired
-//	BatchDetialsRepository batchDetialsRepository;
-
-	@Autowired
-	StudentCourseDetailsService StudentCourseDetailsService;
-
-//	@RequestMapping(value = "/BatchDetails", method = RequestMethod.POST)
-//	public @ResponseBody List<Integer> showUsers(@RequestParam("batchId") String batchId) {
-//		System.out.println(batchId);
-//		System.out.println(StudentCourseDetailsService.userList(Integer.parseInt(batchId)));
-//		return StudentCourseDetailsService.userList(Integer.parseInt(batchId));
-//	}
 
 }
