@@ -48,17 +48,7 @@ public class AllUsersController {
 	@RequestMapping(value = "/StreamCourseTypeCourses", method = RequestMethod.POST)
 	public @ResponseBody List<Course> showCourse(@RequestParam("streamId") String streamId,
 			@RequestParam("courseTypeId") String courseTypeId) {
-		System.out.println(streamId+"  "+ courseTypeId);
-		List<Course> x = CourseRepository.findAll();
-		for(Course a: x) {
-			if(a.getMappingCourseType().getCourseTypeId()!=Integer.parseInt(courseTypeId) && a.getMappingStreams().getStreamId()!= Integer.parseInt(streamId)) {
-				x.remove(a);
-				System.out.println(a);
-			}
-		}
-		System.out.println(x.get(0));
-		System.out.println("Reached Here");
-		return x;
+		return CourseRepository.findByCourseTypeIdAndName(Integer.parseInt(courseTypeId), Integer.parseInt(streamId));
 	}
 
 	@Autowired
