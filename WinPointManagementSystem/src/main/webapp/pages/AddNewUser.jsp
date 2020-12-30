@@ -449,13 +449,12 @@
 		         traditional: true,
 		         success: function () {
 		          
-		          },
-		         error: function(){
-		         /*  alert("Error: Emailid already exists"); */
-		          //document.getElementById("error").innerHTML = "Invalid email or password";
-		         }
+		          }
 		
 		     });
+			
+		     location.reload();
+
 		     validator();
 		  }
 		
