@@ -12,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.BatchDetails;
 import com.winpoint.model.Course;
-import com.winpoint.model.CourseType;
-import com.winpoint.model.Streams;
 import com.winpoint.repository.BatchDetialsRepository;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.CourseTypeRepository;
@@ -38,11 +36,11 @@ public class AllUsersController {
 
 	@Autowired
 	CourseTypeRepository CourseTypeRepository;
-
-	@RequestMapping(value = "/StreamCourseType", method = RequestMethod.POST)
-	public @ResponseBody List<CourseType> showCourseType(@RequestParam("streamId") String streamId) {
-		return CourseTypeRepository.findByStreamId(Integer.parseInt(streamId));
-	}
+//
+//	@RequestMapping(value = "/StreamCourseType", method = RequestMethod.POST)
+//	public @ResponseBody List<CourseType> showCourseType(@RequestParam("streamId") String streamId) {
+//		return CourseTypeRepository.findByStreamId(Integer.parseInt(streamId));
+//	}
 
 	@Autowired
 	CourseRepository CourseRepository;
@@ -50,7 +48,17 @@ public class AllUsersController {
 	@RequestMapping(value = "/StreamCourseTypeCourses", method = RequestMethod.POST)
 	public @ResponseBody List<Course> showCourse(@RequestParam("streamId") String streamId,
 			@RequestParam("courseTypeId") String courseTypeId) {
-		return CourseRepository.findByCourseTypeIdAndName(Integer.parseInt(courseTypeId), Integer.parseInt(streamId));
+		System.out.println(streamId+"  "+ courseTypeId);
+		List<Course> x = CourseRepository.findAll();
+		for(Course a: x) {
+			if(a.getMappingCourseType().getCourseTypeId()!=Integer.parseInt(courseTypeId) && a.getMappingStreams().getStreamId()!= Integer.parseInt(streamId)) {
+				x.remove(a);
+				System.out.println(a);
+			}
+		}
+		System.out.println(x.get(0));
+		System.out.println("Reached Here");
+		return x;
 	}
 
 	@Autowired
