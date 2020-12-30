@@ -49,10 +49,13 @@ import com.winpoint.repository.UserCategoryRepository;
 
 @Controller
 public class EntityScreenController {
+	@Autowired
+	StreamsRepository stream;
 	@RequestMapping(value = "/Entities", method = RequestMethod.GET)
 	public ModelAndView showEntityPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Entities");
+		mv.addObject("streamList", stream.findAll());
 		return mv;
 	}
 
@@ -647,9 +650,9 @@ public class EntityScreenController {
 	//###################################################################################
 	//###################################################################################
 	//Streams
-	@RequestMapping(value = "/Streams", method = RequestMethod.POST)
-	public @ResponseBody List<Streams> showStreams() {
-		return streamsRepository.findAll();
-	}
-
+	/*
+	 * @RequestMapping(value = "/Streams", method = RequestMethod.POST)
+	 * public @ResponseBody List<Streams> showStreams() { return
+	 * streamsRepository.findAll(); }
+	 */
 }
