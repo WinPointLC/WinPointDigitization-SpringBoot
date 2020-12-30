@@ -660,7 +660,7 @@
 				document.getElementById('del_link').className = "";
 		}
 
-		//var streamList;
+		var entityDetailList;
 		function showBody(entity_name, flag, courseValue) {
 
 			entityName = entity_name.replace(/\s+/g, "");
@@ -905,6 +905,7 @@
 		}
 
 		var streamElem;
+		var streamId;
 		function getStreamId(stream_id) {
 
 			streamId = stream_id;
@@ -997,6 +998,7 @@
 					}); */
 		}
 
+		var courseTypeId;
 		function getCourseTypeId(courseType_id){
 			
 			courseTypeId = courseType_id.substring(0, courseType_id.length-2);
@@ -1004,6 +1006,30 @@
 			courseTypeElem = document.getElementById(courseType_id);
 			
 			document.getElementById('dropdownMenuSelectCoursetype').textContent = courseTypeElem.textContent;
+
+			var myData = {
+					streamId: streamId,
+					courseTypeId:courseTypeId
+				};
+				$.ajax({
+					type: 'POST',
+					//url: servletURL + 'StreamCourseTypeCoursesServlet',
+					url: "/StreamCourseTypeCourses",
+					data: jQuery.param(myData),
+					dataType: 'json',
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					traditional: true,
+					success: function (jsonObj) {
+						coursesList=jsonObj;
+						
+						entityDetailList=coursesList;
+					},
+					error: function(){
+						alert("Error");
+						//document.getElementById("error").innerHTML = "Invalid email or password";
+					}
+
+				});
 		}
 	</script>
 
