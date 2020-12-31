@@ -25,14 +25,16 @@
 			$.ajax({
 				type: 'POST',
 				url : "/loginUser",
-				data: JSON.stringify(myData),
+				//data: JSON.stringify(myData),
+				data: jQuery.param(myData),
 				dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
+				//contentType: 'application/json; charset=utf-8',
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (data) {
 					//alert("User sent successfully");
 					//alert(data.location);
-					//alert('${message}');
+					alert('${message}');
 					if(data.message=='success'){
 						if(data.location=='clientDash')
 							window.location.href="client"+ "?varid="+encodeURIComponent(JSON.stringify(data));
