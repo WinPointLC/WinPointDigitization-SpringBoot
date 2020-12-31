@@ -354,7 +354,7 @@
 								var segmentTypeName;
 								var segmentTypeId;
 		     function submitSignUpDetails(){
-		       //alert("Submit Sign Up Details");
+		       alert("Submit Sign Up Details");
 		       //alert($('#securityQuestion').val());
 		    	 <c:forEach items="${availableTimeList}" var="availableTime">
 					if(document.getElementById("avail_time").value=='${availableTime.timeSlotsDescription}'){
