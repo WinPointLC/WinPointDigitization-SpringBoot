@@ -28,7 +28,7 @@ public class EmpDashboardController {
 		List<Streams> c = stream.findAll();
 		System.out.println(c);
 		mv.addObject("streamList", c);
-		//mv.addObject("firstStreamId", c.get(0).getStreamId());
+		mv.addObject("firstStreamId", c.get(0).getStreamId());
 		return mv;
 	}
 	
