@@ -32,18 +32,18 @@
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (data) {
-					//alert("User sent successfully");
-					//alert(data.location);
-					alert('${message}');
-					if(data.message=='success'){
+					alert("sent parameters")
+					alert(data);
+					
+					/* if(data.message=='success'){
 						if(data.location=='clientDash')
 							window.location.href="client"+ "?varid="+encodeURIComponent(JSON.stringify(data));
 						else if(data.location=='employeeDash')
 							window.location.href="employee"+ "?varid="+encodeURIComponent(JSON.stringify(data));
-					}
-					else{
+					} */
+					/* else{
 						document.getElementById("error").innerHTML = "Invalid email or password";
-					}
+					} */
 						
 			    }, 
 				

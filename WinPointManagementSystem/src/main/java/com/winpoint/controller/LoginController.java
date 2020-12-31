@@ -29,12 +29,14 @@ public class LoginController {
 	
 	@RequestMapping(value = "loginUser", method = RequestMethod.POST)
 	public @ResponseBody UserProfile check(@RequestParam String username,@RequestParam String password) {
+		System.out.println("HERE LOGIN CONTROLLER");
 	
 		UserProfile userObject = userProfileRepositroy.findByEmailId(username).get(0);
 		if (password.equals(userObject.getPassword())) {
 			return userObject;
 		} 
-		return null;
+		else
+			return null;
 	}
 	
 
