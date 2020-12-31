@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Getter
@@ -115,6 +114,10 @@ public class Course {
 	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingCoursesAlreadyDone")
 	List<EnquiryDetails> mappingCoursesDoneEnquiryDetails = new ArrayList<>();
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "mappingUserCoursesAlreadyDone")
+	List<UserProfile> mappingUserCoursesDoneEnquiryDetails = new ArrayList<>();
 
 	@Override
 	public String toString() {
