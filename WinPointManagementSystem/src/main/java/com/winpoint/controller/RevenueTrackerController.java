@@ -226,7 +226,7 @@ public class RevenueTrackerController {
 		System.out.println(enquiry.getMappingSegmentType());
 		System.out.println(enquiry.getMappingCoursesAlreadyDone());
 		System.out.println(enquiry.getMappingCourseInterestedIn());
-		
+		enquiryDetailsRepository.updateEnquiryDetails(enquiry.getEnquiryId(), enquiry.getFirstName(), enquiry.getLastName(), enquiry.getEmailId(), enquiry.getMobileNo(), enquiry.getAddress(), enquiry.getBirthDate(), enquiry.getCollege(), enquiry.getDegree(), enquiry.getBranch(), enquiry.getOccupation(), enquiry.getDesignation(), enquiry.getDomain(), enquiry.getRole(), enquiry.getExperience(), enquiry.getCreatedBy(), enquiry.getDateOfEnquiry(), enquiry.getGender(), enquiry.getYearOfGraduation(), enquiry.getRecommendation(), enquiry.getEligibility(), enquiry.getReference(), enquiry.getStartDate(), enquiry.getSuggestion(), enquiry.getActiveStatus(), enquiry.getBirthDateString(), enquiry.getDateOfEnquiryString(), enquiry.getStartDateString());
 	}
 
 }
