@@ -536,7 +536,10 @@
 
 					}
 				});
+			    window.location.href="EnquiryDetails";
 			}
+
+			
 			
 	</script>
 	

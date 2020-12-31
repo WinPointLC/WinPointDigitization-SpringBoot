@@ -626,6 +626,11 @@
 		   
 
 			function getstream(stream_id){
+
+				var elem = document.getElementById('courseList');
+				if(elem != null){
+					elem.parentNode.removeChild(elem);
+				}
 				streamId = stream_id; 
 				var elem = document.getElementById('dropdownMenu_1');
 				if(elem != null){
@@ -644,8 +649,47 @@
 				//var streamElem = document.getElementById(streamList[streamId-1].streamId);
 				var streamElem = document.getElementById(streamId);
 				streamElem.className='nav-item active stream';
+
+				var btn = document.createElement('button');
+				btn.className='btn btn-secondary dropdown-toggle';
+				btn.id='dropdownMenuButton_1';
+				btn.setAttribute('data-toggle', "dropdown");
+				btn.setAttribute('aria-haspopup', "true");
+				btn.setAttribute('aria-expanded',"false");
+				btn.textContent="Course Type";
+				document.getElementById('drop-down').appendChild(btn);
+			 
+				var dropdownMenu = document.createElement('div');
+				dropdownMenu.className='dropdown-menu';
+				dropdownMenu.id='dropdownMenu_1';
+				dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+
+				var cnt=0;
+				<c:forEach items="${streamList}" var="stream">
+				if('${stream.streamId}'==streamId)
+					{
+					
+						//alert("'${stream.mappingCourseType}'");
+						<c:forEach items="${stream.mappingCourseType}" var="det">
+						   cnt++;
+						   var dropanchor = document.createElement('a');
+						   dropanchor.className='dropdown-item';
+						   dropanchor.id='${det.courseTypeId}';
+						 
+						   if(cnt==1)
+							   courseTypeName = ('${det.courseTypeName}').toUpperCase();
+						   dropanchor.textContent= ('${det.courseTypeName}').toUpperCase();
+						   dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+						   dropdownMenu.appendChild(dropanchor);
+							 
+						</c:forEach>
+					}
+		  	  </c:forEach>     
+
+
+				document.getElementById('drop-down').appendChild(dropdownMenu);
 				 
-				var myData = {
+				/* var myData = {
 					streamId: streamId
 				};
 				
@@ -690,11 +734,12 @@
 					  
 					}
 				  
-				});
+				}); */
 				  
 			}		
 				
 			function displayStreamCourses(courseType_id, courseTypeName ){
+				//alert(courseTypeName);
 				
 				courseTypeId = courseType_id;
 				document.getElementById('dropdownMenuButton_1').textContent = courseTypeName;
