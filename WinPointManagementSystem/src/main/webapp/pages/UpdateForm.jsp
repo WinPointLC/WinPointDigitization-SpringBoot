@@ -182,7 +182,7 @@
 					<label class="label-control">Courses Interested in</label>
 					 <select  class="form-control selectpicker select-course"  id="courses_interested" multiple>
 									<c:forEach items="${courseInterestedInList}" var="course">
-	   									 <option value="${course.courseId}" id="${course.courseName}">${course.courseName}</option>
+	   									 <option value="${course.courseId}" class="${course.courseName}" >${course.courseName}</option>
 									</c:forEach>
 					</select>
 					</div>
@@ -193,7 +193,7 @@
 				 <label class="label-control">Courses Already Done</label>
 					 <select  class="form-control selectpicker select-course"  id="courses_done" multiple>
 									<c:forEach items="${courseAlreadyDone}" var="course">
-	   									 <option value="${course.courseId}" id="${course.courseName}">${course.courseName}</option>
+	   									 <option value="${course.courseId}" class="${course.courseName}">${course.courseName}</option>
 									</c:forEach>
 					</select>
 					</div>
@@ -279,7 +279,7 @@
 				urlParams = new URLSearchParams(queryString);
 				//alert(urlParams.get('enquiryid'));
 				enquiryId=urlParams.get('enquiryid');
-
+				
 				var myData = {
 				 	enquiryId: enquiryId
 				};
@@ -298,6 +298,34 @@
 
 							updateFormDet=jsonObj;
 
+
+							for(var i=0;i<updateFormDet.mappingCourseInterestedIn.length;i++){
+
+								<c:forEach items="${courseInterestedInList}" var="course">
+
+								if(updateFormDet.mappingCourseInterestedIn[i].courseId=="${course.courseId}"){
+									//alert("${course.courseName}");
+									document.getElementsByClassName("${course.courseName}")[0].selected=true;
+									
+								}
+						       </c:forEach>
+
+							}
+
+							for(var i=0;i<updateFormDet.mappingCoursesAlreadyDone.length;i++){
+
+								<c:forEach items="${courseAlreadyDone}" var="course">
+
+								if(updateFormDet.mappingCoursesAlreadyDone[i].courseId=="${course.courseId}"){
+									//alert("${course.courseName}");
+									document.getElementsByClassName("${course.courseName}")[1].selected=true;
+									
+								}
+						       </c:forEach>
+
+							}
+
+							
 							//alert(updateFormDet)
 							//alert(updateFormDet.mappingCoursesAlreadyDone[0].courseName);
 							//alert(updateFormDet.mappingCourseInterestedIn)
