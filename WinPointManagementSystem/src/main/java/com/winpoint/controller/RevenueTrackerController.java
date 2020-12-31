@@ -224,6 +224,8 @@ public class RevenueTrackerController {
 //		System.out.println(enquiry.getSegmentTypeId());
 		System.out.println(enquiry.getMappingTimeSlots());
 		System.out.println(enquiry.getMappingSegmentType());
+		System.out.println(enquiry.getMappingCoursesAlreadyDone());
+		System.out.println(enquiry.getMappingCourseInterestedIn());
 		
 	}
 

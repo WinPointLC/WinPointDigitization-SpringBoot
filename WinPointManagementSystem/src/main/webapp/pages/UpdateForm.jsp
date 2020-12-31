@@ -180,9 +180,9 @@
 				 <div class="row">
 				 	<div class="col">
 					<label class="label-control">Courses Interested in</label>
-					 <select  class="form-control selectpicker"  id="course_interested" multiple>
+					 <select  class="form-control selectpicker select-course"  id="courses_interested" multiple>
 									<c:forEach items="${courseInterestedInList}" var="course">
-	   									 <option value="${course.courseId}">${course.courseName}</option>
+	   									 <option value="${course.courseId}" id="${course.courseName}">${course.courseName}</option>
 									</c:forEach>
 					</select>
 					</div>
@@ -191,9 +191,9 @@
 				 <div class="row">
 				 	<div class="col">
 				 <label class="label-control">Courses Already Done</label>
-					 <select  class="form-control selectpicker"  id="course_interested" multiple>
+					 <select  class="form-control selectpicker select-course"  id="courses_done" multiple>
 									<c:forEach items="${courseAlreadyDone}" var="course">
-	   									 <option value="${course.courseId}">${course.courseName}</option>
+	   									 <option value="${course.courseId}" id="${course.courseName}">${course.courseName}</option>
 									</c:forEach>
 					</select>
 					</div>
@@ -274,13 +274,11 @@
 	
 	</body>
 	<script>
-		queryString = window.location.search;
-		//alert(queryString);
-		urlParams = new URLSearchParams(queryString);
-		//alert(urlParams.get('enquiryid'));
-		enquiryId=urlParams.get('enquiryid');
-
-		
+				queryString = window.location.search;
+				//alert(queryString);
+				urlParams = new URLSearchParams(queryString);
+				//alert(urlParams.get('enquiryid'));
+				enquiryId=urlParams.get('enquiryid');
 
 				var myData = {
 				 	enquiryId: enquiryId
@@ -300,10 +298,9 @@
 
 							updateFormDet=jsonObj;
 
-							alert(updateFormDet)
-						
-							alert(updateFormDet.mappingCoursesAlreadyDone);
-							alert(updateFormDet.mappingCourseInterestedIn)
+							//alert(updateFormDet)
+							//alert(updateFormDet.mappingCoursesAlreadyDone[0].courseName);
+							//alert(updateFormDet.mappingCourseInterestedIn)
 
 							document.getElementById("fName").value=updateFormDet.firstName;
 							document.getElementById("lName").value=updateFormDet.lastName;
@@ -369,6 +366,71 @@
 
 			function update(){
 
+				var el = document.getElementsByClassName('select-course')[0];
+				//alert(el);
+				//alert(getSelectValues(el));
+				var courses_interested=getSelectValues(el);
+				//alert(courses_interested);
+				courses_interested=courses_interested+'';
+				var courses = courses_interested.split(',');
+				var mappingCourseInterestedIn=[];
+				for(var i=0;i<courses.length;i++)
+				{
+						//alert(courses[i]);
+					<c:forEach items="${courseInterestedInList}" var="course">
+						 
+						if(courses[i]=="${course.courseId}"){
+							//alert("${course.courseName}");
+							var course_obj={
+									courseId:"${course.courseId}",
+									courseName:"${course.courseName}"
+							}
+							mappingCourseInterestedIn.push(course_obj);
+						}
+				    </c:forEach>
+					
+				}
+
+				//alert(mappingCourseInterestedIn[0].courseName);
+				var el1 = document.getElementsByClassName('select-course')[1];
+				//alert(getSelectValues(el1));
+				var courses_done=getSelectValues(el1);
+				courses_done=courses_done+'';
+				var courses = courses_done.split(',');
+				var mappingCoursesAlreadyDone=[];
+				for(var i=0;i<courses.length;i++)
+				{
+						//alert(courses[i]);
+					<c:forEach items="${courseAlreadyDone}" var="course">
+					 
+					if(courses[i]=="${course.courseId}"){
+						//alert("${course.courseName}");
+						var course_obj={
+								courseId:"${course.courseId}",
+								courseName:"${course.courseName}"
+						}
+						mappingCoursesAlreadyDone.push(course_obj);
+					}
+			    </c:forEach>
+				}
+				//alert(mappingCoursesAlreadyDone);
+				//alert(courses_done);
+			
+			function getSelectValues(select) {
+			  var result = [];
+			  var options = select && select.options;
+			  var opt;
+		
+			  for (var i=0, iLen=options.length; i<iLen; i++) {
+			    opt = options[i];
+		
+			    if (opt.selected) {
+			      result.push(opt.value || opt.text);
+			    }
+			  }
+			  return result;
+			}
+				//alert(document.getElementById("courses_interested").value);
 				var timeSlotsId;
 				var segmentTypeId;
 				var timeSlotsDescription;
@@ -414,8 +476,8 @@
 						birthDateString:document.getElementById("dob").value,
 						degree:document.getElementById("degree").value,
 						experience:document.getElementById("experience").value,
-						courseInterestedIn:document.getElementById("courses_interested").value,
-						courseAlreadyDone:document.getElementById("courses_done").value,
+						//courseInterestedIn:document.getElementById("courses_interested").value,
+						//courseAlreadyDone:document.getElementById("courses_done").value,
 						reference:document.getElementById("reference").value,
 						dateOfEnquiryString:document.getElementById("Date_Of_Enquiry").value,
 						startDateString:document.getElementById("Start_Date").value,
@@ -423,7 +485,10 @@
 						//timeSlotsId:timeSlotsId,
 						//segmentTypeId:segmentTypeId
 						mappingTimeSlots:mappingTimeSlots,
-						mappingSegmentType,mappingSegmentType
+						mappingSegmentType,mappingSegmentType,
+						mappingCoursesAlreadyDone:mappingCoursesAlreadyDone,
+						mappingCourseInterestedIn:mappingCourseInterestedIn
+						
 						
 							
 				}
