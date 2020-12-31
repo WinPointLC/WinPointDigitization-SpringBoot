@@ -18,6 +18,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,7 +44,6 @@ public class UserProfile {
 	private String photoLocation;
 	private String password;
 	private String gender;
-	private String securityQuestion;
 	private String securityAnswer;
 	private String occupation;
 	private String organization;
@@ -54,24 +55,38 @@ public class UserProfile {
 	private Date createDate;
 	private Boolean activeStatus;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<FacultySkills> mappingFacultySkills;
 
+	
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<EmployeeDetails> mappingEmployeeDetails;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<RevenueDetail> mappingRevenueDetail;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<UserTestDetails> mappingUserTestDetails;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<UserStudent> mappingUserStudent;
 
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<CourseFeedback> mappingCourseFeedback;
 
@@ -91,7 +106,7 @@ public class UserProfile {
 	@JoinColumn(name = "segmentTypeId", nullable = false)
 	private SegmentType mappingSegmentType;
 	
-	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "UserCoursesAlreadyDone", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
 	List<Course> mappingUserCoursesAlreadyDone = new ArrayList<>();
