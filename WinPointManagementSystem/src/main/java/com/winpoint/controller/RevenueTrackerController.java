@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import com.winpoint.model.Course;
 import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SegmentType;
@@ -33,7 +32,6 @@ import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.StreamsRepository;
 import com.winpoint.repository.TimeSlotsRepository;
 
-
 @Controller
 public class RevenueTrackerController {
 
@@ -43,7 +41,7 @@ public class RevenueTrackerController {
 		mv.setViewName("MainBatchPage");
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
 	public ModelAndView showLectureViewPage() {
 		ModelAndView mv = new ModelAndView();
@@ -63,13 +61,11 @@ public class RevenueTrackerController {
 		return mv;
 	}
 
-	
-	//Integer timeSlotsId;
-	//Integer segmentTypeId;
-	//String password;
+	// Integer timeSlotsId;
+	// Integer segmentTypeId;
+	// String password;
 	String Location;
-	
-	
+
 	@RequestMapping(value = "/LocationNext", method = RequestMethod.POST)
 	public @ResponseBody void getTimeAndSegment(@RequestParam("location") String location) {
 		/*
@@ -78,22 +74,21 @@ public class RevenueTrackerController {
 		 * System.out.println("segmentTypeId  " + segmentTypeid);
 		 * segmentTypeId=Integer.parseInt(segmentTypeid);
 		 */
-	//	System.out.println("password  " + Password);
-		//password=Password;
+		// System.out.println("password " + Password);
+		// password=Password;
 		System.out.println("location  " + location);
-		Location=location;
-		
-		
+		Location = location;
+
 	}
-	
-	
+
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 
 	EnquiryDetails finalUser;
+
 //	@ModelAttribute("enquiryDetails")
 	@PostMapping("/saveForm")
-	public String saveForm(EnquiryDetails enquiryDetails,RedirectAttributes redirectAttributes) throws ParseException {
+	public String saveForm(EnquiryDetails enquiryDetails, RedirectAttributes redirectAttributes) throws ParseException {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + enquiryDetails.getFirstName());
 		System.out.println("USER:  " + enquiryDetails.getMobileNo());
@@ -101,10 +96,9 @@ public class RevenueTrackerController {
 		System.out.println("USER:  " + enquiryDetails.getBirthDateString());
 		System.out.println("USER:  " + enquiryDetails.getMappingTimeSlots());
 		System.out.println("USER:  " + enquiryDetails.getMappingSegmentType());
-		
-		//System.out.println("timeSlots:  " + timeSlots.getTimeSlotsId());
-		
-		
+
+		// System.out.println("timeSlots: " + timeSlots.getTimeSlotsId());
+
 		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 		String t = enquiryDetails.getBirthDateString().toString();
 		Date d = df.parse(t);
@@ -117,21 +111,19 @@ public class RevenueTrackerController {
 		String t2 = enquiryDetails.getStartDateString().toString();
 		Date d2 = df.parse(t2);
 		enquiryDetails.setStartDate(d2);
-		//System.out.println("USER:  "+ user.getBirthDate()); 
+		// System.out.println("USER: "+ user.getBirthDate());
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //
 		enquiryDetailsRepository.save(enquiryDetails);
-		finalUser=enquiryDetails;
+		finalUser = enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
-		if(Location.equals("LoginForm"))
+		if (Location.equals("LoginForm"))
 			return "LoginForm";
 		else
 			return "redirect:/EnquiryDetails";
-		//return Location;
+		// return Location;
 
 	}
-	
-	
 
 	@Autowired
 	SegmentTypeRepository segmentTypeRepository;
@@ -139,10 +131,11 @@ public class RevenueTrackerController {
 	CourseRepository courseRepository;
 	@Autowired
 	TimeSlotsRepository timeSlotsRepository;
-	
 
 	@RequestMapping(value = "/SignUpRevenueTracker", method = RequestMethod.GET)
-	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,@ModelAttribute TimeSlots timeSlots,@ModelAttribute SegmentType segmentType,@ModelAttribute UserProfile userProfile) {
+	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,
+			@ModelAttribute TimeSlots timeSlots, @ModelAttribute SegmentType segmentType,
+			@ModelAttribute UserProfile userProfile) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SignUpForm");
 		List<String> list = new ArrayList<String>();
@@ -185,7 +178,7 @@ public class RevenueTrackerController {
 //		}
 		mv.addObject("availableTimeList", availableTimeList);
 		mv.addObject("location", "EnquiryDetails");
-		
+
 		mv.addObject("degreeList", list);
 		return mv;
 	}
@@ -197,7 +190,6 @@ public class RevenueTrackerController {
 	 * 
 	 * return "UpdateForm"; }
 	 */
-	
 
 //	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
 //	public @ResponseBody Optional<EnquiryDetails> showEnquiry(@RequestParam("enquiryId") String enquiryId) {
@@ -215,7 +207,7 @@ public class RevenueTrackerController {
 //		
 //		return enquiryDetailsList;
 //	}
-	
+
 	@RequestMapping(value = "/SaveUpdateData", method = RequestMethod.POST)
 	public void updateEnquiry(@RequestBody EnquiryDetails enquiry) {
 		System.out.println("*************");
@@ -226,7 +218,15 @@ public class RevenueTrackerController {
 		System.out.println(enquiry.getMappingSegmentType());
 		System.out.println(enquiry.getMappingCoursesAlreadyDone());
 		System.out.println(enquiry.getMappingCourseInterestedIn());
-		
+		enquiryDetailsRepository.updateEnquiryDetails(enquiry.getEnquiryId(), enquiry.getFirstName(),
+				enquiry.getLastName(), enquiry.getEmailId(), enquiry.getMobileNo(), enquiry.getAddress(),
+				enquiry.getBirthDate(), enquiry.getCollege(), enquiry.getDegree(), enquiry.getBranch(),
+				enquiry.getOccupation(), enquiry.getDesignation(), enquiry.getDomain(), enquiry.getRole(),
+				enquiry.getExperience(), enquiry.getCreatedBy(), enquiry.getDateOfEnquiry(), enquiry.getGender(),
+				enquiry.getYearOfGraduation(), enquiry.getRecommendation(), enquiry.getEligibility(),
+				enquiry.getReference(), enquiry.getStartDate(), enquiry.getSuggestion(), enquiry.getActiveStatus(),
+				enquiry.getBirthDateString(), enquiry.getDateOfEnquiryString(), enquiry.getStartDateString());
+
 	}
 
 }
