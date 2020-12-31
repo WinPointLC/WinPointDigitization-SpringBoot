@@ -31,10 +31,11 @@ public class SignUpFormController {
 	CourseRepository courseRepository;
 	@Autowired
 	TimeSlotsRepository timeSlotsRepository;
-	
-	
+
 	@RequestMapping(value = "/SignupForm", method = RequestMethod.GET)
-	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,@ModelAttribute TimeSlots timeSlots,@ModelAttribute SegmentType segmentType,@ModelAttribute UserProfile userProfile) {
+	public ModelAndView showSignUpRevenueTrackerPage(@ModelAttribute EnquiryDetails enquiryDetails,
+			@ModelAttribute TimeSlots timeSlots, @ModelAttribute SegmentType segmentType,
+			@ModelAttribute UserProfile userProfile) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SignUpForm");
 		List<String> list = new ArrayList<String>();
@@ -76,15 +77,15 @@ public class SignUpFormController {
 		mv.addObject("degreeList", list);
 		return mv;
 	}
-	
+
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
-	
+
 	@RequestMapping(value = "/UpdateForm", method = RequestMethod.GET)
 	public ModelAndView showUpdateForm() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UpdateForm");
-		
+
 		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
 		List<SegmentType> segmentTypeList = segmentTypeRepository.findAll();
 		List<Course> courseInterestedInList = courseRepository.findAll();
@@ -98,19 +99,15 @@ public class SignUpFormController {
 
 	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
 	public @ResponseBody EnquiryDetails showEnquiry(@RequestParam String enquiryId) {
-//		System.out.println(enquiryId);
-//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getMobileNo());
-//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getFirstName());
 		EnquiryDetails x = enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get();
-		for(Course a: x.getMappingCourseInterestedIn()) {
+		for (Course a : x.getMappingCourseInterestedIn()) {
 			System.out.println(a);
 		}
-		for(Course a: x.getMappingCoursesAlreadyDone()) {
+		for (Course a : x.getMappingCoursesAlreadyDone()) {
 			System.out.println(a);
 		}
 		return x;
 
 	}
-
 
 }
