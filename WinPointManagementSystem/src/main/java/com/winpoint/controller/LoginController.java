@@ -1,6 +1,5 @@
 package com.winpoint.controller;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,25 +28,13 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "loginUser", method = RequestMethod.POST)
-	public @ResponseBody String check(@RequestParam String username,@RequestParam String password) {
-		JSONObject data = new JSONObject();
+	public @ResponseBody UserProfile check(@RequestParam String username,@RequestParam String password) {
+	
 		UserProfile userObject = userProfileRepositroy.findByEmailId(username).get(0);
 		if (password.equals(userObject.getPassword())) {
-			if (userObject.getMappingUserCategory().getUserCategoryId() == 1) {
-				data.put("message", "success");
-				data.put("location","clientDash");
-				data.put("user", username);
-			} else {
-				data.put("message", "success");
-				data.put("location","employeeDash");
-				data.put("user", username);
-			}
-
-		} else {
-			data.put("message", "fail");
-		}
-		String dataString = data.toString();
-		return dataString;
+			return userObject;
+		} 
+		return null;
 	}
 	
 
