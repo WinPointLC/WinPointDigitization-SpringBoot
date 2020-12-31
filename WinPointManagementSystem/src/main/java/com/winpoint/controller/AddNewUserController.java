@@ -1,30 +1,18 @@
 package com.winpoint.controller;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.winpoint.model.Course;
-import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SecurityQuestions;
 import com.winpoint.model.SegmentType;
 import com.winpoint.model.TimeSlots;
 import com.winpoint.model.UserProfile;
-import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.SecurityQuestionsRepository;
 import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.TimeSlotsRepository;
@@ -60,7 +48,6 @@ public class AddNewUserController {
 
 	@RequestMapping("/saveNewUser")
 	public void saveForm(@RequestBody UserProfile userProfile){
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("USER:  " + userProfile.getFirstName());
 		System.out.println("USER:  " + userProfile.getGender());
 		

@@ -1,6 +1,5 @@
 package com.winpoint.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class SegmentType implements Serializable {
+public class SegmentType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "segmentTypeId", updatable = false)
