@@ -20,13 +20,13 @@ import com.winpoint.repository.UserProfileRepository;
 
 @Controller
 public class AddNewUserController {
-	
+
 	@Autowired
 	SegmentTypeRepository segmentTypeRepository;
-	
+
 	@Autowired
 	TimeSlotsRepository timeSlotsRepository;
-	
+
 	@RequestMapping(value = "/AddNewUser", method = RequestMethod.GET)
 	public ModelAndView showAddNewUserPage() {
 		ModelAndView mv = new ModelAndView();
@@ -39,27 +39,24 @@ public class AddNewUserController {
 		mv.addObject("segmentTypeList", segmentTypeList);
 		return mv;
 	}
-	
+
 	@Autowired
 	UserProfileRepository userProfileRepository;
 	@Autowired
 	SecurityQuestionsRepository securityQuestionsRepository;
 
-
 	@RequestMapping("/saveNewUser")
-	public void saveForm(@RequestBody UserProfile userProfile){
+	public void saveForm(@RequestBody UserProfile userProfile) {
 		System.out.println("USER:  " + userProfile.getFirstName());
 		System.out.println("USER:  " + userProfile.getGender());
-		
-		System.out.println("USER:  " + userProfile.getMappingSecurityQuestions());	
-		System.out.println("USER:  " + userProfile.getMappingTimeSlots());	
+
+		System.out.println("USER:  " + userProfile.getMappingSecurityQuestions());
+		System.out.println("USER:  " + userProfile.getMappingTimeSlots());
 		System.out.println("USER:  " + userProfile.getMappingSegmentType());
 		System.out.println("USER:  " + userProfile.getMappingUserCategory());
-		
+
 		userProfileRepository.save(userProfile);
 
-
 	}
-	
 
 }

@@ -15,7 +15,6 @@ import com.winpoint.model.BatchDetails;
 import com.winpoint.model.Course;
 import com.winpoint.model.UserProfile;
 import com.winpoint.repository.BatchDetailsRepository;
-import com.winpoint.repository.BatchDetialsRepository;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.StreamsRepository;
 
@@ -43,7 +42,7 @@ public class AllUsersController {
 	}
 
 	@Autowired
-	BatchDetialsRepository batchDetialsRepository;
+	BatchDetailsRepository batchDetialsRepository;
 	@Autowired
 	BatchDetailsRepository batchDetailsRepository ;
 

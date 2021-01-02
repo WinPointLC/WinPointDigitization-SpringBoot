@@ -95,7 +95,7 @@ public class Course {
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<Topics> Topics;
+	private List<Topics> mappingTopics;
 
 	
 	@JsonIgnore
