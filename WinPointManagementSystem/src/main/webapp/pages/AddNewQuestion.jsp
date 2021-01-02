@@ -492,9 +492,18 @@
 				inCrt="YES";
 			}
 			alert(inCrt);
+			var mappingCourse={
+					courseId:courseId
+			}
+			var mappingDifficultyLevel={
+					difficultyLevelId:difficultyLevelId
+			}
+			var mappingTopics={
+					topicId:topicId
+			}
 			var myData = {
-					courseId:courseId,
-					topicId:topicId,
+					//courseId:courseId,
+					//topicId:topicId,
 					question:question,
 					option1:option1,
 					option2:option2,
@@ -503,7 +512,10 @@
 					correctOption:correctOption,
 					totalMarks:totalMarks,
 					explanation:explanation,
-					difficultyLevelId:diffLevelId,
+					//difficultyLevelId:diffLevelId,
+					mappingCourse:mappingCourse,
+					mappingDifficultyLevel:mappingDifficultyLevel,
+					mappingTopics:mappingTopics,
 					inCrt:inCrt
 			};
 			//alert(myData);
