@@ -212,6 +212,11 @@
 				courseTypeDropDown.removeChild(courseTypeDropDown.firstChild);
 			}
 
+			var courseDropDown=document.getElementById('select-course-dropdown');
+			while (courseDropDown.hasChildNodes()) {  
+				courseDropDown.removeChild(courseDropDown.firstChild);
+			}
+
 			<c:forEach items="${streamList}" var="stream">
 			if('${stream.streamId}'==streamId)
 				{
@@ -285,6 +290,7 @@
 			courseTypeElem = document.getElementById(courseType_id);
 			
 			document.getElementById('dropdownMenuButtonCourseType').textContent = courseTypeElem.textContent;
+			document.getElementById('dropdownMenuButtonCourse').textContent = 'Select Course ';
 
 			var myData = {
 				streamId: streamId,
@@ -428,8 +434,8 @@
 					th3.textContent = "College";
 					var th4 = document.createElement('th');
 					th4.textContent = "Mobile No";
-					var th5 = document.createElement('th');
-					th5.textContent = "Courses Done";
+					//var th5 = document.createElement('th');
+					//th5.textContent = "Courses Done";
 					var th6 = document.createElement('th');
 					th6.textContent = "Analytics";
 					thead.appendChild(th0);
@@ -437,14 +443,18 @@
 					thead.appendChild(th2);
 					thead.appendChild(th3);
 					thead.appendChild(th4);
-					thead.appendChild(th5);
+					//thead.appendChild(th5);
 					thead.appendChild(th6);
 					table.appendChild(thead);
 					
 					var tbody = document.createElement('tbody');
 					
 					for(var i=0;i<userList.length;i++){
-					
+
+						/* for(var j=0;j<userList.mappingUserCoursesAlreadyDone.length;j++){
+								alert(mappingUserCoursesAlreadyDone[j].courseName);
+						}
+					 */
 						counter=i+1;
 						
 						var tr = document.createElement('tr');
@@ -460,8 +470,8 @@
 						td3.textContent = userList[i].college;
 						var td4 = document.createElement('td');
 						td4.textContent = userList[i].mobileNumber;
-						var td5 = document.createElement('td');
-						td5.textContent = userList[i].courseAlreadyDone;
+						//var td5 = document.createElement('td');
+						//td5.textContent = userList[i].courseAlreadyDone;
 						//creating Analytics and Result Button for all user.
 						var td6  = document.createElement('td');
 						var analyticsLink = document.createElement('a');
@@ -478,7 +488,7 @@
 						tr.appendChild(td2);
 						tr.appendChild(td3);
 						tr.appendChild(td4);
-						tr.appendChild(td5);
+						//tr.appendChild(td5);
 						tr.appendChild(td6);
 						
 						tbody.appendChild(tr);

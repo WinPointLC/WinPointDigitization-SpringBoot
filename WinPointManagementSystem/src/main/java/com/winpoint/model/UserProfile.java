@@ -91,7 +91,7 @@ public class UserProfile implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
 	private Set<CourseFeedback> mappingCourseFeedback;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userCategoryId", nullable = false)
 	private UserCategory mappingUserCategory;

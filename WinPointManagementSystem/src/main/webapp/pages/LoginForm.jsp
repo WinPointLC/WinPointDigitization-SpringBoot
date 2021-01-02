@@ -32,23 +32,17 @@
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (data) {
-					alert("sent parameters")
-					alert(data);
+					//alert("sent parameters")
+					//alert(data.mappingUserCategory.userCategoryId);
 					
-					/* if(data.message=='success'){
-						if(data.location=='clientDash')
-							window.location.href="client"+ "?varid="+encodeURIComponent(JSON.stringify(data));
-						else if(data.location=='employeeDash')
-							window.location.href="employee"+ "?varid="+encodeURIComponent(JSON.stringify(data));
-					} */
-					/* else{
-						document.getElementById("error").innerHTML = "Invalid email or password";
-					} */
+					if(data.mappingUserCategory.userCategoryId==1)
+						window.location.href="client"+ "?varid="+encodeURIComponent(JSON.stringify(data));
+					else if(data.mappingUserCategory.userCategoryId==2)
+						window.location.href="employee"+ "?varid="+encodeURIComponent(JSON.stringify(data));
 						
-			    }, 
-				
-				error: function(){
-					document.getElementById("error").innerHTML = "Invalid email or password";
+			    },
+			    error: function(){
+			    	document.getElementById("error").innerHTML = "Invalid email or password";
 				}
 			});
 			

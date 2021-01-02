@@ -534,13 +534,13 @@
 			var courseTypeId = 1;
 			var courseTypeName = "";
 			
-			/* var SearchString = window.location.search.substring(1);
+			 var SearchString = window.location.search.substring(1);
 			var arr = SearchString.split('&');
 			var data= arr[0].split('=')[1];
 			var decodedData = decodeURIComponent(data);
 			userData=JSON.parse(decodedData);
-			//alert(userData.user);
-			document.getElementById('welcome').innerHTML=userData.user; */
+			//alert(userData.firstName);
+			document.getElementById('welcome').innerHTML=userData.firstName + " " + userData.lastName;
 			
 			//var streamList = '${streamList}';
 			
@@ -1497,25 +1497,7 @@
 
 		</script>
 		
-		<!-- <script>
-			var data;
-			var userProfile;
-			var streamList;
-			$(document).ready(function() {
-				var searchString = window.location.search.substring(1);
-				var arr = searchString.split('&');
-				var data= arr[0].split('=')[1];
-				var decodedData = decodeURIComponent(data);
-				var data1 = decodedData.substring(0, decodedData.indexOf('}')+1);
-				userProfile =  eval('(' + data1 + ')');
-				var data2 = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
-				streamList = eval('(' + data2 + ')');
-				document.getElementById('welcome').textContent = userProfile.firstName + " " + userProfile.lastName;
-				md.initDashboardPageCharts();
-				strResJSON = JSON.stringify(userProfile);
-			});
-		</script>
- -->
+		
 	</body>
 
 </html>
