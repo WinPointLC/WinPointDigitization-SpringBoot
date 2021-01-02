@@ -1839,7 +1839,7 @@ function sendUserFeedback(course_Id){
 				var decodedData = decodeURIComponent(data);
 				userData=JSON.parse(decodedData);
 				//alert(userData.user);
-				document.getElementById('welcome').innerHTML=userData.user;
+				document.getElementById('welcome').innerHTML=userData.firstName + " " + userData.lastName;
 
 			</script>
 
@@ -1849,21 +1849,7 @@ var userProfile;
 var streamList;
 var myChart;
 function mainUserFunction(){
-//	alert("this is mainUserFunction");
-	/* var searchString = window.location.search.substring(1);
-  var arr = searchString.split('&');
-  var data= arr[0].split('=')[1];
-  var decodedData = decodeURIComponent(data); */
-  //alert(decodedData);
-//  var data1 = decodedData.substring(0, decodedData.indexOf('}')+1);
-  //alert(data1);
- // userProfile =  eval('(' + data1 + ')');
- // var data2 = decodedData.substring(decodedData.indexOf('}')+1, decodedData.length);
-  //alert(data2);
- // streamList = eval('(' + data2 + ')');
- // alert(streamList[0].streamName);
- // document.getElementById('welcome').textContent = userProfile.firstName + " " + userProfile.lastName;
-  // Javascript method's body can be found in ../assets/js/demos.js
+
     md.initDashboardPageCharts();
    // strResJSON = JSON.stringify(userProfile);
 var streamId = 1;

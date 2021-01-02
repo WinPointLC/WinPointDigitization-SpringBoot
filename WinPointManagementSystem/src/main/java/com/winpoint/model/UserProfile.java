@@ -96,17 +96,17 @@ public class UserProfile implements Serializable{
 	@JoinColumn(name = "userCategoryId", nullable = false)
 	private UserCategory mappingUserCategory;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "securityQuestionId", nullable = false)
 	private SecurityQuestions mappingSecurityQuestions;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
 	private SegmentType mappingSegmentType;

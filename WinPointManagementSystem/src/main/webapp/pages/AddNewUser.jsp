@@ -353,6 +353,8 @@
 								var timeSlotsDescription;
 								var segmentTypeName;
 								var segmentTypeId;
+								 var createdBy = null;
+							     var createdDate=null;
 		     function submitSignUpDetails(){
 		       alert("Submit Sign Up Details");
 		       //alert($('#securityQuestion').val());
@@ -410,8 +412,7 @@
 		      // alert(securityAnswer);
 		       var userCategoryId = 2;
 		       var userCategoryName="Admin";
-		       var createdBy = null;
-		       var createdDate=null;
+		      
 
 		       var mappingUserCategory={
 		    		   userCategoryId:userCategoryId,
