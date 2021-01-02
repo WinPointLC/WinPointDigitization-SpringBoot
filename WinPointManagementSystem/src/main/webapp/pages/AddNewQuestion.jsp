@@ -513,7 +513,7 @@
 					option3:option3,
 					option4:option4,
 					correctOption:correctOption,
-					totalMarks:totalMarks,
+					marks:totalMarks,
 					explanation:explanation,
 					//difficultyLevelId:diffLevelId,
 					mappingCourse:mappingCourse,
