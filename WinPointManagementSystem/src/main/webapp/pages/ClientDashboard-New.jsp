@@ -743,7 +743,7 @@ function LogoutSession() {
                document.getElementById('res-link').className=" ";
       courseframe = document.createElement('iframe');
      // courseframe.setAttribute('src', jspURL + "CourseRegistration.jsp?varid=");
-      courseframe.setAttribute('src', "CourseRegistration");
+      courseframe.setAttribute('src', "CourseRegistration?userId="+userData.userId);
       courseframe.setAttribute('width', 1100);
       courseframe.setAttribute('height', 1000);
       courseframe.id = 'CourseRegistration-frame';
