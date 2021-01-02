@@ -492,11 +492,14 @@
 				inCrt="YES";
 			}
 			alert(inCrt);
+			alert(courseId);
+			
+			
 			var mappingCourse={
 					courseId:courseId
 			}
 			var mappingDifficultyLevel={
-					difficultyLevelId:difficultyLevelId
+					difficultyLevelId:diffLevelId
 			}
 			var mappingTopics={
 					topicId:topicId
