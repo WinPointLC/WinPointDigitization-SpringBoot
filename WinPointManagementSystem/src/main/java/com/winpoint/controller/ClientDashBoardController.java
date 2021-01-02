@@ -31,6 +31,9 @@ public class ClientDashBoardController {
 	@RequestMapping(value = "/CourseRegistration", method = RequestMethod.GET)
 	public ModelAndView CourseRegistrationPage() {
 		ModelAndView mv = new ModelAndView();
+		List<Streams> c = stream.findAll();
+		mv.addObject("streamList", c);
+		mv.addObject("firstStreamId", c.get(0).getStreamId());
 		mv.setViewName("CourseRegistration");	
 		return mv;
 	}
@@ -38,6 +41,9 @@ public class ClientDashBoardController {
 	@RequestMapping(value = "/MainCoursePage", method = RequestMethod.GET)
 	public ModelAndView OnlineEvaluationPage() {
 		ModelAndView mv = new ModelAndView();
+		List<Streams> c = stream.findAll();
+		mv.addObject("streamList", c);
+		mv.addObject("firstStreamId", c.get(0).getStreamId());
 		mv.setViewName("MainCoursePage");	
 		return mv;
 	}

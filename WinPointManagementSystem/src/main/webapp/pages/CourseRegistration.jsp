@@ -221,7 +221,7 @@
               // alert(courseTypesList[i].courseTypeId + ":" + courseTypesList[i].courseTypeName)
             } */
 
-            <c:forEach items="${courseTypesList}" var="courseType">
+            /* <c:forEach items="${courseTypesList}" var="courseType">
 	            var dropanchor = document.createElement('a');
 	            dropanchor.className='dropdown-item';
 	            dropanchor.setAttribute('href',"#");
@@ -230,7 +230,27 @@
 	            dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
 	            dropdownMenu.appendChild(dropanchor);
 		  	</c:forEach>   
-            document.getElementById('drop11').appendChild(dropdownMenu);
+            document.getElementById('drop11').appendChild(dropdownMenu); */
+
+            <c:forEach items="${streamList}" var="stream">
+			if('${stream.streamId}'=='${firstStreamId}')
+				{
+					//alert("'${stream.mappingCourseType}'");
+					<c:forEach items="${stream.mappingCourseType}" var="det">
+						 //alert('${course.courseName}')
+						var anchor2 = document.createElement('a');
+						anchor2.className="dropdown-item";
+						anchor2.setAttribute('href', "#");
+						anchor2.id = '${det.courseTypeId}' + 'CT';
+						//alert("courseType Name  " + courseTypeList[i].courseTypeName);
+						anchor2.textContent = '${det.courseTypeName}'.toUpperCase().replace("_"," ");
+						anchor2.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+						dropdownMenu.appendChild(anchor2);
+						 
+					</c:forEach>
+				}
+	    </c:forEach>  
+	  		  document.getElementById('drop11').appendChild(dropdownMenu);    
 
             var studentCoursesCourseIdList = [];
             <c:forEach items="${studentCoursesList}" var="studentCourses">

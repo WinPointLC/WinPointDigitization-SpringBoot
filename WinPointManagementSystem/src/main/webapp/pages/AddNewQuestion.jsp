@@ -190,6 +190,7 @@
    <script type="text/javascript">   
        
 		var streamList;
+		var streamName;
 		
 		
 		<c:forEach items="${streamList}" var="stream">
@@ -209,6 +210,9 @@
 			streamElem = document.getElementById(streamId);
 			
 			document.getElementById('dropdownMenuButtonStream').textContent = streamElem.textContent;
+			
+			streamName=streamElem.textContent.toLowerCase().replace(" ","");;
+			//alert(streamName);
 			
 			document.getElementById('dropdownMenuButtonCourseType').textContent = 'Select Course Type ';
 			document.getElementById('dropdownMenuButtonCourse').textContent = 'Select Course ';
@@ -288,6 +292,7 @@
 
 		function getCourseTypeId(courseType_id){
 			courseTypeId = courseType_id.substring(0, courseType_id.length-2);
+			//alert(streamName);
 			
 			courseTypeElem = document.getElementById(courseType_id);
 			
@@ -463,6 +468,9 @@
 		
 		var optionArr = ['option1','option2','option3','option4'];
 		function addQuestion(){
+			//alert(streamName+"QuestionBank");
+			var url_send=streamName+"QuestionBank";
+			//alert(url);
 			//alert("Add Question");
 			var question = document.getElementById('question').value;
 			var option1 = document.getElementById(optionArr[0]).value;
@@ -502,14 +510,15 @@
 			$.ajax({
 				type: 'POST',
 				//url: servletURL + 'AddQuestionServlet',
-				url: "/AddQuestion",
+				//url: "/AddQuestion",
+				url: url_send,
 				data: JSON.stringify(myData),
 				dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				traditional: true,
 				success: function (jsonObj) {
 					
-						window.location.href = "EmployeeDashboard-New";
+						location.reload();
 					
 				},
 				error: function(){

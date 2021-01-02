@@ -284,7 +284,7 @@
 			<iframe src="FeeRegistrationPage-New" width="1000" height="700" id="Fee-jsp"></iframe>
 			<iframe src="AllUser" width="1000" height="700" id="AllUser-jsp"></iframe>
 			<iframe src="AddNewUser" width="1000" height="550" id="AddNewUser-jsp"></iframe>
-			<iframe src="AddNewQuestion" width="1000" height="700" id="AddNewQuestion-jsp"></iframe>
+			<iframe src="AddNewQuestion" width="1000" height="550" id="AddNewQuestion-jsp"></iframe>
 			<iframe src="Entities" width="1000" height="700" id="Entities-jsp"></iframe>
 			<iframe src="RevenueTracker" width="1000" height="550" id="RevenueTracker-jsp"></iframe>
 		</div>
