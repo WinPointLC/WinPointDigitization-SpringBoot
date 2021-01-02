@@ -353,10 +353,12 @@
 								var timeSlotsDescription;
 								var segmentTypeName;
 								var segmentTypeId;
-								 var createdBy = null;
-							     var createdDate=null;
+								var flag=0;
 		     function submitSignUpDetails(){
-		       alert("Submit Sign Up Details");
+		    	 validator();
+
+		    	 if(flag==1){
+		       //alert("Submit Sign Up Details");
 		       //alert($('#securityQuestion').val());
 		    	 <c:forEach items="${availableTimeList}" var="availableTime">
 					if(document.getElementById("avail_time").value=='${availableTime.timeSlotsDescription}'){
@@ -412,7 +414,8 @@
 		      // alert(securityAnswer);
 		       var userCategoryId = 2;
 		       var userCategoryName="Admin";
-		      
+		       var createdBy = null;
+		       var createdDate=null;
 
 		       var mappingUserCategory={
 		    		   userCategoryId:userCategoryId,
@@ -455,8 +458,8 @@
 		     });
 			
 		     location.reload();
-
-		     validator();
+		   }
+		     
 		  }
 		
 		  function validator() {
@@ -467,6 +470,8 @@
 		    var uname = document.getElementById('userName').value;
 		    var pass = document.getElementById('password').value;
 		    var mobileNumber = document.getElementById('mobileNumber').value;
+		    var mobile = document.getElementById("mobileNumber").value;
+		    var pattern = /^[7-9][0-9]{9}$/;
 		
 		    if (ffname == "") {
 		      alert("Enter the firstName");
@@ -475,7 +480,7 @@
 		      alert("Enter the LastName");
 		    }
 		    else if(email==""){
-		      alert("Enter the emailName");
+		      alert("Enter the email");
 		    }
 		    else if(uname==""){
 		      alert("Enter the UserName");
@@ -486,18 +491,14 @@
 		    else if(mobileNumber==""){
 		      alert("Enter the Mobile Number");
 		    }
-		    Mobilevalidator();
+		    else if(!(pattern.test(mobile)))
+			{
+		    	alert("Enter valid Mobile Number");
+			}
+		    else
+			    flag=1;
+		    
 		  }
-		  //code for Mobile Validation
-		  function Mobilevalidator() {
-		
-		       var mobile = document.getElementById("mobileNumber").value;
-		       var pattern = /^[7-9][0-9]{9}$/;
-		       if (pattern.test(mobile)) {
-		           return true;
-		       }
-		       return false;
-		
-		   }
+		 
 		  </script>
                               </body>
