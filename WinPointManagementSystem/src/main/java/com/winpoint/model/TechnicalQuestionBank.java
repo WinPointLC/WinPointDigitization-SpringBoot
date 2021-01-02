@@ -1,7 +1,8 @@
 package com.winpoint.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -50,36 +51,36 @@ public class TechnicalQuestionBank {
 	private Topics mappingTopics;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentsModularTestResult_C_TBC> mappingStudentsModularTestResult_C_TBC;
+	private List<StudentsModularTestResult_C_TBC> mappingStudentsModularTestResult_C_TBC=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResult_C_Modular> mappingStudentTestResult_C_Modular;
+	private List<StudentTestResult_C_Modular> mappingStudentTestResult_C_Modular=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResult_CPP_CRT> mappingStudentTestResult_CPP_CRT;
+	private List<StudentTestResult_CPP_CRT> mappingStudentTestResult_CPP_CRT=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResult_CPP_Modular> mappingStudentTestResult_CPP_Modular;
+	private List<StudentTestResult_CPP_Modular> mappingStudentTestResult_CPP_Modular=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResult_CPP_TBC> mappingStudentTestResult_CPP_TBC;
+	private List<StudentTestResult_CPP_TBC> mappingStudentTestResult_CPP_TBC=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResultComputerNetwork_CRT> mappingStudentTestResultComputerNetwork_CRT;
+	private List<StudentTestResultComputerNetwork_CRT> mappingStudentTestResultComputerNetwork_CRT=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResultJava_CRT> mappingStudentTestResultJava_CRT;
+	private List<StudentTestResultJava_CRT> mappingStudentTestResultJava_CRT=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResultJava_TBC> mappingStudentTestResultJava_TBC;
+	private List<StudentTestResultJava_TBC> mappingStudentTestResultJava_TBC=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResultJavaModular> mappingStudentTestResultJavaModular;
+	private List<StudentTestResultJavaModular> mappingStudentTestResultJavaModular=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResultJavascriptModular> mappingStudentTestResultJavascriptModular;
+	private List<StudentTestResultJavascriptModular> mappingStudentTestResultJavascriptModular=new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTechnicalQuestionBank")
-	private Set<StudentTestResultOperatingSystem_CRT> mappingStudentTestResultOperatingSystem_CRT;
+	private List<StudentTestResultOperatingSystem_CRT> mappingStudentTestResultOperatingSystem_CRT=new ArrayList<>();
 
 }
