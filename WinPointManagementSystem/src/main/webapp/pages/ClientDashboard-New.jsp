@@ -168,21 +168,7 @@
 //window.location.href = "/OnlineEvaluationSystem/jsp/MainCoursePage.jsp?varid="+ encodeURIComponent(strResJSON);
 }
 function LogoutSession() {
-    $.ajax({
-      url: servletURL + 'LogoutServlet',
-      type: 'POST',
-      dataType: 'json',
-      contentType: 'application/json; charset=utf-8',
-      traditional: true,
-      success: function (jsonObj) {
-        var responseJson1=jsonObj[0];
-        var locationJson = eval('(' + responseJson1 + ')');
-        window.location.href = locationJson.location;
-      },
-      error: function () {
-       // alert("You are in error function of LogoutAjax call ");
-      }
-    });
+	window.location.href="/";
 
 }
 </script>
@@ -883,10 +869,12 @@ function LogoutSession() {
 			<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 			<script src="../assets/demo/demo.js"></script>
 			<script>
-  
-function getStreamId(stream_id){
+
+			 
+     function getStreamId(stream_id){
         streamId = stream_id;
         var streamElem = document.getElementById(streamId + 'a');
+      
         var elem;
        /*  for(i=0; i<streamList.length; i++){
           elem = document.getElementById(streamList[i].streamId + 'a');
@@ -897,7 +885,51 @@ function getStreamId(stream_id){
 		   	 elem.className = 'nav-link';
   		</c:forEach>  
         streamElem.className = 'nav-link active';
-        var myData = {
+        elem = document.getElementById('dropdownMenu');
+        if(elem != null){
+          elem.parentNode.removeChild(elem);
+        }
+        var elem = document.getElementById('dropdownMenuButton');
+        elem.parentNode.removeChild(elem);
+        var btn = document.createElement('button');
+        btn.className='btn btn-secondary dropdown-toggle';
+        btn.id='dropdownMenuButton';
+        btn.setAttribute('data-toggle', "dropdown");
+        btn.setAttribute('aria-haspopup', "true");
+        btn.setAttribute('aria-expanded',"false");
+        
+
+        document.getElementById('drop11').appendChild(btn);
+        var dropdownMenu = document.createElement('div');
+        dropdownMenu.className='dropdown-menu';
+        dropdownMenu.id='dropdownMenu';
+        dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+
+        var cnt=0;
+		<c:forEach items="${streamList}" var="stream">
+		if('${stream.streamId}'==streamId)
+			{
+			
+				//alert("'${stream.mappingCourseType}'");
+				<c:forEach items="${stream.mappingCourseType}" var="det">
+				   cnt++;
+				   var dropanchor = document.createElement('a');
+				   dropanchor.className='dropdown-item';
+				   dropanchor.id='${det.courseTypeId}';
+				 
+				   if(cnt==1)
+					   courseTypeName = ('${det.courseTypeName}').toUpperCase();
+				   dropanchor.textContent= ('${det.courseTypeName}').toUpperCase();
+				   dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+				   dropdownMenu.appendChild(dropanchor);
+					 
+				</c:forEach>
+			}
+  	  </c:forEach>     
+    	document.getElementById('drop11').appendChild(dropdownMenu);
+    	  document.getElementById('dropdownMenuButton').textContent = 'Course Type';
+    	//alert("STREAM  " + courseTypeName);
+       /*  var myData = {
           streamId: streamId  
         };
         $.ajax({
@@ -956,12 +988,13 @@ function getStreamId(stream_id){
             }
 
 
-          });
+          }); */
         
       }
 function displayStreamCourses(courseType_id, courseTypeName ){
        courseTypeId = courseType_id;
        document.getElementById('dropdownMenuButton').textContent = courseTypeName;
+      // alert(courseTypeName);
         var myData = {
           //userId: userProfile.userId,
           streamId: streamId,
@@ -1848,13 +1881,14 @@ var data;
 var userProfile;
 var streamList;
 var myChart;
+var courseTypeName;
 function mainUserFunction(){
 
     md.initDashboardPageCharts();
    // strResJSON = JSON.stringify(userProfile);
 var streamId = 1;
 var courseTypeId = 1;
-var courseTypeName = "";
+//var courseTypeName = "";
 var chartCourseName = [];
 var chartData= [];
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -1935,6 +1969,7 @@ myChart = new Chart(ctx, {
             dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
             document.getElementById('drop11').appendChild(dropdownMenu);
 			getStreamId('${firstStreamId}');
+			//alert(courseTypeName);
 			displayStreamCourses(courseTypeId, courseTypeName);
 
 }

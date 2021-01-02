@@ -1476,22 +1476,9 @@
 		
 		<script type="text/javascript">
 			function LogoutSession() {
-				$.ajax({
-					//url: servletURL + 'LogoutServlet',
-					url: "/Logout",
-					type: 'POST',
-					dataType: 'json',
-					contentType: 'application/json; charset=utf-8',
-					traditional: true,
-					success: function (jsonObj) {
-						var responseJson1=jsonObj[0];
-						var locationJson = eval('(' + responseJson1 + ')');
-						window.location.href = locationJson.location;
-					},
-					error: function () {
-						alert("You are in error function of LogoutAjax call ");
-					}
-				});
+
+				window.location.href="/";
+				
 
 			}
 

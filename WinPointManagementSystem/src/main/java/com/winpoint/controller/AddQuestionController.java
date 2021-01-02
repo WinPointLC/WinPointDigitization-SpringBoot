@@ -40,7 +40,7 @@ public class AddQuestionController {
 
 	
 	@RequestMapping(value = "/CourseTopicsSelect", method = RequestMethod.POST)
-	public List<Topics> ShowCourseTopics(@RequestParam String courseId) {
+	public @ResponseBody List<Topics> ShowCourseTopics(@RequestParam String courseId) {
 		System.out.println("\n\n\n\n\n\n\n\n\nReached\n\n\n\n\n\n\n\n");
 		System.out.println(courseRepository.findById(Integer.parseInt(courseId)).get().getMappingTopics().get(0));
 		return courseRepository.findById(Integer.parseInt(courseId)).get().getMappingTopics();
