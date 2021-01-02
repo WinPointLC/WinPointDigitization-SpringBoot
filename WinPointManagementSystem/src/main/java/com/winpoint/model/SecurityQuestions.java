@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +31,7 @@ public class SecurityQuestions {
 	private Integer createdBy;
 	private Date createdDate;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingSecurityQuestions")
 	private List<UserProfile> mappingUserProfile = new ArrayList<UserProfile>();
 
