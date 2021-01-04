@@ -67,7 +67,7 @@ public class Course implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<CoursePlans> mappingCoursePlans;
+	private List<CoursePlans> mappingCoursePlans;
 
 	
 	@JsonIgnore
