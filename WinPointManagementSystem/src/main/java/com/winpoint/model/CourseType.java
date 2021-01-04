@@ -36,7 +36,6 @@ public class CourseType {
 	private String courseTypeName;
 	private Integer createdBy;
 	private Date createdDate;
-	
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
@@ -45,14 +44,9 @@ public class CourseType {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<ToolTips> mappingToolTips;
-	
-	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "streamCourseType",joinColumns = @JoinColumn(name ="courseTypeId"), inverseJoinColumns = @JoinColumn(name = "streamId"))
-	private List<Streams> mappingStream = new ArrayList<Streams>();
 
-	
-	
-//	@JoinTable(name = "books_authors", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id "))
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "streamCourseType", joinColumns = @JoinColumn(name = "courseTypeId"), inverseJoinColumns = @JoinColumn(name = "streamId"))
+	private List<Streams> mappingStream = new ArrayList<Streams>();
 
 }

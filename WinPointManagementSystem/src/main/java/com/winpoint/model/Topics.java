@@ -1,6 +1,8 @@
 package com.winpoint.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -55,4 +58,7 @@ public class Topics {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
 	private Set<TestDifficulty> mappingTestDifficulty;
 
+	@JsonIgnore
+	@ManyToMany(mappedBy = "mappingLecutrePlan")
+	private List<CoursePlans> mappingCoursePlans = new ArrayList<CoursePlans>();
 }
