@@ -55,42 +55,42 @@ public class Course {
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<StudentCourseDetails> StudentCourseDetails;
+	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<BatchDetails> BatchDetails;
+	private Set<BatchDetails> mappingBatchDetails;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<CoursePlans> CoursePlans;
+	private Set<CoursePlans> mappingCoursePlans;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<ExpenseDetails> ExpenseDetails;
+	private Set<ExpenseDetails> mappingExpenseDetails;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<GeneralAptitudeQuestionBank> GeneralAptitudeQuestionBank;
+	private Set<GeneralAptitudeQuestionBank> mappingGeneralAptitudeQuestionBank;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<RevenueDetail> RevenueDetail;
+	private Set<RevenueDetail> mappingRevenueDetail;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<SoftSkillsQuestionBank> SoftSkillsQuestionBank;
+	private Set<SoftSkillsQuestionBank> mappingSoftSkillsQuestionBank;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<TechnicalQuestionBank> TechnicalQuestionBank;
+	private Set<TechnicalQuestionBank> mappingTechnicalQuestionBank;
 
 	
 	@JsonIgnore
@@ -100,12 +100,12 @@ public class Course {
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<TestDetails> TestDetails;
+	private Set<TestDetails> mappingTestDetails;
 
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
-	private Set<CourseFeedback> CourseFeedback;
+	private Set<CourseFeedback> mappingCourseFeedback;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingCourseInterestedIn")
