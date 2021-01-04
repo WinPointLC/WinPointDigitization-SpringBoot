@@ -45,6 +45,8 @@ public class RevenueTrackerController {
 	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
 	public ModelAndView showLectureViewPage() {
 		ModelAndView mv = new ModelAndView();
+		List<Streams> c = stream.findAll();
+		mv.addObject("streamList", c);
 		mv.setViewName("LectureView");
 		return mv;
 	}
