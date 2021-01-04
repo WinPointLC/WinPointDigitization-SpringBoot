@@ -165,13 +165,37 @@
 				streamId = stream_id;
 				
 				streamElem = document.getElementById(streamId);
+
+				var courseTypeDropDown=document.getElementById('select-coursetype-dropdown');
+				while (courseTypeDropDown.hasChildNodes()) {  
+					courseTypeDropDown.removeChild(courseTypeDropDown.firstChild);
+				}
 				
 				document.getElementById('dropdownMenuButtonStream').textContent = streamElem.textContent;
 				
 				document.getElementById('dropdownMenuButtonCourseType').textContent = 'Select Course Type ';
+
+				<c:forEach items="${streamList}" var="stream">
+				if('${stream.streamId}'==streamId)
+					{
+						//alert("'${stream.mappingCourseType}'");
+						<c:forEach items="${stream.mappingCourseType}" var="det">
+							 //alert('${course.courseName}')
+							var anchor2 = document.createElement('a');
+							anchor2.className="dropdown-item";
+							anchor2.setAttribute('href', "#");
+							anchor2.id = '${det.courseTypeId}' + 'CT';
+							//alert("courseType Name  " + courseTypeList[i].courseTypeName);
+							anchor2.textContent = '${det.courseTypeName}'.toUpperCase().replace("_"," ");
+							anchor2.setAttribute('onclick', "getCourseTypeId(this.id)");
+							document.getElementById('select-coursetype-dropdown').appendChild(anchor2);
+							 
+						</c:forEach>
+					}
+		    </c:forEach>     
 				
 							
-			    var myData = {
+			  /*   var myData = {
 					streamId: streamId
 				};
 				
@@ -211,7 +235,7 @@
 						//document.getElementById("error").innerHTML = "Invalid email or password";
 					}
 	
-				});
+				}); */
 			}
 			
 			var courseTypeElem;
