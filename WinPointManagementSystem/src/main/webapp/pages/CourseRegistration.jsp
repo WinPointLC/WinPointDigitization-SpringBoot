@@ -190,7 +190,7 @@
             var drop1 = document.getElementsByClassName('drop1');
             var btn = document.createElement('button');
             btn.className='btn btn-secondary dropdown-toggle';
-            btn.id='dropdownMenuButton';
+            btn.id='select-coursetype-dropdown';
             btn.setAttribute('data-toggle', "dropdown");
             btn.setAttribute('aria-haspopup', "true");
             btn.setAttribute('aria-expanded',"false");
@@ -252,7 +252,7 @@
 	    </c:forEach>  
 	  		  document.getElementById('drop11').appendChild(dropdownMenu);    
 
-            var studentCoursesCourseIdList = [];
+           /*  var studentCoursesCourseIdList = [];
             <c:forEach items="${studentCoursesList}" var="studentCourses">
 	            studentCoursesCourseIdList.push('${studentCourses.courseId}');
 	  		</c:forEach>   
@@ -260,7 +260,7 @@
 	  		var studentGACoursesCourseIdList = [];
 	        <c:forEach items="${studentGACoursesList}" var="studentGACourses">
 	         	studentGACoursesCourseIdList.push('${studentGACourses.courseId}');
-		    </c:forEach>   
+		    </c:forEach>    */
             
            /*  var decodedData2 = decodedData1.substring(decodedData1.indexOf(']')+1, decodedData1.length);
             var studentCourses = decodedData2.substring(0, decodedData2.indexOf(']')+1);
@@ -337,8 +337,9 @@
       var courseTypeId;
       
       function getStreamId(stream_id){
-    	  streamId = stream_id;
         
+    	streamId = stream_id;
+
         var streamElem = document.getElementById(streamId + 'a');
         var elem;
         for(i=0; i<streamIdList.length; i++){
@@ -350,6 +351,14 @@
 		   	 elem.className = 'nav-link';
   		</c:forEach>   */
         streamElem.className = 'nav-link active';
+
+  		var courseTypeDropDown=document.getElementById('select-coursetype-dropdown');
+		while (courseTypeDropDown.hasChildNodes()) {  
+			alert("HERE");
+			courseTypeDropDown.removeChild(courseTypeDropDown.firstChild);
+		}
+
+		
        
         elem = document.getElementById('courseList');
         if(elem != null){

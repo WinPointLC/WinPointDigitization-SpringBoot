@@ -43,8 +43,9 @@ public class ClientDashBoardController {
 	public ModelAndView CourseRegistrationPage(@RequestParam("userId") String userId) {
 		ModelAndView mv = new ModelAndView();
 		List<UserProfile> c = new ArrayList<>();
-//		mv.addObject("streamList", c);
-//		mv.addObject("firstStreamId", c.get(0).getStreamId());
+		List<Streams> c1 = stream.findAll();
+		mv.addObject("streamList", c1);
+		mv.addObject("firstStreamId", c1.get(0).getStreamId());
 		
 		
 		stream.findById(1).get().getMappingCourse().stream().forEach(y->y.getMappingStudentCourseDetails().stream().
