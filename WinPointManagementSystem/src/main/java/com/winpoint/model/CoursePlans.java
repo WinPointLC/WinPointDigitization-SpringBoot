@@ -24,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class CoursePlans implements Serializable{
+public class CoursePlans{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
