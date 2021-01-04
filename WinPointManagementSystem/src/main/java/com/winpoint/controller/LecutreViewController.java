@@ -35,6 +35,10 @@ public class LecutreViewController {
 	
 	@RequestMapping(value = "/LectureViewDetails", method = RequestMethod.POST)
 	public @ResponseBody BatchDetails getTimeAndSegment(@RequestParam String batchId) {
-		return batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		System.out.println("\n\n\n\n\n"+batch.getMappingCourse().getCourseName()+"\n\n\n\n\n");
+		
+		return batch;
+		
 	}
 }
