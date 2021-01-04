@@ -1,6 +1,7 @@
 package com.winpoint.repository;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.winpoint.model.EnquiryDetails;
+import com.winpoint.model.UserProfile;
 
 @Repository
 public interface EnquiryDetailsRepository extends JpaRepository<EnquiryDetails, Integer>{
@@ -38,4 +40,11 @@ public interface EnquiryDetailsRepository extends JpaRepository<EnquiryDetails, 
 			String gender, Integer yearOfGraduation, String recommendation, String eligibility,
 			String reference, Date startDate,
 			String suggestion, Integer activeStatus, String birthDateString, String dateOfEnquiryString, String startDateString);
+	
+	
+	
+	List<EnquiryDetails> findByEmailId(String emailId);
+
+	
+	
 }

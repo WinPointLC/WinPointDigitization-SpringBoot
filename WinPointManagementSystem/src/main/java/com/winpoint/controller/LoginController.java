@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.UserProfile;
+import com.winpoint.repository.EnquiryDetailsRepository;
 import com.winpoint.repository.UserProfileRepository;
 
 
@@ -18,6 +20,9 @@ public class LoginController {
 	
 	@Autowired
 	UserProfileRepository userProfileRepositroy;
+	
+	@Autowired
+	EnquiryDetailsRepository enquiryDetailsRepository;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView LoginPage() {
@@ -28,16 +33,38 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "loginUser", method = RequestMethod.POST)
-	public @ResponseBody UserProfile check(@RequestParam String username,@RequestParam String password) {
+	public @ResponseBody Object check(@RequestParam String username,@RequestParam String password) {
 		System.out.println("HERE LOGIN CONTROLLER");
-	
-		UserProfile userObject = userProfileRepositroy.findByEmailId(username).get(0);
-		if (password.equals(userObject.getPassword())) {
-			return userObject;
-		} 
-		else
-			return null;
-	}
-	
+		
+		System.out.println("username : "+username);
+		System.out.println("password : "+password);
+		System.out.println("!!!!!!");
+//		System.out.println(enquiryDetailsRepository.findByEmailId(username).get(0));
+		System.out.println("!!!!!!");
 
+		if(enquiryDetailsRepository.findByEmailId(username).isEmpty()) {
+			
+			UserProfile userObject = userProfileRepositroy.findByEmailId(username).get(0);
+			System.out.println("password : "+password);
+			System.out.println("database password : "+userObject.getPassword());
+			if (password.equals(userObject.getPassword())) {
+				return userObject;
+			} 
+			else {
+				return null;
+			}
+		}
+		else {
+			System.out.println("entered");
+			EnquiryDetails enquiryDetails = enquiryDetailsRepository.findByEmailId(username).get(0);
+			System.out.println("password : "+password);
+			System.out.println("database password : "+enquiryDetails.getDefaultPassword());
+			if(password.equals(enquiryDetails.getDefaultPassword())) {
+				return enquiryDetails;
+			}
+			else {
+				return null;
+			}
+		}
+	}
 }

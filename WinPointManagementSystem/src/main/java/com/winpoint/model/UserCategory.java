@@ -33,5 +33,9 @@ public class UserCategory {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserCategory")
 	private Set<UserProfile> mappingUserProfile;
+	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserCategory")
+	private Set<EnquiryDetails> mappingEnquiryDetails;
 
 }

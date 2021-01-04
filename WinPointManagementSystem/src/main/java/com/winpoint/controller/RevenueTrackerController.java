@@ -24,13 +24,14 @@ import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SegmentType;
 import com.winpoint.model.Streams;
 import com.winpoint.model.TimeSlots;
-
+import com.winpoint.model.UserCategory;
 import com.winpoint.model.UserProfile;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.EnquiryDetailsRepository;
 import com.winpoint.repository.SegmentTypeRepository;
 import com.winpoint.repository.StreamsRepository;
 import com.winpoint.repository.TimeSlotsRepository;
+import com.winpoint.repository.UserCategoryRepository;
 
 @Controller
 public class RevenueTrackerController {
@@ -79,6 +80,9 @@ public class RevenueTrackerController {
 	@Autowired
 	EnquiryDetailsRepository enquiryDetailsRepository;
 
+	@Autowired
+	UserCategoryRepository userCategoryRepository;
+	
 	EnquiryDetails finalUser;
 
 //	@ModelAttribute("enquiryDetails")
@@ -108,7 +112,13 @@ public class RevenueTrackerController {
 		enquiryDetails.setStartDate(d2);
 		// System.out.println("USER: "+ user.getBirthDate());
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-//
+//		UserCategory userCategory = new UserCategory();
+//		userCategory.setUserCategoryId(1);
+		
+		
+		
+		enquiryDetails.setDefaultPassword(enquiryDetails.getFirstName()+"."+enquiryDetails.getLastName());
+		enquiryDetails.setMappingUserCategory(userCategoryRepository.findById(1).get());
 		enquiryDetailsRepository.save(enquiryDetails);
 		finalUser = enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());
@@ -116,8 +126,7 @@ public class RevenueTrackerController {
 			return "LoginForm";
 		else
 			return "redirect:/EnquiryDetails";
-		// return Location;
-
+		
 	}
 
 	@Autowired

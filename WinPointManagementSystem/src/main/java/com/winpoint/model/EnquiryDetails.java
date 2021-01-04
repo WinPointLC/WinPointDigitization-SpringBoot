@@ -17,10 +17,15 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Value;
 
 @Entity
 @Getter
@@ -62,7 +67,13 @@ public class EnquiryDetails implements Serializable{
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;
+	private String defaultPassword;
+//	private UserCategory userCategoryId;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userCategoryId", nullable = false)
+	private UserCategory mappingUserCategory;
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "segmentTypeId", nullable = false)
