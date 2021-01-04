@@ -196,8 +196,6 @@
 		function getStreamId(stream_id){
 			
 			streamId = stream_id;
-
-			
 			
 			streamElem = document.getElementById(streamId);
 			
@@ -215,6 +213,11 @@
 			var courseDropDown=document.getElementById('select-course-dropdown');
 			while (courseDropDown.hasChildNodes()) {  
 				courseDropDown.removeChild(courseDropDown.firstChild);
+			}
+
+			var batchDropDown=document.getElementById('select-batch-dropdown');
+			while (batchDropDown.hasChildNodes()) {  
+				batchDropDown.removeChild(batchDropDown.firstChild);
 			}
 
 			<c:forEach items="${streamList}" var="stream">
@@ -311,6 +314,11 @@
 					while (courseDropDown.hasChildNodes()) {  
 						courseDropDown.removeChild(courseDropDown.firstChild);
 					}
+
+					var batchDropDown=document.getElementById('select-batch-dropdown');
+					while (batchDropDown.hasChildNodes()) {  
+						batchDropDown.removeChild(batchDropDown.firstChild);
+					}
 					
 					//alert("coursesList.length = "+coursesList.length);
 					for (var i = 0; i < coursesList.length; i++) {
@@ -370,7 +378,7 @@
 						var anchor4 = document.createElement('a');
 						anchor4.className="dropdown-item";
 						anchor4.setAttribute('href', "#");
-						anchor4.id = batchesList[i].batchId + 'C';
+						anchor4.id = batchesList[i].batchId + 'B';
 						anchor4.textContent = batchesList[i].batchName.toUpperCase().replace("_"," ");
 						anchor4.setAttribute('onclick', "getBatchId(this.id)");
 						document.getElementById('select-batch-dropdown').appendChild(anchor4);
@@ -393,6 +401,8 @@
 			batchId = batch_id.substring(0, batch_id.length - 1);
 			
 			batchElem = document.getElementById(batch_id);
+
+			//alert(batchElem.textContent);
 			
 			document.getElementById('dropdownMenuButtonBatch').textContent = batchElem.textContent;
 
@@ -465,7 +475,7 @@
 						//var username = userList[i].firstName + " " + userList[i].lastName;
 						var user_id = userList[i].userId;
 						var td2 = document.createElement('td');
-						td2.textContent = userList[i].email;
+						td2.textContent = userList[i].emailId;
 						var td3 = document.createElement('td');
 						td3.textContent = userList[i].college;
 						var td4 = document.createElement('td');

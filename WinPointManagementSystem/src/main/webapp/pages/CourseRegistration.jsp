@@ -356,7 +356,7 @@
         	elem.parentNode.removeChild(elem);
         }        
         
-        var myData = {
+       /*  var myData = {
         	streamId: streamId	
         };
         $.ajax({
@@ -415,7 +415,7 @@
             }
 
 
-          });
+          }); */
         
       }
 

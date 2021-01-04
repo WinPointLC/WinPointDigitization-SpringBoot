@@ -36,44 +36,44 @@
 				</div>
 				<div class="sidebar-wrapper">
 					<ul class="nav">
-						<li class="nav-item active  ">
+						<li class="nav-item active" id="Employee-item">
 						  <a class="nav-link" id="Employee-link">
 							<i class="material-icons">dashboard</i>
 							<p> Employee Dashboard</p>
 						  </a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item" id="add-new-user-item">
 						  <a class="nav-link" id="add-new-user-link">
 							<i class="material-icons">person</i>
 							<p>Add new User</p>
 						  </a>
 						</li>
 
-						<li class="nav-item">
+						<li class="nav-item" id="all-user-item">
 						  <a class="nav-link" id="all-user-link">
 							<i class="material-icons">group</i>
 							<p>All User's</p>
 						  </a>
 						</li>
-						<li>
+						<li class="nav-item" id="add-new-question-item">
 						  <a class="nav-link" id="add-new-question-link">
 							<i class="material-icons">computer</i>
 							<p>Add Questions</p>
 						  </a>
 						</li>
-						<li>
+						<li class="nav-item" id="fee-register-item">
 						  <a class="nav-link" id="fee-register-link">
 							<i class="material-icons">attach_money</i>
 							<p>Fee Registeration Page</p>
 						  </a>
 						</li>
-						<li>
+						<li class="nav-item" id="entities-item">
 						  <a class="nav-link" href="#" id="entities-link">
 							<i class="material-icons">table_chart</i>
 							<p>Add Entity</p>
 						  </a>
 						</li>
-						<li>
+						<li class="nav-item" id="revenue-tracker-item" >
 						  <a class="nav-link" href="#" id="revenue-tracker-link">
 							<i class="material-icons">local_atm</i>
 							<p>Revenue Tracker</p>
@@ -306,6 +306,15 @@
 			} 
 		   
 			document.getElementById('Employee-link').onclick=function () {
+
+				document.getElementById('Employee-item').className="nav-item active";
+				document.getElementById('all-user-item').className="nav-item";
+				document.getElementById('add-new-user-item').className="nav-item";
+				document.getElementById('add-new-question-item').className="nav-item";
+				document.getElementById('fee-register-item').className="nav-item"; 
+				document.getElementById('entities-item').className="nav-item";
+				document.getElementById('revenue-tracker-item').className="nav-item "; 
+				
 				document.getElementById('main-content').style.display = "block";
 				document.getElementById('AddNewQuestion-jsp').style.display = "none";
 				document.getElementById('AddNewUser-jsp').style.display = "none";
@@ -322,6 +331,14 @@
 			};
 			
 			document.getElementById('all-user-link').onclick=function() {
+				document.getElementById('Employee-item').className="nav-item";
+				document.getElementById('all-user-item').className="nav-item active";
+				document.getElementById('add-new-user-item').className="nav-item";
+				document.getElementById('add-new-question-item').className="nav-item";
+				document.getElementById('fee-register-item').className="nav-item"; 
+				document.getElementById('entities-item').className="nav-item";
+				document.getElementById('revenue-tracker-item').className="nav-item "; 
+				
 				document.getElementById('AllUser-jsp').style.display = "block";
 				document.getElementById('main-content').style.display = "none";
 				document.getElementById('AddNewQuestion-jsp').style.display="none";
@@ -337,6 +354,14 @@
 			};
 
 			document.getElementById('add-new-user-link').onclick=function() {
+				document.getElementById('Employee-item').className="nav-item";
+				document.getElementById('all-user-item').className="nav-item";
+				document.getElementById('add-new-user-item').className="nav-item active";
+				document.getElementById('add-new-question-item').className="nav-item";
+				document.getElementById('fee-register-item').className="nav-item"; 
+				document.getElementById('entities-item').className="nav-item";
+				document.getElementById('revenue-tracker-item').className="nav-item "; 
+				
 				document.getElementById('AddNewUser-jsp').style.display = "block";
 				document.getElementById('AllUser-jsp').style.display = "none";
 				document.getElementById('main-content').style.display = "none";
@@ -352,6 +377,14 @@
 			};
 
 			document.getElementById('add-new-question-link').onclick=function() {
+				document.getElementById('Employee-item').className="nav-item";
+				document.getElementById('all-user-item').className="nav-item";
+				document.getElementById('add-new-user-item').className="nav-item";
+				document.getElementById('add-new-question-item').className="nav-item active";
+				document.getElementById('fee-register-item').className="nav-item"; 
+				document.getElementById('entities-item').className="nav-item";
+				document.getElementById('revenue-tracker-item').className="nav-item "; 
+				
 				document.getElementById('AddNewQuestion-jsp').style.display="block";
 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('AddNewUser-jsp').style.display = "none";
@@ -368,6 +401,7 @@
 			};
 
 			document.getElementById('user-link').onclick=function() {
+				
 				document.getElementById('AddNewQuestion-jsp').style.display="none";
 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('AddNewUser-jsp').style.display = "none";
@@ -390,6 +424,13 @@
 			};
 
 			document.getElementById('fee-register-link').onclick=function() {
+				document.getElementById('Employee-item').className="nav-item";
+				document.getElementById('all-user-item').className="nav-item";
+				document.getElementById('add-new-user-item').className="nav-item";
+				document.getElementById('add-new-question-item').className="nav-item";
+				document.getElementById('fee-register-item').className="nav-item active"; 
+				document.getElementById('entities-item').className="nav-item";
+				document.getElementById('revenue-tracker-item').className="nav-item "; 
 		 
 				document.getElementById('Fee-jsp').style.display = "block";
 				document.getElementById('AddNewUser-jsp').style.display = "none";
@@ -408,10 +449,17 @@
 			};
 			
 			document.getElementById('entities-link').onclick=function() {
-		 
+
+			    document.getElementById('Employee-item').className="nav-item";
+				document.getElementById('all-user-item').className="nav-item";
+				document.getElementById('add-new-user-item').className="nav-item";
+				document.getElementById('add-new-question-item').className="nav-item";
+				document.getElementById('fee-register-item').className="nav-item"; 
+				document.getElementById('entities-item').className="nav-item active";
+				document.getElementById('revenue-tracker-item').className="nav-item"; 
 				
 				document.getElementById('Entities-jsp').style.display="block";
-				document.getElementById('Fee-jsp').style.display = "none";
+ 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('AddNewUser-jsp').style.display = "none";
 				document.getElementById('AllUser-jsp').style.display = "none";
 				document.getElementById('main-content').style.display = "none";
@@ -428,6 +476,14 @@
 
 			document.getElementById('revenue-tracker-link').onclick=function() {
 
+				document.getElementById('Employee-item').className="nav-item";
+				document.getElementById('all-user-item').className="nav-item";
+				document.getElementById('add-new-user-item').className="nav-item";
+				document.getElementById('add-new-question-item').className="nav-item";
+				document.getElementById('fee-register-item').className="nav-item"; 
+				document.getElementById('entities-item').className="nav-item";
+				document.getElementById('revenue-tracker-item').className="nav-item  active"; 
+				
 				document.getElementById('RevenueTracker-jsp').style.display="block";
 				document.getElementById('Fee-jsp').style.display = "none";
 				document.getElementById('AddNewUser-jsp').style.display = "none";
