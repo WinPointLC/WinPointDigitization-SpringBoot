@@ -28,6 +28,7 @@ public class TestFeedback {
 	private Integer userTestId;
 	private String response;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

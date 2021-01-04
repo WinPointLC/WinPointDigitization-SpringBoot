@@ -3,7 +3,6 @@ package com.winpoint.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,6 +28,7 @@ public class SecurityQuestions {
 	private Integer securityQuestionId;
 	private String securityQuestion;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@JsonIgnore

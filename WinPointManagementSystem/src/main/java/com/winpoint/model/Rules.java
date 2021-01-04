@@ -21,6 +21,7 @@ public class Rules {
 	private Integer rulesId;
 	private String rulesDescription;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 }

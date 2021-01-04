@@ -27,6 +27,7 @@ public class ToolTips {
 	private Integer toolTipId;
 	private String toolTipDescription;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	
 	

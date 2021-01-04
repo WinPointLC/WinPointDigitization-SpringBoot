@@ -25,6 +25,7 @@ public class ClientCategory {
 	private Integer clientCategoryId;
 	private String clientCategory;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingClientCategory")

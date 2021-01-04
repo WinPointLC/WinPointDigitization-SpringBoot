@@ -28,6 +28,7 @@ public class TestDetails {
 	private String testFees;
 	private String negativeMarking;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

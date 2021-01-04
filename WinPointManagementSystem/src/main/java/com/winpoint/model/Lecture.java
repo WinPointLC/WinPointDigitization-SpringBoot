@@ -29,8 +29,10 @@ public class Lecture {
 	private Integer lectureId;
 	private Integer lectureNumber;
 	private Integer lectureDuration;
+	@Column(columnDefinition = "datetime")
 	private Date startTime;
 	private String lectureCoverage;
+	@Column(columnDefinition = "datetime")
 	private Date lectureDate;
 	private String comments;
 	private String absentees;

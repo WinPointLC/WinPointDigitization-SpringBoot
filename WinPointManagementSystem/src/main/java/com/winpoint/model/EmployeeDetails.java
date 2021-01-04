@@ -27,6 +27,7 @@ public class EmployeeDetails {
 	private Double employeeSalary;
 	private String dateOfJoining;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

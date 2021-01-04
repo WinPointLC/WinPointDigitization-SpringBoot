@@ -31,6 +31,7 @@ public class Topics {
 	private String topicName;
 	private Integer minimumNoOfQuestionsForTest;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	private Integer topicDuration;
 

@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +26,7 @@ public class CourseFeedback {
 	private String response;
 	private String markedForReview;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

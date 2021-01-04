@@ -32,6 +32,7 @@ public class TestDifficulty {
 	private Integer testDetailId;
 	private Integer numberOfQuestions;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	
 	@JsonIgnore

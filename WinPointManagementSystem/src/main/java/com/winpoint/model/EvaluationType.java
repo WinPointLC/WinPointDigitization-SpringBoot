@@ -29,6 +29,7 @@ public class EvaluationType {
 	private String evaluationTypeName;
 	private String offlineCheck;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	

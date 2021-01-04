@@ -26,6 +26,7 @@ public class StudentTestResultOperatingSystem_CRT {
 	private Character studentResponse;
 	private String isCorrect;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

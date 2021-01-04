@@ -35,6 +35,7 @@ public class CourseType {
 	private Integer courseTypeId;
 	private String courseTypeName;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@JsonIgnore

@@ -31,6 +31,7 @@ public class StudentCourseDetails {
 	private Integer courseAggr;
 	private String feeStatus;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	private String coursewareIssued;
 	private String assignmentsIssued;

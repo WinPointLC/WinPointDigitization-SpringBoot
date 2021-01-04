@@ -25,6 +25,7 @@ public class UserStudent {
 	private String parentName;
 	private String parentMobileNumber;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

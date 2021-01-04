@@ -25,6 +25,7 @@ public class ExpenseDetails {
 	@Column(name = "expenseDetailsId", updatable = false)
 	private Integer expenseDetailsId;
 	private Integer expenseTypeId;
+	@Column(columnDefinition = "datetime")
 	private Date expenseDate;
 	private Integer expenseAmount;
 	private String expenseDescription;;

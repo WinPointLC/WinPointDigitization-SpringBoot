@@ -30,6 +30,7 @@ public class Streams {
 	private Integer streamId;
 	private String streamName;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@JsonIgnore

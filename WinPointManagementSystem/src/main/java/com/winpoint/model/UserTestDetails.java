@@ -32,6 +32,7 @@ public class UserTestDetails {
 	private Integer numberOfRegistration;
 	private String feeStatus;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	private Integer attempted;
 	private String evaluationDone;

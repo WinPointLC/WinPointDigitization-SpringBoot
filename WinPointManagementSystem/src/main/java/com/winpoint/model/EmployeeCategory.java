@@ -27,6 +27,7 @@ public class EmployeeCategory {
 	private Integer employeeCategoryId;
 	private String employeeCategoryName;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingEmployeeCategory")

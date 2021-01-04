@@ -27,6 +27,7 @@ public class FacultySkills {
 	private Integer facultySkillsId;
 	private String skillSetId;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	private String segmentTypeId;
 	private String timeSlotsId;

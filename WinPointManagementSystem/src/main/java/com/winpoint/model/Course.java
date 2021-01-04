@@ -37,6 +37,7 @@ public class Course {
 	private String coursewareExist;
 	private Integer totalTests;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	private Integer logoLocation;
 

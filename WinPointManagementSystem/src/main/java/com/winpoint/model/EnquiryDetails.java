@@ -37,6 +37,7 @@ public class EnquiryDetails implements Serializable{
 	private String emailId;
 	private String mobileNo;
 	private String address;
+	@Column(columnDefinition = "datetime")
 	private Date birthDate;
 	private String college;
 	private String degree;
@@ -47,12 +48,14 @@ public class EnquiryDetails implements Serializable{
 	private String role;
 	private Integer experience;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date dateOfEnquiry;
 	private String gender;
 	private Integer yearOfGraduation;
 	private String recommendation;
 	private String eligibility;
 	private String reference;
+	@Column(columnDefinition = "datetime")
 	private Date startDate;
 	private String suggestion;
 	private Integer activeStatus;

@@ -28,6 +28,7 @@ public class DifficultyLevel {
 	private Integer difficultyLevelId;
 	private String difficultyLevelName;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	

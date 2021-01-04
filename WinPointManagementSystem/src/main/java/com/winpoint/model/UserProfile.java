@@ -37,6 +37,7 @@ public class UserProfile implements Serializable{
 	private String emailId;
 	private String mobileNumber;
 	private String address;
+	@Column(columnDefinition = "datetime")
 	private Date birthDate;
 	private String college;
 	private String degree;
@@ -53,6 +54,7 @@ public class UserProfile implements Serializable{
 	private String role;
 	private Integer experience;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createDate;
 	private Boolean activeStatus;
 

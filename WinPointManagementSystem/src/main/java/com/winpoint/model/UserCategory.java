@@ -27,6 +27,7 @@ public class UserCategory {
 	private Integer userCategoryId;
 	private String userCategoryName;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@JsonIgnore

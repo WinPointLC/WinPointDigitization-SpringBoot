@@ -27,6 +27,7 @@ public class StudentTestResultJava_TBC {
 	private Character studentResponse;
 	private String isCorrect;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -32,6 +32,7 @@ public class SoftSkillsQuestionBank {
 	private String explanation;
 	private String inCrt;
 	private String createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)

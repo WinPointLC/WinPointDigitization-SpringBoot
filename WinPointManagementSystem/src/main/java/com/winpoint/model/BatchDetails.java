@@ -29,9 +29,12 @@ public class BatchDetails implements Serializable{
 	@Column(name = "batchId", updatable = false)
 	private Integer batchId;
 	private Integer facultyUserId;
+	@Column(columnDefinition = "datetime")
 	private Date beginDate;
+	@Column(columnDefinition = "datetime")
 	private Date endDate;
 	private Integer createdBy;
+	@Column(columnDefinition = "datetime")
 	private Date createdDate;
 	private String batchName;
 	private Integer batchTime;
