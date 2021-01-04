@@ -31,7 +31,7 @@ public class CoursePlans implements Serializable{
 	@Column(name = "coursePlansId", updatable = false)
 	private Integer coursePlansId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 	
