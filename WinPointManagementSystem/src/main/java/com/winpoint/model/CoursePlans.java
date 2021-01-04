@@ -38,7 +38,7 @@ public class CoursePlans {
 	private List<Lecture> mappingLectures = new ArrayList<Lecture>();
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "coursePlanLectureTable", joinColumns = @JoinColumn(name = "coursePlansId"), inverseJoinColumns = @JoinColumn(name = "TopicId"))
+	@JoinTable(name = "coursePlanTopicTable", joinColumns = @JoinColumn(name = "coursePlansId"), inverseJoinColumns = @JoinColumn(name = "TopicId"))
 	private List<Topics> mappingLecutrePlan = new ArrayList<Topics>();
 
 }
