@@ -1,6 +1,5 @@
 package com.winpoint.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,6 +28,7 @@ public class CoursePlans{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "coursePlansId", updatable = false)
 	private Integer coursePlansId;
+	private Integer lectureNumber;
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -37,9 +36,7 @@ public class CoursePlans{
 	private Course mappingCourse;
 	
 	
-	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "coursePlanTopicTable", joinColumns = @JoinColumn(name = "coursePlansId"), inverseJoinColumns = @JoinColumn(name = "TopicId"))
-	private List<Topics> mappingLecutrePlan = new ArrayList<Topics>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCoursePlans")
+	List<Topics> mappingLecutrePlan = new ArrayList<>();
 
 }

@@ -3,6 +3,7 @@ package com.winpoint.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -44,11 +46,15 @@ public class Lecture {
 	private BatchDetails mappingBatchDetails;
 	
 	
-	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "absenteesTable", joinColumns = @JoinColumn(name = "lectureId"), inverseJoinColumns = @JoinColumn(name = "userId"))
-	private List<UserProfile> mappingAbsentUsersList = new ArrayList<UserProfile>();
+	private List<UserProfile> mappingAbsentUsersList = new ArrayList<>();
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "topicsCoveredLecture", joinColumns = @JoinColumn(name = "lectureId"), inverseJoinColumns = @JoinColumn(name = "topicId"))
+	private List<Topics> mappingTopicsCovered = new ArrayList<>();
+	
 	
 	
 }

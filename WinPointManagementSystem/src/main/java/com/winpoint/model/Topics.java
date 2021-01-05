@@ -39,6 +39,10 @@ public class Topics implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "coursePlansId", nullable = false)
+	private CoursePlans mappingCoursePlans;
 
 	
 	@JsonIgnore
@@ -59,8 +63,11 @@ public class Topics implements Serializable {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
 	private Set<TestDifficulty> mappingTestDifficulty;
+	
+	
 
 	@JsonIgnore
-	@ManyToMany(mappedBy = "mappingLecutrePlan")
-	private List<CoursePlans> mappingCoursePlans = new ArrayList<CoursePlans>();
+	@ManyToMany(mappedBy = "mappingTopicsCovered")
+	private List<Lecture> mappingLectureCoveredIn = new ArrayList<>();
+
 }
