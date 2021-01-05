@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 
@@ -143,7 +144,21 @@
 	</div>
 	</div>
 	<script>
+
+		//alert('${batchObject.mappingCourse.courseDuration}');
+		
+
+		<c:forEach items="${batchObject.mappingCourse.mappingCoursePlans}" var="det">
 			
+			alert('${det.mappingLecutrePlan}');
+			
+			
+		</c:forEach>     
+		
+		
+		
+		
+		    
 			var addStudentList=[
 			{
 				topicname:"c++",

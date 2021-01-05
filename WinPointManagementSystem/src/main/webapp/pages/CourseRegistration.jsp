@@ -187,7 +187,7 @@
             var streamElem = document.getElementById('${firstStreamId}' + 'a');
             streamElem.className='nav-link active';
 
-	  		getstream('${firstStreamId}');
+            getStreamId('${firstStreamId}');
 				displayStreamCourses(courseTypeId, courseTypeName);
 
            /*  var studentCoursesCourseIdList = [];
