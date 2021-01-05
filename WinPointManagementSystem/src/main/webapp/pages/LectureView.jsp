@@ -576,9 +576,11 @@
 							var startdateBtn=document.createElement('btn');
 							startdateBtn.className="btn btn-secondary";
 							startdateBtn.textContent="Start Date : 2nd Oct2019";
-							startdateBtn.textContent="Start Date : "+ lectureDetails.beginDate.slice(0,-19) ;
+							//startdateBtn.textContent="Start Date : "+ lectureDetails.beginDate.slice(0,-19) ;
 							var startdate = lectureDetails.beginDate.slice(0,-19) ;
 							//alert(format(startdate))
+							startdateBtn.textContent="Start Date : "+ format(startdate) ;
+							//alert(format('2020-12-30'));
 							
 							//startdateBtn.style.width="50";
 							startdateBtn.style.height="60px";
@@ -592,7 +594,9 @@
 							var enddateBtn=document.createElement('btn');
 							enddateBtn.className="btn btn-secondary";
 							//enddateBtn.textContent="End Date : 2nd Jan 2020";
-							enddateBtn.textContent="End Date : "+lectureDetails.endDate ;
+							//enddateBtn.textContent="End Date : "+lectureDetails.endDate ;
+							var enddate = lectureDetails.endDate.slice(0,-19) ;
+							enddateBtn.textContent="End Date : "+ format(enddate) ;
 							enddateBtn.style.height="60px";
 							enddateBtn.style.marginLeft="740px";
 							enddateBtn.style.backgroundColor="gray";
@@ -660,7 +664,7 @@
 			    var date = new Date(inputDate);
 			    if (!isNaN(date.getTime())) {
 			        // Months use 0 index.
-			        return date.getDate()  + '-' + date.getMonth()+1 + '-' + date.getFullYear();
+			        return date.getDate()  + '-' + (parseInt(date.getMonth())+1 )+ '-' + date.getFullYear();
 			    }
 			}
 		</script>
