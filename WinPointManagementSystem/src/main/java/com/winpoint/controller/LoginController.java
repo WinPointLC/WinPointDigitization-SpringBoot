@@ -43,7 +43,6 @@ public class LoginController {
 		System.out.println("!!!!!!");
 
 		if(enquiryDetailsRepository.findByEmailId(username).isEmpty()) {
-			
 			UserProfile userObject = userProfileRepositroy.findByEmailId(username).get(0);
 			System.out.println("password : "+password);
 			System.out.println("database password : "+userObject.getPassword());

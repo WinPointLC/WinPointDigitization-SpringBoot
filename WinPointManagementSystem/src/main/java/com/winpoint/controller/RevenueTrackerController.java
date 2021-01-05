@@ -43,8 +43,6 @@ public class RevenueTrackerController {
 		return mv;
 	}
 
-	
-
 	@Autowired
 	StreamsRepository stream;
 
@@ -57,21 +55,11 @@ public class RevenueTrackerController {
 		return mv;
 	}
 
-	// Integer timeSlotsId;
-	// Integer segmentTypeId;
-	// String password;
 	String Location;
 
 	@RequestMapping(value = "/LocationNext", method = RequestMethod.POST)
 	public @ResponseBody void getTimeAndSegment(@RequestParam("location") String location) {
-		/*
-		 * System.out.println("timeSlotsId  " + timeSlotsid);
-		 * timeSlotsId=Integer.parseInt(timeSlotsid);
-		 * System.out.println("segmentTypeId  " + segmentTypeid);
-		 * segmentTypeId=Integer.parseInt(segmentTypeid);
-		 */
-		// System.out.println("password " + Password);
-		// password=Password;
+		
 		System.out.println("location  " + location);
 		Location = location;
 
@@ -96,7 +84,6 @@ public class RevenueTrackerController {
 		System.out.println("USER:  " + enquiryDetails.getMappingTimeSlots());
 		System.out.println("USER:  " + enquiryDetails.getMappingSegmentType());
 
-		// System.out.println("timeSlots: " + timeSlots.getTimeSlotsId());
 
 		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 		String t = enquiryDetails.getBirthDateString().toString();
@@ -109,13 +96,7 @@ public class RevenueTrackerController {
 
 		String t2 = enquiryDetails.getStartDateString().toString();
 		Date d2 = df.parse(t2);
-		enquiryDetails.setStartDate(d2);
-		// System.out.println("USER: "+ user.getBirthDate());
-//		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-//		UserCategory userCategory = new UserCategory();
-//		userCategory.setUserCategoryId(1);
-		
-		
+		enquiryDetails.setStartDate(d2);		
 		
 		enquiryDetails.setDefaultPassword(enquiryDetails.getFirstName()+"."+enquiryDetails.getLastName());
 		enquiryDetails.setMappingUserCategory(userCategoryRepository.findById(1).get());
@@ -153,7 +134,6 @@ public class RevenueTrackerController {
 		for (SegmentType s : segmentTypeList) {
 			System.out.println("DATA segemnt type - " + s.getSegmentTypeName());
 			segmentlist.add(s.getSegmentTypeName());
-
 		}
 		mv.addObject("segmentTypeList", segmentTypeList);
 
@@ -175,49 +155,16 @@ public class RevenueTrackerController {
 		mv.addObject("courseInterestedInList", courseInterestedInList);
 		// Available time
 		List<TimeSlots> availableTimeList = timeSlotsRepository.findAll();
-//		List<String> availableTimelist = new ArrayList<String>();
-//		for (TimeSlots s : availableTimeList) {
-//			System.out.println("DATA segement type - " + s.getTimeSlotsDescription());
-//			availableTimelist.add(s.getTimeSlotsDescription());
-//		}
 		mv.addObject("availableTimeList", availableTimeList);
 		mv.addObject("location", "EnquiryDetails");
-
 		mv.addObject("degreeList", list);
 		return mv;
 	}
-
-	// Update form
-	/*
-	 * @RequestMapping(value = "UpdateForm", method = RequestMethod.GET) public
-	 * String showUpdateForm() {
-	 * 
-	 * return "UpdateForm"; }
-	 */
-
-//	@RequestMapping(value = "/getUpdateFormList", method = RequestMethod.POST)
-//	public @ResponseBody Optional<EnquiryDetails> showEnquiry(@RequestParam("enquiryId") String enquiryId) {
-//		System.out.println(enquiryId);
-//		
-//		System.out.println();
-//		EnquiryDetails enquiryDetails = new EnquiryDetails();
-//		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getMobileNo());
-//		System.out.println(enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)).get().getFirstName());
-//
-//		//List<EnquiryDetails> enquiryDetailsList = (List<EnquiryDetails>) (enquiryDetailsRepository.findById(Integer.parseInt(enquiryId)));
-//		Optional<EnquiryDetails> enquiryDetailsList = enquiryDetailsRepository.findById(Integer.parseInt(enquiryId));	
-//		
-//		
-//		return enquiryDetailsList;
-//	}
 
 	@RequestMapping(value = "/SaveUpdateData", method = RequestMethod.POST)
 	public void updateEnquiry(@RequestBody EnquiryDetails enquiry) {
 		System.out.println("*************");
 		System.out.println(enquiry.getFirstName());
-//		System.out.println(enquiry.getTimeSlotsId());
-//		System.out.println(enquiry.getSegmentTypeId());
 		System.out.println(enquiry.getMappingTimeSlots());
 		System.out.println(enquiry.getMappingSegmentType());
 		System.out.println(enquiry.getMappingCoursesAlreadyDone());
