@@ -1,5 +1,6 @@
 package com.winpoint.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Topics {
+public class Topics implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "topicId", updatable = false)

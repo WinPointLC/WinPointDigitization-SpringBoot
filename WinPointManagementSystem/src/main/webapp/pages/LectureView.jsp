@@ -533,7 +533,9 @@
 					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
-							alert(jsonObj);
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingCourse);
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].coursePlansId);
+							
 							lectureDetails=jsonObj;
 							document.getElementById('lec_view_card').style.display = "block";
 
@@ -553,7 +555,8 @@
 							var h4=document.createElement('h4');
 							td.appendChild(h4);
 							var currentlec=document.createElement('h4');
-							currentlec.textContent="Current Lecture: 10";
+							//currentlec.textContent="Current Lecture: 10";
+							currentlec.textContent="Current Lecture: " + lectureDetails.currentLectureNumber;
 							h4.appendChild(currentlec);
 								
 							document.getElementById('currentlec-label').appendChild(td);
@@ -572,6 +575,10 @@
 							var startdateBtn=document.createElement('btn');
 							startdateBtn.className="btn btn-secondary";
 							startdateBtn.textContent="Start Date : 2nd Oct2019";
+							startdateBtn.textContent="Start Date : "+ lectureDetails.beginDate.slice(0,-19) ;
+							var startdate = lectureDetails.beginDate.slice(0,-19) ;
+							alert(format(startdate))
+							
 							//startdateBtn.style.width="50";
 							startdateBtn.style.height="60px";
 							startdateBtn.style.backgroundColor="gray";
@@ -583,7 +590,8 @@
 							var td3=document.createElement('td');
 							var enddateBtn=document.createElement('btn');
 							enddateBtn.className="btn btn-secondary";
-							enddateBtn.textContent="End Date : 2nd Jan 2020";
+							//enddateBtn.textContent="End Date : 2nd Jan 2020";
+							enddateBtn.textContent="End Date : "+lectureDetails.endDate ;
 							enddateBtn.style.height="60px";
 							enddateBtn.style.marginLeft="740px";
 							enddateBtn.style.backgroundColor="gray";
@@ -642,6 +650,13 @@
 				}); 
 			}
 
+			function format(inputDate) {
+			    var date = new Date(inputDate);
+			    if (!isNaN(date.getTime())) {
+			        // Months use 0 index.
+			        return date.getDate()  + '-' + date.getMonth()+1 + '-' + date.getFullYear();
+			    }
+			}
 		</script>
 	
 		

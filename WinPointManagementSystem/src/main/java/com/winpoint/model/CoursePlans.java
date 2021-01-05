@@ -24,13 +24,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class CoursePlans implements Serializable{
+public class CoursePlans{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "coursePlansId", updatable = false)
 	private Integer coursePlansId;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
