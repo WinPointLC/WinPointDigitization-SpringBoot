@@ -533,8 +533,8 @@
 					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
-							alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingCourse);
-							alert(jsonObj.mappingCourse.mappingCoursePlans[0].coursePlansId);
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingCourse);
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].coursePlansId);
 							
 							lectureDetails=jsonObj;
 							document.getElementById('lec_view_card').style.display = "block";
@@ -575,7 +575,10 @@
 							var startdateBtn=document.createElement('btn');
 							startdateBtn.className="btn btn-secondary";
 							startdateBtn.textContent="Start Date : 2nd Oct2019";
-							startdateBtn.textContent="Start Date : "+ lectureDetails.beginDate ;
+							startdateBtn.textContent="Start Date : "+ lectureDetails.beginDate.slice(0,-19) ;
+							var startdate = lectureDetails.beginDate.slice(0,-19) ;
+							alert(format(startdate))
+							
 							//startdateBtn.style.width="50";
 							startdateBtn.style.height="60px";
 							startdateBtn.style.backgroundColor="gray";
@@ -647,6 +650,13 @@
 				}); 
 			}
 
+			function format(inputDate) {
+			    var date = new Date(inputDate);
+			    if (!isNaN(date.getTime())) {
+			        // Months use 0 index.
+			        return date.getDate()  + '-' + date.getMonth()+1 + '-' + date.getFullYear();
+			    }
+			}
 		</script>
 	
 		
