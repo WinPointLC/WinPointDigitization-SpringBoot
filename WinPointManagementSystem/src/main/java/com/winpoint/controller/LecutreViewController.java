@@ -19,10 +19,10 @@ import com.winpoint.repository.StreamsRepository;
 public class LecutreViewController {
 	@Autowired
 	StreamsRepository stream;
-	
+
 	@Autowired
 	BatchDetailsRepository batchDetailsRepository;
-	
+
 	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
 	public ModelAndView showLectureViewPage() {
 		ModelAndView mv = new ModelAndView();
@@ -31,28 +31,24 @@ public class LecutreViewController {
 		mv.setViewName("LectureView");
 		return mv;
 	}
-	
-	
-	  @RequestMapping(value = "/ProgressTracker", method = RequestMethod.GET)
-	  public ModelAndView showProgressTrackerPage(@RequestParam String batchId) 
-	  { 
-	      ModelAndView mv = new
-		  ModelAndView();
-	      BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
-		  mv.addObject("batchObject", batch);
-		  mv.setViewName("ProgressTrack"); 
-		  return mv; 
-	  }
-	 
-	
-	
+
+	@RequestMapping(value = "/ProgressTracker", method = RequestMethod.GET)
+	public ModelAndView showProgressTrackerPage(@RequestParam String batchId) {
+		ModelAndView mv = new ModelAndView();
+		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();		
+		mv.addObject("batchObject", batch);
+		mv.setViewName("ProgressTrack");
+		return mv;
+	}
+
 	@RequestMapping(value = "/LectureViewDetails", method = RequestMethod.POST)
 	public @ResponseBody BatchDetails getTimeAndSegment(@RequestParam String batchId) {
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
-		System.out.println("\n\n\n\n\n"+batch.getMappingCourse().getCourseName()+"\n\n\n\n\n");
-		System.out.println("\n\n\n\n\n"+batch.getMappingCourse().getMappingCoursePlans().get(0).getCoursePlansId()+"\n\n\n\n\n");
-		
+		System.out.println("\n\n\n\n\n" + batch.getMappingCourse().getCourseName() + "\n\n\n\n\n");
+		System.out.println("\n\n\n\n\n" + batch.getMappingCourse().getMappingCoursePlans().get(0).getCoursePlansId()
+				+ "\n\n\n\n\n");
+
 		return batch;
-		
+
 	}
 }

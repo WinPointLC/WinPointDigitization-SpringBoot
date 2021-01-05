@@ -36,10 +36,6 @@ public class CoursePlans{
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 	
-	@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "coursePlanLectureTable", joinColumns = @JoinColumn(name = "coursePlansId"), inverseJoinColumns = @JoinColumn(name = "LecutreId"))
-	private List<Lecture> mappingLectures = new ArrayList<Lecture>();
 	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

@@ -43,10 +43,7 @@ public class Lecture {
 	@JoinColumn(name = "batchId", nullable = false)
 	private BatchDetails mappingBatchDetails;
 	
-	@JsonIgnore
-	@ManyToMany(mappedBy = "mappingLectures")
-	private List<CoursePlans> mappingCoursePlans = new ArrayList<CoursePlans>();
-
+	
 	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
