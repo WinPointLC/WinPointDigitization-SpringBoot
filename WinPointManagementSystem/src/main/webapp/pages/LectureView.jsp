@@ -139,7 +139,7 @@
 						
 						<tr>
 							
-							<td><button type="button" class="btn btn-secondary"  style="width:60%;margin-left:10%;">
+							<td><button type="button" class="btn btn-secondary"  style="width:60%;margin-left:10%;" onclick="progressTracker()">
 							Progress<br> Tracker</button>
 							</td>
 							
@@ -412,6 +412,7 @@
 			}
 
 			var lectureDetails;
+			var batchId;
 			function getBatchId(batch_id){
 				
 				batchId = batch_id.substring(0, batch_id.length - 1);
@@ -577,7 +578,7 @@
 							startdateBtn.textContent="Start Date : 2nd Oct2019";
 							startdateBtn.textContent="Start Date : "+ lectureDetails.beginDate.slice(0,-19) ;
 							var startdate = lectureDetails.beginDate.slice(0,-19) ;
-							alert(format(startdate))
+							//alert(format(startdate))
 							
 							//startdateBtn.style.width="50";
 							startdateBtn.style.height="60px";
@@ -648,6 +649,11 @@
 					}
 
 				}); 
+			}
+
+			function progressTracker() {
+				//alert(batchId);
+			   window.location.href="ProgressTracker?batchId="+batchId;
 			}
 
 			function format(inputDate) {

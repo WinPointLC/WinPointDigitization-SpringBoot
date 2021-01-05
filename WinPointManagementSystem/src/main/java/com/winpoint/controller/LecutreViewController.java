@@ -33,6 +33,18 @@ public class LecutreViewController {
 	}
 	
 	
+	  @RequestMapping(value = "/ProgressTracker", method = RequestMethod.GET)
+	  public ModelAndView showProgressTrackerPage(@RequestParam String batchId) 
+	  { 
+	      ModelAndView mv = new
+		  ModelAndView();
+		  
+		  mv.setViewName("ProgressTrack"); 
+		  return mv; 
+	  }
+	 
+	
+	
 	@RequestMapping(value = "/LectureViewDetails", method = RequestMethod.POST)
 	public @ResponseBody BatchDetails getTimeAndSegment(@RequestParam String batchId) {
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
