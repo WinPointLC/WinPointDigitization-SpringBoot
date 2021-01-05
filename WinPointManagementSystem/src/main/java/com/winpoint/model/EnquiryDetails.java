@@ -64,7 +64,9 @@ public class EnquiryDetails implements Serializable{
 	private Date startDate;
 	private String suggestion;
 	private Integer activeStatus;
-
+	private String birthDateString;
+	private String dateOfEnquiryString;
+	private String startDateString;
 	private String defaultPassword;
 
 	@ManyToOne(fetch = FetchType.LAZY)
