@@ -38,7 +38,8 @@ public class LecutreViewController {
 	  { 
 	      ModelAndView mv = new
 		  ModelAndView();
-		  
+	      BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		  mv.addObject("batchObject", batch);
 		  mv.setViewName("ProgressTrack"); 
 		  return mv; 
 	  }
