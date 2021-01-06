@@ -50,10 +50,7 @@ public class ClientDashBoardController {
 		
 		stream.findById(1).get().getMappingCourse().stream().forEach(y->y.getMappingStudentCourseDetails().stream().
 		filter(x->x.getMappingUserProfile().getUserId()==Integer.parseInt(userId)).forEach(z->c.add(z.getMappingUserProfile())));
-		
-		
-		
-		
+			
 		mv.setViewName("CourseRegistration");
 		System.out.println("**********"+userId);
 		return mv;
@@ -73,6 +70,15 @@ public class ClientDashBoardController {
 	public ModelAndView AnalyticsPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Analytics");	
+		return mv;
+	}
+	
+	@RequestMapping(value = "/Analytics_new", method = RequestMethod.GET)
+	public ModelAndView AnalyticsNewPage(@RequestParam String userid) {
+		System.out.println("!!!!!!!!!!!!!!!!!!!"+userid);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Analytics_new");	
+		
 		return mv;
 	}
 
