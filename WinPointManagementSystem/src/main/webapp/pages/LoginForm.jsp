@@ -21,7 +21,7 @@
 				username: emailVal,
 				password: passwordVal
 			};
-			alert("sent parameters")
+			//alert("sent parameters")
 		//	alert(myData.username);
 			$.ajax({
 				type: 'POST',
@@ -33,8 +33,8 @@
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (data) {
-					alert("sent parameters")
-					alert(data);
+					//alert("sent parameters")
+					//alert(data);
 					
 					if(data.mappingUserCategory.userCategoryId==1)
 						window.location.href="client"+ "?varid="+encodeURIComponent(JSON.stringify(data));
