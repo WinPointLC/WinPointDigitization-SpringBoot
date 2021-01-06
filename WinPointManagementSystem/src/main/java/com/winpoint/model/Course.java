@@ -18,7 +18,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +30,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Course implements Serializable{
+@JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="courseName")
+public class Course{// implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "courseId", updatable = false)
@@ -65,9 +70,10 @@ public class Course implements Serializable{
 	private Set<BatchDetails> mappingBatchDetails;
 
 	
-	//@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingCourse")
-	private List<CoursePlans> mappingCoursePlans;
+//	@JsonManagedReference
+	public List<CoursePlans> mappingCoursePlans;
 
 	
 	@JsonIgnore
