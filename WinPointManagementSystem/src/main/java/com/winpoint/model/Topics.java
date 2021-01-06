@@ -41,10 +41,6 @@ public class Topics implements Serializable {
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "coursePlansId", nullable = false)
-	private CoursePlans mappingCoursePlans;
-
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")

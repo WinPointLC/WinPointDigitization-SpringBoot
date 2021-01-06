@@ -35,11 +35,9 @@ public class Lecture {
 	private Integer lectureDuration;
 	@Column(columnDefinition = "datetime")
 	private Date startTime;
-	private String lectureCoverage;
 	@Column(columnDefinition = "datetime")
 	private Date lectureDate;
 	private String comments;
-	private String absentees;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "batchId", nullable = false)
