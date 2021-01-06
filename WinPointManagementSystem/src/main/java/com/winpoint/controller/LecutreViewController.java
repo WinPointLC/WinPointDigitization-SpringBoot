@@ -1,6 +1,8 @@
 package com.winpoint.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.BatchDetails;
+import com.winpoint.model.Course;
+import com.winpoint.model.Lecture;
 import com.winpoint.model.Streams;
+import com.winpoint.model.Topics;
 import com.winpoint.repository.BatchDetailsRepository;
 import com.winpoint.repository.StreamsRepository;
 
@@ -44,10 +49,20 @@ public class LecutreViewController {
 	@RequestMapping(value = "/LectureViewDetails", method = RequestMethod.POST)
 	public @ResponseBody BatchDetails getTimeAndSegment(@RequestParam String batchId) {
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
-		System.out.println("\n\n\n\n\n" + batch.getMappingCourse().getCourseName() + "\n\n\n\n\n");
-		System.out.println("\n\n\n\n\n" + batch.getMappingCourse().getMappingCoursePlans().get(0).getCoursePlansId()
-				+ "\n\n\n\n\n");
-
+		int total_topics = batch.getMappingCourse().getMappingTopics().size();
+		int total_duration = 0;
+		int total_lectures =  batch.getMappingCourse().getMappingCoursePlans().size();
+		int elapsed_duration = batch.getMappingLecture().size();
+		
+		Set<Topics> uniqueTopic = new HashSet<>();
+		for(Lecture lecture:batch.getMappingLecture()) {
+			uniqueTopic.addAll(lecture.getMappingTopicsCovered());
+		}
+		for(Topics topic:batch.getMappingCourse().getMappingTopics()) {
+			total_duration+=topic.getTopicDuration();
+			}
+		int topics_covered = uniqueTopic.size();
+//		batch.getMappingCourse().getMappin
 		return batch;
 
 	}

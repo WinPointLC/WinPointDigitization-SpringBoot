@@ -2,6 +2,7 @@ package com.winpoint.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -54,24 +55,24 @@ public class BatchDetails implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<StudentCourseDetails> StudentCourseDetails;
+	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
 	
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<ExpenseDetails> ExpenseDetails;
+	private Set<ExpenseDetails> mappingExpenseDetails;
+
+	
+	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingBatchDetails")
+	private List<Lecture> mappingLecture;
 
 	
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<Lecture> Lecture;
-
-	
-	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<RevenueDetail> RevenueDetail;
+	private Set<RevenueDetail> mappingRevenueDetail;
 
 }
