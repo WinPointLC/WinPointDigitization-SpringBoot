@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.BatchDetails;
-import com.winpoint.model.Course;
 import com.winpoint.model.Lecture;
 import com.winpoint.model.Streams;
 import com.winpoint.model.Topics;

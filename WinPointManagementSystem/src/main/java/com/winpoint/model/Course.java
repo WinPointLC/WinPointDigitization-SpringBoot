@@ -1,6 +1,5 @@
 package com.winpoint.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,13 +24,13 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
-@SuppressWarnings("serial")
+//@SuppressWarnings("serial")
 @Entity
 @Getter
 @Setter
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-property = "courseId")
-public class Course implements Serializable{
+@JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="courseName")
+public class Course{// implements Serializable{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "courseId", updatable = false)
@@ -51,6 +50,7 @@ public class Course implements Serializable{
 	@JoinColumn(name = "evaluationTypeId", nullable = false)
 	private EvaluationType mappingEvaluationType;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
 	private CourseType mappingCourseType;
@@ -70,9 +70,9 @@ public class Course implements Serializable{
 	private Set<BatchDetails> mappingBatchDetails;
 
 	
-	 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingCourse")
-	private List<CoursePlans> mappingCoursePlans;
+	public List<CoursePlans> mappingCoursePlans;
 
 	
 	@JsonIgnore
