@@ -17,7 +17,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +26,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@JsonIgnoreProperties("inspection")
+//@JsonIgnoreProperties("inspection")
 public class CourseType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +45,7 @@ public class CourseType {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<ToolTips> mappingToolTips;
 
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "streamCourseType", joinColumns = @JoinColumn(name = "courseTypeId"), inverseJoinColumns = @JoinColumn(name = "streamId"))
 	private List<Streams> mappingStream = new ArrayList<Streams>();

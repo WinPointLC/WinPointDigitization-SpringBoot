@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -39,7 +40,7 @@ public class Topics implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
-
+	
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
@@ -59,8 +60,14 @@ public class Topics implements Serializable {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingTopics")
 	private Set<TestDifficulty> mappingTestDifficulty;
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "coursePlanTopics", joinColumns = @JoinColumn(name = "topicId"), inverseJoinColumns = @JoinColumn(name = "coursePlansId "))
+	List<CoursePlans> mappingCoursePlan = new ArrayList<>();
 
+	
 	@JsonIgnore
-	@ManyToMany(mappedBy = "mappingLecutrePlan")
-	private List<CoursePlans> mappingCoursePlans = new ArrayList<CoursePlans>();
+	@ManyToMany(mappedBy = "mappingTopicsCovered")
+	private List<Lecture> mappingLectureCoveredIn = new ArrayList<>();
+
 }

@@ -1,6 +1,5 @@
 package com.winpoint.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,10 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
@@ -51,6 +48,7 @@ public class Course{// implements Serializable{
 	@JoinColumn(name = "evaluationTypeId", nullable = false)
 	private EvaluationType mappingEvaluationType;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
 	private CourseType mappingCourseType;
@@ -70,9 +68,8 @@ public class Course{// implements Serializable{
 	private Set<BatchDetails> mappingBatchDetails;
 
 	
-//	@JsonIgnore
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingCourse")
-//	@JsonManagedReference
 	public List<CoursePlans> mappingCoursePlans;
 
 	
