@@ -36,6 +36,120 @@
 		  height: 10px;
 		  background-color: green;
 		}
+		
+		/* input[type='range'] {
+		  box-sizing: border-box;
+		  border: 0px solid transparent;
+		  padding: 0px;
+		  margin: 0px;
+		  width: 210px;
+		  height: 50px;
+		  cursor: pointer;
+		  background: -webkit-repeating-linear-gradient(90deg, #777, #777 1px, transparent 1px, transparent 40px) no-repeat 10% 10%;
+		  background: -moz-repeating-linear-gradient(90deg, #777, #777 1px, transparent 1px, transparent 40px) no-repeat 10% 10%;
+		  background: repeating-linear-gradient(90deg, #777, #777 1px, transparent 1px, transparent 40px) no-repeat 10% 10%;
+		  
+		  background-size: 122px 25px;
+		  font-size: 16px;
+		} */
+		input[type='range'],
+		input[type='range']::-webkit-slider-runnable-track,
+		input[type='range']::-webkit-slider-thumb {
+		  -webkit-appearance: none;
+		}
+		input[type='range']::-webkit-slider-runnable-track {
+		  box-sizing: border-box;
+		  width: 70%;
+		  height: 5px;
+		  border-radius: 2px;
+		  background: #777;
+		  
+		}
+		input[type='range']::-moz-range-track {
+		  box-sizing: border-box;
+		  width: 200px;
+		  height: 5px;
+		  border-radius: 2px;
+		  padding: 0px;
+		  background: #777;
+		}
+		input[type='range']::-moz-range-thumb {
+		  box-sizing: border-box;
+		  padding: 0px;
+		  height: 20px;
+		  width: 10px;
+		  border-radius: 2px;
+		  border: 1px solid;
+		  background: #EEE;
+		}
+		input[type='range']::-ms-track {
+		  box-sizing: border-box;
+		  width: 210px;
+		  height: 5px;
+		  border-radius: 2px;
+		  padding: 0px;
+		  background: #777;
+		  color: #777;
+		}
+		input[type='range']::-webkit-slider-thumb {
+		  box-sizing: border-box;
+		  padding: 0px;
+		  height: 20px;
+		  width: 10px;
+		  border-radius: 2px;
+		  border: 1px solid;
+		  margin-top: -8px;
+		  background: #EEE;
+		}
+		input[type='range']::-ms-thumb {
+		  box-sizing: border-box;
+		  padding: 0px;
+		  height: 20px;
+		  width: 10px;
+		  border-radius: 2px;
+		  border: 1px solid;
+		  background: #EEE;
+		}
+		input[type="range"]::-ms-fill-lower {
+		  background: transparent;
+		}
+		
+		input[type='range']:focus {
+		  outline: none;
+		}
+		
+		
+		.container:after {
+		  position: absolute;
+		  color: #777;
+		 // content: '1 2 3 4 5';
+		  padding: 40px;
+		  word-spacing: 20px;
+		  left: 0px;
+		  top: 0px;
+		  z-index: 100;
+		}
+		.container {
+		  padding: 0px;
+		  position: relative;
+		}
+		
+		 
+		
+		output{
+		  display: block;
+		  margin-top: 20px;
+		  color: #777;
+		}
+		output:before{
+		  content:"Lecture Number: ";
+		 // margin-top:40%;
+		  font-weight: bold;
+		 text-decoration: underline;
+		}
+		/* body {
+		  font-family: Calibri, Arial;
+		} */
 	</style>
 
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
@@ -127,12 +241,12 @@
 							</div></td>
 							
 							<td>
-							<div id="myProgress" style="width:150%;">
+							<!-- <div id="myProgress" style="width:150%;">
 							  <div id="myBar"></div>
-							</div>
-							
+							</div> -->
+							<div class="container" id="slider_lec"  ></div>
 							</td>
-							<td><div id="end-date-btn" style="margin-left:-550px;" >
+							<td><div id="end-date-btn" style="margin-left:-750px;" >
 					
 							</div></td>
 						</tr>
@@ -151,11 +265,11 @@
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Fees Records</button></td>
 							<td rowspan="3">
 								<label for="exampleFormControlTextarea1">Course Plan</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" style="width:150%" rows="10"></textarea>
+						<textarea class="form-control" id="exampleFormControlTextarea1" style="width:100%" rows="10"></textarea>
 						
 							</td>
 						
-						<td><div id="lecture-date-label" style="margin-left:-550px;">
+						<td><div id="lecture-date-label" style="margin-left:-750px;">
 					
 							</div></td>
 						</tr>
@@ -164,7 +278,7 @@
 						</tr>
 						<tr>
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Assignments</button></td>
-							<td><div id="session-duration-label" style="margin-left:-550px;">
+							<td><div id="session-duration-label" style="margin-left:-750px;">
 					
 							</div></td>
 							
@@ -173,9 +287,9 @@
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Feedback</button></td>
 							<td rowspan="3">
 								<label for="exampleFormControlTextarea1">Lecture Coverage</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" style="width:150%" rows="10"></textarea>
+						<textarea class="form-control" id="exampleFormControlTextarea1" style="width:100%" rows="10"></textarea>
 							</td>
-							<td><div id="start-time-label" style="margin-left:-550px;">
+							<td><div id="start-time-label" style="margin-left:-750px;">
 					
 							</div></td>
 							
@@ -187,7 +301,7 @@
 						<tr>
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Edit Batch<br>Details</button></td>
 					
-							<td><div id="class-strength-label" style="margin-left:-550px;">
+							<td><div id="class-strength-label" style="margin-left:-750px;">
 					
 							</div></td>
 						</tr>
@@ -551,6 +665,31 @@
 							var thead = document.createElement('thead');
 										
 							var tbody = document.createElement('tbody');
+
+							var total_lecs=30;
+							var current_lec=lectureDetails.currentLectureNumber;
+							var range_slider=document.createElement('input');
+							range_slider.setAttribute('type','range');
+							range_slider.setAttribute('style',"width:600px");
+							range_slider.setAttribute('min',0);
+							range_slider.setAttribute('max',total_lecs);
+							range_slider.setAttribute('value',current_lec);
+							
+							
+							range_slider.setAttribute('step',1);
+							
+							range_slider.id='rangeInput';
+							document.getElementById('slider_lec').appendChild(range_slider);
+							
+							var range_slider_output=document.createElement('output');
+							document.getElementById('slider_lec').appendChild(range_slider_output);
+							range_slider_output.setAttribute('for',"rangeInput");
+							range_slider_output.id="output";
+							range_slider_output.textContent=current_lec;
+							
+							document.getElementById('lecture-view-controls').appendChild(range_slider_output);
+							//range_slider.setAttribute('oninput',range_slider_output.value = range_slider.value);
+							range_slider.setAttribute('oninput',"sliderVal()");
 								
 							var td=document.createElement('td');
 							var h4=document.createElement('h4');
@@ -562,7 +701,7 @@
 								
 							document.getElementById('currentlec-label').appendChild(td);
 								
-							var td1=document.createElement('td');
+							/* var td1=document.createElement('td');
 							var h4=document.createElement('h4');
 							td1.appendChild(h4);
 							var u=document.createElement('u');
@@ -570,7 +709,7 @@
 							
 							h4.appendChild(u);
 							
-							document.getElementById('lecture-view-controls').appendChild(td1);
+							document.getElementById('lecture-view-controls').appendChild(td1); */
 							
 							var td2=document.createElement('td');
 							var startdateBtn=document.createElement('btn');
@@ -666,6 +805,12 @@
 			        // Months use 0 index.
 			        return date.getDate()  + '-' + (parseInt(date.getMonth())+1 )+ '-' + date.getFullYear();
 			    }
+			}
+
+			function sliderVal(){
+				//alert("here");
+				//alert(document.getElementById('rangeInput').value);
+				document.getElementById('output').textContent=document.getElementById('rangeInput').value;
 			}
 		</script>
 	
