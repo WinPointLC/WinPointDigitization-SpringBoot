@@ -55,42 +55,42 @@
 					<tr>
 						<td>
 							<!--<label for="totaltopics">Total Topics :</label>-->
-							<input type="text" style="width:200%" class="form-control" id="inputEmail4" placeholder="Total Topics">
+							<input type="text" style="width:200%" class="form-control" id="total_topics" placeholder="Total Topics">
 						<br>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<!--<label for="totalcourseduration">Total Course Duration :</label>-->
-							<input type="text" style="width:200%" class="form-control" id="inputEmail4" placeholder="Total Course Duration">
+							<input type="text" style="width:200%" class="form-control" id="total_course_duration" placeholder="Total Course Duration">
 						<br>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<!--<label for="totallectures">Total Lectures :</label>-->
-							<input type="text" style="width:200%" class="form-control" id="inputEmail4" placeholder="Total Lectures">
+							<input type="text" style="width:200%" class="form-control" id="total_lecs" placeholder="Total Lectures">
 						<br>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<!--<label for="topicscovered">Number of Topics Covered :</label>-->
-							<input type="text" style="width:200%" class="form-control" id="inputEmail4" placeholder="Total Number of Topics Covered">
+							<input type="text" style="width:200%" class="form-control" id="total_topics_covered" placeholder="Total Number of Topics Covered">
 						<br>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<!--<label for="elapsedduration">Elapsed Duration:</label>-->
-							<input type="text" style="width:200%" class="form-control" id="inputEmail4" placeholder="Elapsed Duration">
+							<input type="text" style="width:200%" class="form-control" id="elapsed_duration" placeholder="Elapsed Duration">
 						<br>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<!--<label for="remaininglectures">Remaining Lectures:</label>-->
-							<input type="text" style="width:200%" class="form-control" id="inputEmail4" placeholder="Remaining Lectures">
+							<input type="text" style="width:200%" class="form-control" id="remaining_lecs" placeholder="Remaining Lectures">
 						<br>
 						</td>
 					</tr>
@@ -148,15 +148,19 @@
 		//alert('${batchObject.mappingCourse.courseDuration}');
 		
 
-		<c:forEach items="${batchObject.mappingCourse.mappingCoursePlans}" var="det">
+		/* <c:forEach items="${batchObject.mappingCourse.mappingCoursePlans}" var="det">
 			
 			alert('${det.mappingLecutrePlan}');
 			
 			
-		</c:forEach>     
+		</c:forEach>      */
 		
 		
-		
+		document.getElementById('total_topics').value='${totalTopics}';
+		document.getElementById('total_course_duration').value='${totalCourseDuration}';
+		document.getElementById('total_lecs').value='${totalLectures}';
+		document.getElementById('total_topics_covered').value='${totalTopicsCovered}';
+		document.getElementById('elapsed_duration').value='${elapsedDuration}';
 		
 		    
 			var addStudentList=[
