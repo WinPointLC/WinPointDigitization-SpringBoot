@@ -158,69 +158,7 @@
                   </div>
                 </div>
               </div>
-              <script>
-
-              var streamIdList=[];
-              var courseTypeName;
-
-              <c:forEach items="${streamList}" var="stream">
-                  var div1 = document.createElement('div');
-	              div1.id="tab-div";
-	              streamIdList.push('${stream.streamId}');
-	              var li = document.createElement('li');
-	              li.className='nav-item';
-	              li.id =  '${stream.streamId}' + 'l';
-	
-	              var anchor =document.createElement('a');
-	              anchor.setAttribute('href',"#Profile");
-	              anchor.setAttribute('data-toggle',"tab");
-	              anchor.className='nav-link ';
-	              anchor.id =  '${stream.streamId}' + 'a';
-	              anchor.textContent= '${stream.streamName}';
-	              li.id =  '${stream.streamId}';
-	              li.appendChild(anchor);
-	              li.setAttribute('onclick', "getStreamId(this.id)");
-	              div1.appendChild(li);
-	              document.getElementById("nav-tab").appendChild(div1);
-  		      </c:forEach>     
-  		  
-            var streamElem = document.getElementById('${firstStreamId}' + 'a');
-            streamElem.className='nav-link active';
-
-            getStreamId('${firstStreamId}');
-				displayStreamCourses(courseTypeId, courseTypeName);
-
-           /*  var studentCoursesCourseIdList = [];
-            <c:forEach items="${studentCoursesList}" var="studentCourses">
-	            studentCoursesCourseIdList.push('${studentCourses.courseId}');
-	  		</c:forEach>   
-
-	  		var studentGACoursesCourseIdList = [];
-	        <c:forEach items="${studentGACoursesList}" var="studentGACourses">
-	         	studentGACoursesCourseIdList.push('${studentGACourses.courseId}');
-		    </c:forEach>    */
-            
-           /*  var decodedData2 = decodedData1.substring(decodedData1.indexOf(']')+1, decodedData1.length);
-            var studentCourses = decodedData2.substring(0, decodedData2.indexOf(']')+1);
-            var studentCoursesList = eval('(' + studentCourses + ')');
-     //       alert("studentCoursesList " + studentCoursesList);
-            var studentCoursesCourseIdList = [];
-            for(var i=0; i<studentCoursesList.length; i++){
-   //         	alert("courseId = " + studentCoursesList[i].courseName);
-            	studentCoursesCourseIdList.push(studentCoursesList[i].courseId);
-            }
-            //alert("studentCoursesCourseIdList length: " + studentCoursesCourseIdList.length);
-            
-            var decodedData3 = decodedData2.substring(decodedData2.indexOf(']')+1, decodedData2.length);
-            var studentGACourses = decodedData3.substring(0, decodedData3.indexOf(']')+1);
-            var studentGACoursesList = eval('(' + studentGACourses + ')');
-       //     alert("studentGACoursesList = " + studentGACoursesList);
-            var studentGACoursesCourseIdList = [];
-            for(var i=0; studentGACoursesList.length; i++){
-            	studentGACoursesCourseIdList.push(studentGACoursesList[i].courseId);
-            } */
-                
-      </script>
+             
       <!--   Core JS Files   -->
       <script src="../assets/js/core/jquery.min.js"></script>
       <script src="../assets/js/core/popper.min.js"></script>
@@ -275,83 +213,86 @@
       var courseTypeId;
       
       function getStreamId(stream_id){
+          // alert("here stream");
+     	   streamId = stream_id;
+         
+         var streamElem = document.getElementById(streamId + 'a');
+         var elem;
+          for(i=0; i<streamIdList.length; i++){
+         	elem = document.getElementById(streamIdList[i] + 'a');
+         	 elem.className = 'nav-link';
+         } 
+
+          var elem = document.getElementById('dropdownMenu_1');
+ 			if(elem != null){
+ 				elem.parentNode.removeChild(elem);
+ 			} 
+
+          var elem = document.getElementById('dropdownMenuButton_1');
+ 			if(elem != null){
+ 				elem.parentNode.removeChild(elem);
+ 			} 
+ 	    
+         streamElem.className = 'nav-link active';
+
         
-    	streamId = stream_id;
-
-        var streamElem = document.getElementById(streamId + 'a');
-        var elem;
-        for(i=0; i<streamIdList.length; i++){
-        	elem = document.getElementById(streamIdList[i] + 'a');
-        	 elem.className = 'nav-link';
-        } 
-       /*  <c:forEach items="${streamList}" var="stream">
-		     elem = document.getElementById('${stream.streamId}' + 'a');
-		   	 elem.className = 'nav-link';
-  		</c:forEach>   */
-        streamElem.className = 'nav-link active';
-
-  	/* 	var courseTypeDropDown=document.getElementById('select-coursetype-dropdown');
-		while (courseTypeDropDown.hasChildNodes()) {  
-			alert("HERE");
-			courseTypeDropDown.removeChild(courseTypeDropDown.firstChild);
-		}
- */
-
-	 	var btn = document.createElement('button');
-		btn.className='btn btn-secondary dropdown-toggle';
-		btn.id='dropdownMenuButton_1';
-		btn.setAttribute('data-toggle', "dropdown");
-		btn.setAttribute('aria-haspopup', "true");
-		btn.setAttribute('aria-expanded',"false");
-		btn.textContent="Course Type";
-		document.getElementById('drop-down').appendChild(btn);
-	
-		var dropdownMenu = document.createElement('div');
-		dropdownMenu.className='dropdown-menu';
-		dropdownMenu.id='dropdownMenu_1';
-		dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
-	
-		var cnt=0;
-		<c:forEach items="${streamList}" var="stream">
-		if('${stream.streamId}'==streamId)
-			{
-			
-				//alert("'${stream.mappingCourseType}'");
-				<c:forEach items="${stream.mappingCourseType}" var="det">
-				   cnt++;
-				   var dropanchor = document.createElement('a');
-				   dropanchor.className='dropdown-item';
-				   dropanchor.id='${det.courseTypeId}';
-				 
-				   if(cnt==1)
-					   courseTypeName = ('${det.courseTypeName}').toUpperCase();
-				   dropanchor.textContent= ('${det.courseTypeName}').toUpperCase();
-				   dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
-				   dropdownMenu.appendChild(dropanchor);
-					 
-				</c:forEach>
-			}
-	 </c:forEach>     
+        
+         var btn = document.createElement('button');
+ 		btn.className='btn btn-secondary dropdown-toggle';
+ 		btn.id='dropdownMenuButton_1';
+ 		btn.setAttribute('data-toggle', "dropdown");
+ 		btn.setAttribute('aria-haspopup', "true");
+ 		btn.setAttribute('aria-expanded',"false");
+ 		btn.textContent="Course Type";
+ 		document.getElementById('drop-down').appendChild(btn);
+ 	
+ 		var dropdownMenu = document.createElement('div');
+ 		dropdownMenu.className='dropdown-menu';
+ 		dropdownMenu.id='dropdownMenu_1';
+ 		dropdownMenu.setAttribute('aria-labelledby',"dropdownMenuButton");
+ 	
+ 		var cnt=0;
+ 		<c:forEach items="${streamList}" var="stream">
+ 		if('${stream.streamId}'==streamId)
+ 			{
+ 			
+ 				//alert("'${stream.mappingCourseType}'");
+ 				<c:forEach items="${stream.mappingCourseType}" var="det">
+ 				   cnt++;
+ 				   var dropanchor = document.createElement('a');
+ 				   dropanchor.className='dropdown-item';
+ 				   dropanchor.id='${det.courseTypeId}';
+ 				 
+ 				   if(cnt==1)
+ 					   courseTypeName = ('${det.courseTypeName}').toUpperCase();
+ 				   dropanchor.textContent= ('${det.courseTypeName}').toUpperCase();
+ 				   dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
+ 				   dropdownMenu.appendChild(dropanchor);
+ 					 
+ 				</c:forEach>
+ 			}
+ 	 </c:forEach>     
 
 
-	document.getElementById('drop-down').appendChild(dropdownMenu);
-		
+ 		document.getElementById('drop-down').appendChild(dropdownMenu);
+ 		
+        
+         elem = document.getElementById('courseList');
+         if(elem != null){
+         	elem.parentNode.removeChild(elem);
+         }        
+          
+          
        
-        elem = document.getElementById('courseList');
-        if(elem != null){
-        	elem.parentNode.removeChild(elem);
-        }        
-        
-     
-        
-      }
+         
+       }
 
       function displayStreamCourses(courseType_id, courseTypeName ){
         //var streamId = stream_id;
         courseTypeId = courseType_id;
         //alert("stream_id = " + streamId + "courseType_id = " + courseType_id);
         
-          document.getElementById('dropdownMenuButton').textContent = courseTypeName;
+          document.getElementById('dropdownMenuButton_1').textContent = courseTypeName;
         
         var myData = {
           streamId: streamId,
@@ -530,6 +471,47 @@
 
         });
       }
+      </script>
+      
+       <script>
+
+              var streamIdList=[];
+              var courseTypeName;
+
+              <c:forEach items="${streamList}" var="stream">
+                  var div1 = document.createElement('div');
+	              div1.id="tab-div";
+	              streamIdList.push('${stream.streamId}');
+	              var li = document.createElement('li');
+	              li.className='nav-item';
+	              li.id =  '${stream.streamId}' + 'l';
+	
+	              var anchor =document.createElement('a');
+	              anchor.setAttribute('href',"#Profile");
+	              anchor.setAttribute('data-toggle',"tab");
+	              anchor.className='nav-link ';
+	              anchor.id =  '${stream.streamId}' + 'a';
+	              anchor.textContent= '${stream.streamName}';
+	              li.id =  '${stream.streamId}';
+	              li.appendChild(anchor);
+	              li.setAttribute('onclick', "getStreamId(this.id)");
+	              div1.appendChild(li);
+	              document.getElementById("nav-tab").appendChild(div1);
+  		      </c:forEach>     
+  		  
+	            var dropdown = document.createElement('div');
+	    		dropdown.className="dropdown";
+	    		dropdown.id="drop-down";
+	    		document.getElementById('drop11').appendChild(dropdown);
+
+	    		var streamElem = document.getElementById('${firstStreamId}' + 'a');
+	            streamElem.className='nav-link active';
+	    		
+	            getStreamId('${firstStreamId}');
+				displayStreamCourses(courseTypeId, courseTypeName);
+
+          
+                
       </script>
     </body>
   </html>
