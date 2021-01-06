@@ -70,7 +70,7 @@ public class Course{// implements Serializable{
 	private Set<BatchDetails> mappingBatchDetails;
 
 	
-	@JsonIgnore
+//	@JsonIgnore 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingCourse")
 	public List<CoursePlans> mappingCoursePlans;
 

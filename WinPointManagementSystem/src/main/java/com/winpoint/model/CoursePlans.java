@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,6 +32,7 @@ public class CoursePlans implements Serializable{
 	private Integer coursePlansId;
 	private Integer lectureNumber;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
@@ -38,4 +41,15 @@ public class CoursePlans implements Serializable{
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCoursePlan")
 	List<Topics> mappingLecutreTopicPlan = new ArrayList<>();
 
+
+	@Override
+	public String toString() {
+		return "CoursePlans [coursePlansId=" + coursePlansId + "]";
+	}
+
+	
+	
+	
 }
+
+

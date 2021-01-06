@@ -52,7 +52,7 @@ public class LecutreViewController {
 		int total_duration = 0;
 		int total_lectures =  batch.getMappingCourse().getMappingCoursePlans().size();
 		int elapsed_duration = batch.getMappingLecture().size();
-		
+		System.out.println("\n\n\n\n\n\n\n"+batch.getMappingCourse().getMappingCoursePlans().get(0)+"\n\n\n\n\n\n\n");
 		Set<Topics> uniqueTopic = new HashSet<>();
 		for(Lecture lecture:batch.getMappingLecture()) {
 			uniqueTopic.addAll(lecture.getMappingTopicsCovered());
