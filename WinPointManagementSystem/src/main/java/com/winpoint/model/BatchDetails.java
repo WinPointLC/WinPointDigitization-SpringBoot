@@ -53,24 +53,24 @@ public class BatchDetails implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<StudentCourseDetails> StudentCourseDetails;
+	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
 	
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<ExpenseDetails> ExpenseDetails;
+	private Set<ExpenseDetails> mappingExpenseDetails;
 
 	
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<Lecture> Lecture;
+	private Set<Lecture> mappingLecture;
 
 	
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
-	private Set<RevenueDetail> RevenueDetail;
+	private Set<RevenueDetail> mappingRevenueDetail;
 
 }

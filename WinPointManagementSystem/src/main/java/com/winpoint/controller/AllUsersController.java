@@ -61,7 +61,7 @@ public class AllUsersController {
 	@RequestMapping(value = "/BatchDetails")
 	public @ResponseBody List<UserProfile> returnBatchUsers(@RequestParam String batchId) {
 		List<UserProfile> users=new ArrayList<>() ; 
-		batchDetailsRepository.findById(Integer.parseInt(batchId)).get().getStudentCourseDetails()
+		batchDetailsRepository.findById(Integer.parseInt(batchId)).get().getMappingStudentCourseDetails()
 		.stream().forEach(y-> users.add(y.getMappingUserProfile()));
 		return users;
 	}
