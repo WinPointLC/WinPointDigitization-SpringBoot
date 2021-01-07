@@ -82,6 +82,7 @@ public class LecutreViewController {
 		for(Topics topic:batch.getMappingCourse().getMappingTopics()) {
 			total_duration+=topic.getTopicDuration();
 			}
+		mv.addObject("batchObject", batch);
 		mv.addObject("totalTopics", total_topics);
 		mv.addObject("totalCourseDuration", total_duration);
 		mv.addObject("totalLectures", total_lectures);
