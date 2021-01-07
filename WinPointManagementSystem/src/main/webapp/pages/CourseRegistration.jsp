@@ -290,7 +290,7 @@
       function displayStreamCourses(courseType_id, courseTypeName ){
         //var streamId = stream_id;
         courseTypeId = courseType_id;
-        //alert("stream_id = " + streamId + "courseType_id = " + courseType_id);
+        alert("stream_id = " + streamId + "courseType_id = " + courseType_id);
         
           document.getElementById('dropdownMenuButton_1').textContent = courseTypeName;
         
