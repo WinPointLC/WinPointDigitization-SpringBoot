@@ -20,7 +20,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="courseName")
+// @JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="courseName")
+@JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="mappingBatchDetails")
 public class StudentCourseDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

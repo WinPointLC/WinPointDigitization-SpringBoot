@@ -15,7 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="batchId")
 public class BatchDetails implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +54,7 @@ public class BatchDetails implements Serializable{
 	private Course mappingCourse;
 
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
@@ -63,7 +66,7 @@ public class BatchDetails implements Serializable{
 
 	
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<Lecture> mappingLecture;
 
