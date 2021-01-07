@@ -37,44 +37,44 @@
 		  background-color: green;
 		}
 		
-		/* input[type='range'] {
-		  box-sizing: border-box;
+		 input[type='range'] {
+		 /*  box-sizing: border-box; */
 		  border: 0px solid transparent;
 		  padding: 0px;
-		  margin: 0px;
-		  width: 210px;
+		  margin: 20px;
+		  width: 420px;
 		  height: 50px;
-		  cursor: pointer;
+		 /*  cursor: pointer;
 		  background: -webkit-repeating-linear-gradient(90deg, #777, #777 1px, transparent 1px, transparent 40px) no-repeat 10% 10%;
 		  background: -moz-repeating-linear-gradient(90deg, #777, #777 1px, transparent 1px, transparent 40px) no-repeat 10% 10%;
-		  background: repeating-linear-gradient(90deg, #777, #777 1px, transparent 1px, transparent 40px) no-repeat 10% 10%;
+		  background: repeating-linear-gradient(90deg, #777, #777 1px, transparent 1px, transparent 40px) no-repeat 10% 10%; */
 		  
-		  background-size: 122px 25px;
+		  /* background-size:0px 0px; */
 		  font-size: 16px;
-		} */
+		} 
 		input[type='range'],
 		input[type='range']::-webkit-slider-runnable-track,
 		input[type='range']::-webkit-slider-thumb {
 		  -webkit-appearance: none;
 		}
 		input[type='range']::-webkit-slider-runnable-track {
-		  box-sizing: border-box;
-		  width: 70%;
+		
+		  width: 50%;
 		  height: 5px;
 		  border-radius: 2px;
 		  background: #777;
 		  
 		}
 		input[type='range']::-moz-range-track {
-		  box-sizing: border-box;
-		  width: 200px;
+		 
+		  width: 50%;
 		  height: 5px;
 		  border-radius: 2px;
 		  padding: 0px;
 		  background: #777;
 		}
 		input[type='range']::-moz-range-thumb {
-		  box-sizing: border-box;
+		 // box-sizing: border-box;
 		  padding: 0px;
 		  height: 20px;
 		  width: 10px;
@@ -83,8 +83,8 @@
 		  background: #EEE;
 		}
 		input[type='range']::-ms-track {
-		  box-sizing: border-box;
-		  width: 210px;
+		
+		  width: 50%;
 		  height: 5px;
 		  border-radius: 2px;
 		  padding: 0px;
@@ -142,9 +142,11 @@
 		  color: #777;
 		}
 		output:before{
-		  content:"Lecture Number: ";
+		  content:"Lecture Number:   ";
 		 // margin-top:40%;
 		  font-weight: bold;
+		  color:white;
+		  font-size:16px;
 		 text-decoration: underline;
 		}
 		/* body {
@@ -224,14 +226,14 @@
 			   
 			
               </div><br>
-			<div class="card card-nav-tabs" style="display: none;" id="lec_view_card">
+			<div class="card card-nav-tabs" style="display: none;background:#9C38AE;" id="lec_view_card" >
 				<!--<h3 class="card-header card-header-primary text-center">Lecture View</h3>-->
 				<br></br>
 				<!--<h4 class="text-left">Current Lectures : 10</h4>-->
 					<div class="table-responsive" id="table-lecture-view" >
 				
 					</div> 
-					<div id="currentlec-label" style="margin-left:5%;" >
+					<div id="currentlec-label" style="margin-left:5%;color:white" >
 					
 					</div>
 					<table>
@@ -248,7 +250,7 @@
 							</td>
 							<td><div id="end-date-btn" style="margin-left:-750px;" >
 					
-							</div></td>
+							</div><br></td>
 						</tr>
 						
 						<tr>
@@ -257,19 +259,19 @@
 							Progress<br> Tracker</button>
 							</td>
 							
-							<td><div id="lecture-view-controls">
+							<td><div id="lecture-view-controls" >
 					
 							</div></td>		
 						</tr>
 						<tr>
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Fees Records</button></td>
 							<td rowspan="3">
-								<label for="exampleFormControlTextarea1">Course Plan</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" style="width:100%" rows="10"></textarea>
+								<label for="exampleFormControlTextarea1" style="color:white">Course Plan</label>
+						<textarea class="form-control" id="courseplan" style="width:100%" rows="10"></textarea>
 						
 							</td>
 						
-						<td><div id="lecture-date-label" style="margin-left:-750px;">
+						<td><div id="lecture-date-label" style="margin-left:-700px;color:white;">
 					
 							</div></td>
 						</tr>
@@ -278,7 +280,7 @@
 						</tr>
 						<tr>
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Assignments</button></td>
-							<td><div id="session-duration-label" style="margin-left:-750px;">
+							<td><div id="session-duration-label" style="margin-left:-700px;color:white;">
 					
 							</div></td>
 							
@@ -286,10 +288,10 @@
 						<tr>
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Feedback</button></td>
 							<td rowspan="3">
-								<label for="exampleFormControlTextarea1">Lecture Coverage</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" style="width:100%" rows="10"></textarea>
+								<label for="exampleFormControlTextarea1" style="color:white">Lecture Coverage</label>
+						<textarea class="form-control" id="lec_coverage" style="width:100%" rows="10"></textarea>
 							</td>
-							<td><div id="start-time-label" style="margin-left:-750px;">
+							<td><div id="start-time-label" style="margin-left:-700px;color:white;">
 					
 							</div></td>
 							
@@ -301,7 +303,7 @@
 						<tr>
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Edit Batch<br>Details</button></td>
 					
-							<td><div id="class-strength-label" style="margin-left:-750px;">
+							<td><div id="class-strength-label" style="margin-left:-700px;color:white;">
 					
 							</div></td>
 						</tr>
@@ -371,49 +373,7 @@
 					}
 		    </c:forEach>     
 							
-			  /*   var myData = {
-					streamId: streamId
-				};
-				
-				$.ajax({
-					type: 'POST',
-					//url: servletURL + 'StreamCourseTypeServlet',
-					url: "/StreamCourseType",
-					//data: JSON.stringify(myData),
-					data: jQuery.param(myData),
-					dataType: 'json',
-					//contentType: 'application/json; charset=utf-8',
-					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-					traditional: true,
-					success: function (jsonObj) {
-						courseTypeList=jsonObj;
-						
-						var courseTypeDropDown=document.getElementById('select-coursetype-dropdown');
-						while (courseTypeDropDown.hasChildNodes()) {  
-							courseTypeDropDown.removeChild(courseTypeDropDown.firstChild);
-						}
-		
-						//alert("courseTypeList.length = "+courseTypeList.length);
-						for (var i = 0; i < courseTypeList.length; i++) {
-							var anchor2 = document.createElement('a');
-							anchor2.className="dropdown-item";
-							anchor2.setAttribute('href', "#");
-							anchor2.id = courseTypeList[i].courseTypeId + 'CT';
-							//alert("courseType Name  " + courseTypeList[i].courseTypeName);
-							anchor2.textContent = courseTypeList[i].courseTypeName.toUpperCase().replace("_"," ");
-							anchor2.setAttribute('onclick', "getCourseTypeId(this.id)");
-							document.getElementById('select-coursetype-dropdown').appendChild(anchor2);
-						}
-						//document.getElementById('coursetype-dropdown-div').appendChild(dropdownMenu_coursetype);
-						  //var elem = document.getElementById('dropdownMenuButtonCourseType');
-							//elem.parentNode.removeChild(elem);
-					},
-					error: function(){
-						alert("Error");
-						//document.getElementById("error").innerHTML = "Invalid email or password";
-					}
-
-				}); */
+			
 			}
 			
 			var courseTypeElem;
@@ -527,6 +487,16 @@
 
 			var lectureDetails;
 			var batchId;
+			var total_lecs=10;
+			var current_lec=2;
+			var lec_date;
+			var session_duration;
+			var class_strength;
+			var start_time;
+			var lectdate;
+			var sessionduration;
+			var starttime;
+			var jsonObj;
 			function getBatchId(batch_id){
 				
 				batchId = batch_id.substring(0, batch_id.length - 1);
@@ -534,9 +504,154 @@
 				batchElem = document.getElementById(batch_id);
 
 				document.getElementById('dropdownMenuButtonBatch').textContent = batchElem.textContent;
+				document.getElementById('lec_view_card').style.display = "block";
 
-				/* document.getElementById('lec_view_card').style.display = "block";
-
+				
+				/* jsonObj=
+						{
+							batchName:'B1',
+							mappingCourse:{
+								courseName:'C',
+								
+								mappingCoursePlans:[
+									{
+										coursePlansId:1,
+										lectureNumber:2,
+										mappingLecutreTopicPlan:[
+										{
+											topicName:'TOPIC 1'
+										
+										},
+										{
+										
+											topicName:'TOPIC 2'
+										
+										}
+										
+										
+										]
+									},
+									{		
+										coursePlansId:2,
+										lectureNumber:5,
+										mappingLecutreTopicPlan:[
+										{
+											topicName:'TOPIC 3'
+										
+										},
+										{
+										
+										
+											topicName:'TOPIC 4'
+										}
+										
+										
+										]
+									
+									}
+								] ,
+								
+								
+							},
+							mappingStudentCourseDetails:[
+										{
+											studentCourseDetailsId:1
+										},
+										{
+											studentCourseDetailsId:2
+										}
+							],
+							mappingLecture:[
+										{
+											lectureDuration:1,
+											startTime:'10:00',
+											lectureDate:'10-10-2020',
+											lectureNumber:2,
+											mappingTopicsCovered:[
+											{
+												topicName:'TOPIC 1'
+											
+											},
+											{
+											
+											
+												topicName:'TOPIC 2'
+											}
+											
+											
+											]
+										},
+										{
+											lectureDuration:2,
+											startTime:'12:00',
+											lectureDate:'12-12-2020',
+											lectureNumber:5,
+											mappingTopicsCovered:
+											[
+												{
+													topicName:'TOPIC 3'
+												
+												},
+												{
+												
+												
+													topicName:'TOPIC 4'
+												}
+											
+											
+											]
+										}
+							]
+						
+						
+						}
+				
+				document.getElementById('courseplan').textContent='';
+						
+				for(var i=0;i<jsonObj.mappingCourse.mappingCoursePlans.length;i++)
+				{
+					if(jsonObj.mappingCourse.mappingCoursePlans[i].lectureNumber==current_lec)
+					{
+						//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
+						for(var j=0;j<jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan.length;j++)
+						{
+							var topicName=jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName;
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName);
+							document.getElementById('courseplan').textContent=document.getElementById('courseplan').textContent+topicName+'\n';
+							document.getElementById('courseplan').style.color="white";
+						}
+						
+						//alert(jsonObj.mappingStudentCourseDetails.length);
+						
+					}
+			
+				}
+				
+				for(var i=0;i<jsonObj.mappingLecture.length;i++)
+				{
+					if(jsonObj.mappingLecture[i].lectureNumber==current_lec)
+					{
+						
+						for(var j=0;j<jsonObj.mappingLecture[i].mappingTopicsCovered.length;j++)
+						{
+							var topicName=jsonObj.mappingLecture[i].mappingTopicsCovered[j].topicName;
+							//alert(topicName);
+							document.getElementById('lec_coverage').textContent=document.getElementById('lec_coverage').textContent+topicName+'\n';
+							document.getElementById('lec_coverage').style.color="white";
+						}
+						
+						lec_date=jsonObj.mappingLecture[i].lectureDate;
+						session_duration=jsonObj.mappingLecture[i].lectureDuration;
+						start_time=jsonObj.mappingLecture[i].startTime;
+						
+					}
+			
+				}
+						
+				class_strength=jsonObj.mappingStudentCourseDetails.length;
+				
+				//alert(jsonObj.mappingCourse.mappingCoursePlans.length);
+				
 				var elem = document.getElementById('details-lectureview');
 				if(elem!=null){
 					elem.parentNode.removeChild(elem);
@@ -546,8 +661,34 @@
 				table.className="table table-hover";
 				table.id="details-lectureview";
 				var thead = document.createElement('thead');
-							
+				
 				var tbody = document.createElement('tbody');
+
+				var total_lecs=50;
+				//var current_lec=lectureDetails.currentLectureNumber;
+				var range_slider=document.createElement('input');
+				range_slider.setAttribute('type','range');
+				//range_slider.setAttribute('style',"width:600px");
+				range_slider.setAttribute('min',0);
+				range_slider.setAttribute('max',total_lecs);
+				range_slider.setAttribute('value',current_lec);
+				
+				
+				range_slider.setAttribute('step',1);
+				
+				range_slider.id='rangeInput';
+				document.getElementById('slider_lec').appendChild(range_slider);
+				
+				var range_slider_output=document.createElement('output');
+				document.getElementById('slider_lec').appendChild(range_slider_output);
+				range_slider_output.setAttribute('for',"rangeInput");
+				range_slider_output.id="output";
+				range_slider_output.textContent=current_lec;
+				range_slider_output.style.color="white";
+				
+				document.getElementById('lecture-view-controls').appendChild(range_slider_output);
+				//range_slider.setAttribute('oninput',range_slider_output.value = range_slider.value);
+				range_slider.setAttribute('oninput',"sliderVal()");
 					
 				var td=document.createElement('td');
 				var h4=document.createElement('h4');
@@ -558,65 +699,68 @@
 					
 				document.getElementById('currentlec-label').appendChild(td);
 					
-				var td1=document.createElement('td');
-				var h4=document.createElement('h4');
-				td1.appendChild(h4);
-				var u=document.createElement('u');
-				u.textContent="Lecture Number : ";
 				
-				h4.appendChild(u);
-				
-				document.getElementById('lecture-view-controls').appendChild(td1);
 				
 				var td2=document.createElement('td');
 				var startdateBtn=document.createElement('btn');
-				startdateBtn.className="btn btn-secondary";
-				startdateBtn.textContent="Start Date : 2nd Oct2019";
-				//startdateBtn.style.width="50";
-				startdateBtn.style.height="60px";
-				startdateBtn.style.backgroundColor="gray";
-				startdateBtn.style.color="white";
-				td2.appendChild(startdateBtn);
+					startdateBtn.className="btn btn-secondary";
+					startdateBtn.textContent="Start Date 2nd Oct2019";
+					//startdateBtn.style.width="50";
+					startdateBtn.style.height="60px";
+					startdateBtn.style.backgroundColor="secondary";
+					startdateBtn.style.color="black";
+					startdateBtn.style.fontSize="16px";
+					td2.appendChild(startdateBtn);
 				
 				document.getElementById('start-date-btn').appendChild(td2);
 				
 				var td3=document.createElement('td');
 				var enddateBtn=document.createElement('btn');
-				enddateBtn.className="btn btn-secondary";
-				enddateBtn.textContent="End Date : 2nd Jan 2020";
-				enddateBtn.style.height="60px";
-				enddateBtn.style.marginLeft="740px";
-				enddateBtn.style.backgroundColor="gray";
-				enddateBtn.style.color="white";
-				td3.appendChild(enddateBtn);
+					enddateBtn.className="btn btn-secondary";
+					enddateBtn.textContent="End Date 2nd Jan 2020";
+					enddateBtn.style.marginLeft="298%";
+					enddateBtn.style.marginTop="30px";
+					enddateBtn.style.height="60px";
+					enddateBtn.style.backgroundColor="secondary";
+					enddateBtn.style.color="black";
+					enddateBtn.style.fontSize="16px";
+					td3.appendChild(enddateBtn);
 				
 				document.getElementById('end-date-btn').appendChild(td3);
 				
 				var td4=document.createElement('td');
-				var lectdate=document.createElement('label');
+				lectdate=document.createElement('label');
 					//td.appendChild(lectdate);
-					lectdate.textContent="Lecture Date : ";
+					lectdate.textContent="Lecture Date : "+lec_date;
+					lectdate.id="lecDate"
 					lectdate.style.marginLeft="740px";
+					
+					lectdate.style.color="white";
 					td4.appendChild(lectdate);
 					//tbody.appendChild(lectdate);
 					
 				document.getElementById('lecture-date-label').appendChild(td4);
 				
 				var td5=document.createElement('td');
-				var sessionduration=document.createElement('label');
+				sessionduration=document.createElement('label');
 					//td.appendChild(lectdate);
-					sessionduration.textContent="Session Duration : 2 hours";
+					sessionduration.textContent="Session Duration : "+session_duration;
 					sessionduration.style.marginLeft="740px";
+					
+					sessionduration.id="lec_duration";
+					sessionduration.style.color="white";
 					td5.appendChild(sessionduration);
 					//tbody.appendChild(lectdate);
 					
 				document.getElementById('session-duration-label').appendChild(td5);
 				
 				var td6=document.createElement('td');
-				var starttime=document.createElement('label');
+				starttime=document.createElement('label');
 					//td.appendChild(lectdate);
-					starttime.textContent="Start Time : 5.30 pm ";
+					starttime.textContent="Start Time : "+start_time;
+					starttime.id="startTime"
 					starttime.style.marginLeft="740px";
+					starttime.style.color="white";
 					td6.appendChild(starttime);
 					//tbody.appendChild(lectdate);
 					
@@ -625,18 +769,21 @@
 				var td7=document.createElement('td');
 				var strength=document.createElement('label');
 					//td.appendChild(lectdate);
-					strength.textContent="Class Strength : 10";
+					strength.textContent="Class Strength : "+class_strength;
 					strength.style.marginLeft="740px";
+					strength.style.color="white";
 					td7.appendChild(strength);
 					//tbody.appendChild(lectdate);
 					
 				document.getElementById('class-strength-label').appendChild(td7);
 				
+				
 				table.appendChild(tbody);
 				
 				document.getElementById('table-lecture-view').appendChild(table); */
 
-			 	var myData = {
+			
+			 	 var myData = {
 					batchId: batchId
 					
 				};
@@ -648,8 +795,9 @@
 					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
-							alert(jsonObj.mappingCourse.mappingCoursePlans[0]);
-							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].coursePlansId);
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingLecutreTopicPlan[0]);
+							alert(jsonObj.mappingStudentCourseDetails);
+							alert(jsonObj.mappingLecture);
 							
 							lectureDetails=jsonObj;
 							document.getElementById('lec_view_card').style.display = "block";
@@ -701,15 +849,7 @@
 								
 							document.getElementById('currentlec-label').appendChild(td);
 								
-							/* var td1=document.createElement('td');
-							var h4=document.createElement('h4');
-							td1.appendChild(h4);
-							var u=document.createElement('u');
-							u.textContent="Lecture Number : ";
 							
-							h4.appendChild(u);
-							
-							document.getElementById('lecture-view-controls').appendChild(td1); */
 							
 							var td2=document.createElement('td');
 							var startdateBtn=document.createElement('btn');
@@ -791,7 +931,7 @@
 							
 					}
 
-				}); 
+				});  
 			}
 
 			function progressTracker() {
@@ -811,6 +951,61 @@
 				//alert("here");
 				//alert(document.getElementById('rangeInput').value);
 				document.getElementById('output').textContent=document.getElementById('rangeInput').value;
+				
+				document.getElementById('courseplan').textContent='';
+				
+				for(var i=0;i<jsonObj.mappingCourse.mappingCoursePlans.length;i++)
+				{
+					if(jsonObj.mappingCourse.mappingCoursePlans[i].lectureNumber==document.getElementById('rangeInput').value)
+					{
+						//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
+						for(var j=0;j<jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan.length;j++)
+						{
+							var topicName=jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName;
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName);
+							document.getElementById('courseplan').textContent=document.getElementById('courseplan').textContent+topicName+'\n';
+							
+						}
+					}
+			
+				}
+				
+				document.getElementById('lec_coverage').textContent='';
+				lectdate.textContent="Lecture Date : ";
+				sessionduration.textContent="Session Duration : ";
+				starttime.textContent="Start Time : ";
+				
+				for(var i=0;i<jsonObj.mappingLecture.length;i++)
+				{
+					if(jsonObj.mappingLecture[i].lectureNumber==document.getElementById('rangeInput').value)
+					{
+						
+						for(var j=0;j<jsonObj.mappingLecture[i].mappingTopicsCovered.length;j++)
+						{
+							var topicName=jsonObj.mappingLecture[i].mappingTopicsCovered[j].topicName;
+							//alert(topicName);
+							
+							document.getElementById('lec_coverage').textContent=document.getElementById('lec_coverage').textContent+topicName+'\n';
+							
+						}
+						
+						lec_date=jsonObj.mappingLecture[i].lectureDate;
+						session_duration=jsonObj.mappingLecture[i].lectureDuration;
+						start_time=jsonObj.mappingLecture[i].startTime;
+						lecDate.style.color="white";
+						lecDate.textContent="Lecture Date : "+lec_date;
+						//document.getElementById(lecDate).textContent=lec_date;
+						sessionduration.textContent="Session Duration : "+session_duration;
+						sessionduration.style.color="white";
+						starttime.textContent="Start Time : "+start_time;
+						starttime.style.color="white";
+						
+						
+						
+						
+					}
+		
+				}
 			}
 		</script>
 	

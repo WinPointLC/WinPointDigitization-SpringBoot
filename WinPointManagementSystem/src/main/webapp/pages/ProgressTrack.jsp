@@ -156,11 +156,11 @@
 		</c:forEach>      */
 		
 		
-		/* document.getElementById('total_topics').value='${totalTopics}';
+		 document.getElementById('total_topics').value='${totalTopics}';
 		document.getElementById('total_course_duration').value='${totalCourseDuration}';
 		document.getElementById('total_lecs').value='${totalLectures}';
 		document.getElementById('total_topics_covered').value='${totalTopicsCovered}';
-		document.getElementById('elapsed_duration').value='${elapsedDuration}'; */
+		document.getElementById('elapsed_duration').value='${elapsedDuration}'; 
 		
 		    
 			var addStudentList=[
