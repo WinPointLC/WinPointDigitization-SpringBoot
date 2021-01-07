@@ -55,7 +55,7 @@ public class AddNewUserController {
 		System.out.println("USER:  " + userProfile.getMappingSegmentType());
 		System.out.println("USER:  " + userProfile.getMappingUserCategory());
 
-		
+		userProfile.setEnquired(false);
 		userProfileRepository.save(userProfile);
 
 	}

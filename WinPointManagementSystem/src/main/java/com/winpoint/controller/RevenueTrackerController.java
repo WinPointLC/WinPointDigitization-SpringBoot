@@ -119,6 +119,7 @@ public class RevenueTrackerController {
 		
 		enquiryDetails.setDefaultPassword(enquiryDetails.getFirstName()+"."+enquiryDetails.getLastName());
 		enquiryDetails.setMappingUserCategory(userCategoryRepository.findById(1).get());
+		enquiryDetails.setEnquired(true);
 		enquiryDetailsRepository.save(enquiryDetails);
 		finalUser = enquiryDetails;
 		System.out.println("USER final:  " + finalUser.getBirthDateString());

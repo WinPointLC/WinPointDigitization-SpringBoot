@@ -69,6 +69,7 @@ public class EnquiryDetails implements Serializable{
 	private String startDateString;
 	private String defaultPassword;
 //	private UserCategory userCategoryId;
+	private boolean isEnquired;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userCategoryId", nullable = false)

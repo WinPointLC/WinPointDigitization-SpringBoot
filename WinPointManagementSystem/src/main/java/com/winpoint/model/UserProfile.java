@@ -57,7 +57,8 @@ public class UserProfile implements Serializable{
 	private Integer createdBy;
 	@Column(columnDefinition = "datetime")
 	private Date createDate;
-	private Boolean activeStatus;
+	private boolean activeStatus;
+	private boolean isEnquired;
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
