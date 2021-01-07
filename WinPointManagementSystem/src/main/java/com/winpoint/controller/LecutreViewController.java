@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.BatchDetails;
+import com.winpoint.model.CoursePlans;
 import com.winpoint.model.Lecture;
 import com.winpoint.model.Streams;
 import com.winpoint.model.Topics;
@@ -36,33 +37,15 @@ public class LecutreViewController {
 		return mv;
 	}
 
-//	@RequestMapping(value = "/ProgressTracker", method = RequestMethod.GET)
-//	public ModelAndView showProgressTrackerPage(@RequestParam String batchId) {
-//		ModelAndView mv = new ModelAndView();
-//		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();		
-//		mv.addObject("batchObject", batch);
-//		mv.setViewName("ProgressTrack");
-//		return mv;
-//	}
 
 	@RequestMapping(value = "/LectureViewDetails", method = RequestMethod.POST)
 	public @ResponseBody BatchDetails getTimeAndSegment(@RequestParam String batchId) {
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
-//		int total_topics = batch.getMappingCourse().getMappingTopics().size();
-//		int total_duration = 0;
-//		int total_lectures =  batch.getMappingCourse().getMappingCoursePlans().size();
-//		int elapsed_duration = batch.getMappingLecture().size();
-//		System.out.println("\n\n\n\n\n\n\n"+batch.getMappingCourse().getMappingCoursePlans().get(0)+"\n\n\n\n\n\n\n");
-//		Set<Topics> uniqueTopic = new HashSet<>();
-//		for(Lecture lecture:batch.getMappingLecture()) {
-//			uniqueTopic.addAll(lecture.getMappingTopicsCovered());
-//		}
-//		for(Topics topic:batch.getMappingCourse().getMappingTopics()) {
-//			total_duration+=topic.getTopicDuration();
-//			}
-//		int topics_covered = uniqueTopic.size();
-		
-//		batch.getMappingCourse().getMappin
+		System.out.println("\n\n\n\n\n\n\n");
+		for(CoursePlans x : batch.getMappingCourse().getMappingCoursePlans()) {
+			System.out.println(x.getCoursePlansId());
+		}
+		System.out.println("\n\n\n\n\n\n");
 		return batch;
 	}
 	
@@ -89,4 +72,29 @@ public class LecutreViewController {
 		mv.addObject("elapsedDuration", elapsed_duration);		
 		return mv;
 	}
+//	
+//	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
+//	public ModelAndView showLectureViewPage() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("LectureView");
+//		return mv;
+//	}
+//	
+//	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
+//	public ModelAndView showLectureViewPage() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("LectureView");
+//		return mv;
+//	}
+//	
+//	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
+//	public ModelAndView showLectureViewPage() {
+//		ModelAndView mv = new ModelAndView();
+//		List<Streams> c = stream.findAll();
+//		mv.addObject("streamList", c);
+//		mv.setViewName("LectureView");
+//		return mv;
+//	}
+	
+	
 }

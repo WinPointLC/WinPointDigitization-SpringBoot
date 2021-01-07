@@ -58,7 +58,7 @@ public class Course{// implements Serializable{
 	private Streams mappingStreams;
 
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
