@@ -648,7 +648,7 @@
 					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
-							alert(jsonObj.mappingCourse.mappingCoursePlans);
+							alert(jsonObj.mappingCourse.mappingCoursePlans[0]);
 							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].coursePlansId);
 							
 							lectureDetails=jsonObj;
