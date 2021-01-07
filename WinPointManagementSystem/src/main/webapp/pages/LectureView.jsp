@@ -795,17 +795,23 @@
 					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
-							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingLecutreTopicPlan[0]);
-							alert(jsonObj.mappingStudentCourseDetails);
-							alert(jsonObj.mappingLecture);
+							alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingLecutreTopicPlan);
+							alert(jsonObj.mappingCourse.mappingCoursePlans[1].mappingLecutreTopicPlan);
+							//alert(jsonObj.mappingStudentCourseDetails);
+							//alert(jsonObj.mappingLecture[0].mappingTopicsCovered);
+							
 							
 							lectureDetails=jsonObj;
 							document.getElementById('lec_view_card').style.display = "block";
+
+							
 
 							var elem = document.getElementById('details-lectureview');
 							if(elem!=null){
 								elem.parentNode.removeChild(elem);
 							}
+
+							
 							
 							var table = document.createElement('table');
 							table.className="table table-hover";
@@ -813,6 +819,29 @@
 							var thead = document.createElement('thead');
 										
 							var tbody = document.createElement('tbody');
+
+							document.getElementById('courseplan').textContent='';
+							
+							for(var i=0;i<jsonObj.mappingCourse.mappingCoursePlans.length;i++)
+							{
+								
+								if(jsonObj.mappingCourse.mappingCoursePlans[i].lectureNumber==current_lec)
+								{
+									alert(i);
+									alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
+									for(var j=0;j<jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan.length;j++)
+									{
+										var topicName=jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName;
+										//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName);
+										document.getElementById('courseplan').textContent=document.getElementById('courseplan').textContent+topicName+'\n';
+										document.getElementById('courseplan').style.color="white";
+									}
+									
+									//alert(jsonObj.mappingStudentCourseDetails.length);
+									
+								}
+						
+							}
 
 							var total_lecs=30;
 							var current_lec=lectureDetails.currentLectureNumber;
@@ -948,7 +977,7 @@
 			}
 
 			function sliderVal(){
-				//alert("here");
+				alert(jsonObj);
 				//alert(document.getElementById('rangeInput').value);
 				document.getElementById('output').textContent=document.getElementById('rangeInput').value;
 				

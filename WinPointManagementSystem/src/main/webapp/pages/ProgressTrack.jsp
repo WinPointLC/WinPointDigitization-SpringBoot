@@ -43,13 +43,8 @@
 	<div class="card-body">
 			<div class="row"  style="height:100%">
 		<div class="col-md-6">	
-		<div class="card">
-			<div>
-				<div class="card-body primary">
-				
-				
-				</div>
-			</div>
+		<div class="card" style="margin-top:-20px;">
+			
 			<div class="card-body-primary">
 				<table>
 					<tr>
@@ -100,7 +95,7 @@
 		</div>
 		
 		<div class="col-md-6" style="height:100%">	
-		<div class="card">
+		<div class="card" style="margin-top:-20px;">
 			<div>
 				<div class="card-body primary">
 				
@@ -119,7 +114,7 @@
 		<div class="row" style="height:100%">
 		
 		<div class="col-md-6" style="height:100%; margin-left:50%;margin-top:-10%;">	
-		<div class="card">
+		<div class="card" style="margin-top:-150px;">
 			<div>
 				<div class="card-body primary">
 				
@@ -130,7 +125,7 @@
 				<table>
 					<tr>
 						<td>
-							<label for="syallabus" style="margin-left:300px">Syallabus</label>
+							<label for="syallabus" style="margin-left:200px">Syllabus</label>
 						</td>
 					</tr>
 				</table>
@@ -145,7 +140,7 @@
 	</div>
 	<script>
 
-		//alert('${batchObject.currentLectureNumber}');
+		//alert('${batchObject.mappingLecture}');
 		var remaininglec='${totalLectures}'-'${batchObject.currentLectureNumber}';
 		document.getElementById('total_topics').value='${totalTopics}';
 		document.getElementById('total_course_duration').value='${totalCourseDuration}';
