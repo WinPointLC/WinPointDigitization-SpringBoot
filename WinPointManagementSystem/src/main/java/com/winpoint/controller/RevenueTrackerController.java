@@ -24,7 +24,6 @@ import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SegmentType;
 import com.winpoint.model.Streams;
 import com.winpoint.model.TimeSlots;
-import com.winpoint.model.UserCategory;
 import com.winpoint.model.UserProfile;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.EnquiryDetailsRepository;
@@ -42,8 +41,6 @@ public class RevenueTrackerController {
 		mv.setViewName("MainBatchPage");
 		return mv;
 	}
-
-	
 
 	@Autowired
 	StreamsRepository stream;
@@ -82,7 +79,7 @@ public class RevenueTrackerController {
 
 	@Autowired
 	UserCategoryRepository userCategoryRepository;
-	
+
 	EnquiryDetails finalUser;
 
 //	@ModelAttribute("enquiryDetails")
@@ -114,10 +111,8 @@ public class RevenueTrackerController {
 //		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 //		UserCategory userCategory = new UserCategory();
 //		userCategory.setUserCategoryId(1);
-		
-		
-		
-		enquiryDetails.setDefaultPassword(enquiryDetails.getFirstName()+"."+enquiryDetails.getLastName());
+
+		enquiryDetails.setDefaultPassword(enquiryDetails.getFirstName() + "." + enquiryDetails.getLastName());
 		enquiryDetails.setMappingUserCategory(userCategoryRepository.findById(1).get());
 		enquiryDetails.setEnquired(true);
 		enquiryDetailsRepository.save(enquiryDetails);
@@ -127,7 +122,7 @@ public class RevenueTrackerController {
 			return "LoginForm";
 		else
 			return "redirect:/EnquiryDetails";
-		
+
 	}
 
 	@Autowired

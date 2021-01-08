@@ -78,6 +78,7 @@ public class LecutreViewController {
 	public ModelAndView AttendanceRecord(@RequestParam String batchId) {
 		ModelAndView mv = new ModelAndView();
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		mv.addObject("batchDetailsObject", batch);
 		mv.setViewName("AttendanceRecord");
 		return mv;
 	}
@@ -86,6 +87,7 @@ public class LecutreViewController {
 	public ModelAndView EditBatchDetails(@RequestParam String batchId) {
 		ModelAndView mv = new ModelAndView();
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		mv.addObject("batchDetailsObject", batch);
 		mv.setViewName("EditBatchDetails");
 		return mv;
 	}
@@ -94,6 +96,7 @@ public class LecutreViewController {
 	public ModelAndView showCoursewareAndAssignment(@RequestParam String batchId) {
 		ModelAndView mv = new ModelAndView();
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		mv.addObject("batchDetailsObject", batch);
 		mv.setViewName("CoursewareAndAssignment");
 		return mv;
 	}
