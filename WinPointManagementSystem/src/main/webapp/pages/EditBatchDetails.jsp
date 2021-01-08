@@ -101,17 +101,38 @@
 								  <input type="number" class="form-control" id="sessionDuration" required><br><br>
 								</div>
 							</div>
+							
 						</div>		
 							<div  style="width:80%; margin-left:55px;">
 								<label>Comments</label>
 								<textarea class="form-control" rows="3" id="comments" required></textarea>
 							</div> <br><br> 
 							
-							<div  style="width:80%; margin-left:55px;">
+							<!-- <div  style="width:80%; margin-left:55px;">
 								<label>Lecture Coverage:</label>
 								<textarea class="form-control" rows="3" id="coverage" required></textarea>
 								<p></p>
-							</div>  
+							</div>   -->
+							<form>
+								<div class="row">
+							<div class="col" style="width:60%; margin-left:55px;">
+							    <label class="label-control">Lecture Coverage</label>
+									 <select  class="form-control"  style="width:90%;" id="lec_coverage" multiple>
+													
+													<c:forEach items='${batchDetailsObject.mappingCourse.mappingCoursePlans}' var="courseplan"> 
+			
+														
+															<c:forEach items='${courseplan.mappingLecutreTopicPlan}' var="topic">
+																
+																<option value="${topic.topicId}" class="${topic.topicName}" >${topic.topicName}</option>
+															</c:forEach>  
+															
+														
+													</c:forEach>    
+									</select>
+							</div> 
+							</div>
+							</form>
 							<br>
 							<button type="submit" class="btn btn-primary" style="margin-left:45%">Save</button>
                                 
