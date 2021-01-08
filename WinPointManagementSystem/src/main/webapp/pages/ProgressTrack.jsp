@@ -94,50 +94,35 @@
 		</div>
 		</div>
 		
-		<div class="col-md-6" style="height:100%">	
+		<div class="col-md-6" style="height:100%">	 
 		<div class="card" style="margin-top:-20px;">
-			<div>
-				<div class="card-body primary">
-				
-				
-				</div>
-			</div>
+			
 			<div class="card-body-primary">
 				<div class="table-responsive" id="table-batch-add-student">
 					
 				</div>
 			
 			</div>
+			
 		</div>
-		</div>
-		</div><!--row div end-->
-		<div class="row" style="height:100%">
 		
-		<div class="col-md-6" style="height:100%; margin-left:50%;margin-top:-10%;">	
-		<div class="card" style="margin-top:-150px;">
-			<div>
-				<div class="card-body primary">
-				
-				
-				</div>
-			</div>
+		<div class="card" >
 			<div class="card-body-primary">
 				<table>
 					<tr>
 						<td>
-							<label for="syallabus" style="margin-left:200px">Syllabus</label>
+							<label for="syllabus" style="margin-left:200px">Syllabus</label>
 						</td>
 					</tr>
 				</table>
 			</div>
-		</div>
-		</div>
-			
+			</div>
+		</div> 
+		</div><!--row div end-->
 		
-		</div>
+		
 		<!--End Progress track Page-->
-	</div>
-	</div>
+	
 	<script>
 
 		//alert('${batchObject.mappingLecture}');
@@ -148,9 +133,49 @@
 		document.getElementById('total_topics_covered').value='${totalTopicsCovered}';
 		document.getElementById('elapsed_duration').value='${elapsedDuration}'; 
 		document.getElementById('remaining_lecs').value=remaininglec; 
+
+		var elem = document.getElementById('details-batch');
+		if(elem!=null){
+			elem.parentNode.removeChild(elem);
+		}
 		
-		    
-			var addStudentList=[
+		var table = document.createElement('table');
+		table.className="table table-hover";
+		table.id="details-batch";
+		var thead = document.createElement('thead');
+
+		var th1 = document.createElement('th');
+		th1.textContent = "Topic Name";
+		var th2 = document.createElement('th');
+		th2.textContent = "Duration (in hrs)";
+
+		thead.appendChild(th1);
+		thead.appendChild(th2);
+		table.appendChild(thead);
+		
+		var tbody = document.createElement('tbody');
+		<c:forEach items='${batchObject.mappingLecture}' var="lec">
+
+			//var tr = document.createElement('tr');
+			<c:forEach items='${lec.mappingTopicsCovered}' var="topic">
+				
+				var tr = document.createElement('tr');
+				tbody.appendChild(tr);
+				var td1 = document.createElement('td');
+				td1.textContent = '${topic.topicName}';
+				var td2 = document.createElement('td');
+				td2.textContent = '${topic.topicDuration}';
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				//alert('${topic.topicName}');
+			</c:forEach>  
+			//alert('${lec.mappingTopicsCovered}');
+			
+		</c:forEach>   
+		table.appendChild(tbody);
+		
+		document.getElementById('table-batch-add-student').appendChild(table);
+			/* var addStudentList=[
 			{
 				topicname:"c++",
 				registered:"",
@@ -178,8 +203,8 @@
 				
 			}
 			]
-			
-			var elem = document.getElementById('details-batch');
+			 */
+			/* var elem = document.getElementById('details-batch');
 			if(elem!=null){
 				elem.parentNode.removeChild(elem);
 			}
@@ -229,7 +254,7 @@
 			}
 			table.appendChild(tbody);
 			
-			document.getElementById('table-batch-add-student').appendChild(table);
+			document.getElementById('table-batch-add-student').appendChild(table); */
 		</script>
 		
 	</body>
