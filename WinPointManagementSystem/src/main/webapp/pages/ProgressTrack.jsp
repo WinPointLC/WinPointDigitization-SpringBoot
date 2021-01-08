@@ -112,6 +112,9 @@
 					<tr>
 						<td>
 							<label for="syllabus" style="margin-left:200px">Syllabus</label>
+							<div style="height:280px; width:280px;margin-left:30%">
+									<canvas id="pieChart"></canvas>
+							</div>
 						</td>
 					</tr>
 				</table>
@@ -125,13 +128,13 @@
 	
 	<script>
 
-		//alert('${batchObject.mappingLecture}');
+		//alert('${batchObject.mappingCourse.mappingTopics}');
 		var remaininglec='${totalLectures}'-'${batchObject.currentLectureNumber}';
 		document.getElementById('total_topics').value='${totalTopics}';
-		document.getElementById('total_course_duration').value='${totalCourseDuration}';
+		document.getElementById('total_course_duration').value='${totalCourseDuration}' + " hrs";
 		document.getElementById('total_lecs').value='${totalLectures}';
 		document.getElementById('total_topics_covered').value='${totalTopicsCovered}';
-		document.getElementById('elapsed_duration').value='${elapsedDuration}'; 
+		document.getElementById('elapsed_duration').value='${elapsedDuration}' + " hrs";
 		document.getElementById('remaining_lecs').value=remaininglec; 
 
 		var elem = document.getElementById('details-batch');
@@ -175,86 +178,58 @@
 		table.appendChild(tbody);
 		
 		document.getElementById('table-batch-add-student').appendChild(table);
-			/* var addStudentList=[
-			{
-				topicname:"c++",
-				registered:"",
-				time:"",
-				duration:"true"
-				
-			},
-			{
-				topicname:"java",
-				registered:"",
-				time:"",
-				duration:"true"
-			},
-			{
-				topicname:"xyz",
-				registered:"",
-				time:"",
-				duration:"true"
-			},
-			{
-				topicname:"aaa",
-				registered:"",
-				time:"",
-				duration:"true"
-				
-			}
-			]
-			 */
-			/* var elem = document.getElementById('details-batch');
-			if(elem!=null){
-				elem.parentNode.removeChild(elem);
-			}
 			
-			var table = document.createElement('table');
-			table.className="table table-hover";
-			table.id="details-batch";
-			var thead = document.createElement('thead');
+		</script>
+		
+		<script type="text/javascript">
+			var data=[];
+			var coloR = [];
+			var labels=[];
+
 			
-			var th1 = document.createElement('th');
-			th1.textContent = "Topic Name";
-			var th2 = document.createElement('th');
-			th2.textContent = "";
-			var th3 = document.createElement('th');
-			th3.textContent = "";
-			var th4 = document.createElement('th');
-			th4.textContent = "Duration";
+			<c:forEach items='${batchObject.mappingCourse.mappingCoursePlans}' var="courseplan"> 
+			
+			//var tr = document.createElement('tr');
+				<c:forEach items='${courseplan.mappingLecutreTopicPlan}' var="topic">
 					
-			thead.appendChild(th1);
-			thead.appendChild(th2);
-			thead.appendChild(th3);
-			thead.appendChild(th4);
+					labels.push('${topic.topicName}');
+					data.push('${topic.topicDuration}');
+					//alert('${topic.topicName}');
+				</c:forEach>  
+				//alert('${lec.mappingTopicsCovered}');
 			
-			table.appendChild(thead);
+		</c:forEach>    
+
+		    var dynamicColors = function() {
+	            var r = Math.floor(Math.random() * 255);
+	            var g = Math.floor(Math.random() * 255);
+	            var b = Math.floor(Math.random() * 255);
+	            return "rgb(" + r + "," + g + "," + b + ")";
+	         };
+
+	         for (var i in data) {
+	          
+	            coloR.push(dynamicColors());
+	         }
+	         
+
+			var ctx = document.getElementById("pieChart").getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'pie',
+				data: {
+					labels: labels,
+					datasets: [{
+						label: 'Course Participants',
+						data: data,
+						backgroundColor:  coloR,
+						borderWidth: 3
+					   
+					}]
+				}
+			});
+				
 			
-			var tbody = document.createElement('tbody');
-			
-			for(var i=0;i<addStudentList.length;i++){
-				
-				var tr = document.createElement('tr');
-				var td1 = document.createElement('td');
-				td1.textContent = addStudentList[i].topicname;
-				var td2 = document.createElement('td');
-				td2.textContent = addStudentList[i].registered;
-				var td3 = document.createElement('td');
-				td3.textContent = addStudentList[i].time;
-				var td4 = document.createElement('td');
-				td4.textContent = addStudentList[i].duration;
-				
-				tr.appendChild(td1);
-				tr.appendChild(td2);
-				
-				tr.appendChild(td3);
-				tr.appendChild(td4);
-				
-				tbody.appendChild(tr);
-			}
-			table.appendChild(tbody);
-			
-			document.getElementById('table-batch-add-student').appendChild(table); */
+			//document.getElementById('pieChart').appendChild(myPieChart);
 		</script>
 		
 	</body>
