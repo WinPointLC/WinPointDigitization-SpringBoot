@@ -263,8 +263,10 @@
  				   dropanchor.className='dropdown-item';
  				   dropanchor.id='${det.courseTypeId}';
  				 
- 				   if(cnt==1)
+ 				   if(cnt==1){
  					   courseTypeName = ('${det.courseTypeName}').toUpperCase();
+ 					   courseTypeId =  ('${det.courseTypeId}');
+ 				   }
  				   dropanchor.textContent= ('${det.courseTypeName}').toUpperCase();
  				   dropanchor.setAttribute('onclick',"displayStreamCourses(this.id, this.textContent)");
  				   dropdownMenu.appendChild(dropanchor);

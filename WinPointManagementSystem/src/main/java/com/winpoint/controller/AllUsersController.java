@@ -38,6 +38,7 @@ public class AllUsersController {
 	@RequestMapping(value = "/StreamCourseTypeCourses", method = RequestMethod.POST)
 	public @ResponseBody List<Course> showCourse(@RequestParam("streamId") String streamId,
 			@RequestParam("courseTypeId") String courseTypeId) {
+		System.out.println("Stream Type Id : "+courseTypeId+"Stream Id : "+streamId);
 		return CourseRepository.findByCourseTypeIdAndName(Integer.parseInt(courseTypeId), Integer.parseInt(streamId));
 	}
 

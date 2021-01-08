@@ -47,6 +47,7 @@ public class LoginController {
 			UserProfile userObject = userProfileRepositroy.findByEmailId(username).get(0);
 			System.out.println("password : "+password);
 			System.out.println("database password : "+userObject.getPassword());
+//			System.out.println("Enquired : "+userObject.getEnquired());
 			if (password.equals(userObject.getPassword())) {
 				return userObject;
 			} 
@@ -59,6 +60,7 @@ public class LoginController {
 			EnquiryDetails enquiryDetails = enquiryDetailsRepository.findByEmailId(username).get(0);
 			System.out.println("password : "+password);
 			System.out.println("database password : "+enquiryDetails.getDefaultPassword());
+			System.out.println("Enquired : "+enquiryDetails.isEnquired());
 			if(password.equals(enquiryDetails.getDefaultPassword())) {
 				return enquiryDetails;
 			}
