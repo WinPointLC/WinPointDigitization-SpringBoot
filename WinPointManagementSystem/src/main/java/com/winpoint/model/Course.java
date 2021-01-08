@@ -2,6 +2,7 @@ package com.winpoint.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -70,7 +71,7 @@ public class Course{// implements Serializable{
 	
 //	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingCourse")
-	public List<CoursePlans> mappingCoursePlans;
+	public Set<CoursePlans> mappingCoursePlans;
 
 	
 	@JsonIgnore
@@ -114,15 +115,15 @@ public class Course{// implements Serializable{
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingCourseInterestedIn")
-	List<EnquiryDetails> mappingInterestedEnquiryDetails = new ArrayList<>();
+	Set<EnquiryDetails> mappingInterestedEnquiryDetails = new HashSet<>();
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingCoursesAlreadyDone")
-	List<EnquiryDetails> mappingCoursesDoneEnquiryDetails = new ArrayList<>();
+	Set<EnquiryDetails> mappingCoursesDoneEnquiryDetails = new HashSet<>();
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "mappingUserCoursesAlreadyDone")
-	List<UserProfile> mappingUserCoursesDoneEnquiryDetails = new ArrayList<>();
+	Set<UserProfile> mappingUserCoursesDoneEnquiryDetails = new HashSet<>();
 
 	@Override
 	public String toString() {

@@ -2,6 +2,7 @@ package com.winpoint.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -50,11 +51,11 @@ public class Lecture {
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "absenteesTable", joinColumns = @JoinColumn(name = "lectureId"), inverseJoinColumns = @JoinColumn(name = "userId"))
-	private List<UserProfile> mappingAbsentUsersList = new ArrayList<>();
+	private Set<UserProfile> mappingAbsentUsersList = new HashSet<>();
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "topicsCoveredLecture", joinColumns = @JoinColumn(name = "lectureId"), inverseJoinColumns = @JoinColumn(name = "topicId"))
-	private List<Topics> mappingTopicsCovered = new ArrayList<>();
+	private Set<Topics> mappingTopicsCovered = new HashSet<>();
 	
 	
 	
