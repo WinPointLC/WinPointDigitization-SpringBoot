@@ -17,22 +17,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.DynamicInsert;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.Value;
 
+@SuppressWarnings("serial")
 @Entity
 @Getter
 @Setter
 public class EnquiryDetails implements Serializable{
-//	creation of fk
-//	schema checked
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "enquiryId", updatable = false)
@@ -68,7 +60,6 @@ public class EnquiryDetails implements Serializable{
 	private String dateOfEnquiryString;
 	private String startDateString;
 	private String defaultPassword;
-//	private UserCategory userCategoryId;
 	private boolean isEnquired;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -84,12 +75,10 @@ public class EnquiryDetails implements Serializable{
 	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
 	
-	//@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "enquiryDetailsCoursesInterestedIn", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
 	List<Course> mappingCourseInterestedIn = new ArrayList<>();
 	
-	//@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "enquiryDetailsCoursesAlreadyDone", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
 	List<Course> mappingCoursesAlreadyDone = new ArrayList<>();

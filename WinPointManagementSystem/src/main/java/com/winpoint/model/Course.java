@@ -1,6 +1,5 @@
 package com.winpoint.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,6 @@ public class Course{// implements Serializable{
 	@JoinColumn(name = "evaluationTypeId", nullable = false)
 	private EvaluationType mappingEvaluationType;
 
-//	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseTypeId", nullable = false)
 	private CourseType mappingCourseType;
@@ -59,7 +57,6 @@ public class Course{// implements Serializable{
 	private Streams mappingStreams;
 
 	
-//	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourse")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
@@ -69,7 +66,6 @@ public class Course{// implements Serializable{
 	private Set<BatchDetails> mappingBatchDetails;
 
 	
-//	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingCourse")
 	public Set<CoursePlans> mappingCoursePlans;
 

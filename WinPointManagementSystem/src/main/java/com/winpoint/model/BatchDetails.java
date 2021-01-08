@@ -22,11 +22,12 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
+@SuppressWarnings("serial")
 @Entity
 @Getter
 @Setter
-@JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="batchId")
-public class BatchDetails implements Serializable{
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "batchId")
+public class BatchDetails implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "batchId", updatable = false)
@@ -53,25 +54,16 @@ public class BatchDetails implements Serializable{
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 
-	
-//	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
 
-	
-	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<ExpenseDetails> mappingExpenseDetails;
 
-	
-	
-	//@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<Lecture> mappingLecture;
 
-	
-	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<RevenueDetail> mappingRevenueDetail;

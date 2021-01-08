@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
+@SuppressWarnings("serial")
 @Entity
 @Data
 public class Topics implements Serializable {
