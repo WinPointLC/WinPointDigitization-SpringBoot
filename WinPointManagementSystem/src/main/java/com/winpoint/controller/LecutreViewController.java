@@ -73,29 +73,30 @@ public class LecutreViewController {
 		mv.addObject("elapsedDuration", elapsed_duration);		
 		return mv;
 	}
-//	
-//	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
-//	public ModelAndView showLectureViewPage() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("LectureView");
-//		return mv;
-//	}
-//	
-//	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
-//	public ModelAndView showLectureViewPage() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("LectureView");
-//		return mv;
-//	}
-//	
-//	@RequestMapping(value = "/LectureView", method = RequestMethod.GET)
-//	public ModelAndView showLectureViewPage() {
-//		ModelAndView mv = new ModelAndView();
-//		List<Streams> c = stream.findAll();
-//		mv.addObject("streamList", c);
-//		mv.setViewName("LectureView");
-//		return mv;
-//	}
+	
+	@RequestMapping(value = "/AttendaceRecordsPage", method = RequestMethod.GET)
+	public ModelAndView AttendanceRecord(@RequestParam String batchId) {
+		ModelAndView mv = new ModelAndView();
+		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		mv.setViewName("AttendanceRecord");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/EditBatchDetailsPage", method = RequestMethod.GET)
+	public ModelAndView EditBatchDetails(@RequestParam String batchId) {
+		ModelAndView mv = new ModelAndView();
+		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		mv.setViewName("EditBatchDetails");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/CoursewareAndAssignmentPage", method = RequestMethod.GET)
+	public ModelAndView showCoursewareAndAssignment(@RequestParam String batchId) {
+		ModelAndView mv = new ModelAndView();
+		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		mv.setViewName("CoursewareAndAssignment");
+		return mv;
+	}
 	
 	
 }
