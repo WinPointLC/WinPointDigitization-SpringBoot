@@ -266,8 +266,8 @@
 						<tr>
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Fees Records</button></td>
 							<td rowspan="3">
-								<label for="exampleFormControlTextarea1" style="color:white">Course Plan</label>
-						<textarea class="form-control" id="courseplan" style="width:100%" rows="10"></textarea>
+								<label for="exampleFormControlTextarea1" style="color:white" >Course Plan</label>
+						<textarea class="form-control" id="courseplan" style="width:100%;background:white" rows="10"></textarea>
 						
 							</td>
 						
@@ -276,10 +276,10 @@
 							</div></td>
 						</tr>
 						<tr>
-							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Attendance<br>Records</button></td>
+							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;" onclick="AttendanceScreen()">Attendance<br>Records</button></td>
 						</tr>
 						<tr>
-							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Assignments</button></td>
+							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;" onclick="AssignmentsScreen()">Assignments</button></td>
 							<td><div id="session-duration-label" style="margin-left:-700px;color:white;">
 					
 							</div></td>
@@ -289,7 +289,7 @@
 							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Feedback</button></td>
 							<td rowspan="3">
 								<label for="exampleFormControlTextarea1" style="color:white">Lecture Coverage</label>
-						<textarea class="form-control" id="lec_coverage" style="width:100%" rows="10"></textarea>
+						<textarea class="form-control" id="lec_coverage" style="width:100%;background:white" rows="10"></textarea>
 							</td>
 							<td><div id="start-time-label" style="margin-left:-700px;color:white;">
 					
@@ -298,11 +298,11 @@
 
 						</tr>
 						<tr>
-							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Evaluation</button></td>
+							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;" >Evaluation</button></td>
 						</tr>
 						<tr>
-							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;">Edit Batch<br>Details</button></td>
-					
+							<td><button type="button" class="btn btn-secondary" style="width:60%;margin-left:10%;" onclick="EditBatchDetails()">Edit Batch<br> Details</button></td>
+							
 							<td><div id="class-strength-label" style="margin-left:-700px;color:white;">
 					
 							</div></td>
@@ -487,8 +487,8 @@
 
 			var lectureDetails;
 			var batchId;
-			var total_lecs=10;
-			var current_lec=2;
+			var total_lecs;
+			var current_lec;
 			var lec_date;
 			var session_duration;
 			var class_strength;
@@ -506,284 +506,8 @@
 				document.getElementById('dropdownMenuButtonBatch').textContent = batchElem.textContent;
 				document.getElementById('lec_view_card').style.display = "block";
 
-				
-				/* jsonObj=
-						{
-							batchName:'B1',
-							mappingCourse:{
-								courseName:'C',
-								
-								mappingCoursePlans:[
-									{
-										coursePlansId:1,
-										lectureNumber:2,
-										mappingLecutreTopicPlan:[
-										{
-											topicName:'TOPIC 1'
-										
-										},
-										{
-										
-											topicName:'TOPIC 2'
-										
-										}
-										
-										
-										]
-									},
-									{		
-										coursePlansId:2,
-										lectureNumber:5,
-										mappingLecutreTopicPlan:[
-										{
-											topicName:'TOPIC 3'
-										
-										},
-										{
-										
-										
-											topicName:'TOPIC 4'
-										}
-										
-										
-										]
-									
-									}
-								] ,
-								
-								
-							},
-							mappingStudentCourseDetails:[
-										{
-											studentCourseDetailsId:1
-										},
-										{
-											studentCourseDetailsId:2
-										}
-							],
-							mappingLecture:[
-										{
-											lectureDuration:1,
-											startTime:'10:00',
-											lectureDate:'10-10-2020',
-											lectureNumber:2,
-											mappingTopicsCovered:[
-											{
-												topicName:'TOPIC 1'
-											
-											},
-											{
-											
-											
-												topicName:'TOPIC 2'
-											}
-											
-											
-											]
-										},
-										{
-											lectureDuration:2,
-											startTime:'12:00',
-											lectureDate:'12-12-2020',
-											lectureNumber:5,
-											mappingTopicsCovered:
-											[
-												{
-													topicName:'TOPIC 3'
-												
-												},
-												{
-												
-												
-													topicName:'TOPIC 4'
-												}
-											
-											
-											]
-										}
-							]
-						
-						
-						}
-				
-				document.getElementById('courseplan').textContent='';
-						
-				for(var i=0;i<jsonObj.mappingCourse.mappingCoursePlans.length;i++)
-				{
-					if(jsonObj.mappingCourse.mappingCoursePlans[i].lectureNumber==current_lec)
-					{
-						//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
-						for(var j=0;j<jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan.length;j++)
-						{
-							var topicName=jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName;
-							//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName);
-							document.getElementById('courseplan').textContent=document.getElementById('courseplan').textContent+topicName+'\n';
-							document.getElementById('courseplan').style.color="white";
-						}
-						
-						//alert(jsonObj.mappingStudentCourseDetails.length);
-						
-					}
 			
-				}
-				
-				for(var i=0;i<jsonObj.mappingLecture.length;i++)
-				{
-					if(jsonObj.mappingLecture[i].lectureNumber==current_lec)
-					{
-						
-						for(var j=0;j<jsonObj.mappingLecture[i].mappingTopicsCovered.length;j++)
-						{
-							var topicName=jsonObj.mappingLecture[i].mappingTopicsCovered[j].topicName;
-							//alert(topicName);
-							document.getElementById('lec_coverage').textContent=document.getElementById('lec_coverage').textContent+topicName+'\n';
-							document.getElementById('lec_coverage').style.color="white";
-						}
-						
-						lec_date=jsonObj.mappingLecture[i].lectureDate;
-						session_duration=jsonObj.mappingLecture[i].lectureDuration;
-						start_time=jsonObj.mappingLecture[i].startTime;
-						
-					}
-			
-				}
-						
-				class_strength=jsonObj.mappingStudentCourseDetails.length;
-				
-				//alert(jsonObj.mappingCourse.mappingCoursePlans.length);
-				
-				var elem = document.getElementById('details-lectureview');
-				if(elem!=null){
-					elem.parentNode.removeChild(elem);
-				}
-				
-				var table = document.createElement('table');
-				table.className="table table-hover";
-				table.id="details-lectureview";
-				var thead = document.createElement('thead');
-				
-				var tbody = document.createElement('tbody');
-
-				var total_lecs=50;
-				//var current_lec=lectureDetails.currentLectureNumber;
-				var range_slider=document.createElement('input');
-				range_slider.setAttribute('type','range');
-				//range_slider.setAttribute('style',"width:600px");
-				range_slider.setAttribute('min',0);
-				range_slider.setAttribute('max',total_lecs);
-				range_slider.setAttribute('value',current_lec);
-				
-				
-				range_slider.setAttribute('step',1);
-				
-				range_slider.id='rangeInput';
-				document.getElementById('slider_lec').appendChild(range_slider);
-				
-				var range_slider_output=document.createElement('output');
-				document.getElementById('slider_lec').appendChild(range_slider_output);
-				range_slider_output.setAttribute('for',"rangeInput");
-				range_slider_output.id="output";
-				range_slider_output.textContent=current_lec;
-				range_slider_output.style.color="white";
-				
-				document.getElementById('lecture-view-controls').appendChild(range_slider_output);
-				//range_slider.setAttribute('oninput',range_slider_output.value = range_slider.value);
-				range_slider.setAttribute('oninput',"sliderVal()");
-					
-				var td=document.createElement('td');
-				var h4=document.createElement('h4');
-				td.appendChild(h4);
-				var currentlec=document.createElement('h4');
-				currentlec.textContent="Current Lecture: 10";
-				h4.appendChild(currentlec);
-					
-				document.getElementById('currentlec-label').appendChild(td);
-					
-				
-				
-				var td2=document.createElement('td');
-				var startdateBtn=document.createElement('btn');
-					startdateBtn.className="btn btn-secondary";
-					startdateBtn.textContent="Start Date 2nd Oct2019";
-					//startdateBtn.style.width="50";
-					startdateBtn.style.height="60px";
-					startdateBtn.style.backgroundColor="secondary";
-					startdateBtn.style.color="black";
-					startdateBtn.style.fontSize="16px";
-					td2.appendChild(startdateBtn);
-				
-				document.getElementById('start-date-btn').appendChild(td2);
-				
-				var td3=document.createElement('td');
-				var enddateBtn=document.createElement('btn');
-					enddateBtn.className="btn btn-secondary";
-					enddateBtn.textContent="End Date 2nd Jan 2020";
-					enddateBtn.style.marginLeft="298%";
-					enddateBtn.style.marginTop="30px";
-					enddateBtn.style.height="60px";
-					enddateBtn.style.backgroundColor="secondary";
-					enddateBtn.style.color="black";
-					enddateBtn.style.fontSize="16px";
-					td3.appendChild(enddateBtn);
-				
-				document.getElementById('end-date-btn').appendChild(td3);
-				
-				var td4=document.createElement('td');
-				lectdate=document.createElement('label');
-					//td.appendChild(lectdate);
-					lectdate.textContent="Lecture Date : "+lec_date;
-					lectdate.id="lecDate"
-					lectdate.style.marginLeft="740px";
-					
-					lectdate.style.color="white";
-					td4.appendChild(lectdate);
-					//tbody.appendChild(lectdate);
-					
-				document.getElementById('lecture-date-label').appendChild(td4);
-				
-				var td5=document.createElement('td');
-				sessionduration=document.createElement('label');
-					//td.appendChild(lectdate);
-					sessionduration.textContent="Session Duration : "+session_duration;
-					sessionduration.style.marginLeft="740px";
-					
-					sessionduration.id="lec_duration";
-					sessionduration.style.color="white";
-					td5.appendChild(sessionduration);
-					//tbody.appendChild(lectdate);
-					
-				document.getElementById('session-duration-label').appendChild(td5);
-				
-				var td6=document.createElement('td');
-				starttime=document.createElement('label');
-					//td.appendChild(lectdate);
-					starttime.textContent="Start Time : "+start_time;
-					starttime.id="startTime"
-					starttime.style.marginLeft="740px";
-					starttime.style.color="white";
-					td6.appendChild(starttime);
-					//tbody.appendChild(lectdate);
-					
-				document.getElementById('start-time-label').appendChild(td6);
-				
-				var td7=document.createElement('td');
-				var strength=document.createElement('label');
-					//td.appendChild(lectdate);
-					strength.textContent="Class Strength : "+class_strength;
-					strength.style.marginLeft="740px";
-					strength.style.color="white";
-					td7.appendChild(strength);
-					//tbody.appendChild(lectdate);
-					
-				document.getElementById('class-strength-label').appendChild(td7);
-				
-				
-				table.appendChild(tbody);
-				
-				document.getElementById('table-lecture-view').appendChild(table); */
-
-			
-			 	 var myData = {
+			 	var myData = {
 					batchId: batchId
 					
 				};
@@ -795,8 +519,8 @@
 					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 					traditional: true,
 					success: function (jsonObj) {
-							alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingLecutreTopicPlan);
-							alert(jsonObj.mappingCourse.mappingCoursePlans[1].mappingLecutreTopicPlan);
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[0].mappingLecutreTopicPlan);
+							//alert(jsonObj.mappingCourse.mappingCoursePlans[1].mappingLecutreTopicPlan);
 							//alert(jsonObj.mappingStudentCourseDetails);
 							//alert(jsonObj.mappingLecture[0].mappingTopicsCovered);
 							
@@ -804,7 +528,7 @@
 							lectureDetails=jsonObj;
 							document.getElementById('lec_view_card').style.display = "block";
 
-							
+							current_lec=lectureDetails.currentLectureNumber;
 
 							var elem = document.getElementById('details-lectureview');
 							if(elem!=null){
@@ -822,19 +546,19 @@
 
 							document.getElementById('courseplan').textContent='';
 							
-							for(var i=0;i<jsonObj.mappingCourse.mappingCoursePlans.length;i++)
+						 	for(var i=0;i<jsonObj.mappingCourse.mappingCoursePlans.length;i++)
 							{
 								
 								if(jsonObj.mappingCourse.mappingCoursePlans[i].lectureNumber==current_lec)
 								{
-									alert(i);
-									alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
+									//alert(i);
+									//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
 									for(var j=0;j<jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan.length;j++)
 									{
 										var topicName=jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName;
 										//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName);
 										document.getElementById('courseplan').textContent=document.getElementById('courseplan').textContent+topicName+'\n';
-										document.getElementById('courseplan').style.color="white";
+										//document.getElementById('courseplan').style.color="white";
 									}
 									
 									//alert(jsonObj.mappingStudentCourseDetails.length);
@@ -842,16 +566,41 @@
 								}
 						
 							}
+							
+							
+ 
 
-							var total_lecs=30;
-							var current_lec=lectureDetails.currentLectureNumber;
+						 for(var i=0;i<jsonObj.mappingLecture.length;i++)
+							{
+								//alert(jsonObj.mappingLecture[i].lectureNumber);
+								if(jsonObj.mappingLecture[i].lectureNumber==current_lec)
+								{
+									
+									for(var j=0;j<jsonObj.mappingLecture[i].mappingTopicsCovered.length;j++)
+									{
+										var topicName=jsonObj.mappingLecture[i].mappingTopicsCovered[j].topicName;
+										//alert(topicName);
+										document.getElementById('lec_coverage').textContent=document.getElementById('lec_coverage').textContent+topicName+'\n';
+										//document.getElementById('lec_coverage').style.color="white";
+									}
+									
+									lec_date=jsonObj.mappingLecture[i].lectureDate;
+									session_duration=jsonObj.mappingLecture[i].lectureDuration;
+									start_time=jsonObj.mappingLecture[i].startTime;
+									
+								}
+						
+							}
+
+ 							class_strength=lectureDetails.mappingStudentCourseDetails.length;
+							total_lecs=lectureDetails.totalNumberOfLectures;
+							
 							var range_slider=document.createElement('input');
 							range_slider.setAttribute('type','range');
-							range_slider.setAttribute('style',"width:600px");
+							//range_slider.setAttribute('style',"width:600px");
 							range_slider.setAttribute('min',0);
 							range_slider.setAttribute('max',total_lecs);
-							range_slider.setAttribute('value',current_lec);
-							
+							range_slider.setAttribute('value',current_lec);		
 							
 							range_slider.setAttribute('step',1);
 							
@@ -863,6 +612,7 @@
 							range_slider_output.setAttribute('for',"rangeInput");
 							range_slider_output.id="output";
 							range_slider_output.textContent=current_lec;
+							range_slider_output.style.color="white";
 							
 							document.getElementById('lecture-view-controls').appendChild(range_slider_output);
 							//range_slider.setAttribute('oninput',range_slider_output.value = range_slider.value);
@@ -874,70 +624,76 @@
 							var currentlec=document.createElement('h4');
 							//currentlec.textContent="Current Lecture: 10";
 							currentlec.textContent="Current Lecture: " + lectureDetails.currentLectureNumber;
+							//currentlec.style.text-decoration = "underline";
+							currentlec.setAttribute('style', "text-decoration: underline")
 							h4.appendChild(currentlec);
 								
-							document.getElementById('currentlec-label').appendChild(td);
-								
-							
+							document.getElementById('currentlec-label').appendChild(td);		
 							
 							var td2=document.createElement('td');
 							var startdateBtn=document.createElement('btn');
-							startdateBtn.className="btn btn-secondary";
-							startdateBtn.textContent="Start Date : 2nd Oct2019";
-							//startdateBtn.textContent="Start Date : "+ lectureDetails.beginDate.slice(0,-19) ;
-							var startdate = lectureDetails.beginDate.slice(0,-19) ;
-							//alert(format(startdate))
-							startdateBtn.textContent="Start Date : "+ format(startdate) ;
-							//alert(format('2020-12-30'));
-							
-							//startdateBtn.style.width="50";
-							startdateBtn.style.height="60px";
-							startdateBtn.style.backgroundColor="gray";
-							startdateBtn.style.color="white";
-							td2.appendChild(startdateBtn);
+								startdateBtn.className="btn btn-secondary";
+								//startdateBtn.textContent="Start Date 2nd Oct2019";
+								startDate=format(lectureDetails.beginDate);
+								startdateBtn.textContent="Start Date : "+startDate;
+								//startdateBtn.style.width="50";
+								startdateBtn.style.height="60px";
+								startdateBtn.style.backgroundColor="secondary";
+								startdateBtn.style.color="black";
+								startdateBtn.style.fontSize="16px";
+								td2.appendChild(startdateBtn);
 							
 							document.getElementById('start-date-btn').appendChild(td2);
 							
 							var td3=document.createElement('td');
 							var enddateBtn=document.createElement('btn');
-							enddateBtn.className="btn btn-secondary";
-							//enddateBtn.textContent="End Date : 2nd Jan 2020";
-							//enddateBtn.textContent="End Date : "+lectureDetails.endDate ;
-							var enddate = lectureDetails.endDate.slice(0,-19) ;
-							enddateBtn.textContent="End Date : "+ format(enddate) ;
-							enddateBtn.style.height="60px";
-							enddateBtn.style.marginLeft="740px";
-							enddateBtn.style.backgroundColor="gray";
-							enddateBtn.style.color="white";
-							td3.appendChild(enddateBtn);
+								enddateBtn.className="btn btn-secondary";
+								//enddateBtn.textContent="End Date 2nd Jan 2020";
+								endDate=format(lectureDetails.endDate);
+								enddateBtn.textContent="End Date : "+endDate;
+								enddateBtn.style.marginLeft="334%";
+								enddateBtn.style.marginTop="30px";
+								enddateBtn.style.height="60px";
+								enddateBtn.style.backgroundColor="secondary";
+								enddateBtn.style.color="black";
+								enddateBtn.style.fontSize="16px";
+								td3.appendChild(enddateBtn);
 							
 							document.getElementById('end-date-btn').appendChild(td3);
 							
 							var td4=document.createElement('td');
-							var lectdate=document.createElement('label');
+							lectdate=document.createElement('label');
 								//td.appendChild(lectdate);
-								lectdate.textContent="Lecture Date : ";
+								lectdate.textContent="Lecture Date : "+lec_date;
+								lectdate.id="lecDate"
 								lectdate.style.marginLeft="740px";
+								
+								lectdate.style.color="white";
 								td4.appendChild(lectdate);
 								//tbody.appendChild(lectdate);
 								
 							document.getElementById('lecture-date-label').appendChild(td4);
 							
 							var td5=document.createElement('td');
-							var sessionduration=document.createElement('label');
+							sessionduration=document.createElement('label');
 								//td.appendChild(lectdate);
-								sessionduration.textContent="Session Duration : 2 hours";
+								sessionduration.textContent="Session Duration : "+session_duration;
 								sessionduration.style.marginLeft="740px";
+								
+								sessionduration.id="lec_duration";
+								sessionduration.style.color="white";
 								td5.appendChild(sessionduration);
 								//tbody.appendChild(lectdate);
 								
 							document.getElementById('session-duration-label').appendChild(td5);
 							
 							var td6=document.createElement('td');
-							var starttime=document.createElement('label');
+							starttime=document.createElement('label');
 								//td.appendChild(lectdate);
-								starttime.textContent="Start Time : 5.30 pm ";
+								starttime.textContent="Start Time : "+start_time;
+								starttime.id="startTime"
 								starttime.style.marginLeft="740px";
+								starttime.style.color="white";
 								td6.appendChild(starttime);
 								//tbody.appendChild(lectdate);
 								
@@ -946,11 +702,11 @@
 							var td7=document.createElement('td');
 							var strength=document.createElement('label');
 								//td.appendChild(lectdate);
-								strength.textContent="Class Strength : 10";
+								strength.textContent="Class Strength : "+class_strength;
 								strength.style.marginLeft="740px";
+								strength.style.color="white";
 								td7.appendChild(strength);
 								//tbody.appendChild(lectdate);
-								
 							document.getElementById('class-strength-label').appendChild(td7);
 							
 							table.appendChild(tbody);
@@ -968,6 +724,21 @@
 			   window.location.href="ProgressTracker?batchId="+batchId;
 			}
 
+			function AttendanceScreen() {
+				//alert(batchId);
+			   window.location.href="AttendaceRecordsPage?batchId="+batchId;
+			}
+
+			function EditBatchDetails() {
+				//alert(batchId);
+			   window.location.href="EditBatchDetailsPage?batchId="+batchId;
+			}
+
+			function AssignmentsScreen() {
+				//alert(batchId);
+			   window.location.href="CoursewareAndAssignmentPage?batchId="+batchId;
+			}
+
 			function format(inputDate) {
 			    var date = new Date(inputDate);
 			    if (!isNaN(date.getTime())) {
@@ -977,50 +748,51 @@
 			}
 
 			function sliderVal(){
-				alert(jsonObj);
+				//alert(lectureDetails);
 				//alert(document.getElementById('rangeInput').value);
 				document.getElementById('output').textContent=document.getElementById('rangeInput').value;
 				
 				document.getElementById('courseplan').textContent='';
 				
-				for(var i=0;i<jsonObj.mappingCourse.mappingCoursePlans.length;i++)
+				 for(var i=0;i<lectureDetails.mappingCourse.mappingCoursePlans.length;i++)
 				{
-					if(jsonObj.mappingCourse.mappingCoursePlans[i].lectureNumber==document.getElementById('rangeInput').value)
+					if(lectureDetails.mappingCourse.mappingCoursePlans[i].lectureNumber==document.getElementById('rangeInput').value)
 					{
-						//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
-						for(var j=0;j<jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan.length;j++)
+						//alert(lectureDetails.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan);
+						for(var j=0;j<lectureDetails.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan.length;j++)
 						{
-							var topicName=jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName;
-							//alert(jsonObj.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName);
+							var topicName=lectureDetails.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName;
+							//alert(lectureDetails.mappingCourse.mappingCoursePlans[i].mappingLecutreTopicPlan[j].topicName);
 							document.getElementById('courseplan').textContent=document.getElementById('courseplan').textContent+topicName+'\n';
 							
 						}
 					}
 			
-				}
+				} 
 				
 				document.getElementById('lec_coverage').textContent='';
-				lectdate.textContent="Lecture Date : ";
+				//lectdate.id="lecDate"
+				document.getElementById('lecDate').textContent="Lecture Date : ";
 				sessionduration.textContent="Session Duration : ";
 				starttime.textContent="Start Time : ";
 				
-				for(var i=0;i<jsonObj.mappingLecture.length;i++)
+				for(var i=0;i<lectureDetails.mappingLecture.length;i++)
 				{
-					if(jsonObj.mappingLecture[i].lectureNumber==document.getElementById('rangeInput').value)
+					if(lectureDetails.mappingLecture[i].lectureNumber==document.getElementById('rangeInput').value)
 					{
 						
-						for(var j=0;j<jsonObj.mappingLecture[i].mappingTopicsCovered.length;j++)
+						for(var j=0;j<lectureDetails.mappingLecture[i].mappingTopicsCovered.length;j++)
 						{
-							var topicName=jsonObj.mappingLecture[i].mappingTopicsCovered[j].topicName;
+							var topicName=lectureDetails.mappingLecture[i].mappingTopicsCovered[j].topicName;
 							//alert(topicName);
 							
 							document.getElementById('lec_coverage').textContent=document.getElementById('lec_coverage').textContent+topicName+'\n';
 							
 						}
 						
-						lec_date=jsonObj.mappingLecture[i].lectureDate;
-						session_duration=jsonObj.mappingLecture[i].lectureDuration;
-						start_time=jsonObj.mappingLecture[i].startTime;
+						lec_date=lectureDetails.mappingLecture[i].lectureDate;
+						session_duration=lectureDetails.mappingLecture[i].lectureDuration;
+						start_time=lectureDetails.mappingLecture[i].startTime;
 						lecDate.style.color="white";
 						lecDate.textContent="Lecture Date : "+lec_date;
 						//document.getElementById(lecDate).textContent=lec_date;
