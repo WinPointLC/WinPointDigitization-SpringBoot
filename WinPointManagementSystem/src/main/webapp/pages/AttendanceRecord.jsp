@@ -38,7 +38,7 @@
 			font-size:40px;position:relative;margin-left:1120px;margin-top:-40px;">help_center</i></h4>
 	</div>
 	<div class="card-body">
-	<h5 style="font-size:18px;margin-top:5px">Batch Name </h5>
+	<h5 style="font-size:18px;margin-top:5px" id="batch_name"></h5>
 	<div class="row" style="height:100%">
 		<div class="col-md-6">
 
@@ -46,23 +46,20 @@
 			<div>
 				<div class="card-body primary">
 				<div class="dropdown" align="left" id="stream-dropdown-div">
-					<button class="btn btn-secondary dropdown-toggle"style="margin-left:0px;width:500px;"
-					type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+					<button class="btn btn-primary dropdown-toggle"style="margin-left:25%;"
+					type="button" id="dropdownMenuButtonLecture" data-toggle="dropdown" 
 					aria-haspopup="true" aria-expanded="false">
 						Select Lecture :
 					</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select-stream-dropdown"style="float:right;
-				width:500px"> 
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="lecture-dropdown"> 
+					
 				</div>
 				</div>
 				
 				</div>
 			</div>
 			<div class="card-body-primary">
-				<p style="color:gray;margin-left:1px;">Lecture Date : 22 Oct 2019 </p>
+				<p style="color:gray;margin-left:1px;" id="lecDate">Lecture Date : </p>
 			<div class="card-body">
 				  <div class="table-responsive" id="table-batch-add-student">
 					
@@ -141,8 +138,53 @@
 		<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 		<script src="../assets/demo/demo.js"></script>
 		<script>
+		document.getElementById('batch_name').textContent='${batchDetailsObject.batchName}';
+		 lecNums=[];
+			//lecIds=[];
+			<c:forEach items="${batchDetailsObject.mappingLecture}" var="lecture">
+				lecNums.push('${lecture.lectureNumber}');
+				//lecIds.push('${lecture.lectureId}');
+			</c:forEach>  
+			lecNums.sort();
+			for(var i=0;i<lecNums.length;i++)
+			{
+				var anchor = document.createElement('a');
+				anchor.className="dropdown-item";
+				anchor.setAttribute('href', "#");
+				anchor.id = lecNums[i];
+				anchor.textContent=lecNums[i];
+				anchor.setAttribute('onclick', "getLectureId(this.id)");
+				document.getElementById('lecture-dropdown').appendChild(anchor);
+
+			}
+
+			var elem = document.getElementById('details-batch');
+			if(elem!=null){
+				elem.parentNode.removeChild(elem);
+			}
 			
-			var addStudentList=[
+			var table = document.createElement('table');
+			table.className="table table-hover";
+			table.id="details-batch";
+			var thead = document.createElement('thead');
+			
+			var th1 = document.createElement('th');
+			th1.textContent = "Student";
+			var th2 = document.createElement('th');
+			th2.textContent = "Attendance";
+					
+			thead.appendChild(th1);
+			thead.appendChild(th2);
+			
+			table.appendChild(thead);
+			
+			var tbody = document.createElement('tbody');
+
+			table.appendChild(tbody);
+			
+			document.getElementById('table-batch-add-student').appendChild(table);
+			
+			/* var addStudentList=[
 			{
 				student:"Pragya Korpal",
 				registered:"true",
@@ -216,7 +258,30 @@
 			}
 			table.appendChild(tbody);
 			
-			document.getElementById('table-batch-add-student').appendChild(table);
+			document.getElementById('table-batch-add-student').appendChild(table); */
+
+			var lectureElem;
+			var lectureId;
+			function getLectureId(lecture_number){
+				
+				lectureNumber = lecture_number;
+				
+				lectureElem = document.getElementById(lectureNumber);
+				
+				document.getElementById('dropdownMenuButtonLecture').textContent ="Lecture Number :  "+ lectureElem.textContent;
+
+				<c:forEach items="${batchDetailsObject.mappingLecture}" var="lecture">
+
+					if('${lecture.lectureNumber}'==lectureNumber)
+					{
+						document.getElementById("lecDate").textContent="Lecture Date : " +'${lecture.lectureDate}';
+						
+					}
+						
+				</c:forEach>  
+				
+				
+			}
 		</script>
 		
 		<script>
