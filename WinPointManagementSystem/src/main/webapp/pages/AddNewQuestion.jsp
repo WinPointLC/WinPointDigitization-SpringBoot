@@ -491,8 +491,8 @@
 			if(courseTypeId == 2){
 				inCrt="YES";
 			}
-			alert(inCrt);
-			alert(courseId);
+			//alert(inCrt);
+			//alert(courseId);
 			
 			
 			var mappingCourse={
@@ -528,21 +528,17 @@
 				//url: "/AddQuestion",
 				url: url_send,
 				data: JSON.stringify(myData),
-				dataType: 'json',
+				//dataType: 'json',
 				contentType: 'application/json; charset=utf-8',
 				traditional: true,
-				success: function (jsonObj) {
-					
+				success: function () {
+
 						location.reload();
 					
-				},
-				error: function(){
-					alert("Error");
-					//document.getElementById("error").innerHTML = "Invalid email or password";
 				}
 
 			});
-			alert("After AJAX");
+			//alert("After AJAX");
 		}
 
     </script> 
