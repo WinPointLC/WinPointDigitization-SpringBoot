@@ -59,7 +59,7 @@
 				</div>
 			</div>
 			<div class="card-body-primary">
-				<p style="color:gray;margin-left:1px;" id="lecDate">Lecture Date : </p>
+				<p style="color:gray;margin-left:1px;" id="lecDate"></p>
 			<div class="card-body">
 				  <div class="table-responsive" id="table-batch-add-student">
 					
@@ -158,32 +158,8 @@
 
 			}
 
-			var elem = document.getElementById('details-batch');
-			if(elem!=null){
-				elem.parentNode.removeChild(elem);
-			}
-			
-			var table = document.createElement('table');
-			table.className="table table-hover";
-			table.id="details-batch";
-			var thead = document.createElement('thead');
-			
-			var th1 = document.createElement('th');
-			th1.textContent = "Student";
-			var th2 = document.createElement('th');
-			th2.textContent = "Attendance";
-					
-			thead.appendChild(th1);
-			thead.appendChild(th2);
-			
-			table.appendChild(thead);
-			
-			var tbody = document.createElement('tbody');
+		
 
-			table.appendChild(tbody);
-			
-			document.getElementById('table-batch-add-student').appendChild(table);
-			
 			/* var addStudentList=[
 			{
 				student:"Pragya Korpal",
@@ -270,12 +246,68 @@
 				
 				document.getElementById('dropdownMenuButtonLecture').textContent ="Lecture Number :  "+ lectureElem.textContent;
 
+				var elem = document.getElementById('details-batch');
+				if(elem!=null){
+					elem.parentNode.removeChild(elem);
+				}
+				
+				var table = document.createElement('table');
+				table.className="table table-hover";
+				table.id="details-batch";
+				var thead = document.createElement('thead');
+				
+				var th1 = document.createElement('th');
+				th1.textContent = "Student";
+				var th2 = document.createElement('th');
+				th2.textContent = "Attendance";
+						
+				thead.appendChild(th1);
+				thead.appendChild(th2);
+				
+				table.appendChild(thead);
+				
+				var tbody = document.createElement('tbody');
+
 				<c:forEach items="${batchDetailsObject.mappingLecture}" var="lecture">
 
 					if('${lecture.lectureNumber}'==lectureNumber)
 					{
 						document.getElementById("lecDate").textContent="Lecture Date : " +'${lecture.lectureDate}';
+
+						<c:forEach items="${allStudentList}" var="student">
+							//alert("User"+'${student.userId}');
+							var tr = document.createElement('tr');
+							var td1 = document.createElement('td');
+							
+							var td2 = document.createElement('td');
+							<c:forEach items='${lecture.mappingAbsentUsersList}' var="user">
+								//alert("Absent user"+'${user.userId}');
+								
+								td1.textContent = '${student.firstName}'+" "+'${student.lastName}';
+
+								if('${user.userId}'=='${student.userId}')
+								{
+									//alert("A");
+									
+									td2.textContent = "A";
+								}
+								else
+								{
+									
+									td2.textContent = "P";
+								}
+
+								tr.appendChild(td1);
+								tr.appendChild(td2);
+
+								tbody.appendChild(tr);
+								
+							
+							</c:forEach>  
+						</c:forEach>  
+						table.appendChild(tbody);
 						
+						document.getElementById('table-batch-add-student').appendChild(table);
 					}
 						
 				</c:forEach>  
