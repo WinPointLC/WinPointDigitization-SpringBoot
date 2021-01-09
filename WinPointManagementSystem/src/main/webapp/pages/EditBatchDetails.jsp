@@ -48,21 +48,21 @@
 				  <div class="card-body">
 					    <div class="form-group" style="width:250px; margin-left:2%">
 						  <label class="bmd-label-floating">Start Date</label>
-						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" required>
+						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" id="start_date" required>
 						</div><br>
 						
 						<div class="form-group" style="width:250px; margin-left:2%">
 						  <label class="bmd-label-floating">End Date</label>
-						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" required>
+						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" id="end_date" required>
 						</div><br>
 						
 						<div class="form-group" style="width:250px; margin-left:2%">
 						  <label class="bmd-label-floating">Lecture Duration</label>
-						  <input type="number" class="form-control" required><br><br>
+						  <input type="number" class="form-control"  id="lec_duration" required><br><br>
 						</div>
 						
 						<button type="submit" class="btn btn-primary" style="margin-left:2%">Add Student</button>
-						<button type="submit" class="btn btn-primary" style="margin-left:6%">Save</button>
+						<button type="submit" class="btn btn-primary" style="margin-left:6%" onclick="update_batch_det()">Save</button>
 					   
 				  </div>
 			  </div>
@@ -190,8 +190,22 @@
 		<script src="../assets/demo/demo.js"></script>
 		
 		<script>
+		function format(inputDate) {
+		    var date = new Date(inputDate);
+		    if (!isNaN(date.getTime())) {
+		        // Months use 0 index.
+		        return date.getDate()  + '-' + (parseInt(date.getMonth())+1 )+ '-' + date.getFullYear();
+		    }
+		}
+		</script>
+		
+		<script>
 		document.getElementById('batch_name').textContent='${batchDetailsObject.batchName}';
-		//alert('${batchDetailsObject.mappingLecture}');
+		document.getElementById("lec_duration").value='${batchDetailsObject.lectureDuration}';
+		document.getElementById("start_date").value=format('${batchDetailsObject.beginDate}');
+		document.getElementById("end_date").value=format('${batchDetailsObject.endDate}');
+		//alert('${batchDetailsObject}');
+		data='${batchDetailsObject}';
 		 lecNums=[];
 		//lecIds=[];
 		<c:forEach items="${batchDetailsObject.mappingLecture}" var="lecture">
@@ -210,6 +224,7 @@
 			document.getElementById('lecture-dropdown').appendChild(anchor);
 
 		}
+
 		 
 		
 	 
@@ -241,6 +256,24 @@
 				</c:forEach>  
 				
 				
+			}
+
+			function update_batch_det(){
+
+				$.ajax({
+					type: 'POST',
+					
+					url: "/updateBatchDetails",
+					data: data,
+					//dataType: 'json',
+					contentType: 'application/json; charset=utf-8',
+					traditional: true,
+					success: function () {
+
+						
+					}
+				});
+
 			}
 			
 			
