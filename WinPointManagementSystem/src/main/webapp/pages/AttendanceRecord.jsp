@@ -158,84 +158,6 @@
 
 			}
 
-		
-
-			/* var addStudentList=[
-			{
-				student:"Pragya Korpal",
-				registered:"true",
-				time:"Morning",
-				startDate:"2020-10-30"
-				
-			},
-			{
-				student:"Abhishek Dixit",
-				registered:"true",
-				time:"Evening",
-				startDate:"2020-10-30"
-				
-			},
-			{
-				student:"Surbhi Joshi",
-				registered:"false",
-				time:"Morning",
-				startDate:"2020-10-30"
-				
-			}
-			]
-			
-			var elem = document.getElementById('details-batch');
-			if(elem!=null){
-				elem.parentNode.removeChild(elem);
-			}
-			
-			var table = document.createElement('table');
-			table.className="table table-hover";
-			table.id="details-batch";
-			var thead = document.createElement('thead');
-			
-			var th1 = document.createElement('th');
-			th1.textContent = "Student";
-			var th2 = document.createElement('th');
-			th2.textContent = "";
-			var th3 = document.createElement('th');
-			th3.textContent = "Records";
-			var th4 = document.createElement('th');
-			th4.textContent = "";
-					
-			thead.appendChild(th1);
-			thead.appendChild(th2);
-			thead.appendChild(th4);
-			thead.appendChild(th3);
-			
-			table.appendChild(thead);
-			
-			var tbody = document.createElement('tbody');
-			
-			for(var i=0;i<addStudentList.length;i++){
-				
-				var tr = document.createElement('tr');
-				var td1 = document.createElement('td');
-				td1.textContent = addStudentList[i].student;
-				var td2 = document.createElement('td');
-				td2.textContent = addStudentList[i].registered;
-				var td3 = document.createElement('td');
-				td3.textContent = addStudentList[i].time;
-				var td4 = document.createElement('td');
-				td4.textContent = addStudentList[i].startDate;
-				
-				tr.appendChild(td1);
-				tr.appendChild(td2);
-				
-				tr.appendChild(td4);
-				tr.appendChild(td3);
-				
-				tbody.appendChild(tr);
-			}
-			table.appendChild(tbody);
-			
-			document.getElementById('table-batch-add-student').appendChild(table); */
-
 			var lectureElem;
 			var lectureId;
 			function getLectureId(lecture_number){
@@ -278,25 +200,24 @@
 							//alert("User"+'${student.userId}');
 							var tr = document.createElement('tr');
 							var td1 = document.createElement('td');
+							td1.textContent = '${student.firstName}'+" "+'${student.lastName}';
 							
 							var td2 = document.createElement('td');
+							var input=document.createElement('input');
+							input.className="form-control"
+							
 							<c:forEach items='${lecture.mappingAbsentUsersList}' var="user">
 								//alert("Absent user"+'${user.userId}');
 								
-								td1.textContent = '${student.firstName}'+" "+'${student.lastName}';
-
 								if('${user.userId}'=='${student.userId}')
 								{
-									//alert("A");
-									
-									td2.textContent = "A";
+									input.value = "A";
 								}
 								else
-								{
-									
-									td2.textContent = "P";
+								{	
+									input.value = "P";
 								}
-
+								td2.appendChild(input);
 								tr.appendChild(td1);
 								tr.appendChild(td2);
 
@@ -318,37 +239,6 @@
 		
 		<script>
 			
-			var attendanceList=[
-			{
-				name:"pragya",
-				course:"16,1",
-				eligibility:"true",
-				suggestion:"Nothing",
-				//endDate:"2020-11-30"
-			},
-			{
-				name:"abhishek",
-				course:"16,17,1",
-				eligibility:"true",
-				suggestion:"practice more",
-				//endDate:"2020-11-30"
-			},
-			{
-				name:"surbhi",
-				course:"16,1",
-				eligibility:"true",
-				suggestion:"work hard on basic concepts",
-				//endDate:"2020-11-30"
-			},
-			{
-				name:"aayush",
-				course:"16,17",
-				eligibility:"true",
-				suggestion:"nothing",
-				//endDate:"2020-11-30"
-			}
-			]
-			
 			var elem = document.getElementById('details-attendance');
 			if(elem!=null){
 				elem.parentNode.removeChild(elem);
@@ -361,56 +251,57 @@
 			
 			var th1 = document.createElement('th');
 			th1.textContent = "Name";
-			var th2 = document.createElement('th');
-			th2.textContent = "";
-			var th3 = document.createElement('th');
-			th3.textContent = "";
-			var th4 = document.createElement('th');
-			th4.textContent = "Suggestion";
-			/*var th5 = document.createElement('th');
-			th5.textContent = "Update";*/
-			
 			thead.appendChild(th1);
-			thead.appendChild(th2);
-			thead.appendChild(th3);
-			thead.appendChild(th4);
-			//thead.appendChild(th5);
-			//thead.appendChild(th6);
+
+			var lectures="${batchDetailsObject.currentLectureNumber}";
+
+			for(var i=1;i<=lectures;i++){
+				var th = document.createElement('th');
+				th.textContent = "Lecture "+ i;
+				thead.appendChild(th);
+
+			}
+		
 			table.appendChild(thead);
 			
 			var tbody = document.createElement('tbody');
 			
-			for(var i=0;i<attendanceList.length;i++){
-				
+			<c:forEach items="${allStudentList}" var="student">
+			//alert("User"+'${student.userId}');
 				var tr = document.createElement('tr');
+				
 				var td1 = document.createElement('td');
-				td1.textContent = attendanceList[i].name;
-				var td2 = document.createElement('td');
-				td2.textContent = attendanceList[i].course;
-				var td3 = document.createElement('td');
-				td3.textContent = attendanceList[i].eligibility;
-				var td4 = document.createElement('td');
-				td4.textContent = attendanceList[i].suggestion;
-				
-				//var td5 = document.createElement('td');
-				//td5.textContent = batchDetailsList[i].endDate;
-				
-				//var td6  = document.createElement('td');
-				/*var addStudentBtn = document.createElement('btn');
-				addStudentBtn.className="btn btn-primary"
-				addStudentBtn.textContent = "Update";
-				td5.appendChild(addStudentBtn);*/
-
-				
+				td1.textContent = '${student.firstName}'+" "+'${student.lastName}';
 				tr.appendChild(td1);
-				tr.appendChild(td2);
-				tr.appendChild(td3);
-				tr.appendChild(td4);
-				//tr.appendChild(td5);
-				//tr.appendChild(td6);
+				for(var i=1;i<=lectures;i++){
+					var td = document.createElement('th');
+
+					<c:forEach items="${batchDetailsObject.mappingLecture}" var="lecture">
+
+					if('${lecture.lectureNumber}'==i){
+					
+						<c:forEach items='${lecture.mappingAbsentUsersList}' var="user">
+							//alert("Absent user"+'${user.userId}');
+							
+							 if('${user.userId}'=='${student.userId}')
+							{
+								 td.textContent= "A";
+							}
+							else
+							{	
+								td.textContent = "P";
+							} 
+							
+							tr.appendChild(td);
+							tbody.appendChild(tr);	
+						</c:forEach>
+					}
+					</c:forEach>  
+					
+				}
 				
-				tbody.appendChild(tr);
-			}
+				
+		    </c:forEach>  
 			table.appendChild(tbody);
 			
 			document.getElementById('table-attendance-details').appendChild(table);
