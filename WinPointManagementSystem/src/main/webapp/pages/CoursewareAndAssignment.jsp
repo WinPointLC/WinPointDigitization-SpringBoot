@@ -40,7 +40,7 @@
 			</div>
 		<div style="margin-left:1%;margin-right:1%">
 		<div class="card-body" style="width:100%"><br>
-		<h5 style="margin-left:0%;font-size:18px;margin-top:5px">Batch Name </h5>
+		<h5 style="margin-left:0%;font-size:18px;margin-top:5px" id="batch_name"></h5>
 		
 					<div class="table-responsive" id="table-courseware-assignment">
 				
@@ -95,42 +95,8 @@
 		<script src="../assets/demo/demo.js"></script>
 		
 		<script>
-			
-			var coursewareassignmentList=[
-			{
-				name:"pragya",
-				feesstatus:"paid",
-				courseware:"java",
-				assignmentissued:"yes",
-				assignmentsubmitted:"no",
-				//endDate:"2020-11-30"
-			},
-			{
-				name:"surbhi",
-				feesstatus:"paid",
-				courseware:"c++",
-				assignmentissued:"yes",
-				assignmentsubmitted:"no",
-				//endDate:"2020-11-30"
-			},
-			{
-				name:"abc",
-				feesstatus:"not paid",
-				courseware:"c",
-				assignmentissued:"no",
-				assignmentsubmitted:"no",
-				//endDate:"2020-11-30"
-			},
-			{
-				name:"abhishek",
-				feesstatus:"paid",
-				courseware:"html",
-				assignmentissued:"yes",
-				assignmentsubmitted:"yes",
-				//endDate:"2020-11-30"
-			}
-			]
-			
+		document.getElementById('batch_name').textContent='${batchDetailsObject.batchName}';
+					
 			var elem = document.getElementById('details-courseware');
 			if(elem!=null){
 				elem.parentNode.removeChild(elem);
@@ -157,41 +123,35 @@
 			thead.appendChild(th3);
 			thead.appendChild(th4);
 			thead.appendChild(th5);
-			//thead.appendChild(th6);
 			table.appendChild(thead);
 			
 			var tbody = document.createElement('tbody');
-			
-			for(var i=0;i<coursewareassignmentList.length;i++){
-				
+
+			<c:forEach items="${batchDetailsObject.mappingStudentCourseDetails}" var="student">
+
+
 				var tr = document.createElement('tr');
 				var td1 = document.createElement('td');
-				td1.textContent = coursewareassignmentList[i].name;
+				td1.textContent = '${student. mappingUserProfile.firstName}' + " "+  '${student. mappingUserProfile.lastName}';
 				var td2 = document.createElement('td');
-				td2.textContent = coursewareassignmentList[i].feesstatus;
+				td2.textContent = '${student.feeStatus}';
 				var td3 = document.createElement('td');
-				td3.textContent = coursewareassignmentList[i].courseware;
+				td3.textContent = '${student.coursewareIssued}';
 				var td4 = document.createElement('td');
-				td4.textContent = coursewareassignmentList[i].assignmentissued;
-				//var sendemail=document.createElement('input');
-				//sendemail.setAttribute('type','checkbox');
-				//sendemail.setAttribute('value', 'yes');
-				//sendemail.setAttribute('name',checkboxName);
-				
+				td4.textContent = '${student.assignmentsIssued}';
 				var td5 = document.createElement('td');
-				td5.textContent = coursewareassignmentList[i].assignmentsubmitted;
-				
-				
+				td5.textContent = '${student.assignmentsSubmitted}';
 				
 				tr.appendChild(td1);
 				tr.appendChild(td2);
 				tr.appendChild(td3);
 				tr.appendChild(td4);
 				tr.appendChild(td5);
-				//tr.appendChild(td6);
-				
+
 				tbody.appendChild(tr);
-			}
+				
+			</c:forEach>  
+			
 			table.appendChild(tbody);
 			
 			document.getElementById('table-courseware-assignment').appendChild(table);

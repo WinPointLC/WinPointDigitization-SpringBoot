@@ -1,5 +1,6 @@
 package com.winpoint.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +18,7 @@ import com.winpoint.model.CoursePlans;
 import com.winpoint.model.Lecture;
 import com.winpoint.model.Streams;
 import com.winpoint.model.Topics;
+import com.winpoint.model.UserProfile;
 import com.winpoint.repository.BatchDetailsRepository;
 import com.winpoint.repository.StreamsRepository;
 
@@ -78,6 +80,9 @@ public class LecutreViewController {
 	public ModelAndView AttendanceRecord(@RequestParam String batchId) {
 		ModelAndView mv = new ModelAndView();
 		BatchDetails batch = batchDetailsRepository.findById(Integer.parseInt(batchId)).get();
+		List<UserProfile>allStudents = new ArrayList<>();
+		batch.getMappingStudentCourseDetails().stream().forEach(x->allStudents.add(x.getMappingUserProfile()));
+		mv.addObject("allStudentList", allStudents);
 		mv.addObject("batchDetailsObject", batch);
 		mv.setViewName("AttendanceRecord");
 		return mv;

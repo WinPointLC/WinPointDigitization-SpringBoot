@@ -36,8 +36,8 @@
 				</div>
 			</div>
 			<div class="card card-plain">
-				<div class="card-header" style="background-color:#000080;width:500px;margin-left:30%">
-				  <h4 class="card-title mt-0" style="text-align:center; color:white" >MODULAR-C-2020-1</h4>
+				<div class="card-header" style="background-color:#000080;width:500px;margin-left:25%">
+				  <h4 class="card-title mt-0" style="text-align:center; color:white" id="batch_name" ></h4>
 				</div>
 			</div>
 			
@@ -46,23 +46,23 @@
 			  <div class="card" style="height:350px;">
 				  
 				  <div class="card-body">
-					    <div class="form-group" style="width:250px; margin-left:12%">
+					    <div class="form-group" style="width:250px; margin-left:2%">
 						  <label class="bmd-label-floating">Start Date</label>
-						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" required>
+						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" id="start_date" required>
 						</div><br>
 						
-						<div class="form-group" style="width:250px; margin-left:12%">
+						<div class="form-group" style="width:250px; margin-left:2%">
 						  <label class="bmd-label-floating">End Date</label>
-						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" required>
+						  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control" id="end_date" required>
 						</div><br>
 						
-						<div class="form-group" style="width:250px; margin-left:12%">
+						<div class="form-group" style="width:250px; margin-left:2%">
 						  <label class="bmd-label-floating">Lecture Duration</label>
-						  <input type="number" class="form-control" required><br><br>
+						  <input type="number" class="form-control"  id="lec_duration" required><br><br>
 						</div>
 						
-						<button type="submit" class="btn btn-primary" style="margin-left:11%">Add Student</button>
-						<button type="submit" class="btn btn-primary" style="margin-left:6%">Save</button>
+						<button type="submit" class="btn btn-primary" style="margin-left:2%">Add Student</button>
+						<button type="submit" class="btn btn-primary" style="margin-left:6%" onclick="update_batch_det()">Save</button>
 					   
 				  </div>
 			  </div>
@@ -71,9 +71,9 @@
 			<div class="col-md-8">
 			  <div class="card">
 				  <div class="card-body"><br>
-					    <div class="stats" style="margin-left:40%">
+					    <div class="stats" style="margin-left:35%">
 						  <div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLecture" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonLecture" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							  Select Lecture
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="lecture-dropdown">
@@ -85,33 +85,54 @@
 						<div class="row">
 							<div class="column">
 								<div class="form-group" style="width:200px; margin-left:72px">
-								  <label class="bmd-label-floating">Lecture Date</label>
+								  <label >Lecture Date</label>
 								  <input type="text"  onfocus="this.type='date'" onblur="if(this.value==='')this.type='text'" class="form-control"  id="lecDate" required>
 								</div><br>
 							</div>
 							<div class="column">
 								<div class="form-group" style="width:200px; margin-left:50px;">
-								  <label class="bmd-label-floating">Start Time</label>
+								  <label >Start Time</label>
 								  <input type="text"  onfocus="this.type='time'" onblur="if(this.value==='')this.type='text'" class="form-control" id="startTime" required>
 								</div>
 							</div>
 							<div class="column">
-							    <div class="form-group" style="width:200px; margin-left:50px">
-								  <label class="bmd-label-floating">Session Duration</label>
+							    <div class="form-group" style="width:200px; margin-left:72px">
+								  <label >Session Duration</label>
 								  <input type="number" class="form-control" id="sessionDuration" required><br><br>
 								</div>
 							</div>
+							
 						</div>		
-							<div  style="width:700px; margin-left:55px;">
+							<div  style="width:80%; margin-left:55px;">
 								<label>Comments</label>
 								<textarea class="form-control" rows="3" id="comments" required></textarea>
 							</div> <br><br> 
 							
-							<div  style="width:700px; margin-left:55px;">
+							<!-- <div  style="width:80%; margin-left:55px;">
 								<label>Lecture Coverage:</label>
 								<textarea class="form-control" rows="3" id="coverage" required></textarea>
 								<p></p>
-							</div>  
+							</div>   -->
+							<form>
+								<div class="row">
+							<div class="col" style="width:60%; margin-left:55px;">
+							    <label class="label-control">Lecture Coverage</label>
+									 <select  class="form-control"  style="width:90%;" id="lec_coverage" multiple>
+													
+													<c:forEach items='${batchDetailsObject.mappingCourse.mappingCoursePlans}' var="courseplan"> 
+			
+														
+															<c:forEach items='${courseplan.mappingLecutreTopicPlan}' var="topic">
+																
+																<option value="${topic.topicId}" class="${topic.topicName}" >${topic.topicName}</option>
+															</c:forEach>  
+															
+														
+													</c:forEach>    
+									</select>
+							</div> 
+							</div>
+							</form>
 							<br>
 							<button type="submit" class="btn btn-primary" style="margin-left:45%">Save</button>
                                 
@@ -169,67 +190,93 @@
 		<script src="../assets/demo/demo.js"></script>
 		
 		<script>
+		function format(inputDate) {
+		    var date = new Date(inputDate);
+		    if (!isNaN(date.getTime())) {
+		        // Months use 0 index.
+		        return date.getDate()  + '-' + (parseInt(date.getMonth())+1 )+ '-' + date.getFullYear();
+		    }
+		}
+		</script>
+		
+		<script>
+		document.getElementById('batch_name').textContent='${batchDetailsObject.batchName}';
+		document.getElementById("lec_duration").value='${batchDetailsObject.lectureDuration}';
+		document.getElementById("start_date").value=format('${batchDetailsObject.beginDate}');
+		document.getElementById("end_date").value=format('${batchDetailsObject.endDate}');
+		//alert('${batchDetailsObject}');
+		data='${batchDetailsObject}';
+		 lecNums=[];
+		//lecIds=[];
+		<c:forEach items="${batchDetailsObject.mappingLecture}" var="lecture">
+			lecNums.push('${lecture.lectureNumber}');
+			//lecIds.push('${lecture.lectureId}');
+		</c:forEach>  
+		lecNums.sort();
+		for(var i=0;i<lecNums.length;i++)
+		{
+			var anchor = document.createElement('a');
+			anchor.className="dropdown-item";
+			anchor.setAttribute('href', "#");
+			anchor.id = lecNums[i];
+			anchor.textContent=lecNums[i];
+			anchor.setAttribute('onclick', "getLectureId(this.id)");
+			document.getElementById('lecture-dropdown').appendChild(anchor);
 
-		    <c:forEach items="${lectureDetailsList}" var="lecture">
-				var anchor = document.createElement('a');
-				anchor.className="dropdown-item";
-				anchor.setAttribute('href', "#");
-				anchor.id = '${lecture.lectureId}';
-				anchor.textContent='${lecture.lectureName}'.toUpperCase().replace("_"," ");
-				anchor.setAttribute('onclick', "getLectureId(this.id)");
-				document.getElementById('lecture-dropdown').appendChild(anchor);
-			</c:forEach>  
+		}
 
+		 
+		
+	 
+		
+		</script>
+		<script>
+
+		
 			var lectureElem;
 			var lectureId;
-			function getLectureId(lecture_id){
-				alert("in get lecture");
-				lectureId = lecture_id;
+			function getLectureId(lecture_number){
+				//alert("in get lecture");
+				lectureNumber = lecture_number;
 				
-				lectureElem = document.getElementById(lectureId);
+				lectureElem = document.getElementById(lectureNumber);
 				
-				document.getElementById('dropdownMenuButtonLecture').textContent = lectureElem.textContent;
+				document.getElementById('dropdownMenuButtonLecture').textContent ="Lecture Number :  "+ lectureElem.textContent;
+
+				<c:forEach items="${batchDetailsObject.mappingLecture}" var="lecture">
+
+					if('${lecture.lectureNumber}'==lectureNumber)
+					{
+						document.getElementById("lecDate").setAttribute('value','${lecture.lectureDate}');
+						document.getElementById("startTime").setAttribute('value','${lecture.startTime}');
+						document.getElementById("sessionDuration").setAttribute('value','${lecture.lectureDuration}');
+						document.getElementById("comments").textContent='${lecture.comments}';
+					}
+						//alert(lectureId);
+				</c:forEach>  
 				
-							
-			    var myData = {
-			    		lectureId: lectureId
-				};
 				
+			}
+
+			function update_batch_det(){
+
 				$.ajax({
 					type: 'POST',
-					url: "/LectureDetails",
-					data: jQuery.param(myData),
-					dataType: 'json',
-					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					
+					url: "/updateBatchDetails",
+					data: data,
+					//dataType: 'json',
+					contentType: 'application/json; charset=utf-8',
 					traditional: true,
-					success: function (jsonObj) {
-						lectureDetailsList=jsonObj;
-						
-						document.getElementById("lecDate").setAttribute('value',lectureDetailsList.lectureDate);
-						document.getElementById("startTime").setAttribute('value',lectureDetailsList.startTime);
-						document.getElementById("sessionDuration").setAttribute('value',lectureDetailsList.duration);
-						document.getElementById("comments").textContent=lectureDetailsList.comments;
-						document.getElementById("coverage").textContent=lectureDetailsList.lectureCoverage;
-						
-						
-					},
-					error: function(){
-						alert("Error");
-						//document.getElementById("error").innerHTML = "Invalid email or password";
-					}
+					success: function () {
 
+						
+					}
 				});
+
 			}
 			
 			
-			
-			/* var today = new Date();
-			var dd = String(today.getDate()).padStart(2, '0');
-			var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-			var yyyy = today.getFullYear();
-
-			today = dd + '-' + mm + '-' + yyyy;
-			alert(today); */
 		</script>
 	</body>
 </html>	

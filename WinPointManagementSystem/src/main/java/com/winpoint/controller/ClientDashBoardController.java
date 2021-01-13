@@ -47,5 +47,12 @@ public class ClientDashBoardController {
 		mv.setViewName("Analytics");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/Analytics_new", method = RequestMethod.GET)
+	public ModelAndView AnalyticsNewPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Analytics_new");
+		return mv;
+	}
 
 }
