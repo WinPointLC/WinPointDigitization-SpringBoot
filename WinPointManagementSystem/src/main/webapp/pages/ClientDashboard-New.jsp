@@ -57,7 +57,7 @@
 	src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 
 
-<script>
+<!-- <script>
 	var SearchString = window.location.search.substring(1);
 
 	var arr = SearchString.split('&');
@@ -71,14 +71,13 @@
 	alert("Active : " + userData.activeStatus);
 	document.getElementById('welcome').innerHTML = userData.firstName + " "
 			+ userData.lastName;
-</script>
+</script> -->
 
 
 
 <script>
 	function sendToCourseRegistrationPage() {
-		$
-				.ajax({
+		$				.ajax({
 					type : 'POST',
 					//url: servletURL + 'OnlineEvaluationServlet?isReg=1',
 					url : "/OnlineEvaluation?isReg=1",
@@ -917,6 +916,21 @@
 				type="text/javascript"></script>
 			<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 			<script src="../assets/demo/demo.js"></script>
+			<script>	
+	var SearchString = window.location.search.substring(1);
+
+	var arr = SearchString.split('&');
+	var data = arr[0].split('=')[1];
+	var decodedData = decodeURIComponent(data);
+	userData = JSON.parse(decodedData);
+	//alert(userData.user);
+	alert(data);
+	alert("Enquired : " + userData.enquired);	
+	alert("Name : " + userData.firstName);
+	alert("Active : " + userData.activeStatus);
+	document.getElementById('welcome').innerHTML = userData.firstName + " "
+			+ userData.lastName;
+</script>
 			<script>
 				function getStreamId(stream_id) {
 					streamId = stream_id;
