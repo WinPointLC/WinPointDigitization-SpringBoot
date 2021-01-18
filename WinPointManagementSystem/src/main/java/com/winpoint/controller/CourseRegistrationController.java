@@ -59,8 +59,8 @@ public class CourseRegistrationController {
 	public void updateUserCategory(@RequestBody StudentCourseDetails studentCourseDetails) {
 		
 			System.out.println(studentCourseDetails);
-			studentCourseDetailsRepository.save(studentCourseDetails.getMappingUserProfile().getUserId(),studentCourseDetails.getMappingCourse().getCourseId(),studentCourseDetails.getFeeStatus());
-		
+			//studentCourseDetailsRepository.save(studentCourseDetails.getMappingUserProfile().getUserId(),studentCourseDetails.getMappingCourse().getCourseId(),studentCourseDetails.getFeeStatus());
+			studentCourseDetailsRepository.save(studentCourseDetails);
 	}
 
 }

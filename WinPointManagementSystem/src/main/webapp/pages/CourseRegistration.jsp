@@ -241,7 +241,7 @@
 		var courseTypeId;
 
 		function getStreamId(stream_id) {
-			alert("here stream");
+			//alert("here stream");
 			streamId = stream_id;
 
 			var streamElem = document.getElementById(streamId + 'a');
@@ -281,9 +281,9 @@
 			<c:forEach items="${streamList}" var="stream">//4.5
 			if ('${stream.streamId}' == streamId) {
 
-				alert("'${stream.mappingCourseType}'");
+				//alert("'${stream.mappingCourseType}'");
 				<c:forEach items="${stream.mappingCourseType}" var="det">
-				alert("COUNT STREAM : " + cnt);
+				//alert("COUNT STREAM : " + cnt);
 				cnt++;
 				var dropanchor = document.createElement('a');
 				dropanchor.className = 'dropdown-item';
@@ -431,14 +431,14 @@
 			document.getElementById('registration').style.display = "block";
 		}
 		function submitCourseRegistration() {
-			//alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
+			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
 			var myData = {
 				streamId : streamId,
 				courseTypeId : courseTypeId,
 				courseId : courseId,
 				courseName : courseName
 			};
-
+			alert("1");
 			var feeStatus = 'PAID';
 
 			$

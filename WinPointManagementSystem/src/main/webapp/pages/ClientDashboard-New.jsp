@@ -57,7 +57,7 @@
 	src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 
 
-<!-- <script>
+ <script>
 	var SearchString = window.location.search.substring(1);
 
 	var arr = SearchString.split('&');
@@ -71,7 +71,7 @@
 	alert("Active : " + userData.activeStatus);
 	document.getElementById('welcome').innerHTML = userData.firstName + " "
 			+ userData.lastName;
-</script> -->
+</script> 
 
 
 
