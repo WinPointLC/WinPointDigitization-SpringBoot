@@ -233,7 +233,7 @@
 	<script src="../assets/demo/demo.js"></script>
 
 	<script>
-		//alert(streamList[i].streamId + ":" + streamList[i].streamName);
+		////alert(streamList[i].streamId + ":" + streamList[i].streamName);
 		var courseList;
 		var streamId = 1;
 		var courseId = 1;
@@ -293,7 +293,7 @@
 					courseTypeName = ('${det.courseTypeName}').toUpperCase();
 					courseTypeId = ('${det.courseTypeId}');
 				}
-				alert("COURSE TYPE NAME : " + courseTypeName);
+			//	alert("COURSE TYPE NAME : " + courseTypeName);
 				dropanchor.textContent = ('${det.courseTypeName}')
 						.toUpperCase();
 				dropanchor.setAttribute('onclick',
@@ -318,8 +318,8 @@
 			var studentCoursesCourseIdList;
 			var studentGACoursesCourseIdList;
 			courseTypeId = courseType_id;
-			alert("stream_id = " + streamId + "courseType_id = "
-					+ courseType_id);
+			//alert("stream_id = " + streamId + "courseType_id = "
+				//	+ courseType_id);
 
 			document.getElementById('dropdownMenuButton_1').textContent = courseTypeName;
 
@@ -353,7 +353,7 @@
 								row.id = "courseList";
 								for (j = i; j < i + 3
 										&& j < responseJson.length; j++) {
-									alert("COURSE LIST" + courseList);
+					//				alert("COURSE LIST" + courseList);
 									//alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
 									var column = document.createElement('div');
 									column.className = 'col-lg-3 col-md-6 col-sm-6 column3';
@@ -433,26 +433,25 @@
 		function submitCourseRegistration() {
 			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
 			var myData = {
+				//userId : 1,
 				streamId : streamId,
-				courseTypeId : courseTypeId,
-				courseId : courseId,
-				courseName : courseName
+				courseTypeId : courseTypeId
+				//courseId : courseId,
+				//courseName : courseName
 			};
 			alert("1");
 			var feeStatus = 'PAID';
 
-			$
-					.ajax({
+			$.ajax({
 						type : 'POST',
-						//url: servletURL + 'CourseRegistrationServlet&feeStatus=' + feeStatus,
-						url : "/CourseRegistration&feeStatus=" + feeStatus,
+						url : "/UpdateStudentCourseDetails",
 						data : jQuery.param(myData),
 						dataType : 'json',
 						contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 						traditional : true,
 						success : function(jsonObj) {
-
-							var responseJson1 = jsonObj[0];
+						alert("Course Registration Successful");
+						/*	var responseJson1 = jsonObj[0];
 							var locationJson = eval('(' + responseJson1 + ')');
 
 							var responseJson2 = jsonObj[1];
@@ -475,10 +474,10 @@
 									+ encodeURIComponent(studCourseDetailsJSON)
 									+ encodeURIComponent(studGACourseDetailsJSON)
 									+ "&username=" + "Anjali" + "&password="
-									+ "Anjali";
+									+ "Anjali";*/
 						},
 						error : function() {
-							alert("Error");
+							alert("Error in Course Registration");
 							// document.getElementById("error").innerHTML = "Invalid email or password";
 						}
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.Course;
@@ -55,12 +56,23 @@ public class CourseRegistrationController {
 	@Autowired
 	StudentCourseDetailsRepository studentCourseDetailsRepository;
 	
-	@RequestMapping(value = "/CourseRegistration&feeStatus", method = RequestMethod.POST)
-	public void updateUserCategory(@RequestBody StudentCourseDetails studentCourseDetails) {
-		
-			System.out.println(studentCourseDetails);
-			//studentCourseDetailsRepository.save(studentCourseDetails.getMappingUserProfile().getUserId(),studentCourseDetails.getMappingCourse().getCourseId(),studentCourseDetails.getFeeStatus());
-			studentCourseDetailsRepository.save(studentCourseDetails);
-	}
+	/*
+	 * @RequestMapping(value = "/UpdateStudentCourseDetails", method =
+	 * RequestMethod.GET) //public void updateStudentCourseDetails(@RequestBody
+	 * StudentCourseDetails studentCourseDetails) { public void
+	 * updateStudentCourseDetails() {
+	 * System.out.println("*********** From updateStudentCourseDetails" );//+
+	 * studentCourseDetails);
+	 * //studentCourseDetailsRepository.save(studentCourseDetails.
+	 * getMappingUserProfile().getUserId(),studentCourseDetails.getMappingCourse().
+	 * getCourseId(),studentCourseDetails.getFeeStatus());
+	 * //studentCourseDetailsRepository.save(studentCourseDetails); }
+	 */
 
+	@RequestMapping(value = "/UpdateStudentCourseDetails", method = RequestMethod.POST)
+	public void updateStudentCourseDetails(@RequestParam("streamId") String streamId,
+			@RequestParam("courseTypeId") String courseTypeId) {
+		System.out.println("*********** From updateStudentCourseDetails" );
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stream Type Id : "+courseTypeId+"Stream Id : "+streamId);
+	}
 }

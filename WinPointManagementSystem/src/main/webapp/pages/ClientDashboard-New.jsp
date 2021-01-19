@@ -65,10 +65,10 @@
 	var decodedData = decodeURIComponent(data);
 	userData = JSON.parse(decodedData);
 	//alert(userData.user);
-	alert(data);
-	alert("Enquired : " + userData.enquired);
-	alert("Name : " + userData.firstName);
-	alert("Active : " + userData.activeStatus);
+	//alert(data);
+	//alert("Enquired : " + userData.enquired);
+	//alert("Name : " + userData.firstName);
+	//alert("Active : " + userData.activeStatus);
 	document.getElementById('welcome').innerHTML = userData.firstName + " "
 			+ userData.lastName;
 </script> 
@@ -545,7 +545,7 @@
 			</div>
 
 			<script type="text/javascript">
-				alert("Reached 529 " + userData.enquired);
+				//alert("Reached 529 " + userData.enquired);
 				if (userData.enquired) {
 					alert("IF");
 					document.getElementById('analytics_nav_link').className = "disabled";
