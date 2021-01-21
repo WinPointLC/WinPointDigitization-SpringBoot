@@ -84,10 +84,15 @@ public class CourseRegistrationController {
 	public void updateStudentCourseDetails(@RequestBody StudentCourseDetails studentCourseDetails) {
 		System.out.println("*********** From updateStudentCourseDetails" );
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println();
-		System.out.println("User ID - "+studentCourseDetails.getMappingUserProfile().getUserId()+
-							"\nCourse ID - "+studentCourseDetails.getMappingCourse().getCourseId()+
-							"\nFee Status - "+studentCourseDetails.getFeeStatus());
+		System.out.println(studentCourseDetails);
+//		System.out.println("User ID - "+studentCourseDetails.getMappingUserProfile().getUserId()+
+//							"\nCourse ID - "+studentCourseDetails.getMappingCourse().getCourseId()+
+//							"\nFee Status - "+studentCourseDetails.getFeeStatus());
+		System.out.println("Fee Status : "+studentCourseDetails.getFeeStatus());
+		System.out.println("User ID - "+studentCourseDetails.getMappingUserProfile().getUserId());
+
+		System.out.println("Course ID - "+studentCourseDetails.getMappingCourse().getCourseId());
+		
 	}
 	
 	

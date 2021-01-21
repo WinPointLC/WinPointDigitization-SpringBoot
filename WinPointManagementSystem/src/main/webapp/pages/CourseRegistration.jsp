@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,166 +30,189 @@
 </head>
 <body>
 
+	<form:form method="post" action="courseRegister"
+		id="courseRegistration" modelAttribute="studentCourseDetails">
 
-	<div class="container-fluid">
-		<!-- your content here -->
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="card-header heading">
-					<h3>Course Registration</h3>
+		<div class="container-fluid">
+			<!-- your content here -->
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div class="card-header heading">
+						<h3>Course Registration</h3>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-md-11 col-lg-11">
-				<!--     <div class="card"> -->
-				<div class="card">
-					<div class="card-header card-header-tabs card-header"
-						style="background-color: rgb(148, 21, 193);">
-						<div class="nav-tabs-navigation">
-							<div class="nav-tabs-wrapper">
+			<div class="row">
+				<div class="col-md-11 col-lg-11">
+					<!--     <div class="card"> -->
+					<div class="card">
+						<div class="card-header card-header-tabs card-header"
+							style="background-color: rgb(148, 21, 193);">
+							<div class="nav-tabs-navigation">
+								<div class="nav-tabs-wrapper">
 
-								<ul class="nav nav-tabs" data-tabs="tabs" id="nav-tab">
+									<ul class="nav nav-tabs" data-tabs="tabs" id="nav-tab">
 
-								</ul>
+									</ul>
+								</div>
 							</div>
 						</div>
+						<div id="drop11" class="dropdown drop1"></div>
 					</div>
-					<div id="drop11" class="dropdown drop1"></div>
-				</div>
-				<div class="card" style="display: none;" id="CourseCard">
-					<div class="card-body" id="courses">
-						<div class="tab-content" id="tab-content">
-							<div class="tab-pane active" id="profile">
-								<br>
-								<br>
 
-								<div class="row" id='courseList'></div>
-							</div>
-							<div class="tab-pane active" id="registration">
-								<h6 id="courseName"></h6>
-								<a href="#" onclick="submitCourseRegistration()"><button
-										class="Signbtn" type="button">Submit</button></a>
-								<!-- <a href="#" onclick="alert('From Submit')"><button class="Signbtn" type="button">Submit</button></a> -->
-							</div>
-							<div class="tab-pane" id="messages">
+					<div class="card" style="display: none;" id="CourseCard">
+						<div class="card-body" id="courses">
+							<div class="tab-content" id="tab-content">
 
-								<div class="row">
-									<div class="col-lg-3 col-md-6 col-sm-6 column1">
-										<div class="card card-stats">
-											<div class="card-header card-header-icon">
-												<div class="card-icon"
-													style="font-size: 20px; background-color: rgb(0, 208, 139);"
-													id="row1-card1">
-													<i class="material-icons">sort_by_alpha</i>
-												</div>
-												<a href="TestSelectPage.jsp"><p class="card-category">English
-														Language Skills</p></a>
-											</div>
 
-										</div>
+								<%-- <form:form path="mappingCourse" id="mappingCourseId"> --%>
+									<div class="tab-pane active" id="profile">
+										<br> <br>
+
+										<div class="row" id='courseList'></div>
 									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6 column2">
-										<div class="card card-stats">
-											<div class="card-header card-header-icon">
-												<div class="card-icon"
-													style="font-size: 20px; background-color: rgb(180, 3, 136);"
-													id="row1-card1">
-													<i class="material-icons">record_voice_over</i>
-												</div>
-												<a href="TestSelectPage.jsp"><p class="card-category">Oral
-														Communication</p></a>
-											</div>
 
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6 column3">
-										<div class="card card-stats">
-											<div class="card-header card-header-danger card-header-icon">
+								<%-- </form:form> --%>
 
-												<div class="card-icon">
-													<i class="material-icons">how_to_reg</i>
-												</div>
-												<a href="TestSelectPage.jsp">
-													<p class="card-category">Personality Development</p>
-												</a>
-											</div>
-										</div>
-									</div>
+								<div class="tab-pane active" id="registration">
+									<h6 id="courseName"></h6>
+									<a href="#" onclick="submitCourseRegistration()"><button
+											class="Signbtn" type="button">Submit</button></a>
+									<!-- <a href="#" onclick="alert('From Submit')"><button class="Signbtn" type="button">Submit</button></a> -->
 								</div>
+								<div class="tab-pane" id="messages">
 
-							</div>
-							<div class="tab-pane" id="settings">
-								<!--  <div id="drop11" class="dropdown drop1">
+									<div class="row">
+										<div class="col-lg-3 col-md-6 col-sm-6 column1">
+											<div class="card card-stats">
+												<div class="card-header card-header-icon">
+													<div class="card-icon"
+														style="font-size: 20px; background-color: rgb(0, 208, 139);"
+														id="row1-card1">
+														<i class="material-icons">sort_by_alpha</i>
+													</div>
+													<a href="TestSelectPage.jsp"><p class="card-category">English
+															Language Skills</p></a>
+												</div>
+
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-6 col-sm-6 column2">
+											<div class="card card-stats">
+												<div class="card-header card-header-icon">
+													<div class="card-icon"
+														style="font-size: 20px; background-color: rgb(180, 3, 136);"
+														id="row1-card1">
+														<i class="material-icons">record_voice_over</i>
+													</div>
+													<a href="TestSelectPage.jsp"><p class="card-category">Oral
+															Communication</p></a>
+												</div>
+
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-6 col-sm-6 column3">
+											<div class="card card-stats">
+												<div class="card-header card-header-danger card-header-icon">
+
+													<div class="card-icon">
+														<i class="material-icons">how_to_reg</i>
+													</div>
+													<a href="TestSelectPage.jsp">
+														<p class="card-category">Personality Development</p>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="tab-pane" id="settings">
+									<!--  <div id="drop11" class="dropdown drop1">
 
                             </div><br> -->
-								<div class="row">
-									<div class="col-lg-3 col-md-6 col-sm-6 column1">
-										<div class="card card-stats">
-											<div class="card-header card-header-icon">
-												<div class="card-icon"
-													style="font-size: 20px; background-color: rgb(111, 209, 13)"
-													id="row1-card1">
-													<i class="material-icons">exposure</i>
+									<div class="row">
+										<div class="col-lg-3 col-md-6 col-sm-6 column1">
+											<div class="card card-stats">
+												<div class="card-header card-header-icon">
+													<div class="card-icon"
+														style="font-size: 20px; background-color: rgb(111, 209, 13)"
+														id="row1-card1">
+														<i class="material-icons">exposure</i>
+													</div>
+													<a href="TestSelectPage.jsp"><p class="card-category">Quantitative
+															Aptitude</p></a>
 												</div>
-												<a href="TestSelectPage.jsp"><p class="card-category">Quantitative
-														Aptitude</p></a>
+
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-6 col-sm-6 column2">
+											<div class="card card-stats">
+												<div class="card-header card-header-info card-header-icon">
+													<div class="card-icon" style="font-size: 20px;">
+														<i class="material-icons">extension</i>
+													</div>
+													<a href="TestSelectPage.jsp"><p class="card-category">Logical
+															Reasoning</p></a>
+												</div>
+
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-6 col-sm-6 column3">
+											<div class="card card-stats">
+												<div class="card-header card-header-icon">
+
+													<div class="card-icon"
+														style="background-color: rgb(218, 113, 31);">
+														<i class="material-icons">find_in_page</i>
+													</div>
+													<a href="TestSelectPage.jsp"><p class="card-category">Verbal
+															Reasoning</p></a>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-3 col-md-6 col-sm-6 column4">
+											<div class="card card-stats">
+												<div class="card-header card-header-icon">
+													<div class="card-icon"
+														style="font-size: 20px; background-color: rgb(251, 26, 30);">
+														<i class="material-icons">spellcheck</i>
+													</div>
+													<a href="TestSelectPage.jsp"><p class="card-category">Verbal
+															Ability</p></a>
+												</div>
+
 											</div>
 
 										</div>
-									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6 column2">
-										<div class="card card-stats">
-											<div class="card-header card-header-info card-header-icon">
-												<div class="card-icon" style="font-size: 20px;">
-													<i class="material-icons">extension</i>
-												</div>
-												<a href="TestSelectPage.jsp"><p class="card-category">Logical
-														Reasoning</p></a>
-											</div>
-
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6 column3">
-										<div class="card card-stats">
-											<div class="card-header card-header-icon">
-
-												<div class="card-icon"
-													style="background-color: rgb(218, 113, 31);">
-													<i class="material-icons">find_in_page</i>
-												</div>
-												<a href="TestSelectPage.jsp"><p class="card-category">Verbal
-														Reasoning</p></a>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-3 col-md-6 col-sm-6 column4">
-										<div class="card card-stats">
-											<div class="card-header card-header-icon">
-												<div class="card-icon"
-													style="font-size: 20px; background-color: rgb(251, 26, 30);">
-													<i class="material-icons">spellcheck</i>
-												</div>
-												<a href="TestSelectPage.jsp"><p class="card-category">Verbal
-														Ability</p></a>
-											</div>
-
-										</div>
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
+					<!-- End card div -->
+
+
 				</div>
-				<!-- End card div -->
-
-
 			</div>
 		</div>
-	</div>
 
+		<form:form 	path="mappingUserProfile" id="userProfileId">
+
+	
+				<form:input type="text" class="form-control" path="userId"	id="userId" >
+				</form:input>
+
+		</form:form>
+
+	
+	</form:form>
+
+	<script>
+		var userId = sessionStorage.getItem('USERID');
+	</script>
 	<!--   Core JS Files   -->
 	<script src="../assets/js/core/jquery.min.js"></script>
 	<script src="../assets/js/core/popper.min.js"></script>
@@ -295,7 +320,7 @@
 					courseTypeName = ('${det.courseTypeName}').toUpperCase();
 					courseTypeId = ('${det.courseTypeId}');
 				}
-			//	alert("COURSE TYPE NAME : " + courseTypeName);
+				//	alert("COURSE TYPE NAME : " + courseTypeName);
 				dropanchor.textContent = ('${det.courseTypeName}')
 						.toUpperCase();
 				dropanchor.setAttribute('onclick',
@@ -321,7 +346,7 @@
 			var studentGACoursesCourseIdList;
 			courseTypeId = courseType_id;
 			//alert("stream_id = " + streamId + "courseType_id = "
-				//	+ courseType_id);
+			//	+ courseType_id);
 
 			document.getElementById('dropdownMenuButton_1').textContent = courseTypeName;
 
@@ -355,7 +380,7 @@
 								row.id = "courseList";
 								for (j = i; j < i + 3
 										&& j < responseJson.length; j++) {
-					//				alert("COURSE LIST" + courseList);
+									//				alert("COURSE LIST" + courseList);
 									//alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
 									var column = document.createElement('div');
 									column.className = 'col-lg-3 col-md-6 col-sm-6 column3';
@@ -427,13 +452,21 @@
 			streamId = selectedStreamId;
 			courseName = selectedCourseName;
 			//alert("Register for the course " + courseName);
+			//document.getElementById("mappingCourseId").value = courseId;
+			document.getElementById("userId").value = userId;
 			document.getElementById('profile').style.display = "none";
 			document.getElementById('courseName').innerHTML = "Registration for "
 					+ courseName + " Course";
 			document.getElementById('registration').style.display = "block";
+		
 		}
 		function submitCourseRegistration() {
-			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
+			alert("" + courseId + " " + streamId + " " + courseName + " "
+					+ courseTypeId);
+			$('#courseRegistration').submit();
+
+
+			
 			/* var myData = {
 				streamId : streamId,
 				courseTypeId : courseTypeId,
@@ -442,63 +475,66 @@
 				//feeStatus : "Paid"
 				//courseName : courseName
 			}; */
-			var myData = new Object();
+
+			/*var myData = new Object();
 			myData.streamId = streamId;
 			myData.courseTypeId = courseTypeId;
 			myData.courseId = courseId;
 			myData.userId = sessionStorage.getItem('USERID');
-			alert("STREAM - "+myData.streamId);
+			myData.feeStatus = 'PAID';
+			alert("STREAM - " + myData.streamId);
 			alert("1");
 			const userId = sessionStorage.getItem('USERID');
 			alert("User Id : "+userId);
-			var feeStatus = 'PAID';
-
+			
 			$.ajax({
-						type : 'POST',
-						url : "/UpdateStudentCourseDetails",
-						data : JSON.stringify(myData),
-						
-						//data : jQuery.param(myData),
-						dataType : 'json',
-						//contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-						contentType : 'application/json; charset=utf-8',
-						
-						traditional : true,
-						success : function() {
-						alert("Course Registration Successful");
-						/*	
-							var responseJson1 = jsonObj[0];
-							var locationJson = eval('(' + responseJson1 + ')');
+				type : 'POST',
+				url : "/UpdateStudentCourseDetails",
+				data : JSON.stringify(myData),
 
-							var responseJson2 = jsonObj[1];
-							var responseJson3 = jsonObj[2];
+				//data : jQuery.param(myData),
+				dataType : 'json',
+				//contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+				contentType : 'application/json; charset=utf-8',
 
-							var studCourseDetailsJSON = JSON
-									.stringify(responseJson2);
-							var studGACourseDetailsJSON = JSON
-									.stringify(responseJson3);
-							var courseTypeJSON = JSON
-									.stringify(courseTypesList);
-							var streamJSON = JSON.stringify(streamList);
+				traditional : true,
+				success : function() {
+					alert("Course Registration Successful");
+					
+						var responseJson1 = jsonObj[0];
+						var locationJson = eval('(' + responseJson1 + ')');
 
-							//window.location.href = locationJson.location;
-							// window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
-							window.location.href = locationJson.location
-									+ "?varid="
-									+ encodeURIComponent(streamJSON)
-									+ encodeURIComponent(courseTypeJSON)
-									+ encodeURIComponent(studCourseDetailsJSON)
-									+ encodeURIComponent(studGACourseDetailsJSON)
-									+ "&username=" + "Anjali" + "&password="
-									+ "Anjali";
-						*/
-						},
-						error : function() {
-							alert("Error in Course Registration");
-							// document.getElementById("error").innerHTML = "Invalid email or password";
-						}
+						var responseJson2 = jsonObj[1];
+						var responseJson3 = jsonObj[2];
 
-					});
+						var studCourseDetailsJSON = JSON
+								.stringify(responseJson2);
+						var studGACourseDetailsJSON = JSON
+								.stringify(responseJson3);
+						var courseTypeJSON = JSON
+								.stringify(courseTypesList);
+						var streamJSON = JSON.stringify(streamList);
+
+						//window.location.href = locationJson.location;
+						// window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
+						window.location.href = locationJson.location
+								+ "?varid="
+								+ encodeURIComponent(streamJSON)
+								+ encodeURIComponent(courseTypeJSON)
+								+ encodeURIComponent(studCourseDetailsJSON)
+								+ encodeURIComponent(studGACourseDetailsJSON)
+								+ "&username=" + "Anjali" + "&password="
+								+ "Anjali";
+					 
+				},
+				error : function() {
+					alert("Error in Course Registration");
+					// document.getElementById("error").innerHTML = "Invalid email or password";
+				}
+
+			});*/
+
+			
 		}
 		function displayTestSelect(courseId, courseName) {
 			//alert("DisplayTestSelect Id = " + courseId);
