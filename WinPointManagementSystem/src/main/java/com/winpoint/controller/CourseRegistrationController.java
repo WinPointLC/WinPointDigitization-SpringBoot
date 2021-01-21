@@ -69,10 +69,36 @@ public class CourseRegistrationController {
 	 * //studentCourseDetailsRepository.save(studentCourseDetails); }
 	 */
 
+//	@RequestMapping(value = "/UpdateStudentCourseDetails", method = RequestMethod.POST)
+//	public void updateStudentCourseDetails(@RequestParam("streamId") String streamId,
+//			@RequestParam("courseTypeId") String courseTypeId, @RequestParam("courseId") String courseId, @RequestParam String userId) {
+//		System.out.println("*********** From updateStudentCourseDetails" );
+//		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stream Type Id : "+courseTypeId+"Stream Id : "+streamId);
+//		System.out.println("User ID - "+userId+
+//				"\nCourse ID - "+courseId);
+//
+//		System.out.println();
+//	}
+	
 	@RequestMapping(value = "/UpdateStudentCourseDetails", method = RequestMethod.POST)
-	public void updateStudentCourseDetails(@RequestParam("streamId") String streamId,
-			@RequestParam("courseTypeId") String courseTypeId) {
+	public void updateStudentCourseDetails(@RequestBody StudentCourseDetails studentCourseDetails) {
 		System.out.println("*********** From updateStudentCourseDetails" );
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stream Type Id : "+courseTypeId+"Stream Id : "+streamId);
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println();
+		System.out.println("User ID - "+studentCourseDetails.getMappingUserProfile().getUserId()+
+							"\nCourse ID - "+studentCourseDetails.getMappingCourse().getCourseId()+
+							"\nFee Status - "+studentCourseDetails.getFeeStatus());
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

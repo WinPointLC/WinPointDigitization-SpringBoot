@@ -69,5 +69,13 @@ public class StudentCourseDetails {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
+	
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "streamId", nullable = false)
+	private Streams mappingStreams;
+
+	
 
 }

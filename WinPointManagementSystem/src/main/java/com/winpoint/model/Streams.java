@@ -35,6 +35,11 @@ public class Streams {
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingStreams")
+	private Set<StudentCourseDetails> mappingStudentCourseDetails;
+	
+	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingStreams")
 	private Set<Course> mappingCourse;
 	
 	

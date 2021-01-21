@@ -27,6 +27,8 @@
 	src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 </head>
 <body>
+
+
 	<div class="container-fluid">
 		<!-- your content here -->
 		<div class="row">
@@ -432,26 +434,40 @@
 		}
 		function submitCourseRegistration() {
 			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
-			var myData = {
-				//userId : 1,
+			/* var myData = {
 				streamId : streamId,
-				courseTypeId : courseTypeId
-				//courseId : courseId,
+				courseTypeId : courseTypeId,
+				courseId : courseId,
+				userId : sessionStorage.getItem('USERID')
+				//feeStatus : "Paid"
 				//courseName : courseName
-			};
+			}; */
+			var myData = new Object();
+			myData.streamId = streamId;
+			myData.courseTypeId = courseTypeId;
+			myData.courseId = courseId;
+			myData.userId = sessionStorage.getItem('USERID');
+			alert("STREAM - "+myData.streamId);
 			alert("1");
+			const userId = sessionStorage.getItem('USERID');
+			alert("User Id : "+userId);
 			var feeStatus = 'PAID';
 
 			$.ajax({
 						type : 'POST',
 						url : "/UpdateStudentCourseDetails",
-						data : jQuery.param(myData),
+						data : JSON.stringify(myData),
+						
+						//data : jQuery.param(myData),
 						dataType : 'json',
-						contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+						//contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+						contentType : 'application/json; charset=utf-8',
+						
 						traditional : true,
-						success : function(jsonObj) {
+						success : function() {
 						alert("Course Registration Successful");
-						/*	var responseJson1 = jsonObj[0];
+						/*	
+							var responseJson1 = jsonObj[0];
 							var locationJson = eval('(' + responseJson1 + ')');
 
 							var responseJson2 = jsonObj[1];
@@ -474,7 +490,8 @@
 									+ encodeURIComponent(studCourseDetailsJSON)
 									+ encodeURIComponent(studGACourseDetailsJSON)
 									+ "&username=" + "Anjali" + "&password="
-									+ "Anjali";*/
+									+ "Anjali";
+						*/
 						},
 						error : function() {
 							alert("Error in Course Registration");
