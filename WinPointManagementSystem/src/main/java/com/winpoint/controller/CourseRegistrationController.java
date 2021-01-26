@@ -88,10 +88,9 @@ public class CourseRegistrationController {
 		studentCourseDetailsRepository.save(studentCourseDetails);
 		
 		
-		
 		//batch_id
-		//course_id
-		//expense_type_id
+		//course_id e
+		//expense_type_id - done
 		//grade_id
 		//reminder_type_id
 		//user_id

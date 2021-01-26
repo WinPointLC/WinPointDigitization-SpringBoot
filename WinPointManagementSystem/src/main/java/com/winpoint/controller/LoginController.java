@@ -62,6 +62,7 @@ public class LoginController {
 			System.out.println("database password : "+enquiryDetails.getDefaultPassword());
 			System.out.println("Enquired : "+enquiryDetails.isEnquired());
 			if(password.equals(enquiryDetails.getDefaultPassword())) {
+				System.out.println("return Enquired Details");
 				return enquiryDetails;
 			}
 			else {

@@ -22,6 +22,7 @@ public class ClientDashBoardController {
 
 	@RequestMapping(value = "/client", method = RequestMethod.GET)
 	public ModelAndView ClientDashboardPage() {
+		System.out.println("Entered the Client Dashboards Controller");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ClientDashboard-New");
 		List<Streams> c = stream.findAll();

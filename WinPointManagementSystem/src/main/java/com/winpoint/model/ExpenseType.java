@@ -24,6 +24,7 @@ public class ExpenseType {
 	private Integer expenseTypeId;
 	private String expenseTypeName;
 
+//	@Column(nullable = true)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingExpenseType")
 	private Set<StudentCourseDetails> StudentCourseDetails;
 

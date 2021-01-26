@@ -46,24 +46,33 @@ public class StudentCourseDetails {
 	private Integer dueAmount;
 	private Integer percentageAttendance;
 
+	//batch_id - done 
+	//
+	//expense_type_id - done 
+	//grade_id - done
+	//reminder_type_id 
+	//
+	//stream_id
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "reminderTypeId", nullable = false)
+	@JoinColumn(name = "reminderTypeId", nullable = true)
 	private ReminderType mappingReminderType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "gradeId", nullable = false)
+	@JoinColumn(name = "gradeId", nullable = true)
 	private GradingSystem mappingGradingSystem;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "batchId", nullable = false)
+	@JoinColumn(name = "batchId", nullable = true)
 	private BatchDetails mappingBatchDetails;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
 
+//	@Column(nullable = true)
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "expenseTypeId", nullable = false)
+	@JoinColumn(name = "expenseTypeId", nullable = true)
 	private ExpenseType mappingExpenseType;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -73,7 +82,7 @@ public class StudentCourseDetails {
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "streamId", nullable = false)
+	@JoinColumn(name = "streamId", nullable = true)
 	private Streams mappingStreams;
 
 	

@@ -57,13 +57,23 @@
 	src="${pageContext.request.contextPath}/js/WinPointScripts.js"></script>
 
 
-<script>
+<!-- <script>
+	alert("A");
 	var SearchString = window.location.search.substring(1);
+	alert("B");
 
 	var arr = SearchString.split('&');
+	alert("C");
+	
 	var data = arr[0].split('=')[1];
+	alert("D");
+	
 	var decodedData = decodeURIComponent(data);
+	alert("E");
+	
 	userData = JSON.parse(decodedData);
+	alert("F");
+	
 	//alert(userData.user);
 	//alert(data);
 	//alert("Enquired : " + userData.enquired);
@@ -71,7 +81,9 @@
 	//alert("Active : " + userData.activeStatus);
 	document.getElementById('welcome').innerHTML = userData.firstName + " "
 			+ userData.lastName;
-</script>
+	alert("G");
+	
+</script> -->
 
 
 
@@ -2453,6 +2465,33 @@
 						mainUserFunction();
 
 					});
+				</script>
+				<script>
+					alert("A");
+					var SearchString = window.location.search.substring(1);
+					alert("B");
+				
+					var arr = SearchString.split('&');
+					alert("C");
+					
+					var data = arr[0].split('=')[1];
+					alert("D");
+					
+					var decodedData = decodeURIComponent(data);
+					alert("E");
+					
+					userData = JSON.parse(decodedData);
+					alert("F");
+					
+					//alert(userData.user);
+					//alert(data);
+					//alert("Enquired : " + userData.enquired);
+					//alert("Name : " + userData.firstName);
+					//alert("Active : " + userData.activeStatus);
+					document.getElementById('welcome').innerHTML = userData.firstName + " "
+							+ userData.lastName;
+					alert("G");
+	
 				</script>
 </body>
 
