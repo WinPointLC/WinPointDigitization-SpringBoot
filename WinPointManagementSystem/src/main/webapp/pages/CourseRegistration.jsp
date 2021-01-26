@@ -236,6 +236,10 @@
 
 	<script>
 		////alert(streamList[i].streamId + ":" + streamList[i].streamName);
+		
+
+		
+		
 		var courseList;
 		var streamId = 1;
 		var courseId = 1;
@@ -434,71 +438,74 @@
 		}
 		function submitCourseRegistration() {
 			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
-			var myData = {
-				streamId : streamId,
-				courseTypeId : courseTypeId,
-				courseId : courseId,
-				userId : sessionStorage.getItem('USERID'),
-				feeStatus : "Paid"
-				//courseName : courseName
-			}; 
-			/* var myData = new Object();
-			myData.streamId = streamId;
-			myData.courseTypeId = courseTypeId;
-			myData.courseId = courseId;
-			myData.userId = sessionStorage.getItem('USERID');
-			alert("STREAM - "+myData.streamId);
-			alert("1");
- */			const userId = sessionStorage.getItem('USERID');
-			alert("User Id : "+userId);
-			var feeStatus = 'PAID';
+			if(sessionStorage.getItem('ISENQUIRED')){
+				alert("Enquired Student. . .");
+				var enquiredStudentData = {
+						streamId : streamId,
+						courseTypeId : courseTypeId,
+						courseId : courseId,
+						Id : sessionStorage.getItem('ENQUIREDID'),
+						feeStatus : "Paid"
+						enquired : sessionStorage.getItem('ISENQUIRED')
+				};  
+				$.ajax({
+					type : 'POST',
+					url : "/UpdateStudentCourseDetails",
+					data : JSON.stringify(myData),
+					
+					data : jQuery.param(myData),
+					//dataType : 'json',
+					contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+					//contentType : 'application/json; charset=utf-8',
+					
+					traditional : true,
+					success : function() {
+					alert("Course Registration Successful");
+					
+					},
+					error : function() {
+						alert("Error in Course Registration");
+						// document.getElementById("error").innerHTML = "Invalid email or password";
+					}
 
-			$.ajax({
-						type : 'POST',
-						url : "/UpdateStudentCourseDetails",
-						data : JSON.stringify(myData),
-						
-						data : jQuery.param(myData),
-						//dataType : 'json',
-						contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
-						//contentType : 'application/json; charset=utf-8',
-						
-						traditional : true,
-						success : function() {
-						alert("Course Registration Successful");
-						/*	
-							var responseJson1 = jsonObj[0];
-							var locationJson = eval('(' + responseJson1 + ')');
+				});
+			
+			}
+			else{
+				alert("REGISTER STUDENT . . .");
+				var userStudentData = {
+						streamId : streamId,
+						courseTypeId : courseTypeId,
+						courseId : courseId,
+						Id : sessionStorage.getItem('USERID'),
+						feeStatus : "Paid"
+						enquired : sessionStorage.getItem('ISENQUIRED')
+				};
+				
+				$.ajax({
+					type : 'POST',
+					url : "/UpdateStudentCourseDetails",
+					data : JSON.stringify(myData),
+					
+					data : jQuery.param(myData),
+					//dataType : 'json',
+					contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
+					//contentType : 'application/json; charset=utf-8',
+					
+					traditional : true,
+					success : function() {
+					alert("Course Registration Successful");
+					
+					},
+					error : function() {
+						alert("Error in Course Registration");
+						// document.getElementById("error").innerHTML = "Invalid email or password";
+					}
 
-							var responseJson2 = jsonObj[1];
-							var responseJson3 = jsonObj[2];
+				});
 
-							var studCourseDetailsJSON = JSON
-									.stringify(responseJson2);
-							var studGACourseDetailsJSON = JSON
-									.stringify(responseJson3);
-							var courseTypeJSON = JSON
-									.stringify(courseTypesList);
-							var streamJSON = JSON.stringify(streamList);
-
-							//window.location.href = locationJson.location;
-							// window.location.href = locationJson.location + "?varid=" + encodeURIComponent(strResJSON) + "&username=" + "Anjali" +"&password=" + "Anjali";
-							window.location.href = locationJson.location
-									+ "?varid="
-									+ encodeURIComponent(streamJSON)
-									+ encodeURIComponent(courseTypeJSON)
-									+ encodeURIComponent(studCourseDetailsJSON)
-									+ encodeURIComponent(studGACourseDetailsJSON)
-									+ "&username=" + "Anjali" + "&password="
-									+ "Anjali";
-						*/
-						},
-						error : function() {
-							alert("Error in Course Registration");
-							// document.getElementById("error").innerHTML = "Invalid email or password";
-						}
-
-					});
+			}
+			
 		}
 		function displayTestSelect(courseId, courseName) {
 			//alert("DisplayTestSelect Id = " + courseId);

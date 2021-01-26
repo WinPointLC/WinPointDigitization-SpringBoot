@@ -802,10 +802,20 @@
 
 					function CourseRegistration_link() {
 
+						sessionStorage.setitem("ISENQUIRED",enquired);
 						alert("Course Registration Link");
-						const userId = userData.userId;
-						alert("User Id : "+userId);
-						sessionStorage.setItem("USERID", userId);
+						alert("Enquired : "+userData.enquired);
+						if(userData.enquired){
+							const enquiredId = userData.userId;
+							alert("Enquired Id : "+enquiredId);
+							sessionStorage.setItem("ENQUIREDID", enquiredId);
+						}
+						else{
+							const userId = userData.userId;
+							alert("User Id : "+userId);
+							sessionStorage.setItem("USERID", userId);
+						}
+						
 						Removeframes();
 						document.getElementById('course-reg').className = "nav-item active";
 						document.getElementById('user-dash').className = " ";
