@@ -89,6 +89,7 @@
 
 <script>
 	function sendToCourseRegistrationPage() {
+		alert("Course Registration Link1");
 		$
 				.ajax({
 					type : 'POST',
@@ -802,7 +803,7 @@
 
 					function CourseRegistration_link() {
 
-						sessionStorage.setitem("ISENQUIRED",enquired);
+						sessionStorage.setItem("ISENQUIRED",userData.enquired);
 						alert("Course Registration Link");
 						alert("Enquired : "+userData.enquired);
 						if(userData.enquired){
@@ -833,10 +834,11 @@
 						courseframe.setAttribute('style', "margin-top:3%;");
 						document.getElementById('iframediv').appendChild(
 								courseframe);
-						sendToCourseRegistrationPage();
+						//sendToCourseRegistrationPage();
 						ShowHideCourse();
 					}
 					function ShowHideCourse() {
+						alert("Course Registration Link2");
 						document.getElementById('Tech-content').style.display = "none";
 						// document.getElementById('myCan').style.display="none";
 						document.getElementById('CourseRegistration-frame').style.display = "block";
@@ -973,6 +975,7 @@
 				</script>
 				<script>
 					function getStreamId(stream_id) {
+						alert("From getStreamId");
 						streamId = stream_id;
 						var streamElem = document
 								.getElementById(streamId + 'a');
@@ -2477,31 +2480,19 @@
 					});
 				</script>
 				<script>
-					alert("A");
+					
 					var SearchString = window.location.search.substring(1);
-					alert("B");
-				
 					var arr = SearchString.split('&');
-					alert("C");
-					
 					var data = arr[0].split('=')[1];
-					alert("D");
-					
 					var decodedData = decodeURIComponent(data);
-					alert("E");
-					
 					userData = JSON.parse(decodedData);
-					alert("F");
-					
 					//alert(userData.user);
 					//alert(data);
 					//alert("Enquired : " + userData.enquired);
 					//alert("Name : " + userData.firstName);
 					//alert("Active : " + userData.activeStatus);
 					document.getElementById('welcome').innerHTML = userData.firstName + " "
-							+ userData.lastName;
-					alert("G");
-	
+							+ userData.lastName;	
 				</script>
 </body>
 

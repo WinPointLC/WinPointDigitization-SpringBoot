@@ -247,7 +247,7 @@
 		var courseTypeId;
 
 		function getStreamId(stream_id) {
-			//alert("here stream");
+			alert("here stream");
 			streamId = stream_id;
 
 			var streamElem = document.getElementById(streamId + 'a');
@@ -268,7 +268,7 @@
 			}
 
 			streamElem.className = 'nav-link active';
-
+alert("Before CourseType button");
 			var btn = document.createElement('button');
 			btn.className = 'btn btn-secondary dropdown-toggle';
 			btn.id = 'dropdownMenuButton_1';
@@ -445,15 +445,15 @@
 						courseTypeId : courseTypeId,
 						courseId : courseId,
 						Id : sessionStorage.getItem('ENQUIREDID'),
-						feeStatus : "Paid"
+						feeStatus : "Paid",
 						enquired : sessionStorage.getItem('ISENQUIRED')
 				};  
 				$.ajax({
 					type : 'POST',
 					url : "/UpdateStudentCourseDetails",
-					data : JSON.stringify(myData),
+					data : JSON.stringify(enquiredStudentData),
 					
-					data : jQuery.param(myData),
+					//data : jQuery.param(myData),
 					//dataType : 'json',
 					contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 					//contentType : 'application/json; charset=utf-8',
@@ -478,16 +478,16 @@
 						courseTypeId : courseTypeId,
 						courseId : courseId,
 						Id : sessionStorage.getItem('USERID'),
-						feeStatus : "Paid"
+						feeStatus : "Paid",
 						enquired : sessionStorage.getItem('ISENQUIRED')
 				};
 				
 				$.ajax({
 					type : 'POST',
 					url : "/UpdateStudentCourseDetails",
-					data : JSON.stringify(myData),
+					data : JSON.stringify(userStudentData),
 					
-					data : jQuery.param(myData),
+					//data : jQuery.param(myData),
 					//dataType : 'json',
 					contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 					//contentType : 'application/json; charset=utf-8',
@@ -588,7 +588,7 @@
 		var streamElem = document.getElementById('${firstStreamId}' + 'a');
 		streamElem.className = 'nav-link active';
 
-		getStreamId('${firstStreamId}');
+		getStreamId(${firstStreamId});
 		displayStreamCourses(courseTypeId, courseTypeName);
 	</script>
 </body>
