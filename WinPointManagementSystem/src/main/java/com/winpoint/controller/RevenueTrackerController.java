@@ -224,7 +224,7 @@ public class RevenueTrackerController {
 				enquiry.getOccupation(), enquiry.getDesignation(), enquiry.getDomain(), enquiry.getRole(),
 				enquiry.getExperience(), enquiry.getCreatedBy(), enquiry.getDateOfEnquiry(), enquiry.getGender(),
 				enquiry.getYearOfGraduation(), enquiry.getRecommendation(), enquiry.getEligibility(),
-				enquiry.getReference(), enquiry.getStartDate(), enquiry.getSuggestion(), enquiry.getActiveStatus(),
+				enquiry.getReference(), enquiry.getStartDate(), enquiry.getSuggestion(), enquiry.isActiveStatus(),
 				enquiry.getBirthDateString(), enquiry.getDateOfEnquiryString(), enquiry.getStartDateString());
 
 	}

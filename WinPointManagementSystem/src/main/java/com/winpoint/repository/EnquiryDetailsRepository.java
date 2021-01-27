@@ -39,7 +39,7 @@ public interface EnquiryDetailsRepository extends JpaRepository<EnquiryDetails, 
 			String designation, String domain, String role, Integer experience, Integer createdBy, Date dateOfEnquiry,
 			String gender, Integer yearOfGraduation, String recommendation, String eligibility,
 			String reference, Date startDate,
-			String suggestion, Integer activeStatus, String birthDateString, String dateOfEnquiryString, String startDateString);
+			String suggestion, boolean b, String birthDateString, String dateOfEnquiryString, String startDateString);
 	
 	
 	
