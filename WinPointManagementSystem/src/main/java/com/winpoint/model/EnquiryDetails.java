@@ -55,7 +55,7 @@ public class EnquiryDetails implements Serializable{
 	@Column(columnDefinition = "datetime")
 	private Date startDate;
 	private String suggestion;
-	private Integer activeStatus;
+	private boolean activeStatus;
 	private String birthDateString;
 	private String dateOfEnquiryString;
 	private String startDateString;

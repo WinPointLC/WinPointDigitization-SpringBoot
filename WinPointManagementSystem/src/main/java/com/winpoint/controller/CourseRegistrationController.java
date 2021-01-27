@@ -76,6 +76,7 @@ public class CourseRegistrationController {
 		
 		System.out.println("ID - "+Id+"\nCourse ID - "+courseId+"\nFee Status"+feeStatus);
 		System.out.println();
+		
 		UserProfile mappingUserProfile = new UserProfile();
 		mappingUserProfile.setUserId(Integer.parseInt(Id));
 		Course mappingCourse = new Course();
@@ -92,6 +93,40 @@ public class CourseRegistrationController {
 			System.out.println("This is an Enquired student");
 //			userProfileRepository.save(enquiryDetailsRepository.findAllById(Integer.parseInt(Id)));
 //			enquiryDetailsRepository.delete(enquiryDetailsRepository.findAllById(Integer.parseInt(Id)));
+			
+//			Optional<EnquiryDetails> enquiryDetails = Optional.ofNullable(new EnquiryDetails());
+//			List<EnquiryDetails> enquiryDetailsList = new ArrayList<EnquiryDetails>();
+//			enquiryDetailsList.add(enquiryDetailsRepository.findById(Integer.parseInt(Id)));
+			Optional<EnquiryDetails> enquiryDetails = enquiryDetailsRepository.findById(Integer.parseInt(Id));
+			
+			UserProfile userProfile = new UserProfile();
+			userProfile.setFirstName(enquiryDetails.get().getFirstName());
+			userProfile.setLastName(enquiryDetails.get().getLastName());
+			userProfile.setEmailId(enquiryDetails.get().getEmailId());
+			userProfile.setMobileNumber(enquiryDetails.get().getMobileNo());
+			userProfile.setAddress(enquiryDetails.get().getAddress());
+			userProfile.setBirthDate(enquiryDetails.get().getBirthDate());
+			userProfile.setCollege(enquiryDetails.get().getCollege());
+			userProfile.setDegree(enquiryDetails.get().getDegree());
+			userProfile.setBranch(enquiryDetails.get().getBranch());
+			userProfile.setYearOfGraduation(enquiryDetails.get().getYearOfGraduation());
+			userProfile.setPhotoLocation(null);
+			userProfile.setPassword(enquiryDetails.get().getDefaultPassword());
+			userProfile.setGender(enquiryDetails.get().getGender());
+			userProfile.setSecurityAnswer(null);
+			userProfile.setOccupation(enquiryDetails.get().getOccupation());
+			userProfile.setOrganization(null);
+			userProfile.setDesignation(enquiryDetails.get().getDesignation());
+			userProfile.setDomain(enquiryDetails.get().getDomain());
+			userProfile.setRole(enquiryDetails.get().getRole());
+			userProfile.setExperience(enquiryDetails.get().getExperience());
+			userProfile.setActiveStatus(enquiryDetails.get().isActiveStatus());
+			userProfile.setEnquired(enquiryDetails.get().isEnquired());
+			
+			userProfileRepository.save(userProfile);
+			
+			enquiryDetailsRepository.deleteById(Integer.parseInt(Id));
+			
 		}
 
 		
