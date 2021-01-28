@@ -438,7 +438,10 @@ alert("Before CourseType button");
 		}
 		function submitCourseRegistration() {
 			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
-			if(sessionStorage.getItem('ISENQUIRED')){
+			
+			var isEnquired = sessionStorage.getItem('ISENQUIRED');
+			alert("&&&&&&" + sessionStorage.getItem('ENQUIREDID') + "&&&& isEnquired= " + isEnquired)
+			if(!isEnquired){
 				alert("Enquired Student. . .");
 				var enquiredStudentData = {
 						streamId : streamId,
@@ -485,9 +488,9 @@ alert("Before CourseType button");
 				$.ajax({
 					type : 'POST',
 					url : "/UpdateStudentCourseDetails",
-					data : JSON.stringify(userStudentData),
+					//data : JSON.stringify(userStudentData),
 					
-					//data : jQuery.param(myData),
+					data : jQuery.param(userStudentData),
 					//dataType : 'json',
 					contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 					//contentType : 'application/json; charset=utf-8',

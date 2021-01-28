@@ -802,7 +802,7 @@
 					}
 
 					function CourseRegistration_link() {
-
+						
 						sessionStorage.setItem("ISENQUIRED",userData.enquired);
 						alert("Course Registration Link");
 						alert("Enquired : "+userData.enquired);
