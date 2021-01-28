@@ -440,8 +440,8 @@ alert("Before CourseType button");
 			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
 			
 			var isEnquired = sessionStorage.getItem('ISENQUIRED');
-			alert("&&&&&&" + sessionStorage.getItem('ENQUIREDID') + "&&&& isEnquired= " + isEnquired)
-			if(!isEnquired){
+			alert( "&&&& isEnquired= " + isEnquired)
+			if(isEnquired=="true"){
 				alert("Enquired Student. . .");
 				var enquiredStudentData = {
 						streamId : streamId,
@@ -449,14 +449,14 @@ alert("Before CourseType button");
 						courseId : courseId,
 						Id : sessionStorage.getItem('ENQUIREDID'),
 						feeStatus : "Paid",
-						enquired : sessionStorage.getItem('ISENQUIRED')
+						enquired : isEnquired
 				};  
 				$.ajax({
 					type : 'POST',
 					url : "/UpdateStudentCourseDetails",
-					data : JSON.stringify(enquiredStudentData),
+					//data : JSON.stringify(enquiredStudentData),
 					
-					//data : jQuery.param(myData),
+					data : jQuery.param(enquiredStudentData),
 					//dataType : 'json',
 					contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 					//contentType : 'application/json; charset=utf-8',
@@ -482,7 +482,7 @@ alert("Before CourseType button");
 						courseId : courseId,
 						Id : sessionStorage.getItem('USERID'),
 						feeStatus : "Paid",
-						enquired : sessionStorage.getItem('ISENQUIRED')
+						enquired : isEnquired
 				};
 				
 				$.ajax({

@@ -102,7 +102,7 @@ public class UserProfile implements Serializable{
 
 	//@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "securityQuestionId", nullable = false)
+	@JoinColumn(name = "securityQuestionId", nullable = true)
 	private SecurityQuestions mappingSecurityQuestions;
 
 	//@JsonIgnore

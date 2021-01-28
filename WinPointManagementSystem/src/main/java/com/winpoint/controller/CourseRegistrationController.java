@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.Course;
 import com.winpoint.model.EnquiryDetails;
+import com.winpoint.model.SecurityQuestions;
 import com.winpoint.model.Streams;
 import com.winpoint.model.StudentCourseDetails;
 import com.winpoint.model.UserCategory;
@@ -47,10 +48,10 @@ public class CourseRegistrationController {
 		mv.addObject("courseList", courseList);
 		mv.addObject("firstStreamId", c1.get(0).getStreamId());
 
-		stream.findById(1).get().getMappingCourse().stream()
-				.forEach(y -> y.getMappingStudentCourseDetails().stream()
-						.filter(x -> x.getMappingUserProfile().getUserId() == Integer.parseInt(userId))
-						.forEach(z -> c.add(z.getMappingUserProfile())));
+//		stream.findById(1).get().getMappingCourse().stream()
+//				.forEach(y -> y.getMappingStudentCourseDetails().stream()
+//						.filter(x -> x.getMappingUserProfile().getUserId() == Integer.parseInt(userId))
+//						.forEach(z -> c.add(z.getMappingUserProfile())));
 
 		mv.setViewName("CourseRegistration");
 		System.out.println("**********" + userId);
@@ -70,36 +71,25 @@ public class CourseRegistrationController {
 	@RequestParam("feeStatus") String feeStatus,
 	@RequestParam("courseTypeId") String courseTypeId, 
 	@RequestParam("courseId") String courseId, 
-	@RequestParam String Id) {
+	@RequestParam("Id") String Id) {
 		System.out.println("*********** From updateStudentCourseDetails" );
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		
 		System.out.println("ID - "+Id+"\nCourse ID - "+courseId+"\nFee Status"+feeStatus);
 		System.out.println();
 		
-		UserProfile mappingUserProfile = new UserProfile();
-		mappingUserProfile.setUserId(Integer.parseInt(Id));
-		Course mappingCourse = new Course();
-		mappingCourse.setCourseId(Integer.parseInt(courseId));
-		StudentCourseDetails studentCourseDetails = new StudentCourseDetails();
-		studentCourseDetails.setMappingUserProfile(mappingUserProfile);
-		studentCourseDetails.setMappingCourse(mappingCourse);
-		studentCourseDetails.setFeeStatus(feeStatus);
+
 		
-		studentCourseDetailsRepository.save(studentCourseDetails);
+		// trasfer login then course registration.
 		
-		
+		System.out.println("Condition : "+isEquired);
 		if(isEquired) {
 			System.out.println("This is an Enquired student");
-//			userProfileRepository.save(enquiryDetailsRepository.findAllById(Integer.parseInt(Id)));
-//			enquiryDetailsRepository.delete(enquiryDetailsRepository.findAllById(Integer.parseInt(Id)));
-			
-//			Optional<EnquiryDetails> enquiryDetails = Optional.ofNullable(new EnquiryDetails());
-//			List<EnquiryDetails> enquiryDetailsList = new ArrayList<EnquiryDetails>();
-//			enquiryDetailsList.add(enquiryDetailsRepository.findById(Integer.parseInt(Id)));
+
 			Optional<EnquiryDetails> enquiryDetails = enquiryDetailsRepository.findById(Integer.parseInt(Id));
 			
 			UserProfile userProfile = new UserProfile();
+			System.out.println("First Name : "+enquiryDetails.get().getFirstName());
 			userProfile.setFirstName(enquiryDetails.get().getFirstName());
 			userProfile.setLastName(enquiryDetails.get().getLastName());
 			userProfile.setEmailId(enquiryDetails.get().getEmailId());
@@ -113,7 +103,7 @@ public class CourseRegistrationController {
 			userProfile.setPhotoLocation(null);
 			userProfile.setPassword(enquiryDetails.get().getDefaultPassword());
 			userProfile.setGender(enquiryDetails.get().getGender());
-			userProfile.setSecurityAnswer(null);
+			userProfile.setSecurityAnswer("");
 			userProfile.setOccupation(enquiryDetails.get().getOccupation());
 			userProfile.setOrganization(null);
 			userProfile.setDesignation(enquiryDetails.get().getDesignation());
@@ -123,9 +113,43 @@ public class CourseRegistrationController {
 			userProfile.setActiveStatus(enquiryDetails.get().isActiveStatus());
 			userProfile.setEnquired(enquiryDetails.get().isEnquired());
 			
+			UserCategory userCategory = new UserCategory();
+			userCategory.setUserCategoryId(1);
+			userProfile.setMappingUserCategory(userCategory);
+
+			userProfile.setMappingTimeSlots(enquiryDetails.get().getMappingTimeSlots());
+			userProfile.setMappingSegmentType(enquiryDetails.get().getMappingSegmentType());
+			
+			
 			userProfileRepository.save(userProfile);
 			
 			enquiryDetailsRepository.deleteById(Integer.parseInt(Id));
+			
+			List<UserProfile> newUser = userProfileRepository.findByEmailId(enquiryDetails.get().getEmailId());
+			
+			UserProfile mappingUserProfile = new UserProfile();
+			mappingUserProfile.setUserId(newUser.get(0).getUserId());
+			Course mappingCourse = new Course();
+			mappingCourse.setCourseId(Integer.parseInt(courseId));
+			StudentCourseDetails studentCourseDetails = new StudentCourseDetails();
+			studentCourseDetails.setMappingUserProfile(mappingUserProfile);
+			studentCourseDetails.setMappingCourse(mappingCourse);
+			studentCourseDetails.setFeeStatus(feeStatus);
+			
+			studentCourseDetailsRepository.save(studentCourseDetails);
+			
+		}
+		else {
+			UserProfile mappingUserProfile = new UserProfile();
+			mappingUserProfile.setUserId(Integer.parseInt(Id));
+			Course mappingCourse = new Course();
+			mappingCourse.setCourseId(Integer.parseInt(courseId));
+			StudentCourseDetails studentCourseDetails = new StudentCourseDetails();
+			studentCourseDetails.setMappingUserProfile(mappingUserProfile);
+			studentCourseDetails.setMappingCourse(mappingCourse);
+			studentCourseDetails.setFeeStatus(feeStatus);
+			
+			studentCourseDetailsRepository.save(studentCourseDetails);
 			
 		}
 

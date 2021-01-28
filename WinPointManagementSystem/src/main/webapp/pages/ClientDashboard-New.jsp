@@ -807,7 +807,7 @@
 						alert("Course Registration Link");
 						alert("Enquired : "+userData.enquired);
 						if(userData.enquired){
-							const enquiredId = userData.userId;
+							const enquiredId = userData.enquiryId;
 							alert("Enquired Id : "+enquiredId);
 							sessionStorage.setItem("ENQUIREDID", enquiredId);
 						}
@@ -2486,6 +2486,7 @@
 					var data = arr[0].split('=')[1];
 					var decodedData = decodeURIComponent(data);
 					userData = JSON.parse(decodedData);
+					alert("Id of student : "+userData.enquiryId);
 					//alert(userData.user);
 					//alert(data);
 					//alert("Enquired : " + userData.enquired);
