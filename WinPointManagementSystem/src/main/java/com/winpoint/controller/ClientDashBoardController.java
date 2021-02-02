@@ -38,6 +38,7 @@ public class ClientDashBoardController {
 		List<Streams> c = stream.findAll();
 		mv.addObject("streamList", c);
 		mv.addObject("firstStreamId", c.get(0).getStreamId());
+		
 		mv.setViewName("MainCoursePage");
 		return mv;
 	}

@@ -60,8 +60,7 @@
 					<div class="card-body" id="courses">
 						<div class="tab-content" id="tab-content">
 							<div class="tab-pane active" id="profile">
-								<br>
-								<br>
+								<br> <br>
 
 								<div class="row" id='courseList'></div>
 							</div>
@@ -324,6 +323,7 @@ alert("Before CourseType button");
 			var studentCoursesCourseIdList;
 			var studentGACoursesCourseIdList;
 			courseTypeId = courseType_id;
+			var registeredCoursesList = [];
 			//alert("stream_id = " + streamId + "courseType_id = "
 				//	+ courseType_id);
 
@@ -345,22 +345,23 @@ alert("Before CourseType button");
 						success : function(jsonObj) {
 							document.getElementById('CourseCard').style.display = "block";
 							var responseJson = jsonObj;
-							// var strResJSON = JSON.stringify(responseJson);
 
-							var elem = document.getElementById('courseList');
-							if (elem != null) {
+							var elem = document.getElementById("courseList");
+							var studentCourseDetailsList = '${studentCourseDetailsList}';
+
+							var cnt = 0;
+						
+										
+							
+ 							if (elem != null) {
 								elem.parentNode.removeChild(elem);
 							}
-							//document.getElementById('profile').removeChild(document.getElementById('xyz'));
 
-							for (i = 0; i < (responseJson.length); i = i + 3) {
+							for (i = 0; i < (responseJson.length); i = i + 3) {    // C, C++, DS
 								var row = document.createElement('div');
 								row.className = 'row';
 								row.id = "courseList";
-								for (j = i; j < i + 3
-										&& j < responseJson.length; j++) {
-					//				alert("COURSE LIST" + courseList);
-									//alert("course : " + responseJson[j].courseId + "," + responseJson[j].courseName + "," + responseJson[j].iconLocation);
+								for (j = i; j < i + 3 && j < responseJson.length; j++) {
 									var column = document.createElement('div');
 									column.className = 'col-lg-3 col-md-6 col-sm-6 column3';
 									var cardstats = document
@@ -385,28 +386,36 @@ alert("Before CourseType button");
 											responseJson[j].courseId);
 
 									var courseName = responseJson[j].courseName;
-
 									var para = document.createElement('p');
-									para.className = 'card-category';
-									anchor.appendChild(para);
-
-									if ((studentCoursesCourseIdList != null && studentCoursesCourseIdList
-											.includes(responseJson[j].courseId))
-											|| (studentGACoursesCourseIdList != null && studentGACoursesCourseIdList
-													.includes(responseJson[j].courseId))) {
-										//alert("Already Registered Course");
-										anchor.removeAttribute('href');
-										para.textContent = courseName
-												+ '  Registered';
-									} else {
-										//alert("Course not registered");
+									para.className = 'card-category';									
+																	
+									if('${studentCourseDetailsList}'!=""){
+										<c:forEach items='${studentCourseDetailsList}' var="sdc">//4.5   /// c, c++
+										if('${sdc.mappingCourse.courseId}'== responseJson[j].courseId || registeredCoursesList.includes(responseJson[j].courseId)){
+											//alert("From inner if");
+											anchor.removeAttribute('href');
+											para.textContent = courseName +'\nRegistered';
+											anchor.appendChild(para);
+											registeredCoursesList.push(responseJson[j].courseId);
+										}else{
+											//alert("From inner else");
+											para.textContent = courseName;
+											anchor.setAttribute('href', "#");
+											anchor.setAttribute('onclick',	"displayRegistrationForm(this.id,'"	+ courseName + "',"	+ streamId + " )");
+											anchor.appendChild(para);
+										} 
+										</c:forEach>
+									}else{
 										para.textContent = courseName;
 										anchor.setAttribute('href', "#");
 										anchor.setAttribute('onclick',
 												"displayRegistrationForm(this.id,'"
 														+ courseName + "',"
 														+ streamId + " )");
-									}
+										anchor.appendChild(para);
+										
+									} 
+
 									cardheader.appendChild(anchor);
 									cardstats.appendChild(cardheader);
 									column.appendChild(cardstats);
@@ -470,9 +479,7 @@ alert("Before CourseType button");
 						alert("Error in Course Registration");
 						// document.getElementById("error").innerHTML = "Invalid email or password";
 					}
-
 				});
-			
 			}
 			else{
 				alert("REGISTER STUDENT . . .");
@@ -593,6 +600,8 @@ alert("Before CourseType button");
 
 		getStreamId(${firstStreamId});
 		displayStreamCourses(courseTypeId, courseTypeName);
+
+		
 	</script>
 </body>
 </html>

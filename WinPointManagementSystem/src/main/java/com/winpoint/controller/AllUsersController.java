@@ -13,10 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.BatchDetails;
 import com.winpoint.model.Course;
+import com.winpoint.model.Streams;
 import com.winpoint.model.UserProfile;
 import com.winpoint.repository.BatchDetailsRepository;
 import com.winpoint.repository.CourseRepository;
 import com.winpoint.repository.StreamsRepository;
+import com.winpoint.repository.StudentCourseDetailsRepository;
 
 @Controller
 public class AllUsersController {
@@ -34,12 +36,20 @@ public class AllUsersController {
 
 	@Autowired
 	CourseRepository CourseRepository;
-
+	@Autowired
+	StudentCourseDetailsRepository studentCourseDetailsRepository;
+	
 	@RequestMapping(value = "/StreamCourseTypeCourses", method = RequestMethod.POST)
 	public @ResponseBody List<Course> showCourse(@RequestParam("streamId") String streamId,
 			@RequestParam("courseTypeId") String courseTypeId) {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stream Type Id : "+courseTypeId+"Stream Id : "+streamId);
 		
+//		ModelAndView mv = new ModelAndView();
+//		List<Streams> c = stream.findAll();
+//		mv.addObject("courseList", CourseRepository.findByCourseTypeIdAndName(Integer.parseInt(courseTypeId), Integer.parseInt(streamId)));
+//		mv.addObject("studentCourseDetailsList", studentCourseDetailsRepository.findAll());
+//		mv.setViewName("CourseRegistration");
+
 		return CourseRepository.findByCourseTypeIdAndName(Integer.parseInt(courseTypeId), Integer.parseInt(streamId));
 	}
 

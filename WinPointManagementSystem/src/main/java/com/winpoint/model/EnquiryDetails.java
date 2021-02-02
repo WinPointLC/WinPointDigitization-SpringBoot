@@ -75,11 +75,11 @@ public class EnquiryDetails implements Serializable{
 	@JoinColumn(name = "timeSlotsId", nullable = false)
 	private TimeSlots mappingTimeSlots;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "enquiryDetailsCoursesInterestedIn", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
 	List<Course> mappingCourseInterestedIn = new ArrayList<>();
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "enquiryDetailsCoursesAlreadyDone", joinColumns = @JoinColumn(name = "enquiryId"), inverseJoinColumns = @JoinColumn(name = "courseId "))
 	List<Course> mappingCoursesAlreadyDone = new ArrayList<>();
 

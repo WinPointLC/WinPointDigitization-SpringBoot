@@ -34,7 +34,13 @@ public class CourseRegistrationController {
 
 	@Autowired
 	CourseRepository course;
-
+	@Autowired
+	StudentCourseDetailsRepository studentCourseDetailsRepository;
+	@Autowired
+	EnquiryDetailsRepository enquiryDetailsRepository;
+	@Autowired
+	UserProfileRepository userProfileRepository;
+	
 	@RequestMapping(value = "/CourseRegistration", method = RequestMethod.GET)
 	public ModelAndView CourseRegistrationPage(@RequestParam("userId") String userId) {
 		System.out.println("COURSE REGISTRATION @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -47,7 +53,11 @@ public class CourseRegistrationController {
 		mv.addObject("streamList", c1);
 		mv.addObject("courseList", courseList);
 		mv.addObject("firstStreamId", c1.get(0).getStreamId());
-
+		if(studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId)).isEmpty()) {
+			mv.addObject("studentCourseDetailsList",null);
+		}else {
+			mv.addObject("studentCourseDetailsList",studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId)));
+		}
 //		stream.findById(1).get().getMappingCourse().stream()
 //				.forEach(y -> y.getMappingStudentCourseDetails().stream()
 //						.filter(x -> x.getMappingUserProfile().getUserId() == Integer.parseInt(userId))
@@ -58,12 +68,7 @@ public class CourseRegistrationController {
 		return mv;
 	}
 	
-	@Autowired
-	StudentCourseDetailsRepository studentCourseDetailsRepository;
-	@Autowired
-	EnquiryDetailsRepository enquiryDetailsRepository;
-	@Autowired
-	UserProfileRepository userProfileRepository;
+	
 	
 	@RequestMapping(value = "/UpdateStudentCourseDetails", method = RequestMethod.POST)
 	public void updateStudentCourseDetails(
@@ -111,7 +116,7 @@ public class CourseRegistrationController {
 			userProfile.setRole(enquiryDetails.get().getRole());
 			userProfile.setExperience(enquiryDetails.get().getExperience());
 			userProfile.setActiveStatus(enquiryDetails.get().isActiveStatus());
-			userProfile.setEnquired(enquiryDetails.get().isEnquired());
+			userProfile.setEnquired(false);
 			
 			UserCategory userCategory = new UserCategory();
 			userCategory.setUserCategoryId(1);
@@ -129,6 +134,7 @@ public class CourseRegistrationController {
 			
 			UserProfile mappingUserProfile = new UserProfile();
 			mappingUserProfile.setUserId(newUser.get(0).getUserId());
+
 			Course mappingCourse = new Course();
 			mappingCourse.setCourseId(Integer.parseInt(courseId));
 			StudentCourseDetails studentCourseDetails = new StudentCourseDetails();
@@ -164,6 +170,5 @@ public class CourseRegistrationController {
 		//user_id
 		//stream_id
 	}
-	
 	
 }
