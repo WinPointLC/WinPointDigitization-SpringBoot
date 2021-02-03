@@ -246,7 +246,7 @@
 		var courseTypeId;
 
 		function getStreamId(stream_id) {
-			alert("here stream");
+			//alert("here stream");
 			streamId = stream_id;
 
 			var streamElem = document.getElementById(streamId + 'a');
@@ -267,7 +267,7 @@
 			}
 
 			streamElem.className = 'nav-link active';
-alert("Before CourseType button");
+			//alert("Before CourseType button");
 			var btn = document.createElement('button');
 			btn.className = 'btn btn-secondary dropdown-toggle';
 			btn.id = 'dropdownMenuButton_1';
@@ -390,21 +390,32 @@ alert("Before CourseType button");
 									para.className = 'card-category';									
 																	
 									if('${studentCourseDetailsList}'!=""){
-										<c:forEach items='${studentCourseDetailsList}' var="sdc">//4.5   /// c, c++
-										if('${sdc.mappingCourse.courseId}'== responseJson[j].courseId || registeredCoursesList.includes(responseJson[j].courseId)){
+										<c:forEach items='${studentCourseDetailsList}' var="sdc">   /// c, c++
+										para.textContent = courseName;
+										anchor.setAttribute('href', "#");
+										anchor.setAttribute('onclick',	"displayRegistrationForm(this.id,'"	+ courseName + "',"	+ streamId + " )");
+										
+										alert("Outer For Loop : "+courseName+"\nInner For Loop : "+'${sdc.mappingCourse.courseName}');
+										if(responseJson[j].courseId=='${sdc.mappingCourse.courseId}' || registeredCoursesList.includes(responseJson[j].courseId)){
 											//alert("From inner if");
 											anchor.removeAttribute('href');
+											anchor.removeAttribute('onclick');
 											para.textContent = courseName +'\nRegistered';
-											anchor.appendChild(para);
+											//anchor.appendChild(para);
 											registeredCoursesList.push(responseJson[j].courseId);
-										}else{
-											//alert("From inner else");
-											para.textContent = courseName;
-											anchor.setAttribute('href', "#");
-											anchor.setAttribute('onclick',	"displayRegistrationForm(this.id,'"	+ courseName + "',"	+ streamId + " )");
-											anchor.appendChild(para);
-										} 
+											//break;
+										}
+										/* else if(){
+											alert("From inner else if");
+											para.textContent = courseName+'\nRegistered';
+											anchor.removeAttribute('href');
+											//anchor.setAttribute('onclick',	"displayRegistrationForm(this.id,'"	+ courseName + "',"	+ streamId + " )");
+											//anchor.appendChild(para);
+											//break;
+										}  */
+										anchor.appendChild(para);
 										</c:forEach>
+										
 									}else{
 										para.textContent = courseName;
 										anchor.setAttribute('href', "#");
@@ -428,7 +439,7 @@ alert("Before CourseType button");
 							document.getElementById('registration').style.display = "none";
 						},
 						error : function() {
-							alert("Error");
+							//alert("Error");
 							//document.getElementById("error").innerHTML = "Invalid email or password";
 						}
 
@@ -446,12 +457,12 @@ alert("Before CourseType button");
 			document.getElementById('registration').style.display = "block";
 		}
 		function submitCourseRegistration() {
-			alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
+			//alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
 			
 			var isEnquired = sessionStorage.getItem('ISENQUIRED');
-			alert( "&&&& isEnquired= " + isEnquired)
+			//alert( "&&&& isEnquired= " + isEnquired)
 			if(isEnquired=="true"){
-				alert("Enquired Student. . .");
+				//alert("Enquired Student. . .");
 				var enquiredStudentData = {
 						streamId : streamId,
 						courseTypeId : courseTypeId,
@@ -472,17 +483,17 @@ alert("Before CourseType button");
 					
 					traditional : true,
 					success : function() {
-					alert("Course Registration Successful");
+					//alert("Course Registration Successful");
 					
 					},
 					error : function() {
-						alert("Error in Course Registration");
+						//alert("Error in Course Registration");
 						// document.getElementById("error").innerHTML = "Invalid email or password";
 					}
 				});
 			}
 			else{
-				alert("REGISTER STUDENT . . .");
+				//alert("REGISTER STUDENT . . .");
 				var userStudentData = {
 						streamId : streamId,
 						courseTypeId : courseTypeId,
@@ -504,11 +515,11 @@ alert("Before CourseType button");
 					
 					traditional : true,
 					success : function() {
-					alert("Course Registration Successful");
+					//alert("Course Registration Successful");
 					
 					},
 					error : function() {
-						alert("Error in Course Registration");
+						//alert("Error in Course Registration");
 						// document.getElementById("error").innerHTML = "Invalid email or password";
 					}
 
@@ -557,7 +568,7 @@ alert("Before CourseType button");
 									+ "Anjali";
 						},
 						error : function() {
-							alert("Error");
+							//alert("Error");
 							// document.getElementById("error").innerHTML = "Invalid email or password";
 						}
 

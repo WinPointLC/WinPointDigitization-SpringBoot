@@ -32,14 +32,14 @@
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 				traditional: true,
 				success: function (data) {
-					alert("sent parameters")
-					alert(data.mappingUserCategory.userCategoryId);
+					//alert("sent parameters")
+					//alert(data.mappingUserCategory.userCategoryId);
 					
 					if(data.mappingUserCategory.userCategoryId==1){
-						alert("Entered if condition");
-						alert(data.enquired);
+						//alert("Entered if condition");
+						//alert(data.enquired);
 						window.location.href="client"+ "?varid="+encodeURIComponent(JSON.stringify(data));
-						alert("After Implementation");
+						//alert("After Implementation");
 					}
 					else if(data.mappingUserCategory.userCategoryId==2)
 						window.location.href="employee"+ "?varid="+encodeURIComponent(JSON.stringify(data));

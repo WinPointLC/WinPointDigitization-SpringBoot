@@ -42,27 +42,33 @@ public class CourseRegistrationController {
 	UserProfileRepository userProfileRepository;
 	
 	@RequestMapping(value = "/CourseRegistration", method = RequestMethod.GET)
-	public ModelAndView CourseRegistrationPage(@RequestParam("userId") String userId) {
+	public ModelAndView CourseRegistrationPage(@RequestParam("userId") String userId, @RequestParam("isEnquired") Boolean isEnquired) {
 		System.out.println("COURSE REGISTRATION @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		
+		System.out.println("Is Enquired : "+isEnquired);
+		System.out.println("Id : "+userId);
 		ModelAndView mv = new ModelAndView();
 		List<UserProfile> c = new ArrayList<>();
 		List<Streams> c1 = stream.findAll();
 		List<Course> courseList = course.findAll();
 
+		
+		//boolean isEnquired = true;
 		mv.addObject("streamList", c1);
 		mv.addObject("courseList", courseList);
 		mv.addObject("firstStreamId", c1.get(0).getStreamId());
-		if(studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId)).isEmpty()) {
-			mv.addObject("studentCourseDetailsList",null);
+		if(!isEnquired) {
+			if(studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId)).isEmpty()) {
+				mv.addObject("studentCourseDetailsList",null);
+			}
+			else if(studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId))==null) {
+				mv.addObject("studentCourseDetailsList",null);
+			}
+			else {
+				mv.addObject("studentCourseDetailsList",studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId)));
+			}
 		}else {
-			mv.addObject("studentCourseDetailsList",studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId)));
+			
 		}
-//		stream.findById(1).get().getMappingCourse().stream()
-//				.forEach(y -> y.getMappingStudentCourseDetails().stream()
-//						.filter(x -> x.getMappingUserProfile().getUserId() == Integer.parseInt(userId))
-//						.forEach(z -> c.add(z.getMappingUserProfile())));
-
 		mv.setViewName("CourseRegistration");
 		System.out.println("**********" + userId);
 		return mv;

@@ -89,7 +89,7 @@
 
 <script>
 	function sendToCourseRegistrationPage() {
-		alert("Course Registration Link1");
+		//alert("Course Registration Link1");
 		$
 				.ajax({
 					type : 'POST',
@@ -565,7 +565,7 @@
 				<script type="text/javascript">
 					//alert("Reached 529 " + userData.enquired);
 					if (userData.enquired) {
-						alert("IF");
+						//alert("IF");
 						document.getElementById('analytics_nav_link').className = "disabled";
 						document.getElementById('result_nav_link').className = "disabled";
 						document.getElementById('oes_nav_link').className = "disabled";
@@ -577,7 +577,7 @@
 
 					} else {
 
-						alert("ELSE");
+						//alert("ELSE");
 						document.getElementById('user-dash').className = "nav-item active"
 						document.getElementById('analytics-link').className = " "
 						document.getElementById('course-reg').className = " "
@@ -804,16 +804,16 @@
 					function CourseRegistration_link() {
 						
 						sessionStorage.setItem("ISENQUIRED",userData.enquired);
-						alert("Course Registration Link");
+						//alert("Course Registration Link");
 						alert("Enquired : "+userData.enquired);
 						if(userData.enquired){
 							const enquiredId = userData.enquiryId;
-							alert("Enquired Id : "+enquiredId);
+							//alert("Enquired Id : "+enquiredId);
 							sessionStorage.setItem("ENQUIREDID", enquiredId);
 						}
 						else{
 							const userId = userData.userId;
-							alert("User Id : "+userId);
+							//alert("User Id : "+userId);
 							sessionStorage.setItem("USERID", userId);
 						}
 						
@@ -827,7 +827,9 @@
 						courseframe = document.createElement('iframe');
 						// courseframe.setAttribute('src', jspURL + "CourseRegistration.jsp?varid=");
 						courseframe.setAttribute('src',
-								"CourseRegistration?userId=" + userData.userId);
+								"CourseRegistration?userId=" + userData.userId+ "&isEnquired="+userData.enquired);
+						//courseframe.setAttribute('src',
+						//		"CourseRegistration?isEnquired=" + userData.enquiryId);
 						courseframe.setAttribute('width', 1100);
 						courseframe.setAttribute('height', 1000);
 						courseframe.id = 'CourseRegistration-frame';
@@ -838,7 +840,7 @@
 						ShowHideCourse();
 					}
 					function ShowHideCourse() {
-						alert("Course Registration Link2");
+						//alert("Course Registration Link2");
 						document.getElementById('Tech-content').style.display = "none";
 						// document.getElementById('myCan').style.display="none";
 						document.getElementById('CourseRegistration-frame').style.display = "block";
@@ -962,20 +964,20 @@
 					var decodedData = decodeURIComponent(data);
 					userData = JSON.parse(decodedData);
 					//alert(userData.user);
-					alert(data);
-					alert("Enquired : " + userData.enquired);
-					alert("Name : " + userData.firstName);
-					alert("Active : " + userData.activeStatus);
+					//alert(data);
+					//alert("Enquired : " + userData.enquired);
+					//alert("Name : " + userData.firstName);
+					//alert("Active : " + userData.activeStatus);
 
 					globalUserId = userData.userId;
-					alert("GOBAL USER ID : "+globalUserId);
+					//alert("GOBAL USER ID : "+globalUserId);
 					
 					document.getElementById('welcome').innerHTML = userData.firstName
 							+ " " + userData.lastName;
 				</script>
 				<script>
 					function getStreamId(stream_id) {
-						alert("From getStreamId");
+						//alert("From getStreamId");
 						streamId = stream_id;
 						var streamElem = document
 								.getElementById(streamId + 'a');
@@ -1207,8 +1209,8 @@
 											a_pa.textContent = 'Go To Paper Analysis';
 											a_pa.className = "modal-btn card-link";
 
-											alert("TEST ATTEMPTED:  "
-													+ responseJson[j].testAttempt);
+											/* alert("TEST ATTEMPTED:  "
+													+ responseJson[j].testAttempt) */;
 
 											if (responseJson[j].testAttempt == 1) {
 												a_pa.className = "modal-btn card-link";
@@ -1587,17 +1589,17 @@
 									contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 									traditional : true,
 									success : function(jsonObj) {
-										alert("sucess ajax call in sendUserFunction")
+										//alert("sucess ajax call in sendUserFunction")
 
 									},
 									error : function() {
-										alert("Error");
+										//alert("Error");
 
 										//document.getElementById("error").innerHTML = "Invalid email or password";
 									}
 								});
 
-						alert("Feedback Submitted");
+						//alert("Feedback Submitted");
 						$('#exampleModalLong').modal('hide');
 
 					}
@@ -1967,7 +1969,7 @@
 									success : function(jsonObj) {
 
 										questionsList = jsonObj;
-										alert("Questions List" + questionsList);
+										//alert("Questions List" + questionsList);
 
 										var elem = document
 												.getElementById('btn-score');
@@ -2297,7 +2299,7 @@
 
 									},
 									error : function() {
-										alert("Error");
+										//alert("Error");
 										//document.getElementById("error").innerHTML = "Invalid email or password";
 									}
 
@@ -2486,7 +2488,7 @@
 					var data = arr[0].split('=')[1];
 					var decodedData = decodeURIComponent(data);
 					userData = JSON.parse(decodedData);
-					alert("Id of student : "+userData.enquiryId);
+					//alert("Id of student : "+userData.enquiryId);
 					//alert(userData.user);
 					//alert(data);
 					//alert("Enquired : " + userData.enquired);
