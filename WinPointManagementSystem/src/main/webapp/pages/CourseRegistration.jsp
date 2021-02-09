@@ -234,11 +234,6 @@
 	<script src="../assets/demo/demo.js"></script>
 
 	<script>
-		////alert(streamList[i].streamId + ":" + streamList[i].streamName);
-		
-
-		
-		
 		var courseList;
 		var streamId = 1;
 		var courseId = 1;
@@ -286,9 +281,7 @@
 			<c:forEach items="${streamList}" var="stream">//4.5
 			if ('${stream.streamId}' == streamId) {
 
-				//alert("'${stream.mappingCourseType}'");
 				<c:forEach items="${stream.mappingCourseType}" var="det">
-				//alert("COUNT STREAM : " + cnt);
 				cnt++;
 				var dropanchor = document.createElement('a');
 				dropanchor.className = 'dropdown-item';
@@ -298,7 +291,6 @@
 					courseTypeName = ('${det.courseTypeName}').toUpperCase();
 					courseTypeId = ('${det.courseTypeId}');
 				}
-			//	alert("COURSE TYPE NAME : " + courseTypeName);
 				dropanchor.textContent = ('${det.courseTypeName}')
 						.toUpperCase();
 				dropanchor.setAttribute('onclick',
@@ -319,13 +311,11 @@
 		}
 
 		function displayStreamCourses(courseType_id, courseTypeName) {
-			//var streamId = stream_id;
 			var studentCoursesCourseIdList;
 			var studentGACoursesCourseIdList;
 			courseTypeId = courseType_id;
 			var registeredCoursesList = [];
-			//alert("stream_id = " + streamId + "courseType_id = "
-				//	+ courseType_id);
+
 
 			document.getElementById('dropdownMenuButton_1').textContent = courseTypeName;
 
@@ -343,6 +333,7 @@
 						contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 						traditional : true,
 						success : function(jsonObj) {
+						
 							document.getElementById('CourseCard').style.display = "block";
 							var responseJson = jsonObj;
 
@@ -350,7 +341,7 @@
 							var studentCourseDetailsList = '${studentCourseDetailsList}';
 
 							var cnt = 0;
-						
+							alert("Count");
 										
 							
  							if (elem != null) {
@@ -395,24 +386,14 @@
 										anchor.setAttribute('href', "#");
 										anchor.setAttribute('onclick',	"displayRegistrationForm(this.id,'"	+ courseName + "',"	+ streamId + " )");
 										
-										alert("Outer For Loop : "+courseName+"\nInner For Loop : "+'${sdc.mappingCourse.courseName}');
+										//alert("Outer For Loop : "+courseName+"\nInner For Loop : "+'${sdc.mappingCourse.courseName}');
 										if(responseJson[j].courseId=='${sdc.mappingCourse.courseId}' || registeredCoursesList.includes(responseJson[j].courseId)){
-											//alert("From inner if");
 											anchor.removeAttribute('href');
 											anchor.removeAttribute('onclick');
 											para.textContent = courseName +'\nRegistered';
-											//anchor.appendChild(para);
 											registeredCoursesList.push(responseJson[j].courseId);
-											//break;
 										}
-										/* else if(){
-											alert("From inner else if");
-											para.textContent = courseName+'\nRegistered';
-											anchor.removeAttribute('href');
-											//anchor.setAttribute('onclick',	"displayRegistrationForm(this.id,'"	+ courseName + "',"	+ streamId + " )");
-											//anchor.appendChild(para);
-											//break;
-										}  */
+										
 										anchor.appendChild(para);
 										</c:forEach>
 										
@@ -450,20 +431,21 @@
 			courseId = selectedCourseId;
 			streamId = selectedStreamId;
 			courseName = selectedCourseName;
-			//alert("Register for the course " + courseName);
 			document.getElementById('profile').style.display = "none";
 			document.getElementById('courseName').innerHTML = "Registration for "
 					+ courseName + " Course";
 			document.getElementById('registration').style.display = "block";
 		}
 		function submitCourseRegistration() {
-			//alert("" + courseId + " " + streamId + " " + courseName + " " + courseTypeId );
 			
 			var isEnquired = sessionStorage.getItem('ISENQUIRED');
-			//alert( "&&&& isEnquired= " + isEnquired)
 			if(isEnquired=="true"){
-				//alert("Enquired Student. . .");
 				var enquiredStudentData = {
+						//stream
+						//course
+						//course type
+						// userid
+						//fee
 						streamId : streamId,
 						courseTypeId : courseTypeId,
 						courseId : courseId,
@@ -529,11 +511,8 @@
 			
 		}
 		function displayTestSelect(courseId, courseName) {
-			//alert("DisplayTestSelect Id = " + courseId);
-			//var streamId = 1;
-			//var courseTypeId = courseTypeId;
+			
 			var courseId = courseId;
-			//alert(courseName);
 			var myData = {
 				streamId : streamId,
 				courseTypeId : courseTypeId,
@@ -544,7 +523,6 @@
 			$
 					.ajax({
 						type : 'POST',
-						//url: servletURL + 'TestSelectServlet',
 						url : "/TestSelect",
 						data : jQuery.param(myData),
 						dataType : 'json',
@@ -558,9 +536,7 @@
 							var responseJson2 = jsonObj[1];
 							var strResJSON = JSON.stringify(responseJson2);
 							for (i = 0; i < responseJson2.length; i++) {
-								//alert("Test : " + responseJson2[i].evaluationTypeName + "," + responseJson2[i].courseName);
 							}
-							//window.location.href = locationJson.location;
 							window.location.href = locationJson.location
 									+ "?varid="
 									+ encodeURIComponent(strResJSON)

@@ -3,6 +3,7 @@ package com.winpoint.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -45,6 +46,10 @@ public class CourseType {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingCourseType")
 	private List<ToolTips> mappingToolTips;
 
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mappingUserProfile")
+	private Set<StudentCourseDetails> mappingStudentCourseDetails;
+	
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "streamCourseType", joinColumns = @JoinColumn(name = "courseTypeId"), inverseJoinColumns = @JoinColumn(name = "streamId"))

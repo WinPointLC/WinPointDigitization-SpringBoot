@@ -20,8 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-// @JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="courseName")
-@JsonIdentityInfo(generator = ObjectIdGenerators .PropertyGenerator.class, property="mappingBatchDetails")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "mappingBatchDetails")
 public class StudentCourseDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,6 @@ public class StudentCourseDetails {
 	private Integer studentCourseDetailsId;
 	private String courseName;
 	private String logoLocation;
-	private String courseTypeName;
 	private String streamName;
 	private String feedbackGiven;
 	private String certificateGiven;
@@ -45,14 +43,6 @@ public class StudentCourseDetails {
 	private Integer studentCount;
 	private Integer dueAmount;
 	private Integer percentageAttendance;
-
-	//batch_id - done 
-	//
-	//expense_type_id - done 
-	//grade_id - done
-	//reminder_type_id 
-	//
-	//stream_id
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "reminderTypeId", nullable = true)
@@ -78,13 +68,13 @@ public class StudentCourseDetails {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
 	private UserProfile mappingUserProfile;
-	
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "streamId", nullable = true)
-	private Streams mappingStreams;
 
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "courseTypeId", nullable = false)
+	private CourseType mappingCourseType;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "streamId", nullable = false)
+	private Streams mappingStreams;
 
 }

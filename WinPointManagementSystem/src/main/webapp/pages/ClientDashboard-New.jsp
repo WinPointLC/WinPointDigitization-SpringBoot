@@ -564,27 +564,7 @@
 
 				<script type="text/javascript">
 					//alert("Reached 529 " + userData.enquired);
-					if (userData.enquired) {
-						//alert("IF");
-						document.getElementById('analytics_nav_link').className = "disabled";
-						document.getElementById('result_nav_link').className = "disabled";
-						document.getElementById('oes_nav_link').className = "disabled";
-
-						document.getElementById('analytics-link').className = "nav-item";
-						document.getElementById('course-reg').className = "nav-item"
-						document.getElementById('main-course').className = "nav-item";
-						document.getElementById('res-link').className = "nav-item";
-
-					} else {
-
-						//alert("ELSE");
-						document.getElementById('user-dash').className = "nav-item active"
-						document.getElementById('analytics-link').className = " "
-						document.getElementById('course-reg').className = " "
-						document.getElementById('main-course').className = " ";
-						document.getElementById('res-link').className = " "
-
-					}
+										
 
 					var frame;
 					var Analyticsframe;
@@ -903,6 +883,7 @@
 						}
 					}
 				</script>
+
 				<script type="text/javascript"
 					src="https://www.gstatic.com/charts/loader.js"></script>
 				<!-- chart.js -->
@@ -1105,107 +1086,100 @@
 
 					}
 					function displayStreamCourses(courseType_id, courseTypeName) {
+						//alert("Display Stream Courses");
 						courseTypeId = courseType_id;
 						document.getElementById('dropdownMenuButton').textContent = courseTypeName;
-						// alert(courseTypeName);
+					 	//alert(courseTypeName);
 						var myData = {
-							//userId: userProfile.userId,
+							userId: userData.userId,
 							streamId : streamId,
 							courseTypeId : courseTypeId
 						};
 
 						$
 								.ajax({
-									type : 'POST',
+									type : 'GET',
 									//url: servletURL + 'StreamCourseTypeUserCoursesServlet',
 									url : "/StreamCourseTypeUserCourses",
 									data : jQuery.param(myData),
 									dataType : 'json',
 									contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 									traditional : true,
+									//alert("Success");
 									success : function(jsonObj) {
+										//alert("Success");
 										document.getElementById('crd').style.display = "block";
+										alert("A");
 										var responseJson = jsonObj;
+										alert(jsonObj);
+										alert(responseJson);
+										//alert("B");
 										// var strResJSON = JSON.stringify(responseJson);
-										var elem = document
-												.getElementById('courselist');
+										var elem = document.getElementById('courselist');
+										//alert("C");
 										if (elem != null) {
 											elem.parentNode.removeChild(elem);
 										}
+										//alert("D");
 										document.getElementById('crd').innerHTML = " ";
+										//alert("E");
 										var row = document.createElement('div');
+										//alert("F");
 										row.className = "row";
+										//alert("G");
 										row.id = "courseList";
+										alert("H");
+										alert("Data received = "+responseJson.courseName);
+										//alert("J");
 										for (var j = 0; j < responseJson.length; j++) {
-											var col1 = document
-													.createElement('div');
+											alert("Course : "+responseJson[j].mappingCourse.courseName);
+											var col1 = document.createElement('div');
 											col1.className = "col-lg-5 col-md-5 col-sm-5";
-											var card = document
-													.createElement('div');
+											var card = document.createElement('div');
 											card.className = "card card-stats";
-											var cardheader = document
-													.createElement('div');
+											var cardheader = document.createElement('div');
 											cardheader.className = "card-header  card-header-icon";
-											var cardHeading = document
-													.createElement('div');
+											var cardHeading = document.createElement('div');
 											cardHeading.className = "card-heading";
-											var h2 = document
-													.createElement('h2');
+											var h2 = document.createElement('h2');
 											h2.className = "card-title";
-											h2.textContent = responseJson[j].courseName;
+											h2.textContent = responseJson[j].mappingCourse.courseName;
 											cardHeading.appendChild(h2);
-											var s1 = document
-													.createElement('p');
+											var s1 = document.createElement('p');
 											s1.className = "card-title";
 											s1.textContent = 'Start Date:'
 													+ " "
 													+ responseJson[j].batchDetails.startDate;
-											var e1 = document
-													.createElement('p');
+											var e1 = document.createElement('p');
 											e1.className = "card-title";
-											e1.textContent = 'End Date:'
-													+ " "
-													+ responseJson[j].batchDetails.endDate;
-											var cardIcon = document
-													.createElement('div');
+											e1.textContent = 'End Date:'+ " "+ responseJson[j].batchDetails.endDate;
+											var cardIcon = document.createElement('div');
 											cardIcon.className = "card-icon";
-											cardIcon.setAttribute('style',
-													"padding: 0px;");
-											var img = document
-													.createElement('img');
-											img
-													.setAttribute(
-															'src',
-															responseJson[j].logoLocation);
-											img.setAttribute('style',
-													"width:90px;height:90px;");
+											cardIcon.setAttribute('style',"padding: 0px;");
+											var img = document.createElement('img');
+											img.setAttribute('src',responseJson[j].logoLocation);
+											img.setAttribute('style',"width:90px;height:90px;");
 											cardIcon.appendChild(img);
-											var p1 = document
-													.createElement('p');
+											var p1 = document.createElement('p');
 											p1.className = "card-title";
 											p1.textContent = 'Batch Name:\n'
 													+ " "
 													+ responseJson[j].batchDetails.batchName;
-											var p2 = document
-													.createElement('p');
+											var p2 = document.createElement('p');
 											p2.className = "card-title";
 											p2.textContent = 'Faculty:'
 													+ " "
-													+ responseJson[j].batchDetails.facultyName
-															.toUpperCase();
+													+ responseJson[j].batchDetails.facultyName.toUpperCase();
 											p2.textContent = 'Faculty:\n'
 													+ " "
-													+ responseJson[j].batchDetails.facultyName
-															.toUpperCase();
-											var p3 = document
-													.createElement('p');
+													+ responseJson[j].batchDetails.facultyName.toUpperCase();
+											var p3 = document.createElement('p');
 											p3.className = "card-title";
 											p3.textContent = 'Marks Obtained : '
 													+ " "
 													+ responseJson[j].courseAggr;
 
-											var a_pa = document
-													.createElement('a');
+											var a_pa = document.createElement('a');
 											a_pa.textContent = 'Go To Paper Analysis';
 											a_pa.className = "modal-btn card-link";
 
@@ -1221,26 +1195,17 @@
 											a_pa.id = "pa-link" + (j + 1);
 											a_pa.setAttribute('course-id',
 													responseJson[j].courseId);
-											a_pa
-													.setAttribute('onclick',
-															"getTestDetails(this.getAttribute('course-id'))");
-											a_pa.setAttribute('data-toggle',
-													"modal");
-											a_pa.setAttribute('data-target',
-													"#mymodal_pa");
+											a_pa.setAttribute('onclick',"getTestDetails(this.getAttribute('course-id'))");
+											a_pa.setAttribute('data-toggle',"modal");
+											a_pa.setAttribute('data-target',"#mymodal_pa");
 
-											var h3 = document
-													.createElement('h3');
-											var cardfooter = document
-													.createElement('div');
+											var h3 = document.createElement('h3');
+											var cardfooter = document.createElement('div');
 											cardfooter.className = "card-footer";
-											var stats = document
-													.createElement('div');
+											var stats = document.createElement('div');
 											stats.className = "stats";
-											var blink = document
-													.createElement('div');
-											var h4 = document
-													.createElement('h4');
+											var blink = document.createElement('div');
+											var h4 = document.createElement('h4');
 											if (responseJson[j].dueAmount == 0) {
 												h4.textContent = "Amount due:INR"
 														+ " "
@@ -2496,6 +2461,30 @@
 					//alert("Active : " + userData.activeStatus);
 					document.getElementById('welcome').innerHTML = userData.firstName + " "
 							+ userData.lastName;	
+
+					alert("Enquired Data alert : "+userData.enquired);
+					if (userData.enquired) {
+						//alert("IF");
+						document.getElementById('analytics_nav_link').className = "disabled";
+						document.getElementById('result_nav_link').className = "disabled";
+						document.getElementById('oes_nav_link').className = "disabled";
+
+						document.getElementById('analytics-link').className = "nav-item";
+						document.getElementById('course-reg').className = "nav-item"
+						document.getElementById('main-course').className = "nav-item";
+						document.getElementById('res-link').className = "nav-item";
+
+					} else {
+
+						//alert("ELSE");
+						document.getElementById('user-dash').className = "nav-item active"
+						document.getElementById('analytics-link').className = " "
+						document.getElementById('course-reg').className = " "
+						document.getElementById('main-course').className = " ";
+						document.getElementById('res-link').className = " "
+
+					}
+					
 				</script>
 </body>
 

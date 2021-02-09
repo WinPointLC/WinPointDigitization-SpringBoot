@@ -3,6 +3,7 @@ package com.winpoint.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winpoint.model.Course;
+import com.winpoint.model.CourseType;
 import com.winpoint.model.EnquiryDetails;
 import com.winpoint.model.SecurityQuestions;
 import com.winpoint.model.Streams;
@@ -31,7 +33,7 @@ public class CourseRegistrationController {
 
 	@Autowired
 	StreamsRepository stream;
-
+	
 	@Autowired
 	CourseRepository course;
 	@Autowired
@@ -66,8 +68,6 @@ public class CourseRegistrationController {
 			else {
 				mv.addObject("studentCourseDetailsList",studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId)));
 			}
-		}else {
-			
 		}
 		mv.setViewName("CourseRegistration");
 		System.out.println("**********" + userId);
@@ -82,16 +82,13 @@ public class CourseRegistrationController {
 	@RequestParam("feeStatus") String feeStatus,
 	@RequestParam("courseTypeId") String courseTypeId, 
 	@RequestParam("courseId") String courseId, 
+	@RequestParam("streamId") String streamId,
 	@RequestParam("Id") String Id) {
 		System.out.println("*********** From updateStudentCourseDetails" );
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		
 		System.out.println("ID - "+Id+"\nCourse ID - "+courseId+"\nFee Status"+feeStatus);
 		System.out.println();
-		
-
-		
-		// trasfer login then course registration.
 		
 		System.out.println("Condition : "+isEquired);
 		if(isEquired) {
@@ -127,7 +124,6 @@ public class CourseRegistrationController {
 			UserCategory userCategory = new UserCategory();
 			userCategory.setUserCategoryId(1);
 			userProfile.setMappingUserCategory(userCategory);
-
 			userProfile.setMappingTimeSlots(enquiryDetails.get().getMappingTimeSlots());
 			userProfile.setMappingSegmentType(enquiryDetails.get().getMappingSegmentType());
 			
@@ -143,38 +139,47 @@ public class CourseRegistrationController {
 
 			Course mappingCourse = new Course();
 			mappingCourse.setCourseId(Integer.parseInt(courseId));
+			
+			CourseType mappingCourseType = new CourseType();
+			mappingCourseType.setCourseTypeId(Integer.parseInt(courseTypeId));
+			
+			Streams mappingStream = new Streams();
+			mappingStream.setStreamId(Integer.parseInt(streamId));
+			
 			StudentCourseDetails studentCourseDetails = new StudentCourseDetails();
 			studentCourseDetails.setMappingUserProfile(mappingUserProfile);
 			studentCourseDetails.setMappingCourse(mappingCourse);
+			studentCourseDetails.setMappingCourseType(mappingCourseType);
+			studentCourseDetails.setMappingStreams(mappingStream);
 			studentCourseDetails.setFeeStatus(feeStatus);
-			
+				
 			studentCourseDetailsRepository.save(studentCourseDetails);
 			
 		}
 		else {
 			UserProfile mappingUserProfile = new UserProfile();
 			mappingUserProfile.setUserId(Integer.parseInt(Id));
+			
 			Course mappingCourse = new Course();
 			mappingCourse.setCourseId(Integer.parseInt(courseId));
+			
+			CourseType mappingCourseType = new CourseType();
+			mappingCourseType.setCourseTypeId(Integer.parseInt(courseTypeId));
+			
+			Streams mappingStream = new Streams();
+			mappingStream.setStreamId(Integer.parseInt(streamId));
+			
 			StudentCourseDetails studentCourseDetails = new StudentCourseDetails();
 			studentCourseDetails.setMappingUserProfile(mappingUserProfile);
 			studentCourseDetails.setMappingCourse(mappingCourse);
+			studentCourseDetails.setMappingCourseType(mappingCourseType);
+			studentCourseDetails.setMappingStreams(mappingStream);
 			studentCourseDetails.setFeeStatus(feeStatus);
 			
 			studentCourseDetailsRepository.save(studentCourseDetails);
 			
 		}
 
-		
-		
-		
-		//batch_id
-		//course_id e
-		//expense_type_id - done
-		//grade_id
-		//reminder_type_id
-		//user_id
-		//stream_id
 	}
 	
 }
