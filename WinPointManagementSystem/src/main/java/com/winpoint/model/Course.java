@@ -42,7 +42,7 @@ public class Course{// implements Serializable{
 	private Integer createdBy;
 	@Column(columnDefinition = "datetime")
 	private Date createdDate;
-	private Integer logoLocation;
+	private String logoLocation;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "evaluationTypeId", nullable = false)

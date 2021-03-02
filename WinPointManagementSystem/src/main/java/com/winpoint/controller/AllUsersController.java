@@ -40,10 +40,12 @@ public class AllUsersController {
 	StudentCourseDetailsRepository studentCourseDetailsRepository;
 	
 	@RequestMapping(value = "/StreamCourseTypeCourses", method = RequestMethod.POST)
-	public @ResponseBody List<Course> showCourse(@RequestParam("streamId") String streamId,
+	public @ResponseBody List<Course> showCourse(
+			@RequestParam("streamId") String streamId,
 			@RequestParam("courseTypeId") String courseTypeId) {
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stream Type Id : "+courseTypeId+"Stream Id : "+streamId);
-		
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println(" Stream Id =  "+streamId);
+		System.out.println(" Course Type Id = "+courseTypeId);
 //		ModelAndView mv = new ModelAndView();
 //		List<Streams> c = stream.findAll();
 //		mv.addObject("courseList", CourseRepository.findByCourseTypeIdAndName(Integer.parseInt(courseTypeId), Integer.parseInt(streamId)));

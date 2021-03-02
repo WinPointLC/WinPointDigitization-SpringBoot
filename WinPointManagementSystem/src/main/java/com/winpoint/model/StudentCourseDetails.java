@@ -26,8 +26,8 @@ public class StudentCourseDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "studentCourseDetailsId", updatable = false)
 	private Integer studentCourseDetailsId;
-	private String courseName;
-	private String logoLocation;
+//	private String courseName;
+//	private String logoLocation;
 	private String streamName;
 	private String feedbackGiven;
 	private String certificateGiven;

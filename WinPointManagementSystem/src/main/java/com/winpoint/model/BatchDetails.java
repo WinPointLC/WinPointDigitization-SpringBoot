@@ -32,7 +32,7 @@ public class BatchDetails implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "batchId", updatable = false)
 	private Integer batchId;
-	private Integer facultyUserId;
+	//private Integer facultyUserId;
 	@Column(columnDefinition = "datetime")
 	private Date beginDate;
 	@Column(columnDefinition = "datetime")
@@ -53,6 +53,10 @@ public class BatchDetails implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "courseId", nullable = false)
 	private Course mappingCourse;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "facultyUserId", nullable = true)
+	private UserProfile mappingUserProfile;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<StudentCourseDetails> mappingStudentCourseDetails;
@@ -67,5 +71,7 @@ public class BatchDetails implements Serializable {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "mappingBatchDetails")
 	private Set<RevenueDetail> mappingRevenueDetail;
+	
+	
 
 }

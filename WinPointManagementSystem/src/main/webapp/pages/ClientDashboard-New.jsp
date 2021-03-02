@@ -785,7 +785,7 @@
 						
 						sessionStorage.setItem("ISENQUIRED",userData.enquired);
 						//alert("Course Registration Link");
-						alert("Enquired : "+userData.enquired);
+						//alert("Enquired : "+userData.enquired);
 						if(userData.enquired){
 							const enquiredId = userData.enquiryId;
 							//alert("Enquired Id : "+enquiredId);
@@ -1086,10 +1086,8 @@
 
 					}
 					function displayStreamCourses(courseType_id, courseTypeName) {
-						//alert("Display Stream Courses");
 						courseTypeId = courseType_id;
 						document.getElementById('dropdownMenuButton').textContent = courseTypeName;
-					 	//alert(courseTypeName);
 						var myData = {
 							userId: userData.userId,
 							streamId : streamId,
@@ -1099,40 +1097,29 @@
 						$
 								.ajax({
 									type : 'GET',
-									//url: servletURL + 'StreamCourseTypeUserCoursesServlet',
 									url : "/StreamCourseTypeUserCourses",
 									data : jQuery.param(myData),
 									dataType : 'json',
 									contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
 									traditional : true,
-									//alert("Success");
 									success : function(jsonObj) {
-										//alert("Success");
 										document.getElementById('crd').style.display = "block";
-										alert("A");
 										var responseJson = jsonObj;
-										alert(jsonObj);
-										alert(responseJson);
-										//alert("B");
-										// var strResJSON = JSON.stringify(responseJson);
+										var strResJSON = JSON.stringify(responseJson);
 										var elem = document.getElementById('courselist');
-										//alert("C");
 										if (elem != null) {
 											elem.parentNode.removeChild(elem);
 										}
-										//alert("D");
 										document.getElementById('crd').innerHTML = " ";
-										//alert("E");
 										var row = document.createElement('div');
-										//alert("F");
 										row.className = "row";
-										//alert("G");
 										row.id = "courseList";
-										alert("H");
-										alert("Data received = "+responseJson.courseName);
-										//alert("J");
+										//alert("JSON OBJECT LENGTH = "+responseJson.length);
+										console.log("STR JSON = "+strResJSON);
 										for (var j = 0; j < responseJson.length; j++) {
-											alert("Course : "+responseJson[j].mappingCourse.courseName);
+											//alert("Course object : "+responseJson[j].mappingCourse.courseId);
+											//alert("Course Logo : "+responseJson[j].mappingCourse.logoLocation);
+											
 											var col1 = document.createElement('div');
 											col1.className = "col-lg-5 col-md-5 col-sm-5";
 											var card = document.createElement('div');
@@ -1145,56 +1132,17 @@
 											h2.className = "card-title";
 											h2.textContent = responseJson[j].mappingCourse.courseName;
 											cardHeading.appendChild(h2);
-											var s1 = document.createElement('p');
-											s1.className = "card-title";
-											s1.textContent = 'Start Date:'
-													+ " "
-													+ responseJson[j].batchDetails.startDate;
-											var e1 = document.createElement('p');
-											e1.className = "card-title";
-											e1.textContent = 'End Date:'+ " "+ responseJson[j].batchDetails.endDate;
+
 											var cardIcon = document.createElement('div');
 											cardIcon.className = "card-icon";
 											cardIcon.setAttribute('style',"padding: 0px;");
-											var img = document.createElement('img');
-											img.setAttribute('src',responseJson[j].logoLocation);
-											img.setAttribute('style',"width:90px;height:90px;");
-											cardIcon.appendChild(img);
-											var p1 = document.createElement('p');
-											p1.className = "card-title";
-											p1.textContent = 'Batch Name:\n'
-													+ " "
-													+ responseJson[j].batchDetails.batchName;
-											var p2 = document.createElement('p');
-											p2.className = "card-title";
-											p2.textContent = 'Faculty:'
-													+ " "
-													+ responseJson[j].batchDetails.facultyName.toUpperCase();
-											p2.textContent = 'Faculty:\n'
-													+ " "
-													+ responseJson[j].batchDetails.facultyName.toUpperCase();
-											var p3 = document.createElement('p');
-											p3.className = "card-title";
-											p3.textContent = 'Marks Obtained : '
-													+ " "
-													+ responseJson[j].courseAggr;
-
+											
 											var a_pa = document.createElement('a');
 											a_pa.textContent = 'Go To Paper Analysis';
 											a_pa.className = "modal-btn card-link";
-
-											/* alert("TEST ATTEMPTED:  "
-													+ responseJson[j].testAttempt) */;
-
-											if (responseJson[j].testAttempt == 1) {
-												a_pa.className = "modal-btn card-link";
-											} else {
-												a_pa.className = "modal-btn card-link disabled-link";
-											}
-
+											
 											a_pa.id = "pa-link" + (j + 1);
-											a_pa.setAttribute('course-id',
-													responseJson[j].courseId);
+											a_pa.setAttribute('course-id',responseJson[j].mappingCourse.courseId);
 											a_pa.setAttribute('onclick',"getTestDetails(this.getAttribute('course-id'))");
 											a_pa.setAttribute('data-toggle',"modal");
 											a_pa.setAttribute('data-target',"#mymodal_pa");
@@ -1206,71 +1154,90 @@
 											stats.className = "stats";
 											var blink = document.createElement('div');
 											var h4 = document.createElement('h4');
-											if (responseJson[j].dueAmount == 0) {
-												h4.textContent = "Amount due:INR"
-														+ " "
-														+ responseJson[j].dueAmount;
-											} else {
-												h4.className = "blinking";
-												h4.textContent = "Amount due:INR"
-														+ " "
-														+ responseJson[j].dueAmount;
-											}
-											var button = document
-													.createElement('button');
+											
+											var button = document.createElement('button');
 											button.id = "modal-btn";
 											button.onclick = function() {
 												checkNotification()
 											};
-											var a_ann = document
-													.createElement('a');
+											var a_ann = document.createElement('a');
 											a_ann.className = "modal-btn";
-											a_ann.setAttribute('data-toggle',
-													"modal");
-											a_ann.setAttribute('data-target',
-													"#mymodal2");
-											var img = document
-													.createElement('img');
+											a_ann.setAttribute('data-toggle',"modal");
+											a_ann.setAttribute('data-target',"#mymodal2");
+											var img = document.createElement('img');
 											img.className = "card-icon"
-											img
-													.setAttribute('src',
-															'../assets/img/announcement.jpg');
-											img.setAttribute('style',
-													"width:30px;height:30px;");
+											img.setAttribute('src','../assets/img/announcement.jpg');
+											img.setAttribute('style',"width:30px;height:30px;");
 											a_ann.appendChild(img);
 											button.appendChild(a_ann)
-											var button2 = document
-													.createElement('button');
+											var button2 = document.createElement('button');
 											button2.id = "modal-btn2";
-											var a_feed = document
-													.createElement('a');
+											var a_feed = document.createElement('a');
 											a_feed.id = "feedbackFormLink"
 											a_feed.className = "modal-btn";
-											a_feed
-													.setAttribute(
-															"onclick",
-															"openModal("
-																	+ responseJson[j].courseId
-																	+ ")");
-											var img_feed = document
-													.createElement('img');
+											a_feed.setAttribute("onclick","openModal("+ responseJson[j].mappingCourse.courseId+ ")");
+											var img_feed = document.createElement('img');
 											img_feed.className = "card-icon"
-											img_feed.setAttribute('src',
-													'../assets/img/feed2.jpg');
-											img_feed.setAttribute('style',
-													"width:30px;height:30px;");
+											img_feed.setAttribute('src','../assets/img/feed2.jpg');
+											img_feed.setAttribute('style',"width:30px;height:30px;");
 											a_feed.appendChild(img_feed);
 											button2.appendChild(a_feed)
-											if (responseJson[j].isFeedbackGiven == "YES") {
-												// a_feed.removeAttr('onclick');
-												document
-														.getElementById('feedbackFormLink').disabled = true;
+											
+											var img = document.createElement('img');
+											img.setAttribute('src',responseJson[j].mappingCourse.logoLocation);
+											img.setAttribute('style',"width:90px;height:90px;");
+											cardIcon.appendChild(img);
+											
+											var p3 = document.createElement('p');
+											p3.className = "card-title";
+											p3.textContent = 'Marks Obtained : '+ " "+ responseJson[j].courseAggr;
+
+											
+											if(responseJson[j].mappingBatchDetails == null ){
+												var s1 = document.createElement('p');
+												s1.className = "card-title";
+												s1.textContent = 'Start Date:'+ " "+ " . . . ";
+												var e1 = document.createElement('p');
+												e1.className = "card-title";
+												e1.textContent = 'End Date:'+ " "+ " . . . ";
+												var p1 = document.createElement('p');
+												p1.className = "card-title";
+												p1.textContent = 'Batch Name:\n'+ " "+ " Not Allocated yet ";
+												var p2 = document.createElement('p');
+												p2.className = "card-title";
+												p2.textContent = 'Faculty:'+ " "+ " . . . ";
+												p2.textContent = 'Faculty:\n'+ " "+ " . . . ";
 											}
+											else{
+												var s1 = document.createElement('p');
+												s1.className = "card-title";
+												s1.textContent = 'Start Date:'+ " "+ responseJson[j].mappingBatchDetails.startDate;
+												var e1 = document.createElement('p');
+												e1.className = "card-title";
+												e1.textContent = 'End Date:'+ " "+ responseJson[j].mappingBatchDetails.endDate;
+												var p1 = document.createElement('p');
+												p1.className = "card-title";
+												p1.textContent = 'Batch Name:\n'+ " "+ responseJson[j].mappingBatchDetails.batchName;
+												var p2 = document.createElement('p');
+												p2.className = "card-title";
+												p2.textContent = 'Faculty:'+ " "+ responseJson[j].mappingBatchDetails.facultyUserId;
+												p2.textContent = 'Faculty:\n'+ " "+ responseJson[j].mappingBatchDetails.facultyUserId;
+											}
+
+											//alert("TEST ATTEMPT : "+responseJson[j].testAttempt);												
+											if (responseJson[j].testAttempt == 1) {
+												a_pa.className = "modal-btn card-link";
+											} else {
+												a_pa.className = "modal-btn card-link disabled-link";
+											}
+
 											cardheader.appendChild(cardHeading);
+											cardheader.appendChild(p1);
+											
 											cardheader.appendChild(s1);
 											cardheader.appendChild(e1);
 											cardheader.appendChild(cardIcon);
-											cardheader.appendChild(p1);
+											
 											cardheader.appendChild(p2);
 											cardheader.appendChild(p3);
 											cardheader.appendChild(a_pa);
@@ -1284,8 +1251,7 @@
 											card.appendChild(cardfooter);
 											col1.appendChild(card);
 											row.appendChild(col1);
-											document.getElementById('crd')
-													.appendChild(row);
+											document.getElementById('crd').appendChild(row);
 
 										}
 										myChart.data.labels = [];
@@ -1914,14 +1880,14 @@
 
 						courseId = course_id;
 
-						google.charts.load('current', {
-							'packages' : [ 'bar' ]
-						});
+						google.charts.load('current', {'packages' : [ 'bar' ]});
 						google.charts.setOnLoadCallback(drawChart2);
 
 						var myData = {
 							courseId : courseId
 						};
+
+						
 						$
 								.ajax({
 									type : 'POST',
@@ -1936,186 +1902,137 @@
 										questionsList = jsonObj;
 										//alert("Questions List" + questionsList);
 
-										var elem = document
-												.getElementById('btn-score');
+										var elem = document.getElementById('btn-score');
 										if (elem != null) {
 											elem.parentNode.removeChild(elem);
 										}
 
-										var btn_score = document
-												.createElement('button');
-										btn_score
-												.setAttribute('type', 'button');
+										var btn_score = document.createElement('button');
+										btn_score.setAttribute('type', 'button');
 										btn_score.id = "btn-score";
 										btn_score.className = "btn btn-clr col";
 										//btn_score.setAttribute('style','width:180px;margin-left:50px;');
 										btn_score.textContent = "Your Score";
-										var score_span = document
-												.createElement('span');
+										var score_span = document.createElement('span');
 										score_span.className = "chip primary";
 										//score_span.textContent=20;
 										score_span.textContent = questionsList.marksReceived;
 										btn_score.appendChild(score_span);
-										document.getElementById('test-info')
-												.appendChild(btn_score);
+										document.getElementById('test-info').appendChild(btn_score);
 
-										var elem = document
-												.getElementById('btn-total-score');
+										var elem = document.getElementById('btn-total-score');
 										if (elem != null) {
 											elem.parentNode.removeChild(elem);
 										}
 
-										var btn__total_score = document
-												.createElement('button');
-										btn__total_score.setAttribute('type',
-												'button');
+										var btn__total_score = document.createElement('button');
+										btn__total_score.setAttribute('type','button');
 										btn__total_score.id = "btn-total-score";
 										btn__total_score.className = "btn btn-clr col";
 										//btn__total_score.setAttribute('style','width:180px;margin-left:250px;margin-top:-30px;');
 										btn__total_score.textContent = "Total Marks";
-										var total_score_span = document
-												.createElement('span');
+										var total_score_span = document.createElement('span');
 										total_score_span.className = "chip primary";
 										//total_score_span.textContent=30;
 										total_score_span.textContent = questionsList.totalMarksOutOf;
-										btn__total_score
-												.appendChild(total_score_span);
-										document.getElementById('test-info')
-												.appendChild(btn__total_score);
+										btn__total_score.appendChild(total_score_span);
+										document.getElementById('test-info').appendChild(btn__total_score);
 
-										var elem = document
-												.getElementById('btn-attempted');
+										var elem = document.getElementById('btn-attempted');
 										if (elem != null) {
 											elem.parentNode.removeChild(elem);
 										}
 
-										var btn_attempted = document
-												.createElement('button');
-										btn_attempted.setAttribute('type',
-												'button');
+										var btn_attempted = document.createElement('button');
+										btn_attempted.setAttribute('type','button');
 										btn_attempted.id = "btn-attempted";
 										btn_attempted.className = "btn btn-clr col";
 										//btn_attempted.setAttribute('style','width:220px;margin-left:20px;');
 										btn_attempted.textContent = "Questions Attempted";
-										var attempt_span = document
-												.createElement('span');
+										var attempt_span = document.createElement('span');
 										attempt_span.className = "chip primary";
 										//attempt_span.textContent=30;
 										attempt_span.textContent = questionsList.questionsAttempted;
 										btn_attempted.appendChild(attempt_span);
-										document.getElementById('test-info')
-												.appendChild(btn_attempted);
+										document.getElementById('test-info').appendChild(btn_attempted);
 
-										var elem = document
-												.getElementById('btn-ques');
+										var elem = document.getElementById('btn-ques');
 										if (elem != null) {
 											elem.parentNode.removeChild(elem);
 										}
 
-										var btn_ques = document
-												.createElement('button');
+										var btn_ques = document.createElement('button');
 										btn_ques.setAttribute('type', 'button');
 										btn_ques.id = "btn-ques";
 										btn_ques.className = "btn btn-clr col";
 										//btn_ques.setAttribute('style','width:200px;margin-left:20px;');
 										btn_ques.textContent = "Total Questions";
-										var ques_span = document
-												.createElement('span');
+										var ques_span = document.createElement('span');
 										ques_span.className = "chip primary";
 										//ques_span.textContent=30;
 										ques_span.textContent = questionsList.totalQuestions;
 										btn_ques.appendChild(ques_span);
-										document.getElementById('test-info')
-												.appendChild(btn_ques);
+										document.getElementById('test-info').appendChild(btn_ques);
 
-										var div_questions = document
-												.createElement('div');
+										var div_questions = document.createElement('div');
 										div_questions.id = "div-ques";
 
-										var elem = document
-												.getElementById('div-ques');
+										var elem = document.getElementById('div-ques');
 										if (elem != null) {
 											elem.parentNode.removeChild(elem);
 										}
 
 										for (var i = 0; i < questionsList.userTestResponses.length; i++) {
 
-											var question_col = document
-													.createElement('div');
+											var question_col = document.createElement('div');
 											question_col.className = "col-md-6";
 
-											var ques_card = document
-													.createElement('div');
+											var ques_card = document.createElement('div');
 											ques_card.className = "card";
-											ques_card
-													.setAttribute('style',
-															"width:920px; margin-left:120px;");
+											ques_card.setAttribute('style',"width:920px; margin-left:120px;");
 
-											var ques_card_body = document
-													.createElement('div');
+											var ques_card_body = document.createElement('div');
 											ques_card_body.className = "card-body";
-											ques_card_body
-													.setAttribute('style',
-															"margin-left:30px");
+											ques_card_body.setAttribute('style',"margin-left:30px");
 
-											var status = document
-													.createElement('p');
+											var status = document.createElement('p');
 											if (questionsList.userTestResponses[i].isCorrect == 1) {
-												status
-														.setAttribute('style',
-																"color:green; font-weight:bolder;");
+												status.setAttribute('style',"color:green; font-weight:bolder;");
 												status.textContent = "CORRECT";
 											} else if (questionsList.userTestResponses[i].isCorrect == 0) {
-												status
-														.setAttribute('style',
-																"color:red; font-style:bold;");
+												status.setAttribute('style',"color:red; font-style:bold;");
 												status.textContent = "WRONG";
 											}
 											//status.textContent=questionsList.userTestResponses[i].isCorrect;
 											ques_card_body.appendChild(status);
 
 											//alert("Question No: " + questionsList.userTestResponses[i].questionNo);
-											var question = document
-													.createElement('pre');
-											question.textContent = questionsList.userTestResponses[i].questionNo
-													+ ". "
-													+ questionsList.userTestResponses[i].question;
-											question
-													.setAttribute('style',
-															'font-family:Arial, Helvetica, sans-serif;font-size:14px');
-											ques_card_body
-													.appendChild(question);
+											var question = document.createElement('pre');
+											question.textContent = questionsList.userTestResponses[i].questionNo+ ". "+ questionsList.userTestResponses[i].question;
+											question.setAttribute('style','font-family:Arial, Helvetica, sans-serif;font-size:14px');
+											ques_card_body.appendChild(question);
 
-											var options_div = document
-													.createElement('div');
+											var options_div = document.createElement('div');
 											options_div.id = "div-options";
 											//options_div.setAttribute('style',"margin-left:425px; position:relative; margin-top:-150px;");
 											//div_options.appendChild(options_div);
 
-											var span_alpha = document
-													.createElement('span');
+											var span_alpha = document.createElement('span');
 											span_alpha.textContent = 'A ';
-											var radio_1 = document
-													.createElement('div');
+											var radio_1 = document.createElement('div');
 											radio_1.className = "form-check form-check-radio disabled";
-											var label_1 = document
-													.createElement('label');
+											var label_1 = document.createElement('label');
 											label_1.className = "form-check-label";
-											var input_1 = document
-													.createElement('input');
+											var input_1 = document.createElement('input');
 											input_1.className = "form-check-input";
-											input_1.setAttribute('type',
-													"radio");
-											input_1.setAttribute('disabled',
-													true);
+											input_1.setAttribute('type',"radio");
+											input_1.setAttribute('disabled',true);
 											//label_1.textContent=1;
 											label_1.textContent = questionsList.userTestResponses[i].option1;
 											label_1.appendChild(input_1);
-											var span = document
-													.createElement('span');
+											var span = document.createElement('span');
 											span.className = "circle";
-											var inner_span = document
-													.createElement('span');
+											var inner_span = document.createElement('span');
 											inner_span.className = "check";
 											span.appendChild(inner_span);
 											label_1.appendChild(span);
@@ -2123,30 +2040,22 @@
 											radio_1.appendChild(label_1);
 											options_div.appendChild(radio_1);
 
-											var span_alpha = document
-													.createElement('span');
+											var span_alpha = document.createElement('span');
 											span_alpha.textContent = 'B ';
-											var radio_1 = document
-													.createElement('div');
+											var radio_1 = document.createElement('div');
 											radio_1.className = "form-check form-check-radio disabled";
-											var label_1 = document
-													.createElement('label');
+											var label_1 = document.createElement('label');
 											label_1.className = "form-check-label";
-											var input_1 = document
-													.createElement('input');
+											var input_1 = document.createElement('input');
 											input_1.className = "form-check-input";
-											input_1.setAttribute('type',
-													"radio");
-											input_1.setAttribute('disabled',
-													true);
+											input_1.setAttribute('type',"radio");
+											input_1.setAttribute('disabled',true);
 											//label_1.textContent=2;
 											label_1.textContent = questionsList.userTestResponses[i].option2;
 											label_1.appendChild(input_1);
-											var span = document
-													.createElement('span');
+											var span = document.createElement('span');
 											span.className = "circle";
-											var inner_span = document
-													.createElement('span');
+											var inner_span = document.createElement('span');
 											inner_span.className = "check";
 											span.appendChild(inner_span);
 											label_1.appendChild(span);
@@ -2154,30 +2063,22 @@
 											radio_1.appendChild(label_1);
 											options_div.appendChild(radio_1);
 
-											var span_alpha = document
-													.createElement('span');
+											var span_alpha = document.createElement('span');
 											span_alpha.textContent = 'C ';
-											var radio_1 = document
-													.createElement('div');
+											var radio_1 = document.createElement('div');
 											radio_1.className = "form-check form-check-radio disabled";
-											var label_1 = document
-													.createElement('label');
+											var label_1 = document.createElement('label');
 											label_1.className = "form-check-label";
-											var input_1 = document
-													.createElement('input');
+											var input_1 = document.createElement('input');
 											input_1.className = "form-check-input";
-											input_1.setAttribute('type',
-													"radio");
-											input_1.setAttribute('disabled',
-													true);
+											input_1.setAttribute('type',"radio");
+											input_1.setAttribute('disabled',true);
 											//label_1.textContent=3;
 											label_1.textContent = questionsList.userTestResponses[i].option3;
 											label_1.appendChild(input_1);
-											var span = document
-													.createElement('span');
+											var span = document.createElement('span');
 											span.className = "circle";
-											var inner_span = document
-													.createElement('span');
+											var inner_span = document.createElement('span');
 											inner_span.className = "check";
 											span.appendChild(inner_span);
 											label_1.appendChild(span);
@@ -2185,30 +2086,22 @@
 											radio_1.appendChild(label_1);
 											options_div.appendChild(radio_1);
 
-											var span_alpha = document
-													.createElement('span');
+											var span_alpha = document.createElement('span');
 											span_alpha.textContent = 'D ';
-											var radio_1 = document
-													.createElement('div');
+											var radio_1 = document.createElement('div');
 											radio_1.className = "form-check form-check-radio disabled";
-											var label_1 = document
-													.createElement('label');
+											var label_1 = document.createElement('label');
 											label_1.className = "form-check-label";
-											var input_1 = document
-													.createElement('input');
+											var input_1 = document.createElement('input');
 											input_1.className = "form-check-input";
-											input_1.setAttribute('type',
-													"radio");
-											input_1.setAttribute('disabled',
-													true);
+											input_1.setAttribute('type',"radio");
+											input_1.setAttribute('disabled',true);
 											//label_1.textContent="Compilation Error";
 											label_1.textContent = questionsList.userTestResponses[i].option4;
 											label_1.appendChild(input_1);
-											var span = document
-													.createElement('span');
+											var span = document.createElement('span');
 											span.className = "circle";
-											var inner_span = document
-													.createElement('span');
+											var inner_span = document.createElement('span');
 											inner_span.className = "check";
 											span.appendChild(inner_span);
 											label_1.appendChild(span);
@@ -2216,49 +2109,32 @@
 											radio_1.appendChild(label_1);
 											options_div.appendChild(radio_1);
 
-											ques_card_body
-													.appendChild(options_div);
+											ques_card_body.appendChild(options_div);
 
-											var your_ans = document
-													.createElement('p');
-											your_ans.textContent = "Your Answer : "
-													+ questionsList.userTestResponses[i].selectedOption;
-											ques_card_body
-													.appendChild(your_ans);
+											var your_ans = document.createElement('p');
+											your_ans.textContent = "Your Answer : "+ questionsList.userTestResponses[i].selectedOption;
+											ques_card_body.appendChild(your_ans);
 
-											var correct_ans = document
-													.createElement('p');
-											correct_ans.textContent = "Correct Answer : "
-													+ questionsList.userTestResponses[i].correctOption;
-											ques_card_body
-													.appendChild(correct_ans);
+											var correct_ans = document.createElement('p');
+											correct_ans.textContent = "Correct Answer : "+ questionsList.userTestResponses[i].correctOption;
+											ques_card_body.appendChild(correct_ans);
 
-											var explain = document
-													.createElement('p');
-											explain.textContent = "Explanation : "
-													+ questionsList.userTestResponses[i].explanation;
+											var explain = document.createElement('p');
+											explain.textContent = "Explanation : "+ questionsList.userTestResponses[i].explanation;
 											ques_card_body.appendChild(explain);
 
-											var diff_topic = document
-													.createElement('pre');
+											var diff_topic = document.createElement('pre');
 											diff_topic.textContent = "Topic : "
 													+ questionsList.userTestResponses[i].TopicName
 													+ "            Difficulty Level : "
 													+ questionsList.userTestResponses[i].DifficultyLevelName;
-											diff_topic
-													.setAttribute('style',
-															'font-family:Arial, Helvetica, sans-serif;font-size:14px');
-											ques_card_body
-													.appendChild(diff_topic);
+											diff_topic.setAttribute('style','font-family:Arial, Helvetica, sans-serif;font-size:14px');
+											ques_card_body.appendChild(diff_topic);
 
-											ques_card
-													.appendChild(ques_card_body);
+											ques_card.appendChild(ques_card_body);
 											question_col.appendChild(ques_card);
-											div_questions
-													.appendChild(question_col);
-											document
-													.getElementById('questions')
-													.appendChild(div_questions);
+											div_questions.appendChild(question_col);
+											document.getElementById('questions').appendChild(div_questions);
 
 										}
 
@@ -2462,7 +2338,7 @@
 					document.getElementById('welcome').innerHTML = userData.firstName + " "
 							+ userData.lastName;	
 
-					alert("Enquired Data alert : "+userData.enquired);
+					//alert("Enquired Data alert : "+userData.enquired);
 					if (userData.enquired) {
 						//alert("IF");
 						document.getElementById('analytics_nav_link').className = "disabled";

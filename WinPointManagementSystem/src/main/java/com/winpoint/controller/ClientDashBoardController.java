@@ -66,27 +66,16 @@ public class ClientDashBoardController {
 	}
 
 	@RequestMapping(value = "/StreamCourseTypeUserCourses", method = RequestMethod.GET)
-	public @ResponseBody List<Course> ClientDashBoardCardData(
+	public @ResponseBody List<StudentCourseDetails> ClientDashBoardCardData(
 			@RequestParam("userId") String userId,
 			@RequestParam("streamId") String streamId,
 			@RequestParam("courseTypeId") String courseTypeId
 			) {
 		System.out.println("*****************************************Client DashBoard Card Data*********************************************************");
-		ModelAndView mv = new ModelAndView();
-		System.out.println("1");
-		List<Course> registeredCoursesList = new ArrayList<Course>();
-		System.out.println("2");
 		List<StudentCourseDetails> studentRegisteredCourseList = new ArrayList<StudentCourseDetails>();
 		studentRegisteredCourseList.addAll(studentCourseDetailsRepository.findByUserId(Integer.parseInt(userId),Integer.parseInt(streamId),Integer.parseInt(courseTypeId)));
-		System.out.println("3");
-		//System.out.println("Data : "+studentRegisteredCourseList.get(0).getCourseName());
-		for(StudentCourseDetails studentCourseDetails : studentRegisteredCourseList) {
-			//System.out.println("1");
-			registeredCoursesList.add(studentCourseDetails.getMappingCourse());
-			System.out.println("Registered Courses : "+studentCourseDetails.getMappingCourse());
-		}
-		mv.addObject("studentCourseDetailsUserList",registeredCoursesList);
-		return registeredCoursesList;		
+		System.out.println("Registered courses Length = "+studentRegisteredCourseList.size());
+		return studentRegisteredCourseList;		
 	}
 	
 }
